@@ -1,0 +1,4 @@
+.image-link {padding:20px;width:100%;}
+.image-link > img:hover, .image-link > label:hover {cursor:pointer;}
+.image-link > img {display:block;margin:0 auto;max-height:260px;width:100%;}
+.image-link > label {background-color:#04044a;color:#fafafa;font-size:16px;margin:0;opacity:0.8;padding:20px 10px;text-align:center;}

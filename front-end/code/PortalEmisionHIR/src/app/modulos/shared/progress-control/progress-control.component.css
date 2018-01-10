@@ -1,0 +1,3 @@
+.progress-step-container {margin:0 0 15px;text-align:center;}
+.progress-step {background-color:#bbbbbb;border-radius:50%;display:inline-block;height:15px;margin:0 5px;width:15px;}
+.progress-step.active {background-color:#f68c2c;}

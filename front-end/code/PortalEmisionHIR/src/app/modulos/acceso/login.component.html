@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="col col-30">
+		<label id="lblUsuario" class="form-label">Usuario</label>
+	</div>
+	<div class="col col-70">
+		<input id="txtUsuario" type="text" class="form-control">
+	</div>
+</div>
+<div class="row">
+	<div class="col col-30">
+		<label id="lblContrasena" class="form-label">Contraseña</label>
+	</div>
+	<div class="col col-70">
+		<input id="txtContarsena" type="password" class="form-control">
+	</div>
+</div>
+<div class="row accesolinks">
+	<div class="col col-50 text-center">
+		<a id="lnkContraseña" routerLink="/rcontrasena">Olvide mi constraseña</a>
+	</div>
+	<div class="col col-50 text-center">
+		<a id="lnkRegistro" routerLink="/registro">Registro</a>
+	</div>
+</div>
+<div class="row">
+	<div class="col col-100">
+		<button id="btnIngresar" (click)="fnIngresar()">Ingresar</button>
+	</div>
+</div>

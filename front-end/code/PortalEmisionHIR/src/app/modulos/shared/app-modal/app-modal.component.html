@@ -1,0 +1,12 @@
+<div *ngIf="isVisible" class="modal">
+	<div class="modal-header">
+		<i class="fa {{iconClass}}" aria-hidden="true"></i>
+	</div>
+	<div class="modal-body">
+		{{modalMessage}}
+	</div>
+	<div class="modal-footer">
+		<button id="btnAceptar" (click)="closeModal()">Aceptar</button>
+	</div>
+</div>
+<div *ngIf="isVisible" class="modal-overlay">

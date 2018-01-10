@@ -1,0 +1,189 @@
+<div class="row">
+	<div class="col col-100 titulo">{{titulo}}</div>
+</div>
+<form [formGroup]="frmSeguhirVida" (ngSubmit)="cotizar()">
+	<div class="row">
+		<div class="col col-50">
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblNombre" class="form-label">Nombre:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmSeguhirVida.controls['nombre'].dirty"
+						[inputErrors]="frmSeguhirVida.controls['nombre'].errors">
+							<input id="txtNombre" type="text" class="form-control" formControlName="nombre">
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblApaterno" class="form-label">Apellido paterno:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmSeguhirVida.controls['apaterno'].dirty"
+						[inputErrors]="frmSeguhirVida.controls['apaterno'].errors">
+							<input id="txtApaterno" type="text" class="form-control" formControlName="apaterno">
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblAmaterno" class="form-label">Apellido materno:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmSeguhirVida.controls['amaterno'].dirty"
+						[inputErrors]="frmSeguhirVida.controls['amaterno'].errors">
+							<input id="txtAmaterno" type="text" class="form-control" formControlName="amaterno">
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblFechaNac" class="form-label">Fecha de nacimiento:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmSeguhirVida.controls['fechanac'].dirty"
+						[inputErrors]="frmSeguhirVida.controls['fechanac'].errors">
+							<my-date-picker name="fechanac" [options]="fecNacOptions" formControlName="fechanac">
+							</my-date-picker>
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblRFC" class="form-label">RFC:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmSeguhirVida.controls['rfc'].dirty"
+						[inputErrors]="frmSeguhirVida.controls['rfc'].errors">
+							<input id="txtRFC" type="text" class="form-control" formControlName="rfc">
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblSexo" class="form-label">Sexo:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmSeguhirVida.controls['genero'].dirty"
+						[inputErrors]="frmSeguhirVida.controls['genero'].errors">
+							<div *ngFor="let genero of generos" class="twoRdoContainer">
+								<input type="radio" formControlName="genero" [value]="genero.idGenero">{{genero.descGenero}}
+							</div>
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblPlan" class="form-label">Plan:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmSeguhirVida.controls['plan'].dirty"
+						[inputErrors]="frmSeguhirVida.controls['plan'].errors">
+							<div class="twoRdoContainer">
+								<input id="rdoPlan1" type="radio" value="1" formControlName="plan">Individual
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoPlan2" type="radio" value="2" formControlName="plan">Conyugal
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoPlan3" type="radio" value="3" formControlName="plan">Hijos
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoPlan4" type="radio" value="4" formControlName="plan">Familiar
+							</div>
+					</pehir-extend-form-control>
+				</div>
+			</div>
+		</div>
+		<div class="col col-50">
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblPcobertura" class="form-label">Paquete de cobertura:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmSeguhirVida.controls['pcobertura'].dirty"
+						[inputErrors]="frmSeguhirVida.controls['pcobertura'].errors">
+							<div class="twoRdoContainer">
+								<input id="rdoPcobertura1" type="radio" value="1" formControlName="pcobertura">F
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoPcobertura2" type="radio" value="2" formControlName="pcobertura">F e IITP
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoPcobertura3" type="radio" value="3" formControlName="pcobertura">F y MA
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoPcobertura4" type="radio" value="4" formControlName="pcobertura">F y C
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoPcobertura5" type="radio" value="5" formControlName="pcobertura">F, IITP y MA
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoPcobertura6" type="radio" value="6" formControlName="pcobertura">F, IITP y C
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoPcobertura7" type="radio" value="7" formControlName="pcobertura">F, MA y C
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoPcobertura8" type="radio" value="8" formControlName="pcobertura">F, IITP, MA y C
+							</div>
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblModulos" class="form-label">Número de módulos a contratar:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmSeguhirVida.controls['modulo'].dirty"
+						[inputErrors]="frmSeguhirVida.controls['modulo'].errors">
+							<select id="cboModulo" class="form-control" formControlName="modulo">
+								<option value="">Selecciona</option>
+								<option *ngFor="let modulo of modulos" [value]="modulo.idModulo">
+									{{modulo.descModulo}}
+								</option>
+							</select>
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblFpago" class="form-label">Forma de pago:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmSeguhirVida.controls['fpago'].dirty"
+						[inputErrors]="frmSeguhirVida.controls['fpago'].errors">
+							<div class="twoRdoContainer">
+								<input id="rdoFpago1" type="radio" value="1" formControlName="fpago">Anual
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoFpago2" type="radio" value="2" formControlName="fpago">Semestral
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoFpago3" type="radio" value="3" formControlName="fpago">Trimestral
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoFpago4" type="radio" value="4" formControlName="fpago">Mensual
+							</div>
+					</pehir-extend-form-control>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-100">
+			<button id="btnCotizar" type="submit" [disabled]="!frmSeguhirVida.valid">Cotizar</button>
+		</div>
+	</div>
+</form>

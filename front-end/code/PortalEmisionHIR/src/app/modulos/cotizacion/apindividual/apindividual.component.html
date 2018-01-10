@@ -1,0 +1,180 @@
+<div class="row">
+	<div class="col col-100 titulo">{{titulo}}</div>
+</div>
+<form [formGroup]="frmApindividual" (ngSubmit)="cotizar()">
+	<div class="row">
+		<div class="col col-50">
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblNombre" class="form-label">Nombre:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmApindividual.controls['nombre'].dirty"
+						[inputErrors]="frmApindividual.controls['nombre'].errors">
+							<input id="txtNombre" type="text" class="form-control" formControlName="nombre">
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblApaterno" class="form-label">Apellido paterno:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmApindividual.controls['apaterno'].dirty"
+						[inputErrors]="frmApindividual.controls['apaterno'].errors">
+							<input id="txtApaterno" type="text" class="form-control" formControlName="apaterno">
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblAmaterno" class="form-label">Apellido materno:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmApindividual.controls['amaterno'].dirty"
+						[inputErrors]="frmApindividual.controls['amaterno'].errors">
+							<input id="txtAmaterno" type="text" class="form-control" formControlName="amaterno">
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblFechaNac" class="form-label">Fecha de nacimiento:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmApindividual.controls['fechanac'].dirty"
+						[inputErrors]="frmApindividual.controls['fechanac'].errors">
+							<my-date-picker name="fechanac" [options]="fecNacOptions" formControlName="fechanac">
+							</my-date-picker>
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblRFC" class="form-label">RFC:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmApindividual.controls['rfc'].dirty"
+						[inputErrors]="frmApindividual.controls['rfc'].errors">
+							<input id="txtRFC" type="text" class="form-control" formControlName="rfc">
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblSexo" class="form-label">Sexo:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmApindividual.controls['genero'].dirty"
+						[inputErrors]="frmApindividual.controls['genero'].errors">
+							<div *ngFor="let genero of generos" class="twoRdoContainer">
+								<input type="radio" formControlName="genero" [value]="genero.idGenero">{{genero.descGenero}}
+							</div>
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblCobertura" class="form-label">Cobertura:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmApindividual.controls['cobertura'].dirty"
+						[inputErrors]="frmApindividual.controls['cobertura'].errors">
+							<select id="cboCobertura" class="form-control" formControlName="cobertura">
+							</select>
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblSumasegurada" class="form-label">Suma asegurada:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmApindividual.controls['sumasegurada'].dirty"
+						[inputErrors]="frmApindividual.controls['sumasegurada'].errors">
+							<input id="txtSumasegurada" type="text" class="form-control" formControlName="sumasegurada">
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblDeducible" class="form-label">Deducible:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmApindividual.controls['deducible'].dirty"
+						[inputErrors]="frmApindividual.controls['deducible'].errors">
+							<input id="txtDeducible" type="text" class="form-control" formControlName="deducible">
+					</pehir-extend-form-control>
+				</div>
+			</div>
+		</div>
+		<div class="col col-50">
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblFpago" class="form-label">Forma de pago:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmApindividual.controls['fpago'].dirty"
+						[inputErrors]="frmApindividual.controls['fpago'].errors">
+							<div class="twoRdoContainer">
+								<input id="rdoFpago1" type="radio" formControlName="fpago">Anual
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoFpago2" type="radio" formControlName="fpago">Semestral
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoFpago3" type="radio" formControlName="fpago">Cuatrimestral
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoFpago4" type="radio" formControlName="fpago">Trimestral
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoFpago5" type="radio" formControlName="fpago">Bimestral
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoFpago6" type="radio" formControlName="fpago">Mensual
+							</div>
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblPlan" class="form-label">Plan:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmApindividual.controls['plan'].dirty"
+						[inputErrors]="frmApindividual.controls['plan'].errors">
+							<div class="twoRdoContainer">
+								<input id="rdoPlan1" type="radio" formControlName="plan">Individual
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoPlan2" type="radio" formControlName="plan">Conyugal
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoPlan3" type="radio" formControlName="plan">Hijos
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoPlan4" type="radio" formControlName="plan">Familiar
+							</div>
+					</pehir-extend-form-control>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-100">
+			<button id="btnCotizar" type="submit" [disabled]="!frmApindividual.valid">Cotizar</button>
+		</div>
+	</div>
+</form>

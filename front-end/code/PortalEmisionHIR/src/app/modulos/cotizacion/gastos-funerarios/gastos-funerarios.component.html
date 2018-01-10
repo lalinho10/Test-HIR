@@ -1,0 +1,133 @@
+<div class="row">
+	<div class="col col-100 titulo">{{titulo}}</div>
+</div>
+<form [formGroup]="frmGastosFunerarios" (ngSubmit)="cotizar()">
+	<div class="row">
+		<div class="col col-50">
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblNombre" class="form-label">Nombre:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmGastosFunerarios.controls['nombre'].dirty"
+						[inputErrors]="frmGastosFunerarios.controls['nombre'].errors">
+							<input id="txtNombre" type="text" class="form-control" formControlName="nombre">
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblApaterno" class="form-label">Apellido paterno:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmGastosFunerarios.controls['apaterno'].dirty"
+						[inputErrors]="frmGastosFunerarios.controls['apaterno'].errors">
+							<input id="txtApaterno" type="text" class="form-control" formControlName="apaterno">
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblAmaterno" class="form-label">Apellido materno:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmGastosFunerarios.controls['amaterno'].dirty"
+						[inputErrors]="frmGastosFunerarios.controls['amaterno'].errors">
+							<input id="txtAmaterno" type="text" class="form-control" formControlName="amaterno">
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblFechaNac" class="form-label">Fecha de nacimiento:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmGastosFunerarios.controls['fechanac'].dirty"
+						[inputErrors]="frmGastosFunerarios.controls['fechanac'].errors">
+							<my-date-picker name="fechanac" [options]="fecNacOptions" formControlName="fechanac">
+							</my-date-picker>
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblRFC" class="form-label">RFC:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmGastosFunerarios.controls['rfc'].dirty"
+						[inputErrors]="frmGastosFunerarios.controls['rfc'].errors">
+							<input id="txtRFC" type="text" class="form-control" formControlName="rfc">
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblSexo" class="form-label">Sexo:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmGastosFunerarios.controls['genero'].dirty"
+						[inputErrors]="frmGastosFunerarios.controls['genero'].errors">
+							<div *ngFor="let genero of generos" class="twoRdoContainer">
+								<input type="radio" formControlName="genero" [value]="genero.idGenero">{{genero.descGenero}}
+							</div>
+					</pehir-extend-form-control>
+				</div>
+			</div>
+		</div>
+		<div class="col col-50">
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblModulo" class="form-label">Módulo:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmGastosFunerarios.controls['modulo'].dirty"
+						[inputErrors]="frmGastosFunerarios.controls['modulo'].errors">
+							<select id="cboModulo" class="form-control" formControlName="modulo">
+								<option value="">Selecciona</option>
+								<option *ngFor="let modulo of modulos" [value]="modulo.idModulo">
+									{{modulo.descModulo}}
+								</option>
+							</select>
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblSumasegurada" class="form-label">Suma asegurada:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmGastosFunerarios.controls['sumasegurada'].dirty"
+						[inputErrors]="frmGastosFunerarios.controls['sumasegurada'].errors">
+							<input id="txtSumasegurada" type="text" class="form-control" formControlName="sumasegurada">
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblCobertura" class="form-label">Cobertura:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmGastosFunerarios.controls['cobertura'].dirty"
+						[inputErrors]="frmGastosFunerarios.controls['cobertura'].errors">
+							<select id="cboModulo" class="form-control" formControlName="cobertura">
+							</select>
+					</pehir-extend-form-control>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-100">
+			<button id="btnCotizar" type="submit" [disabled]="!frmGastosFunerarios.valid">Cotizar</button>
+		</div>
+	</div>
+</form>

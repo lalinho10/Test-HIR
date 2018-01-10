@@ -1,0 +1,123 @@
+<div class="row">
+	<div class="col col-100 titulo">{{titulo}}</div>
+</div>
+<form [formGroup]="frmRegistro" (ngSubmit)="fnRegistrar()">
+	<div class="row">
+		<div class="col col-20 col-off-20">
+			<label id="lblNombre" class="form-label">Nombre*</label>
+		</div>
+		<div class="col col-30">
+			<pehir-extend-form-control
+				[inputDirty]="frmRegistro.controls['nombre'].dirty"
+				[inputErrors]="frmRegistro.controls['nombre'].errors">
+					<input id="txtNombre" type="text" class="form-control" formControlName="nombre">
+			</pehir-extend-form-control>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-20 col-off-20">
+			<label id="lblApaterno" class="form-label">Apellido paterno*</label>
+		</div>
+		<div class="col col-30">
+			<pehir-extend-form-control
+				[inputDirty]="frmRegistro.controls['apaterno'].dirty"
+				[inputErrors]="frmRegistro.controls['apaterno'].errors">
+					<input id="txtApaterno" type="text" class="form-control" formControlName="apaterno">
+			</pehir-extend-form-control>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-20 col-off-20">
+			<label id="lblAmaterno" class="form-label">Apellido materno</label>
+		</div>
+		<div class="col col-30">
+			<pehir-extend-form-control
+				[inputDirty]="frmRegistro.controls['amaterno'].dirty"
+				[inputErrors]="frmRegistro.controls['amaterno'].errors">
+					<input id="txtAmaterno" type="text" class="form-control" formControlName="amaterno">
+			</pehir-extend-form-control>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-20 col-off-20">
+			<label id="lblCorreoe" class="form-label">Correo electrónico*</label>
+		</div>
+		<div class="col col-30">
+			<pehir-extend-form-control
+				[inputDirty]="frmRegistro.controls['correoe'].dirty"
+				[inputErrors]="frmRegistro.controls['correoe'].errors">
+					<input id="txtCorreoe" type="text" class="form-control" formControlName="correoe">
+			</pehir-extend-form-control>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-20 col-off-20">
+			<label id="lblContrasena" class="form-label">Contraseña*</label>
+		</div>
+		<div class="col col-30">
+			<pehir-extend-form-control
+				[inputDirty]="frmRegistro.controls['contrasena'].dirty"
+				[inputErrors]="frmRegistro.controls['contrasena'].errors">
+					<input id="txtContrasena" type="password" class="form-control" formControlName="contrasena">
+			</pehir-extend-form-control>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-30 col-off-40">
+			<label class="msg info">
+				La contraseña debe contener al menos una mayúscula, un número, así mismo la longitud no puede ser menor a 8 ni mayor a 20.
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-20 col-off-20">
+			<label id="lblConfContrasena" class="form-label">Confirmar contraseña</label>
+		</div>
+		<div class="col col-30">
+			<pehir-extend-form-control
+				[inputDirty]="frmRegistro.controls['confcontrasena'].dirty"
+				[inputErrors]="frmRegistro.controls['confcontrasena'].errors">
+					<input id="txtConfContrasena" type="password" class="form-control" formControlName="confcontrasena">
+			</pehir-extend-form-control>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-20 col-off-20">
+			<label id="lblCelular" class="form-label">Teléfono celular*</label>
+		</div>
+		<div class="col col-30">
+			<pehir-extend-form-control
+				[inputDirty]="frmRegistro.controls['celular'].dirty"
+				[inputErrors]="frmRegistro.controls['celular'].errors">
+					<input id="txtCelular" type="text" class="form-control" formControlName="celular">
+			</pehir-extend-form-control>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-20 col-off-20">
+			<label id="lblTelefono" class="form-label">Teléfono fijo</label>
+		</div>
+		<div class="col col-30">
+			<pehir-extend-form-control
+				[inputDirty]="frmRegistro.controls['telefono'].dirty"
+				[inputErrors]="frmRegistro.controls['telefono'].errors">
+					<input id="txtTelefono" type="text" class="form-control" formControlName="telefono">
+			</pehir-extend-form-control>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-30 col-off-40">
+			<label class="msg info">*Campos obligatorios</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-100">
+			<!--Control de captcha-->
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-100">
+			<button id="btnIngresar" type="submit" [disabled]="!frmRegistro.valid">Ingresar</button>
+		</div>
+	</div>
+</form>

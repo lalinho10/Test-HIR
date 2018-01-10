@@ -1,0 +1,8 @@
+@media only screen and ( max-width: 768px ) {
+	.mainContainer {width:90%;}
+	[class*=" col-"] {width:100%;}
+	[class*=" col-off-"] {margin-left:0;}
+    [class*=" push-"], [class*=" pull-"] {position:static;}
+    input[type="button"], input[type="submit"], button {width:100%;}
+    .main label.form-label {text-align:left;}
+}

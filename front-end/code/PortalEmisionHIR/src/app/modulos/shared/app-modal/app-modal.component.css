@@ -1,0 +1,7 @@
+.modal {background-color:#d0d0d0;border-radius:15px;box-shadow:0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12);display:block;font-size:15px !important;position:fixed;left:0;right:0;top:20%;margin:auto;height:auto;padding:15px;width:300px;z-index:1000;}
+.modal .fa {color:#f68c2c;opacity:0.7;}
+.modal button, .modal input[type="button"], .modal input[type="submit"] {background-color:transparent;color:#444444;}
+.modal-header {font-size:11em;text-align:center;}
+.modal-body {padding:0 0 20px 0;text-align:center;}
+.modal-footer {margin:0 0 20px 0;}
+.modal-overlay {background-color:rgba(0,0,0,0.3);position:fixed;bottom:0;left:0;right:0;top:0;z-index:999;}

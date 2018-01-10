@@ -1,0 +1,9 @@
+<div *ngIf="isVisible" class="modal">
+	<div class="modal-loader">
+		<i class="fa fa-spinner fa-pulse"></i>
+	</div>
+	<div class="modal-message">
+		<label class="msg info">Esperando {{calls}} servicio(s)...</label>
+	</div>
+</div>
+<div *ngIf="isVisible" class="modal-overlay"></div>

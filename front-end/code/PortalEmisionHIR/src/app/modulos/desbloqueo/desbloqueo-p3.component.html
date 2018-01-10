@@ -1,0 +1,52 @@
+<div class="row">
+	<div class="col col-100">
+		<pehir-progress-control [numSteps]="3" [selStep]="3">
+		</pehir-progress-control>
+	</div>
+</div>
+<form [formGroup]="frmDesP3" (ngSubmit)="fnDesbloquear()">
+	<div class="row">
+		<div class="col col-100">
+			<p class="text-center">Su usuario ha sido desbloqueado.<br>¿Deseas cambiar tu contraseña?</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-100">
+			<input id="rdoSi" type="radio" [value]="true" formControlName="confirmacion"> Sí
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-100">
+			<input id="rdoNo" type="radio" [value]="false" formControlName="confirmacion"> No
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-20 col-off-20">
+			<label id="lblContrasena" class="form-label">Nueva contraseña</label>
+		</div>
+		<div class="col col-30">
+			<pehir-extend-form-control
+				[inputDirty]="frmDesP3.controls['contrasena'].dirty"
+				[inputErrors]="frmDesP3.controls['contrasena'].errors">
+				<input id="pwdContrasena" type="password" class="form-control" formControlName="contrasena">
+			</pehir-extend-form-control>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-20 col-off-20">
+			<label id="lblConfContrasena" class="form-label">Confirma tu nueva contraseña</label>
+		</div>
+		<div class="col col-30">
+			<pehir-extend-form-control
+				[inputDirty]="frmDesP3.controls['confcontrasena'].dirty"
+				[inputErrors]="frmDesP3.controls['confcontrasena'].errors">
+				<input id="pwdConfContrasena" type="password" class="form-control" formControlName="confcontrasena">
+			</pehir-extend-form-control>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-100">
+			<button id="btnSiguiente" type="submit" [disabled]="!frmDesP3.valid && frmDesP3.controls['confirmacion'].value">Siguiente</button>
+		</div>
+	</div>
+</form>

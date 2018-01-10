@@ -1,0 +1,27 @@
+<div class="row">
+	<div class="col col-100">
+		<pehir-progress-control [numSteps]="3" [selStep]="2">
+		</pehir-progress-control>
+	</div>
+</div>
+<form [formGroup]="frmRconP2" (ngSubmit)="fnAvanzarP3Rcon()">
+	<div class="row">
+		<div class="col col-20 col-off-20">
+			<label id="lblCodigo" class="form-label">
+				Ingresa el código que se ha enviado a tu correo electrónico / celular
+			</label>
+		</div>
+		<div class="col col-30">
+			<pehir-extend-form-control
+				[inputDirty]="frmRconP2.controls['codigo'].dirty"
+				[inputErrors]="frmRconP2.controls['codigo'].errors">
+				<input id="txtCodigo" type="text" class="form-control" formControlName="codigo">
+			</pehir-extend-form-control>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-100">
+			<button id="btnSiguiente" type="submit" [disabled]="!frmRconP2.valid">Siguiente</button>
+		</div>
+	</div>
+</form>
