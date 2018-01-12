@@ -15,6 +15,8 @@ export class ExtendFormControlComponent implements OnChanges {
 	private errorDefs: Object = 
 	{
 		required: 'Campo requerido',
+		max: 'El campo excede el valor máximo válido',
+		min: 'El campo no tiene el valor mínimo válido',
 		maxlength: 'El campo excede el número máximo de caracteres permitidos',
 		minlength: 'El campo no tiene el número mínimo de caracteres permitidos',
 		pattern: 'El formato del dato capturado es incorrecto',
@@ -26,11 +28,11 @@ export class ExtendFormControlComponent implements OnChanges {
 		igualdadContrasenas: 'Las contraseñas son diferentes',
 		nombre: 'El nombre contiene caracteres no permitidos',
 		apellido: 'El apellido contiene caracteres no permitidos',
-		rfc : 'Formato de RFC incorrecto'
+		rfc : 'Formato de RFC incorrecto',
+		porcentaje: 'El porcentaje asigando es inválido'
 	};
 
 	ngOnChanges( changes: SimpleChanges ): void {
-		//debugger;
 		this.hasError = false;
 		this.errorMessage = '';
 		
