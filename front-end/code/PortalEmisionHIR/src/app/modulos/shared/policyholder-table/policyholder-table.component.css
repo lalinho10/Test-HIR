@@ -1,0 +1,7 @@
+table {border-spacing:0;width:100%;}
+table .fa {color:#1e3154;}
+table th, table td {padding:10px 5px;}
+table td.center {text-align:center;}
+table > thead > tr > th {background-color:#1e3154;color:#fafafa;}
+table > tbody > tr:nth-child( even ) {background-color:#f0f0f0;}
+table > tfoot > tr > td {vertical-align:top;}
