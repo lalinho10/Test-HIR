@@ -10,6 +10,7 @@ import { MyDatePickerModule }		from 'mydatepicker';
 
 import { ProcuraVidaRoutingModule } from './procura-vida-routing.module';
 import { ExtendFormControlModule }  from 'app/modulos/shared/extend-form-control/extend-form-control.module';
+import { PolicyHolderTableModule }  from 'app/modulos/shared/policyholder-table/policyholder-table.module';
 import { ProgressControlModule }	from 'app/modulos/shared/progress-control/progress-control.module';
 
 @NgModule({
@@ -22,6 +23,7 @@ import { ProgressControlModule }	from 'app/modulos/shared/progress-control/progr
 		CommonModule,
 		ReactiveFormsModule,
 		MyDatePickerModule,
+		PolicyHolderTableModule,
 		ProcuraVidaRoutingModule,
 		ExtendFormControlModule,
 		ProgressControlModule

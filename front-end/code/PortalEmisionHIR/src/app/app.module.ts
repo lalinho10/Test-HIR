@@ -11,8 +11,9 @@ import { DesbloqueoModule }		   from './modulos/desbloqueo/desbloqueo.module';
 import { RcontrasenaModule }	   from './modulos/recuperar-contrasena/rcontrasena.module';
 import { CotizacionModule }		   from './modulos/cotizacion/cotizacion.module';
 import { EmisionModule }		   from './modulos/emision/emision.module';
-import { ImageLinkModule }		   from './modulos/shared/image-link/image-link.module';
 import { ExtendFormControlModule } from './modulos/shared/extend-form-control/extend-form-control.module';
+import { ImageLinkModule }		   from './modulos/shared/image-link/image-link.module';
+import { PolicyHolderTableModule } from './modulos/shared/policyholder-table/policyholder-table.module';
 
 import { AppComponent }			   from './app.component';
 import { AppHeaderComponent }	   from './layout/app-header.component';
@@ -49,7 +50,8 @@ import { LoadingModalService }	   from './modulos/shared/loading-modal/loading-m
 		CotizacionModule,
 		EmisionModule,
 		ExtendFormControlModule,
-		ImageLinkModule
+		ImageLinkModule,
+		PolicyHolderTableModule
 	],
 	providers: [
 		AppModalService,
