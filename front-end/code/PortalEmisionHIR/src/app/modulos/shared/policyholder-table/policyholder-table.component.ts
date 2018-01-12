@@ -16,9 +16,12 @@ import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
 
 export class PolicyHolderTableComponent implements OnInit {
 	private frmBeneficiario: FormGroup;
-	private beneficiarios: Beneficiario[];
+	private beneficiarios: Beneficiario[] = [];
 
 	private fecNacOptions = FECNACOPTIONS;
+
+	private isValidSum: boolean = false;
+	private sumErrorMsg: string = 'Los porcentajes de suma asegurada no dan un total de 100%'
 
 	constructor( private fb: FormBuilder ) {}
 
@@ -42,12 +45,6 @@ export class PolicyHolderTableComponent implements OnInit {
 				PorcentajeValidator()
 			])]
 		});
-
-		this.beneficiarios = [
-			{ nombre: 'Juan Pérez Rodriguez', fechaNacimiento: new Date( '2000-02-22' ), parentesco: 'Hijo', porcentajeSuma: 0.25 },
-			{ nombre: 'Diana Pérez Rodríguez', fechaNacimiento: new Date( '2003-06-25' ), parentesco: 'Hija', porcentajeSuma: 0.25 },
-			{ nombre: 'Daniela Rodríguez Santillán', fechaNacimiento: new Date( '1989-10-20' ), parentesco: 'Esposa', porcentajeSuma: 0.5 },
-		]
 	}
 
 	private eliminarBeneficiario( idUsuario: number ): void {
@@ -55,21 +52,39 @@ export class PolicyHolderTableComponent implements OnInit {
 	}
 
 	private agregarBeneficiario(): void {
+		let beneficiario: Beneficiario = new Beneficiario();
+
+		beneficiario.nombre = this.frmBeneficiario.controls[ 'nombre' ].value;
+		beneficiario.fechaNacimiento = new Date( this.frmBeneficiario.controls[ 'fechanac' ].value.epoc * 1000 );
+		beneficiario.parentesco = this.frmBeneficiario.controls[ 'parentesco' ].value;
+		beneficiario.porcentajeSuma = this.frmBeneficiario.controls[ 'porcentajeSuma' ].value / 100;
+
+		this.beneficiarios.push( beneficiario );
+	}
+
+	private limpiarControles(): void {
+		//this.frmBeneficiario.controls[ 'nombre' ].value = '';
+		//this.frmBeneficiario.controls[ 'fechanac' ].value = '';
+		//this.frmBeneficiario.controls[ 'parentesco' ].value = '';
+		//this.frmBeneficiario.controls[ 'porcentajeSuma' ].value = '';
+	}
+
+	private validarSumatoriaPorcentajes(): void {
+
+	}
+
+	private validarFomulario(): void {
 		debugger;
-		/*for( var i = 0; i < this.frmBeneficiario.controls.length; i++ ) {
-			this.frmBeneficiario.controls[ i ].markAsDirty();	
-		}*/
-		this.frmBeneficiario.markAsDirty();
 
 		if( this.frmBeneficiario.valid ) {
-			let beneficiario: Beneficiario = new Beneficiario();
-
-			beneficiario.nombre = 'Juan Pérez Rosales';
-			beneficiario.fechaNacimiento = new Date( '1985/09/19' );
-			beneficiario.parentesco = 'Padre';
-			beneficiario.porcentajeSuma = 0.6;
-
-			this.beneficiarios.push( beneficiario );
+			this.agregarBeneficiario();
+			this.limpiarControles();
+		} else {
+			Object.keys( this.frmBeneficiario.controls ).forEach( field => {
+				debugger;
+				const control = this.frmBeneficiario.get( field );
+				control.markAsDirty( { onlySelf: true } );
+			});
 		}
 	}
 }

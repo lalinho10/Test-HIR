@@ -51,11 +51,18 @@
 					</pehir-extend-form-control>
 				</td>
 				<td class="center">
-					<a (click)="agregarBeneficiario()">
+					<a (click)="validarFomulario()">
 						<i class="fa fa-plus-square-o fa-lg"></i>
 					</a>
 				</td>
 			</tr>
 		</tfoot>
 	</table>
+	<div class="row">
+		<div class="col col-100">
+			<label *ngIf="!isValidSum" class="msg error">
+				{{sumErrorMsg}}
+			</label>
+		</div>
+	</div>
 </form>
