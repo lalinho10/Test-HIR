@@ -91,7 +91,7 @@ div.twoRdoContainer > input[type="radio"] {margin-right:7px;}
 .main {margin:20px 15px;font-size:14px;}
 .titulo {border-bottom:1px solid #e1e1e1;font-size:18px !important;margin-bottom:15px;text-align:center;padding-bottom:15px;}
 .text-center {text-align:center;}
-.form-control {border:1px solid #b4b4b4;border-radius:5px;height:25px;width:100%;margin-bottom:15px;padding-left:5px;}
+.form-control {border:1px solid #b4b4b4;border-radius:5px;height:27px;width:100%;margin-bottom:15px;padding-left:5px;}
 .main label {display:block;margin-bottom:15px;}
 .main label.form-label {padding-top:4px;text-align:right;}
 .main label.pregunta {padding-top:4px;text-align:left;}
