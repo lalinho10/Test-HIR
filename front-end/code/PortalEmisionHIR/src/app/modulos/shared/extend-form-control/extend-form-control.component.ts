@@ -35,19 +35,17 @@ export class ExtendFormControlComponent implements OnChanges {
 	ngOnChanges( changes: SimpleChanges ): void {
 		this.hasError = false;
 		this.errorMessage = '';
-		
-		if( changes.inputErrors ) {	
-			let errors: any = changes.inputErrors.currentValue;
 
-			if ( errors && this.inputDirty ) {
-				Object.keys( this.errorDefs ).some( key => {
-					if ( errors[ key ] ) {
-						this.errorMessage = this.errorDefs[ key ];
-						this.hasError = true;
-						return true;
-					}
-				});
-			}
+		let errors: any = ( changes.inputErrors ) ? changes.inputErrors.currentValue : this.inputErrors;
+
+		if ( errors && this.inputDirty ) {
+			Object.keys( this.errorDefs ).some( key => {
+				if ( errors[ key ] ) {
+					this.errorMessage = this.errorDefs[ key ];
+					this.hasError = true;
+					return true;
+				}
+			});
 		}
 	}
 }
