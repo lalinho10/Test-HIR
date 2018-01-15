@@ -66,22 +66,23 @@ export class PolicyHolderTableComponent implements OnInit {
 		this.frmBeneficiario.reset();
 	}
 
+	private mostrarErrores(): void {
+		Object.keys( this.frmBeneficiario.controls ).forEach( field => {
+			const control = this.frmBeneficiario.get( field );
+			control.markAsDirty( { onlySelf: true } );
+		});
+	}
+
 	private validarSumatoriaPorcentajes(): void {
 
 	}
 
 	private validarFomulario(): void {
-		debugger;
-
 		if( this.frmBeneficiario.valid ) {
 			this.agregarBeneficiario();
 			this.limpiarControles();
 		} else {
-			Object.keys( this.frmBeneficiario.controls ).forEach( field => {
-				debugger;
-				const control = this.frmBeneficiario.get( field );
-				control.markAsDirty( { onlySelf: true } );
-			});
+			this.mostrarErrores();
 		}
 	}
 }
