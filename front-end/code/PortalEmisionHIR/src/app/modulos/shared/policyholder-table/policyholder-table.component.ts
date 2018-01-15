@@ -63,10 +63,7 @@ export class PolicyHolderTableComponent implements OnInit {
 	}
 
 	private limpiarControles(): void {
-		//this.frmBeneficiario.controls[ 'nombre' ].value = '';
-		//this.frmBeneficiario.controls[ 'fechanac' ].value = '';
-		//this.frmBeneficiario.controls[ 'parentesco' ].value = '';
-		//this.frmBeneficiario.controls[ 'porcentajeSuma' ].value = '';
+		this.frmBeneficiario.reset();
 	}
 
 	private validarSumatoriaPorcentajes(): void {
