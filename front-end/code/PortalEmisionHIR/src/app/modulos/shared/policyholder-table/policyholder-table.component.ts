@@ -49,6 +49,7 @@ export class PolicyHolderTableComponent implements OnInit {
 
 	private eliminarBeneficiario( idUsuario: number ): void {
 		this.beneficiarios.splice( idUsuario, 1 );
+		this.validarSumatoriaPorcentajes();
 	}
 
 	private agregarBeneficiario(): void {
@@ -60,6 +61,8 @@ export class PolicyHolderTableComponent implements OnInit {
 		beneficiario.porcentajeSuma = this.frmBeneficiario.controls[ 'porcentajeSuma' ].value / 100;
 
 		this.beneficiarios.push( beneficiario );
+
+		this.validarSumatoriaPorcentajes();
 	}
 
 	private limpiarControles(): void {
@@ -74,7 +77,11 @@ export class PolicyHolderTableComponent implements OnInit {
 	}
 
 	private validarSumatoriaPorcentajes(): void {
+		var sumatoriaPorcentaje = this.beneficiarios
+			.map( function( beneficiario ) { return beneficiario.porcentajeSuma } )
+			.reduce( function( a, b ) { return a + b; }, 0 );
 
+		this.isValidSum = ( sumatoriaPorcentaje === 1 );
 	}
 
 	private validarFomulario(): void {
