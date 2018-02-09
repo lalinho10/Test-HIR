@@ -40,7 +40,12 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmBeneficiario.controls['parentesco'].dirty"
 						[inputErrors]="frmBeneficiario.controls['parentesco'].errors">
-							<input id="txtParentesco" type="text" class="form-control" formControlName="parentesco">
+							<select id="cboParentesco" class="form-control" formControlName="parentesco">
+								<option value="">Selecciona</option>
+								<option *ngFor="let parentesco of parentescos" [value]="parentesco.idParentesco">
+									{{parentesco.descParentesco}}
+								</option>
+							</select>
 					</pehir-extend-form-control>
 				</td>
 				<td>
