@@ -47,7 +47,8 @@ html {box-sizing:border-box;}
 /*Elementos sitio*/
 * {font-family:"PT Sans", Arial, Helvetica, sans-serif;color:#747474;}
 a {color:#333333;text-decoration:none;}
-a.active, a:hover {color:#f68c2c;}
+a.active {color:#f68c2c;font-weight:bold;}
+a:hover {color:#f68c2c;}
 input[type="text"], input[type="password"], textarea, select {color:#aaa9a9;}
 button, input[type="button"], input[type="submit"] {background-color:#f68c2c;border:none;border-radius:5px;color:#fafafa;display:block;font-weight:bold;margin:0 auto;padding:8px 0;width:25%;}
 button:disabled, input[type="button"]:disabled, input[type="submit"]:disabled {cursor:not-allowed;opacity:0.5;}
@@ -86,7 +87,11 @@ div.twoRdoContainer > input[type="radio"] {margin-right:7px;}
 .header-site .logo {float:left;margin:15px 0;overflow:hidden;padding:0 0 0 15px;}
 .header-site .navcontainer {float:right;padding:0 15px 0 0;}
 .header-site ul.menu {list-style:none;margin-top:50px;}
-.header-site ul.menu li {float:left;padding:0 0 0 25px;}
+.header-site ul.menu > li {float:left;padding:0 0 0 25px;position:relative;}
+.header-site ul.menu > li:hover ul.submenu {display:block;position:absolute;width:165px;}
+.header-site ul.submenu {display:none;list-style:none;padding:0;}
+.header-site ul.submenu > li {padding:10px 0 0 0;}
+.header-site ul.submenu > li .fa {color:#f68c2c;padding-right:5px;}
 /*Contenedor principal*/
 .main {margin:20px 15px;font-size:14px;}
 .titulo {border-bottom:1px solid #e1e1e1;font-size:18px !important;margin-bottom:15px;text-align:center;padding-bottom:15px;}

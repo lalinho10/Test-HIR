@@ -2,6 +2,7 @@ import { NgModule }				 from '@angular/core';
 import { RouterModule, Routes }  from '@angular/router';
 
 import { RegistroComponent }	 from './modulos/registro/registro.component';
+import { InicioComponent }		 from './modulos/inicio/inicio.component';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
 		path: 'desbloqueo',
 		loadChildren: 'app/modulos/desbloqueo/desbloqueo.module#DesbloqueoModule'
 	},
+	{ path: 'inicio', component: InicioComponent },
 	{
 		path: 'productos',
 		loadChildren: 'app/modulos/productos/productos.module#ProductosModule'

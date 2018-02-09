@@ -23,6 +23,7 @@ import { AppModalComponent }	   from './modulos/shared/app-modal/app-modal.compo
 import { LoadingModalComponent }   from './modulos/shared/loading-modal/loading-modal.component';
 import { PageNotFoundComponent }   from './core/components/page-not-found/page-not-found.component';
 import { RegistroComponent }	   from './modulos/registro/registro.component';
+import { InicioComponent }		   from './modulos/inicio/inicio.component';
 
 import { AppModalService }		   from './modulos/shared/app-modal/app-modal.service';
 import { LoadingModalService }	   from './modulos/shared/loading-modal/loading-modal.service';
@@ -37,6 +38,7 @@ import { LoadingModalService }	   from './modulos/shared/loading-modal/loading-m
 		LoadingModalComponent,
 		PageNotFoundComponent,
 		RegistroComponent,
+		InicioComponent
 	],
 	imports: [
 		BrowserModule,
