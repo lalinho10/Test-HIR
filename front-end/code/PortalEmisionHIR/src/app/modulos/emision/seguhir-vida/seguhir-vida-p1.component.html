@@ -80,7 +80,12 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmSeguhirVidaP1.controls['ocupacionCon'].dirty"
 							[inputErrors]="frmSeguhirVidaP1.controls['ocupacionCon'].errors">
-								<input id="txtOcupacionCon" type="text" class="form-control" formControlName="ocupacionCon">
+								<select id="cboOcupacion" class="form-control" formControlName="ocupacionCon">
+									<option value="">Selecciona</option>
+									<option *ngFor="let ocupacion of ocupaciones" [value]="ocupacion.idOcupacion">
+										{{ocupacion.descOcupacion}}
+									</option>
+								</select>
 						</pehir-extend-form-control>
 					</div>
 				</div>
@@ -307,7 +312,12 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmSeguhirVidaP1.controls['ocupacionTit'].dirty"
 							[inputErrors]="frmSeguhirVidaP1.controls['ocupacionTit'].errors">
-								<input id="txtOcupacionTit" type="text" class="form-control" formControlName="ocupacionTit">
+								<select id="cboOcupacion" class="form-control" formControlName="ocupacionTit">
+									<option value="">Selecciona</option>
+									<option *ngFor="let ocupacion of ocupaciones" [value]="ocupacion.idOcupacion">
+										{{ocupacion.descOcupacion}}
+									</option>
+								</select>
 						</pehir-extend-form-control>
 					</div>
 				</div>

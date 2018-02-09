@@ -134,7 +134,12 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmSeguhirEmpresarioP1.controls['ocupacion'].dirty"
 							[inputErrors]="frmSeguhirEmpresarioP1.controls['ocupacion'].errors">
-								<input id="txtOcupacion" type="text" class="form-control" formControlName="ocupacion">
+								<select id="cboOcupacion" class="form-control" formControlName="ocupacion">
+									<option value="">Selecciona</option>
+									<option *ngFor="let ocupacion of ocupaciones" [value]="ocupacion.idOcupacion">
+										{{ocupacion.descOcupacion}}
+									</option>
+								</select>
 						</pehir-extend-form-control>
 					</div>
 				</div>

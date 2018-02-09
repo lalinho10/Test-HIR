@@ -9,6 +9,7 @@ import { RfcValidator }						  from 'app/core/validators/rfc.validator';
 import { GENEROS }							  from 'app/core/data/generos';
 import { ESTADOSCIVILES }					  from 'app/core/data/estadosCiviles';
 import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
+import { OCUPACIONES }						  from 'app/core/data/ocupaciones';
 
 @Component({
 	selector: 'pehir-gastos-funerarios-p1',
@@ -21,6 +22,7 @@ export class GastosFunerariosP1Component implements OnInit {
 	private generos = GENEROS;
 	private fecNacOptions = FECNACOPTIONS;
 	private estadosCiviles = ESTADOSCIVILES;
+	private ocupaciones = OCUPACIONES;
 
 	constructor(
 		private router: Router,
