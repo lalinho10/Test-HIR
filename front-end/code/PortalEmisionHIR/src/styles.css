@@ -84,13 +84,17 @@ div.twoRdoContainer > input[type="radio"] {margin-right:7px;}
 .social-networks .youtube a {background-image:url(/assets/img/youtube.png) !important;width:23px;height:25px;}
 .header-site {border-bottom:1px solid #e1e1e1;padding:0 10px;font-size:14px;}
 .header-site a {display:block;}
-.header-site .logo {float:left;margin:15px 0;overflow:hidden;padding:0 0 0 15px;}
-.header-site .navcontainer {float:right;padding:0 15px 0 0;}
-.header-site ul.menu {list-style:none;margin-top:50px;}
+.header-site .logo {float:left;margin:15px 0;overflow:hidden;padding:0 0 0 15px;width:10%;}
+.header-site .loggedContent {float:left;margin:15px 0;padding:0 15px 0 0;width:90%;}
+.header-site .loggedContent > .greetContainer > p {margin:0;padding:0 0 10px 0;text-align:right;}
+.header-site ul.menu {list-style:none;margin-top:10px;}
 .header-site ul.menu > li {float:left;padding:0 0 0 25px;position:relative;}
+.header-site ul.menu > li:last-child {float:right;}
+.header-site ul.menu > li:last-child .fa {padding-left:10px;}
+.header-site ul.menu > li:last-child > a:hover > .fa {color:#f68c2c;}
 .header-site ul.menu > li:hover ul.submenu {display:block;position:absolute;width:165px;}
 .header-site ul.submenu {display:none;list-style:none;padding:0;}
-.header-site ul.submenu > li {padding:10px 0 0 0;}
+.header-site ul.submenu > li {padding:15px 0 0 0;}
 .header-site ul.submenu > li .fa {color:#f68c2c;padding-right:5px;}
 /*Contenedor principal*/
 .main {margin:20px 15px;font-size:14px;}

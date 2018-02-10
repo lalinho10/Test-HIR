@@ -5,4 +5,8 @@ import { Component } from '@angular/core';
 	templateUrl: 'app-header.component.html'
 })
 
-export class AppHeaderComponent {}
+export class AppHeaderComponent {
+	private today: Date = new Date();
+	private lastAccess: Date = new Date();
+	private loggedUser: string = 'Pancho Pantera Rodríguez';
+}
