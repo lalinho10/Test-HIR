@@ -1,8 +1,8 @@
 import { Component, OnInit } 				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } 	 						  from '@angular/router';
+import { Router }							  from '@angular/router';
 
-import { CelularValidator } 				  from '../../core/validators/celular.validator';
+import { CelularValidator }					  from 'app/core/validators/celular.validator';
 
 @Component({
 	selector: 'pehir-desbloqueo-p1',
