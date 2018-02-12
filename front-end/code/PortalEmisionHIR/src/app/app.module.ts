@@ -1,3 +1,5 @@
+import { LOCALE_ID }			   from '@angular/core';
+
 import { BrowserModule }		   from '@angular/platform-browser';
 import { NgModule }				   from '@angular/core';
 import { ReactiveFormsModule }	   from '@angular/forms';
@@ -57,7 +59,10 @@ import { LoadingModalService }	   from './modulos/shared/loading-modal/loading-m
 	],
 	providers: [
 		AppModalService,
-		LoadingModalService
+		LoadingModalService,
+		{
+			provide: LOCALE_ID, useValue: "es-MX"
+		}
 	],
 	bootstrap: [ AppComponent ]
 })
