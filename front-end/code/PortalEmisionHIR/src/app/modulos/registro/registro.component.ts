@@ -1,13 +1,14 @@
-import { Component, OnInit } 				  from '@angular/core';
+import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { AppModalService }					  from '../shared/app-modal/app-modal.service';
 
-import { ApellidoValidator } 				  from '../../core/validators/apellido.validator';
-import { CelularValidator } 				  from '../../core/validators/celular.validator';
-import { ContrasenaValidator } 				  from '../../core/validators/contrasena.validator';
-import { NombreValidator } 					  from '../../core/validators/nombre.validator';
-import { TelefonoValidator } 				  from '../../core/validators/telefono.validator';
+import { ApellidoValidator }				  from 'app/core/validators/apellido.validator';
+import { CelularValidator }					  from 'app/core/validators/celular.validator';
+import { ContrasenaValidator }				  from 'app/core/validators/contrasena.validator';
+import { NombreValidator }					  from 'app/core/validators/nombre.validator';
+import { TelefonoValidator }				  from 'app/core/validators/telefono.validator';
+import { IgualdadContrasenasValidator }		  from 'app/core/validators/igualdad-contrasenas.validator';
 
 @Component({
 	selector: 'pehir-registro',
@@ -59,6 +60,9 @@ export class RegistroComponent implements OnInit {
 			'telefono': ['', Validators.compose([
 				TelefonoValidator()
 			])]
+		},
+		{
+			validator: IgualdadContrasenasValidator( 'contrasena', 'confcontrasena' )
 		})
 	}
 
