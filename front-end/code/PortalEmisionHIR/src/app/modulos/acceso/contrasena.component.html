@@ -19,7 +19,8 @@
 		<div class="col col-70">
 			<pehir-extend-form-control
 				[inputDirty]="frmContrasena.controls['confcontrasena'].dirty"
-				[inputErrors]="frmContrasena.controls['confcontrasena'].errors">
+				[inputErrors]="frmContrasena.controls['confcontrasena'].errors"
+				[formErrors]="frmContrasena.errors">
 					<input id="pwdConfContrasena" type="password" class="form-control" formControlName="confcontrasena">
 			</pehir-extend-form-control>
 		</div>
