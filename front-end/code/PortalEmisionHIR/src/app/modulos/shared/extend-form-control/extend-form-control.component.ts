@@ -8,6 +8,7 @@ import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
 export class ExtendFormControlComponent implements OnChanges {
 	@Input() inputDirty: boolean;
 	@Input() inputErrors: Object;
+	@Input() formErrors: Object;
 
 	private hasError: boolean;
 	private errorMessage: string;
@@ -37,6 +38,10 @@ export class ExtendFormControlComponent implements OnChanges {
 		this.errorMessage = '';
 
 		let errors: any = ( changes.inputErrors ) ? changes.inputErrors.currentValue : this.inputErrors;
+
+		if( !errors && changes.formErrors ) {
+			errors = changes.formErrors.currentValue;
+		}
 
 		if ( errors && this.inputDirty ) {
 			Object.keys( this.errorDefs ).some( key => {
