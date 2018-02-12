@@ -7,8 +7,8 @@ import { ProductosVidaComponent }		from './productos-vida.component';
 import { ProductosAccidentesComponent } from './productos-accidentes.component';
 
 import { ProductosRoutingModule }		from './productos-routing.module';
-import { ExtendFormControlModule }		from '../shared/extend-form-control/extend-form-control.module';
-import { ImageLinkModule }				from '../shared/image-link/image-link.module';
+import { ExtendFormControlModule }		from 'app/modulos/shared/extend-form-control/extend-form-control.module';
+import { ImageLinkModule }				from 'app/modulos/shared/image-link/image-link.module';
 
 @NgModule({
 	declarations: [

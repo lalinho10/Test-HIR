@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component }		   from '@angular/core';
 
-import { ResultadoCotizacion } from '../../core/models/cotizacion/resultado-cotizacion';
+import { ResultadoCotizacion } from 'app/core/models/cotizacion/resultado-cotizacion';
 
 @Component({
 	selector: 'pehir-resultado-cotizacion',
