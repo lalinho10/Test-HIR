@@ -1,9 +1,10 @@
 import { Component, OnInit } 				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { AppModalService }					  from '../shared/app-modal/app-modal.service';
+import { AppModalService }					  from 'app/modulos/shared/app-modal/app-modal.service';
 
-import { ContrasenaValidator } 				  from '../../core/validators/contrasena.validator';
+import { ContrasenaValidator }				  from 'app/core/validators/contrasena.validator';
+import { IgualdadContrasenasValidator }		  from 'app/core/validators/igualdad-contrasenas.validator';
 
 @Component({
 	selector: 'pehir-rcontrasena-p3',
@@ -28,6 +29,9 @@ export class RcontrasenaP3Component implements OnInit {
 				Validators.required,
 				ContrasenaValidator()
 			])]
+		},
+		{
+			validator: IgualdadContrasenasValidator( 'contrasena', 'confcontrasena' )
 		})
 	}
 

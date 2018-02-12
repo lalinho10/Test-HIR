@@ -2,7 +2,7 @@ import { Component, OnInit } 				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } 	 						  from '@angular/router';
 
-import { CodigoValidator } 					  from '../../core/validators/codigo.validator';
+import { CodigoValidator } 					  from 'app/core/validators/codigo.validator';
 
 @Component({
 	selector: 'pehir-rcontrasena-p2',
