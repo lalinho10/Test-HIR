@@ -9,6 +9,8 @@ import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.vali
 
 import { GENEROS }							  from 'app/core/data/generos';
 import { MODULOS }							  from 'app/core/data/modulos';
+import { FORMASPAGO }						  from 'app/core/data/formas-Pago';
+import { PAQUETES }							  from 'app/core/data/paquetes';
 import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
 
 @Component({
@@ -22,6 +24,8 @@ export class SeguhirVidaComponent implements OnInit {
 
 	private generos = GENEROS;
 	private modulos = MODULOS;
+	private formasPago = FORMASPAGO;
+	private paquetes = PAQUETES;
 	private fecNacOptions = FECNACOPTIONS;
 
 	constructor(

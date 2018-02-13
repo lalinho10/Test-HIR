@@ -112,29 +112,8 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmSeguhirVida.controls['pcobertura'].dirty"
 						[inputErrors]="frmSeguhirVida.controls['pcobertura'].errors">
-							<div class="twoRdoContainer">
-								<input id="rdoPcobertura1" type="radio" value="1" formControlName="pcobertura">F
-							</div>
-							<div class="twoRdoContainer">
-								<input id="rdoPcobertura2" type="radio" value="2" formControlName="pcobertura">F e IITP
-							</div>
-							<div class="twoRdoContainer">
-								<input id="rdoPcobertura3" type="radio" value="3" formControlName="pcobertura">F y MA
-							</div>
-							<div class="twoRdoContainer">
-								<input id="rdoPcobertura4" type="radio" value="4" formControlName="pcobertura">F y C
-							</div>
-							<div class="twoRdoContainer">
-								<input id="rdoPcobertura5" type="radio" value="5" formControlName="pcobertura">F, IITP y MA
-							</div>
-							<div class="twoRdoContainer">
-								<input id="rdoPcobertura6" type="radio" value="6" formControlName="pcobertura">F, IITP y C
-							</div>
-							<div class="twoRdoContainer">
-								<input id="rdoPcobertura7" type="radio" value="7" formControlName="pcobertura">F, MA y C
-							</div>
-							<div class="twoRdoContainer">
-								<input id="rdoPcobertura8" type="radio" value="8" formControlName="pcobertura">F, IITP, MA y C
+							<div *ngFor="let paquete of paquetes" class="twoRdoContainer">
+								<input type="radio" formControlName="pcobertura" [value]="paquete.idPaquete">{{paquete.descPaquete}}
 							</div>
 					</pehir-extend-form-control>
 				</div>
@@ -164,17 +143,8 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmSeguhirVida.controls['fpago'].dirty"
 						[inputErrors]="frmSeguhirVida.controls['fpago'].errors">
-							<div class="twoRdoContainer">
-								<input id="rdoFpago1" type="radio" value="1" formControlName="fpago">Anual
-							</div>
-							<div class="twoRdoContainer">
-								<input id="rdoFpago2" type="radio" value="2" formControlName="fpago">Semestral
-							</div>
-							<div class="twoRdoContainer">
-								<input id="rdoFpago3" type="radio" value="3" formControlName="fpago">Trimestral
-							</div>
-							<div class="twoRdoContainer">
-								<input id="rdoFpago4" type="radio" value="4" formControlName="fpago">Mensual
+							<div *ngFor="let formaPago of formasPago" class="twoRdoContainer">
+								<input type="radio" formControlName="fpago" [value]="formaPago.idFormaPago">{{formaPago.descFormaPago}}
 							</div>
 					</pehir-extend-form-control>
 				</div>
