@@ -3,6 +3,7 @@ import { RouterModule, Routes }			from '@angular/router';
 
 import { SeguhirEmpresarioComponent }	from './seguhir-empresario.component';
 import { SeguhirEmpresarioP1Component } from './seguhir-empresario-p1.component';
+import { SeguhirEmpresarioP2Component } from './seguhir-empresario-p2.component';
 
 const seguhirEmpresarioRoutes: Routes = [
 	{
@@ -10,7 +11,8 @@ const seguhirEmpresarioRoutes: Routes = [
 		component: SeguhirEmpresarioComponent,
 		children: [
 			{ path: '', redirectTo: '/emision/seguhirempresario/usuario', pathMatch: 'full' },
-			{ path: 'usuario', component: SeguhirEmpresarioP1Component }
+			{ path: 'usuario', component: SeguhirEmpresarioP1Component },
+			{ path: 'beneficiarios', component: SeguhirEmpresarioP2Component }
 		]
 	}
 ];
