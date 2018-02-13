@@ -5,6 +5,7 @@ import { Router }							  from '@angular/router';
 import { ApellidoValidator } 				  from 'app/core/validators/apellido.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
+import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
 
 import { MODULOS }							  from 'app/core/data/modulos';
 import { GENEROS }							  from 'app/core/data/generos';
@@ -46,7 +47,8 @@ export class ProcuraVidaComponent implements OnInit {
 				ApellidoValidator()
 			])],
 			'fechanac': ['', Validators.compose([
-				Validators.required
+				Validators.required,
+				EntreEdadesValidator(18,64)
 			])],
 			'rfc': ['', Validators.compose([
 				Validators.required,
