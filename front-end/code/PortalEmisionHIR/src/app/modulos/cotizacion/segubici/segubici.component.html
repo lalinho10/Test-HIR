@@ -126,23 +126,8 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmSegubici.controls['fpago'].dirty"
 						[inputErrors]="frmSegubici.controls['fpago'].errors">
-							<div class="twoRdoContainer">
-								<input id="rdoFpago1" type="radio" formControlName="fpago">Anual
-							</div>
-							<div class="twoRdoContainer">
-								<input id="rdoFpago2" type="radio" formControlName="fpago">Semestral
-							</div>
-							<div class="twoRdoContainer">
-								<input id="rdoFpago3" type="radio" formControlName="fpago">Cuatrimestral
-							</div>
-							<div class="twoRdoContainer">
-								<input id="rdoFpago4" type="radio" formControlName="fpago">Trimestral
-							</div>
-							<div class="twoRdoContainer">
-								<input id="rdoFpago5" type="radio" formControlName="fpago">Bimestral
-							</div>
-							<div class="twoRdoContainer">
-								<input id="rdoFpago6" type="radio" formControlName="fpago">Mensual
+							<div *ngFor="let formaPago of formasPago" class="twoRdoContainer">
+								<input type="radio" formControlName="fpago" [value]="formaPago.idFormaPago">{{formaPago.descFormaPago}}
 							</div>
 					</pehir-extend-form-control>
 				</div>
@@ -157,15 +142,6 @@
 						[inputErrors]="frmSegubici.controls['plan'].errors">
 							<div class="twoRdoContainer">
 								<input id="rdoPlan1" type="radio" formControlName="plan">Individual
-							</div>
-							<div class="twoRdoContainer">
-								<input id="rdoPlan2" type="radio" formControlName="plan">Conyugal
-							</div>
-							<div class="twoRdoContainer">
-								<input id="rdoPlan3" type="radio" formControlName="plan">Hijos
-							</div>
-							<div class="twoRdoContainer">
-								<input id="rdoPlan4" type="radio" formControlName="plan">Familiar
 							</div>
 					</pehir-extend-form-control>
 				</div>
