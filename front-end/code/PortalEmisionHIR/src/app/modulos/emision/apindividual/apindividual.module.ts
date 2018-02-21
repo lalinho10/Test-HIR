@@ -4,6 +4,7 @@ import { ReactiveFormsModule }		 from '@angular/forms';
 
 import { ApindividualComponent }	 from './apindividual.component';
 import { ApindividualP1Component }	 from './apindividual-p1.component';
+import { ApindividualP2Component }	 from './apindividual-p2.component';
 
 import { MyDatePickerModule }		 from 'mydatepicker';
 
@@ -14,7 +15,8 @@ import { ProgressControlModule }	 from 'app/modulos/shared/progress-control/prog
 @NgModule({
 	declarations: [
 		ApindividualComponent,
-		ApindividualP1Component
+		ApindividualP1Component,
+		ApindividualP2Component
 	],
 	imports: [
 		CommonModule,
