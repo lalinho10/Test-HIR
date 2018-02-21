@@ -4,6 +4,7 @@ import { ReactiveFormsModule }	   from '@angular/forms';
 
 import { SegubiciComponent }	   from './segubici.component';
 import { SegubiciP1Component }	   from './segubici-p1.component';
+import { SegubiciP2Component }	   from './segubici-p2.component';
 
 import { MyDatePickerModule }	   from 'mydatepicker';
 
@@ -14,7 +15,8 @@ import { ProgressControlModule }   from 'app/modulos/shared/progress-control/pro
 @NgModule({
 	declarations: [
 		SegubiciComponent,
-		SegubiciP1Component
+		SegubiciP1Component,
+		SegubiciP2Component
 	],
 	imports: [
 		CommonModule,
