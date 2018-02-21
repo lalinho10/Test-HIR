@@ -103,4 +103,8 @@ export class GastosFunerariosP1Component implements OnInit {
 			])]
 		});
 	}
+
+	paso2(): void {
+		this.router.navigateByUrl( '/emision/gastosfunerarios/beneficiarios' );
+	}
 }

@@ -104,4 +104,8 @@ export class SegubiciP1Component implements OnInit {
 			])],
 		});
 	}
+
+	paso2(): void {
+		this.router.navigateByUrl( '/emision/segubici/seguro' );
+	}
 }

@@ -103,4 +103,8 @@ export class SeguhirEmpresarioP1Component implements OnInit {
 			])]
 		});
 	}
+
+	paso2(): void {
+		this.router.navigateByUrl( '/emision/seguhirempresario/beneficiarios' );
+	}
 }

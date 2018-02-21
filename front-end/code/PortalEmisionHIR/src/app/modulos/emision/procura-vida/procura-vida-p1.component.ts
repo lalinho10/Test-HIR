@@ -103,4 +103,8 @@ export class ProcuraVidaP1Component implements OnInit {
 			])]
 		});
 	}
+
+	paso2(): void {
+		this.router.navigateByUrl( '/emision/procuravida/beneficiarios' );
+	}
 }

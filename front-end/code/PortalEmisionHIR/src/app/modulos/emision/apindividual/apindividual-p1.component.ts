@@ -104,4 +104,8 @@ export class ApindividualP1Component implements OnInit {
 			])],
 		});
 	}
+
+	paso2(): void {
+		this.router.navigateByUrl( '/emision/apindividual/seguro' );
+	}
 }
