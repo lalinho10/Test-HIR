@@ -10,6 +10,7 @@ import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.vali
 import { GENEROS }							  from 'app/core/data/generos';
 import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
 import { FORMASPAGO }						  from 'app/core/data/formas-Pago';
+import { COBERTURAS_SEGUBICI }				  from 'app/core/data/coberturas/coberturas_segubici';
 
 @Component({
 	selector: 'pehir-segubici',
@@ -23,6 +24,7 @@ export class SegubiciComponent implements OnInit {
 	private generos = GENEROS;
 	private fecNacOptions = FECNACOPTIONS;
 	private formasPago = FORMASPAGO;
+	private coberturas = COBERTURAS_SEGUBICI;
 
 	constructor(
 		private router: Router,

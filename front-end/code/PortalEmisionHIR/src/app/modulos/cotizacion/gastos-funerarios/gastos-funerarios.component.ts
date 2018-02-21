@@ -10,6 +10,7 @@ import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.vali
 import { MODULOS }							  from 'app/core/data/modulos';
 import { GENEROS }							  from 'app/core/data/generos';
 import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
+import { COBERTURAS_GASTOSFUNERARIOS }		  from 'app/core/data/coberturas/coberturas_gastosfunerarios';
 
 @Component({
 	selector: 'pehir-gastos-funerarios',
@@ -23,6 +24,7 @@ export class GastosFunerariosComponent implements OnInit {
 	private modulos = MODULOS;
 	private generos = GENEROS;
 	private fecNacOptions = FECNACOPTIONS;
+	private coberturas = COBERTURAS_GASTOSFUNERARIOS;
 
 	constructor(
 		private router: Router,

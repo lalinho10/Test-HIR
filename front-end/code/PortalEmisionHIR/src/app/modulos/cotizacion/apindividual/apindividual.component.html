@@ -88,6 +88,10 @@
 						[inputDirty]="frmApindividual.controls['cobertura'].dirty"
 						[inputErrors]="frmApindividual.controls['cobertura'].errors">
 							<select id="cboCobertura" class="form-control" formControlName="cobertura">
+								<option value="">Selecciona</option>
+								<option *ngFor="let cobertura of coberturas" [value]="cobertura.idCobertura">
+									{{cobertura.descCobertura}}
+								</option>
 							</select>
 					</pehir-extend-form-control>
 				</div>
