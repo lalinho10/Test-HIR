@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
 import { MODULOS }							  from 'app/core/data/modulos';
+import { COBERTURAS_GASTOSFUNERARIOS }		  from 'app/core/data/coberturas/coberturas_gastosfunerarios';
 
 @Component({
 	selector: 'pehir-gastos-funerarios-p2',
@@ -13,6 +14,7 @@ export class GastosFunerariosP2Component implements OnInit {
 	private frmGastosFunerariosP2: FormGroup;
 
 	private modulos = MODULOS;
+	private coberturas = COBERTURAS_GASTOSFUNERARIOS;
 
 	constructor(
 		private router: Router,

@@ -56,6 +56,10 @@
 							[inputDirty]="frmSegubiciP2.controls['cobertura'].dirty"
 							[inputErrors]="frmSegubiciP2.controls['cobertura'].errors">
 								<select id="cboCobertura" class="form-control" formControlName="cobertura">
+									<option value="">Selecciona</option>
+									<option *ngFor="let cobertura of coberturas" [value]="cobertura.idCobertura">
+										{{cobertura.descCobertura}}
+									</option>
 								</select>
 						</pehir-extend-form-control>
 					</div>

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
 import { MODULOS }							  from 'app/core/data/modulos';
+import { COBERTURAS_PROCURAVIDA }			  from 'app/core/data/coberturas/coberturas_procuravida';
 
 @Component({
 	selector: 'pehir-procura-vida-p2',
@@ -13,6 +14,7 @@ export class ProcuraVidaP2Component implements OnInit {
 	private frmProcuraVidaP2: FormGroup;
 
 	private modulos = MODULOS;
+	private coberturas = COBERTURAS_PROCURAVIDA;
 
 	constructor(
 		private router: Router,

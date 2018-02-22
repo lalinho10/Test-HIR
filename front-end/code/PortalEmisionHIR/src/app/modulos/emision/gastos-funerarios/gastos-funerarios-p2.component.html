@@ -53,6 +53,10 @@
 							[inputDirty]="frmGastosFunerariosP2.controls['cobertura'].dirty"
 							[inputErrors]="frmGastosFunerariosP2.controls['cobertura'].errors">
 								<select id="cboModulo" class="form-control" formControlName="cobertura">
+									<option value="">Selecciona</option>
+									<option *ngFor="let cobertura of coberturas" [value]="cobertura.idCobertura">
+										{{cobertura.descCobertura}}
+									</option>
 								</select>
 						</pehir-extend-form-control>
 					</div>

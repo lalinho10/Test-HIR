@@ -4,6 +4,7 @@ import { Router }							  from '@angular/router';
 
 import { OCUPACIONES }						  from 'app/core/data/ocupaciones';
 import { FORMASPAGO }						  from 'app/core/data/formas-Pago';
+import { COBERTURAS_SEGUBICI }				  from 'app/core/data/coberturas/coberturas_segubici';
 
 @Component({
 	selector: 'pehir-segubici-p2',
@@ -15,6 +16,7 @@ export class SegubiciP2Component implements OnInit {
 
 	private ocupaciones = OCUPACIONES;
 	private formasPago = FORMASPAGO;
+	private coberturas = COBERTURAS_SEGUBICI;
 
 	constructor(
 		private router: Router,

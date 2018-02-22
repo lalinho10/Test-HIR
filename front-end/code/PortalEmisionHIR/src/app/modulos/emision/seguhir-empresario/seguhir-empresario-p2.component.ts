@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
 import { MODULOS }							  from 'app/core/data/modulos';
+import { COBERTURAS_SEGUHIREMPRESARIO }		  from 'app/core/data/coberturas/coberturas_seguhirempresario';
 
 @Component({
 	selector: 'pehir-seguhir-empresario-p2',
@@ -13,6 +14,7 @@ export class SeguhirEmpresarioP2Component implements OnInit {
 	private frmSeguhirEmpresarioP2: FormGroup;
 
 	private modulos = MODULOS;
+	private coberturas = COBERTURAS_SEGUHIREMPRESARIO;
 
 	constructor(
 		private router: Router,
