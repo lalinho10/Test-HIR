@@ -5,10 +5,14 @@ import { SeguhirEmpresarioComponent }	from './seguhir-empresario.component';
 import { SeguhirEmpresarioP1Component } from './seguhir-empresario-p1.component';
 import { SeguhirEmpresarioP2Component } from './seguhir-empresario-p2.component';
 
+import { AuthenticationService }		from 'app/core/services/authentication/authentication.service';
+import { AuthenticationGuardService }	from 'app/core/services/authentication/authentication-guard.service';
+
 const seguhirEmpresarioRoutes: Routes = [
 	{
 		path: '',
 		component: SeguhirEmpresarioComponent,
+		canActivate: [ AuthenticationGuardService ],
 		children: [
 			{ path: '', redirectTo: '/emision/seguhirempresario/usuario', pathMatch: 'full' },
 			{ path: 'usuario', component: SeguhirEmpresarioP1Component },
@@ -18,8 +22,16 @@ const seguhirEmpresarioRoutes: Routes = [
 ];
 
 @NgModule({
-	imports: [ RouterModule.forChild( seguhirEmpresarioRoutes ) ],
-	exports: [ RouterModule ]
+	imports: [
+		RouterModule.forChild( seguhirEmpresarioRoutes )
+	],
+	exports: [
+		RouterModule
+	],
+	providers: [
+		AuthenticationService,
+		AuthenticationGuardService
+	]
 })
 
 export class SeguhirEmpresarioRoutingModule {}

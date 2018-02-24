@@ -1,14 +1,18 @@
-import { NgModule }				from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule }					  from '@angular/core';
+import { RouterModule, Routes }		  from '@angular/router';
 
-import { SegubiciComponent }	from './segubici.component';
-import { SegubiciP1Component }	from './segubici-p1.component';
-import { SegubiciP2Component }	from './segubici-p2.component';
+import { SegubiciComponent }		  from './segubici.component';
+import { SegubiciP1Component }		  from './segubici-p1.component';
+import { SegubiciP2Component }		  from './segubici-p2.component';
+
+import { AuthenticationService }	  from 'app/core/services/authentication/authentication.service';
+import { AuthenticationGuardService } from 'app/core/services/authentication/authentication-guard.service';
 
 const segubiciRoutes: Routes = [
 	{
 		path: '',
 		component: SegubiciComponent,
+		canActivate: [ AuthenticationGuardService ],
 		children: [
 			{ path: '', redirectTo: '/emision/segubici/usuario', pathMatch: 'full' },
 			{ path: 'usuario', component: SegubiciP1Component },
@@ -18,8 +22,16 @@ const segubiciRoutes: Routes = [
 ];
 
 @NgModule({
-	imports: [ RouterModule.forChild( segubiciRoutes ) ],
-	exports: [ RouterModule ]
+	imports: [
+		RouterModule.forChild( segubiciRoutes )
+	],
+	exports: [
+		RouterModule
+	],
+	providers: [
+		AuthenticationService,
+		AuthenticationGuardService
+	]
 })
 
 export class SegubiciRoutingModule {}

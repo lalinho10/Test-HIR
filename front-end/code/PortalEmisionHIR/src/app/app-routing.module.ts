@@ -1,9 +1,12 @@
-import { NgModule }				 from '@angular/core';
-import { RouterModule, Routes }  from '@angular/router';
+import { NgModule }					  from '@angular/core';
+import { RouterModule, Routes } 	  from '@angular/router';
 
-import { RegistroComponent }	 from './modulos/registro/registro.component';
-import { InicioComponent }		 from './modulos/inicio/inicio.component';
-import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
+import { RegistroComponent }		  from 'app/modulos/registro/registro.component';
+import { InicioComponent }			  from 'app/modulos/inicio/inicio.component';
+import { PageNotFoundComponent }	  from 'app/core/components/page-not-found/page-not-found.component';
+
+import { AuthenticationService }	  from 'app/core/services/authentication/authentication.service';
+import { AuthenticationGuardService } from 'app/core/services/authentication/authentication-guard.service';
 
 const routes: Routes = [
 	{ path: '', redirectTo: '/acceso/login', pathMatch: 'full' },
@@ -20,7 +23,11 @@ const routes: Routes = [
 		path: 'desbloqueo',
 		loadChildren: 'app/modulos/desbloqueo/desbloqueo.module#DesbloqueoModule'
 	},
-	{ path: 'inicio', component: InicioComponent },
+	{
+		path: 'inicio',
+		component: InicioComponent,
+		canActivate: [ AuthenticationGuardService ]
+	},
 	{
 		path: 'productos',
 		loadChildren: 'app/modulos/productos/productos.module#ProductosModule'
@@ -38,8 +45,16 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	imports: [ RouterModule.forRoot( routes ) ],
-	exports: [ RouterModule ]
+	imports: [
+		RouterModule.forRoot( routes )
+	],
+	exports: [
+		RouterModule
+	],
+	providers: [
+		AuthenticationService,
+		AuthenticationGuardService
+	]
 })
 
 export class AppRoutingModule {}

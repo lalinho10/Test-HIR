@@ -1,19 +1,42 @@
-import { NgModule }						from '@angular/core';
-import { RouterModule, Routes }			from '@angular/router';
+import { NgModule }						 from '@angular/core';
+import { RouterModule, Routes }			 from '@angular/router';
 
-import { ProductosComponent }			from './productos.component';
-import { ProductosVidaComponent }		from './productos-vida.component';
-import { ProductosAccidentesComponent } from './productos-accidentes.component';
+import { ProductosComponent }			 from './productos.component';
+import { ProductosVidaComponent }		 from './productos-vida.component';
+import { ProductosAccidentesComponent }	 from './productos-accidentes.component';
+
+import { AuthenticationService }		 from 'app/core/services/authentication/authentication.service';
+import { AuthenticationGuardService }	 from 'app/core/services/authentication/authentication-guard.service';
 
 const productosRoutes: Routes = [
-	{ path: '', component: ProductosComponent },
-	{ path: 'vida', component: ProductosVidaComponent },
-	{ path: 'accidentes', component: ProductosAccidentesComponent }
+	{
+		path: '',
+		component: ProductosComponent,
+		canActivate: [ AuthenticationGuardService ]
+	},
+	{
+		path: 'vida',
+		component: ProductosVidaComponent,
+		canActivate: [ AuthenticationGuardService ]
+	},
+	{
+		path: 'accidentes',
+		component: ProductosAccidentesComponent,
+		canActivate: [ AuthenticationGuardService ]
+	}
 ];
 
 @NgModule({
-	imports: [ RouterModule.forChild( productosRoutes ) ],
-	exports: [ RouterModule ]
+	imports: [
+		RouterModule.forChild( productosRoutes )
+	],
+	exports: [
+		RouterModule
+	],
+	providers: [
+		AuthenticationService,
+		AuthenticationGuardService
+	]
 })
 
 export class ProductosRoutingModule {}

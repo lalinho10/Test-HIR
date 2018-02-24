@@ -5,10 +5,25 @@ import { EmisionComponent }			  from './emision.component';
 import { EmisionVidaComponent }		  from './emision-vida.component';
 import { EmisionAccidentesComponent } from './emision-accidentes.component';
 
+import { AuthenticationService }	  from 'app/core/services/authentication/authentication.service';
+import { AuthenticationGuardService } from 'app/core/services/authentication/authentication-guard.service';
+
 const emisionRoutes: Routes = [
-	{ path: '', component: EmisionComponent },
-	{ path: 'vida', component: EmisionVidaComponent },
-	{ path: 'accidentes', component: EmisionAccidentesComponent },
+	{
+		path: '',
+		component: EmisionComponent,
+		canActivate: [ AuthenticationGuardService ]
+	},
+	{
+		path: 'vida',
+		component: EmisionVidaComponent,
+		canActivate: [ AuthenticationGuardService ]
+	},
+	{
+		path: 'accidentes',
+		component: EmisionAccidentesComponent,
+		canActivate: [ AuthenticationGuardService ]
+	},
 	{
 		path: 'seguhirvida',
 		loadChildren: 'app/modulos/emision/seguhir-vida/seguhir-vida.module#SeguhirVidaModule'
@@ -36,8 +51,16 @@ const emisionRoutes: Routes = [
 ];
 
 @NgModule({
-	imports: [ RouterModule.forChild( emisionRoutes ) ],
-	exports: [ RouterModule ]
+	imports: [
+		RouterModule.forChild( emisionRoutes )
+	],
+	exports: [
+		RouterModule
+	],
+	providers: [
+		AuthenticationService,
+		AuthenticationGuardService
+	]
 })
 
 export class EmisionRoutingModule {}

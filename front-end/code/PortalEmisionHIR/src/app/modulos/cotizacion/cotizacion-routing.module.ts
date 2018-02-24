@@ -12,22 +12,73 @@ import { SegubiciComponent }			 from './segubici/segubici.component';
 import { ApindividualComponent }		 from './apindividual/apindividual.component';
 import { ResultadoCotizacionComponent }	 from './resultado-cotizacion.component';
 
+import { AuthenticationService }		 from 'app/core/services/authentication/authentication.service';
+import { AuthenticationGuardService }	 from 'app/core/services/authentication/authentication-guard.service';
+
 const cotizacionRoutes: Routes = [
-	{ path: '', component: CotizacionComponent },
-	{ path: 'vida', component: CotizacionVidaComponent },
-	{ path: 'accidentes', component: CotizacionAccidentesComponent },
-	{ path: 'seguhirvida', component: SeguhirVidaComponent },
-	{ path: 'procuravida', component: ProcuraVidaComponent },
-	{ path: 'gastosfunerarios', component: GastosFunerariosComponent },
-	{ path: 'seguhirempresario', component: SeguhirEmpresarioComponent },
-	{ path: 'segubici', component: SegubiciComponent },
-	{ path: 'apindividual', component: ApindividualComponent },
-	{ path: 'resultado', component: ResultadoCotizacionComponent }
+	{
+		path: '',
+		component: CotizacionComponent,
+		canActivate: [ AuthenticationGuardService ]
+	},
+	{
+		path: 'vida',
+		component: CotizacionVidaComponent,
+		canActivate: [ AuthenticationGuardService ]
+	},
+	{
+		path: 'accidentes',
+		component: CotizacionAccidentesComponent,
+		canActivate: [ AuthenticationGuardService ]
+	},
+	{
+		path: 'seguhirvida',
+		component: SeguhirVidaComponent,
+		canActivate: [ AuthenticationGuardService ]
+	},
+	{
+		path: 'procuravida',
+		component: ProcuraVidaComponent,
+		canActivate: [ AuthenticationGuardService ]
+	},
+	{
+		path: 'gastosfunerarios',
+		component: GastosFunerariosComponent,
+		canActivate: [ AuthenticationGuardService ]
+	},
+	{
+		path: 'seguhirempresario',
+		component: SeguhirEmpresarioComponent,
+		canActivate: [ AuthenticationGuardService ]
+	},
+	{
+		path: 'segubici',
+		component: SegubiciComponent,
+		canActivate: [ AuthenticationGuardService ]
+	},
+	{
+		path: 'apindividual',
+		component: ApindividualComponent,
+		canActivate: [ AuthenticationGuardService ]
+	},
+	{
+		path: 'resultado',
+		component: ResultadoCotizacionComponent,
+		canActivate: [ AuthenticationGuardService ]
+	}
 ];
 
 @NgModule({
-	imports: [ RouterModule.forChild( cotizacionRoutes ) ],
-	exports: [ RouterModule ]
+	imports: [
+		RouterModule.forChild( cotizacionRoutes )
+	],
+	exports: [
+		RouterModule
+	],
+	providers: [
+		AuthenticationService,
+		AuthenticationGuardService
+	]
 })
 
 export class CotizacionRoutingModule {}
