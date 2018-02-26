@@ -86,7 +86,7 @@ div.twoRdoContainer > input[type="radio"] {margin-right:7px;}
 .header-site a {display:block;}
 .header-site .logo {float:left;margin:15px 0;overflow:hidden;padding:0 0 0 15px;width:10%;}
 .header-site .loggedContent {float:left;margin:15px 0;padding:0 15px 0 0;width:90%;}
-.header-site .loggedContent > .greetContainer > p {margin:0;padding:0 0 10px 0;text-align:right;}
+.header-site .loggedContent .greetContainer > p {margin:0;padding:0 0 10px 0;text-align:right;}
 .header-site ul.menu {list-style:none;margin-top:10px;}
 .header-site ul.menu > li {float:left;padding:0 0 0 25px;position:relative;}
 .header-site ul.menu > li:last-child {float:right;}

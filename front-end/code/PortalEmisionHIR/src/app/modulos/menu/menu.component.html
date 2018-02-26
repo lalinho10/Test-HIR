@@ -1,0 +1,57 @@
+<nav class="navcontainer">
+	<ul class="menu">
+		<li>
+			<a routerLink="/inicio" routerLinkActive="active">Inicio</a>
+		</li>
+		<li>
+			<a routerLink="/productos" routerLinkActive="active">Productos</a>
+			<ul class="submenu">
+				<li>
+					<a routerLink="/productos/vida">
+						<i class="fa fa-caret-right"></i>Seguros de vida
+					</a>
+				</li>
+				<li>
+					<a routerLink="/productos/accidentes">
+						<i class="fa fa-caret-right"></i>Seguros de accidentes
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a routerLink="/cotizacion" routerLinkActive="active">Cotización</a>
+			<ul class="submenu">
+				<li>
+					<a routerLink="/cotizacion/vida">
+						<i class="fa fa-caret-right"></i>Seguros de vida
+					</a>
+				</li>
+				<li>
+					<a routerLink="/cotizacion/accidentes">
+						<i class="fa fa-caret-right"></i>Seguros de accidentes
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a routerLink="/emision" routerLinkActive="active">Emisión</a>
+			<ul class="submenu">
+				<li>
+					<a routerLink="/emision/vida">
+						<i class="fa fa-caret-right"></i>Seguros de vida
+					</a>
+				</li>
+				<li>
+					<a routerLink="/emision/accidentes">
+						<i class="fa fa-caret-right"></i>Seguros de accidentes
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a routerLink="/logout" routerLinkActive="active">
+				Salir<i class="fa fa-sign-out fa-lg"></i>
+			</a>
+		</li>
+	</ul>
+</nav>

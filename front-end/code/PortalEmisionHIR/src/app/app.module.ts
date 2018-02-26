@@ -21,6 +21,8 @@ import { AppComponent }			   from './app.component';
 import { AppHeaderComponent }	   from './layout/app-header.component';
 import { AppMainComponent }		   from './layout/app-main.component';
 import { AppFooterComponent }	   from './layout/app-footer.component';
+import { BienvenidaComponent }	   from './modulos/bienvenida/bienvenida.component';
+import { MenuComponent }		   from './modulos/menu/menu.component';
 import { AppModalComponent }	   from './modulos/shared/app-modal/app-modal.component';
 import { LoadingModalComponent }   from './modulos/shared/loading-modal/loading-modal.component';
 import { PageNotFoundComponent }   from './core/components/page-not-found/page-not-found.component';
@@ -37,6 +39,8 @@ import { LoadingModalService }	   from './modulos/shared/loading-modal/loading-m
 		AppMainComponent,
 		AppFooterComponent,
 		AppModalComponent,
+		BienvenidaComponent,
+		MenuComponent,
 		LoadingModalComponent,
 		PageNotFoundComponent,
 		RegistroComponent,
