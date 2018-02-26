@@ -1,29 +1,39 @@
-<div class="row">
-	<div class="col col-30">
-		<label id="lblUsuario" class="form-label">Usuario</label>
+<form [formGroup]="frmLogin" (ngSubmit)="fnIngresar()">
+	<div class="row">
+		<div class="col col-30">
+			<label id="lblUsuario" class="form-label">Usuario</label>
+		</div>
+		<div class="col col-70">
+			<pehir-extend-form-control
+				[inputDirty]="frmLogin.controls['nombre'].dirty"
+				[inputErrors]="frmLogin.controls['nombre'].errors">
+					<input id="txtUsuario" type="text" class="form-control" formControlName="nombre">
+			</pehir-extend-form-control>
+		</div>
 	</div>
-	<div class="col col-70">
-		<input id="txtUsuario" type="text" class="form-control">
+	<div class="row">
+		<div class="col col-30">
+			<label id="lblContrasena" class="form-label">Contraseña</label>
+		</div>
+		<div class="col col-70">
+			<pehir-extend-form-control
+				[inputDirty]="frmLogin.controls['clave'].dirty"
+				[inputErrors]="frmLogin.controls['clave'].errors">
+					<input id="txtContrasena" type="password" class="form-control" formControlName="clave">
+			</pehir-extend-form-control>
+		</div>
 	</div>
-</div>
-<div class="row">
-	<div class="col col-30">
-		<label id="lblContrasena" class="form-label">Contraseña</label>
+	<div class="row accesolinks">
+		<div class="col col-50 text-center">
+			<a id="lnkContraseña" routerLink="/rcontrasena">Olvide mi constraseña</a>
+		</div>
+		<div class="col col-50 text-center">
+			<a id="lnkRegistro" routerLink="/registro">Registro</a>
+		</div>
 	</div>
-	<div class="col col-70">
-		<input id="txtContarsena" type="password" class="form-control">
+	<div class="row">
+		<div class="col col-100">
+			<button id="btnIngresar" type="submit" [disabled]="!frmLogin.valid">Ingresar</button>
+		</div>
 	</div>
-</div>
-<div class="row accesolinks">
-	<div class="col col-50 text-center">
-		<a id="lnkContraseña" routerLink="/rcontrasena">Olvide mi constraseña</a>
-	</div>
-	<div class="col col-50 text-center">
-		<a id="lnkRegistro" routerLink="/registro">Registro</a>
-	</div>
-</div>
-<div class="row">
-	<div class="col col-100">
-		<button id="btnIngresar" (click)="fnIngresar()">Ingresar</button>
-	</div>
-</div>
+</form>
