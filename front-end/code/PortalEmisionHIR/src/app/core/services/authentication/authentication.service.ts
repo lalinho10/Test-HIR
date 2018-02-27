@@ -3,7 +3,7 @@ import { Router }		   from '@angular/router';
 
 import { Usuario }		   from 'app/core/models/acceso/usuario';
 
-import { AppModalService } from 'app/modulos/shared/app-modal/app-modal.service';
+import { AppModalService } from 'app/core/components/app-modal/app-modal.service';
 
 @Injectable()
 export class AuthenticationService {
@@ -14,7 +14,7 @@ export class AuthenticationService {
 	){}
 
 	public login( usuario: Usuario ): void {
-		if( usuario.nombre !== 'ppantera@hir.com' && usuario.clave !== 'ChocoMilk$2018' ) {
+		if( usuario.nombre !== 'ppantera@hir.com' || usuario.clave !== 'ChocoMilk$2018' ) {
 			this.appModalService.openModal( 'error', 'Usuario o contraseña  incorrectos, intenta nuevamente' );
 		} else {
 			localStorage.setItem( 'token', 'fooSession' );
@@ -35,6 +35,7 @@ export class AuthenticationService {
 	public logout(): void {
 		localStorage.clear();
 		this.router.navigateByUrl( '/acceso/login' );
+		this.appModalService.openModal( 'success', 'Su sesión ha sido cerrada correctamente' );
 	}
 
 }

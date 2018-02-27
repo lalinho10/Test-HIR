@@ -23,14 +23,16 @@ import { AppMainComponent }		   from './layout/app-main.component';
 import { AppFooterComponent }	   from './layout/app-footer.component';
 import { BienvenidaComponent }	   from './modulos/bienvenida/bienvenida.component';
 import { MenuComponent }		   from './modulos/menu/menu.component';
-import { AppModalComponent }	   from './modulos/shared/app-modal/app-modal.component';
-import { LoadingModalComponent }   from './modulos/shared/loading-modal/loading-modal.component';
+import { AppModalComponent }	   from './core/components/app-modal/app-modal.component';
+import { LoadingModalComponent }   from './core/components/loading-modal/loading-modal.component';
+import { SessionModalComponent }   from './core/components/session-modal/session-modal.component';
 import { PageNotFoundComponent }   from './core/components/page-not-found/page-not-found.component';
 import { RegistroComponent }	   from './modulos/registro/registro.component';
 import { InicioComponent }		   from './modulos/inicio/inicio.component';
 
-import { AppModalService }		   from './modulos/shared/app-modal/app-modal.service';
-import { LoadingModalService }	   from './modulos/shared/loading-modal/loading-modal.service';
+import { AppModalService }		   from './core/components/app-modal/app-modal.service';
+import { LoadingModalService }	   from './core/components/loading-modal/loading-modal.service';
+import { SessionModalService }	   from './core/components/session-modal/session-modal.service';
 
 @NgModule({
 	declarations: [
@@ -38,10 +40,11 @@ import { LoadingModalService }	   from './modulos/shared/loading-modal/loading-m
 		AppHeaderComponent,
 		AppMainComponent,
 		AppFooterComponent,
-		AppModalComponent,
 		BienvenidaComponent,
 		MenuComponent,
+		AppModalComponent,
 		LoadingModalComponent,
+		SessionModalComponent,
 		PageNotFoundComponent,
 		RegistroComponent,
 		InicioComponent
@@ -64,6 +67,7 @@ import { LoadingModalService }	   from './modulos/shared/loading-modal/loading-m
 	providers: [
 		AppModalService,
 		LoadingModalService,
+		SessionModalService,
 		{
 			provide: LOCALE_ID, useValue: "es-MX"
 		}

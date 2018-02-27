@@ -2,7 +2,7 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
-import { AppModalService }					  from 'app/modulos/shared/app-modal/app-modal.service';
+import { AppModalService }					  from 'app/core/components/app-modal/app-modal.service';
 
 import { ContrasenaValidator }				  from 'app/core/validators/contrasena.validator';
 import { IgualdadContrasenasValidator }		  from 'app/core/validators/igualdad-contrasenas.validator';

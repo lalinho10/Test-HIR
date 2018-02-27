@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Rx';
 
 import { TestUser } from '../models/test-user';
 
-import { LoadingModalService } from 'app/modulos/shared/loading-modal/loading-modal.service';
+import { LoadingModalService } from 'app/core/components/loading-modal/loading-modal.service';
 
 @Injectable()
 export class TestUserService {

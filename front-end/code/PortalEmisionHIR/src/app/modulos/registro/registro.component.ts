@@ -1,7 +1,7 @@
 import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { AppModalService }					  from 'app/modulos/shared/app-modal/app-modal.service';
+import { AppModalService }					  from 'app/core/components/app-modal/app-modal.service';
 
 import { ApellidoValidator }				  from 'app/core/validators/apellido.validator';
 import { CelularValidator }					  from 'app/core/validators/celular.validator';
