@@ -115,7 +115,7 @@ div.twoRdoContainer > input[type="radio"] {margin-right:7px;}
 .main label.msg.warning {color:#8a6d3b;}
 .main label.msg.error {color:#a94442;}
 .accesocontainer {background-color:#f0f0f0;padding:50px 15px;}
-.accesolinks {margin:15px 0;}
+.accesolinks {margin:30px 0 0 0;}
 /*Footer*/
 .footer {background-color:#282a2b !important;border-top:1px solid #e9eaee !important;color:#8C8989 !important;font-size:12px;padding:0px 10px;}
 .footer .leftcontainer {padding:15px;}
