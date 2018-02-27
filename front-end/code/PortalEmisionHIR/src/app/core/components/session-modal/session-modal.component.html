@@ -1,0 +1,11 @@
+<div *ngIf="isVisible" class="modal">
+	<div class="modal-header">Cierre de sessión</div>
+	<div class="modal-body">
+		¿Está seguro que desea cerrar su sesión?
+	</div>
+	<div class="modal-footer">
+		<button id="btnCancelar" (click)="closeModal()">Cancelar</button>
+		<button id="btnAceptar" (click)="closeSession()">Aceptar</button>
+	</div>
+</div>
+<div *ngIf="isVisible" class="modal-overlay">
