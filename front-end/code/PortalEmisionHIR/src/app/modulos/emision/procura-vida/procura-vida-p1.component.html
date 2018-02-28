@@ -9,7 +9,7 @@
 		<legend>Información médica</legend>
 		<div class="row">
 			<div class="col col-100">
-				<label id="lblPadecimiento" class="pregunta">
+				<label id="lblPadecimiento" class="pregunta medica">
 					¿Padece o ha padecido: diabetes, leucemia, SIDA, insuficiencia renal, enfermedades del cerebro, hipertensión arterial, tumores malignos, cardiopatías (infartos, isquemia o arritmia), problemas del hígado, cáncer o enfisema pulmonar?
 				</label>
 			</div>
@@ -20,10 +20,10 @@
 					[inputDirty]="frmProcuraVidaP1.controls['padecimiento'].dirty"
 					[inputErrors]="frmProcuraVidaP1.controls['padecimiento'].errors">
 						<div class="twoRdoContainer">
-							<input type="radio" formControlName="padecimiento" [value]="true">Sí
+							<input type="radio" formControlName="padecimiento" [value]="false">No
 						</div>
 						<div class="twoRdoContainer">
-							<input type="radio" formControlName="padecimiento" [value]="false">No
+							<input type="radio" formControlName="padecimiento" [value]="true">Sí
 						</div>
 				</pehir-extend-form-control>
 			</div>

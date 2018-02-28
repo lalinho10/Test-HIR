@@ -104,6 +104,7 @@ div.twoRdoContainer > input[type="radio"] {margin-right:7px;}
 .main label {display:block;margin-bottom:15px;}
 .main label.form-label {padding-top:4px;text-align:right;}
 .main label.pregunta {padding-top:4px;text-align:left;}
+.main label.pregunta.medica {margin-bottom:0;}
 .main label.tipo-seguro {margin-bottom:15px;padding-bottom:15px;text-align:center;border-bottom:1px solid #e1e1e1;font-size:30px;color:#f68c2c;}
 .main label.sum-label {color:#f68c2c;font-size:30px;font-weight:bold;padding:15px 0;text-align:center;}
 .main label.res-label {font-weight:bold;}
