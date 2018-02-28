@@ -103,7 +103,7 @@ export class SegubiciP1Component implements OnInit {
 			])],
 			'especifiqueParGob': ['', Validators.compose([
 				Validators.required
-			])],
+			])]
 		});
 	}
 
