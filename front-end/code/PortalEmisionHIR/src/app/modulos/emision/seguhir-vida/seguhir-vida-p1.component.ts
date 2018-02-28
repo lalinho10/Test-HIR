@@ -5,6 +5,7 @@ import { Router }							  from '@angular/router';
 import { ApellidoValidator } 				  from 'app/core/validators/apellido.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
+import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
 
 import { GENEROS }							  from 'app/core/data/generos';
 import { ESTADOSCIVILES }					  from 'app/core/data/estadosCiviles';
@@ -47,7 +48,8 @@ export class SeguhirVidaP1Component implements OnInit {
 				ApellidoValidator()
 			])],
 			'fechanacCon': ['', Validators.compose([
-				Validators.required
+				Validators.required,
+				EntreEdadesValidator(18,70)
 			])],
 			'nacionalidadCon': ['', Validators.compose([
 				Validators.required
