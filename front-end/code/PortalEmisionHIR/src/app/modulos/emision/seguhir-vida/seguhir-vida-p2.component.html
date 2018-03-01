@@ -1,0 +1,137 @@
+<div class="row">
+	<div class="col col-100">
+		<pehir-progress-control [numSteps]="6" [selStep]="2">
+		</pehir-progress-control>
+	</div>
+</div>
+<form [formGroup]="frmSeguhirVidaP2" (ngSubmit)="paso3()">
+	<fieldset>
+		<legend>Identificación y conocimiento del cliente</legend>
+		<div class="row">
+			<div class="col col-100">
+				<label id="lblGobierno" class="pregunta">
+					¿Usted desempeña o ha desempeñado en el año inmediato anterior alguna de las siguientes funciones o cargos: Jefe de Estado o de Gobierno, líder político, funcionario gubernamental, judicial o militar de alta jerarquía, alto ejecutivo de empresas estatales o funcionario o miembro importante de partidos políticos?
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-50">
+				<pehir-extend-form-control
+					[inputDirty]="frmSeguhirVidaP2.controls['gobierno'].dirty"
+					[inputErrors]="frmSeguhirVidaP2.controls['gobierno'].errors">
+						<div class="twoRdoContainer">
+							<input type="radio" formControlName="gobierno" [value]="false">No
+						</div>
+						<div class="twoRdoContainer">
+							<input type="radio" formControlName="gobierno" [value]="true">Sí
+						</div>
+				</pehir-extend-form-control>
+			</div>
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblEspecifiqueGob" class="form-label">Especifique:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP2.controls['especifiqueGob'].dirty"
+							[inputErrors]="frmSeguhirVidaP2.controls['especifiqueGob'].errors">
+								<input id="txtEspecifiqueGob" type="text" class="form-control" formControlName="especifiqueGob">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-100">
+				<label id="lblParienteGob" class="pregunta">
+					¿Es usted cónyugue, concubina, concubinario o tiene paretesco por consanguinidad o afinidad hasta el segundo grado con alguna persona de las mencionadas en el párrafo anterior?
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-50">
+				<pehir-extend-form-control
+					[inputDirty]="frmSeguhirVidaP2.controls['parienteGob'].dirty"
+					[inputErrors]="frmSeguhirVidaP2.controls['parienteGob'].errors">
+						<div class="twoRdoContainer">
+							<input type="radio" formControlName="parienteGob" [value]="false">No
+						</div>
+						<div class="twoRdoContainer">
+							<input type="radio" formControlName="parienteGob" [value]="true">Sí
+						</div>
+				</pehir-extend-form-control>
+			</div>
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblEspecifiqueParGob" class="form-label">Especifique:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP2.controls['especifiqueParGob'].dirty"
+							[inputErrors]="frmSeguhirVidaP2.controls['especifiqueParGob'].errors">
+								<input id="txtEspecifiqueParGob" type="text" class="form-control" formControlName="especifiqueParGob">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Planes y coberturas contratadas</legend>
+		<div class="row">
+			<div class="col col-100">
+				<label class="msg info">
+					Regla para determinar la suma asegurada. La suma asegurada máxima se establecerá de acuerdo a las Condiciones del Contrato de Adhesión suscrito entre el asegurado y el contratante.
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-33">
+				<fieldset>
+					<legend>Plan</legend>
+					<pehir-extend-form-control
+						[inputDirty]="frmSeguhirVidaP2.controls['plan'].dirty"
+						[inputErrors]="frmSeguhirVidaP2.controls['plan'].errors">
+							<div class="twoRdoContainer">
+								<input id="rdoPlan1" type="radio" value="1" formControlName="plan">Individual
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoPlan2" type="radio" value="2" formControlName="plan">Conyugal
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoPlan3" type="radio" value="3" formControlName="plan">Hijos
+							</div>
+							<div class="twoRdoContainer">
+								<input id="rdoPlan4" type="radio" value="4" formControlName="plan">Familiar
+							</div>
+					</pehir-extend-form-control>
+				</fieldset>
+			</div>
+			<div class="col col-33">
+				<fieldset>
+					<legend>Paquete de cobertura</legend>
+					<label class="msg info">
+						F (Fallecimiento) IITP (Indemnización por Invalidez Total y Permanente) MA (Muerte Accidental) C (Cáncer)
+					</label>
+					<pehir-extend-form-control
+						[inputDirty]="frmSeguhirVidaP2.controls['pcobertura'].dirty"
+						[inputErrors]="frmSeguhirVidaP2.controls['pcobertura'].errors">
+							<div *ngFor="let paquete of paquetes" class="twoRdoContainer">
+								<input type="radio" formControlName="pcobertura" [value]="paquete.idPaquete">{{paquete.descPaquete}}
+							</div>
+					</pehir-extend-form-control>
+				</fieldset>
+			</div>
+			<div class="col col-33">
+				
+			</div>
+		</div>
+	</fieldset>
+	<div class="row">
+		<div class="col col-100">
+			<button id="btnSiguiente" type="submit" [disabled]="!frmSeguhirVidaP2.valid">Siguiente</button>
+		</div>
+	</div>
+</form>
