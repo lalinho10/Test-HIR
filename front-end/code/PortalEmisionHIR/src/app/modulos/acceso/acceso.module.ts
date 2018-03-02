@@ -9,7 +9,6 @@ import { ContrasenaComponent }	   from './contrasena.component';
 
 import { AccesoRoutingModule }	   from './acceso-routing.module';
 import { ExtendFormControlModule } from 'app/modulos/shared/extend-form-control/extend-form-control.module';
-import { ImageLinkModule }		   from 'app/modulos/shared/image-link/image-link.module';
 
 @NgModule({
 	declarations: [
@@ -22,8 +21,7 @@ import { ImageLinkModule }		   from 'app/modulos/shared/image-link/image-link.mo
 		CommonModule,
 		ReactiveFormsModule,
 		AccesoRoutingModule,
-		ExtendFormControlModule,
-		ImageLinkModule,
+		ExtendFormControlModule
 	]
 })
 
