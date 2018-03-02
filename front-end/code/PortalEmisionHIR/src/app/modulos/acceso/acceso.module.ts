@@ -11,8 +11,6 @@ import { AccesoRoutingModule }	   from './acceso-routing.module';
 import { ExtendFormControlModule } from 'app/modulos/shared/extend-form-control/extend-form-control.module';
 import { ImageLinkModule }		   from 'app/modulos/shared/image-link/image-link.module';
 
-import { TestUserService }		   from 'app/core/services/test-user.service';
-
 @NgModule({
 	declarations: [
 		AccesoComponent,
@@ -26,9 +24,6 @@ import { TestUserService }		   from 'app/core/services/test-user.service';
 		AccesoRoutingModule,
 		ExtendFormControlModule,
 		ImageLinkModule,
-	],
-	providers: [
-		TestUserService
 	]
 })
 
