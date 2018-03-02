@@ -30,7 +30,7 @@
 					<img src="/assets/img/logoHIR.png" alt="Hir Seguros">
 				</a>
 			</div>
-			<div class="loggedContent">
+			<div *ngIf="authenticated" class="loggedContent">
 				<pehir-bienvenida></pehir-bienvenida>
 				<pehir-menu></pehir-menu>
 			</div>
