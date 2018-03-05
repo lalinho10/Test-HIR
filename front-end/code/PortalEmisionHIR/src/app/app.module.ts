@@ -3,7 +3,8 @@ import { LOCALE_ID }			   from '@angular/core';
 import { BrowserModule }		   from '@angular/platform-browser';
 import { NgModule }				   from '@angular/core';
 import { ReactiveFormsModule }	   from '@angular/forms';
-import { HttpClientModule }		   from '@angular/common/http';
+import { HttpClientModule,
+		 HTTP_INTERCEPTORS }	   from '@angular/common/http';
 
 import { MyDatePickerModule }	   from 'mydatepicker';
 
@@ -30,9 +31,12 @@ import { PageNotFoundComponent }   from './core/components/page-not-found/page-n
 import { RegistroComponent }	   from './modulos/registro/registro.component';
 import { InicioComponent }		   from './modulos/inicio/inicio.component';
 
+import { WSClientService }		   from './core/services/ws-client.service';
 import { AppModalService }		   from './core/components/app-modal/app-modal.service';
 import { LoadingModalService }	   from './core/components/loading-modal/loading-modal.service';
 import { SessionModalService }	   from './core/components/session-modal/session-modal.service';
+
+import { LoadingInterceptor }	   from './core/interceptors/loading.interceptor'
 
 @NgModule({
 	declarations: [
@@ -65,11 +69,17 @@ import { SessionModalService }	   from './core/components/session-modal/session-
 		PolicyHolderTableModule
 	],
 	providers: [
+		WSClientService,
 		AppModalService,
 		LoadingModalService,
 		SessionModalService,
 		{
 			provide: LOCALE_ID, useValue: "es-MX"
+		},
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: LoadingInterceptor,
+			multi: true
 		}
 	],
 	bootstrap: [ AppComponent ]
