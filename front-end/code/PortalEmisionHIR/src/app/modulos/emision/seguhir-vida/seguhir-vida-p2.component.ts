@@ -4,6 +4,9 @@ import { Router }							  from '@angular/router';
 
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
+import { MODULOS }							  from 'app/core/data/modulos';
+import { FORMASPAGO }						  from 'app/core/data/formas-Pago';
+
 import { Paquete }							  from 'app/core/models/paquete';
 
 @Component({
@@ -16,15 +19,22 @@ export class SeguhirVidaP2Component implements OnInit {
 
 	private paquetes: Paquete[];
 
+	private formasPago = FORMASPAGO;
+	private modulos = MODULOS;
+
 	constructor(
 		private router: Router,
 		private fb: FormBuilder,
 		private wsClientService: WSClientService
 	){}
 
-	ngOnInit() {
+	private readCatalogs(): void {
 		this.wsClientService.getObject( '/consultaPaquetes' )
 							.subscribe( data => this.paquetes = data );
+	}
+
+	ngOnInit() {
+		this.readCatalogs();
 
 		this.frmSeguhirVidaP2 = this.fb.group({
 			'gobierno': ['', Validators.compose([
@@ -44,11 +54,32 @@ export class SeguhirVidaP2Component implements OnInit {
 			])],
 			'pcobertura': ['', Validators.compose([
 				Validators.required
+			])],
+			'modulo': ['', Validators.compose([
+				Validators.required
+			])],
+			'ugastos': ['', Validators.compose([
+				Validators.required
+			])],
+			'apfondoasegurado': ['', Validators.compose([
+				Validators.required
+			])],
+			'fpago': ['', Validators.compose([
+				Validators.required
+			])],
+			'cobertura': ['', Validators.compose([
+				Validators.required
+			])],
+			'aportacion': ['', Validators.compose([
+				Validators.required
+			])],
+			'total': ['', Validators.compose([
+				Validators.required
 			])]
 		});
 	}
 
 	paso3(): void {
-		this.router.navigateByUrl( '/emision/apindividual/seguro' );
+		this.router.navigateByUrl( '/emision/seguhirvida/medico' );
 	}
 }
