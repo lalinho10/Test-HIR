@@ -73,7 +73,7 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmSegubici.controls['genero'].dirty"
 						[inputErrors]="frmSegubici.controls['genero'].errors">
-							<div *ngFor="let genero of generos" class="twoRdoContainer">
+							<div *ngFor="let genero of generos" class="rdoContainer two">
 								<input type="radio" formControlName="genero" [value]="genero.idGenero">{{genero.descGenero}}
 							</div>
 					</pehir-extend-form-control>
@@ -130,7 +130,7 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmSegubici.controls['fpago'].dirty"
 						[inputErrors]="frmSegubici.controls['fpago'].errors">
-							<div *ngFor="let formaPago of formasPago" class="twoRdoContainer">
+							<div *ngFor="let formaPago of formasPago" class="rdoContainer two">
 								<input type="radio" formControlName="fpago" [value]="formaPago.idFormaPago">{{formaPago.descFormaPago}}
 							</div>
 					</pehir-extend-form-control>
@@ -144,7 +144,7 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmSegubici.controls['plan'].dirty"
 						[inputErrors]="frmSegubici.controls['plan'].errors">
-							<div class="twoRdoContainer">
+							<div class="rdoContainer two">
 								<input id="rdoPlan1" type="radio" formControlName="plan">Individual
 							</div>
 					</pehir-extend-form-control>

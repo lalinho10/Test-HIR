@@ -19,10 +19,10 @@
 				<pehir-extend-form-control
 					[inputDirty]="frmProcuraVidaP1.controls['padecimiento'].dirty"
 					[inputErrors]="frmProcuraVidaP1.controls['padecimiento'].errors">
-						<div class="twoRdoContainer">
+						<div class="rdoContainer two">
 							<input type="radio" formControlName="padecimiento" [value]="false">No
 						</div>
-						<div class="twoRdoContainer">
+						<div class="rdoContainer two">
 							<input type="radio" formControlName="padecimiento" [value]="true">Sí
 						</div>
 				</pehir-extend-form-control>
@@ -163,7 +163,7 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmProcuraVidaP1.controls['estadoCivil'].dirty"
 							[inputErrors]="frmProcuraVidaP1.controls['estadoCivil'].errors">
-								<div *ngFor="let estadoCivil of estadosCiviles" class="threeRdoContainer">
+								<div *ngFor="let estadoCivil of estadosCiviles" class="rdoContainer three">
 									<input type="radio" formControlName="estadoCivil" [value]="estadoCivil.idEstadoCivil">{{estadoCivil.descEstadoCivil}}
 								</div>
 						</pehir-extend-form-control>
@@ -177,7 +177,7 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmProcuraVidaP1.controls['genero'].dirty"
 							[inputErrors]="frmProcuraVidaP1.controls['genero'].errors">
-								<div *ngFor="let genero of generos" class="twoRdoContainer">
+								<div *ngFor="let genero of generos" class="rdoContainer two">
 									<input type="radio" formControlName="genero" [value]="genero.idGenero">{{genero.descGenero}}
 								</div>
 						</pehir-extend-form-control>

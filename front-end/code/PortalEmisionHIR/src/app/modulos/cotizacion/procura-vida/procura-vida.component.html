@@ -73,7 +73,7 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmProcuraVida.controls['genero'].dirty"
 						[inputErrors]="frmProcuraVida.controls['genero'].errors">
-							<div *ngFor="let genero of generos" class="twoRdoContainer">
+							<div *ngFor="let genero of generos" class="rdoContainer two">
 								<input type="radio" formControlName="genero" [value]="genero.idGenero">{{genero.descGenero}}
 							</div>
 					</pehir-extend-form-control>

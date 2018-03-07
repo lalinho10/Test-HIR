@@ -98,7 +98,7 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmApindividualP2.controls['fpago'].dirty"
 							[inputErrors]="frmApindividualP2.controls['fpago'].errors">
-								<div *ngFor="let formaPago of formasPago" class="twoRdoContainer">
+								<div *ngFor="let formaPago of formasPago" class="rdoContainer two">
 									<input type="radio" formControlName="fpago" [value]="formaPago.idFormaPago">{{formaPago.descFormaPago}}
 								</div>
 						</pehir-extend-form-control>

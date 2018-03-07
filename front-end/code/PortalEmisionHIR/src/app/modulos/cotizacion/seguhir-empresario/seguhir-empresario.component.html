@@ -73,7 +73,7 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmSeguhirEmpresario.controls['genero'].dirty"
 						[inputErrors]="frmSeguhirEmpresario.controls['genero'].errors">
-							<div *ngFor="let genero of generos" class="twoRdoContainer">
+							<div *ngFor="let genero of generos" class="rdoContainer two">
 								<input type="radio" formControlName="genero" [value]="genero.idGenero">{{genero.descGenero}}
 							</div>
 					</pehir-extend-form-control>

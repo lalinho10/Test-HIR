@@ -109,7 +109,7 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmSeguhirVidaP1.controls['estadoCivilCon'].dirty"
 							[inputErrors]="frmSeguhirVidaP1.controls['estadoCivilCon'].errors">
-								<div *ngFor="let estadoCivil of estadosCiviles" class="threeRdoContainer">
+								<div *ngFor="let estadoCivil of estadosCiviles" class="rdoContainer three">
 									<input type="radio" formControlName="estadoCivilCon" [value]="estadoCivil.idEstadoCivil">{{estadoCivil.descEstadoCivil}}
 								</div>
 						</pehir-extend-form-control>
@@ -123,7 +123,7 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmSeguhirVidaP1.controls['generoCon'].dirty"
 							[inputErrors]="frmSeguhirVidaP1.controls['generoCon'].errors">
-								<div *ngFor="let genero of generos" class="twoRdoContainer">
+								<div *ngFor="let genero of generos" class="rdoContainer two">
 									<input type="radio" formControlName="generoCon" [value]="genero.idGenero">{{genero.descGenero}}
 								</div>
 						</pehir-extend-form-control>
@@ -341,7 +341,7 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmSeguhirVidaP1.controls['estadoCivilTit'].dirty"
 							[inputErrors]="frmSeguhirVidaP1.controls['estadoCivilTit'].errors">
-								<div *ngFor="let estadoCivil of estadosCiviles" class="threeRdoContainer">
+								<div *ngFor="let estadoCivil of estadosCiviles" class="rdoContainer three">
 									<input type="radio" formControlName="estadoCivilTit" [value]="estadoCivil.idEstadoCivil">{{estadoCivil.descEstadoCivil}}
 								</div>
 						</pehir-extend-form-control>
@@ -355,7 +355,7 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmSeguhirVidaP1.controls['generoTit'].dirty"
 							[inputErrors]="frmSeguhirVidaP1.controls['generoTit'].errors">
-								<div *ngFor="let genero of generos" class="twoRdoContainer">
+								<div *ngFor="let genero of generos" class="rdoContainer two">
 									<input type="radio" formControlName="generoTit" [value]="genero.idGenero">{{genero.descGenero}}
 								</div>
 						</pehir-extend-form-control>

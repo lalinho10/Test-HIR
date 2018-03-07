@@ -73,7 +73,7 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmSeguhirVida.controls['genero'].dirty"
 						[inputErrors]="frmSeguhirVida.controls['genero'].errors">
-							<div *ngFor="let genero of generos" class="twoRdoContainer">
+							<div *ngFor="let genero of generos" class="rdoContainer two">
 								<input type="radio" formControlName="genero" [value]="genero.idGenero">{{genero.descGenero}}
 							</div>
 					</pehir-extend-form-control>
@@ -87,16 +87,16 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmSeguhirVida.controls['plan'].dirty"
 						[inputErrors]="frmSeguhirVida.controls['plan'].errors">
-							<div class="twoRdoContainer">
+							<div class="rdoContainer two">
 								<input id="rdoPlan1" type="radio" value="1" formControlName="plan">Individual
 							</div>
-							<div class="twoRdoContainer">
+							<div class="rdoContainer two">
 								<input id="rdoPlan2" type="radio" value="2" formControlName="plan">Conyugal
 							</div>
-							<div class="twoRdoContainer">
+							<div class="rdoContainer two">
 								<input id="rdoPlan3" type="radio" value="3" formControlName="plan">Hijos
 							</div>
-							<div class="twoRdoContainer">
+							<div class="rdoContainer two">
 								<input id="rdoPlan4" type="radio" value="4" formControlName="plan">Familiar
 							</div>
 					</pehir-extend-form-control>
@@ -112,7 +112,7 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmSeguhirVida.controls['pcobertura'].dirty"
 						[inputErrors]="frmSeguhirVida.controls['pcobertura'].errors">
-							<div *ngFor="let paquete of paquetes" class="twoRdoContainer">
+							<div *ngFor="let paquete of paquetes" class="rdoContainer two">
 								<input type="radio" formControlName="pcobertura" [value]="paquete.idPaquete">{{paquete.descPaquete}}
 							</div>
 					</pehir-extend-form-control>
@@ -143,7 +143,7 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmSeguhirVida.controls['fpago'].dirty"
 						[inputErrors]="frmSeguhirVida.controls['fpago'].errors">
-							<div *ngFor="let formaPago of formasPago" class="twoRdoContainer">
+							<div *ngFor="let formaPago of formasPago" class="rdoContainer two">
 								<input type="radio" formControlName="fpago" [value]="formaPago.idFormaPago">{{formaPago.descFormaPago}}
 							</div>
 					</pehir-extend-form-control>

@@ -92,7 +92,7 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmApindividualP1.controls['estadoCivil'].dirty"
 							[inputErrors]="frmApindividualP1.controls['estadoCivil'].errors">
-								<div *ngFor="let estadoCivil of estadosCiviles" class="threeRdoContainer">
+								<div *ngFor="let estadoCivil of estadosCiviles" class="rdoContainer three">
 									<input type="radio" formControlName="estadoCivil" [value]="estadoCivil.idEstadoCivil">{{estadoCivil.descEstadoCivil}}
 								</div>
 						</pehir-extend-form-control>
@@ -106,7 +106,7 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmApindividualP1.controls['genero'].dirty"
 							[inputErrors]="frmApindividualP1.controls['genero'].errors">
-								<div *ngFor="let genero of generos" class="twoRdoContainer">
+								<div *ngFor="let genero of generos" class="rdoContainer two">
 									<input type="radio" formControlName="genero" [value]="genero.idGenero">{{genero.descGenero}}
 								</div>
 						</pehir-extend-form-control>
@@ -120,10 +120,10 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmApindividualP1.controls['fumador'].dirty"
 							[inputErrors]="frmApindividualP1.controls['fumador'].errors">
-								<div class="twoRdoContainer">
+								<div class="rdoContainer two">
 									<input type="radio" formControlName="fumador" [value]="false">No
 								</div>
-								<div class="twoRdoContainer">
+								<div class="rdoContainer two">
 									<input type="radio" formControlName="fumador" [value]="true">Sí
 								</div>
 						</pehir-extend-form-control>
@@ -263,10 +263,10 @@
 				<pehir-extend-form-control
 					[inputDirty]="frmApindividualP1.controls['gobierno'].dirty"
 					[inputErrors]="frmApindividualP1.controls['gobierno'].errors">
-						<div class="twoRdoContainer">
+						<div class="rdoContainer two">
 							<input type="radio" formControlName="gobierno" [value]="false">No
 						</div>
-						<div class="twoRdoContainer">
+						<div class="rdoContainer two">
 							<input type="radio" formControlName="gobierno" [value]="true">Sí
 						</div>
 				</pehir-extend-form-control>
@@ -298,10 +298,10 @@
 				<pehir-extend-form-control
 					[inputDirty]="frmApindividualP1.controls['parienteGob'].dirty"
 					[inputErrors]="frmApindividualP1.controls['parienteGob'].errors">
-						<div class="twoRdoContainer">
+						<div class="rdoContainer two">
 							<input type="radio" formControlName="parienteGob" [value]="false">No
 						</div>
-						<div class="twoRdoContainer">
+						<div class="rdoContainer two">
 							<input type="radio" formControlName="parienteGob" [value]="true">Sí
 						</div>
 				</pehir-extend-form-control>
