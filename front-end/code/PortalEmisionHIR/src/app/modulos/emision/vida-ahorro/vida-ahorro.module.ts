@@ -4,6 +4,7 @@ import { ReactiveFormsModule }		from '@angular/forms';
 
 import { VidaAhorroComponent }	 	from './vida-ahorro.component';
 import { VidaAhorroP1Component }	from './vida-ahorro-p1.component';
+import { VidaAhorroP2Component }	from './vida-ahorro-p2.component';
 
 import { MyDatePickerModule }		from 'mydatepicker';
 
@@ -14,7 +15,8 @@ import { ProgressControlModule }	from 'app/modulos/shared/progress-control/progr
 @NgModule({
 	declarations: [
 		VidaAhorroComponent,
-		VidaAhorroP1Component
+		VidaAhorroP1Component,
+		VidaAhorroP2Component
 	],
 	imports: [
 		CommonModule,
