@@ -2,6 +2,8 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.validator';
+
 import { MODULOS }							  from 'app/core/data/modulos';
 import { COBERTURAS_SEGUHIREMPRESARIO }		  from 'app/core/data/coberturas/coberturas_seguhirempresario';
 
@@ -33,7 +35,8 @@ export class SeguhirEmpresarioP2Component implements OnInit {
 				Validators.required
 			])],
 			'clave': ['', Validators.compose([
-				Validators.required
+				Validators.required,
+				ClaveAgenteValidator()
 			])],
 			'cobertura': ['', Validators.compose([
 				Validators.required
