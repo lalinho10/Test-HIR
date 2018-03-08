@@ -49,7 +49,7 @@ export class VidaAhorroP1Component implements OnInit {
 			])],
 			'fechanacCon': ['', Validators.compose([
 				Validators.required,
-				EntreEdadesValidator(18,70)
+				EntreEdadesValidator(18,65)
 			])],
 			'nacionalidadCon': ['', Validators.compose([
 				Validators.required
