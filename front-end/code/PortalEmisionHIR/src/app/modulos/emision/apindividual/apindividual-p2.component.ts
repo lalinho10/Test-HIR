@@ -2,11 +2,14 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { WSClientService }					  from 'app/core/services/ws-client.service';
+
 import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.validator';
 
 import { OCUPACIONES }						  from 'app/core/data/ocupaciones';
 import { FORMASPAGO }						  from 'app/core/data/formas-Pago';
-import { COBERTURAS_APINDIVIDUAL }			  from 'app/core/data/coberturas/coberturas_apindividual';
+
+import { Cobertura }						  from 'app/core/models/cobertura';
 
 @Component({
 	selector: 'pehir-apindividual-p2',
@@ -16,16 +19,25 @@ import { COBERTURAS_APINDIVIDUAL }			  from 'app/core/data/coberturas/coberturas
 export class ApindividualP2Component implements OnInit {
 	private frmApindividualP2: FormGroup;
 
+	private coberturas: Cobertura[];
+
 	private ocupaciones = OCUPACIONES;
 	private formasPago = FORMASPAGO;
-	private coberturas = COBERTURAS_APINDIVIDUAL;
 
 	constructor(
 		private router: Router,
-		private fb: FormBuilder
+		private fb: FormBuilder,
+		private wsClientService: WSClientService
 	){}
 
+	readCatalogs(): void {
+		this.wsClientService.getObject( '/consultaCoberturasProducto/7' )
+							.subscribe( response => this.coberturas = response.data );
+	}
+
 	ngOnInit() {
+		this.readCatalogs();
+
 		this.frmApindividualP2 = this.fb.group({
 			'ocupacion': ['', Validators.compose([
 				Validators.required

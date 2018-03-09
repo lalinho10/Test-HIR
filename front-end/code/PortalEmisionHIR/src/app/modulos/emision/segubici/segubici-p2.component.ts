@@ -2,11 +2,14 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { WSClientService }					  from 'app/core/services/ws-client.service';
+
 import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.validator';
 
 import { OCUPACIONES }						  from 'app/core/data/ocupaciones';
 import { FORMASPAGO }						  from 'app/core/data/formas-Pago';
-import { COBERTURAS_SEGUBICI }				  from 'app/core/data/coberturas/coberturas_segubici';
+
+import { Cobertura }						  from 'app/core/models/cobertura';
 
 @Component({
 	selector: 'pehir-segubici-p2',
@@ -16,16 +19,25 @@ import { COBERTURAS_SEGUBICI }				  from 'app/core/data/coberturas/coberturas_se
 export class SegubiciP2Component implements OnInit {
 	private frmSegubiciP2: FormGroup;
 
+	private coberturas: Cobertura[];
+
 	private ocupaciones = OCUPACIONES;
 	private formasPago = FORMASPAGO;
-	private coberturas = COBERTURAS_SEGUBICI;
 
 	constructor(
 		private router: Router,
-		private fb: FormBuilder
+		private fb: FormBuilder,
+		private wsClientService: WSClientService
 	){}
 
+	readCatalogs(): void {
+		this.wsClientService.getObject( '/consultaCoberturasProducto/6' )
+							.subscribe( response => this.coberturas = response.data );
+	}
+
 	ngOnInit() {
+		this.readCatalogs();
+
 		this.frmSegubiciP2 = this.fb.group({
 			'ocupacion': ['', Validators.compose([
 				Validators.required
