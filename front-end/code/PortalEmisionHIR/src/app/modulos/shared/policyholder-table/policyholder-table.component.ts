@@ -1,13 +1,16 @@
 import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { WSClientService }					  from 'app/core/services/ws-client.service';
+
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { PorcentajeValidator }				  from 'app/core/validators/porcentaje.validator';
 
 import { Beneficiario }						  from 'app/core/models/beneficiario';
 
 import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
-import { PARENTESCOS }						  from 'app/core/data/parentescos';
+
+import { Parentesco }						  from 'app/core/models/parentesco';
 
 @Component({
 	selector: 'pehir-policyholder-table',
@@ -19,15 +22,26 @@ export class PolicyHolderTableComponent implements OnInit {
 	private frmBeneficiario: FormGroup;
 	private beneficiarios: Beneficiario[] = [];
 
+	private parentescos: Parentesco[];
+
 	private fecNacOptions = FECNACOPTIONS;
-	private parentescos = PARENTESCOS;
 
 	private isValidSum: boolean = false;
 	private sumErrorMsg: string = 'Los porcentajes de suma asegurada no dan un total de 100%'
 
-	constructor( private fb: FormBuilder ) {}
+	constructor(
+		private fb: FormBuilder,
+		private wsClientService: WSClientService
+	) {}
+
+	readCatalogs(): void {
+		this.wsClientService.getObject( '/consultaParentescos' )
+							.subscribe( data => this.parentescos = data );
+	}
 
 	ngOnInit() {
+		this.readCatalogs();
+
 		this.frmBeneficiario = this.fb.group({
 			'nombre': ['', Validators.compose([
 				Validators.required,
