@@ -6,10 +6,10 @@ import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.validator';
 
-import { OCUPACIONES }						  from 'app/core/data/ocupaciones';
 import { FORMASPAGO }						  from 'app/core/data/formas-Pago';
 
 import { Cobertura }						  from 'app/core/models/cobertura';
+import { Ocupacion }						  from 'app/core/models/ocupacion';
 
 @Component({
 	selector: 'pehir-segubici-p2',
@@ -20,8 +20,8 @@ export class SegubiciP2Component implements OnInit {
 	private frmSegubiciP2: FormGroup;
 
 	private coberturas: Cobertura[];
+	private ocupaciones: Ocupacion[];
 
-	private ocupaciones = OCUPACIONES;
 	private formasPago = FORMASPAGO;
 
 	constructor(
@@ -33,6 +33,9 @@ export class SegubiciP2Component implements OnInit {
 	readCatalogs(): void {
 		this.wsClientService.getObject( '/consultaCoberturasProducto/6' )
 							.subscribe( response => this.coberturas = response.data );
+
+		this.wsClientService.getObject( '/consultaOcupaciones' )
+							.subscribe( data => this.ocupaciones = data );
 	}
 
 	ngOnInit() {

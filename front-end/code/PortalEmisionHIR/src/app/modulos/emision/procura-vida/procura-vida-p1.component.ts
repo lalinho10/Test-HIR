@@ -2,6 +2,8 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { WSClientService }					  from 'app/core/services/ws-client.service';
+
 import { ApellidoValidator } 				  from 'app/core/validators/apellido.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
@@ -10,7 +12,8 @@ import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.vali
 import { GENEROS }							  from 'app/core/data/generos';
 import { ESTADOSCIVILES }					  from 'app/core/data/estadosCiviles';
 import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
-import { OCUPACIONES }						  from 'app/core/data/ocupaciones';
+
+import { Ocupacion }						  from 'app/core/models/ocupacion';
 
 @Component({
 	selector: 'pehir-procura-vida-p1',
@@ -20,17 +23,26 @@ import { OCUPACIONES }						  from 'app/core/data/ocupaciones';
 export class ProcuraVidaP1Component implements OnInit {
 	private frmProcuraVidaP1: FormGroup;
 
+	private ocupaciones: Ocupacion[];
+
 	private generos = GENEROS;
 	private fecNacOptions = FECNACOPTIONS;
 	private estadosCiviles = ESTADOSCIVILES;
-	private ocupaciones = OCUPACIONES;
 
 	constructor(
 		private router: Router,
-		private fb: FormBuilder
+		private fb: FormBuilder,
+		private wsClientService: WSClientService
 	){}
 
+	readCatalogs(): void {
+		this.wsClientService.getObject( '/consultaOcupaciones' )
+							.subscribe( data => this.ocupaciones = data );
+	}
+
 	ngOnInit() {
+		this.readCatalogs();
+
 		this.frmProcuraVidaP1 = this.fb.group({
 			'padecimiento':['', Validators.compose([
 				Validators.required
