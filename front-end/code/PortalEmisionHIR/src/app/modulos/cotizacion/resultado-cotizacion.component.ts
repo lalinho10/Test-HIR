@@ -20,7 +20,7 @@ export class ResultadoCotizacionComponent {
 			telefonoUsuario: '5501010101',
 			edad: 55,
 			sexo: 'Masculino',
-			tipoPago: 'Tarjeta',
+			tipoPago: 'Anual',
 			montoPago: 50000
 		}
 	);
