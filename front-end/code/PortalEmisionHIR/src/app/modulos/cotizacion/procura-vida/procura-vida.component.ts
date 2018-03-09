@@ -2,6 +2,8 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { WSClientService }					  from 'app/core/services/ws-client.service';
+
 import { ApellidoValidator }				  from 'app/core/validators/apellido.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
@@ -10,7 +12,8 @@ import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.vali
 import { MODULOS }							  from 'app/core/data/modulos';
 import { GENEROS }							  from 'app/core/data/generos';
 import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
-import { COBERTURAS_PROCURAVIDA }			  from 'app/core/data/coberturas/coberturas_procuravida';
+
+import { Cobertura }						  from 'app/core/models/cobertura';
 
 @Component({
 	selector: 'pehir-procura-vida',
@@ -21,17 +24,26 @@ export class ProcuraVidaComponent implements OnInit {
 	private titulo: string = 'Cotización - Procura Vida';
 	private frmProcuraVida: FormGroup;
 
+	private coberturas: Cobertura[];
+
 	private modulos = MODULOS;
 	private generos = GENEROS;
 	private fecNacOptions = FECNACOPTIONS;
-	private coberturas = COBERTURAS_PROCURAVIDA;
 
 	constructor(
 		private router: Router,
-		private fb: FormBuilder
+		private fb: FormBuilder,
+		private wsClientService: WSClientService
 	) {}
 
+	readCatalogs(): void {
+		this.wsClientService.getObject( '/consultaCoberturasProducto/2' )
+							.subscribe( response => this.coberturas = response.data );
+	}
+
 	ngOnInit() {
+		this.readCatalogs();
+
 		this.frmProcuraVida = this.fb.group({
 			'nombre': ['', Validators.compose([
 				Validators.required,

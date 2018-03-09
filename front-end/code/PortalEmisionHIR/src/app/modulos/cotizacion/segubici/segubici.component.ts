@@ -2,6 +2,8 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { WSClientService }					  from 'app/core/services/ws-client.service';
+
 import { ApellidoValidator }				  from 'app/core/validators/apellido.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
@@ -10,7 +12,8 @@ import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.vali
 import { GENEROS }							  from 'app/core/data/generos';
 import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
 import { FORMASPAGO }						  from 'app/core/data/formas-Pago';
-import { COBERTURAS_SEGUBICI }				  from 'app/core/data/coberturas/coberturas_segubici';
+
+import { Cobertura }						  from 'app/core/models/cobertura';
 
 @Component({
 	selector: 'pehir-segubici',
@@ -21,17 +24,26 @@ export class SegubiciComponent implements OnInit {
 	private titulo: string = 'Cotización - Segubici';
 	private frmSegubici: FormGroup;
 
+	private coberturas: Cobertura[];
+
 	private generos = GENEROS;
 	private fecNacOptions = FECNACOPTIONS;
 	private formasPago = FORMASPAGO;
-	private coberturas = COBERTURAS_SEGUBICI;
 
 	constructor(
 		private router: Router,
-		private fb: FormBuilder
+		private fb: FormBuilder,
+		private wsClientService: WSClientService
 	) {}
 
+	readCatalogs(): void {
+		this.wsClientService.getObject( '/consultaCoberturasProducto/6' )
+							.subscribe( response => this.coberturas = response.data );
+	}
+
 	ngOnInit() {
+		this.readCatalogs();
+
 		this.frmSegubici = this.fb.group({
 			'nombre': ['', Validators.compose([
 				Validators.required,
