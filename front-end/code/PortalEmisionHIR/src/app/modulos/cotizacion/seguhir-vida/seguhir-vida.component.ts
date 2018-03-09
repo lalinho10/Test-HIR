@@ -38,9 +38,13 @@ export class SeguhirVidaComponent implements OnInit {
 		private wsClientService: WSClientService
 	) {}
 
-	ngOnInit() {
+	readCatalogs(): void {
 		this.wsClientService.getObject( '/consultaPaquetes' )
 							.subscribe( data => this.paquetes = data );
+	}
+
+	ngOnInit() {
+		this.readCatalogs();
 
 		this.frmSeguhirVida = this.fb.group({
 			'nombre': ['', Validators.compose([
