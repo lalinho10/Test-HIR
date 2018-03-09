@@ -2,7 +2,13 @@
 	.mainContainer {width:90%;}
 	[class*=" col-"] {width:100%;}
 	[class*=" col-off-"] {margin-left:0;}
-    [class*=" push-"], [class*=" pull-"] {position:static;}
-    input[type="button"], input[type="submit"], button {width:100%;}
-    .main label.form-label {text-align:left;}
+	[class*=" push-"], [class*=" pull-"] {position:static;}
+	.hidden-desktop {display:block !important;}
+	input[type="button"], input[type="submit"], button {width:100%;}
+	.header-site .logo {float:none;width:auto;}
+	.header-site ul.menu > li {/*border-bottom:1px solid #e1e1e1;*/float:none;padding:20px 0 0 0;position:static;}
+	.header-site ul.menu > li:last-child {float:none;}
+	.header-site ul.menu > li:hover ul.submenu {display:block;position:static;width:165px;}
+	.header-site ul.submenu > li {padding:20px 0 0 0;}
+	.main label.form-label {text-align:left;}
 }

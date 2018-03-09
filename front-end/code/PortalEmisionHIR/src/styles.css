@@ -48,6 +48,8 @@ html {box-sizing:border-box;}
 .rightcontainer {display:inline;float:right;}
 .clearfix {clear:both;}
 .clearfix:after{clear:both;content:"";display:block;}
+/*Devices*/
+.hidden-desktop {display:none !important;}
 /*Elementos sitio*/
 * {font-family:"PT Sans", Arial, Helvetica, sans-serif;color:#747474;}
 a {color:#333333;text-decoration:none;}
@@ -88,6 +90,7 @@ div.rdoContainer.two > input[type="radio"] {margin-right:7px;}
 .social-networks .twitter a {background-image:url(/assets/img/twitter.png) !important;width:13px;height:16px;}
 .social-networks .youtube a {background-image:url(/assets/img/youtube.png) !important;width:23px;height:25px;}
 .header-site {border-bottom:1px solid #e1e1e1;padding:0 10px;font-size:14px;}
+.header-site .navcontainer > i.fa {color:#f68c2c;float:right;}
 .header-site a {display:block;}
 .header-site .logo {float:left;margin:15px 0;overflow:hidden;padding:0 0 0 15px;width:10%;}
 .header-site .loggedContent {float:left;margin:15px 0;padding:0 15px 0 0;width:90%;}
@@ -112,7 +115,7 @@ div.rdoContainer.two > input[type="radio"] {margin-right:7px;}
 .main label.pregunta.medica {margin-bottom:0;}
 .main label.tipo-seguro {margin-bottom:15px;padding-bottom:15px;text-align:center;border-bottom:1px solid #e1e1e1;font-size:30px;color:#f68c2c;}
 .main label.sum-label {color:#f68c2c;font-size:30px;font-weight:bold;padding:15px 0;text-align:center;}
-.main label.res-label {font-weight:bold;}
+.main label.res-label {font-weight:bold;padding-top:4px;}
 .main label.res-cot {padding:30px 100px;text-align:center;border-top:1px solid #1e1e1e1e;}
 .main label.res-link {display:block;margin:15px 0 0;text-align:center;}
 .main label.msg {font-size:12px;font-style:italic;}
