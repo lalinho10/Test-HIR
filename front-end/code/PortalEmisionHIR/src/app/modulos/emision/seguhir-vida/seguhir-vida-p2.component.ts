@@ -5,8 +5,8 @@ import { Router }							  from '@angular/router';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { MODULOS }							  from 'app/core/data/modulos';
-import { FORMASPAGO }						  from 'app/core/data/formas-Pago';
 
+import { FormaPago }						  from 'app/core/models/forma-pago';
 import { Paquete }							  from 'app/core/models/paquete';
 
 @Component({
@@ -17,9 +17,9 @@ import { Paquete }							  from 'app/core/models/paquete';
 export class SeguhirVidaP2Component implements OnInit {
 	private frmSeguhirVidaP2: FormGroup;
 
+	private formasPago: FormaPago[];
 	private paquetes: Paquete[];
 
-	private formasPago = FORMASPAGO;
 	private modulos = MODULOS;
 
 	constructor(
@@ -29,6 +29,8 @@ export class SeguhirVidaP2Component implements OnInit {
 	){}
 
 	private readCatalogs(): void {
+		this.wsClientService.getObject( '/consultaFormasPagoProducto/1' )
+							.subscribe( response => this.formasPago = response.data );
 		this.wsClientService.getObject( '/consultaPaquetes' )
 							.subscribe( data => this.paquetes = data );
 	}

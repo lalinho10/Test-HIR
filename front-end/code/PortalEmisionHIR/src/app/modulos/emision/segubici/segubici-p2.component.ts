@@ -6,9 +6,8 @@ import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.validator';
 
-import { FORMASPAGO }						  from 'app/core/data/formas-Pago';
-
 import { Cobertura }						  from 'app/core/models/cobertura';
+import { FormaPago }						  from 'app/core/models/forma-pago';
 import { Ocupacion }						  from 'app/core/models/ocupacion';
 
 @Component({
@@ -20,9 +19,8 @@ export class SegubiciP2Component implements OnInit {
 	private frmSegubiciP2: FormGroup;
 
 	private coberturas: Cobertura[];
+	private formasPago: FormaPago[];
 	private ocupaciones: Ocupacion[];
-
-	private formasPago = FORMASPAGO;
 
 	constructor(
 		private router: Router,
@@ -33,7 +31,8 @@ export class SegubiciP2Component implements OnInit {
 	readCatalogs(): void {
 		this.wsClientService.getObject( '/consultaCoberturasProducto/6' )
 							.subscribe( response => this.coberturas = response.data );
-
+		this.wsClientService.getObject( '/consultaFormasPagoProducto/6' )
+							.subscribe( response => this.formasPago = response.data );
 		this.wsClientService.getObject( '/consultaOcupaciones' )
 							.subscribe( data => this.ocupaciones = data );
 	}
