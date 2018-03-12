@@ -14,6 +14,7 @@ import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
 
 import { Cobertura }						  from 'app/core/models/cobertura';
 import { FormaPago }						  from 'app/core/models/forma-pago';
+import { Plan }								  from 'app/core/models/plan';
 
 @Component({
 	selector: 'pehir-segubici',
@@ -26,6 +27,7 @@ export class SegubiciComponent implements OnInit {
 
 	private coberturas: Cobertura[];
 	private formasPago: FormaPago[];
+	private planes: Plan[];
 
 	private generos = GENEROS;
 	private fecNacOptions = FECNACOPTIONS;
@@ -41,6 +43,8 @@ export class SegubiciComponent implements OnInit {
 							.subscribe( response => this.coberturas = response.data );
 		this.wsClientService.getObject( '/consultaFormasPagoProducto/6' )
 							.subscribe( response => this.formasPago = response.data );
+		this.wsClientService.getObject( '/consultaPlanesProducto/6' )
+							.subscribe( response => this.planes = response.data );
 	}
 
 	ngOnInit() {

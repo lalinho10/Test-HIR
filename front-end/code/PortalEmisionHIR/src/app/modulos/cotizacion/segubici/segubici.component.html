@@ -144,8 +144,8 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmSegubici.controls['plan'].dirty"
 						[inputErrors]="frmSegubici.controls['plan'].errors">
-							<div class="rdoContainer two">
-								<input id="rdoPlan1" type="radio" formControlName="plan">Individual
+							<div *ngFor="let plan of planes" class="rdoContainer two">
+								<input type="radio" formControlName="plan" [value]="plan.idPlan">{{plan.descPlan}}
 							</div>
 					</pehir-extend-form-control>
 				</div>

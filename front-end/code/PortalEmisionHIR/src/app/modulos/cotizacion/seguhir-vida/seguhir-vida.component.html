@@ -87,17 +87,8 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmSeguhirVida.controls['plan'].dirty"
 						[inputErrors]="frmSeguhirVida.controls['plan'].errors">
-							<div class="rdoContainer two">
-								<input id="rdoPlan1" type="radio" value="1" formControlName="plan">Individual
-							</div>
-							<div class="rdoContainer two">
-								<input id="rdoPlan2" type="radio" value="2" formControlName="plan">Conyugal
-							</div>
-							<div class="rdoContainer two">
-								<input id="rdoPlan3" type="radio" value="3" formControlName="plan">Hijos
-							</div>
-							<div class="rdoContainer two">
-								<input id="rdoPlan4" type="radio" value="4" formControlName="plan">Familiar
+							<div *ngFor="let plan of planes" class="rdoContainer two">
+								<input type="radio" formControlName="plan" [value]="plan.idPlan">{{plan.descPlan}}
 							</div>
 					</pehir-extend-form-control>
 				</div>

@@ -15,6 +15,7 @@ import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
 
 import { FormaPago }						  from 'app/core/models/forma-pago';
 import { Paquete }							  from 'app/core/models/paquete';
+import { Plan }								  from 'app/core/models/plan';
 
 @Component({
 	selector: 'pehir-vida-ahorro',
@@ -27,6 +28,7 @@ export class VidaAhorroComponent implements OnInit {
 
 	private formasPago: FormaPago[];
 	private paquetes: Paquete[];
+	private planes: Plan[];
 
 	private generos = GENEROS;
 	private modulos = MODULOS;
@@ -43,6 +45,8 @@ export class VidaAhorroComponent implements OnInit {
 							.subscribe( response => this.formasPago = response.data );
 		this.wsClientService.getObject( '/consultaPaquetes' )
 							.subscribe( data => this.paquetes = data );
+		this.wsClientService.getObject( '/consultaPlanesProducto/5' )
+							.subscribe( response => this.planes = response.data );
 	}
 
 	ngOnInit() {
