@@ -76,8 +76,6 @@
 						</pehir-extend-form-control>
 					</div>
 				</div>
-			</div>
-			<div class="col col-50">
 				<div class="row">
 					<div class="col col-40">
 						<label id="lblDeducible" class="form-label">Deducible:</label>
@@ -90,6 +88,8 @@
 						</pehir-extend-form-control>
 					</div>
 				</div>
+			</div>
+			<div class="col col-50">
 				<div class="row">
 					<div class="col col-40">
 						<label id="lblFpago" class="form-label">Forma de pago:</label>
@@ -103,6 +103,18 @@
 								</div>
 						</pehir-extend-form-control>
 					</div>
+				</div>
+				<div class="col col-40">
+					<label id="lblPlan" class="form-label">Plan:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmSegubiciP2.controls['plan'].dirty"
+						[inputErrors]="frmSegubiciP2.controls['plan'].errors">
+							<div *ngFor="let plan of planes" class="rdoContainer two">
+								<input type="radio" formControlName="plan" [value]="plan.idPlan">{{plan.descPlan}}
+							</div>
+					</pehir-extend-form-control>
 				</div>
 			</div>
 		</div>

@@ -9,6 +9,7 @@ import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.vali
 import { Cobertura }						  from 'app/core/models/cobertura';
 import { FormaPago }						  from 'app/core/models/forma-pago';
 import { Ocupacion }						  from 'app/core/models/ocupacion';
+import { Plan }								  from 'app/core/models/plan';
 
 @Component({
 	selector: 'pehir-apindividual-p2',
@@ -21,6 +22,7 @@ export class ApindividualP2Component implements OnInit {
 	private coberturas: Cobertura[];
 	private formasPago: FormaPago[];
 	private ocupaciones: Ocupacion[];
+	private planes: Plan[];
 
 	constructor(
 		private router: Router,
@@ -35,6 +37,8 @@ export class ApindividualP2Component implements OnInit {
 							.subscribe( response => this.formasPago = response.data );
 		this.wsClientService.getObject( '/consultaOcupaciones' )
 							.subscribe( data => this.ocupaciones = data );
+		this.wsClientService.getObject( '/consultaPlanesProducto/7' )
+							.subscribe( response => this.planes = response.data );
 	}
 
 	ngOnInit() {
@@ -57,6 +61,9 @@ export class ApindividualP2Component implements OnInit {
 				Validators.required
 			])],
 			'fpago': ['', Validators.compose([
+				Validators.required
+			])],
+			'plan': ['', Validators.compose([
 				Validators.required
 			])],
 			'agente': ['', Validators.compose([

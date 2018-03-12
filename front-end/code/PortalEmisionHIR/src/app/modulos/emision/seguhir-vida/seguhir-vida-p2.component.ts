@@ -8,6 +8,7 @@ import { MODULOS }							  from 'app/core/data/modulos';
 
 import { FormaPago }						  from 'app/core/models/forma-pago';
 import { Paquete }							  from 'app/core/models/paquete';
+import { Plan }								  from 'app/core/models/plan';
 
 @Component({
 	selector: 'pehir-seguhir-vida-p2',
@@ -19,6 +20,7 @@ export class SeguhirVidaP2Component implements OnInit {
 
 	private formasPago: FormaPago[];
 	private paquetes: Paquete[];
+	private planes: Plan[];
 
 	private modulos = MODULOS;
 
@@ -33,6 +35,8 @@ export class SeguhirVidaP2Component implements OnInit {
 							.subscribe( response => this.formasPago = response.data );
 		this.wsClientService.getObject( '/consultaPaquetes' )
 							.subscribe( data => this.paquetes = data );
+		this.wsClientService.getObject( '/consultaPlanesProducto/1' )
+							.subscribe( response => this.planes = response.data );
 	}
 
 	ngOnInit() {
