@@ -127,6 +127,20 @@
 					</pehir-extend-form-control>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblFpago" class="form-label">Forma de pago:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmGastosFunerarios.controls['fpago'].dirty"
+						[inputErrors]="frmGastosFunerarios.controls['fpago'].errors">
+							<div *ngFor="let formaPago of formasPago" class="rdoContainer two">
+								<input type="radio" formControlName="fpago" [value]="formaPago.idFormaPago">{{formaPago.descFormaPago}}
+							</div>
+					</pehir-extend-form-control>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="row">

@@ -14,6 +14,7 @@ import { GENEROS }							  from 'app/core/data/generos';
 import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
 
 import { Cobertura }						  from 'app/core/models/cobertura';
+import { FormaPago }						  from 'app/core/models/forma-pago';
 
 @Component({
 	selector: 'pehir-procura-vida',
@@ -25,6 +26,7 @@ export class ProcuraVidaComponent implements OnInit {
 	private frmProcuraVida: FormGroup;
 
 	private coberturas: Cobertura[];
+	private formasPago: FormaPago[];
 
 	private modulos = MODULOS;
 	private generos = GENEROS;
@@ -39,6 +41,8 @@ export class ProcuraVidaComponent implements OnInit {
 	readCatalogs(): void {
 		this.wsClientService.getObject( '/consultaCoberturasProducto/2' )
 							.subscribe( response => this.coberturas = response.data );
+		this.wsClientService.getObject( '/consultaFormasPagoProducto/2' )
+							.subscribe( response => this.formasPago = response.data );
 	}
 
 	ngOnInit() {
@@ -78,6 +82,9 @@ export class ProcuraVidaComponent implements OnInit {
 				Validators.required
 			])],
 			'cobertura': ['', Validators.compose([
+				Validators.required
+			])],
+			'fpago': ['', Validators.compose([
 				Validators.required
 			])]
 		});

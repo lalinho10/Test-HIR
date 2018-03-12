@@ -11,9 +11,9 @@ import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.vali
 
 import { GENEROS }							  from 'app/core/data/generos';
 import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
-import { FORMASPAGO }						  from 'app/core/data/formas-Pago';
 
 import { Cobertura }						  from 'app/core/models/cobertura';
+import { FormaPago }						  from 'app/core/models/forma-pago';
 
 @Component({
 	selector: 'pehir-apindividual',
@@ -25,10 +25,10 @@ export class ApindividualComponent implements OnInit {
 	private frmApindividual: FormGroup;
 
 	private coberturas: Cobertura[];
+	private formasPago: FormaPago[];
 
 	private generos = GENEROS;
 	private fecNacOptions = FECNACOPTIONS;
-	private formasPago = FORMASPAGO;
 
 	constructor(
 		private router: Router,
@@ -39,6 +39,8 @@ export class ApindividualComponent implements OnInit {
 	readCatalogs(): void {
 		this.wsClientService.getObject( '/consultaCoberturasProducto/7' )
 							.subscribe( response => this.coberturas = response.data );
+		this.wsClientService.getObject( '/consultaFormasPagoProducto/7' )
+							.subscribe( response => this.formasPago = response.data );
 	}
 
 	ngOnInit() {
