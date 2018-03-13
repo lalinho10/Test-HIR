@@ -2,6 +2,7 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { AppModalService }					  from 'app/core/components/app-modal/app-modal.service';
+import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator }				  from 'app/core/validators/apellido.validator';
 import { CelularValidator }					  from 'app/core/validators/celular.validator';
@@ -21,7 +22,8 @@ export class RegistroComponent implements OnInit {
 
 	constructor(
 		private appModalService: AppModalService,
-		private fb: FormBuilder
+		private fb: FormBuilder,
+		private wsClientService: WSClientService
 	) {}
 
 	ngOnInit() {
@@ -67,6 +69,12 @@ export class RegistroComponent implements OnInit {
 	}
 
 	fnRegistrar(): void {
-		this.appModalService.openModal( 'info', 'Llamada a servicio de registro' );
+		this.wsClientService
+			.getObject( '/registro' )
+			.subscribe( response =>  {
+				if( response.codigoRespuesta === 200 ) {
+					this.appModalService.openModal( 'success', response.mensaje );
+				}
+			});
 	}
 }
