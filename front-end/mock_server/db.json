@@ -457,5 +457,11 @@
 		{ "idOcupacion": 3574, "descOcupacion": "JUBILADO" },
 		{ "idOcupacion": 6270, "descOcupacion": "TECNICO EN APLICACIONES ELECTRONICAS" },
 		{ "idOcupacion": 6271, "descOcupacion": "TECNICO EN AVIACION" }
-	]
+	],
+	"registro":
+	{
+		"codigoRespuesta": 200,
+		"mensaje": "Usuario registrado exitosamente",
+		"fechaOperacion": 1520957070339
+	}
 }
