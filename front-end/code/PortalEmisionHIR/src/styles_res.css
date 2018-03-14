@@ -4,9 +4,11 @@
 	[class*=" col-off-"] {margin-left:0;}
 	[class*=" push-"], [class*=" pull-"] {position:static;}
 	.hidden-desktop {display:block !important;}
-	input[type="button"], input[type="submit"], button {width:100%;}
+	button, input[type="button"], input[type="submit"] {width:100% !important;}
+	button.right, input[type="button"].right, input[type="submit"].right {margin:0 0 15px 0;}
 	.header-site .logo {float:none;width:auto;}
-	.header-site ul.menu > li {/*border-bottom:1px solid #e1e1e1;*/float:none;padding:20px 0 0 0;position:static;}
+	.header-site ul.menu > li:first-child {padding:25px 0 0 0;}
+	.header-site ul.menu > li {float:none;padding:20px 0 0 0;position:static;}
 	.header-site ul.menu > li:last-child {float:none;}
 	.header-site ul.menu > li:hover ul.submenu {display:block;position:static;width:165px;}
 	.header-site ul.submenu > li {padding:20px 0 0 0;}
