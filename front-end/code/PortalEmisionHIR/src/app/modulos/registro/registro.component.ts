@@ -1,5 +1,6 @@
 import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router }							  from '@angular/router';
 
 import { AppModalService }					  from 'app/core/components/app-modal/app-modal.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
@@ -23,6 +24,7 @@ export class RegistroComponent implements OnInit {
 	constructor(
 		private appModalService: AppModalService,
 		private fb: FormBuilder,
+		private router: Router,
 		private wsClientService: WSClientService
 	) {}
 
@@ -66,6 +68,10 @@ export class RegistroComponent implements OnInit {
 		{
 			validator: IgualdadContrasenasValidator( 'contrasena', 'confcontrasena' )
 		})
+	}
+
+	fnIrInicio(): void {
+		this.router.navigateByUrl( '/acceso/login' );
 	}
 
 	fnRegistrar(): void {
