@@ -32,7 +32,7 @@
 	<div class="row">
 		<div class="col col-30 col-off-40">
 			<label class="msg info">
-				Se enviará un código a su correo electrónico / celular que deberá ingresar en el siguiente paso
+				Se enviará un código a su celular que deberá ingresar en el siguiente paso
 			</label>
 		</div>
 	</div>
@@ -42,8 +42,11 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col col-100">
-			<button id="btnSiguiente" type="submit" [disabled]="!frmDesP1.valid">Siguiente</button>
+		<div class="col col-50">
+			<button id="btnCancelar" type="button" class="back right" (click)="fnIrInicio()">Cancelar</button>
+		</div>
+		<div class="col col-50">
+			<button id="btnSiguiente" type="submit" class="next left" [disabled]="!frmDesP1.valid">Siguiente</button>
 		</div>
 	</div>
 </form>

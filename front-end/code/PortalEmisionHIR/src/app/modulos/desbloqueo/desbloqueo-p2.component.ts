@@ -13,8 +13,8 @@ export class DesbloqueoP2Component implements OnInit {
 	private frmDesP2: FormGroup;
 
 	constructor(
-		private router: Router,
-		private fb: FormBuilder
+		private fb: FormBuilder,
+		private router: Router
 	) {}
 
 	ngOnInit() {
@@ -24,6 +24,10 @@ export class DesbloqueoP2Component implements OnInit {
 				CodigoValidator()
 			])]
 		})
+	}
+
+	fnRegresarP2Des(): void {
+		this.router.navigateByUrl( '/desbloqueo' );
 	}
 
 	fnAvanzarP3Des(): void {

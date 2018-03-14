@@ -13,8 +13,8 @@ export class DesbloqueoP1Component implements OnInit {
 	private frmDesP1: FormGroup;
 
 	constructor(
-		private router: Router,
-		private fb: FormBuilder
+		private fb: FormBuilder,
+		private router: Router
 	) {}
 
 	ngOnInit() {
@@ -29,6 +29,10 @@ export class DesbloqueoP1Component implements OnInit {
 				CelularValidator()
 			])]
 		})
+	}
+
+	fnIrInicio(): void {
+		this.router.navigateByUrl( '/acceso/login' );
 	}
 
 	fnAvanzarP2Des(): void {
