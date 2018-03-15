@@ -5,8 +5,10 @@ import { Router }							  from '@angular/router';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator } 				  from 'app/core/validators/apellido.validator';
+import { CelularValidator }					  from 'app/core/validators/celular.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
+import { TelefonoValidator }				  from 'app/core/validators/telefono.validator';
 import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
 
 import { GENEROS }							  from 'app/core/data/generos';
@@ -104,16 +106,22 @@ export class SeguhirEmpresarioP1Component implements OnInit {
 				Validators.required
 			])],
 			'telefono': ['', Validators.compose([
-				Validators.required
+				Validators.required,
+				TelefonoValidator()
 			])],
 			'celular': ['', Validators.compose([
-				Validators.required
+				Validators.required,
+				CelularValidator()
 			])],
 			'correoe1': ['', Validators.compose([
-				Validators.required
+				Validators.required,
+				Validators.email,
+				Validators.maxLength(50)
 			])],
 			'correoe2': ['', Validators.compose([
-				Validators.required
+				Validators.required,
+				Validators.email,
+				Validators.maxLength(50)
 			])]
 		});
 	}
