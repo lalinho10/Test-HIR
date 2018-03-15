@@ -15,8 +15,8 @@ export class RcontrasenaP3Component implements OnInit {
 	private frmRconP3: FormGroup;
 
 	constructor(
-		private modalService: AppModalService,
-		private fb: FormBuilder
+		private fb: FormBuilder,
+		private modalService: AppModalService
 	) {}
 
 	ngOnInit() {

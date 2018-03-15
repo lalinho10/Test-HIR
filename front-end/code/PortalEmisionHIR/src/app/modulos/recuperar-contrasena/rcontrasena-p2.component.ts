@@ -13,8 +13,8 @@ export class RcontrasenaP2Component implements OnInit {
 	private frmRconP2: FormGroup;
 
 	constructor(
-		private router: Router,
-		private fb: FormBuilder
+		private fb: FormBuilder,
+		private router: Router
 	) {}
 
 	ngOnInit() {
@@ -24,6 +24,10 @@ export class RcontrasenaP2Component implements OnInit {
 				CodigoValidator()
 			])]
 		})
+	}
+
+	fnRegresarP2Rcon(): void {
+		this.router.navigateByUrl( '/rcontrasena' );
 	}
 
 	fnAvanzarP3Rcon(): void {

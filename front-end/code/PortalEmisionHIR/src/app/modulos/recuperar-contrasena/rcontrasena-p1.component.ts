@@ -11,8 +11,8 @@ export class RcontrasenaP1Component implements OnInit {
 	private frmRconP1: FormGroup;
 
 	constructor(
-		private router: Router,
-		private fb: FormBuilder
+		private fb: FormBuilder,
+		private router: Router
 	) {}
 
 	ngOnInit() {
@@ -23,6 +23,10 @@ export class RcontrasenaP1Component implements OnInit {
 				Validators.maxLength(50)
 			])]
 		})
+	}
+
+	fnIrInicio(): void {
+		this.router.navigateByUrl( '/acceso/login' );
 	}
 
 	fnAvanzarP2Rcon(): void {
