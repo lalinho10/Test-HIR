@@ -5,8 +5,10 @@ import { Router }							  from '@angular/router';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator } 				  from 'app/core/validators/apellido.validator';
+import { CelularValidator }					  from 'app/core/validators/celular.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
+import { TelefonoValidator }				  from 'app/core/validators/telefono.validator';
 import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
 
 import { GENEROS }							  from 'app/core/data/generos';
@@ -96,13 +98,17 @@ export class SeguhirVidaP1Component implements OnInit {
 				Validators.required
 			])],
 			'telefonoCon': ['', Validators.compose([
-				Validators.required
+				Validators.required,
+				TelefonoValidator()
 			])],
 			'celularCon': ['', Validators.compose([
-				Validators.required
+				Validators.required,
+				CelularValidator()
 			])],
 			'correoeCon': ['', Validators.compose([
-				Validators.required
+				Validators.required,
+				Validators.email,
+				Validators.maxLength(50)
 			])],
 
 			'nombreTit': ['', Validators.compose([
@@ -156,13 +162,17 @@ export class SeguhirVidaP1Component implements OnInit {
 				Validators.required
 			])],
 			'telefonoTit': ['', Validators.compose([
-				Validators.required
+				Validators.required,
+				TelefonoValidator()
 			])],
 			'celularTit': ['', Validators.compose([
-				Validators.required
+				Validators.required,
+				CelularValidator()
 			])],
 			'correoeTit': ['', Validators.compose([
-				Validators.required
+				Validators.required,
+				Validators.email,
+				Validators.maxLength(50)
 			])],
 		});
 	}
