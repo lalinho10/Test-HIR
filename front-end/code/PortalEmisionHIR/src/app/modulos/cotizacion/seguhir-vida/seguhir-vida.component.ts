@@ -94,7 +94,7 @@ export class SeguhirVidaComponent implements OnInit {
 		})
 	}
 
-	cotizar(): void {
+	fnCotizar(): void {
 		this.router.navigateByUrl( '/cotizacion/resultado' );
 	}
 }

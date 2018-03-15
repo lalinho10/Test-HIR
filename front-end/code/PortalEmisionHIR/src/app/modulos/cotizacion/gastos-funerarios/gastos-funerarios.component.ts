@@ -90,7 +90,7 @@ export class GastosFunerariosComponent implements OnInit {
 		})
 	}
 
-	cotizar(): void {
+	fnCotizar(): void {
 		this.router.navigateByUrl( '/cotizacion/resultado' );
 	}
 }
