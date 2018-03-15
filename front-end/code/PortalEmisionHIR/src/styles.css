@@ -61,6 +61,7 @@ button.next, input[type="button"].next, input[type="submit"].next {background-co
 button.back, input[type="button"].back, input[type="submit"].back {background-color:#b4b4b4;}
 button.left, input[type="button"].left, input[type="submit"].left {margin:0 auto 0 0;width:33.3333%;}
 button.right, input[type="button"].right, input[type="submit"].right {margin:0 0 0 auto;width:33.3333%;}
+button.login, input[type="button"].login, input[type="submit"].login {margin:10px 0 0 0;width:100%;}
 button:disabled, input[type="button"]:disabled, input[type="submit"]:disabled {cursor:not-allowed;opacity:0.5;}
 fieldset {border:1px solid #e1e1e1;border-radius:5px;margin-bottom:15px;padding:15px;}
 legend {padding:0 8px;}
@@ -118,6 +119,7 @@ div.rdoContainer.two > input[type="radio"] {margin-right:7px;}
 .form-control {border:1px solid #b4b4b4;border-radius:5px;height:27px;width:100%;margin-bottom:15px;padding-left:5px;}
 .main label {display:block;margin-bottom:15px;}
 .main label.form-label {padding-top:4px;text-align:right;}
+.main label.form-label.login {text-align:left;}
 .main label.pregunta {padding-top:4px;text-align:left;}
 .main label.pregunta.medica {margin-bottom:0;}
 .main label.tipo-seguro {margin-bottom:15px;padding-bottom:15px;text-align:center;border-bottom:1px solid #e1e1e1;font-size:30px;color:#f68c2c;}
@@ -130,8 +132,9 @@ div.rdoContainer.two > input[type="radio"] {margin-right:7px;}
 .main label.msg.info {color:#b4b4b4;}
 .main label.msg.warning {color:#8a6d3b;}
 .main label.msg.error {color:#a94442;}
-.accesocontainer {background-color:#f0f0f0;padding:50px 15px;}
-.accesolinks {margin:30px 0 0 0;}
+.main .accesocontainer {background-color:#f0f0f0;padding:40px 15px;}
+.main .accesolinks {margin:20px 0 0 0;}
+.main .accesolinks a.first {display:block;margin:0 0 10px 0;}
 /*Footer*/
 .footer {background-color:#282a2b !important;border-top:1px solid #e9eaee !important;color:#8C8989 !important;font-size:12px;padding:0px 10px;}
 .footer .leftcontainer {padding:15px;}

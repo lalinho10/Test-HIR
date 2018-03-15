@@ -2,6 +2,8 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { AuthenticationService }			  from 'app/core/services/authentication/authentication.service';
+
 import { AppModalService }					  from 'app/core/components/app-modal/app-modal.service';
 
 import { ContrasenaValidator }				  from 'app/core/validators/contrasena.validator';
@@ -16,8 +18,9 @@ export class ContrasenaComponent implements OnInit {
 	frmContrasena: FormGroup;
 
 	constructor(
-		private modalService: AppModalService,
-		private fb: FormBuilder
+		private authenticationService: AuthenticationService,
+		private fb: FormBuilder,
+		private modalService: AppModalService
 	) {}
 
 	ngOnInit() {
@@ -34,6 +37,10 @@ export class ContrasenaComponent implements OnInit {
 		{
 			validator: IgualdadContrasenasValidator( 'contrasena', 'confcontrasena' )
 		})
+	}
+
+	fnLogout(): void {
+		this.authenticationService.logout();
 	}
 
 	fnContinuarAcceso(): void {

@@ -1,9 +1,11 @@
 <form [formGroup]="frmLogin" (ngSubmit)="fnIngresar()">
 	<div class="row">
-		<div class="col col-30">
-			<label id="lblUsuario" class="form-label">Usuario</label>
+		<div class="col col-100">
+			<label id="lblUsuario" class="form-label login">Usuario</label>
 		</div>
-		<div class="col col-70">
+	</div>
+	<div class="row">
+		<div class="col col-100">
 			<pehir-extend-form-control
 				[inputDirty]="frmLogin.controls['nombre'].dirty"
 				[inputErrors]="frmLogin.controls['nombre'].errors">
@@ -12,10 +14,12 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col col-30">
-			<label id="lblContrasena" class="form-label">Contraseña</label>
+		<div class="col col-100">
+			<label id="lblContrasena" class="form-label login">Contraseña</label>
 		</div>
-		<div class="col col-70">
+	</div>
+	<div class="row">
+		<div class="col col-100">
 			<pehir-extend-form-control
 				[inputDirty]="frmLogin.controls['clave'].dirty"
 				[inputErrors]="frmLogin.controls['clave'].errors">
@@ -25,14 +29,14 @@
 	</div>
 	<div class="row">
 		<div class="col col-100">
-			<button id="btnIngresar" type="submit" [disabled]="!frmLogin.valid">Ingresar</button>
+			<button id="btnIngresar" type="submit" class="next login" [disabled]="!frmLogin.valid">Ingresar</button>
 		</div>
 	</div>
 	<div class="row accesolinks">
-		<div class="col col-50 text-center">
-			<a id="lnkContraseña" routerLink="/rcontrasena">Olvide mi constraseña</a>
+		<div class="col col-100 text-center">
+			<a id="lnkContraseña" class="first" routerLink="/rcontrasena">Olvide mi constraseña</a>
 		</div>
-		<div class="col col-50 text-center">
+		<div class="col col-100 text-center">
 			<a id="lnkRegistro" routerLink="/registro">Registro</a>
 		</div>
 	</div>

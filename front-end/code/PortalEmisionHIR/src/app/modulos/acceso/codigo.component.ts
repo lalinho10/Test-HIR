@@ -2,6 +2,8 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { AuthenticationService }			  from 'app/core/services/authentication/authentication.service';
+
 import { CodigoValidator }					  from 'app/core/validators/codigo.validator';
 
 @Component({
@@ -13,8 +15,9 @@ export class CodigoComponent implements OnInit {
 	frmAccesoCodigo: FormGroup;
 
 	constructor(
-		private router: Router,
-		private fb: FormBuilder
+		private authenticationService: AuthenticationService,
+		private fb: FormBuilder,
+		private router: Router
 	) {}
 
 	ngOnInit() {
@@ -24,6 +27,10 @@ export class CodigoComponent implements OnInit {
 				CodigoValidator()
 			])]
 		})
+	}
+
+	fnLogout(): void {
+		this.authenticationService.logout();
 	}
 
 	fnValidarCodigo(): void {
