@@ -85,7 +85,7 @@ export class SeguhirVidaP2Component implements OnInit {
 		});
 	}
 
-	paso3(): void {
+	fnAvanzarP3(): void {
 		this.router.navigateByUrl( '/emision/seguhirvida/medico' );
 	}
 }

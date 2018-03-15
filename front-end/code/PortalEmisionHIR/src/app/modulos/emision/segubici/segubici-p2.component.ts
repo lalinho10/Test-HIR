@@ -25,8 +25,8 @@ export class SegubiciP2Component implements OnInit {
 	private planes: Plan[];
 
 	constructor(
-		private router: Router,
 		private fb: FormBuilder,
+		private router: Router,
 		private wsClientService: WSClientService
 	){}
 
@@ -74,5 +74,9 @@ export class SegubiciP2Component implements OnInit {
 				ClaveAgenteValidator()
 			])]
 		})
+	}
+
+	fnAvanzarP3(): void {
+
 	}
 }

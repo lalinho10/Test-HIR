@@ -25,8 +25,8 @@ export class ProcuraVidaP2Component implements OnInit {
 	private modulos = MODULOS;
 
 	constructor(
-		private router: Router,
 		private fb: FormBuilder,
+		private router: Router,
 		private wsClientService: WSClientService
 	){}
 
@@ -61,5 +61,9 @@ export class ProcuraVidaP2Component implements OnInit {
 				ClaveAgenteValidator()
 			])]
 		});
+	}
+
+	fnAvanzarP3(): void {
+		
 	}
 }

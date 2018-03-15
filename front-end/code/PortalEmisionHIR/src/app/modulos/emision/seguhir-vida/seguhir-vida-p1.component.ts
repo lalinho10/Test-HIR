@@ -177,7 +177,7 @@ export class SeguhirVidaP1Component implements OnInit {
 		});
 	}
 
-	paso2(): void {
+	fnAvanzarP2(): void {
 		this.router.navigateByUrl( '/emision/seguhirvida/seguro' );
 	}
 }

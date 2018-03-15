@@ -26,8 +26,8 @@ export class SegubiciP1Component implements OnInit {
 	private estadosCiviles = ESTADOSCIVILES;
 
 	constructor(
-		private router: Router,
-		private fb: FormBuilder
+		private fb: FormBuilder,
+		private router: Router
 	){}
 
 	ngOnInit() {
@@ -113,7 +113,7 @@ export class SegubiciP1Component implements OnInit {
 		});
 	}
 
-	paso2(): void {
+	fnAvanzarP2(): void {
 		this.router.navigateByUrl( '/emision/segubici/seguro' );
 	}
 }

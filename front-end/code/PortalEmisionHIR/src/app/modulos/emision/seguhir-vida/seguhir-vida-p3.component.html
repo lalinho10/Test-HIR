@@ -4,7 +4,7 @@
 		</pehir-progress-control>
 	</div>
 </div>
-<form [formGroup]="frmSeguhirVidaP3" (ngSubmit)="paso3()">
+<form [formGroup]="frmSeguhirVidaP3" (ngSubmit)="fnAvanzarP4()">
 	<fieldset>
 		<legend>Cuestionario médico del titular</legend>
 		<div class="row">
@@ -141,4 +141,9 @@
 			</div>
 		</div>
 	</fieldset>
+	<div class="row">
+		<div class="col col-100">
+			<button id="btnSiguiente" type="submit" class="next" [disabled]="!frmSeguhirVidaP3.valid">Siguiente</button>
+		</div>
+	</div>
 </form>

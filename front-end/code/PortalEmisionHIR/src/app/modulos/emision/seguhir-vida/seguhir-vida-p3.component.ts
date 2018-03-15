@@ -1,5 +1,6 @@
 import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router }							  from '@angular/router';
 
 @Component({
 	selector: 'pehir-seguhir-vida-p3',
@@ -11,6 +12,7 @@ export class SeguhirVidaP3Component implements OnInit {
 
 	constructor(
 		private fb: FormBuilder,
+		private router: Router
 	){}
 
 	ngOnInit() {
@@ -37,5 +39,9 @@ export class SeguhirVidaP3Component implements OnInit {
 				Validators.required
 			])]
 		});
+	}
+
+	fnAvanzarP4(): void {
+
 	}
 }
