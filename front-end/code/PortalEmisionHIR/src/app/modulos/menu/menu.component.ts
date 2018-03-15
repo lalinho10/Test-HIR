@@ -10,7 +10,7 @@ import { SessionModalService } from 'app/core/components/session-modal/session-m
 export class MenuComponent {
 	constructor( private sessionModalService: SessionModalService ){}
 
-	confirmarLogout(): void {
+	fnConfirmarLogout(): void {
 		this.sessionModalService.openModal();
 	}
 }
