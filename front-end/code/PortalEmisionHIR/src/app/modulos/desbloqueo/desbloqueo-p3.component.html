@@ -11,13 +11,13 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col col-100">
-			<input id="rdoSi" type="radio" [value]="true" formControlName="confirmacion"> Sí
-		</div>
-	</div>
-	<div class="row">
-		<div class="col col-100">
-			<input id="rdoNo" type="radio" [value]="false" formControlName="confirmacion"> No
+		<div class="col col-40 col-off-30">
+			<div class="rdoContainer two text-center">
+				<input id="rdoSi" type="radio" (change)="fnConfirmarCambio()" [value]="true" formControlName="confirmacion"> Sí
+			</div>
+			<div class="rdoContainer two text-center">
+				<input id="rdoNo" type="radio" (change)="fnConfirmarCambio()" [value]="false" formControlName="confirmacion"> No
+			</div>
 		</div>
 	</div>
 	<div class="row">

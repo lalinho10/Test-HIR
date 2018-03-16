@@ -37,8 +37,18 @@ export class DesbloqueoP3Component implements OnInit {
 		});
 	}
 
+	fnConfirmarCambio(): void {
+		if( this.frmDesP3.controls[ 'confirmacion' ].value ) {
+			this.frmDesP3.controls[ 'contrasena' ].enable();
+			this.frmDesP3.controls[ 'confcontrasena' ].enable();
+		} else {
+			this.frmDesP3.controls[ 'contrasena' ].disable();
+			this.frmDesP3.controls[ 'confcontrasena' ].disable();
+		}
+	}
+
 	fnDesbloquear(): void {
-		if( this.frmDesP3.controls['confirmacion'].value ) {
+		if( this.frmDesP3.controls[ 'confirmacion' ].value ) {
 			this.modalService.openModal( 'info', 'Llamada a servicio de Desbloqueo.' )
 		} else {
 			this.router.navigateByUrl( '/acceso/login' );
