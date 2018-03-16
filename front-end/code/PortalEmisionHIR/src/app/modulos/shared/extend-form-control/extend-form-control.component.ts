@@ -27,6 +27,8 @@ export class ExtendFormControlComponent implements OnChanges {
 		codigo: 'Formato de código incorrecto',
 		contrasena: 'Formato de contraseña incorrecto',
 		igualdadContrasenas: 'Las contraseñas son diferentes',
+		diferenciaTelefonos: 'Los teléfonos deben ser diferentes',
+		diferenciaCorreos: 'Los correos deben ser diferentes',
 		nombre: 'El nombre contiene caracteres no permitidos',
 		apellido: 'El apellido contiene caracteres no permitidos',
 		rfc : 'Formato de RFC incorrecto',
