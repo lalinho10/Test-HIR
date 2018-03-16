@@ -1,6 +1,7 @@
 export class Beneficiario {
 	nombre: string;
 	fechaNacimiento: Date;
-	parentesco: string;
+	idParentesco: number;
+	descParentesco: string;
 	porcentajeSuma: number;
 }

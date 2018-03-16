@@ -27,6 +27,7 @@ export class PolicyHolderTableComponent implements OnInit {
 	private fecNacOptions = FECNACOPTIONS;
 
 	private isValidSum: boolean = false;
+	private porcentaje: number = 0;
 	private sumErrorMsg: string = 'Los porcentajes de suma asegurada no dan un total de 100%'
 
 	constructor(
@@ -56,8 +57,8 @@ export class PolicyHolderTableComponent implements OnInit {
 			])],
 			'porcentajeSuma': ['', Validators.compose([
 				Validators.required,
-				Validators.min( 1 ),
-				Validators.max( 100 ),
+				Validators.min(1),
+				Validators.max(100),
 				PorcentajeValidator()
 			])]
 		});
@@ -73,7 +74,11 @@ export class PolicyHolderTableComponent implements OnInit {
 
 		beneficiario.nombre = this.frmBeneficiario.controls[ 'nombre' ].value;
 		beneficiario.fechaNacimiento = new Date( this.frmBeneficiario.controls[ 'fechanac' ].value.epoc * 1000 );
-		beneficiario.parentesco = this.frmBeneficiario.controls[ 'parentesco' ].value;
+		beneficiario.idParentesco = this.frmBeneficiario.controls[ 'parentesco' ].value;
+
+		let parentesco = this.parentescos.filter( ( parentesco: Parentesco ) => parentesco.idParentesco == beneficiario.idParentesco );
+
+		beneficiario.descParentesco = parentesco[0].descParentesco;
 		beneficiario.porcentajeSuma = this.frmBeneficiario.controls[ 'porcentajeSuma' ].value / 100;
 
 		this.beneficiarios.push( beneficiario );
@@ -93,11 +98,23 @@ export class PolicyHolderTableComponent implements OnInit {
 	}
 
 	private validarSumatoriaPorcentajes(): void {
-		var sumatoriaPorcentaje = this.beneficiarios
+		this.porcentaje = this.beneficiarios
 			.map( function( beneficiario ) { return beneficiario.porcentajeSuma } )
 			.reduce( function( a, b ) { return a + b; }, 0 );
 
-		this.isValidSum = ( sumatoriaPorcentaje === 1 );
+		this.isValidSum = ( this.porcentaje === 1 );
+
+		if(!this.isValidSum) {
+			this.frmBeneficiario.controls[ 'nombre' ].enable();
+			this.frmBeneficiario.controls[ 'fechanac' ].enable();
+			this.frmBeneficiario.controls[ 'parentesco' ].enable();
+			this.frmBeneficiario.controls[ 'porcentajeSuma' ].enable();
+		} else {
+			this.frmBeneficiario.controls[ 'nombre' ].disable();
+			this.frmBeneficiario.controls[ 'fechanac' ].disable();
+			this.frmBeneficiario.controls[ 'parentesco' ].disable();
+			this.frmBeneficiario.controls[ 'porcentajeSuma' ].disable();
+		}
 	}
 
 	private validarFomulario(): void {

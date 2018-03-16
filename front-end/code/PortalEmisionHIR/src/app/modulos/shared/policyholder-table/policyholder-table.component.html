@@ -13,7 +13,7 @@
 			<tr *ngFor="let beneficiario of beneficiarios; let i=index">
 				<td>{{beneficiario.nombre}}</td>
 				<td class="center">{{ beneficiario.fechaNacimiento | date: 'dd/MM/yyyy' }}</td>
-				<td class="center">{{ beneficiario.parentesco }}</td>
+				<td class="center">{{ beneficiario.descParentesco }}</td>
 				<td class="center">{{ beneficiario.porcentajeSuma | percent }}</td>
 				<td class="center">
 					<a (click)="eliminarBeneficiario(i)"><i class="fa fa-minus-square-o fa-lg"></i></a>
@@ -60,6 +60,13 @@
 						<i class="fa fa-plus-square-o fa-lg"></i>
 					</a>
 				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td class="result">Total</td>
+				<td class="result">{{ porcentaje | percent }}</td>
+				<td></td>
 			</tr>
 		</tfoot>
 	</table>
