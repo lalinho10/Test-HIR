@@ -7,7 +7,8 @@
 <form [formGroup]="frmGastosFunerariosP2" (ngSubmit)="fnAvanzarP3()">
 	<fieldset>
 		<legend>Beneficiarios</legend>
-		<pehir-policyholder-table></pehir-policyholder-table>
+		<pehir-policyholder-table (onValidateTable)="onValidateTable($event)">
+		</pehir-policyholder-table>
 	</fieldset>
 	<fieldset>
 		<legend>Información del seguro</legend>
@@ -113,7 +114,7 @@
 	</fieldset>
 	<div class="row">
 		<div class="col col-100">
-			<button id="btnSiguiente" type="submit" class="next" [disabled]="!frmGastosFunerariosP2.valid">Siguiente</button>
+			<button id="btnSiguiente" type="submit" class="next" [disabled]="!frmGastosFunerariosP2.valid || !isValidTable">Siguiente</button>
 		</div>
 	</div>
 </form>

@@ -17,6 +17,8 @@ import { FormaPago }						  from 'app/core/models/forma-pago';
 })
 
 export class GastosFunerariosP2Component implements OnInit {
+	private isValidTable = false;
+
 	private frmGastosFunerariosP2: FormGroup;
 
 	private coberturas: Cobertura[];
@@ -61,6 +63,10 @@ export class GastosFunerariosP2Component implements OnInit {
 				ClaveAgenteValidator()
 			])]
 		});
+	}
+
+	onValidateTable( isValidTable ): void {
+		this.isValidTable = isValidTable;
 	}
 
 	fnAvanzarP3(): void {
