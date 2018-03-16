@@ -6,6 +6,7 @@ import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator } 				  from 'app/core/validators/apellido.validator';
 import { CelularValidator }					  from 'app/core/validators/celular.validator';
+import { CodigoPostalValidator }			  from 'app/core/validators/codigo-postal.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
 import { TelefonoValidator }				  from 'app/core/validators/telefono.validator';
@@ -103,7 +104,8 @@ export class SeguhirEmpresarioP1Component implements OnInit {
 				Validators.required
 			])],
 			'cp': ['', Validators.compose([
-				Validators.required
+				Validators.required,
+				CodigoPostalValidator()
 			])],
 			'telefono': ['', Validators.compose([
 				Validators.required,

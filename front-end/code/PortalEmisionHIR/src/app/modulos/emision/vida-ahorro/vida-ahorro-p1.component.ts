@@ -6,6 +6,7 @@ import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator } 				  from 'app/core/validators/apellido.validator';
 import { CelularValidator }					  from 'app/core/validators/celular.validator';
+import { CodigoPostalValidator }			  from 'app/core/validators/codigo-postal.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
 import { TelefonoValidator }				  from 'app/core/validators/telefono.validator';
@@ -95,7 +96,8 @@ export class VidaAhorroP1Component implements OnInit {
 				Validators.required
 			])],
 			'cpCon': ['', Validators.compose([
-				Validators.required
+				Validators.required,
+				CodigoPostalValidator()
 			])],
 			'telefonoCon': ['', Validators.compose([
 				Validators.required,
@@ -159,7 +161,8 @@ export class VidaAhorroP1Component implements OnInit {
 				Validators.required
 			])],
 			'cpTit': ['', Validators.compose([
-				Validators.required
+				Validators.required,
+				CodigoPostalValidator()
 			])],
 			'telefonoTit': ['', Validators.compose([
 				Validators.required,
