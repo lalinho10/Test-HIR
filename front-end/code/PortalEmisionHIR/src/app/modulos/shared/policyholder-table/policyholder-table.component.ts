@@ -1,16 +1,16 @@
-import { Component, OnInit }				  from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormGroup, FormBuilder, Validators }	   from '@angular/forms';
 
-import { WSClientService }					  from 'app/core/services/ws-client.service';
+import { WSClientService }						   from 'app/core/services/ws-client.service';
 
-import { NombreValidator }					  from 'app/core/validators/nombre.validator';
-import { PorcentajeValidator }				  from 'app/core/validators/porcentaje.validator';
+import { NombreValidator }						   from 'app/core/validators/nombre.validator';
+import { PorcentajeValidator }					   from 'app/core/validators/porcentaje.validator';
 
-import { Beneficiario }						  from 'app/core/models/beneficiario';
+import { Beneficiario }							   from 'app/core/models/beneficiario';
 
-import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
+import { FECNACOPTIONS }						   from 'app/core/data/fecNacOptions';
 
-import { Parentesco }						  from 'app/core/models/parentesco';
+import { Parentesco }							   from 'app/core/models/parentesco';
 
 @Component({
 	selector: 'pehir-policyholder-table',
@@ -19,6 +19,9 @@ import { Parentesco }						  from 'app/core/models/parentesco';
 })
 
 export class PolicyHolderTableComponent implements OnInit {
+	@Output()
+	onValidateTable: EventEmitter<boolean> = new EventEmitter<boolean>();
+
 	private frmBeneficiario: FormGroup;
 	private beneficiarios: Beneficiario[] = [];
 
@@ -103,6 +106,8 @@ export class PolicyHolderTableComponent implements OnInit {
 			.reduce( function( a, b ) { return a + b; }, 0 );
 
 		this.isValidSum = ( this.porcentaje === 1 );
+
+		this.onValidateTable.emit( this.isValidSum );
 
 		if(!this.isValidSum) {
 			this.frmBeneficiario.controls[ 'nombre' ].enable();
