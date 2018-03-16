@@ -32,7 +32,8 @@ export class ExtendFormControlComponent implements OnChanges {
 		rfc : 'Formato de RFC incorrecto',
 		porcentaje: 'El porcentaje asigando es inválido',
 		entreedades: 'No cumples con el rango de edad para la contratación de este producto',
-		claveAgente: 'Formato de clave incorrecto'
+		claveAgente: 'Formato de clave incorrecto',
+		codigoPostal: 'Fomato de código postal incorrecto'
 	};
 
 	ngOnChanges( changes: SimpleChanges ): void {
