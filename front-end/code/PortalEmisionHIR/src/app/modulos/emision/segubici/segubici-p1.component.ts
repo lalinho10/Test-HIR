@@ -115,6 +115,22 @@ export class SegubiciP1Component implements OnInit {
 		});
 	}
 
+	fnCambiarGobierno(): void {
+		if( this.frmSegubiciP1.controls[ 'gobierno' ].value ) {
+			this.frmSegubiciP1.controls[ 'especifiqueGob' ].enable();
+		} else {
+			this.frmSegubiciP1.controls[ 'especifiqueGob' ].disable();
+		}
+	}
+
+	fnCambiarParienteGob(): void {
+		if( this.frmSegubiciP1.controls[ 'parienteGob' ].value ) {
+			this.frmSegubiciP1.controls[ 'especifiqueParGob' ].enable();
+		} else {
+			this.frmSegubiciP1.controls[ 'especifiqueParGob' ].disable();
+		}
+	}
+
 	fnAvanzarP2(): void {
 		this.router.navigateByUrl( '/emision/segubici/seguro' );
 	}
