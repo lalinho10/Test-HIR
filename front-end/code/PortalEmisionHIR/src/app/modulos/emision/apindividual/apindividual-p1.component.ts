@@ -115,6 +115,26 @@ export class ApindividualP1Component implements OnInit {
 		});
 	}
 
+	fnCambiarGobierno(): void {
+		this.frmApindividualP1.controls[ 'especifiqueGob' ].setValue( '' );
+
+		if( this.frmApindividualP1.controls[ 'gobierno' ].value ) {
+			this.frmApindividualP1.controls[ 'especifiqueGob' ].enable();
+		} else {
+			this.frmApindividualP1.controls[ 'especifiqueGob' ].disable();
+		}
+	}
+
+	fnCambiarParienteGob(): void {
+		this.frmApindividualP1.controls[ 'especifiqueParGob' ].setValue( '' );
+
+		if( this.frmApindividualP1.controls[ 'parienteGob' ].value ) {
+			this.frmApindividualP1.controls[ 'especifiqueParGob' ].enable();
+		} else {
+			this.frmApindividualP1.controls[ 'especifiqueParGob' ].disable();
+		}
+	}
+
 	fnAvanzarP2(): void {
 		this.router.navigateByUrl( '/emision/apindividual/seguro' );
 	}
