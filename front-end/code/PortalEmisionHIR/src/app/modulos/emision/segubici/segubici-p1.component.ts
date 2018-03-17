@@ -116,6 +116,8 @@ export class SegubiciP1Component implements OnInit {
 	}
 
 	fnCambiarGobierno(): void {
+		this.frmSegubiciP1.controls[ 'especifiqueGob' ].setValue( '' );
+
 		if( this.frmSegubiciP1.controls[ 'gobierno' ].value ) {
 			this.frmSegubiciP1.controls[ 'especifiqueGob' ].enable();
 		} else {
@@ -124,6 +126,8 @@ export class SegubiciP1Component implements OnInit {
 	}
 
 	fnCambiarParienteGob(): void {
+		this.frmSegubiciP1.controls[ 'especifiqueParGob' ].setValue( '' );
+
 		if( this.frmSegubiciP1.controls[ 'parienteGob' ].value ) {
 			this.frmSegubiciP1.controls[ 'especifiqueParGob' ].enable();
 		} else {
