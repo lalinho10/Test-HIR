@@ -38,6 +38,9 @@ export class DesbloqueoP3Component implements OnInit {
 	}
 
 	fnConfirmarCambio(): void {
+		this.frmDesP3.controls[ 'contrasena' ].setValue( '' );
+		this.frmDesP3.controls[ 'confcontrasena' ].setValue( '' );
+
 		if( this.frmDesP3.controls[ 'confirmacion' ].value ) {
 			this.frmDesP3.controls[ 'contrasena' ].enable();
 			this.frmDesP3.controls[ 'confcontrasena' ].enable();
