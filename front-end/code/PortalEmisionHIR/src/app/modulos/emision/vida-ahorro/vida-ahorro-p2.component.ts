@@ -85,6 +85,26 @@ export class VidaAhorroP2Component implements OnInit {
 		});
 	}
 
+	fnCambiarGobierno(): void {
+		this.frmVidaAhorroP2.controls[ 'especifiqueGob' ].setValue( '' );
+
+		if( this.frmVidaAhorroP2.controls[ 'gobierno' ].value ) {
+			this.frmVidaAhorroP2.controls[ 'especifiqueGob' ].enable();
+		} else {
+			this.frmVidaAhorroP2.controls[ 'especifiqueGob' ].disable();
+		}
+	}
+
+	fnCambiarParienteGob(): void {
+		this.frmVidaAhorroP2.controls[ 'especifiqueParGob' ].setValue( '' );
+
+		if( this.frmVidaAhorroP2.controls[ 'parienteGob' ].value ) {
+			this.frmVidaAhorroP2.controls[ 'especifiqueParGob' ].enable();
+		} else {
+			this.frmVidaAhorroP2.controls[ 'especifiqueParGob' ].disable();
+		}
+	}
+
 	fnAvanzarP3(): void {
 		this.router.navigateByUrl( '/emision/vidaahorro/medico' );
 	}
