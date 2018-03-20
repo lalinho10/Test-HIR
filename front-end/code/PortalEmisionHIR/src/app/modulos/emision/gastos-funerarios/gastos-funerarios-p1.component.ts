@@ -6,8 +6,10 @@ import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator } 				  from 'app/core/validators/apellido.validator';
 import { CelularValidator }					  from 'app/core/validators/celular.validator';
+import { EstaturaValidator }				  from 'app/core/validators/estatura.validator';
 import { CodigoPostalValidator }			  from 'app/core/validators/codigo-postal.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
+import { PesoValidator }					  from 'app/core/validators/peso.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
 import { TelefonoValidator }				  from 'app/core/validators/telefono.validator';
 import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
@@ -51,10 +53,12 @@ export class GastosFunerariosP1Component implements OnInit {
 				Validators.required
 			])],
 			'peso':['', Validators.compose([
-				Validators.required
+				Validators.required,
+				PesoValidator()
 			])],
-			'talla':['', Validators.compose([
-				Validators.required
+			'estatura':['', Validators.compose([
+				Validators.required,
+				EstaturaValidator()
 			])],
 			'nombre': ['', Validators.compose([
 				Validators.required,
