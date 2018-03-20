@@ -118,6 +118,11 @@ div.rdoContainer.two > input[type="radio"] {margin-right:7px;}
 .titulo {border-bottom:1px solid #e1e1e1;font-size:18px !important;margin-bottom:15px;text-align:center;padding-bottom:15px;}
 .text-center {text-align:center;}
 .form-control {border:1px solid #b4b4b4;border-radius:5px;height:27px;width:100%;margin-bottom:15px;padding-left:5px;}
+.form-group > .form-control.left{float:left;padding-right:30px;}
+.form-group > .form-control.right{float:right;padding-left:30px;}
+.form-group > .control-text{background-color:#e6e6e6;border:1px solid #b4b4b4;display:block;height:27px;margin-top:-42px;padding:4px 0;text-align:center;width:27px;}
+.form-group > .control-text.left{border-radius:5px 0 0 5px;float:left;}
+.form-group > .control-text.right{border-radius:0 5px 5px 0;float:right;}
 .main label {display:block;margin-bottom:15px;}
 .main label.form-label {padding-top:4px;text-align:right;}
 .main label.form-label.login {text-align:left;}
