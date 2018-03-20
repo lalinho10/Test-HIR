@@ -85,6 +85,26 @@ export class SeguhirVidaP2Component implements OnInit {
 		});
 	}
 
+	fnCambiarGobierno(): void {
+		this.frmSeguhirVidaP2.controls[ 'especifiqueGob' ].setValue( '' );
+
+		if( this.frmSeguhirVidaP2.controls[ 'gobierno' ].value ) {
+			this.frmSeguhirVidaP2.controls[ 'especifiqueGob' ].enable();
+		} else {
+			this.frmSeguhirVidaP2.controls[ 'especifiqueGob' ].disable();
+		}
+	}
+
+	fnCambiarParienteGob(): void {
+		this.frmSeguhirVidaP2.controls[ 'especifiqueParGob' ].setValue( '' );
+
+		if( this.frmSeguhirVidaP2.controls[ 'parienteGob' ].value ) {
+			this.frmSeguhirVidaP2.controls[ 'especifiqueParGob' ].enable();
+		} else {
+			this.frmSeguhirVidaP2.controls[ 'especifiqueParGob' ].disable();
+		}
+	}
+
 	fnAvanzarP3(): void {
 		this.router.navigateByUrl( '/emision/seguhirvida/medico' );
 	}
