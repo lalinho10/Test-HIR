@@ -35,7 +35,9 @@ export class ExtendFormControlComponent implements OnChanges {
 		porcentaje: 'El porcentaje asigando es inválido',
 		entreedades: 'No cumples con el rango de edad para la contratación de este producto',
 		claveAgente: 'Formato de clave incorrecto',
-		codigoPostal: 'Fomato de código postal incorrecto'
+		codigoPostal: 'Fomato de código postal incorrecto',
+		peso: 'Formato de peso incorrecto',
+		estatura: 'Formato de estatura incorrecto'
 	};
 
 	ngOnChanges( changes: SimpleChanges ): void {
