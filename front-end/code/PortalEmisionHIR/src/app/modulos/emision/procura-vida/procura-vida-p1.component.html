@@ -38,7 +38,10 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmProcuraVidaP1.controls['peso'].dirty"
 							[inputErrors]="frmProcuraVidaP1.controls['peso'].errors">
-								<input id="txtPeso" type="text" class="form-control" formControlName="peso">
+								<div class="form-group">
+									<input id="txtPeso" type="text" class="form-control left" formControlName="peso">
+									<span class="control-text right">kg</span>
+								</div>
 						</pehir-extend-form-control>
 					</div>
 				</div>
@@ -52,7 +55,10 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmProcuraVidaP1.controls['talla'].dirty"
 							[inputErrors]="frmProcuraVidaP1.controls['talla'].errors">
-								<input id="txtTalla" type="text" class="form-control" formControlName="talla">
+								<div class="form-group">
+									<input id="txtTalla" type="text" class="form-control left" formControlName="talla">
+									<span class="control-text right">m</span>
+								</div>
 						</pehir-extend-form-control>
 					</div>
 				</div>
