@@ -72,7 +72,10 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmApindividualP2.controls['sumasegurada'].dirty"
 							[inputErrors]="frmApindividualP2.controls['sumasegurada'].errors">
-								<input id="txtSumasegurada" type="text" class="form-control" formControlName="sumasegurada">
+								<div class="form-group">
+									<input id="txtSumasegurada" type="text" class="form-control right" formControlName="sumasegurada">
+									<span class="control-text left">$</span>
+								</div>
 						</pehir-extend-form-control>
 					</div>
 				</div>
@@ -84,7 +87,10 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmApindividualP2.controls['deducible'].dirty"
 							[inputErrors]="frmApindividualP2.controls['deducible'].errors">
-								<input id="txtDeducible" type="text" class="form-control" formControlName="deducible">
+								<div class="form-group">
+									<input id="txtDeducible" type="text" class="form-control right" formControlName="deducible">
+									<span class="control-text left">$</span>
+								</div>
 						</pehir-extend-form-control>
 					</div>
 				</div>
