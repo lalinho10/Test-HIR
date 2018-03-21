@@ -2,11 +2,11 @@
 	<table id="tblBeneficiario">
 		<thead>
 			<tr>
-				<th>Nombre completo</th>
-				<th>Fecha de nacimiento</th>
-				<th>Parentesco</th>
-				<th>% de la suma asegurada</th>
-				<th></th>
+				<th class="nombre">Nombre completo</th>
+				<th class="fecha">Fecha de nacimiento</th>
+				<th class="parentesco">Parentesco</th>
+				<th class="porcentaje">% de la suma asegurada</th>
+				<th class="control"></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -52,7 +52,10 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmBeneficiario.controls['porcentajeSuma'].dirty"
 						[inputErrors]="frmBeneficiario.controls['porcentajeSuma'].errors">
-							<input id="txtPorcentajeSuma" type="text" class="form-control" formControlName="porcentajeSuma">
+							<div class="form-group">
+								<input id="txtPorcentajeSuma" type="text" class="form-control left" formControlName="porcentajeSuma">
+								<span class="control-text right">%</span>
+							</div>
 					</pehir-extend-form-control>
 				</td>
 				<td class="center">

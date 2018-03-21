@@ -4,6 +4,11 @@ table td.center {text-align:center;}
 table a {cursor:pointer;}
 table a:hover .fa {color:#f68c2c;}
 table th, table td {padding:10px 5px;}
+table th.nombre {width:40%;}
+table th.fecha {width:25%;}
+table th.parentesco {width:20%;}
+table th.porcentaje {width:10%;}
+table th.control {width:5%;}
 table > thead > tr > th {background-color:#1e3154;color:#fafafa;}
 table > tbody > tr:nth-child( even ) {background-color:#f0f0f0;}
 table > tfoot > tr > td {vertical-align:top;}
