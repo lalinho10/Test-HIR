@@ -106,7 +106,10 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmSeguhirEmpresario.controls['sumasegurada'].dirty"
 						[inputErrors]="frmSeguhirEmpresario.controls['sumasegurada'].errors">
-							<input id="txtSumasegurada" type="text" class="form-control" formControlName="sumasegurada">
+							<div class="form-group">
+								<input id="txtSumasegurada" type="text" class="form-control right" formControlName="sumasegurada">
+								<span class="control-text left">$</span>
+							</div>
 					</pehir-extend-form-control>
 				</div>
 			</div>
