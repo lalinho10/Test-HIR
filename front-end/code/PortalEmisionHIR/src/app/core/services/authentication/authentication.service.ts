@@ -32,12 +32,12 @@ export class AuthenticationService {
 
 	public isAuthenticated(): boolean {
 		const token = localStorage.getItem( 'token' );
+
+		let hasToken = ( token ) ? true : false;
 		
-		if( token ) {
-			return true;
-		} else {
-			return false;
-		}
+		this.authenticated.next( hasToken );
+
+		return hasToken;
 	}
 
 	public logout(): void {
