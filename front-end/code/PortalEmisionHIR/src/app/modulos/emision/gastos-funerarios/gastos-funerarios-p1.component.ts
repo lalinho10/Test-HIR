@@ -6,13 +6,15 @@ import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator } 				  from 'app/core/validators/apellido.validator';
 import { CelularValidator }					  from 'app/core/validators/celular.validator';
-import { EstaturaValidator }				  from 'app/core/validators/estatura.validator';
 import { CodigoPostalValidator }			  from 'app/core/validators/codigo-postal.validator';
+import { EstaturaValidator }				  from 'app/core/validators/estatura.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { PesoValidator }					  from 'app/core/validators/peso.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
 import { TelefonoValidator }				  from 'app/core/validators/telefono.validator';
 import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
+import { DiferenciaCorreosValidator }		  from 'app/core/validators/diferencia-correos.validator';
+import { DiferenciaTelefonosValidator }		  from 'app/core/validators/diferencia-telefonos.validator';
 
 import { GENEROS }							  from 'app/core/data/generos';
 import { ESTADOSCIVILES }					  from 'app/core/data/estadosCiviles';
@@ -111,24 +113,36 @@ export class GastosFunerariosP1Component implements OnInit {
 				Validators.required,
 				CodigoPostalValidator()
 			])],
-			'telefono': ['', Validators.compose([
+
+			'telefonos': this.fb.group({
+				'telefono': ['', Validators.compose([
 				Validators.required,
 				TelefonoValidator()
-			])],
-			'celular': ['', Validators.compose([
-				Validators.required,
-				CelularValidator()
-			])],
-			'correoe1': ['', Validators.compose([
-				Validators.required,
-				Validators.email,
-				Validators.maxLength(50)
-			])],
-			'correoe2': ['', Validators.compose([
-				Validators.required,
-				Validators.email,
-				Validators.maxLength(50)
-			])]
+				])],
+				'celular': ['', Validators.compose([
+					Validators.required,
+					CelularValidator()
+				])]
+			},
+			{
+				validator: DiferenciaTelefonosValidator( 'telefono', 'celular' )
+			}),
+
+			'correos': this.fb.group({
+				'correoe1': ['', Validators.compose([
+					Validators.required,
+					Validators.email,
+					Validators.maxLength(50)
+				])],
+				'correoe2': ['', Validators.compose([
+					Validators.required,
+					Validators.email,
+					Validators.maxLength(50)
+				])]
+			},
+			{
+				validator: DiferenciaCorreosValidator( 'correoe1', 'correoe2' )
+			})
 		});
 	}
 
