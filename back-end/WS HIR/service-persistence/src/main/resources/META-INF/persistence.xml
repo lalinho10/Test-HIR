@@ -1,0 +1,31 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+        version="2.0">
+    <persistence-unit name="eservicesEM" transaction-type="JTA">
+    	<jta-data-source>java:/MSSQLDS1</jta-data-source>
+    	
+    	<class>mx.com.dti.os.service.persistence.entity.configuracion.CatFacultad</class>
+    	<class>mx.com.dti.os.service.persistence.entity.configuracion.CatModulo</class>
+    	<class>mx.com.dti.os.service.persistence.entity.configuracion.CatRol</class>
+    	<class>mx.com.dti.os.service.persistence.entity.configuracion.CatServicios</class>
+    	<class>mx.com.dti.os.service.persistence.entity.configuracion.CatState</class>
+    	<class>mx.com.dti.os.service.persistence.entity.configuracion.TblFacRol</class>
+    	<class>mx.com.dti.os.service.persistence.entity.configuracion.TblModuloRegla</class>
+    	
+    	<properties>
+         <!-- <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/omnisuite"/>
+         <property name="javax.persistence.jdbc.user" value="root"/>
+         <property name="javax.persistence.jdbc.password" value="garatcafe"/>
+         <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+         <property name="eclipselink.ddl-generation" value="create-tables"/> -->
+         
+         
+         <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
+		 <property name="hibernate.show_sql" value="true" />
+		 <property name="hibernate.connection.release_mode" value="after_transaction"/>
+		 <property name="hibernate.transaction.auto_close_session" value="false"/>
+      </properties>
+        
+    </persistence-unit>
+</persistence>
