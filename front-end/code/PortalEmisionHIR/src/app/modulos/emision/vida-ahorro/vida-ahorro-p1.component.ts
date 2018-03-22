@@ -11,6 +11,7 @@ import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
 import { TelefonoValidator }				  from 'app/core/validators/telefono.validator';
 import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
+import { DiferenciaTelefonosValidator }		  from 'app/core/validators/diferencia-telefonos.validator';
 
 import { GENEROS }							  from 'app/core/data/generos';
 import { ESTADOSCIVILES }					  from 'app/core/data/estadosCiviles';
@@ -99,14 +100,19 @@ export class VidaAhorroP1Component implements OnInit {
 				Validators.required,
 				CodigoPostalValidator()
 			])],
-			'telefonoCon': ['', Validators.compose([
+			'telefonosCon': this.fb.group({
+				'telefonoCon': ['', Validators.compose([
 				Validators.required,
 				TelefonoValidator()
-			])],
-			'celularCon': ['', Validators.compose([
-				Validators.required,
-				CelularValidator()
-			])],
+				])],
+				'celularCon': ['', Validators.compose([
+					Validators.required,
+					CelularValidator()
+				])]
+			},
+			{
+				validator: DiferenciaTelefonosValidator( 'telefonoCon', 'celularCon' )
+			}),
 			'correoeCon': ['', Validators.compose([
 				Validators.required,
 				Validators.email,
@@ -164,14 +170,19 @@ export class VidaAhorroP1Component implements OnInit {
 				Validators.required,
 				CodigoPostalValidator()
 			])],
-			'telefonoTit': ['', Validators.compose([
+			'telefonosTit': this.fb.group({
+				'telefonoTit': ['', Validators.compose([
 				Validators.required,
 				TelefonoValidator()
-			])],
-			'celularTit': ['', Validators.compose([
-				Validators.required,
-				CelularValidator()
-			])],
+				])],
+				'celularTit': ['', Validators.compose([
+					Validators.required,
+					CelularValidator()
+				])]
+			},
+			{
+				validator: DiferenciaTelefonosValidator( 'telefonoTit', 'celularTit' )
+			}),
 			'correoeTit': ['', Validators.compose([
 				Validators.required,
 				Validators.email,

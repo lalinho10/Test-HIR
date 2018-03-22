@@ -198,28 +198,31 @@
 						</pehir-extend-form-control>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblTelefonoCon" class="form-label">Teléfono de casa/oficina:</label>
+				<div formGroupName="telefonosCon">
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblTelefonoCon" class="form-label">Teléfono de casa/oficina:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmVidaAhorroP1.controls['telefonosCon'].controls['telefonoCon'].dirty"
+								[inputErrors]="frmVidaAhorroP1.controls['telefonosCon'].controls['telefonoCon'].errors">
+									<input id="txtTelefonoCon" type="text" class="form-control" formControlName="telefonoCon">
+							</pehir-extend-form-control>
+						</div>
 					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmVidaAhorroP1.controls['telefonoCon'].dirty"
-							[inputErrors]="frmVidaAhorroP1.controls['telefonoCon'].errors">
-								<input id="txtTelefonoCon" type="text" class="form-control" formControlName="telefonoCon">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblCelularCon" class="form-label">Teléfono móvil:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmVidaAhorroP1.controls['celularCon'].dirty"
-							[inputErrors]="frmVidaAhorroP1.controls['celularCon'].errors">
-								<input id="txtCelularCon" type="text" class="form-control" formControlName="celularCon">
-						</pehir-extend-form-control>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblCelularCon" class="form-label">Teléfono móvil:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmVidaAhorroP1.controls['telefonosCon'].controls['celularCon'].dirty"
+								[inputErrors]="frmVidaAhorroP1.controls['telefonosCon'].controls['celularCon'].errors"
+								[formErrors]="frmVidaAhorroP1.controls['telefonosCon'].errors">
+									<input id="txtCelularCon" type="text" class="form-control" formControlName="celularCon">
+							</pehir-extend-form-control>
+						</div>
 					</div>
 				</div>
 				<div class="row">
@@ -430,28 +433,31 @@
 						</pehir-extend-form-control>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblTelefonoTit" class="form-label">Teléfono de casa/oficina:</label>
+				<div formGroupName="telefonosTit">
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblTelefonoTit" class="form-label">Teléfono de casa/oficina:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmVidaAhorroP1.controls['telefonosTit'].controls['telefonoTit'].dirty"
+								[inputErrors]="frmVidaAhorroP1.controls['telefonosTit'].controls['telefonoTit'].errors">
+									<input id="txtTelefonoTit" type="text" class="form-control" formControlName="telefonoTit">
+							</pehir-extend-form-control>
+						</div>
 					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmVidaAhorroP1.controls['telefonoTit'].dirty"
-							[inputErrors]="frmVidaAhorroP1.controls['telefonoTit'].errors">
-								<input id="txtTelefonoTit" type="text" class="form-control" formControlName="telefonoTit">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblCelularTit" class="form-label">Teléfono móvil:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmVidaAhorroP1.controls['celularTit'].dirty"
-							[inputErrors]="frmVidaAhorroP1.controls['celularTit'].errors">
-								<input id="txtCelularTit" type="text" class="form-control" formControlName="celularTit">
-						</pehir-extend-form-control>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblCelularTit" class="form-label">Teléfono móvil:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmVidaAhorroP1.controls['telefonosTit'].controls['celularTit'].dirty"
+								[inputErrors]="frmVidaAhorroP1.controls['telefonosTit'].controls['celularTit'].errors"
+								[formErrors]="frmVidaAhorroP1.controls['telefonosTit'].errors">
+									<input id="txtCelularTit" type="text" class="form-control" formControlName="celularTit">
+							</pehir-extend-form-control>
+						</div>
 					</div>
 				</div>
 				<div class="row">
