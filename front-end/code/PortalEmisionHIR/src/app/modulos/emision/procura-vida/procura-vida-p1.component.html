@@ -4,6 +4,7 @@
 		</pehir-progress-control>
 	</div>
 </div>
+{{frmProcuraVidaP1.value | json}}
 <form [formGroup]="frmProcuraVidaP1" (ngSubmit)="fnAvanzarP2()">
 	<fieldset>
 		<legend>Información médica</legend>
@@ -258,52 +259,58 @@
 				</div>
 			</div>
 			<div class="col col-50">
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblTelefono" class="form-label">Teléfono de casa/oficina:</label>
+				<div formGroupName="telefonos">
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblTelefono" class="form-label">Teléfono de casa/oficina:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmProcuraVidaP1.controls['telefonos'].controls['telefono'].dirty"
+								[inputErrors]="frmProcuraVidaP1.controls['telefonos'].controls['telefono'].errors">
+									<input id="txtTelefono" type="text" class="form-control" formControlName="telefono">
+							</pehir-extend-form-control>
+						</div>
 					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP1.controls['telefono'].dirty"
-							[inputErrors]="frmProcuraVidaP1.controls['telefono'].errors">
-								<input id="txtTelefono" type="text" class="form-control" formControlName="telefono">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblCelular" class="form-label">Teléfono móvil:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP1.controls['celular'].dirty"
-							[inputErrors]="frmProcuraVidaP1.controls['celular'].errors">
-								<input id="txtCelular" type="text" class="form-control" formControlName="celular">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblCorreoe1" class="form-label">e-mail 1:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP1.controls['correoe1'].dirty"
-							[inputErrors]="frmProcuraVidaP1.controls['correoe1'].errors">
-								<input id="txtCorreoe1" type="text" class="form-control" formControlName="correoe1">
-						</pehir-extend-form-control>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblCelular" class="form-label">Teléfono móvil:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmProcuraVidaP1.controls['telefonos'].controls['celular'].dirty"
+								[inputErrors]="frmProcuraVidaP1.controls['telefonos'].controls['celular'].errors"
+								[formErrors]="frmProcuraVidaP1.controls['telefonos'].errors">
+									<input id="txtCelular" type="text" class="form-control" formControlName="celular">
+							</pehir-extend-form-control>
+						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblCorreoe2" class="form-label">e-mail 2:</label>
+				<div formGroupName="correos">
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblCorreoe1" class="form-label">e-mail 1:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmProcuraVidaP1.controls['correos'].controls['correoe1'].dirty"
+								[inputErrors]="frmProcuraVidaP1.controls['correos'].controls['correoe1'].errors">
+									<input id="txtCorreoe1" type="text" class="form-control" formControlName="correoe1">
+							</pehir-extend-form-control>
+						</div>
 					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP1.controls['correoe2'].dirty"
-							[inputErrors]="frmProcuraVidaP1.controls['correoe2'].errors">
-								<input id="txtCorreoe2" type="text" class="form-control" formControlName="correoe2">
-						</pehir-extend-form-control>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblCorreoe2" class="form-label">e-mail 2:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmProcuraVidaP1.controls['correos'].controls['correoe2'].dirty"
+								[inputErrors]="frmProcuraVidaP1.controls['correos'].controls['correoe2'].errors"
+								[formErrors]="frmProcuraVidaP1.controls['correos'].errors">
+									<input id="txtCorreoe2" type="text" class="form-control" formControlName="correoe2">
+							</pehir-extend-form-control>
+						</div>
 					</div>
 				</div>
 			</div>
