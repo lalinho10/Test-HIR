@@ -9,6 +9,7 @@ import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
 import { TelefonoValidator }				  from 'app/core/validators/telefono.validator';
 import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
+import { DiferenciaTelefonosValidator }		  from 'app/core/validators/diferencia-telefonos.validator';
 
 import { GENEROS }							  from 'app/core/data/generos';
 import { ESTADOSCIVILES }					  from 'app/core/data/estadosCiviles';
@@ -112,6 +113,9 @@ export class ApindividualP1Component implements OnInit {
 			'especifiqueParGob': ['', Validators.compose([
 				Validators.required
 			])]
+		},
+		{
+			validator: DiferenciaTelefonosValidator( 'telefono', 'celular' )
 		});
 	}
 
