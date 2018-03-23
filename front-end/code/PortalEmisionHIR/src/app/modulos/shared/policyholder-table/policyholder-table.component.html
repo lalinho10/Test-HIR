@@ -7,39 +7,105 @@
 				<th class="parentesco">Parentesco</th>
 				<th class="porcentaje">% de la suma asegurada</th>
 				<th class="control"></th>
+				<th class="control"></th>
 			</tr>
 		</thead>
-		<tbody>
-			<tr *ngFor="let beneficiario of beneficiarios; let i=index">
-				<td>{{beneficiario.nombre}}</td>
-				<td class="center">{{ beneficiario.fechaNacimiento | date: 'dd/MM/yyyy' }}</td>
-				<td class="center">{{ beneficiario.descParentesco }}</td>
-				<td class="center">{{ beneficiario.porcentajeSuma | percent }}</td>
+		<tbody formArrayName="gruposEdicion">
+			<tr *ngFor="let item of frmBeneficiario.controls.gruposEdicion.controls; let i=index;" [formGroupName]="i">
 				<td class="center">
-					<a (click)="eliminarBeneficiario(i)"><i class="fa fa-minus-square-o fa-lg"></i></a>
+					<span *ngIf="!frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						{{beneficiarios[i].nombre}}
+					</span>
+					<div *ngIf="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						<pehir-extend-form-control
+							[inputDirty]="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['nombre'].dirty"
+							[inputErrors]="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['nombre'].errors">
+								<input id="txtNombre" type="text" class="form-control" formControlName="nombre">
+						</pehir-extend-form-control>
+					</div>
+				</td>
+				<td class="center">
+					<span *ngIf="!frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						{{ beneficiarios[i].fechaNacimiento | date: 'dd/MM/yyyy' }}
+					</span>
+					<div *ngIf="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						<pehir-extend-form-control
+							[inputDirty]="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['fechanac'].dirty"
+							[inputErrors]="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['fechanac'].errors">
+								<my-date-picker name="fechanac" [options]="fecNacOptions" formControlName="fechanac"></my-date-picker>
+						</pehir-extend-form-control>
+					</div>
+				</td>
+				<td class="center">
+					<span *ngIf="!frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						{{ beneficiarios[i].descParentesco }}
+					</span>
+					<div *ngIf="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						<pehir-extend-form-control
+							[inputDirty]="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['parentesco'].dirty"
+							[inputErrors]="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['parentesco'].errors">
+								<select id="cboParentesco" class="form-control" formControlName="parentesco">
+									<option value="">Selecciona</option>
+									<option *ngFor="let parentesco of parentescos" [value]="parentesco.idParentesco">
+										{{parentesco.descParentesco}}
+									</option>
+								</select>
+						</pehir-extend-form-control>
+					</div>
+				</td>
+				<td class="center">
+					<span *ngIf="!frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						{{ beneficiarios[i].porcentajeSuma | percent }}
+					</span>
+					<div *ngIf="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						<pehir-extend-form-control
+							[inputDirty]="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['porcentajeSuma'].dirty"
+							[inputErrors]="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['porcentajeSuma'].errors">
+								<div class="form-group">
+									<input id="txtPorcentajeSuma" type="text" class="form-control left" formControlName="porcentajeSuma">
+									<span class="control-text right">%</span>
+								</div>
+						</pehir-extend-form-control>
+					</div>
+				</td>
+				<td class="center">
+					<a (click)="editarBeneficiario(i)" *ngIf="!frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						<i class="fa fa-pencil-square-o fa-lg"></i>
+					</a>
+					<a (click)="modificarGrupoEdicion(i)" *ngIf="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						<i class="fa fa-check-square-o fa-lg"></i>
+					</a>
+				</td>
+				<td class="center">
+					<a (click)="eliminarRegistro(i)" *ngIf="!frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						<i class="fa fa-minus-square-o fa-lg"></i>
+					</a>
+					<a (click)="cancelarEdicion(i)" *ngIf="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						<i class="fa fa-window-close-o fa-lg"></i>
+					</a>
 				</td>
 			</tr>
 		</tbody>
-		<tfoot>
+		<tfoot formGroupName="grupoAlta">
 			<tr>
 				<td>
 					<pehir-extend-form-control
-						[inputDirty]="frmBeneficiario.controls['nombre'].dirty"
-						[inputErrors]="frmBeneficiario.controls['nombre'].errors">
+						[inputDirty]="frmBeneficiario.controls['grupoAlta'].controls['nombre'].dirty"
+						[inputErrors]="frmBeneficiario.controls['grupoAlta'].controls['nombre'].errors">
 							<input id="txtNombre" type="text" class="form-control" formControlName="nombre">
 					</pehir-extend-form-control>
 				</td>
 				<td>
 					<pehir-extend-form-control
-						[inputDirty]="frmBeneficiario.controls['fechanac'].dirty"
-						[inputErrors]="frmBeneficiario.controls['fechanac'].errors">
+						[inputDirty]="frmBeneficiario.controls['grupoAlta'].controls['fechanac'].dirty"
+						[inputErrors]="frmBeneficiario.controls['grupoAlta'].controls['fechanac'].errors">
 							<my-date-picker name="fechanac" [options]="fecNacOptions" formControlName="fechanac"></my-date-picker>
 					</pehir-extend-form-control>
 				</td>
 				<td>
 					<pehir-extend-form-control
-						[inputDirty]="frmBeneficiario.controls['parentesco'].dirty"
-						[inputErrors]="frmBeneficiario.controls['parentesco'].errors">
+						[inputDirty]="frmBeneficiario.controls['grupoAlta'].controls['parentesco'].dirty"
+						[inputErrors]="frmBeneficiario.controls['grupoAlta'].controls['parentesco'].errors">
 							<select id="cboParentesco" class="form-control" formControlName="parentesco">
 								<option value="">Selecciona</option>
 								<option *ngFor="let parentesco of parentescos" [value]="parentesco.idParentesco">
@@ -50,8 +116,8 @@
 				</td>
 				<td>
 					<pehir-extend-form-control
-						[inputDirty]="frmBeneficiario.controls['porcentajeSuma'].dirty"
-						[inputErrors]="frmBeneficiario.controls['porcentajeSuma'].errors">
+						[inputDirty]="frmBeneficiario.controls['grupoAlta'].controls['porcentajeSuma'].dirty"
+						[inputErrors]="frmBeneficiario.controls['grupoAlta'].controls['porcentajeSuma'].errors">
 							<div class="form-group">
 								<input id="txtPorcentajeSuma" type="text" class="form-control left" formControlName="porcentajeSuma">
 								<span class="control-text right">%</span>
@@ -59,16 +125,21 @@
 					</pehir-extend-form-control>
 				</td>
 				<td class="center">
-					<a (click)="validarFomulario()">
+					<a (click)="validarGrupoAlta()" *ngIf="!isValidSum">
+						<i class="fa fa-plus-square-o fa-lg"></i>
+					</a>
+					<a class="disabled" *ngIf="isValidSum">
 						<i class="fa fa-plus-square-o fa-lg"></i>
 					</a>
 				</td>
+				<td class="center"></td>
 			</tr>
 			<tr>
 				<td></td>
 				<td></td>
 				<td class="result">Total</td>
 				<td class="result">{{ porcentaje | percent }}</td>
+				<td></td>
 				<td></td>
 			</tr>
 		</tfoot>
