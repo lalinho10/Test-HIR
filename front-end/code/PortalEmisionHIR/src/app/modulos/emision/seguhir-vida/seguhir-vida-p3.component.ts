@@ -158,6 +158,26 @@ export class SeguhirVidaP3Component implements OnInit {
 		}
 	}
 
+	fnCambiarCompetencias(): void {
+		this.frmSeguhirVidaP3.controls[ 'nivelCompetencia' ].setValue( '' );
+
+		if( this.frmSeguhirVidaP3.controls[ 'competencias' ].value ) {
+			this.frmSeguhirVidaP3.controls[ 'nivelCompetencia' ].enable();
+		} else {
+			this.frmSeguhirVidaP3.controls[ 'nivelCompetencia' ].disable();
+		}
+	}
+
+	fnCambiarPasajeroAvion(): void {
+		this.frmSeguhirVidaP3.controls[ 'horasVuelo' ].setValue( '' );
+
+		if( this.frmSeguhirVidaP3.controls[ 'pasajeroAvion' ].value ) {
+			this.frmSeguhirVidaP3.controls[ 'horasVuelo' ].enable();
+		} else {
+			this.frmSeguhirVidaP3.controls[ 'horasVuelo' ].disable();
+		}
+	}
+
 	onValidateQuestionary( isValidQuestionary ): void {
 		this.isValidQuestionary = isValidQuestionary;
 	}
