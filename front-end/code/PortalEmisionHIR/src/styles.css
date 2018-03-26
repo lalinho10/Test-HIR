@@ -55,6 +55,7 @@ html {box-sizing:border-box;}
 a {color:#333333;text-decoration:none;}
 a.active {color:#f68c2c;font-weight:bold;}
 a:hover {color:#f68c2c;}
+textarea {height:auto !important;}
 input[type="text"], input[type="password"], textarea, select {color:#aaa9a9;}
 input[type="text"]:disabled, input[type="password"]:disabled, textarea:disabled, select:disabled {background-color:#f5f5f5;cursor:not-allowed;}
 button, input[type="button"], input[type="submit"] {border:none;border-radius:5px;color:#fafafa;display:block;font-weight:bold;margin:0 auto;padding:8px 0;width:25%;}
@@ -125,7 +126,7 @@ div.rdoContainer.two > input[type="radio"] {margin-right:7px;}
 .form-group > .control-text.right{border-radius:0 5px 5px 0;float:right;}
 .main label {display:block;margin-bottom:15px;}
 .main label.form-label {padding-top:4px;text-align:right;}
-.main label.form-label.login {text-align:left;}
+.main label.form-label.login, .main label.form-label.cuestionario {text-align:left;}
 .main label.pregunta {padding-top:4px;text-align:left;}
 .main label.pregunta.medica {margin-bottom:0;}
 .main label.tipo-seguro {margin-bottom:15px;padding-bottom:15px;text-align:center;border-bottom:1px solid #e1e1e1;font-size:30px;color:#f68c2c;}

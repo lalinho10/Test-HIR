@@ -22,7 +22,7 @@
 			</div>
 			<div *ngIf="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['pregunta'].value" class="row">
 				<div class="col col-25">
-					<label id="lblNombrePadecimiento" class="form-label">Nombre de las enfermedades, lesiones estudios o tratamientos</label>
+					<label id="lblNombrePadecimiento" class="form-label cuestionario">Nombre de las enfermedades, lesiones estudios o tratamientos</label>
 					<pehir-extend-form-control
 						[inputDirty]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['nombrePadecimiento'].dirty"
 						[inputErrors]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['nombrePadecimiento'].errors">
@@ -30,7 +30,7 @@
 					</pehir-extend-form-control>
 				</div>
 				<div class="col col-25">
-					<label id="lblFechaPadecimiento" class="form-label">Fecha en que las sufrió o se las practicaron</label>
+					<label id="lblFechaPadecimiento" class="form-label cuestionario">Fecha en que las sufrió o se las practicaron</label>
 					<pehir-extend-form-control
 						[inputDirty]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['fechaPadecimiento'].dirty"
 						[inputErrors]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['fechaPadecimiento'].errors">
@@ -38,7 +38,7 @@
 					</pehir-extend-form-control>
 				</div>
 				<div class="col col-25">
-					<label id="lblDuracionPadecimiento" class="form-label">Duración</label>
+					<label id="lblDuracionPadecimiento" class="form-label cuestionario">Duración</label>
 					<pehir-extend-form-control
 						[inputDirty]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['duracionPadecimiento'].dirty"
 						[inputErrors]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['duracionPadecimiento'].errors">
@@ -46,7 +46,7 @@
 					</pehir-extend-form-control>
 				</div>
 				<div class="col col-25">
-					<label id="lblCondicionesActuales" class="form-label">Condiciones físicas actualmente (sano o en tratamiento)</label>
+					<label id="lblCondicionesActuales" class="form-label cuestionario">Condiciones físicas actualmente (sano o en tratamiento)</label>
 					<pehir-extend-form-control
 						[inputDirty]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['condicionesActuales'].dirty"
 						[inputErrors]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['condicionesActuales'].errors">
