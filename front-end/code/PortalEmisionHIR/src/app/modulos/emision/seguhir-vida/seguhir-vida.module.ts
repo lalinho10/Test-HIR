@@ -11,6 +11,7 @@ import { MyDatePickerModule }		from 'mydatepicker';
 
 import { SeguhirVidaRoutingModule } from './seguhir-vida-routing.module';
 import { ExtendFormControlModule }	from 'app/modulos/shared/extend-form-control/extend-form-control.module';
+import { MedicalQuestionaryModule }	from 'app/modulos/shared/medical-questionary/medical-questionary.module';
 import { ProgressControlModule }	from 'app/modulos/shared/progress-control/progress-control.module';
 
 @NgModule({
@@ -26,6 +27,7 @@ import { ProgressControlModule }	from 'app/modulos/shared/progress-control/progr
 		MyDatePickerModule,
 		SeguhirVidaRoutingModule,
 		ExtendFormControlModule,
+		MedicalQuestionaryModule,
 		ProgressControlModule
 	]
 })

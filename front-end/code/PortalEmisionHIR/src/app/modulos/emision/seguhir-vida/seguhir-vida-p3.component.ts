@@ -8,7 +8,19 @@ import { Router }							  from '@angular/router';
 })
 
 export class SeguhirVidaP3Component implements OnInit {
+	private isValidQuestionary = false;
+
 	private frmSeguhirVidaP3: FormGroup;
+
+	private preguntasCuestionario: string[] = [
+		'1) ¿Padece actualmente de alguna enfermedad?',
+		'2) ¿Ha consultado al médico en los últimos dos años?',
+		'3) ¿Tiene pendiente o se le ha practicado alguna intervención quirúrgica?',
+		'4) ¿Padece de enfermedad del corazón, presión arterial alta o infarto del corazón?',
+		'5) ¿Padece diabetes?',
+		'6) ¿Ha sido detectado como positivo a SIDA?',
+		'7) ¿Está actualmente en tratamiento médico?'
+	];
 
 	constructor(
 		private fb: FormBuilder,
@@ -39,6 +51,10 @@ export class SeguhirVidaP3Component implements OnInit {
 				Validators.required
 			])]
 		});
+	}
+
+	onValidateQuestionary( isValidQuestionary ): void {
+		this.isValidQuestionary = isValidQuestionary;
 	}
 
 	fnAvanzarP4(): void {

@@ -7,143 +7,25 @@
 <form [formGroup]="frmSeguhirVidaP3" (ngSubmit)="fnAvanzarP4()">
 	<fieldset>
 		<legend>Cuestionario médico del titular</legend>
+
+		<pehir-medical-questionary [preguntasMedicas]="preguntasCuestionario" (onValidateQuestionary)="onValidateQuestionary($event)">
+		</pehir-medical-questionary>
+
 		<div class="row">
-			<div class="col col-80">
-				<label id="lblPregunta1" class="pregunta medica">
-					1) ¿Padece actualmente de alguna enfermedad?
-				</label>
+			<div class="col col-33">
+
 			</div>
-			<div class="col col-20">
-				<pehir-extend-form-control
-					[inputDirty]="frmSeguhirVidaP3.controls['pregunta1'].dirty"
-					[inputErrors]="frmSeguhirVidaP3.controls['pregunta1'].errors">
-						<div class="rdoContainer two">
-							<input type="radio" formControlName="pregunta1" [value]="false">No
-						</div>
-						<div class="rdoContainer two">
-							<input type="radio" formControlName="pregunta1" [value]="true">Sí
-						</div>
-				</pehir-extend-form-control>
+			<div class="col col-33">
+
 			</div>
-		</div>
-		<div class="row">
-			<div class="col col-80">
-				<label id="lblPregunta2" class="pregunta medica">
-					2) ¿Ha consultado al médico en los últimos dos años?
-				</label>
-			</div>
-			<div class="col col-20">
-				<pehir-extend-form-control
-					[inputDirty]="frmSeguhirVidaP3.controls['pregunta2'].dirty"
-					[inputErrors]="frmSeguhirVidaP3.controls['pregunta2'].errors">
-						<div class="rdoContainer two">
-							<input type="radio" formControlName="pregunta2" [value]="false">No
-						</div>
-						<div class="rdoContainer two">
-							<input type="radio" formControlName="pregunta2" [value]="true">Sí
-						</div>
-				</pehir-extend-form-control>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col col-80">
-				<label id="lblPregunta3" class="pregunta medica">
-					3) ¿Tiene pendiente o se le ha practicado alguna intervención quirúrgica?
-				</label>
-			</div>
-			<div class="col col-20">
-				<pehir-extend-form-control
-					[inputDirty]="frmSeguhirVidaP3.controls['pregunta3'].dirty"
-					[inputErrors]="frmSeguhirVidaP3.controls['pregunta3'].errors">
-						<div class="rdoContainer two">
-							<input type="radio" formControlName="pregunta3" [value]="false">No
-						</div>
-						<div class="rdoContainer two">
-							<input type="radio" formControlName="pregunta3" [value]="true">Sí
-						</div>
-				</pehir-extend-form-control>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col col-80">
-				<label id="lblPregunta4" class="pregunta medica">
-					4) ¿Padece de enfermedad del corazón, presión arterial alta o infarto del corazón?
-				</label>
-			</div>
-			<div class="col col-20">
-				<pehir-extend-form-control
-					[inputDirty]="frmSeguhirVidaP3.controls['pregunta4'].dirty"
-					[inputErrors]="frmSeguhirVidaP3.controls['pregunta4'].errors">
-						<div class="rdoContainer two">
-							<input type="radio" formControlName="pregunta4" [value]="false">No
-						</div>
-						<div class="rdoContainer two">
-							<input type="radio" formControlName="pregunta4" [value]="true">Sí
-						</div>
-				</pehir-extend-form-control>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col col-80">
-				<label id="lblPregunta5" class="pregunta medica">
-					5) ¿Padece diabetes?
-				</label>
-			</div>
-			<div class="col col-20">
-				<pehir-extend-form-control
-					[inputDirty]="frmSeguhirVidaP3.controls['pregunta5'].dirty"
-					[inputErrors]="frmSeguhirVidaP3.controls['pregunta5'].errors">
-						<div class="rdoContainer two">
-							<input type="radio" formControlName="pregunta5" [value]="false">No
-						</div>
-						<div class="rdoContainer two">
-							<input type="radio" formControlName="pregunta5" [value]="true">Sí
-						</div>
-				</pehir-extend-form-control>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col col-80">
-				<label id="lblPregunta6" class="pregunta medica">
-					6) ¿Ha sido detectado como positivo a SIDA?
-				</label>
-			</div>
-			<div class="col col-20">
-				<pehir-extend-form-control
-					[inputDirty]="frmSeguhirVidaP3.controls['pregunta6'].dirty"
-					[inputErrors]="frmSeguhirVidaP3.controls['pregunta6'].errors">
-						<div class="rdoContainer two">
-							<input type="radio" formControlName="pregunta6" [value]="false">No
-						</div>
-						<div class="rdoContainer two">
-							<input type="radio" formControlName="pregunta6" [value]="true">Sí
-						</div>
-				</pehir-extend-form-control>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col col-80">
-				<label id="lblPregunta7" class="pregunta medica">
-					7) ¿Está actualmente en tratamiento médico?
-				</label>
-			</div>
-			<div class="col col-20">
-				<pehir-extend-form-control
-					[inputDirty]="frmSeguhirVidaP3.controls['pregunta7'].dirty"
-					[inputErrors]="frmSeguhirVidaP3.controls['pregunta7'].errors">
-						<div class="rdoContainer two">
-							<input type="radio" formControlName="pregunta7" [value]="false">No
-						</div>
-						<div class="rdoContainer two">
-							<input type="radio" formControlName="pregunta7" [value]="true">Sí
-						</div>
-				</pehir-extend-form-control>
+			<div class="col col-33">
+
 			</div>
 		</div>
 	</fieldset>
 	<div class="row">
 		<div class="col col-100">
-			<button id="btnSiguiente" type="submit" class="next" [disabled]="!frmSeguhirVidaP3.valid">Siguiente</button>
+			<button id="btnSiguiente" type="submit" class="next" [disabled]="!frmSeguhirVidaP3.valid || !isValidQuestionary">Siguiente</button>
 		</div>
 	</div>
 </form>
