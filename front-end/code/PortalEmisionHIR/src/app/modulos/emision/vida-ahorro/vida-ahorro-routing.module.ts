@@ -5,6 +5,7 @@ import { VidaAhorroComponent }		  from './vida-ahorro.component';
 import { VidaAhorroP1Component }	  from './vida-ahorro-p1.component';
 import { VidaAhorroP2Component }	  from './vida-ahorro-p2.component';
 import { VidaAhorroP3Component }	  from './vida-ahorro-p3.component';
+import { VidaAhorroP4Component }	  from './vida-ahorro-p4.component';
 import { VidaAhorroP5Component }	  from './vida-ahorro-p5.component';
 
 import { AuthenticationService }	  from 'app/core/services/authentication/authentication.service';
@@ -20,6 +21,7 @@ const vidaAhorroRoutes: Routes = [
 			{ path: 'usuario', component: VidaAhorroP1Component },
 			{ path: 'seguro', component: VidaAhorroP2Component },
 			{ path: 'medico', component: VidaAhorroP3Component },
+			{ path: 'asegurados', component: VidaAhorroP4Component },
 			{ path: 'beneficiarios', component: VidaAhorroP5Component }
 		]
 	}

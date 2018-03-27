@@ -183,6 +183,6 @@ export class VidaAhorroP3Component implements OnInit {
 	}
 
 	fnAvanzarP4(): void {
-
+		this.router.navigateByUrl( '/emision/vidaahorro/asegurados' );
 	}
 }
