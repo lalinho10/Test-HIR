@@ -6,12 +6,14 @@ import { VidaAhorroComponent }	 	from './vida-ahorro.component';
 import { VidaAhorroP1Component }	from './vida-ahorro-p1.component';
 import { VidaAhorroP2Component }	from './vida-ahorro-p2.component';
 import { VidaAhorroP3Component }	from './vida-ahorro-p3.component';
+import { VidaAhorroP5Component }	from './vida-ahorro-p5.component';
 
 import { MyDatePickerModule }		from 'mydatepicker';
 
 import { VidaAhorroRoutingModule }	from './vida-ahorro-routing.module';
 import { ExtendFormControlModule }	from 'app/modulos/shared/extend-form-control/extend-form-control.module';
 import { MedicalQuestionaryModule }	from 'app/modulos/shared/medical-questionary/medical-questionary.module';
+import { PolicyHolderTableModule }	from 'app/modulos/shared/policyholder-table/policyholder-table.module';
 import { ProgressControlModule }	from 'app/modulos/shared/progress-control/progress-control.module';
 
 @NgModule({
@@ -19,7 +21,8 @@ import { ProgressControlModule }	from 'app/modulos/shared/progress-control/progr
 		VidaAhorroComponent,
 		VidaAhorroP1Component,
 		VidaAhorroP2Component,
-		VidaAhorroP3Component
+		VidaAhorroP3Component,
+		VidaAhorroP5Component
 	],
 	imports: [
 		CommonModule,
@@ -28,6 +31,7 @@ import { ProgressControlModule }	from 'app/modulos/shared/progress-control/progr
 		VidaAhorroRoutingModule,
 		ExtendFormControlModule,
 		MedicalQuestionaryModule,
+		PolicyHolderTableModule,
 		ProgressControlModule
 	]
 })
