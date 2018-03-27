@@ -24,7 +24,7 @@ const seguhirVidaRoutes: Routes = [
 			{ path: 'medico', component: SeguhirVidaP3Component },
 			{ path: 'asegurados', component: SeguhirVidaP4Component },
 			{ path: 'beneficiarios', component: SeguhirVidaP5Component },
-			{ path: 'agente', component: SeguhirVidaP6Component }
+			{ path: 'agentes', component: SeguhirVidaP6Component }
 		]
 	}
 ];
