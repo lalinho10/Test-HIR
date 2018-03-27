@@ -8,6 +8,7 @@ import { VidaAhorroP2Component }	from './vida-ahorro-p2.component';
 import { VidaAhorroP3Component }	from './vida-ahorro-p3.component';
 import { VidaAhorroP4Component }	from './vida-ahorro-p4.component';
 import { VidaAhorroP5Component }	from './vida-ahorro-p5.component';
+import { VidaAhorroP6Component }	from './vida-ahorro-p6.component';
 
 import { MyDatePickerModule }		from 'mydatepicker';
 
@@ -25,7 +26,8 @@ import { ProgressControlModule }	from 'app/modulos/shared/progress-control/progr
 		VidaAhorroP2Component,
 		VidaAhorroP3Component,
 		VidaAhorroP4Component,
-		VidaAhorroP5Component
+		VidaAhorroP5Component,
+		VidaAhorroP6Component
 	],
 	imports: [
 		CommonModule,
