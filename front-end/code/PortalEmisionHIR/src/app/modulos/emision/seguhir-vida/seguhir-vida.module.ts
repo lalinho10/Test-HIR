@@ -8,6 +8,7 @@ import { SeguhirVidaP2Component }	from './seguhir-vida-p2.component';
 import { SeguhirVidaP3Component }	from './seguhir-vida-p3.component';
 import { SeguhirVidaP4Component }	from './seguhir-vida-p4.component';
 import { SeguhirVidaP5Component }	from './seguhir-vida-p5.component';
+import { SeguhirVidaP6Component }	from './seguhir-vida-p6.component';
 
 import { MyDatePickerModule }		from 'mydatepicker';
 
@@ -25,7 +26,8 @@ import { ProgressControlModule }	from 'app/modulos/shared/progress-control/progr
 		SeguhirVidaP2Component,
 		SeguhirVidaP3Component,
 		SeguhirVidaP4Component,
-		SeguhirVidaP5Component
+		SeguhirVidaP5Component,
+		SeguhirVidaP6Component
 	],
 	imports: [
 		CommonModule,

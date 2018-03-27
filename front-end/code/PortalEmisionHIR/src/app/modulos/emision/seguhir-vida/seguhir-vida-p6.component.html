@@ -1,0 +1,250 @@
+<div class="row">
+	<div class="col col-100">
+		<pehir-progress-control [numSteps]="7" [selStep]="6">
+		</pehir-progress-control>
+	</div>
+</div>
+<form [formGroup]="frmSeguhirVidaP6" (ngSubmit)="fnAvanzarP7()">
+	<fieldset>
+		<legend>Datos del agente</legend>
+	</fieldset>
+	<fieldset>
+		<legend>Se validó el nombre y la dirección del cliente con la identificación original</legend>
+		<div class="row">
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblTipoIdentificacion" class="form-label">Tipo de identificación:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP6.controls['tipoIdentificacion'].dirty"
+							[inputErrors]="frmSeguhirVidaP6.controls['tipoIdentificacion'].errors">
+								<input id="txtTipoIdentificacion" type="text" class="form-control" formControlName="tipoIdentificacion">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblNumeroIdentificacion" class="form-label">Número:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP6.controls['numeroIdentificacion'].dirty"
+							[inputErrors]="frmSeguhirVidaP6.controls['numeroIdentificacion'].errors">
+								<input id="txtNumeroIdentificacion" type="text" class="form-control" formControlName="numeroIdentificacion">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Datos de la institución o de la empresa donde presta sus servicios</legend>
+		<div class="row">
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblNombreEmpresa" class="form-label">Nombre:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP6.controls['nombreEmpresa'].dirty"
+							[inputErrors]="frmSeguhirVidaP6.controls['nombreEmpresa'].errors">
+								<input id="txtNombreEmpresa" type="text" class="form-control" formControlName="nombreEmpresa">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblDependencia" class="form-label">Dependencia, entidad o área:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP6.controls['dependencia'].dirty"
+							[inputErrors]="frmSeguhirVidaP6.controls['dependencia'].errors">
+								<input id="txtDependencia" type="text" class="form-control" formControlName="dependencia">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblCalleNumero" class="form-label">Calle y número:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP6.controls['calleNumero'].dirty"
+							[inputErrors]="frmSeguhirVidaP6.controls['calleNumero'].errors">
+								<input id="txtCalleNumero" type="text" class="form-control" formControlName="calleNumero">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblColoniaPoblacion" class="form-label">Colonia o población:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP6.controls['coloniaPoblacion'].dirty"
+							[inputErrors]="frmSeguhirVidaP6.controls['coloniaPoblacion'].errors">
+								<input id="txtColoniaPoblacion" type="text" class="form-control" formControlName="coloniaPoblacion">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblDelegacionMunicipio" class="form-label">Delegación o municipio:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP6.controls['delegacionMunicipio'].dirty"
+							[inputErrors]="frmSeguhirVidaP6.controls['delegacionMunicipio'].errors">
+								<input id="txtDelegacionMunicipio" type="text" class="form-control" formControlName="delegacionMunicipio">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblEstado" class="form-label">Estado:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP6.controls['estado'].dirty"
+							[inputErrors]="frmSeguhirVidaP6.controls['estado'].errors">
+								<input id="txtEstado" type="text" class="form-control" formControlName="estado">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblCP" class="form-label">Código postal:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP6.controls['cp'].dirty"
+							[inputErrors]="frmSeguhirVidaP6.controls['cp'].errors">
+								<input id="txtCP" type="text" class="form-control" formControlName="cp">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Autorización para el descuento por nómina</legend>
+		<div class="row">
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblNombre" class="form-label">Nombre:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP6.controls['nombre'].dirty"
+							[inputErrors]="frmSeguhirVidaP6.controls['nombre'].errors">
+								<input id="txtNombre" type="text" class="form-control" formControlName="nombre">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblApaterno" class="form-label">Apellido paterno:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP6.controls['apaterno'].dirty"
+							[inputErrors]="frmSeguhirVidaP6.controls['apaterno'].errors">
+								<input id="txtApaterno" type="text" class="form-control" formControlName="apaterno">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblAmaterno" class="form-label">Apellido materno:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP6.controls['amaterno'].dirty"
+							[inputErrors]="frmSeguhirVidaP6.controls['amaterno'].errors">
+								<input id="txtAmaterno" type="text" class="form-control" formControlName="amaterno">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblAreaTrabajo" class="form-label">Area de trabajo:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP6.controls['areaTrabajo'].dirty"
+							[inputErrors]="frmSeguhirVidaP6.controls['areaTrabajo'].errors">
+								<input id="txtAreaTrabajo" type="text" class="form-control" formControlName="areaTrabajo">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblNumeroEmpleado" class="form-label">No. de empleado:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP6.controls['numeroEmpleado'].dirty"
+							[inputErrors]="frmSeguhirVidaP6.controls['numeroEmpleado'].errors">
+								<input id="txtNumeroEmpleado" type="text" class="form-control" formControlName="numeroEmpleado">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblRetencionQuincenal" class="form-label">Retención quincenal:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP6.controls['retencionQuincenal'].dirty"
+							[inputErrors]="frmSeguhirVidaP6.controls['retencionQuincenal'].errors">
+								<div class="form-group">
+									<input id="txtRetencionQuincenal" type="text" class="form-control right" formControlName="retencionQuincenal">
+									<span class="control-text left">$</span>
+								</div>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblRFC" class="form-label">RFC:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP6.controls['rfc'].dirty"
+							[inputErrors]="frmSeguhirVidaP6.controls['rfc'].errors">
+								<input id="txtRFC" type="text" class="form-control" formControlName="rfc">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblTelefono" class="form-label">Teléfono:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP6.controls['telefono'].dirty"
+							[inputErrors]="frmSeguhirVidaP6.controls['telefono'].errors">
+								<input id="txtTelefono" type="text" class="form-control" formControlName="telefono">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+	<div class="row">
+		<div class="col col-100">
+			<button id="btnSiguiente" type="submit" class="next" [disabled]="!frmSeguhirVidaP6.valid">Siguiente</button>
+		</div>
+	</div>
+</form>
