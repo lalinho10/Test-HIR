@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
 @Component({
-	selector: 'pehir-seguhir-vida-p3',
+	selector: 'pehir-seguhir-vida-p5',
 	templateUrl: 'seguhir-vida-p5.component.html'
 })
 

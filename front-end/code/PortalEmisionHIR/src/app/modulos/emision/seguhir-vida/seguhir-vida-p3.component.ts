@@ -183,6 +183,6 @@ export class SeguhirVidaP3Component implements OnInit {
 	}
 
 	fnAvanzarP4(): void {
-
+		this.router.navigateByUrl( '/emision/seguhirvida/asegurados' );
 	}
 }
