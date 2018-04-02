@@ -63,6 +63,9 @@ export class RegistroComponent implements OnInit {
 			])],
 			'telefono': ['', Validators.compose([
 				TelefonoValidator()
+			])],
+			'recaptcha': ['', Validators.compose([
+				Validators.required
 			])]
 		},
 		{
