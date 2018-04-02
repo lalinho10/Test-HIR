@@ -21,6 +21,9 @@ export class RcontrasenaP1Component implements OnInit {
 				Validators.required,
 				Validators.email,
 				Validators.maxLength(50)
+			])],
+			'recaptcha': ['', Validators.compose([
+				Validators.required
 			])]
 		})
 	}

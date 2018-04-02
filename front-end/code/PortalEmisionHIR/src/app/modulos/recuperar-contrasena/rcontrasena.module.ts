@@ -2,6 +2,9 @@ import { NgModule }					from '@angular/core';
 import { ReactiveFormsModule }		from '@angular/forms';
 import { CommonModule }				from '@angular/common';
 
+import { RecaptchaModule }			from 'ng-recaptcha';
+import { RecaptchaFormsModule }		from 'ng-recaptcha/forms';
+
 import { RcontrasenaComponent }		from './rcontrasena.component';
 import { RcontrasenaP1Component }	from './rcontrasena-p1.component';
 import { RcontrasenaP2Component }	from './rcontrasena-p2.component';
@@ -21,6 +24,8 @@ import { ProgressControlModule }	from 'app/modulos/shared/progress-control/progr
 	imports: [
 		CommonModule,
 		ReactiveFormsModule,
+		RecaptchaModule.forRoot(),
+		RecaptchaFormsModule,
 		RcontrasenaRoutingModule,
 		ExtendFormControlModule,
 		ProgressControlModule
