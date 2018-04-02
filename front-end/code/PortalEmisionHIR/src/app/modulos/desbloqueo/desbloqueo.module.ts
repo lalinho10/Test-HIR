@@ -2,7 +2,10 @@ import { NgModule }				   from '@angular/core';
 import { CommonModule } 		   from '@angular/common';
 import { ReactiveFormsModule }	   from '@angular/forms';
 
-import { DesbloqueoComponent } 	   from './desbloqueo.component';
+import { RecaptchaModule }		   from 'ng-recaptcha';
+import { RecaptchaFormsModule }	   from 'ng-recaptcha/forms';
+
+import { DesbloqueoComponent }	   from './desbloqueo.component';
 import { DesbloqueoP1Component }   from './desbloqueo-p1.component';
 import { DesbloqueoP2Component }   from './desbloqueo-p2.component';
 import { DesbloqueoP3Component }   from './desbloqueo-p3.component';
@@ -21,6 +24,8 @@ import { ProgressControlModule }   from 'app/modulos/shared/progress-control/pro
 	imports: [
 		CommonModule,
 		ReactiveFormsModule,
+		RecaptchaModule.forRoot(),
+		RecaptchaFormsModule,
 		DesbloqueoRoutingModule,
 		ExtendFormControlModule,
 		ProgressControlModule

@@ -27,6 +27,9 @@ export class DesbloqueoP1Component implements OnInit {
 			'celular': ['', Validators.compose([
 				Validators.required,
 				CelularValidator()
+			])],
+			'recaptcha': ['', Validators.compose([
+				Validators.required
 			])]
 		})
 	}
