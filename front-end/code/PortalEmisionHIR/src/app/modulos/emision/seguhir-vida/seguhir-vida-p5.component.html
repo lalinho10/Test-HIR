@@ -7,22 +7,22 @@
 <form [formGroup]="frmSeguhirVidaP5" (ngSubmit)="fnAvanzarP6()">
 	<fieldset>
 		<legend>Designación de beneficiarios del titular</legend>
-		<pehir-policyholder-table (onValidateTable)="onValidateTable($event)">
+		<pehir-policyholder-table (onValidateTable)="onValidateTableConyuge($event)">
 		</pehir-policyholder-table>
 	</fieldset>
 	<fieldset>
 		<legend>Designación de beneficiarios del cónyuge</legend>
-		<pehir-policyholder-table (onValidateTable)="onValidateTable($event)">
+		<pehir-policyholder-table (onValidateTable)="onValidateTableHijo1($event)">
 		</pehir-policyholder-table>
 	</fieldset>
 	<fieldset>
 		<legend>Designación de beneficiarios de los hijos mayores de 18 años</legend>
-		<pehir-policyholder-table (onValidateTable)="onValidateTable($event)">
+		<pehir-policyholder-table (onValidateTable)="onValidateTableHijo2($event)">
 		</pehir-policyholder-table>
 	</fieldset>
 	<div class="row">
 		<div class="col col-100">
-			<button id="btnSiguiente" type="submit" class="next" [disabled]="!frmSeguhirVidaP5.valid">Siguiente</button>
+			<button id="btnSiguiente" type="submit" class="next" [disabled]="!areValidTables">Siguiente</button>
 		</div>
 	</div>
 </form>
