@@ -6,6 +6,7 @@
 	.hidden-desktop {display:block !important;}
 	button, input[type="button"], input[type="submit"] {width:100% !important;}
 	button.right, input[type="button"].right, input[type="submit"].right {margin:0 0 15px 0;}
+	.recaptcha > div {transform:scale(0.7);-webkit-transform:scale(0.7);transform-origin:0 0;-webkit-transform-origin:0 0;}
 	.header-site .logo {float:none;width:auto;}
 	.header-site ul.menu > li:first-child {padding:25px 0 0 0;}
 	.header-site ul.menu > li {float:none;padding:20px 0 0 0;position:static;}
