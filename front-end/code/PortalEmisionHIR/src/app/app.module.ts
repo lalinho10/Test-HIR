@@ -6,6 +6,11 @@ import { ReactiveFormsModule }		from '@angular/forms';
 import { HttpClientModule,
 		 HTTP_INTERCEPTORS }		from '@angular/common/http';
 
+import { RecaptchaModule,
+		 RECAPTCHA_SETTINGS,
+		 RecaptchaSettings,
+		 RECAPTCHA_LANGUAGE }		from 'ng-recaptcha';
+import { RecaptchaFormsModule }		from 'ng-recaptcha/forms';
 import { MyDatePickerModule }		from 'mydatepicker';
 
 import { AppRoutingModule }			from './app-routing.module';
@@ -58,6 +63,8 @@ import { LoadingInterceptor }		from './core/interceptors/loading.interceptor'
 		BrowserModule,
 		ReactiveFormsModule,
 		HttpClientModule,
+		RecaptchaModule.forRoot(),
+		RecaptchaFormsModule,
 		MyDatePickerModule,
 		AppRoutingModule,
 		AccesoModule,
@@ -82,6 +89,14 @@ import { LoadingInterceptor }		from './core/interceptors/loading.interceptor'
 			provide: HTTP_INTERCEPTORS,
 			useClass: LoadingInterceptor,
 			multi: true
+		},
+		{
+			provide: RECAPTCHA_SETTINGS,
+			useValue: { siteKey: '6LfJhU8UAAAAANQjlRZ0Byk4M5iG7vCaCtxzLuof' } as RecaptchaSettings
+		},
+		{
+			provide: RECAPTCHA_LANGUAGE,
+			useValue: 'es'
 		}
 	],
 	bootstrap: [ AppComponent ]
