@@ -13,17 +13,17 @@ export class AppModalComponent implements OnInit {
 	private iconClass: string = '';
 	private isVisible: boolean = false;
 
-	constructor( private appModalService: AppModalService ) {}
-
-	ngOnInit() {
-		this.appModalService.setAppModal( this );
-	}
-
 	private modalIcons: Object = {
 		'success': 'fa-check-circle',
 		'info':    'fa-info-circle',
 		'warning': 'fa-exclamation-circle',
 		'error':   'fa-times-circle'
+	}
+
+	constructor( private appModalService: AppModalService ) {}
+
+	ngOnInit() {
+		this.appModalService.setAppModal( this );
 	}
 
 	openModal( modalType: string, modalMessage: string ): void {
