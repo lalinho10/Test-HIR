@@ -13,7 +13,7 @@ import { SessionExpireModalService } from 'app/core/components/session-expire-mo
 })
 
 export class SessionTimerComponent implements OnInit {
-	private static TENMIN_MS =  2 * 60 * 1000;
+	private static TENMIN_MS = 10 * 60 * 1000;
 	private static ONEMIN_MS =  1 * 60 * 1000;
 	private static ONESEC_MS =       1 * 1000;
 
@@ -46,7 +46,6 @@ export class SessionTimerComponent implements OnInit {
 
 	startTimer(): void {
 		this.sessionTimer = setInterval( () => {
-			console.log( 'Timer de sesión' );
 				if( this.counter > 0 ) {
 					this.counter = this.counter - SessionTimerComponent.ONESEC_MS;
 					this.timeCounter = new Date( this.timeCounter.getTime() - SessionTimerComponent.ONESEC_MS );
