@@ -100,7 +100,7 @@ div.rdoContainer.two > input[type="radio"] {margin-right:7px;}
 .social-networks .youtube a {background-image:url(/assets/img/youtube.png) !important;width:23px;height:25px;}
 .header-site {border-bottom:1px solid #e1e1e1;padding:0 10px;font-size:14px;}
 .header-site .navcontainer {position:relative;}
-.header-site .navcontainer > i.fa {color:#f68c2c;float:right;}
+.header-site .navcontainer > i.fa {color:#f68c2c;float:right;padding-bottom:15px;}
 .header-site a {display:block;}
 .header-site .logo {float:left;margin:15px 0;overflow:hidden;padding:0 0 0 15px;width:10%;}
 .header-site .loggedContent {float:left;margin:15px 0;padding:0 15px 0 0;width:90%;}

@@ -1,6 +1,6 @@
 <nav class="navcontainer">
-	<i class="fa fa-bars fa-2x hidden-desktop"></i>
-	<ul class="menu">
+	<i class="fa fa-bars fa-2x hidden-desktop" (click)="fnToggleMenu()"></i>
+	<ul class="menu" [ngClass]="{'open':isOpen}">
 		<li>
 			<a routerLink="/inicio" routerLinkActive="active">Inicio</a>
 		</li>

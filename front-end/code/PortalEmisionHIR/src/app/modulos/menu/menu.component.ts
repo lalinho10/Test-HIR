@@ -8,7 +8,13 @@ import { SessionModalService } from 'app/core/components/session-modal/session-m
 })
 
 export class MenuComponent {
+	private isOpen = false;
+
 	constructor( private sessionModalService: SessionModalService ){}
+
+	fnToggleMenu(): void {
+		this.isOpen = !this.isOpen;
+	}
 
 	fnConfirmarLogout(): void {
 		this.sessionModalService.openModal();
