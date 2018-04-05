@@ -46,6 +46,7 @@ import { SessionModalService }			from './core/components/session-modal/session-m
 import { SessionExpireModalService }	from './core/components/session-expire-modal/session-expire-modal.service';
 import { SessionTimerService }			from './core/components/session-timer/session-timer.service';
 
+import { ErrorHandlerInterceptor }		from './core/interceptors/error-handler.interceptor'
 import { LoadingInterceptor }			from './core/interceptors/loading.interceptor'
 
 @NgModule({
@@ -96,6 +97,11 @@ import { LoadingInterceptor }			from './core/interceptors/loading.interceptor'
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: LoadingInterceptor,
+			multi: true
+		},
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: ErrorHandlerInterceptor,
 			multi: true
 		},
 		{
