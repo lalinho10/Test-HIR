@@ -2,7 +2,12 @@ import { Component, OnInit } 				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } 	 						  from '@angular/router';
 
+import { RcontrasenaService }				  from './rcontrasena.service';
+
 import { CodigoValidator } 					  from 'app/core/validators/codigo.validator';
+
+import { AppModalService }					  from 'app/core/components/app-modal/app-modal.service';
+import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 @Component({
 	selector: 'pehir-rcontrasena-p2',
@@ -13,8 +18,11 @@ export class RcontrasenaP2Component implements OnInit {
 	private frmRconP2: FormGroup;
 
 	constructor(
+		private appModalService: AppModalService,
 		private fb: FormBuilder,
-		private router: Router
+		private rcontrasenaService: RcontrasenaService,
+		private router: Router,
+		private wsClientService: WSClientService
 	) {}
 
 	ngOnInit() {
@@ -31,6 +39,13 @@ export class RcontrasenaP2Component implements OnInit {
 	}
 
 	fnAvanzarP3Rcon(): void {
-		this.router.navigateByUrl( '/rcontrasena/confirmacion' );
+		this.wsClientService
+			.getObject( '/loginRecuperaClaveCodigo' )
+			.subscribe( response =>  {
+				if( response.codigoRespuesta === 200 ) {
+					this.rcontrasenaService.setCodigoRcontrasena( this.frmRconP2.controls[ 'codigo' ].value );
+					this.router.navigateByUrl( '/rcontrasena/confirmacion' );
+				}
+			});
 	}
 }

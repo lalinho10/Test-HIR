@@ -10,6 +10,8 @@ import { RcontrasenaP1Component }	from './rcontrasena-p1.component';
 import { RcontrasenaP2Component }	from './rcontrasena-p2.component';
 import { RcontrasenaP3Component }	from './rcontrasena-p3.component';
 
+import { RcontrasenaService }		from './rcontrasena.service';
+
 import { RcontrasenaRoutingModule }	from './rcontrasena-routing.module';
 import { ExtendFormControlModule }	from 'app/modulos/shared/extend-form-control/extend-form-control.module';
 import { ProgressControlModule }	from 'app/modulos/shared/progress-control/progress-control.module';
@@ -29,6 +31,9 @@ import { ProgressControlModule }	from 'app/modulos/shared/progress-control/progr
 		RcontrasenaRoutingModule,
 		ExtendFormControlModule,
 		ProgressControlModule
+	],
+	providers: [
+		RcontrasenaService
 	]
 })
 
