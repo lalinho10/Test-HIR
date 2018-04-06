@@ -5,10 +5,10 @@ import { ReactiveFormsModule }	   from '@angular/forms';
 import { RecaptchaModule }		   from 'ng-recaptcha';
 import { RecaptchaFormsModule }	   from 'ng-recaptcha/forms';
 
-import { DesbloqueoComponent }	   from './desbloqueo.component';
-import { DesbloqueoP1Component }   from './desbloqueo-p1.component';
-import { DesbloqueoP2Component }   from './desbloqueo-p2.component';
-import { DesbloqueoP3Component }   from './desbloqueo-p3.component';
+import { DesbloqueoComponent }	   from './components/desbloqueo.component';
+import { DesbloqueoP1Component }   from './components/desbloqueo-p1.component';
+import { DesbloqueoP2Component }   from './components/desbloqueo-p2.component';
+import { DesbloqueoP3Component }   from './components/desbloqueo-p3.component';
 
 import { DesbloqueoRoutingModule } from './desbloqueo-routing.module';
 import { ExtendFormControlModule } from 'app/modulos/shared/extend-form-control/extend-form-control.module';
