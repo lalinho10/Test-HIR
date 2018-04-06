@@ -10,6 +10,8 @@ import { DesbloqueoP1Component }   from './components/desbloqueo-p1.component';
 import { DesbloqueoP2Component }   from './components/desbloqueo-p2.component';
 import { DesbloqueoP3Component }   from './components/desbloqueo-p3.component';
 
+import { DesbloqueoService }	   from './services/desbloqueo.service';
+
 import { DesbloqueoRoutingModule } from './desbloqueo-routing.module';
 import { ExtendFormControlModule } from 'app/modulos/shared/extend-form-control/extend-form-control.module';
 import { ProgressControlModule }   from 'app/modulos/shared/progress-control/progress-control.module';
@@ -29,6 +31,9 @@ import { ProgressControlModule }   from 'app/modulos/shared/progress-control/pro
 		DesbloqueoRoutingModule,
 		ExtendFormControlModule,
 		ProgressControlModule
+	],
+	providers: [
+		DesbloqueoService
 	]
 })
 

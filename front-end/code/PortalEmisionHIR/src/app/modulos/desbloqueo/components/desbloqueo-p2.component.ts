@@ -2,6 +2,10 @@ import { Component, OnInit } 				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { DesbloqueoService }				  from '../services/desbloqueo.service';
+
+import { WSClientService }					  from 'app/core/services/ws-client.service';
+
 import { CodigoValidator }					  from 'app/core/validators/codigo.validator';
 
 @Component({
@@ -14,7 +18,9 @@ export class DesbloqueoP2Component implements OnInit {
 
 	constructor(
 		private fb: FormBuilder,
-		private router: Router
+		private desbloqueoService: DesbloqueoService,
+		private router: Router,
+		private wsClientService: WSClientService
 	) {}
 
 	ngOnInit() {
@@ -31,6 +37,13 @@ export class DesbloqueoP2Component implements OnInit {
 	}
 
 	fnAvanzarP3Des(): void {
-		this.router.navigateByUrl( '/desbloqueo/confirmacion' );
+		this.wsClientService
+			.getObject( '/loginRecuperaClaveCodigo' )
+			.subscribe( response =>  {
+				if( response.codigoRespuesta === 200 ) {
+					this.desbloqueoService.setCodigoDesbloqueo( this.frmDesP2.controls[ 'codigo' ].value );
+					this.router.navigateByUrl( '/desbloqueo/confirmacion' );
+				}
+			});
 	}
 }
