@@ -463,5 +463,17 @@
 		"codigoRespuesta": 200,
 		"mensaje": "Usuario registrado exitosamente",
 		"fechaOperacion": 1520957070339
+	},
+	"loginRecuperaClaveCorreo":
+	{
+		"codigoRespuesta": 200,
+		"mensaje": "Correo encontrado exitosamente",
+		"fechaOperacion": 1520957070339
+	},
+	"loginRecuperaClaveCodigo":
+	{
+		"codigoRespuesta": 200,
+		"mensaje": "Código válido",
+		"fechaOperacion": 1520957070339
 	}
 }
