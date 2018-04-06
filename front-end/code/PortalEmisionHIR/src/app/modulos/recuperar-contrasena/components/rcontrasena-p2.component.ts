@@ -2,18 +2,20 @@ import { Component, OnInit } 				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } 	 						  from '@angular/router';
 
-import { RcontrasenaService }				  from './rcontrasena.service';
+import { RcontrasenaService }				  from '../services/rcontrasena.service';
+
+import { CodigoValidator } 					  from 'app/core/validators/codigo.validator';
 
 import { AppModalService }					  from 'app/core/components/app-modal/app-modal.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 @Component({
-	selector: 'pehir-rcontrasena-p1',
-	templateUrl: 'rcontrasena-p1.component.html'
+	selector: 'pehir-rcontrasena-p2',
+	templateUrl: 'rcontrasena-p2.component.html'
 })
 
-export class RcontrasenaP1Component implements OnInit {
-	private frmRconP1: FormGroup;
+export class RcontrasenaP2Component implements OnInit {
+	private frmRconP2: FormGroup;
 
 	constructor(
 		private appModalService: AppModalService,
@@ -24,29 +26,25 @@ export class RcontrasenaP1Component implements OnInit {
 	) {}
 
 	ngOnInit() {
-		this.frmRconP1 = this.fb.group({
-			'correoe': ['', Validators.compose([
+		this.frmRconP2 = this.fb.group({
+			'codigo': ['', Validators.compose([
 				Validators.required,
-				Validators.email,
-				Validators.maxLength(50)
-			])],
-			'recaptcha': ['', Validators.compose([
-				Validators.required
+				CodigoValidator()
 			])]
 		})
 	}
 
-	fnIrInicio(): void {
-		this.router.navigateByUrl( '/acceso/login' );
+	fnRegresarP2Rcon(): void {
+		this.router.navigateByUrl( '/rcontrasena' );
 	}
 
-	fnAvanzarP2Rcon(): void {
+	fnAvanzarP3Rcon(): void {
 		this.wsClientService
-			.getObject( '/loginRecuperaClaveCorreo' )
+			.getObject( '/loginRecuperaClaveCodigo' )
 			.subscribe( response =>  {
 				if( response.codigoRespuesta === 200 ) {
-					this.rcontrasenaService.setContactoRcontrasena( this.frmRconP1.controls[ 'correoe' ].value );
-					this.router.navigateByUrl( '/rcontrasena/codigo' );
+					this.rcontrasenaService.setCodigoRcontrasena( this.frmRconP2.controls[ 'codigo' ].value );
+					this.router.navigateByUrl( '/rcontrasena/confirmacion' );
 				}
 			});
 	}
