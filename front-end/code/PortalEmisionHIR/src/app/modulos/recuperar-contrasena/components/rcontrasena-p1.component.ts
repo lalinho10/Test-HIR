@@ -4,7 +4,6 @@ import { Router } 	 						  from '@angular/router';
 
 import { RcontrasenaService }				  from '../services/rcontrasena.service';
 
-import { AppModalService }					  from 'app/core/components/app-modal/app-modal.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 @Component({
@@ -16,7 +15,6 @@ export class RcontrasenaP1Component implements OnInit {
 	private frmRconP1: FormGroup;
 
 	constructor(
-		private appModalService: AppModalService,
 		private fb: FormBuilder,
 		private rcontrasenaService: RcontrasenaService,
 		private router: Router,

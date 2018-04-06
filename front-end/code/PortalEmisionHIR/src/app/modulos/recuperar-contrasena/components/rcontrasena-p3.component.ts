@@ -16,7 +16,7 @@ export class RcontrasenaP3Component implements OnInit {
 
 	constructor(
 		private fb: FormBuilder,
-		private modalService: AppModalService
+		private appModalService: AppModalService
 	) {}
 
 	ngOnInit() {
@@ -36,6 +36,6 @@ export class RcontrasenaP3Component implements OnInit {
 	}
 
 	fnRecuperarContrasena(): void {
-		this.modalService.openModal( 'info', 'Llamada a servicio de Recuperación de contraseña.' );
+		this.appModalService.openModal( 'info', 'Llamada a servicio de Recuperación de contraseña.' );
 	}
 }

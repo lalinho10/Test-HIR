@@ -17,7 +17,7 @@ export class DesbloqueoP3Component implements OnInit {
 
 	constructor(
 		private fb: FormBuilder,
-		private modalService: AppModalService,
+		private appModalService: AppModalService,
 		private router: Router
 	) {}
 
@@ -52,7 +52,7 @@ export class DesbloqueoP3Component implements OnInit {
 
 	fnDesbloquear(): void {
 		if( this.frmDesP3.controls[ 'confirmacion' ].value ) {
-			this.modalService.openModal( 'info', 'Llamada a servicio de Desbloqueo.' )
+			this.appModalService.openModal( 'info', 'Llamada a servicio de Desbloqueo.' )
 		} else {
 			this.router.navigateByUrl( '/acceso/login' );
 		}

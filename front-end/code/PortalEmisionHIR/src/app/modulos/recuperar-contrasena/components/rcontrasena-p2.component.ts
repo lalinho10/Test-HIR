@@ -4,10 +4,9 @@ import { Router } 	 						  from '@angular/router';
 
 import { RcontrasenaService }				  from '../services/rcontrasena.service';
 
-import { CodigoValidator } 					  from 'app/core/validators/codigo.validator';
-
-import { AppModalService }					  from 'app/core/components/app-modal/app-modal.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
+
+import { CodigoValidator } 					  from 'app/core/validators/codigo.validator';
 
 @Component({
 	selector: 'pehir-rcontrasena-p2',
@@ -18,7 +17,6 @@ export class RcontrasenaP2Component implements OnInit {
 	private frmRconP2: FormGroup;
 
 	constructor(
-		private appModalService: AppModalService,
 		private fb: FormBuilder,
 		private rcontrasenaService: RcontrasenaService,
 		private router: Router,
