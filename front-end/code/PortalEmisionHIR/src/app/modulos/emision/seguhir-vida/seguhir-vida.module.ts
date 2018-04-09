@@ -13,6 +13,7 @@ import { SeguhirVidaP6Component }	from './seguhir-vida-p6.component';
 import { MyDatePickerModule }		from 'mydatepicker';
 
 import { SeguhirVidaRoutingModule } from './seguhir-vida-routing.module';
+import { AgentTableModule }			from 'app/modulos/shared/agent-table/agent-table.module';
 import { ExtendFormControlModule }	from 'app/modulos/shared/extend-form-control/extend-form-control.module';
 import { InsuredFormModule }		from 'app/modulos/shared/insured-form/insured-form.module';
 import { MedicalQuestionaryModule }	from 'app/modulos/shared/medical-questionary/medical-questionary.module';
@@ -34,6 +35,7 @@ import { ProgressControlModule }	from 'app/modulos/shared/progress-control/progr
 		ReactiveFormsModule,
 		MyDatePickerModule,
 		SeguhirVidaRoutingModule,
+		AgentTableModule,
 		ExtendFormControlModule,
 		InsuredFormModule,
 		MedicalQuestionaryModule,
