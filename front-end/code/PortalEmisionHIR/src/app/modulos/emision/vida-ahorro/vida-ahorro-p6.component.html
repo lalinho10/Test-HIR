@@ -7,6 +7,7 @@
 <form [formGroup]="frmVidaAhorroP6" (ngSubmit)="fnAvanzarP7()">
 	<fieldset>
 		<legend>Datos del agente</legend>
+		<pehir-agent-table (onValidateTable)="onValidateTableAgentes($event)"></pehir-agent-table>
 	</fieldset>
 	<fieldset>
 		<legend>Se validó el nombre y la dirección del cliente con la identificación original</legend>
@@ -244,7 +245,7 @@
 	</fieldset>
 	<div class="row">
 		<div class="col col-100">
-			<button id="btnSiguiente" type="submit" class="next" [disabled]="!frmVidaAhorroP6.valid">Siguiente</button>
+			<button id="btnSiguiente" type="submit" class="next" [disabled]="!frmVidaAhorroP6.valid || !isValidTableAgentes">Siguiente</button>
 		</div>
 	</div>
 </form>

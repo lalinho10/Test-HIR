@@ -14,6 +14,8 @@ import { TelefonoValidator }				  from 'app/core/validators/telefono.validator';
 })
 
 export class VidaAhorroP6Component implements OnInit {
+	private isValidTableAgentes: boolean = false;
+
 	private frmVidaAhorroP6: FormGroup;
 
 	constructor(
@@ -86,6 +88,10 @@ export class VidaAhorroP6Component implements OnInit {
 				TelefonoValidator()
 			])]
 		});
+	}
+
+	onValidateTableAgentes( isValidTableAgentes ): void {
+		this.isValidTableAgentes = isValidTableAgentes
 	}
 
 	fnAvanzarP7(): void {
