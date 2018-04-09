@@ -141,7 +141,7 @@ div.rdoContainer.two > input[type="radio"] {margin-right:7px;}
 .main label.msg.info {color:#b4b4b4;}
 .main label.msg.warning {color:#8a6d3b;}
 .main label.msg.error {color:#a94442;}
-.main .accesocontainer {background-color:#f0f0f0;padding:40px 15px;}
+.main .accesocontainer {background-color:#f0f0f0;border-radius:5px;padding:40px 15px;}
 .main .accesolinks {margin:20px 0 0 0;}
 .main .accesolinks a.first {display:block;margin:0 0 10px 0;}
 /*Footer*/
