@@ -9,7 +9,6 @@ import { SeguhirVidaP4Component }	  from './seguhir-vida-p4.component';
 import { SeguhirVidaP5Component }	  from './seguhir-vida-p5.component';
 import { SeguhirVidaP6Component }	  from './seguhir-vida-p6.component';
 
-import { AuthenticationService }	  from 'app/core/services/authentication/authentication.service';
 import { AuthenticationGuardService } from 'app/core/services/authentication/authentication-guard.service';
 
 const seguhirVidaRoutes: Routes = [
@@ -30,16 +29,9 @@ const seguhirVidaRoutes: Routes = [
 ];
 
 @NgModule({
-	imports: [
-		RouterModule.forChild( seguhirVidaRoutes )
-	],
-	exports: [
-		RouterModule
-	],
-	providers: [
-		AuthenticationService,
-		AuthenticationGuardService
-	]
+	imports:   [ RouterModule.forChild( seguhirVidaRoutes ) ],
+	exports:   [ RouterModule ],
+	providers: [ AuthenticationGuardService ]
 })
 
 export class SeguhirVidaRoutingModule {}

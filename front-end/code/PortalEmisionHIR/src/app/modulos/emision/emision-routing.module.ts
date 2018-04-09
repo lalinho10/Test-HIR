@@ -5,7 +5,6 @@ import { EmisionComponent }			  from './emision.component';
 import { EmisionVidaComponent }		  from './emision-vida.component';
 import { EmisionAccidentesComponent } from './emision-accidentes.component';
 
-import { AuthenticationService }	  from 'app/core/services/authentication/authentication.service';
 import { AuthenticationGuardService } from 'app/core/services/authentication/authentication-guard.service';
 
 const emisionRoutes: Routes = [
@@ -55,16 +54,9 @@ const emisionRoutes: Routes = [
 ];
 
 @NgModule({
-	imports: [
-		RouterModule.forChild( emisionRoutes )
-	],
-	exports: [
-		RouterModule
-	],
-	providers: [
-		AuthenticationService,
-		AuthenticationGuardService
-	]
+	imports:   [ RouterModule.forChild( emisionRoutes ) ],
+	exports:   [ RouterModule ],
+	providers: [ AuthenticationGuardService ]
 })
 
 export class EmisionRoutingModule {}

@@ -39,6 +39,7 @@ import { PageNotFoundComponent }		from './core/components/page-not-found/page-no
 import { RegistroComponent }			from './modulos/registro/registro.component';
 import { InicioComponent }				from './modulos/inicio/inicio.component';
 
+import { AuthenticationService }		from './core/services/authentication/authentication.service';
 import { WSClientService }				from './core/services/ws-client.service';
 import { AppModalService }				from './core/components/app-modal/app-modal.service';
 import { LoadingModalService }			from './core/components/loading-modal/loading-modal.service';
@@ -85,6 +86,7 @@ import { LoadingInterceptor }			from './core/interceptors/loading.interceptor'
 		MedicalQuestionaryModule
 	],
 	providers: [
+		AuthenticationService,
 		WSClientService,
 		AppModalService,
 		LoadingModalService,

@@ -5,7 +5,6 @@ import { ApindividualComponent }	  from './apindividual.component';
 import { ApindividualP1Component }	  from './apindividual-p1.component';
 import { ApindividualP2Component }	  from './apindividual-p2.component';
 
-import { AuthenticationService }	  from 'app/core/services/authentication/authentication.service';
 import { AuthenticationGuardService } from 'app/core/services/authentication/authentication-guard.service';
 
 const apindividualRoutes: Routes = [
@@ -22,16 +21,9 @@ const apindividualRoutes: Routes = [
 ];
 
 @NgModule({
-	imports: [
-		RouterModule.forChild( apindividualRoutes )
-	],
-	exports: [
-		RouterModule
-	],
-	providers: [
-		AuthenticationService,
-		AuthenticationGuardService
-	]
+	imports:   [ RouterModule.forChild( apindividualRoutes ) ],
+	exports:   [ RouterModule ],
+	providers: [ AuthenticationGuardService ]
 })
 
 export class ApindividualRoutingModule {}

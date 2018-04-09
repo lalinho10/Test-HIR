@@ -5,7 +5,6 @@ import { ProcuraVidaComponent }		  from './procura-vida.component';
 import { ProcuraVidaP1Component }	  from './procura-vida-p1.component';
 import { ProcuraVidaP2Component }	  from './procura-vida-p2.component';
 
-import { AuthenticationService }	  from 'app/core/services/authentication/authentication.service';
 import { AuthenticationGuardService } from 'app/core/services/authentication/authentication-guard.service';
 
 const procuraVidaRoutes: Routes = [
@@ -22,16 +21,9 @@ const procuraVidaRoutes: Routes = [
 ];
 
 @NgModule({
-	imports: [
-		RouterModule.forChild( procuraVidaRoutes )
-	],
-	exports: [
-		RouterModule
-	],
-	providers: [
-		AuthenticationService,
-		AuthenticationGuardService
-	]
+	imports:   [ RouterModule.forChild( procuraVidaRoutes ) ],
+	exports:   [ RouterModule ],
+	providers: [ AuthenticationGuardService ]
 })
 
 export class ProcuraVidaRoutingModule {}

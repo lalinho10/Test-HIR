@@ -5,7 +5,6 @@ import { ProductosComponent }			 from './productos.component';
 import { ProductosVidaComponent }		 from './productos-vida.component';
 import { ProductosAccidentesComponent }	 from './productos-accidentes.component';
 
-import { AuthenticationService }		 from 'app/core/services/authentication/authentication.service';
 import { AuthenticationGuardService }	 from 'app/core/services/authentication/authentication-guard.service';
 
 const productosRoutes: Routes = [
@@ -27,16 +26,9 @@ const productosRoutes: Routes = [
 ];
 
 @NgModule({
-	imports: [
-		RouterModule.forChild( productosRoutes )
-	],
-	exports: [
-		RouterModule
-	],
-	providers: [
-		AuthenticationService,
-		AuthenticationGuardService
-	]
+	imports:   [ RouterModule.forChild( productosRoutes ) ],
+	exports:   [ RouterModule ],
+	providers: [ AuthenticationGuardService ]
 })
 
 export class ProductosRoutingModule {}

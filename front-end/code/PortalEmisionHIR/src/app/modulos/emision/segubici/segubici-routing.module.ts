@@ -5,7 +5,6 @@ import { SegubiciComponent }		  from './segubici.component';
 import { SegubiciP1Component }		  from './segubici-p1.component';
 import { SegubiciP2Component }		  from './segubici-p2.component';
 
-import { AuthenticationService }	  from 'app/core/services/authentication/authentication.service';
 import { AuthenticationGuardService } from 'app/core/services/authentication/authentication-guard.service';
 
 const segubiciRoutes: Routes = [
@@ -22,16 +21,9 @@ const segubiciRoutes: Routes = [
 ];
 
 @NgModule({
-	imports: [
-		RouterModule.forChild( segubiciRoutes )
-	],
-	exports: [
-		RouterModule
-	],
-	providers: [
-		AuthenticationService,
-		AuthenticationGuardService
-	]
+	imports:   [ RouterModule.forChild( segubiciRoutes ) ],
+	exports:   [ RouterModule ],
+	providers: [ AuthenticationGuardService ]
 })
 
 export class SegubiciRoutingModule {}

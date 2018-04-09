@@ -9,7 +9,6 @@ import { VidaAhorroP4Component }	  from './vida-ahorro-p4.component';
 import { VidaAhorroP5Component }	  from './vida-ahorro-p5.component';
 import { VidaAhorroP6Component }	  from './vida-ahorro-p6.component';
 
-import { AuthenticationService }	  from 'app/core/services/authentication/authentication.service';
 import { AuthenticationGuardService } from 'app/core/services/authentication/authentication-guard.service';
 
 const vidaAhorroRoutes: Routes = [
@@ -30,16 +29,9 @@ const vidaAhorroRoutes: Routes = [
 ];
 
 @NgModule({
-	imports: [
-		RouterModule.forChild( vidaAhorroRoutes )
-	],
-	exports: [
-		RouterModule
-	],
-	providers: [
-		AuthenticationService,
-		AuthenticationGuardService
-	]
+	imports:   [ RouterModule.forChild( vidaAhorroRoutes ) ],
+	exports:   [ RouterModule ],
+	providers: [ AuthenticationGuardService ]
 })
 
 export class VidaAhorroRoutingModule {}

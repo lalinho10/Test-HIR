@@ -5,7 +5,6 @@ import { GastosFunerariosComponent }   from './gastos-funerarios.component';
 import { GastosFunerariosP1Component } from './gastos-funerarios-p1.component';
 import { GastosFunerariosP2Component } from './gastos-funerarios-p2.component';
 
-import { AuthenticationService }	   from 'app/core/services/authentication/authentication.service';
 import { AuthenticationGuardService }  from 'app/core/services/authentication/authentication-guard.service';
 
 const gastosFunerariosRoutes: Routes = [
@@ -22,16 +21,9 @@ const gastosFunerariosRoutes: Routes = [
 ];
 
 @NgModule({
-	imports: [
-		RouterModule.forChild( gastosFunerariosRoutes )
-	],
-	exports: [
-		RouterModule
-	],
-	providers: [
-		AuthenticationService,
-		AuthenticationGuardService
-	]
+	imports:   [ RouterModule.forChild( gastosFunerariosRoutes ) ],
+	exports:   [ RouterModule ],
+	providers: [ AuthenticationGuardService ]
 })
 
 export class GastosFunerariosRoutingModule {}

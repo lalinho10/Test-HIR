@@ -5,7 +5,6 @@ import { RegistroComponent }		  from 'app/modulos/registro/registro.component';
 import { InicioComponent }			  from 'app/modulos/inicio/inicio.component';
 import { PageNotFoundComponent }	  from 'app/core/components/page-not-found/page-not-found.component';
 
-import { AuthenticationService }	  from 'app/core/services/authentication/authentication.service';
 import { AuthenticationGuardService } from 'app/core/services/authentication/authentication-guard.service';
 
 const routes: Routes = [
@@ -45,16 +44,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	imports: [
-		RouterModule.forRoot( routes )
-	],
-	exports: [
-		RouterModule
-	],
-	providers: [
-		AuthenticationService,
-		AuthenticationGuardService
-	]
+	imports:   [ RouterModule.forRoot( routes ) ],
+	exports:   [ RouterModule ],
+	providers: [ AuthenticationGuardService ]
 })
 
 export class AppRoutingModule {}
