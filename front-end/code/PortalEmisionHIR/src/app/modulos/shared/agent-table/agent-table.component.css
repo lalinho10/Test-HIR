@@ -1,0 +1,18 @@
+table {border-spacing:0;width:100%;}
+table .fa {color:#1e3154;}
+table td.center {text-align:center;}
+table a {cursor:pointer;}
+table a:hover .fa {color:#f68c2c;}
+table a.disabled .fa {color:#b4b4b4;cursor:not-allowed;}
+table a.disabled:hover .fa {color:#b4b4b4;}
+table th, table td {padding:10px 5px;}
+table th.agente {width:30%;}
+table th.cliente {width:30%;}
+table th.correo {width:20%;}
+table th.porcentaje {width:10%;}
+table th.control {width:5%;}
+table > thead > tr > th {background-color:#1e3154;color:#fafafa;}
+table > tbody > tr:nth-child( even ) {background-color:#f0f0f0;}
+table > tbody > tr > td {vertical-align:top;}
+table > tfoot > tr > td {vertical-align:top;}
+table > tfoot > tr > td.result {font-weight:bold;text-align:center;}
