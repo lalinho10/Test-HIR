@@ -23,16 +23,16 @@ import { Plan }								  from 'app/core/models/plan';
 })
 
 export class SeguhirVidaComponent implements OnInit {
-	private titulo: string = 'Cotización - SeguHIR Vida';
-	private frmSeguhirVida: FormGroup;
+	titulo: string = 'Cotización - SeguHIR Vida';
+	frmSeguhirVida: FormGroup;
 
-	private formasPago: FormaPago[];
-	private paquetes: Paquete[];
-	private planes: Plan[];
+	formasPago: FormaPago[];
+	paquetes: Paquete[];
+	planes: Plan[];
 
-	private generos = GENEROS;
-	private modulos = MODULOS;
-	private fecNacOptions = FECNACOPTIONS;
+	generos = GENEROS;
+	modulos = MODULOS;
+	fecNacOptions = FECNACOPTIONS;
 
 	constructor(
 		private router: Router,

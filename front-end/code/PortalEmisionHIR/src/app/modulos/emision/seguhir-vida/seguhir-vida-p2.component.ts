@@ -16,13 +16,13 @@ import { Plan }								  from 'app/core/models/plan';
 })
 
 export class SeguhirVidaP2Component implements OnInit {
-	private frmSeguhirVidaP2: FormGroup;
+	frmSeguhirVidaP2: FormGroup;
 
-	private formasPago: FormaPago[];
-	private paquetes: Paquete[];
-	private planes: Plan[];
+	formasPago: FormaPago[];
+	paquetes: Paquete[];
+	planes: Plan[];
 
-	private modulos = MODULOS;
+	modulos = MODULOS;
 
 	constructor(
 		private router: Router,

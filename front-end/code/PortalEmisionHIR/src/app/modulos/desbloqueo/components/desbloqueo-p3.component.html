@@ -12,12 +12,16 @@
 	</div>
 	<div class="row">
 		<div class="col col-40 col-off-30">
-			<div class="rdoContainer two text-center">
-				<input id="rdoSi" type="radio" (change)="fnConfirmarCambio()" [value]="true" formControlName="confirmacion"> Sí
-			</div>
-			<div class="rdoContainer two text-center">
-				<input id="rdoNo" type="radio" (change)="fnConfirmarCambio()" [value]="false" formControlName="confirmacion"> No
-			</div>
+			<pehir-extend-form-control
+				[inputDirty]="frmDesP3.get('confirmacion').dirty"
+				[inputErrors]="frmDesP3.get('confirmacion').errors">
+					<div class="rdoContainer two text-center">
+						<input id="rdoSi" type="radio" (change)="fnConfirmarCambio()" [value]="true" formControlName="confirmacion"> Sí
+					</div>
+					<div class="rdoContainer two text-center">
+						<input id="rdoNo" type="radio" (change)="fnConfirmarCambio()" [value]="false" formControlName="confirmacion"> No
+					</div>
+			</pehir-extend-form-control>
 		</div>
 	</div>
 	<div class="row">
@@ -26,9 +30,9 @@
 		</div>
 		<div class="col col-30">
 			<pehir-extend-form-control
-				[inputDirty]="frmDesP3.controls['contrasena'].dirty"
-				[inputErrors]="frmDesP3.controls['contrasena'].errors">
-				<input id="pwdContrasena" type="password" class="form-control" formControlName="contrasena">
+				[inputDirty]="frmDesP3.get('contrasena').dirty"
+				[inputErrors]="frmDesP3.get('contrasena').errors">
+					<input id="pwdContrasena" type="password" class="form-control" formControlName="contrasena">
 			</pehir-extend-form-control>
 		</div>
 	</div>
@@ -38,16 +42,16 @@
 		</div>
 		<div class="col col-30">
 			<pehir-extend-form-control
-				[inputDirty]="frmDesP3.controls['confcontrasena'].dirty"
-				[inputErrors]="frmDesP3.controls['confcontrasena'].errors"
+				[inputDirty]="frmDesP3.get('confcontrasena').dirty"
+				[inputErrors]="frmDesP3.get('confcontrasena').errors"
 				[formErrors]="frmDesP3.errors">
-				<input id="pwdConfContrasena" type="password" class="form-control" formControlName="confcontrasena">
+					<input id="pwdConfContrasena" type="password" class="form-control" formControlName="confcontrasena">
 			</pehir-extend-form-control>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col col-100">
-			<button id="btnSiguiente" type="submit" class="next" [disabled]="!frmDesP3.valid && frmDesP3.controls['confirmacion'].value">Siguiente</button>
+			<button id="btnSiguiente" type="submit" class="next" [disabled]="!frmDesP3.valid && frmDesP3.get('confirmacion').value">Siguiente</button>
 		</div>
 	</div>
 </form>

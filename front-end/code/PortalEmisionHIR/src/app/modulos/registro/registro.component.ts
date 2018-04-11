@@ -18,8 +18,8 @@ import { IgualdadContrasenasValidator }		  from 'app/core/validators/igualdad-co
 })
 
 export class RegistroComponent implements OnInit {
-	private titulo: string = 'Registro';
-	private frmRegistro: FormGroup;
+	titulo: string = 'Registro';
+	frmRegistro: FormGroup;
 
 	constructor(
 		private appModalService: AppModalService,

@@ -23,16 +23,16 @@ import { Plan }								  from 'app/core/models/plan';
 })
 
 export class VidaAhorroComponent implements OnInit {
-	private titulo: string = 'Cotización - Vida con Ahorro Línea 2018';
-	private frmVidaAhorro: FormGroup;
+	titulo: string = 'Cotización - Vida con Ahorro Línea 2018';
+	frmVidaAhorro: FormGroup;
 
-	private formasPago: FormaPago[];
-	private paquetes: Paquete[];
-	private planes: Plan[];
+	formasPago: FormaPago[];
+	paquetes: Paquete[];
+	planes: Plan[];
 
-	private generos = GENEROS;
-	private modulos = MODULOS;
-	private fecNacOptions = FECNACOPTIONS;
+	generos = GENEROS;
+	modulos = MODULOS;
+	fecNacOptions = FECNACOPTIONS;
 
 	constructor(
 		private router: Router,

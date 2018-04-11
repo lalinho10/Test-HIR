@@ -10,16 +10,20 @@ import { PreguntaMedica }								  from 'app/core/models/pregunta-medica';
 
 export class MedicalQuestionaryComponent implements OnInit {
 	@Input()
-	private preguntasMedicas: PreguntaMedica[];
+	preguntasMedicas: PreguntaMedica[];
 
 	@Output()
-	private onValidateQuestionary: EventEmitter<boolean> = new EventEmitter<boolean>();
+	onValidateQuestionary: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-	private frmCuestionario: FormGroup;
+	frmCuestionario: FormGroup;
 
 	constructor(
 		private fb: FormBuilder
 	) {}
+
+	get grupoPreguntas(): FormArray {
+		return this.frmCuestionario.controls[ 'grupoPreguntas' ] as FormArray;
+	}
 
 	ngOnInit() {
 		this.frmCuestionario = this.fb.group({
@@ -31,6 +35,15 @@ export class MedicalQuestionaryComponent implements OnInit {
 		this.frmCuestionario.statusChanges.subscribe(
 			data => this.onValidateQuestionary.emit( this.frmCuestionario.valid )
 		);
+	}
+
+	private crearArregloGrupos(): void {
+		let grupoPreguntas: FormArray = this.frmCuestionario.controls[ 'grupoPreguntas' ] as FormArray;
+
+		for( let i = 0; i < this.preguntasMedicas.length; i++ ) {
+			let grupoPregunta: FormGroup = this.crearGrupo();
+			grupoPreguntas.push( grupoPregunta );
+		}
 	}
 
 	private crearGrupo(): FormGroup {
@@ -51,15 +64,6 @@ export class MedicalQuestionaryComponent implements OnInit {
 				Validators.required
 			])]
 		})
-	}
-
-	private crearArregloGrupos(): void {
-		let grupoPreguntas: FormArray = this.frmCuestionario.controls[ 'grupoPreguntas' ] as FormArray;
-
-		for( let i = 0; i < this.preguntasMedicas.length; i++ ) {
-			let grupoPregunta: FormGroup = this.crearGrupo();
-			grupoPreguntas.push( grupoPregunta );
-		}
 	}
 
 	private fnCambiarRespuesta( idPregunta: number ): void {

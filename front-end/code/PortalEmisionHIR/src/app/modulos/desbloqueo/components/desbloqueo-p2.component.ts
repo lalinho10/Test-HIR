@@ -14,7 +14,7 @@ import { CodigoValidator }					  from 'app/core/validators/codigo.validator';
 })
 
 export class DesbloqueoP2Component implements OnInit {
-	private frmDesP2: FormGroup;
+	frmDesP2: FormGroup;
 
 	constructor(
 		private fb: FormBuilder,

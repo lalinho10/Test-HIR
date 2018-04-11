@@ -8,7 +8,7 @@ import { SessionModalService } from 'app/core/components/session-modal/session-m
 })
 
 export class MenuComponent {
-	private isOpen = false;
+	isOpen: boolean = false;
 
 	constructor( private sessionModalService: SessionModalService ){}
 

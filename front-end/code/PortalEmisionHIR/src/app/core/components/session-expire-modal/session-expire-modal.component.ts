@@ -13,7 +13,7 @@ import { AuthenticationService }     from 'app/core/services/authentication/auth
 })
 
 export class SessionExpireModalComponent implements OnInit {
-	private isVisible: boolean = false;
+	isVisible: boolean = false;
 
 	constructor(
 		private authenticationService: AuthenticationService,

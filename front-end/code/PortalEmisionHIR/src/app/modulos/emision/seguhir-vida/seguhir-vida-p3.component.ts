@@ -11,11 +11,11 @@ import { PesoValidator }					  from 'app/core/validators/peso.validator';
 })
 
 export class SeguhirVidaP3Component implements OnInit {
-	private isValidQuestionary = false;
+	isValidQuestionary = false;
 
-	private frmSeguhirVidaP3: FormGroup;
+	frmSeguhirVidaP3: FormGroup;
 
-	private preguntasCuestionario: string[] = [
+	preguntasCuestionario: string[] = [
 		'1. ¿Padece actualmente de alguna enfermedad?',
 		'2. ¿Ha consultado al médico en los últimos dos años?',
 		'3. ¿Tiene pendiente o se le ha practicado alguna intervención quirúrgica?',

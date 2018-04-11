@@ -12,7 +12,7 @@ import { WSClientService }					  from 'app/core/services/ws-client.service';
 })
 
 export class RcontrasenaP1Component implements OnInit {
-	private frmRconP1: FormGroup;
+	frmRconP1: FormGroup;
 
 	constructor(
 		private fb: FormBuilder,

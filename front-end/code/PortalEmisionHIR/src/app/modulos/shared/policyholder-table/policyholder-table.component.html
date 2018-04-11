@@ -11,7 +11,7 @@
 			</tr>
 		</thead>
 		<tbody formArrayName="gruposEdicion">
-			<tr *ngFor="let item of frmBeneficiario.controls.gruposEdicion.controls; let i=index;" [formGroupName]="i">
+			<tr *ngFor="let item of gruposEdicion.controls; let i=index;" [formGroupName]="i">
 				<td class="center">
 					<span *ngIf="!frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
 						{{beneficiarios[i].nombre}}
@@ -90,22 +90,22 @@
 			<tr>
 				<td>
 					<pehir-extend-form-control
-						[inputDirty]="frmBeneficiario.controls['grupoAlta'].controls['nombre'].dirty"
-						[inputErrors]="frmBeneficiario.controls['grupoAlta'].controls['nombre'].errors">
+						[inputDirty]="frmBeneficiario.get('grupoAlta.nombre').dirty"
+						[inputErrors]="frmBeneficiario.get('grupoAlta.nombre').errors">
 							<input id="txtNombre" type="text" class="form-control" formControlName="nombre">
 					</pehir-extend-form-control>
 				</td>
 				<td>
 					<pehir-extend-form-control
-						[inputDirty]="frmBeneficiario.controls['grupoAlta'].controls['fechanac'].dirty"
-						[inputErrors]="frmBeneficiario.controls['grupoAlta'].controls['fechanac'].errors">
+						[inputDirty]="frmBeneficiario.get('grupoAlta.fechanac').dirty"
+						[inputErrors]="frmBeneficiario.get('grupoAlta.fechanac').errors">
 							<my-date-picker name="fechanac" [options]="fecNacOptions" formControlName="fechanac"></my-date-picker>
 					</pehir-extend-form-control>
 				</td>
 				<td>
 					<pehir-extend-form-control
-						[inputDirty]="frmBeneficiario.controls['grupoAlta'].controls['parentesco'].dirty"
-						[inputErrors]="frmBeneficiario.controls['grupoAlta'].controls['parentesco'].errors">
+						[inputDirty]="frmBeneficiario.get('grupoAlta.parentesco').dirty"
+						[inputErrors]="frmBeneficiario.get('grupoAlta.parentesco').errors">
 							<select id="cboParentesco" class="form-control" formControlName="parentesco">
 								<option value="">Selecciona</option>
 								<option *ngFor="let parentesco of parentescos" [value]="parentesco.idParentesco">
@@ -116,8 +116,8 @@
 				</td>
 				<td>
 					<pehir-extend-form-control
-						[inputDirty]="frmBeneficiario.controls['grupoAlta'].controls['porcentajeSuma'].dirty"
-						[inputErrors]="frmBeneficiario.controls['grupoAlta'].controls['porcentajeSuma'].errors">
+						[inputDirty]="frmBeneficiario.get('grupoAlta.porcentajeSuma').dirty"
+						[inputErrors]="frmBeneficiario.get('grupoAlta.porcentajeSuma').errors">
 							<div class="form-group">
 								<input id="txtPorcentajeSuma" type="text" class="form-control left" formControlName="porcentajeSuma">
 								<span class="control-text right">%</span>

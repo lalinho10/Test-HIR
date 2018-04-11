@@ -16,14 +16,18 @@ export class AgentTableComponent implements OnInit {
 	@Output()
 	onValidateTable: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-	private frmAgente: FormGroup;
-	private agentes: Agente[] = [];
+	frmAgente: FormGroup;
+	agentes: Agente[] = [];
 
-	private isValidSum: boolean = false;
-	private porcentaje: number = 0;
-	private sumErrorMsg: string = 'Los porcentajes de participación no dan un total de 100%';
+	isValidSum: boolean = false;
+	porcentaje: number = 0;
+	sumErrorMsg: string = 'Los porcentajes de participación no dan un total de 100%';
 
 	constructor( private fb: FormBuilder ) {}
+
+	get gruposEdicion(): FormArray {
+		return this.frmAgente.controls[ 'gruposEdicion' ] as FormArray;
+	}
 
 	ngOnInit() {
 		this.frmAgente = this.fb.group({

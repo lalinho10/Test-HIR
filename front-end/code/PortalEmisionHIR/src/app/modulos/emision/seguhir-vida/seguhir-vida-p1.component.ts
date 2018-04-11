@@ -25,13 +25,13 @@ import { Ocupacion }						  from 'app/core/models/ocupacion';
 })
 
 export class SeguhirVidaP1Component implements OnInit {
-	private frmSeguhirVidaP1: FormGroup;
+	frmSeguhirVidaP1: FormGroup;
 
-	private ocupaciones: Ocupacion[];
+	ocupaciones: Ocupacion[];
 
-	private generos = GENEROS;
-	private fecNacOptions = FECNACOPTIONS;
-	private estadosCiviles = ESTADOSCIVILES;
+	generos = GENEROS;
+	fecNacOptions = FECNACOPTIONS;
+	estadosCiviles = ESTADOSCIVILES;
 
 	constructor(
 		private router: Router,

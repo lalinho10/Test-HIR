@@ -9,9 +9,9 @@ import { AppModalService }   from './app-modal.service';
 })
 
 export class AppModalComponent implements OnInit {
-	private modalMessage: string = '';
-	private iconClass: string = '';
-	private isVisible: boolean = false;
+	modalMessage: string = '';
+	iconClass: string = '';
+	isVisible: boolean = false;
 
 	private modalIcons: Object = {
 		'success': 'fa-check-circle',

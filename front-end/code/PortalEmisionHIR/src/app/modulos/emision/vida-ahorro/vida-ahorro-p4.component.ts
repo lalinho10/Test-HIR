@@ -8,12 +8,12 @@ import { Router }							  from '@angular/router';
 })
 
 export class VidaAhorroP4Component implements OnInit {
-	private isValidFormConyuge: boolean = false;
-	private isValidFormHijo1: boolean = false;
-	private isValidFormHijo2: boolean = false;
-	private areValidComponents: boolean = false;
+	isValidFormConyuge: boolean = false;
+	isValidFormHijo1: boolean = false;
+	isValidFormHijo2: boolean = false;
+	areValidComponents: boolean = false;
 
-	private frmVidaAhorroP4: FormGroup;
+	frmVidaAhorroP4: FormGroup;
 
 	constructor(
 		private fb: FormBuilder,

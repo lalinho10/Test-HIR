@@ -8,12 +8,12 @@ import { Router }							  from '@angular/router';
 })
 
 export class SeguhirVidaP5Component implements OnInit {
-	private isValidTableConyuge: boolean = false;
-	private isValidTableHijo1: boolean = false;
-	private isValidTableHijo2: boolean = false;
-	private areValidTables: boolean = false;
+	isValidTableConyuge: boolean = false;
+	isValidTableHijo1: boolean = false;
+	isValidTableHijo2: boolean = false;
+	areValidTables: boolean = false;
 
-	private frmSeguhirVidaP5: FormGroup;
+	frmSeguhirVidaP5: FormGroup;
 
 	constructor(
 		private fb: FormBuilder,

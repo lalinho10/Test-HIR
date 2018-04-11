@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
 })
 
 export class VidaAhorroComponent {
-	private titulo: string = 'Emisión - Vida con Ahorro línea 2018';
+	titulo: string = 'Emisión - Vida con Ahorro línea 2018';
 }

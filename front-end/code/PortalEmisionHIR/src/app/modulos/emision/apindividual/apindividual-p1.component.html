@@ -15,8 +15,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.controls['nombre'].dirty"
-							[inputErrors]="frmApindividualP1.controls['nombre'].errors">
+							[inputDirty]="frmApindividualP1.get('nombre').dirty"
+							[inputErrors]="frmApindividualP1.get('nombre').errors">
 								<input id="txtNombre" type="text" class="form-control" formControlName="nombre">
 						</pehir-extend-form-control>
 					</div>
@@ -27,8 +27,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.controls['apaterno'].dirty"
-							[inputErrors]="frmApindividualP1.controls['apaterno'].errors">
+							[inputDirty]="frmApindividualP1.get('apaterno').dirty"
+							[inputErrors]="frmApindividualP1.get('apaterno').errors">
 								<input id="txtApaterno" type="text" class="form-control" formControlName="apaterno">
 						</pehir-extend-form-control>
 					</div>
@@ -39,8 +39,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.controls['amaterno'].dirty"
-							[inputErrors]="frmApindividualP1.controls['amaterno'].errors">
+							[inputDirty]="frmApindividualP1.get('amaterno').dirty"
+							[inputErrors]="frmApindividualP1.get('amaterno').errors">
 								<input id="txtAmaterno" type="text" class="form-control" formControlName="amaterno">
 						</pehir-extend-form-control>
 					</div>
@@ -51,8 +51,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.controls['fechanac'].dirty"
-							[inputErrors]="frmApindividualP1.controls['fechanac'].errors">
+							[inputDirty]="frmApindividualP1.get('fechanac').dirty"
+							[inputErrors]="frmApindividualP1.get('fechanac').errors">
 								<my-date-picker name="fechanac" [options]="fecNacOptions" formControlName="fechanac">
 								</my-date-picker>
 						</pehir-extend-form-control>
@@ -64,8 +64,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.controls['nacionalidad'].dirty"
-							[inputErrors]="frmApindividualP1.controls['nacionalidad'].errors">
+							[inputDirty]="frmApindividualP1.get('nacionalidad').dirty"
+							[inputErrors]="frmApindividualP1.get('nacionalidad').errors">
 								<input id="txtNacionalidad" type="text" class="form-control" formControlName="nacionalidad">
 						</pehir-extend-form-control>
 					</div>
@@ -78,8 +78,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.controls['rfc'].dirty"
-							[inputErrors]="frmApindividualP1.controls['rfc'].errors">
+							[inputDirty]="frmApindividualP1.get('rfc').dirty"
+							[inputErrors]="frmApindividualP1.get('rfc').errors">
 								<input id="txtRFC" type="text" class="form-control" formControlName="rfc">
 						</pehir-extend-form-control>
 					</div>
@@ -90,8 +90,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.controls['estadoCivil'].dirty"
-							[inputErrors]="frmApindividualP1.controls['estadoCivil'].errors">
+							[inputDirty]="frmApindividualP1.get('estadoCivil').dirty"
+							[inputErrors]="frmApindividualP1.get('estadoCivil').errors">
 								<div *ngFor="let estadoCivil of estadosCiviles" class="rdoContainer three">
 									<input type="radio" formControlName="estadoCivil" [value]="estadoCivil.idEstadoCivil">{{estadoCivil.descEstadoCivil}}
 								</div>
@@ -104,8 +104,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.controls['genero'].dirty"
-							[inputErrors]="frmApindividualP1.controls['genero'].errors">
+							[inputDirty]="frmApindividualP1.get('genero').dirty"
+							[inputErrors]="frmApindividualP1.get('genero').errors">
 								<div *ngFor="let genero of generos" class="rdoContainer two">
 									<input type="radio" formControlName="genero" [value]="genero.idGenero">{{genero.descGenero}}
 								</div>
@@ -118,8 +118,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.controls['fumador'].dirty"
-							[inputErrors]="frmApindividualP1.controls['fumador'].errors">
+							[inputDirty]="frmApindividualP1.get('fumador').dirty"
+							[inputErrors]="frmApindividualP1.get('fumador').errors">
 								<div class="rdoContainer two">
 									<input type="radio" formControlName="fumador" [value]="false">No
 								</div>
@@ -142,8 +142,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.controls['calleNumero'].dirty"
-							[inputErrors]="frmApindividualP1.controls['calleNumero'].errors">
+							[inputDirty]="frmApindividualP1.get('calleNumero').dirty"
+							[inputErrors]="frmApindividualP1.get('calleNumero').errors">
 								<input id="txtCalleNumero" type="text" class="form-control" formControlName="calleNumero">
 						</pehir-extend-form-control>
 					</div>
@@ -154,8 +154,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.controls['coloniaPoblacion'].dirty"
-							[inputErrors]="frmApindividualP1.controls['coloniaPoblacion'].errors">
+							[inputDirty]="frmApindividualP1.get('coloniaPoblacion').dirty"
+							[inputErrors]="frmApindividualP1.get('coloniaPoblacion').errors">
 								<input id="txtColoniaPoblacion" type="text" class="form-control" formControlName="coloniaPoblacion">
 						</pehir-extend-form-control>
 					</div>
@@ -166,8 +166,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.controls['delegacionMunicipio'].dirty"
-							[inputErrors]="frmApindividualP1.controls['delegacionMunicipio'].errors">
+							[inputDirty]="frmApindividualP1.get('delegacionMunicipio').dirty"
+							[inputErrors]="frmApindividualP1.get('delegacionMunicipio').errors">
 								<input id="txtDelegacionMunicipio" type="text" class="form-control" formControlName="delegacionMunicipio">
 						</pehir-extend-form-control>
 					</div>
@@ -178,8 +178,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.controls['ciudadEstado'].dirty"
-							[inputErrors]="frmApindividualP1.controls['ciudadEstado'].errors">
+							[inputDirty]="frmApindividualP1.get('ciudadEstado').dirty"
+							[inputErrors]="frmApindividualP1.get('ciudadEstado').errors">
 								<input id="txtCiudadEstado" type="text" class="form-control" formControlName="ciudadEstado">
 						</pehir-extend-form-control>
 					</div>
@@ -190,8 +190,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.controls['cp'].dirty"
-							[inputErrors]="frmApindividualP1.controls['cp'].errors">
+							[inputDirty]="frmApindividualP1.get('cp').dirty"
+							[inputErrors]="frmApindividualP1.get('cp').errors">
 								<input id="txtCP" type="text" class="form-control" formControlName="cp">
 						</pehir-extend-form-control>
 					</div>
@@ -204,8 +204,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.controls['telefono'].dirty"
-							[inputErrors]="frmApindividualP1.controls['telefono'].errors">
+							[inputDirty]="frmApindividualP1.get('telefono').dirty"
+							[inputErrors]="frmApindividualP1.get('telefono').errors">
 								<input id="txtTelefono" type="text" class="form-control" formControlName="telefono">
 						</pehir-extend-form-control>
 					</div>
@@ -216,8 +216,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.controls['celular'].dirty"
-							[inputErrors]="frmApindividualP1.controls['celular'].errors"
+							[inputDirty]="frmApindividualP1.get('celular').dirty"
+							[inputErrors]="frmApindividualP1.get('celular').errors"
 							[formErrors]="frmApindividualP1.errors">
 								<input id="txtCelular" type="text" class="form-control" formControlName="celular">
 						</pehir-extend-form-control>
@@ -229,8 +229,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.controls['correoe'].dirty"
-							[inputErrors]="frmApindividualP1.controls['correoe'].errors">
+							[inputDirty]="frmApindividualP1.get('correoe').dirty"
+							[inputErrors]="frmApindividualP1.get('correoe').errors">
 								<input id="txtCorreoe" type="text" class="form-control" formControlName="correoe">
 						</pehir-extend-form-control>
 					</div>
@@ -241,8 +241,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.controls['vigenciaPoliza'].dirty"
-							[inputErrors]="frmApindividualP1.controls['vigenciaPoliza'].errors">
+							[inputDirty]="frmApindividualP1.get('vigenciaPoliza').dirty"
+							[inputErrors]="frmApindividualP1.get('vigenciaPoliza').errors">
 								<input id="txtVigenciaPoliza" type="text" class="form-control" formControlName="vigenciaPoliza">
 						</pehir-extend-form-control>
 					</div>
@@ -262,8 +262,8 @@
 		<div class="row">
 			<div class="col col-50">
 				<pehir-extend-form-control
-					[inputDirty]="frmApindividualP1.controls['gobierno'].dirty"
-					[inputErrors]="frmApindividualP1.controls['gobierno'].errors">
+					[inputDirty]="frmApindividualP1.get('gobierno').dirty"
+					[inputErrors]="frmApindividualP1.get('gobierno').errors">
 						<div class="rdoContainer two">
 							<input type="radio" (change)="fnCambiarGobierno()" [value]="false" formControlName="gobierno">No
 						</div>
@@ -279,8 +279,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.controls['especifiqueGob'].dirty"
-							[inputErrors]="frmApindividualP1.controls['especifiqueGob'].errors">
+							[inputDirty]="frmApindividualP1.get('especifiqueGob').dirty"
+							[inputErrors]="frmApindividualP1.get('especifiqueGob').errors">
 								<input id="txtEspecifiqueGob" type="text" class="form-control" formControlName="especifiqueGob">
 						</pehir-extend-form-control>
 					</div>
@@ -297,8 +297,8 @@
 		<div class="row">
 			<div class="col col-50">
 				<pehir-extend-form-control
-					[inputDirty]="frmApindividualP1.controls['parienteGob'].dirty"
-					[inputErrors]="frmApindividualP1.controls['parienteGob'].errors">
+					[inputDirty]="frmApindividualP1.get('parienteGob').dirty"
+					[inputErrors]="frmApindividualP1.get('parienteGob').errors">
 						<div class="rdoContainer two">
 							<input type="radio" (change)="fnCambiarParienteGob()" [value]="false" formControlName="parienteGob">No
 						</div>
@@ -314,8 +314,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.controls['especifiqueParGob'].dirty"
-							[inputErrors]="frmApindividualP1.controls['especifiqueParGob'].errors">
+							[inputDirty]="frmApindividualP1.get('especifiqueParGob').dirty"
+							[inputErrors]="frmApindividualP1.get('especifiqueParGob').errors">
 								<input id="txtEspecifiqueParGob" type="text" class="form-control" formControlName="especifiqueParGob">
 						</pehir-extend-form-control>
 					</div>

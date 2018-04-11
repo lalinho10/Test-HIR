@@ -23,13 +23,13 @@ export class InsuredFormComponent implements OnInit {
 	@Output()
 	onValidateForm: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-	private frmAsegurado: FormGroup;
+	frmAsegurado: FormGroup;
 
-	private ocupaciones: Ocupacion[];
+	ocupaciones: Ocupacion[];
 
-	private generos = GENEROS;
-	private fecNacOptions = FECNACOPTIONS;
-	private estadosCiviles = ESTADOSCIVILES;
+	generos = GENEROS;
+	fecNacOptions = FECNACOPTIONS;
+	estadosCiviles = ESTADOSCIVILES;
 
 	constructor(
 		private fb: FormBuilder,

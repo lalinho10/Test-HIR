@@ -13,7 +13,7 @@ import { IgualdadContrasenasValidator }		  from 'app/core/validators/igualdad-co
 })
 
 export class DesbloqueoP3Component implements OnInit {
-	private frmDesP3: FormGroup;
+	frmDesP3: FormGroup;
 
 	constructor(
 		private fb: FormBuilder,

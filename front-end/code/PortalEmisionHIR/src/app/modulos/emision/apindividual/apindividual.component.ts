@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
 })
 
 export class ApindividualComponent {
-	private titulo: string = 'Emisión - Accidentes Personales Individual';
+	titulo: string = 'Emisión - Accidentes Personales Individual';
 }

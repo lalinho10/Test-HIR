@@ -17,12 +17,12 @@ import { Plan }								  from 'app/core/models/plan';
 })
 
 export class SegubiciP2Component implements OnInit {
-	private frmSegubiciP2: FormGroup;
+	frmSegubiciP2: FormGroup;
 
-	private coberturas: Cobertura[];
-	private formasPago: FormaPago[];
-	private ocupaciones: Ocupacion[];
-	private planes: Plan[];
+	coberturas: Cobertura[];
+	formasPago: FormaPago[];
+	ocupaciones: Ocupacion[];
+	planes: Plan[];
 
 	constructor(
 		private fb: FormBuilder,

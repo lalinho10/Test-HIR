@@ -28,13 +28,13 @@ import { Ocupacion }						  from 'app/core/models/ocupacion';
 })
 
 export class ProcuraVidaP1Component implements OnInit {
-	private frmProcuraVidaP1: FormGroup;
+	frmProcuraVidaP1: FormGroup;
 
-	private ocupaciones: Ocupacion[];
+	ocupaciones: Ocupacion[];
 
-	private generos = GENEROS;
-	private fecNacOptions = FECNACOPTIONS;
-	private estadosCiviles = ESTADOSCIVILES;
+	generos = GENEROS;
+	fecNacOptions = FECNACOPTIONS;
+	estadosCiviles = ESTADOSCIVILES;
 
 	constructor(
 		private fb: FormBuilder,

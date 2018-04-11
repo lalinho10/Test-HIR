@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
 })
 
 export class DesbloqueoComponent {
-	private titulo: string = 'Desbloqueo';
+	titulo: string = 'Desbloqueo';
 }

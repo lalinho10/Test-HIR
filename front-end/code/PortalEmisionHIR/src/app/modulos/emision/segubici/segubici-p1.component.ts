@@ -21,11 +21,11 @@ import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
 })
 
 export class SegubiciP1Component implements OnInit {
-	private frmSegubiciP1: FormGroup;
+	frmSegubiciP1: FormGroup;
 
-	private generos = GENEROS;
-	private fecNacOptions = FECNACOPTIONS;
-	private estadosCiviles = ESTADOSCIVILES;
+	generos = GENEROS;
+	fecNacOptions = FECNACOPTIONS;
+	estadosCiviles = ESTADOSCIVILES;
 
 	constructor(
 		private fb: FormBuilder,

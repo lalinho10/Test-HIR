@@ -11,7 +11,7 @@
 			</tr>
 		</thead>
 		<tbody formArrayName="gruposEdicion">
-			<tr *ngFor="let item of frmAgente.controls.gruposEdicion.controls; let i=index;" [formGroupName]="i">
+			<tr *ngFor="let item of gruposEdicion.controls; let i=index;" [formGroupName]="i">
 				<td class="center">
 					<span *ngIf="!frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
 						{{ agentes[i].agente }}
@@ -85,29 +85,29 @@
 			<tr>
 				<td>
 					<pehir-extend-form-control
-						[inputDirty]="frmAgente.controls['grupoAlta'].controls['agente'].dirty"
-						[inputErrors]="frmAgente.controls['grupoAlta'].controls['agente'].errors">
+						[inputDirty]="frmAgente.get('grupoAlta.agente').dirty"
+						[inputErrors]="frmAgente.get('grupoAlta.agente').errors">
 							<input id="txtAgente" type="text" class="form-control" formControlName="agente">
 					</pehir-extend-form-control>
 				</td>
 				<td>
 					<pehir-extend-form-control
-						[inputDirty]="frmAgente.controls['grupoAlta'].controls['cliente'].dirty"
-						[inputErrors]="frmAgente.controls['grupoAlta'].controls['cliente'].errors">
+						[inputDirty]="frmAgente.get('grupoAlta.cliente').dirty"
+						[inputErrors]="frmAgente.get('grupoAlta.cliente').errors">
 							<input id="txtCliente" type="text" class="form-control" formControlName="cliente">
 					</pehir-extend-form-control>
 				</td>
 				<td>
 					<pehir-extend-form-control
-						[inputDirty]="frmAgente.controls['grupoAlta'].controls['correoe'].dirty"
-						[inputErrors]="frmAgente.controls['grupoAlta'].controls['correoe'].errors">
+						[inputDirty]="frmAgente.get('grupoAlta.correoe').dirty"
+						[inputErrors]="frmAgente.get('grupoAlta.correoe').errors">
 							<input id="txtCorreoe" type="text" class="form-control" formControlName="correoe">
 					</pehir-extend-form-control>
 				</td>
 				<td>
 					<pehir-extend-form-control
-						[inputDirty]="frmAgente.controls['grupoAlta'].controls['porcentajeParticipacion'].dirty"
-						[inputErrors]="frmAgente.controls['grupoAlta'].controls['porcentajeParticipacion'].errors">
+						[inputDirty]="frmAgente.get('grupoAlta.porcentajeParticipacion').dirty"
+						[inputErrors]="frmAgente.get('grupoAlta.porcentajeParticipacion').errors">
 							<div class="form-group">
 								<input id="txtPorcentajeParticipacion" type="text" class="form-control left" formControlName="porcentajeParticipacion">
 								<span class="control-text right">%</span>

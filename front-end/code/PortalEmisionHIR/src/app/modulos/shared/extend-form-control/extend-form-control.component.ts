@@ -10,8 +10,8 @@ export class ExtendFormControlComponent implements OnChanges {
 	@Input() inputErrors: Object;
 	@Input() formErrors: Object;
 
-	private hasError: boolean;
-	private errorMessage: string;
+	hasError: boolean;
+	errorMessage: string;
 
 	private errorDefs: Object = 
 	{

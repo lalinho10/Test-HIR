@@ -22,15 +22,15 @@ import { FormaPago }						  from 'app/core/models/forma-pago';
 })
 
 export class ProcuraVidaComponent implements OnInit {
-	private titulo: string = 'Cotización - Procura Vida';
-	private frmProcuraVida: FormGroup;
+	titulo: string = 'Cotización - Procura Vida';
+	frmProcuraVida: FormGroup;
 
-	private coberturas: Cobertura[];
-	private formasPago: FormaPago[];
+	coberturas: Cobertura[];
+	formasPago: FormaPago[];
 
-	private modulos = MODULOS;
-	private generos = GENEROS;
-	private fecNacOptions = FECNACOPTIONS;
+	modulos = MODULOS;
+	generos = GENEROS;
+	fecNacOptions = FECNACOPTIONS;
 
 	constructor(
 		private router: Router,

@@ -19,7 +19,7 @@ export class SessionTimerComponent implements OnInit {
 
 	private sessionTimer;
 	private counter: number;
-	private timeCounter: Date;
+	timeCounter: Date;
 
 	constructor(
 		private appModalService: AppModalService,

@@ -17,12 +17,12 @@ import { Plan }								  from 'app/core/models/plan';
 })
 
 export class ApindividualP2Component implements OnInit {
-	private frmApindividualP2: FormGroup;
+	frmApindividualP2: FormGroup;
 
-	private coberturas: Cobertura[];
-	private formasPago: FormaPago[];
-	private ocupaciones: Ocupacion[];
-	private planes: Plan[];
+	coberturas: Cobertura[];
+	formasPago: FormaPago[];
+	ocupaciones: Ocupacion[];
+	planes: Plan[];
 
 	constructor(
 		private fb: FormBuilder,

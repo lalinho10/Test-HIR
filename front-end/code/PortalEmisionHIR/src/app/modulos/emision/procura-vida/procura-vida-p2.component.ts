@@ -17,14 +17,14 @@ import { FormaPago }						  from 'app/core/models/forma-pago';
 })
 
 export class ProcuraVidaP2Component implements OnInit {
-	private isValidTable = false;
+	isValidTable = false;
 
-	private frmProcuraVidaP2: FormGroup;
+	frmProcuraVidaP2: FormGroup;
 
-	private coberturas: Cobertura[];
-	private formasPago: FormaPago[];
+	coberturas: Cobertura[];
+	formasPago: FormaPago[];
 
-	private modulos = MODULOS;
+	modulos = MODULOS;
 
 	constructor(
 		private fb: FormBuilder,

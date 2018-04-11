@@ -7,8 +7,8 @@
 	<div class="row">
 		<div class="col col-100">
 			<pehir-extend-form-control
-				[inputDirty]="frmLogin.controls['nombre'].dirty"
-				[inputErrors]="frmLogin.controls['nombre'].errors">
+				[inputDirty]="frmLogin.get('nombre').dirty"
+				[inputErrors]="frmLogin.get('nombre').errors">
 					<input id="txtUsuario" type="text" class="form-control" formControlName="nombre">
 			</pehir-extend-form-control>
 		</div>
@@ -21,8 +21,8 @@
 	<div class="row">
 		<div class="col col-100">
 			<pehir-extend-form-control
-				[inputDirty]="frmLogin.controls['clave'].dirty"
-				[inputErrors]="frmLogin.controls['clave'].errors">
+				[inputDirty]="frmLogin.get('clave').dirty"
+				[inputErrors]="frmLogin.get('clave').errors">
 					<input id="txtContrasena" type="password" class="form-control" formControlName="clave">
 			</pehir-extend-form-control>
 		</div>

@@ -14,7 +14,7 @@ import { CelularValidator }					  from 'app/core/validators/celular.validator';
 })
 
 export class DesbloqueoP1Component implements OnInit {
-	private frmDesP1: FormGroup;
+	frmDesP1: FormGroup;
 
 	constructor(
 		private fb: FormBuilder,

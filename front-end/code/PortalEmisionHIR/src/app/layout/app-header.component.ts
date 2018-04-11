@@ -9,7 +9,7 @@ import { AuthenticationService } from 'app/core/services/authentication/authenti
 })
 
 export class AppHeaderComponent implements OnDestroy {
-	private authenticated: boolean;
+	authenticated: boolean;
 	private subscription: Subscription;
 
 	constructor( private authenticationService: AuthenticationService ){

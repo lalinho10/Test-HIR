@@ -14,7 +14,7 @@ import { CodigoValidator } 					  from 'app/core/validators/codigo.validator';
 })
 
 export class RcontrasenaP2Component implements OnInit {
-	private frmRconP2: FormGroup;
+	frmRconP2: FormGroup;
 
 	constructor(
 		private fb: FormBuilder,

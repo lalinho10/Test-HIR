@@ -17,8 +17,8 @@
 		<div class="row">
 			<div class="col col-25 col-off-70">
 				<pehir-extend-form-control
-					[inputDirty]="frmProcuraVidaP1.controls['padecimiento'].dirty"
-					[inputErrors]="frmProcuraVidaP1.controls['padecimiento'].errors">
+					[inputDirty]="frmProcuraVidaP1.get('padecimiento').dirty"
+					[inputErrors]="frmProcuraVidaP1.get('padecimiento').errors">
 						<div class="rdoContainer two">
 							<input type="radio" formControlName="padecimiento" [value]="false">No
 						</div>
@@ -36,8 +36,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP1.controls['peso'].dirty"
-							[inputErrors]="frmProcuraVidaP1.controls['peso'].errors">
+							[inputDirty]="frmProcuraVidaP1.get('peso').dirty"
+							[inputErrors]="frmProcuraVidaP1.get('peso').errors">
 								<div class="form-group">
 									<input id="txtPeso" type="text" class="form-control left" formControlName="peso">
 									<span class="control-text right">kg</span>
@@ -53,8 +53,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP1.controls['estatura'].dirty"
-							[inputErrors]="frmProcuraVidaP1.controls['estatura'].errors">
+							[inputDirty]="frmProcuraVidaP1.get('estatura').dirty"
+							[inputErrors]="frmProcuraVidaP1.get('estatura').errors">
 								<div class="form-group">
 									<input id="txtEstatura" type="text" class="form-control left" formControlName="estatura">
 									<span class="control-text right">m</span>
@@ -75,8 +75,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP1.controls['nombre'].dirty"
-							[inputErrors]="frmProcuraVidaP1.controls['nombre'].errors">
+							[inputDirty]="frmProcuraVidaP1.get('nombre').dirty"
+							[inputErrors]="frmProcuraVidaP1.get('nombre').errors">
 								<input id="txtNombre" type="text" class="form-control" formControlName="nombre">
 						</pehir-extend-form-control>
 					</div>
@@ -87,8 +87,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP1.controls['apaterno'].dirty"
-							[inputErrors]="frmProcuraVidaP1.controls['apaterno'].errors">
+							[inputDirty]="frmProcuraVidaP1.get('apaterno').dirty"
+							[inputErrors]="frmProcuraVidaP1.get('apaterno').errors">
 								<input id="txtApaterno" type="text" class="form-control" formControlName="apaterno">
 						</pehir-extend-form-control>
 					</div>
@@ -99,8 +99,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP1.controls['amaterno'].dirty"
-							[inputErrors]="frmProcuraVidaP1.controls['amaterno'].errors">
+							[inputDirty]="frmProcuraVidaP1.get('amaterno').dirty"
+							[inputErrors]="frmProcuraVidaP1.get('amaterno').errors">
 								<input id="txtAmaterno" type="text" class="form-control" formControlName="amaterno">
 						</pehir-extend-form-control>
 					</div>
@@ -111,8 +111,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP1.controls['fechanac'].dirty"
-							[inputErrors]="frmProcuraVidaP1.controls['fechanac'].errors">
+							[inputDirty]="frmProcuraVidaP1.get('fechanac').dirty"
+							[inputErrors]="frmProcuraVidaP1.get('fechanac').errors">
 								<my-date-picker name="fechanac" [options]="fecNacOptions" formControlName="fechanac">
 								</my-date-picker>
 						</pehir-extend-form-control>
@@ -124,8 +124,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP1.controls['nacionalidad'].dirty"
-							[inputErrors]="frmProcuraVidaP1.controls['nacionalidad'].errors">
+							[inputDirty]="frmProcuraVidaP1.get('nacionalidad').dirty"
+							[inputErrors]="frmProcuraVidaP1.get('nacionalidad').errors">
 								<input id="txtNacionalidad" type="text" class="form-control" formControlName="nacionalidad">
 						</pehir-extend-form-control>
 					</div>
@@ -138,8 +138,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP1.controls['ocupacion'].dirty"
-							[inputErrors]="frmProcuraVidaP1.controls['ocupacion'].errors">
+							[inputDirty]="frmProcuraVidaP1.get('ocupacion').dirty"
+							[inputErrors]="frmProcuraVidaP1.get('ocupacion').errors">
 								<select id="cboOcupacion" class="form-control" formControlName="ocupacion">
 									<option value="">Selecciona</option>
 									<option *ngFor="let ocupacion of ocupaciones" [value]="ocupacion.idOcupacion">
@@ -155,8 +155,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP1.controls['rfc'].dirty"
-							[inputErrors]="frmProcuraVidaP1.controls['rfc'].errors">
+							[inputDirty]="frmProcuraVidaP1.get('rfc').dirty"
+							[inputErrors]="frmProcuraVidaP1.get('rfc').errors">
 								<input id="txtRFC" type="text" class="form-control" formControlName="rfc">
 						</pehir-extend-form-control>
 					</div>
@@ -167,8 +167,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP1.controls['estadoCivil'].dirty"
-							[inputErrors]="frmProcuraVidaP1.controls['estadoCivil'].errors">
+							[inputDirty]="frmProcuraVidaP1.get('estadoCivil').dirty"
+							[inputErrors]="frmProcuraVidaP1.get('estadoCivil').errors">
 								<div *ngFor="let estadoCivil of estadosCiviles" class="rdoContainer three">
 									<input type="radio" formControlName="estadoCivil" [value]="estadoCivil.idEstadoCivil">{{estadoCivil.descEstadoCivil}}
 								</div>
@@ -181,8 +181,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP1.controls['genero'].dirty"
-							[inputErrors]="frmProcuraVidaP1.controls['genero'].errors">
+							[inputDirty]="frmProcuraVidaP1.get('genero').dirty"
+							[inputErrors]="frmProcuraVidaP1.get('genero').errors">
 								<div *ngFor="let genero of generos" class="rdoContainer two">
 									<input type="radio" formControlName="genero" [value]="genero.idGenero">{{genero.descGenero}}
 								</div>
@@ -202,8 +202,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP1.controls['calleNumero'].dirty"
-							[inputErrors]="frmProcuraVidaP1.controls['calleNumero'].errors">
+							[inputDirty]="frmProcuraVidaP1.get('calleNumero').dirty"
+							[inputErrors]="frmProcuraVidaP1.get('calleNumero').errors">
 								<input id="txtCalleNumero" type="text" class="form-control" formControlName="calleNumero">
 						</pehir-extend-form-control>
 					</div>
@@ -214,8 +214,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP1.controls['coloniaPoblacion'].dirty"
-							[inputErrors]="frmProcuraVidaP1.controls['coloniaPoblacion'].errors">
+							[inputDirty]="frmProcuraVidaP1.get('coloniaPoblacion').dirty"
+							[inputErrors]="frmProcuraVidaP1.get('coloniaPoblacion').errors">
 								<input id="txtColoniaPoblacion" type="text" class="form-control" formControlName="coloniaPoblacion">
 						</pehir-extend-form-control>
 					</div>
@@ -226,8 +226,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP1.controls['delegacionMunicipio'].dirty"
-							[inputErrors]="frmProcuraVidaP1.controls['delegacionMunicipio'].errors">
+							[inputDirty]="frmProcuraVidaP1.get('delegacionMunicipio').dirty"
+							[inputErrors]="frmProcuraVidaP1.get('delegacionMunicipio').errors">
 								<input id="txtDelegacionMunicipio" type="text" class="form-control" formControlName="delegacionMunicipio">
 						</pehir-extend-form-control>
 					</div>
@@ -238,8 +238,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP1.controls['estado'].dirty"
-							[inputErrors]="frmProcuraVidaP1.controls['estado'].errors">
+							[inputDirty]="frmProcuraVidaP1.get('estado').dirty"
+							[inputErrors]="frmProcuraVidaP1.get('estado').errors">
 								<input id="txtEstado" type="text" class="form-control" formControlName="estado">
 						</pehir-extend-form-control>
 					</div>
@@ -250,8 +250,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP1.controls['cp'].dirty"
-							[inputErrors]="frmProcuraVidaP1.controls['cp'].errors">
+							[inputDirty]="frmProcuraVidaP1.get('cp').dirty"
+							[inputErrors]="frmProcuraVidaP1.get('cp').errors">
 								<input id="txtCP" type="text" class="form-control" formControlName="cp">
 						</pehir-extend-form-control>
 					</div>
@@ -265,8 +265,8 @@
 						</div>
 						<div class="col col-50">
 							<pehir-extend-form-control
-								[inputDirty]="frmProcuraVidaP1.controls['telefonos'].controls['telefono'].dirty"
-								[inputErrors]="frmProcuraVidaP1.controls['telefonos'].controls['telefono'].errors">
+								[inputDirty]="frmProcuraVidaP1.get('telefonos.telefono').dirty"
+								[inputErrors]="frmProcuraVidaP1.get('telefonos.telefono').errors">
 									<input id="txtTelefono" type="text" class="form-control" formControlName="telefono">
 							</pehir-extend-form-control>
 						</div>
@@ -277,9 +277,9 @@
 						</div>
 						<div class="col col-50">
 							<pehir-extend-form-control
-								[inputDirty]="frmProcuraVidaP1.controls['telefonos'].controls['celular'].dirty"
-								[inputErrors]="frmProcuraVidaP1.controls['telefonos'].controls['celular'].errors"
-								[formErrors]="frmProcuraVidaP1.controls['telefonos'].errors">
+								[inputDirty]="frmProcuraVidaP1.get('telefonos.celular').dirty"
+								[inputErrors]="frmProcuraVidaP1.get('telefonos.celular').errors"
+								[formErrors]="frmProcuraVidaP1.get('telefonos').errors">
 									<input id="txtCelular" type="text" class="form-control" formControlName="celular">
 							</pehir-extend-form-control>
 						</div>
@@ -292,8 +292,8 @@
 						</div>
 						<div class="col col-50">
 							<pehir-extend-form-control
-								[inputDirty]="frmProcuraVidaP1.controls['correos'].controls['correoe1'].dirty"
-								[inputErrors]="frmProcuraVidaP1.controls['correos'].controls['correoe1'].errors">
+								[inputDirty]="frmProcuraVidaP1.get('correos.correoe1').dirty"
+								[inputErrors]="frmProcuraVidaP1.get('correos.correoe1').errors">
 									<input id="txtCorreoe1" type="text" class="form-control" formControlName="correoe1">
 							</pehir-extend-form-control>
 						</div>
@@ -304,9 +304,9 @@
 						</div>
 						<div class="col col-50">
 							<pehir-extend-form-control
-								[inputDirty]="frmProcuraVidaP1.controls['correos'].controls['correoe2'].dirty"
-								[inputErrors]="frmProcuraVidaP1.controls['correos'].controls['correoe2'].errors"
-								[formErrors]="frmProcuraVidaP1.controls['correos'].errors">
+								[inputDirty]="frmProcuraVidaP1.get('correos.correoe2').dirty"
+								[inputErrors]="frmProcuraVidaP1.get('correos.correoe2').errors"
+								[formErrors]="frmProcuraVidaP1.get('correos').errors">
 									<input id="txtCorreoe2" type="text" class="form-control" formControlName="correoe2">
 							</pehir-extend-form-control>
 						</div>

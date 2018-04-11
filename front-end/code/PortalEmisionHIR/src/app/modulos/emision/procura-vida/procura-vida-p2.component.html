@@ -20,8 +20,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP2.controls['modulo'].dirty"
-							[inputErrors]="frmProcuraVidaP2.controls['modulo'].errors">
+							[inputDirty]="frmProcuraVidaP2.get('modulo').dirty"
+							[inputErrors]="frmProcuraVidaP2.get('modulo').errors">
 								<select id="cboModulo" class="form-control" formControlName="modulo">
 									<option value="">Selecciona</option>
 									<option *ngFor="let modulo of modulos" [value]="modulo.idModulo">
@@ -37,8 +37,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP2.controls['sumasegurada'].dirty"
-							[inputErrors]="frmProcuraVidaP2.controls['sumasegurada'].errors">
+							[inputDirty]="frmProcuraVidaP2.get('sumasegurada').dirty"
+							[inputErrors]="frmProcuraVidaP2.get('sumasegurada').errors">
 								<div class="form-group">
 									<input id="txtSumasegurada" type="text" class="form-control right" formControlName="sumasegurada">
 									<span class="control-text left">$</span>
@@ -54,8 +54,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP2.controls['cobertura'].dirty"
-							[inputErrors]="frmProcuraVidaP2.controls['cobertura'].errors">
+							[inputDirty]="frmProcuraVidaP2.get('cobertura').dirty"
+							[inputErrors]="frmProcuraVidaP2.get('cobertura').errors">
 								<select id="cboModulo" class="form-control" formControlName="cobertura">
 									<option value="">Selecciona</option>
 									<option *ngFor="let cobertura of coberturas" [value]="cobertura.idCobertura">
@@ -71,8 +71,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP2.controls['fpago'].dirty"
-							[inputErrors]="frmProcuraVidaP2.controls['fpago'].errors">
+							[inputDirty]="frmProcuraVidaP2.get('fpago').dirty"
+							[inputErrors]="frmProcuraVidaP2.get('fpago').errors">
 								<div *ngFor="let formaPago of formasPago" class="rdoContainer two">
 									<input type="radio" formControlName="fpago" [value]="formaPago.idFormaPago">{{formaPago.descFormaPago}}
 								</div>
@@ -92,8 +92,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP2.controls['agente'].dirty"
-							[inputErrors]="frmProcuraVidaP2.controls['agente'].errors">
+							[inputDirty]="frmProcuraVidaP2.get('agente').dirty"
+							[inputErrors]="frmProcuraVidaP2.get('agente').errors">
 								<input id="txtAgente" type="text" class="form-control" formControlName="agente">
 						</pehir-extend-form-control>
 					</div>
@@ -106,8 +106,8 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP2.controls['clave'].dirty"
-							[inputErrors]="frmProcuraVidaP2.controls['clave'].errors">
+							[inputDirty]="frmProcuraVidaP2.get('clave').dirty"
+							[inputErrors]="frmProcuraVidaP2.get('clave').errors">
 								<input id="txtClave" type="text" class="form-control" formControlName="clave">
 						</pehir-extend-form-control>
 					</div>

@@ -10,8 +10,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmSegubici.controls['nombre'].dirty"
-						[inputErrors]="frmSegubici.controls['nombre'].errors">
+						[inputDirty]="frmSegubici.get('nombre').dirty"
+						[inputErrors]="frmSegubici.get('nombre').errors">
 							<input id="txtNombre" type="text" class="form-control" formControlName="nombre">
 					</pehir-extend-form-control>
 				</div>
@@ -22,8 +22,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmSegubici.controls['apaterno'].dirty"
-						[inputErrors]="frmSegubici.controls['apaterno'].errors">
+						[inputDirty]="frmSegubici.get('apaterno').dirty"
+						[inputErrors]="frmSegubici.get('apaterno').errors">
 							<input id="txtApaterno" type="text" class="form-control" formControlName="apaterno">
 					</pehir-extend-form-control>
 				</div>
@@ -34,8 +34,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmSegubici.controls['amaterno'].dirty"
-						[inputErrors]="frmSegubici.controls['amaterno'].errors">
+						[inputDirty]="frmSegubici.get('amaterno').dirty"
+						[inputErrors]="frmSegubici.get('amaterno').errors">
 							<input id="txtAmaterno" type="text" class="form-control" formControlName="amaterno">
 					</pehir-extend-form-control>
 				</div>
@@ -46,8 +46,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmSegubici.controls['fechanac'].dirty"
-						[inputErrors]="frmSegubici.controls['fechanac'].errors">
+						[inputDirty]="frmSegubici.get('fechanac').dirty"
+						[inputErrors]="frmSegubici.get('fechanac').errors">
 							<my-date-picker name="fechanac" [options]="fecNacOptions" formControlName="fechanac">
 							</my-date-picker>
 					</pehir-extend-form-control>
@@ -59,8 +59,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmSegubici.controls['rfc'].dirty"
-						[inputErrors]="frmSegubici.controls['rfc'].errors">
+						[inputDirty]="frmSegubici.get('rfc').dirty"
+						[inputErrors]="frmSegubici.get('rfc').errors">
 							<input id="txtRFC" type="text" class="form-control" formControlName="rfc">
 					</pehir-extend-form-control>
 				</div>
@@ -71,8 +71,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmSegubici.controls['genero'].dirty"
-						[inputErrors]="frmSegubici.controls['genero'].errors">
+						[inputDirty]="frmSegubici.get('genero').dirty"
+						[inputErrors]="frmSegubici.get('genero').errors">
 							<div *ngFor="let genero of generos" class="rdoContainer two">
 								<input type="radio" formControlName="genero" [value]="genero.idGenero">{{genero.descGenero}}
 							</div>
@@ -87,8 +87,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmSegubici.controls['cobertura'].dirty"
-						[inputErrors]="frmSegubici.controls['cobertura'].errors">
+						[inputDirty]="frmSegubici.get('cobertura').dirty"
+						[inputErrors]="frmSegubici.get('cobertura').errors">
 							<select id="cboCobertura" class="form-control" formControlName="cobertura">
 								<option value="">Selecciona</option>
 								<option *ngFor="let cobertura of coberturas" [value]="cobertura.idCobertura">
@@ -104,8 +104,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmSegubici.controls['sumasegurada'].dirty"
-						[inputErrors]="frmSegubici.controls['sumasegurada'].errors">
+						[inputDirty]="frmSegubici.get('sumasegurada').dirty"
+						[inputErrors]="frmSegubici.get('sumasegurada').errors">
 							<div class="form-group">
 								<input id="txtSumasegurada" type="text" class="form-control right" formControlName="sumasegurada">
 								<span class="control-text left">$</span>
@@ -119,8 +119,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmSegubici.controls['deducible'].dirty"
-						[inputErrors]="frmSegubici.controls['deducible'].errors">
+						[inputDirty]="frmSegubici.get('deducible').dirty"
+						[inputErrors]="frmSegubici.get('deducible').errors">
 							<div class="form-group">
 								<input id="txtDeducible" type="text" class="form-control right" formControlName="deducible">
 								<span class="control-text left">$</span>
@@ -134,8 +134,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmSegubici.controls['fpago'].dirty"
-						[inputErrors]="frmSegubici.controls['fpago'].errors">
+						[inputDirty]="frmSegubici.get('fpago').dirty"
+						[inputErrors]="frmSegubici.get('fpago').errors">
 							<div *ngFor="let formaPago of formasPago" class="rdoContainer two">
 								<input type="radio" formControlName="fpago" [value]="formaPago.idFormaPago">{{formaPago.descFormaPago}}
 							</div>
@@ -148,8 +148,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmSegubici.controls['plan'].dirty"
-						[inputErrors]="frmSegubici.controls['plan'].errors">
+						[inputDirty]="frmSegubici.get('plan').dirty"
+						[inputErrors]="frmSegubici.get('plan').errors">
 							<div *ngFor="let plan of planes" class="rdoContainer two">
 								<input type="radio" formControlName="plan" [value]="plan.idPlan">{{plan.descPlan}}
 							</div>

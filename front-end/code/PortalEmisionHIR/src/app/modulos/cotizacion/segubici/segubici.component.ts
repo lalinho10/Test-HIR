@@ -22,15 +22,15 @@ import { Plan }								  from 'app/core/models/plan';
 })
 
 export class SegubiciComponent implements OnInit {
-	private titulo: string = 'Cotización - Segubici';
-	private frmSegubici: FormGroup;
+	titulo: string = 'Cotización - Segubici';
+	frmSegubici: FormGroup;
 
-	private coberturas: Cobertura[];
-	private formasPago: FormaPago[];
-	private planes: Plan[];
+	coberturas: Cobertura[];
+	formasPago: FormaPago[];
+	planes: Plan[];
 
-	private generos = GENEROS;
-	private fecNacOptions = FECNACOPTIONS;
+	generos = GENEROS;
+	fecNacOptions = FECNACOPTIONS;
 
 	constructor(
 		private router: Router,

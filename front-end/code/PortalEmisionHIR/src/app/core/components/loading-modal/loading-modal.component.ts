@@ -9,8 +9,8 @@ import { LoadingModalService } from './loading-modal.service';
 })
 
 export class LoadingModalComponent implements OnInit {
-	private calls: number;
-	private isVisible: boolean = false;
+	calls: number;
+	isVisible: boolean = false;
 
 	constructor( private loadingModalService: LoadingModalService ) {}
 

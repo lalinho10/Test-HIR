@@ -22,21 +22,25 @@ export class PolicyHolderTableComponent implements OnInit {
 	@Output()
 	onValidateTable: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-	private frmBeneficiario: FormGroup;
-	private beneficiarios: Beneficiario[] = [];
+	frmBeneficiario: FormGroup;
+	beneficiarios: Beneficiario[] = [];
 
-	private parentescos: Parentesco[];
+	parentescos: Parentesco[];
 
-	private fecNacOptions = FECNACOPTIONS;
+	fecNacOptions = FECNACOPTIONS;
 
-	private isValidSum: boolean = false;
-	private porcentaje: number = 0;
-	private sumErrorMsg: string = 'Los porcentajes de suma asegurada no dan un total de 100%'
+	isValidSum: boolean = false;
+	porcentaje: number = 0;
+	sumErrorMsg: string = 'Los porcentajes de suma asegurada no dan un total de 100%'
 
 	constructor(
 		private fb: FormBuilder,
 		private wsClientService: WSClientService
 	) {}
+
+	get gruposEdicion(): FormArray {
+		return this.frmBeneficiario.controls[ 'gruposEdicion' ] as FormArray;
+	}
 
 	readCatalogs(): void {
 		this.wsClientService.getObject( '/consultaParentescos' )

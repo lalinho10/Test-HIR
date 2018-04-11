@@ -12,7 +12,7 @@ import { IgualdadContrasenasValidator }		  from 'app/core/validators/igualdad-co
 })
 
 export class RcontrasenaP3Component implements OnInit {
-	private frmRconP3: FormGroup;
+	frmRconP3: FormGroup;
 
 	constructor(
 		private fb: FormBuilder,

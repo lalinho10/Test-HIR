@@ -8,8 +8,8 @@
 		</div>
 		<div class="col col-30">
 			<pehir-extend-form-control
-				[inputDirty]="frmRegistro.controls['nombre'].dirty"
-				[inputErrors]="frmRegistro.controls['nombre'].errors">
+				[inputDirty]="frmRegistro.get('nombre').dirty"
+				[inputErrors]="frmRegistro.get('nombre').errors">
 					<input id="txtNombre" type="text" class="form-control" formControlName="nombre">
 			</pehir-extend-form-control>
 		</div>
@@ -20,8 +20,8 @@
 		</div>
 		<div class="col col-30">
 			<pehir-extend-form-control
-				[inputDirty]="frmRegistro.controls['apaterno'].dirty"
-				[inputErrors]="frmRegistro.controls['apaterno'].errors">
+				[inputDirty]="frmRegistro.get('apaterno').dirty"
+				[inputErrors]="frmRegistro.get('apaterno').errors">
 					<input id="txtApaterno" type="text" class="form-control" formControlName="apaterno">
 			</pehir-extend-form-control>
 		</div>
@@ -32,8 +32,8 @@
 		</div>
 		<div class="col col-30">
 			<pehir-extend-form-control
-				[inputDirty]="frmRegistro.controls['amaterno'].dirty"
-				[inputErrors]="frmRegistro.controls['amaterno'].errors">
+				[inputDirty]="frmRegistro.get('amaterno').dirty"
+				[inputErrors]="frmRegistro.get('amaterno').errors">
 					<input id="txtAmaterno" type="text" class="form-control" formControlName="amaterno">
 			</pehir-extend-form-control>
 		</div>
@@ -44,8 +44,8 @@
 		</div>
 		<div class="col col-30">
 			<pehir-extend-form-control
-				[inputDirty]="frmRegistro.controls['correoe'].dirty"
-				[inputErrors]="frmRegistro.controls['correoe'].errors">
+				[inputDirty]="frmRegistro.get('correoe').dirty"
+				[inputErrors]="frmRegistro.get('correoe').errors">
 					<input id="txtCorreoe" type="text" class="form-control" formControlName="correoe">
 			</pehir-extend-form-control>
 		</div>
@@ -56,8 +56,8 @@
 		</div>
 		<div class="col col-30">
 			<pehir-extend-form-control
-				[inputDirty]="frmRegistro.controls['contrasena'].dirty"
-				[inputErrors]="frmRegistro.controls['contrasena'].errors">
+				[inputDirty]="frmRegistro.get('contrasena').dirty"
+				[inputErrors]="frmRegistro.get('contrasena').errors">
 					<input id="txtContrasena" type="password" class="form-control" formControlName="contrasena">
 			</pehir-extend-form-control>
 		</div>
@@ -68,8 +68,8 @@
 		</div>
 		<div class="col col-30">
 			<pehir-extend-form-control
-				[inputDirty]="frmRegistro.controls['confcontrasena'].dirty"
-				[inputErrors]="frmRegistro.controls['confcontrasena'].errors"
+				[inputDirty]="frmRegistro.get('confcontrasena').dirty"
+				[inputErrors]="frmRegistro.get('confcontrasena').errors"
 				[formErrors]="frmRegistro.errors">
 					<input id="txtConfContrasena" type="password" class="form-control" formControlName="confcontrasena">
 			</pehir-extend-form-control>
@@ -88,8 +88,8 @@
 		</div>
 		<div class="col col-30">
 			<pehir-extend-form-control
-				[inputDirty]="frmRegistro.controls['celular'].dirty"
-				[inputErrors]="frmRegistro.controls['celular'].errors">
+				[inputDirty]="frmRegistro.get('celular').dirty"
+				[inputErrors]="frmRegistro.get('celular').errors">
 					<input id="txtCelular" type="text" class="form-control" formControlName="celular">
 			</pehir-extend-form-control>
 		</div>
@@ -100,8 +100,8 @@
 		</div>
 		<div class="col col-30">
 			<pehir-extend-form-control
-				[inputDirty]="frmRegistro.controls['telefono'].dirty"
-				[inputErrors]="frmRegistro.controls['telefono'].errors">
+				[inputDirty]="frmRegistro.get('telefono').dirty"
+				[inputErrors]="frmRegistro.get('telefono').errors">
 					<input id="txtTelefono" type="text" class="form-control" formControlName="telefono">
 			</pehir-extend-form-control>
 		</div>

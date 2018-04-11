@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
 })
 
 export class RcontrasenaComponent {
-	private titulo: string = 'Recuperación de contraseña';
+	titulo: string = 'Recuperación de contraseña';
 }

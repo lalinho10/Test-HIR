@@ -6,10 +6,10 @@ import { Component } from '@angular/core';
 })
 
 export class BienvenidaComponent {
-	private loggedUser: string = 'Pancho Pantera Brown';
+	loggedUser: string = 'Pancho Pantera Brown';
 
-	private today: Date = new Date();
-	private lastAccess: Date = new Date();
+	today: Date = new Date();
+	lastAccess: Date = new Date();
 
 	constructor() {
 		const TWO_DAYS: number = 2*24*60*60*1000;

@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
 })
 
 export class ProductosAccidentesComponent {
-	private titulo: string = 'Productos - Seguros de accidentes';
+	titulo: string = 'Productos - Seguros de accidentes';
 }

@@ -17,8 +17,8 @@
 					<div class="col col-100">
 						<label id="lblEstatura" class="form-label cuestionario">8. Estatura:</label>
 						<pehir-extend-form-control
-							[inputDirty]="frmVidaAhorroP3.controls['estatura'].dirty"
-							[inputErrors]="frmVidaAhorroP3.controls['estatura'].errors">
+							[inputDirty]="frmVidaAhorroP3.get('estatura').dirty"
+							[inputErrors]="frmVidaAhorroP3.get('estatura').errors">
 								<div class="form-group">
 									<input id="txtEstatura" type="text" class="form-control left" formControlName="estatura">
 									<span class="control-text right">m</span>
@@ -32,8 +32,8 @@
 					<div class="col col-100">
 						<label id="lblPeso" class="form-label cuestionario">9. Peso:</label>
 						<pehir-extend-form-control
-							[inputDirty]="frmVidaAhorroP3.controls['peso'].dirty"
-							[inputErrors]="frmVidaAhorroP3.controls['peso'].errors">
+							[inputDirty]="frmVidaAhorroP3.get('peso').dirty"
+							[inputErrors]="frmVidaAhorroP3.get('peso').errors">
 								<div class="form-group">
 									<input id="txtPeso" type="text" class="form-control left" formControlName="peso">
 									<span class="control-text right">kg</span>
@@ -47,8 +47,8 @@
 					<div class="col col-100">
 						<label id="lblVariacionPeso" class="form-label cuestionario">10. ¿Ha variado su peso en los últimos 12 meses?</label>
 						<pehir-extend-form-control
-							[inputDirty]="frmVidaAhorroP3.controls['variacionPeso'].dirty"
-							[inputErrors]="frmVidaAhorroP3.controls['variacionPeso'].errors">
+							[inputDirty]="frmVidaAhorroP3.get('variacionPeso').dirty"
+							[inputErrors]="frmVidaAhorroP3.get('variacionPeso').errors">
 								<div class="rdoContainer two">
 									<input type="radio" (change)="fnCambiarVariacion()" [value]="false" formControlName="variacionPeso">No
 								</div>
@@ -67,8 +67,8 @@
 					<div class="col col-100">
 						<label id="lblDisminucionPeso" class="form-label cuestionario">Disminución:</label>
 						<pehir-extend-form-control
-							[inputDirty]="frmVidaAhorroP3.controls['disminucionPeso'].dirty"
-							[inputErrors]="frmVidaAhorroP3.controls['disminucionPeso'].errors">
+							[inputDirty]="frmVidaAhorroP3.get('disminucionPeso').dirty"
+							[inputErrors]="frmVidaAhorroP3.get('disminucionPeso').errors">
 								<div class="form-group">
 									<input id="txtDisminucionPeso" type="text" class="form-control left" formControlName="disminucionPeso">
 									<span class="control-text right">kg</span>
@@ -82,8 +82,8 @@
 					<div class="col col-100">
 						<label id="lblAumentoPeso" class="form-label cuestionario">Aumento:</label>
 						<pehir-extend-form-control
-							[inputDirty]="frmVidaAhorroP3.controls['aumentoPeso'].dirty"
-							[inputErrors]="frmVidaAhorroP3.controls['aumentoPeso'].errors">
+							[inputDirty]="frmVidaAhorroP3.get('aumentoPeso').dirty"
+							[inputErrors]="frmVidaAhorroP3.get('aumentoPeso').errors">
 								<div class="form-group">
 									<input id="txtAumentoPeso" type="text" class="form-control left" formControlName="aumentoPeso">
 									<span class="control-text right">kg</span>
@@ -97,8 +97,8 @@
 					<div class="col col-100">
 						<label id="lblCausaVariacion" class="form-label cuestionario">11. Causa:</label>
 						<pehir-extend-form-control
-							[inputDirty]="frmVidaAhorroP3.controls['causaVariacion'].dirty"
-							[inputErrors]="frmVidaAhorroP3.controls['causaVariacion'].errors">
+							[inputDirty]="frmVidaAhorroP3.get('causaVariacion').dirty"
+							[inputErrors]="frmVidaAhorroP3.get('causaVariacion').errors">
 								<input id="txtCausaVariacion" type="text" class="form-control" formControlName="causaVariacion">
 						</pehir-extend-form-control>
 					</div>
@@ -110,8 +110,8 @@
 			<div class="col col-100">
 				<label id="lblDatosAtencion" class="form-label cuestionario">12. Nombre y domicilio de los médicos, clínicas y hospitales que lo atendieron por sus padecimientos actuales:</label>
 				<pehir-extend-form-control
-					[inputDirty]="frmVidaAhorroP3.controls['datosAtencion'].dirty"
-					[inputErrors]="frmVidaAhorroP3.controls['datosAtencion'].errors">
+					[inputDirty]="frmVidaAhorroP3.get('datosAtencion').dirty"
+					[inputErrors]="frmVidaAhorroP3.get('datosAtencion').errors">
 						<textarea id="txtDatosAtencion" class="form-control" rows="3" formControlName="datosAtencion"></textarea>
 				</pehir-extend-form-control>
 			</div>
@@ -121,8 +121,8 @@
 			<div class="col col-100">
 				<label id="lblDeportes" class="form-label cuestionario">13. Deportes y aficiones que practica:</label>
 				<pehir-extend-form-control
-					[inputDirty]="frmVidaAhorroP3.controls['deportes'].dirty"
-					[inputErrors]="frmVidaAhorroP3.controls['deportes'].errors">
+					[inputDirty]="frmVidaAhorroP3.get('deportes').dirty"
+					[inputErrors]="frmVidaAhorroP3.get('deportes').errors">
 						<textarea id="txtDeportes" class="form-control" rows="3" formControlName="deportes"></textarea>
 				</pehir-extend-form-control>
 			</div>
@@ -132,8 +132,8 @@
 			<div class="col col-33">
 				<label id="lblCompetencias" class="form-label cuestionario">14. ¿Participa en competecias?</label>
 				<pehir-extend-form-control
-					[inputDirty]="frmVidaAhorroP3.controls['competencias'].dirty"
-					[inputErrors]="frmVidaAhorroP3.controls['competencias'].errors">
+					[inputDirty]="frmVidaAhorroP3.get('competencias').dirty"
+					[inputErrors]="frmVidaAhorroP3.get('competencias').errors">
 						<div class="rdoContainer two">
 							<input type="radio" (change)="fnCambiarCompetencias()" [value]="false" formControlName="competencias">No
 						</div>
@@ -152,8 +152,8 @@
 			<div class="col col-33">
 				<label id="lblFrecuenciaDeporte" class="form-label cuestionario">15. Frecuencia</label>
 				<pehir-extend-form-control
-					[inputDirty]="frmVidaAhorroP3.controls['frecuenciaDeporte'].dirty"
-					[inputErrors]="frmVidaAhorroP3.controls['frecuenciaDeporte'].errors">
+					[inputDirty]="frmVidaAhorroP3.get('frecuenciaDeporte').dirty"
+					[inputErrors]="frmVidaAhorroP3.get('frecuenciaDeporte').errors">
 						<div class="rdoContainer two">
 							<input type="radio" [value]="1" formControlName="frecuenciaDeporte">Diario
 						</div>
@@ -182,8 +182,8 @@
 			<div class="col col-25">
 				<label id="lblAlcohol" class="form-label cuestionario">16. ¿Toma bebidas alcoholicas?</label>
 				<pehir-extend-form-control
-					[inputDirty]="frmVidaAhorroP3.controls['consumoAlcohol'].controls['confirmacion'].dirty"
-					[inputErrors]="frmVidaAhorroP3.controls['consumoAlcohol'].controls['confirmacion'].errors">
+					[inputDirty]="frmVidaAhorroP3.get('consumoAlcohol.confirmacion').dirty"
+					[inputErrors]="frmVidaAhorroP3.get('consumoAlcohol.confirmacion').errors">
 						<div class="rdoContainer two">
 							<input type="radio" (change)="fnCambiarAlcohol()" [value]="false" formControlName="confirmacion">No
 						</div>
@@ -195,24 +195,24 @@
 			<div class="col col-25">
 				<label id="lblClase" class="form-label cuestionario">Clase:</label>
 				<pehir-extend-form-control
-					[inputDirty]="frmVidaAhorroP3.controls['consumoAlcohol'].controls['clase'].dirty"
-					[inputErrors]="frmVidaAhorroP3.controls['consumoAlcohol'].controls['clase'].errors">
+					[inputDirty]="frmVidaAhorroP3.get('consumoAlcohol.clase').dirty"
+					[inputErrors]="frmVidaAhorroP3.get('consumoAlcohol.clase').errors">
 						<input id="txtClase" type="text" class="form-control" formControlName="clase">
 				</pehir-extend-form-control>
 			</div>
 			<div class="col col-25">
 				<label id="lblCantidad" class="form-label cuestionario">Cantidad:</label>
 				<pehir-extend-form-control
-					[inputDirty]="frmVidaAhorroP3.controls['consumoAlcohol'].controls['cantidad'].dirty"
-					[inputErrors]="frmVidaAhorroP3.controls['consumoAlcohol'].controls['cantidad'].errors">
+					[inputDirty]="frmVidaAhorroP3.get('consumoAlcohol.cantidad').dirty"
+					[inputErrors]="frmVidaAhorroP3.get('consumoAlcohol.cantidad').errors">
 						<input id="txtCantidad" type="text" class="form-control" formControlName="cantidad">
 				</pehir-extend-form-control>
 			</div>
 			<div class="col col-25">
 				<label id="lblFrecuencia" class="form-label cuestionario">Frecuencia:</label>
 				<pehir-extend-form-control
-					[inputDirty]="frmVidaAhorroP3.controls['consumoAlcohol'].controls['frecuencia'].dirty"
-					[inputErrors]="frmVidaAhorroP3.controls['consumoAlcohol'].controls['frecuencia'].errors">
+					[inputDirty]="frmVidaAhorroP3.get('consumoAlcohol.frecuencia').dirty"
+					[inputErrors]="frmVidaAhorroP3.get('consumoAlcohol.frecuencia').errors">
 						<input id="txtFrecuencia" type="text" class="form-control" formControlName="frecuencia">
 				</pehir-extend-form-control>
 			</div>
@@ -222,8 +222,8 @@
 			<div class="col col-25">
 				<label id="lblAlcohol" class="form-label cuestionario">17. ¿Fuma?</label>
 				<pehir-extend-form-control
-					[inputDirty]="frmVidaAhorroP3.controls['fuma'].controls['confirmacion'].dirty"
-					[inputErrors]="frmVidaAhorroP3.controls['fuma'].controls['confirmacion'].errors">
+					[inputDirty]="frmVidaAhorroP3.get('fuma.confirmacion').dirty"
+					[inputErrors]="frmVidaAhorroP3.get('fuma.confirmacion').errors">
 						<div class="rdoContainer two">
 							<input type="radio" (change)="fnCambiarFuma()" [value]="false" formControlName="confirmacion">No
 						</div>
@@ -235,24 +235,24 @@
 			<div class="col col-25">
 				<label id="lblClase" class="form-label cuestionario">Clase:</label>
 				<pehir-extend-form-control
-					[inputDirty]="frmVidaAhorroP3.controls['fuma'].controls['clase'].dirty"
-					[inputErrors]="frmVidaAhorroP3.controls['fuma'].controls['clase'].errors">
+					[inputDirty]="frmVidaAhorroP3.get('fuma.clase').dirty"
+					[inputErrors]="frmVidaAhorroP3.get('fuma.clase').errors">
 						<input id="txtClase" type="text" class="form-control" formControlName="clase">
 				</pehir-extend-form-control>
 			</div>
 			<div class="col col-25">
 				<label id="lblCantidad" class="form-label cuestionario">Cantidad:</label>
 				<pehir-extend-form-control
-					[inputDirty]="frmVidaAhorroP3.controls['fuma'].controls['cantidad'].dirty"
-					[inputErrors]="frmVidaAhorroP3.controls['fuma'].controls['cantidad'].errors">
+					[inputDirty]="frmVidaAhorroP3.get('fuma.cantidad').dirty"
+					[inputErrors]="frmVidaAhorroP3.get('fuma.cantidad').errors">
 						<input id="txtCantidad" type="text" class="form-control" formControlName="cantidad">
 				</pehir-extend-form-control>
 			</div>
 			<div class="col col-25">
 				<label id="lblFrecuencia" class="form-label cuestionario">Frecuencia:</label>
 				<pehir-extend-form-control
-					[inputDirty]="frmVidaAhorroP3.controls['fuma'].controls['frecuencia'].dirty"
-					[inputErrors]="frmVidaAhorroP3.controls['fuma'].controls['frecuencia'].errors">
+					[inputDirty]="frmVidaAhorroP3.get('fuma.frecuencia').dirty"
+					[inputErrors]="frmVidaAhorroP3.get('fuma.frecuencia').errors">
 						<input id="txtFrecuencia" type="text" class="form-control" formControlName="frecuencia">
 				</pehir-extend-form-control>
 			</div>
@@ -262,8 +262,8 @@
 			<div class="col col-33">
 				<label id="lblPasajeroAvion" class="form-label cuestionario">18. ¿Viaja en aviones particulares o militares como pasajero?</label>
 				<pehir-extend-form-control
-					[inputDirty]="frmVidaAhorroP3.controls['pasajeroAvion'].dirty"
-					[inputErrors]="frmVidaAhorroP3.controls['pasajeroAvion'].errors">
+					[inputDirty]="frmVidaAhorroP3.get('pasajeroAvion').dirty"
+					[inputErrors]="frmVidaAhorroP3.get('pasajeroAvion').errors">
 						<div class="rdoContainer two">
 							<input type="radio" (change)="fnCambiarPasajeroAvion()" [value]="false" formControlName="pasajeroAvion">No
 						</div>
@@ -275,8 +275,8 @@
 			<div class="col col-33">
 				<label id="lblHorasVuelo" class="form-label cuestionario">No. de horas anuales en los últimos 12 meses</label>
 				<pehir-extend-form-control
-					[inputDirty]="frmVidaAhorroP3.controls['horasVuelo'].dirty"
-					[inputErrors]="frmVidaAhorroP3.controls['horasVuelo'].errors">
+					[inputDirty]="frmVidaAhorroP3.get('horasVuelo').dirty"
+					[inputErrors]="frmVidaAhorroP3.get('horasVuelo').errors">
 						<input id="txtHorasVuelo" type="text" class="form-control" formControlName="horasVuelo">
 				</pehir-extend-form-control>
 			</div>

@@ -13,8 +13,9 @@ import { ContrasenaValidator }				  from 'app/core/validators/contrasena.validat
 })
 
 export class LoginComponent implements OnInit {
+	frmLogin: FormGroup;
+
 	private usuario: Usuario;
-	private frmLogin: FormGroup;
 
 	constructor(
 		private authenticationService: AuthenticationService,

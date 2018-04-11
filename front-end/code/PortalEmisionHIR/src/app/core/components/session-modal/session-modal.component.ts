@@ -12,7 +12,7 @@ import { SessionTimerService }   from 'app/core/components/session-timer/session
 })
 
 export class SessionModalComponent implements OnInit {
-	private isVisible: boolean = false;
+	isVisible: boolean = false;
 
 	constructor(
 		private authenticationService: AuthenticationService,

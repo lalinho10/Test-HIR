@@ -14,9 +14,9 @@ import { TelefonoValidator }				  from 'app/core/validators/telefono.validator';
 })
 
 export class SeguhirVidaP6Component implements OnInit {
-	private isValidTableAgentes: boolean = false;
+	isValidTableAgentes: boolean = false;
 
-	private frmSeguhirVidaP6: FormGroup;
+	frmSeguhirVidaP6: FormGroup;
 
 	constructor(
 		private fb: FormBuilder,

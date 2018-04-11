@@ -10,8 +10,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmApindividual.controls['nombre'].dirty"
-						[inputErrors]="frmApindividual.controls['nombre'].errors">
+						[inputDirty]="frmApindividual.get('nombre').dirty"
+						[inputErrors]="frmApindividual.get('nombre').errors">
 							<input id="txtNombre" type="text" class="form-control" formControlName="nombre">
 					</pehir-extend-form-control>
 				</div>
@@ -22,8 +22,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmApindividual.controls['apaterno'].dirty"
-						[inputErrors]="frmApindividual.controls['apaterno'].errors">
+						[inputDirty]="frmApindividual.get('apaterno').dirty"
+						[inputErrors]="frmApindividual.get('apaterno').errors">
 							<input id="txtApaterno" type="text" class="form-control" formControlName="apaterno">
 					</pehir-extend-form-control>
 				</div>
@@ -34,8 +34,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmApindividual.controls['amaterno'].dirty"
-						[inputErrors]="frmApindividual.controls['amaterno'].errors">
+						[inputDirty]="frmApindividual.get('amaterno').dirty"
+						[inputErrors]="frmApindividual.get('amaterno').errors">
 							<input id="txtAmaterno" type="text" class="form-control" formControlName="amaterno">
 					</pehir-extend-form-control>
 				</div>
@@ -46,8 +46,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmApindividual.controls['fechanac'].dirty"
-						[inputErrors]="frmApindividual.controls['fechanac'].errors">
+						[inputDirty]="frmApindividual.get('fechanac').dirty"
+						[inputErrors]="frmApindividual.get('fechanac').errors">
 							<my-date-picker name="fechanac" [options]="fecNacOptions" formControlName="fechanac">
 							</my-date-picker>
 					</pehir-extend-form-control>
@@ -59,8 +59,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmApindividual.controls['rfc'].dirty"
-						[inputErrors]="frmApindividual.controls['rfc'].errors">
+						[inputDirty]="frmApindividual.get('rfc').dirty"
+						[inputErrors]="frmApindividual.get('rfc').errors">
 							<input id="txtRFC" type="text" class="form-control" formControlName="rfc">
 					</pehir-extend-form-control>
 				</div>
@@ -71,8 +71,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmApindividual.controls['genero'].dirty"
-						[inputErrors]="frmApindividual.controls['genero'].errors">
+						[inputDirty]="frmApindividual.get('genero').dirty"
+						[inputErrors]="frmApindividual.get('genero').errors">
 							<div *ngFor="let genero of generos" class="rdoContainer two">
 								<input type="radio" formControlName="genero" [value]="genero.idGenero">{{genero.descGenero}}
 							</div>
@@ -87,8 +87,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmApindividual.controls['cobertura'].dirty"
-						[inputErrors]="frmApindividual.controls['cobertura'].errors">
+						[inputDirty]="frmApindividual.get('cobertura').dirty"
+						[inputErrors]="frmApindividual.get('cobertura').errors">
 							<select id="cboCobertura" class="form-control" formControlName="cobertura">
 								<option value="">Selecciona</option>
 								<option *ngFor="let cobertura of coberturas" [value]="cobertura.idCobertura">
@@ -104,8 +104,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmApindividual.controls['sumasegurada'].dirty"
-						[inputErrors]="frmApindividual.controls['sumasegurada'].errors">
+						[inputDirty]="frmApindividual.get('sumasegurada').dirty"
+						[inputErrors]="frmApindividual.get('sumasegurada').errors">
 							<div class="form-group">
 								<input id="txtSumasegurada" type="text" class="form-control right" formControlName="sumasegurada">
 								<span class="control-text left">$</span>
@@ -119,8 +119,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmApindividual.controls['deducible'].dirty"
-						[inputErrors]="frmApindividual.controls['deducible'].errors">
+						[inputDirty]="frmApindividual.get('deducible').dirty"
+						[inputErrors]="frmApindividual.get('deducible').errors">
 							<div class="form-group">
 								<input id="txtDeducible" type="text" class="form-control right" formControlName="deducible">
 								<span class="control-text left">$</span>
@@ -134,8 +134,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmApindividual.controls['fpago'].dirty"
-						[inputErrors]="frmApindividual.controls['fpago'].errors">
+						[inputDirty]="frmApindividual.get('fpago').dirty"
+						[inputErrors]="frmApindividual.get('fpago').errors">
 							<div *ngFor="let formaPago of formasPago" class="rdoContainer two">
 								<input type="radio" formControlName="fpago" [value]="formaPago.idFormaPago">{{formaPago.descFormaPago}}
 							</div>
@@ -148,8 +148,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmApindividual.controls['plan'].dirty"
-						[inputErrors]="frmApindividual.controls['plan'].errors">
+						[inputDirty]="frmApindividual.get('plan').dirty"
+						[inputErrors]="frmApindividual.get('plan').errors">
 							<div *ngFor="let plan of planes" class="rdoContainer two">
 								<input type="radio" formControlName="plan" [value]="plan.idPlan">{{plan.descPlan}}
 							</div>

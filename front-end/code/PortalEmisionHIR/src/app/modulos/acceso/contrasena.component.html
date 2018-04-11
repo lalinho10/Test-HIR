@@ -7,8 +7,8 @@
 	<div class="row">
 		<div class="col col-100">
 			<pehir-extend-form-control
-				[inputDirty]="frmContrasena.controls['contrasena'].dirty"
-				[inputErrors]="frmContrasena.controls['contrasena'].errors">
+				[inputDirty]="frmContrasena.get('contrasena').dirty"
+				[inputErrors]="frmContrasena.get('contrasena').errors">
 					<input id="pwdContrasena" type="password" class="form-control" formControlName="contrasena">
 			</pehir-extend-form-control>
 		</div>
@@ -21,8 +21,8 @@
 	<div class="row">
 		<div class="col col-100">
 			<pehir-extend-form-control
-				[inputDirty]="frmContrasena.controls['confcontrasena'].dirty"
-				[inputErrors]="frmContrasena.controls['confcontrasena'].errors"
+				[inputDirty]="frmContrasena.get('confcontrasena').dirty"
+				[inputErrors]="frmContrasena.get('confcontrasena').errors"
 				[formErrors]="frmContrasena.errors">
 					<input id="pwdConfContrasena" type="password" class="form-control" formControlName="confcontrasena">
 			</pehir-extend-form-control>
