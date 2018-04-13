@@ -1,6 +1,6 @@
 table {border-spacing:0;width:100%;}
 table .fa {color:#1e3154;}
-table td.center {text-align:center;}
+table td.center label.data {text-align:center;margin-bottom:0;}
 table a {cursor:pointer;}
 table a:hover .fa {color:#f68c2c;}
 table a.disabled .fa {color:#b4b4b4;cursor:not-allowed;}

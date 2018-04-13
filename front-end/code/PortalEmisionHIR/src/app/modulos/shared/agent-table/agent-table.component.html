@@ -13,9 +13,9 @@
 		<tbody formArrayName="gruposEdicion">
 			<tr *ngFor="let item of gruposEdicion.controls; let i=index;" [formGroupName]="i">
 				<td class="center">
-					<span *ngIf="!frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+					<label class="data" *ngIf="!frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
 						{{ agentes[i].agente }}
-					</span>
+					</label>
 					<div *ngIf="frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
 						<pehir-extend-form-control
 							[inputDirty]="frmAgente.controls['gruposEdicion'].controls[i].controls['agente'].dirty"
@@ -25,9 +25,9 @@
 					</div>
 				</td>
 				<td class="center">
-					<span *ngIf="!frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+					<label class="data" *ngIf="!frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
 						{{ agentes[i].cliente }}
-					</span>
+					</label>
 					<div *ngIf="frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
 						<pehir-extend-form-control
 							[inputDirty]="frmAgente.controls['gruposEdicion'].controls[i].controls['cliente'].dirty"
@@ -37,9 +37,9 @@
 					</div>
 				</td>
 				<td class="center">
-					<span *ngIf="!frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+					<label class="data" *ngIf="!frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
 						{{ agentes[i].correoe }}
-					</span>
+					</label>
 					<div *ngIf="frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
 						<pehir-extend-form-control
 							[inputDirty]="frmAgente.controls['gruposEdicion'].controls[i].controls['correoe'].dirty"
@@ -49,9 +49,9 @@
 					</div>
 				</td>
 				<td class="center">
-					<span *ngIf="!frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+					<label class="data" *ngIf="!frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
 						{{ agentes[i].porcentajeParticipacion | percent }}
-					</span>
+					</label>
 					<div *ngIf="frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
 						<pehir-extend-form-control
 							[inputDirty]="frmAgente.controls['gruposEdicion'].controls[i].controls['porcentajeParticipacion'].dirty"
