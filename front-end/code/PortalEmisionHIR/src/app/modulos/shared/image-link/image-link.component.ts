@@ -16,7 +16,7 @@ export class ImageLinkComponent {
 
 	ngOnInit() {
 		if( this.imagePath === '' || this.imagePath === undefined ) {
-			this.imagePath = '/assets/img/sinImagen.png';
+			this.imagePath = './assets/img/sinImagen.png';
 		}
 	}
 
