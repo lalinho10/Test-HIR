@@ -2,6 +2,8 @@ import { NgModule }						 from '@angular/core';
 import { CommonModule }					 from '@angular/common';
 import { ReactiveFormsModule }			 from '@angular/forms';
 
+import { MyDatePickerModule }			 from 'mydatepicker';
+
 import { CotizacionComponent }			 from './cotizacion.component';
 import { CotizacionVidaComponent }		 from './cotizacion-vida.component';
 import { CotizacionAccidentesComponent } from './cotizacion-accidentes.component';
@@ -14,7 +16,7 @@ import { SegubiciComponent }			 from './segubici/segubici.component';
 import { ApindividualComponent }		 from './apindividual/apindividual.component';
 import { ResultadoCotizacionComponent }	 from './resultado-cotizacion.component';
 
-import { MyDatePickerModule }			 from 'mydatepicker';
+import { CotizacionService }			 from './cotizacion.service';
 
 import { CotizacionRoutingModule }		 from './cotizacion-routing.module';
 import { ExtendFormControlModule }		 from 'app/modulos/shared/extend-form-control/extend-form-control.module';
@@ -41,6 +43,9 @@ import { ImageLinkModule }				 from 'app/modulos/shared/image-link/image-link.mo
 		CotizacionRoutingModule,
 		ExtendFormControlModule,
 		ImageLinkModule,
+	],
+	providers: [
+		CotizacionService
 	]
 })
 
