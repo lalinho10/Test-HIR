@@ -1,6 +1,9 @@
 import { Component }		   from '@angular/core';
+import { Router }			   from '@angular/router';
 
 import { ResultadoCotizacion } from 'app/core/models/cotizacion/resultado-cotizacion';
+
+import { CotizacionService }   from './cotizacion.service'
 
 @Component({
 	selector: 'pehir-resultado-cotizacion',
@@ -24,4 +27,17 @@ export class ResultadoCotizacionComponent {
 			montoPago: 50000
 		}
 	);
+
+	constructor(
+		private router: Router,
+		private cotizacionService: CotizacionService
+	) {}
+
+	fnIrEmision(): void {
+		this.router.navigateByUrl( this.cotizacionService.obtenerRutaEmision() );
+	}
+
+	fnIrCotizacion(): void {
+		this.router.navigateByUrl( this.cotizacionService.obtenerRutaRegreso() );
+	}
 }
