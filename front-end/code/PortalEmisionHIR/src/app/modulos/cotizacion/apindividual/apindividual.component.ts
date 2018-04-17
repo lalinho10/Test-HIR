@@ -2,6 +2,7 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { CotizacionService }				  from '../cotizacion.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator }				  from 'app/core/validators/apellido.validator';
@@ -22,6 +23,8 @@ import { Plan }								  from 'app/core/models/plan';
 })
 
 export class ApindividualComponent implements OnInit {
+	private idProducto: number = 7;
+
 	titulo: string = 'Cotización - Accidentes Personales Individual';
 	frmApindividual: FormGroup;
 
@@ -33,8 +36,9 @@ export class ApindividualComponent implements OnInit {
 	fecNacOptions = FECNACOPTIONS;
 
 	constructor(
-		private router: Router,
+		private cotizacionService: CotizacionService,
 		private fb: FormBuilder,
+		private router: Router,
 		private wsClientService: WSClientService
 	) {}
 
@@ -96,6 +100,7 @@ export class ApindividualComponent implements OnInit {
 	}
 
 	fnCotizar(): void {
+		this.cotizacionService.definirProducto( this.idProducto );
 		this.router.navigateByUrl( '/cotizacion/resultado' );
 	}
 }
