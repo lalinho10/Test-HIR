@@ -2,6 +2,8 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { Cotizacion }						  from '../cotizacion';
+
 import { CotizacionService }				  from '../cotizacion.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
@@ -42,7 +44,16 @@ export class SegubiciComponent implements OnInit {
 		private wsClientService: WSClientService
 	) {}
 
-	readCatalogs(): void {
+	ngOnInit() {
+		this.leerCatalogos();
+		this.crearFormulario();
+
+		if( this.cotizacionService.esEdicion() ) {
+			this.mostrarDatosEdicion();
+		}
+	}
+
+	private leerCatalogos(): void {
 		this.wsClientService.getObject( '/consultaCoberturasProducto/6' )
 							.subscribe( response => this.coberturas = response.data );
 		this.wsClientService.getObject( '/consultaFormasPagoProducto/6' )
@@ -51,9 +62,7 @@ export class SegubiciComponent implements OnInit {
 							.subscribe( response => this.planes = response.data );
 	}
 
-	ngOnInit() {
-		this.readCatalogs();
-
+	private crearFormulario(): void {
 		this.frmSegubici = this.fb.group({
 			'nombre': ['', Validators.compose([
 				Validators.required,
@@ -96,11 +105,68 @@ export class SegubiciComponent implements OnInit {
 			'plan': ['', Validators.compose([
 				Validators.required
 			])]
-		})
+		});
+	}
+
+	private mostrarDatosEdicion(): void {
+		let cotizacion: Cotizacion = this.cotizacionService.obtenerCotizacion();
+
+		let fechaCapturada: Date = cotizacion.fechanac;
+
+		let objetoFechaCal = {
+			date: {
+				year: fechaCapturada.getFullYear(),
+				month: fechaCapturada.getMonth() + 1,
+				day: fechaCapturada.getDate()
+			},
+			epoc: fechaCapturada.getTime() / 1000,
+			jsdate: fechaCapturada
+		};
+
+		this.frmSegubici.get( 'nombre' ).setValue( cotizacion.nombre );
+		this.frmSegubici.get( 'apaterno' ).setValue( cotizacion.apaterno );
+		this.frmSegubici.get( 'amaterno' ).setValue( cotizacion.amaterno );
+		this.frmSegubici.get( 'fechanac' ).patchValue( objetoFechaCal );
+		this.frmSegubici.get( 'rfc' ).setValue( cotizacion.rfc );
+		this.frmSegubici.get( 'genero' ).setValue( cotizacion.genero.idGenero );
+		this.frmSegubici.get( 'plan' ).setValue( cotizacion.plan.idPlan );
+		this.frmSegubici.get( 'fpago' ).setValue( cotizacion.formaPago.idFormaPago );
+		this.frmSegubici.get( 'cobertura' ).setValue( cotizacion.cobertura.idCobertura );
+		this.frmSegubici.get( 'sumasegurada' ).setValue( cotizacion.sumaAsegurada );
+		this.frmSegubici.get( 'deducible' ).setValue( cotizacion.deducible );
+	}
+
+	private crearModeloCotizacion(): Cotizacion {
+		let idGenero = this.frmSegubici.get( 'genero' ).value;
+		let idPlan = this.frmSegubici.get( 'plan' ).value;
+		let idFormaPago = this.frmSegubici.get( 'fpago' ).value;
+		let idCobertura = this.frmSegubici.get( 'cobertura' ).value;
+
+		let fGeneros = this.generos.filter( ( genero: any ) => genero.idGenero == idGenero );
+		let fPlanes = this.planes.filter( ( plan: any ) => plan.idPlan == idPlan );
+		let fFormasPago = this.formasPago.filter( ( formaPago: any ) => formaPago.idFormaPago == idFormaPago );
+		let fCoberturas = this.coberturas.filter( ( cobertura: any ) => cobertura.idCobertura == idCobertura );
+
+		let cotizacion: Cotizacion = {
+			nombre: this.frmSegubici.get( 'nombre' ).value,
+			apaterno: this.frmSegubici.get( 'apaterno' ).value,
+			amaterno: this.frmSegubici.get( 'amaterno' ).value,
+			fechanac: this.frmSegubici.get( 'fechanac' ).value.jsdate,
+			rfc: this.frmSegubici.get( 'rfc' ).value,
+			genero: fGeneros[ 0 ],
+			plan: fPlanes[ 0 ],
+			formaPago: fFormasPago[ 0 ],
+			cobertura: fCoberturas[ 0 ],
+			sumaAsegurada: this.frmSegubici.get( 'sumasegurada' ).value,
+			deducible: this.frmSegubici.get( 'deducible' ).value,
+		}
+
+		return cotizacion;
 	}
 
 	fnCotizar(): void {
 		this.cotizacionService.definirProducto( this.idProducto );
+		this.cotizacionService.definirCotizacion( this.crearModeloCotizacion() );
 		this.router.navigateByUrl( '/cotizacion/resultado' );
 	}
 }

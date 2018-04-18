@@ -2,6 +2,8 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { Cotizacion }						  from '../cotizacion';
+
 import { CotizacionService }				  from '../cotizacion.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
@@ -42,16 +44,23 @@ export class SeguhirEmpresarioComponent implements OnInit {
 		private wsClientService: WSClientService
 	) {}
 
-	readCatalogs(): void {
+	ngOnInit() {
+		this.leerCatalogos();
+		this.crearFormulario();
+
+		if( this.cotizacionService.esEdicion() ) {
+			this.mostrarDatosEdicion();
+		}
+	}
+
+	private leerCatalogos(): void {
 		this.wsClientService.getObject( '/consultaCoberturasProducto/4' )
 							.subscribe( response => this.coberturas = response.data );
 		this.wsClientService.getObject( '/consultaFormasPagoProducto/4' )
 							.subscribe( response => this.formasPago = response.data );
 	}
 
-	ngOnInit() {
-		this.readCatalogs();
-
+	private crearFormulario(): void {
 		this.frmSeguhirEmpresario = this.fb.group({
 			'nombre': ['', Validators.compose([
 				Validators.required,
@@ -91,11 +100,66 @@ export class SeguhirEmpresarioComponent implements OnInit {
 			'fpago': ['', Validators.compose([
 				Validators.required
 			])]
-		})
+		});
+	}
+
+	private mostrarDatosEdicion(): void {
+		let cotizacion: Cotizacion = this.cotizacionService.obtenerCotizacion();
+
+		let fechaCapturada: Date = cotizacion.fechanac;
+
+		let objetoFechaCal = {
+			date: {
+				year: fechaCapturada.getFullYear(),
+				month: fechaCapturada.getMonth() + 1,
+				day: fechaCapturada.getDate()
+			},
+			epoc: fechaCapturada.getTime() / 1000,
+			jsdate: fechaCapturada
+		};
+
+		this.frmSeguhirEmpresario.get( 'nombre' ).setValue( cotizacion.nombre );
+		this.frmSeguhirEmpresario.get( 'apaterno' ).setValue( cotizacion.apaterno );
+		this.frmSeguhirEmpresario.get( 'amaterno' ).setValue( cotizacion.amaterno );
+		this.frmSeguhirEmpresario.get( 'fechanac' ).patchValue( objetoFechaCal );
+		this.frmSeguhirEmpresario.get( 'rfc' ).setValue( cotizacion.rfc );
+		this.frmSeguhirEmpresario.get( 'genero' ).setValue( cotizacion.genero.idGenero );
+		this.frmSeguhirEmpresario.get( 'fpago' ).setValue( cotizacion.formaPago.idFormaPago );
+		this.frmSeguhirEmpresario.get( 'modulo' ).setValue( cotizacion.modulo.idModulo );
+		this.frmSeguhirEmpresario.get( 'cobertura' ).setValue( cotizacion.cobertura.idCobertura );
+		this.frmSeguhirEmpresario.get( 'sumasegurada' ).setValue( cotizacion.sumaAsegurada );
+	}
+
+	private crearModeloCotizacion(): Cotizacion {
+		let idGenero = this.frmSeguhirEmpresario.get( 'genero' ).value;
+		let idFormaPago = this.frmSeguhirEmpresario.get( 'fpago' ).value;
+		let idModulo = this.frmSeguhirEmpresario.get( 'modulo' ).value;
+		let idCobertura = this.frmSeguhirEmpresario.get( 'cobertura' ).value;
+
+		let fGeneros = this.generos.filter( ( genero: any ) => genero.idGenero == idGenero );
+		let fFormasPago = this.formasPago.filter( ( formaPago: any ) => formaPago.idFormaPago == idFormaPago );
+		let fModulos = this.modulos.filter( ( modulo: any ) => modulo.idModulo == idModulo );
+		let fCoberturas = this.coberturas.filter( ( cobertura: any ) => cobertura.idCobertura == idCobertura );
+
+		let cotizacion: Cotizacion = {
+			nombre: this.frmSeguhirEmpresario.get( 'nombre' ).value,
+			apaterno: this.frmSeguhirEmpresario.get( 'apaterno' ).value,
+			amaterno: this.frmSeguhirEmpresario.get( 'amaterno' ).value,
+			fechanac: this.frmSeguhirEmpresario.get( 'fechanac' ).value.jsdate,
+			rfc: this.frmSeguhirEmpresario.get( 'rfc' ).value,
+			genero: fGeneros[ 0 ],
+			formaPago: fFormasPago[ 0 ],
+			modulo: fModulos[ 0 ],
+			cobertura: fCoberturas[ 0 ],
+			sumaAsegurada: this.frmSeguhirEmpresario.get( 'sumasegurada' ).value
+		}
+
+		return cotizacion;
 	}
 
 	fnCotizar(): void {
 		this.cotizacionService.definirProducto( this.idProducto );
+		this.cotizacionService.definirCotizacion( this.crearModeloCotizacion() );
 		this.router.navigateByUrl( '/cotizacion/resultado' );
 	}
 }
