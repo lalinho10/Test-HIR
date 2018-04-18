@@ -61,7 +61,7 @@
 		<label class="form-label">Edad:</label>
 	</div>
 	<div class="col col-50">
-		<label class="res-label">{{resultadoCotizacion.edad}}</label>
+		<label class="res-label">{{resultadoCotizacion.edad}} años</label>
 	</div>
 </div>
 <div class="row">
@@ -87,11 +87,11 @@
 </div>
 <div class="row">
 	<div class="col col-100">
-		<label class="res-link"><a (click)="fnIrCotizacion()">Vuelve a cotizar</a></label>
+		<label class="res-link"><a (click)="fnIrCotizacion( false )">Vuelve a cotizar</a></label>
 	</div>
 </div>
 <div class="row">
 	<div class="col col-100">
-		<label class="res-link"><a href="#">Cambia tus datos</a></label>
+		<label class="res-link"><a (click)="fnIrCotizacion( true )">Cambia tus datos</a></label>
 	</div>
 </div>
