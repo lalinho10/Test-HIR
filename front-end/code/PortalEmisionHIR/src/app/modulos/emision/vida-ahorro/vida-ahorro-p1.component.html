@@ -124,7 +124,7 @@
 							[inputDirty]="frmVidaAhorroP1.get('generoCon').dirty"
 							[inputErrors]="frmVidaAhorroP1.get('generoCon').errors">
 								<div *ngFor="let genero of generos" class="rdoContainer two">
-									<input type="radio" formControlName="generoCon" [value]="genero.idGenero">{{genero.descGenero}}
+									<input type="radio" formControlName="generoCon" [value]="genero.idGenero">{{genero.keyGenero}}
 								</div>
 						</pehir-extend-form-control>
 					</div>
@@ -359,7 +359,7 @@
 							[inputDirty]="frmVidaAhorroP1.get('generoTit').dirty"
 							[inputErrors]="frmVidaAhorroP1.get('generoTit').errors">
 								<div *ngFor="let genero of generos" class="rdoContainer two">
-									<input type="radio" formControlName="generoTit" [value]="genero.idGenero">{{genero.descGenero}}
+									<input type="radio" formControlName="generoTit" [value]="genero.idGenero">{{genero.keyGenero}}
 								</div>
 						</pehir-extend-form-control>
 					</div>

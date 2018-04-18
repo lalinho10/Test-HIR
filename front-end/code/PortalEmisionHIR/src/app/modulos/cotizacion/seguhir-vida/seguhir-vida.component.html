@@ -74,7 +74,7 @@
 						[inputDirty]="frmSeguhirVida.get('genero').dirty"
 						[inputErrors]="frmSeguhirVida.get('genero').errors">
 							<div *ngFor="let genero of generos" class="rdoContainer two">
-								<input type="radio" formControlName="genero" [value]="genero.idGenero">{{genero.descGenero}}
+								<input type="radio" formControlName="genero" [value]="genero.idGenero">{{genero.keyGenero}}
 							</div>
 					</pehir-extend-form-control>
 				</div>
