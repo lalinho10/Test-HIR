@@ -458,6 +458,12 @@
 		{ "idOcupacion": 6270, "descOcupacion": "TECNICO EN APLICACIONES ELECTRONICAS" },
 		{ "idOcupacion": 6271, "descOcupacion": "TECNICO EN AVIACION" }
 	],
+	"loginValidarSMS":
+	{
+		"codigoRespuesta": 200,
+		"mensaje": "Código válido",
+		"fechaOperacion": 1520957070339
+	},
 	"registro":
 	{
 		"codigoRespuesta": 200,
