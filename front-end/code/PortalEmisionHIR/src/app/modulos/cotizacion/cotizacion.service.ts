@@ -33,6 +33,10 @@ export class CotizacionService {
 		return this.cotizacion;
 	}
 
+	hayDatosCotizacion(): boolean {
+		return ( this.cotizacion !== null && typeof this.cotizacion !== 'undefined' );
+	}
+
 	definirEdicion( editarCotizacion: boolean ) {
 		if( !editarCotizacion ) {
 			this.definirCotizacion( null );
