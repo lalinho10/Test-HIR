@@ -1,9 +1,12 @@
 import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router }							  from '@angular/router';
 
-import { Usuario }							  from 'app/core/models/acceso/usuario';
+import { AccesoService }					  from '../services/acceso.service';
 
 import { AuthenticationService }			  from 'app/core/services/authentication/authentication.service';
+
+import { Usuario }							  from 'app/core/models/acceso/usuario';
 
 import { ContrasenaValidator }				  from 'app/core/validators/contrasena.validator';
 
@@ -18,8 +21,10 @@ export class LoginComponent implements OnInit {
 	private usuario: Usuario;
 
 	constructor(
+		private accesoService: AccesoService,
 		private authenticationService: AuthenticationService,
-		private fb: FormBuilder
+		private fb: FormBuilder,
+		private router: Router
 	){}
 
 	ngOnInit() {
@@ -43,6 +48,8 @@ export class LoginComponent implements OnInit {
 
 	fnIngresar(): void {
 		this.crearModeloUsuario();
+		this.accesoService.setLogin( this.usuario.nombre, this.usuario.clave );
+		//this.router.navigateByUrl( '/acceso/codigo' );
 		this.authenticationService.login( this.usuario );
 	}
 }
