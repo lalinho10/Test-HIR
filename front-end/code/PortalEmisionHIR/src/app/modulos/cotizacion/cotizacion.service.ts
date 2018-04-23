@@ -34,6 +34,10 @@ export class CotizacionService {
 	}
 
 	definirEdicion( editarCotizacion: boolean ) {
+		if( !editarCotizacion ) {
+			this.definirCotizacion( null );
+		}
+
 		this.editarCotizacion = editarCotizacion;
 	}
 
