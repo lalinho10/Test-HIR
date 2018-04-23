@@ -1,10 +1,10 @@
 import { NgModule }				from '@angular/core';
 import { RouterModule, Routes }	from '@angular/router';
 
-import { AccesoComponent }		from './acceso.component';
-import { LoginComponent }		from './login.component';
-import { CodigoComponent }		from './codigo.component';
-import { ContrasenaComponent }	from './contrasena.component';
+import { AccesoComponent }		from './components/acceso.component';
+import { LoginComponent }		from './components/login.component';
+import { CodigoComponent }		from './components/codigo.component';
+import { ContrasenaComponent }	from './components/contrasena.component';
 
 const accesoRoutes: Routes = [
 	{
