@@ -22,11 +22,19 @@ export class AuthenticationService {
 
 	public login( usuario: Usuario ): void {
 		if( usuario.nombre !== 'ppantera@hir.com' || usuario.clave !== 'ChocoMilk$2018' ) {
-			this.appModalService.openModal( 'error', 'Usuario o contraseña  incorrectos, intenta nuevamente' );
+			this.appModalService.openModal( 'error', 'Usuario o contraseña incorrectos, intenta nuevamente' );
+		} else {
+			this.router.navigateByUrl( '/acceso/codigo' );
+		}
+	}
+
+	public tokenLogin( token: string ) {
+		if( token != 'a1b2c3d4' ) {
+			this.appModalService.openModal( 'error', 'Código incorrecto, intenta nuevamente' );
 		} else {
 			localStorage.setItem( 'token', 'fooSession' );
 			this.authenticated.next( true );
-			this.router.navigateByUrl( '/acceso/codigo' );
+			this.router.navigateByUrl( '/inicio' );
 		}
 	}
 
