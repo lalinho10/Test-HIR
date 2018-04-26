@@ -20,6 +20,8 @@ import { GENEROS }							  from 'app/core/data/generos';
 import { ESTADOSCIVILES }					  from 'app/core/data/estadosCiviles';
 import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
 
+import { Estado }							  from 'app/core/models/estado';
+import { Municipio }						  from 'app/core/models/municipio';
 import { Ocupacion }						  from 'app/core/models/ocupacion';
 
 @Component({
@@ -30,6 +32,8 @@ import { Ocupacion }						  from 'app/core/models/ocupacion';
 export class ProcuraVidaP1Component implements OnInit {
 	frmProcuraVidaP1: FormGroup;
 
+	estados: Estado[];
+	municipios: Municipio[];
 	ocupaciones: Ocupacion[];
 
 	generos = GENEROS;
@@ -45,6 +49,8 @@ export class ProcuraVidaP1Component implements OnInit {
 	readCatalogs(): void {
 		this.wsClientService.getObject( '/consultaOcupaciones' )
 							.subscribe( data => this.ocupaciones = data );
+		this.wsClientService.getObject( '/consultaEstados' )
+							.subscribe( data => this.estados = data );
 	}
 
 	ngOnInit() {
@@ -143,6 +149,11 @@ export class ProcuraVidaP1Component implements OnInit {
 			{
 				validator: DiferenciaCorreosValidator( 'correoe1', 'correoe2' )
 			})
+		});
+
+		this.frmProcuraVidaP1.get( 'estado' ).valueChanges.subscribe( estado => {
+			this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
+								.subscribe( response => this.municipios = response.data );
 		});
 	}
 
