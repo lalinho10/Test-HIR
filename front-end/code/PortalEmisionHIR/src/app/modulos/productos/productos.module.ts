@@ -3,8 +3,8 @@ import { CommonModule }					from '@angular/common';
 import { ReactiveFormsModule }			from '@angular/forms';
 
 import { ProductosComponent }			from './productos.component';
-import { ProductosVidaComponent }		from './productos-vida.component';
-import { ProductosAccidentesComponent } from './productos-accidentes.component';
+import { ProductosVidaComponent }		from './vida/productos-vida.component';
+import { ProductosAccidentesComponent } from './accidentes/productos-accidentes.component';
 
 import { ProductosRoutingModule }		from './productos-routing.module';
 import { ExtendFormControlModule }		from 'app/modulos/shared/extend-form-control/extend-form-control.module';

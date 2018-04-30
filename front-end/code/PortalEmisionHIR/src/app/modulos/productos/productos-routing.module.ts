@@ -2,8 +2,8 @@ import { NgModule }						 from '@angular/core';
 import { RouterModule, Routes }			 from '@angular/router';
 
 import { ProductosComponent }			 from './productos.component';
-import { ProductosVidaComponent }		 from './productos-vida.component';
-import { ProductosAccidentesComponent }	 from './productos-accidentes.component';
+import { ProductosVidaComponent }		 from './vida/productos-vida.component';
+import { ProductosAccidentesComponent }	 from './accidentes/productos-accidentes.component';
 
 import { AuthenticationGuardService }	 from 'app/core/services/authentication/authentication-guard.service';
 
