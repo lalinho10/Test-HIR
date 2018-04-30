@@ -3,8 +3,8 @@ import { CommonModule }				  from '@angular/common';
 import { ReactiveFormsModule }		  from '@angular/forms';
 
 import { EmisionComponent }			  from './emision.component';
-import { EmisionVidaComponent }		  from './emision-vida.component';
-import { EmisionAccidentesComponent } from './emision-accidentes.component';
+import { EmisionVidaComponent }		  from './vida/emision-vida.component';
+import { EmisionAccidentesComponent } from './accidentes/emision-accidentes.component';
 
 import { MyDatePickerModule }		  from 'mydatepicker';
 

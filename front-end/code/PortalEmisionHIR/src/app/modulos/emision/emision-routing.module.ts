@@ -2,8 +2,8 @@ import { NgModule }					  from '@angular/core';
 import { RouterModule, Routes }		  from '@angular/router';
 
 import { EmisionComponent }			  from './emision.component';
-import { EmisionVidaComponent }		  from './emision-vida.component';
-import { EmisionAccidentesComponent } from './emision-accidentes.component';
+import { EmisionVidaComponent }		  from './vida/emision-vida.component';
+import { EmisionAccidentesComponent } from './accidentes/emision-accidentes.component';
 
 import { AuthenticationGuardService } from 'app/core/services/authentication/authentication-guard.service';
 
