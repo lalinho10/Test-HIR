@@ -1,12 +1,12 @@
 import { NgModule }				  from '@angular/core';
 import { RouterModule, Routes }	  from '@angular/router';
 
-import { DesbloqueoComponent } 	  from './components/desbloqueo.component';
-import { DesbloqueoP1Component }  from './components/desbloqueo-p1.component';
-import { DesbloqueoP2Component }  from './components/desbloqueo-p2.component';
-import { DesbloqueoP3Component }  from './components/desbloqueo-p3.component';
+import { DesbloqueoComponent } 	  from './desbloqueo.component';
+import { DesbloqueoP1Component }  from './p1-contacto/desbloqueo-p1.component';
+import { DesbloqueoP2Component }  from './p2-codigo/desbloqueo-p2.component';
+import { DesbloqueoP3Component }  from './p3-confirmacion/desbloqueo-p3.component';
 
-import { DesbloqueoGuardService } from './services/desbloqueo-guard.service'
+import { DesbloqueoGuardService } from './desbloqueo-guard.service'
 
 const desbloqueoRoutes: Routes = [
 	{

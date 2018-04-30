@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Desbloqueo } from '../models/desbloqueo';
+import { Desbloqueo } from './desbloqueo';
 
 @Injectable()
 export class DesbloqueoService {
