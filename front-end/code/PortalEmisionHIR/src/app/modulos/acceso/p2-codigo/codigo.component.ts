@@ -2,7 +2,7 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
-import { AccesoService }					  from '../services/acceso.service';
+import { AccesoService }					  from '../acceso.service';
 
 import { AuthenticationService }			  from 'app/core/services/authentication/authentication.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';

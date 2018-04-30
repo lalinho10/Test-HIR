@@ -1,12 +1,12 @@
 import { NgModule }				from '@angular/core';
 import { RouterModule, Routes }	from '@angular/router';
 
-import { AccesoComponent }		from './components/acceso.component';
-import { LoginComponent }		from './components/login.component';
-import { CodigoComponent }		from './components/codigo.component';
-import { ContrasenaComponent }	from './components/contrasena.component';
+import { AccesoComponent }		from './acceso.component';
+import { LoginComponent }		from './p1-login/login.component';
+import { CodigoComponent }		from './p2-codigo/codigo.component';
+import { ContrasenaComponent }	from './p3-contrasena/contrasena.component';
 
-import { AccesoGuardService }	from './services/acceso-guard.service';
+import { AccesoGuardService }	from './acceso-guard.service';
 
 const accesoRoutes: Routes = [
 	{

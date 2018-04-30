@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Acceso }	  from '../models/acceso';
+import { Acceso }	  from './acceso';
 
 @Injectable()
 export class AccesoService {
