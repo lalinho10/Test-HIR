@@ -1,10 +1,10 @@
 import { Component, OnInit }   from '@angular/core';
 import { Router }			   from '@angular/router';
 
-import { Cotizacion }		   from './cotizacion';
-import { CotizacionService }   from './cotizacion.service';
+import { CotizacionService }   from '../cotizacion.service';
 
-import { ResultadoCotizacion } from 'app/core/models/cotizacion/resultado-cotizacion';
+import { Cotizacion }		   from '../cotizacion';
+import { ResultadoCotizacion } from './resultado-cotizacion';
 
 @Component({
 	selector: 'pehir-resultado-cotizacion',

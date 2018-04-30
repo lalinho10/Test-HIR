@@ -2,8 +2,8 @@ import { NgModule }						 from '@angular/core';
 import { RouterModule, Routes }			 from '@angular/router';
 
 import { CotizacionComponent }			 from './cotizacion.component';
-import { CotizacionVidaComponent }		 from './cotizacion-vida.component';
-import { CotizacionAccidentesComponent } from './cotizacion-accidentes.component';
+import { CotizacionVidaComponent }		 from './vida/cotizacion-vida.component';
+import { CotizacionAccidentesComponent } from './accidentes/cotizacion-accidentes.component';
 import { SeguhirVidaComponent }			 from './seguhir-vida/seguhir-vida.component';
 import { ProcuraVidaComponent }			 from './procura-vida/procura-vida.component';
 import { GastosFunerariosComponent }	 from './gastos-funerarios/gastos-funerarios.component';
@@ -11,7 +11,7 @@ import { SeguhirEmpresarioComponent }	 from './seguhir-empresario/seguhir-empres
 import { VidaAhorroComponent }			 from './vida-ahorro/vida-ahorro.component';
 import { SegubiciComponent }			 from './segubici/segubici.component';
 import { ApindividualComponent }		 from './apindividual/apindividual.component';
-import { ResultadoCotizacionComponent }	 from './resultado-cotizacion.component';
+import { ResultadoCotizacionComponent }	 from './resultado-cotizacion/resultado-cotizacion.component';
 
 import { CotizacionGuardService }		 from './cotizacion-guard.service';
 import { AuthenticationGuardService }	 from 'app/core/services/authentication/authentication-guard.service';

@@ -1,6 +1,6 @@
 import { Component }		 from '@angular/core';
 
-import { CotizacionService } from './cotizacion.service';
+import { CotizacionService } from '../cotizacion.service';
 
 @Component({
 	selector: 'pehir-cotizacion-vida',
