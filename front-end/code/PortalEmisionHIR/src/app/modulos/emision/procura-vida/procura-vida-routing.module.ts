@@ -2,8 +2,8 @@ import { NgModule }					  from '@angular/core';
 import { RouterModule, Routes }		  from '@angular/router';
 
 import { ProcuraVidaComponent }		  from './procura-vida.component';
-import { ProcuraVidaP1Component }	  from './procura-vida-p1.component';
-import { ProcuraVidaP2Component }	  from './procura-vida-p2.component';
+import { ProcuraVidaP1Component }	  from './p1-usuario/procura-vida-p1.component';
+import { ProcuraVidaP2Component }	  from './p2-beneficiarios/procura-vida-p2.component';
 
 import { AuthenticationGuardService } from 'app/core/services/authentication/authentication-guard.service';
 

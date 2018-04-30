@@ -46,16 +46,20 @@ export class ProcuraVidaP1Component implements OnInit {
 		private wsClientService: WSClientService
 	){}
 
-	readCatalogs(): void {
+	ngOnInit() {
+		this.leerCatalogos();
+		this.crearFormulario();
+		this.registrarEventos();
+	}
+
+	private leerCatalogos(): void {
 		this.wsClientService.getObject( '/consultaOcupaciones' )
 							.subscribe( data => this.ocupaciones = data );
 		this.wsClientService.getObject( '/consultaEstados' )
 							.subscribe( data => this.estados = data );
 	}
 
-	ngOnInit() {
-		this.readCatalogs();
-
+	private crearFormulario(): void {
 		this.frmProcuraVidaP1 = this.fb.group({
 			'padecimiento':['', Validators.compose([
 				Validators.required
@@ -150,7 +154,9 @@ export class ProcuraVidaP1Component implements OnInit {
 				validator: DiferenciaCorreosValidator( 'correoe1', 'correoe2' )
 			})
 		});
+	}
 
+	private registrarEventos(): void {
 		this.frmProcuraVidaP1.get( 'estado' ).valueChanges.subscribe( estado => {
 			this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
 								.subscribe( response => this.municipios = response.data );
