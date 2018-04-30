@@ -5,12 +5,12 @@ import { CommonModule }				from '@angular/common';
 import { RecaptchaModule }			from 'ng-recaptcha';
 import { RecaptchaFormsModule }		from 'ng-recaptcha/forms';
 
-import { RcontrasenaComponent }		from './components/rcontrasena.component';
-import { RcontrasenaP1Component }	from './components/rcontrasena-p1.component';
-import { RcontrasenaP2Component }	from './components/rcontrasena-p2.component';
-import { RcontrasenaP3Component }	from './components/rcontrasena-p3.component';
+import { RcontrasenaComponent }		from './rcontrasena.component';
+import { RcontrasenaP1Component }	from './p1-contacto/rcontrasena-p1.component';
+import { RcontrasenaP2Component }	from './p2-codigo/rcontrasena-p2.component';
+import { RcontrasenaP3Component }	from './p3-confirmacion/rcontrasena-p3.component';
 
-import { RcontrasenaService }		from './services/rcontrasena.service';
+import { RcontrasenaService }		from './rcontrasena.service';
 
 import { RcontrasenaRoutingModule }	from './rcontrasena-routing.module';
 import { ExtendFormControlModule }	from 'app/modulos/shared/extend-form-control/extend-form-control.module';

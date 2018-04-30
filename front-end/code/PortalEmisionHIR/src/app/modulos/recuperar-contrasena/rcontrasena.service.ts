@@ -1,6 +1,6 @@
 import { Injectable }  from '@angular/core';
 
-import { Rcontrasena } from '../models/rcontrasena';
+import { Rcontrasena } from './rcontrasena';
 
 @Injectable()
 export class RcontrasenaService {
