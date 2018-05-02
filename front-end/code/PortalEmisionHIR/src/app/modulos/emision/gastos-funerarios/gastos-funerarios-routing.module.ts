@@ -2,8 +2,8 @@ import { NgModule }					   from '@angular/core';
 import { RouterModule, Routes }		   from '@angular/router';
 
 import { GastosFunerariosComponent }   from './gastos-funerarios.component';
-import { GastosFunerariosP1Component } from './gastos-funerarios-p1.component';
-import { GastosFunerariosP2Component } from './gastos-funerarios-p2.component';
+import { GastosFunerariosP1Component } from './p1-usuario/gastos-funerarios-p1.component';
+import { GastosFunerariosP2Component } from './p2-beneficiarios/gastos-funerarios-p2.component';
 
 import { AuthenticationGuardService }  from 'app/core/services/authentication/authentication-guard.service';
 

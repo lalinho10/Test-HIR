@@ -3,8 +3,8 @@ import { CommonModule } 				 from '@angular/common';
 import { ReactiveFormsModule }			 from '@angular/forms';
 
 import { GastosFunerariosComponent }	 from './gastos-funerarios.component';
-import { GastosFunerariosP1Component }	 from './gastos-funerarios-p1.component';
-import { GastosFunerariosP2Component }	 from './gastos-funerarios-p2.component';
+import { GastosFunerariosP1Component }	 from './p1-usuario/gastos-funerarios-p1.component';
+import { GastosFunerariosP2Component }	 from './p2-beneficiarios/gastos-funerarios-p2.component';
 
 import { MyDatePickerModule }			 from 'mydatepicker';
 
