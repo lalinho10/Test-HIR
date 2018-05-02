@@ -2,6 +2,8 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { WSClientService }					  from 'app/core/services/ws-client.service';
+
 import { ApellidoValidator } 				  from 'app/core/validators/apellido.validator';
 import { CelularValidator }					  from 'app/core/validators/celular.validator';
 import { CodigoPostalValidator }			  from 'app/core/validators/codigo-postal.validator';
@@ -15,6 +17,10 @@ import { GENEROS }							  from 'app/core/data/generos';
 import { ESTADOSCIVILES }					  from 'app/core/data/estadosCiviles';
 import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
 
+import { Estado }							  from 'app/core/models/estado';
+import { Municipio }						  from 'app/core/models/municipio';
+import { Ocupacion }						  from 'app/core/models/ocupacion';
+
 @Component({
 	selector: 'pehir-segubici-p1',
 	templateUrl: 'segubici-p1.component.html'
@@ -23,16 +29,31 @@ import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
 export class SegubiciP1Component implements OnInit {
 	frmSegubiciP1: FormGroup;
 
+	estados: Estado[];
+	municipios: Municipio[];
+
 	generos = GENEROS;
 	fecNacOptions = FECNACOPTIONS;
 	estadosCiviles = ESTADOSCIVILES;
 
 	constructor(
 		private fb: FormBuilder,
-		private router: Router
+		private router: Router,
+		private wsClientService: WSClientService
 	){}
 
 	ngOnInit() {
+		this.leerCatalogos();
+		this.crearFormulario();
+		this.registrarEventos();
+	}
+
+	private leerCatalogos(): void {
+		this.wsClientService.getObject( '/consultaEstados' )
+							.subscribe( data => this.estados = data );
+	}
+
+	private crearFormulario(): void {
 		this.frmSegubiciP1 = this.fb.group({
 			'nombre': ['', Validators.compose([
 				Validators.required,
@@ -78,7 +99,7 @@ export class SegubiciP1Component implements OnInit {
 			'delegacionMunicipio': ['', Validators.compose([
 				Validators.required
 			])],
-			'ciudadEstado': ['', Validators.compose([
+			'estado': ['', Validators.compose([
 				Validators.required
 			])],
 			'cp': ['', Validators.compose([
@@ -116,6 +137,18 @@ export class SegubiciP1Component implements OnInit {
 		},
 		{
 			validator: DiferenciaTelefonosValidator( 'telefono', 'celular' )
+		});
+	}
+
+	private registrarEventos(): void {
+		this.frmSegubiciP1.get( 'estado' ).valueChanges.subscribe( estado => {
+			if( estado.idEstado !== null && typeof estado.idEstado !== 'undefined' ) {
+				this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
+									.subscribe( response => this.municipios = response.data );
+			} else {
+				this.municipios = [];
+			}
+			this.frmSegubiciP1.get( 'delegacionMunicipio' ).setValue( '' );
 		});
 	}
 
