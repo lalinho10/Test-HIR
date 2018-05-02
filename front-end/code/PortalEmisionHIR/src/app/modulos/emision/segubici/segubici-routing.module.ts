@@ -2,8 +2,8 @@ import { NgModule }					  from '@angular/core';
 import { RouterModule, Routes }		  from '@angular/router';
 
 import { SegubiciComponent }		  from './segubici.component';
-import { SegubiciP1Component }		  from './segubici-p1.component';
-import { SegubiciP2Component }		  from './segubici-p2.component';
+import { SegubiciP1Component }		  from './p1-usuario/segubici-p1.component';
+import { SegubiciP2Component }		  from './p2-seguro/segubici-p2.component';
 
 import { AuthenticationGuardService } from 'app/core/services/authentication/authentication-guard.service';
 

@@ -3,8 +3,8 @@ import { CommonModule } 		   from '@angular/common';
 import { ReactiveFormsModule }	   from '@angular/forms';
 
 import { SegubiciComponent }	   from './segubici.component';
-import { SegubiciP1Component }	   from './segubici-p1.component';
-import { SegubiciP2Component }	   from './segubici-p2.component';
+import { SegubiciP1Component }	   from './p1-usuario/segubici-p1.component';
+import { SegubiciP2Component }	   from './p2-seguro/segubici-p2.component';
 
 import { MyDatePickerModule }	   from 'mydatepicker';
 
