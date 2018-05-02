@@ -3,8 +3,8 @@ import { CommonModule }				 from '@angular/common';
 import { ReactiveFormsModule }		 from '@angular/forms';
 
 import { ApindividualComponent }	 from './apindividual.component';
-import { ApindividualP1Component }	 from './apindividual-p1.component';
-import { ApindividualP2Component }	 from './apindividual-p2.component';
+import { ApindividualP1Component }	 from './p1-usuario/apindividual-p1.component';
+import { ApindividualP2Component }	 from './p2-seguro/apindividual-p2.component';
 
 import { MyDatePickerModule }		 from 'mydatepicker';
 
