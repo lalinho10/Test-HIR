@@ -168,19 +168,29 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmApindividualP1.get('delegacionMunicipio').dirty"
 							[inputErrors]="frmApindividualP1.get('delegacionMunicipio').errors">
-								<input id="txtDelegacionMunicipio" type="text" class="form-control" formControlName="delegacionMunicipio">
+								<select id="cboMunicipio" class="form-control" formControlName="delegacionMunicipio">
+									<option value="">Selecciona</option>
+									<option *ngFor="let municipio of municipios" [ngValue]="municipio">
+										{{municipio.descMunicipio}}
+									</option>
+								</select>
 						</pehir-extend-form-control>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col col-40">
-						<label id="lblCiudadEstado" class="form-label">Ciudad y Estado:</label>
+						<label id="lblCiudadEstado" class="form-label">Estado:</label>
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.get('ciudadEstado').dirty"
-							[inputErrors]="frmApindividualP1.get('ciudadEstado').errors">
-								<input id="txtCiudadEstado" type="text" class="form-control" formControlName="ciudadEstado">
+							[inputDirty]="frmApindividualP1.get('estado').dirty"
+							[inputErrors]="frmApindividualP1.get('estado').errors">
+								<select id="cboEstado" class="form-control" formControlName="estado">
+									<option value="">Selecciona</option>
+									<option *ngFor="let estado of estados" [ngValue]="estado">
+										{{estado.descEstado}}
+									</option>
+								</select>
 						</pehir-extend-form-control>
 					</div>
 				</div>
