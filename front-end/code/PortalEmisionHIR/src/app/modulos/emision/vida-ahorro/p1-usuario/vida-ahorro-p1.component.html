@@ -168,7 +168,12 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmVidaAhorroP1.get('delegacionMunicipioCon').dirty"
 							[inputErrors]="frmVidaAhorroP1.get('delegacionMunicipioCon').errors">
-								<input id="txtDelegacionMunicipioCon" type="text" class="form-control" formControlName="delegacionMunicipioCon">
+								<select id="cboMunicipioCon" class="form-control" formControlName="delegacionMunicipioCon">
+									<option value="">Selecciona</option>
+									<option *ngFor="let municipio of municipiosCon" [ngValue]="municipio">
+										{{municipio.descMunicipio}}
+									</option>
+								</select>
 						</pehir-extend-form-control>
 					</div>
 				</div>
@@ -180,7 +185,12 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmVidaAhorroP1.get('estadoCon').dirty"
 							[inputErrors]="frmVidaAhorroP1.get('estadoCon').errors">
-								<input id="txtEstadoCon" type="text" class="form-control" formControlName="estadoCon">
+								<select id="cboEstadoCon" class="form-control" formControlName="estadoCon">
+									<option value="">Selecciona</option>
+									<option *ngFor="let estado of estados" [ngValue]="estado">
+										{{estado.descEstado}}
+									</option>
+								</select>
 						</pehir-extend-form-control>
 					</div>
 				</div>
@@ -403,7 +413,12 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmVidaAhorroP1.get('delegacionMunicipioTit').dirty"
 							[inputErrors]="frmVidaAhorroP1.get('delegacionMunicipioTit').errors">
-								<input id="txtDelegacionMunicipioTit" type="text" class="form-control" formControlName="delegacionMunicipioTit">
+								<select id="cboMunicipioTit" class="form-control" formControlName="delegacionMunicipioTit">
+									<option value="">Selecciona</option>
+									<option *ngFor="let municipio of municipiosTit" [ngValue]="municipio">
+										{{municipio.descMunicipio}}
+									</option>
+								</select>
 						</pehir-extend-form-control>
 					</div>
 				</div>
@@ -415,7 +430,12 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmVidaAhorroP1.get('estadoTit').dirty"
 							[inputErrors]="frmVidaAhorroP1.get('estadoTit').errors">
-								<input id="txtEstadoTit" type="text" class="form-control" formControlName="estadoTit">
+								<select id="cboEstadoTit" class="form-control" formControlName="estadoTit">
+									<option value="">Selecciona</option>
+									<option *ngFor="let estado of estados" [ngValue]="estado">
+										{{estado.descEstado}}
+									</option>
+								</select>
 						</pehir-extend-form-control>
 					</div>
 				</div>
