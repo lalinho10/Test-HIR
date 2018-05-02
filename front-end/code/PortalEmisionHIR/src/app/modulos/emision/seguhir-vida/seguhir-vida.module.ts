@@ -3,12 +3,12 @@ import { CommonModule }				from '@angular/common';
 import { ReactiveFormsModule }		from '@angular/forms';
 
 import { SeguhirVidaComponent }	 	from './seguhir-vida.component';
-import { SeguhirVidaP1Component }	from './seguhir-vida-p1.component';
-import { SeguhirVidaP2Component }	from './seguhir-vida-p2.component';
-import { SeguhirVidaP3Component }	from './seguhir-vida-p3.component';
-import { SeguhirVidaP4Component }	from './seguhir-vida-p4.component';
-import { SeguhirVidaP5Component }	from './seguhir-vida-p5.component';
-import { SeguhirVidaP6Component }	from './seguhir-vida-p6.component';
+import { SeguhirVidaP1Component }	from './p1-usuario/seguhir-vida-p1.component';
+import { SeguhirVidaP2Component }	from './p2-seguro/seguhir-vida-p2.component';
+import { SeguhirVidaP3Component }	from './p3-medico/seguhir-vida-p3.component';
+import { SeguhirVidaP4Component }	from './p4-asegurados/seguhir-vida-p4.component';
+import { SeguhirVidaP5Component }	from './p5-beneficiarios/seguhir-vida-p5.component';
+import { SeguhirVidaP6Component }	from './p6-agentes/seguhir-vida-p6.component';
 
 import { MyDatePickerModule }		from 'mydatepicker';
 
