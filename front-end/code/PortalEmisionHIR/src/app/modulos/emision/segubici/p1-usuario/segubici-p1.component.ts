@@ -19,7 +19,6 @@ import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
 
 import { Estado }							  from 'app/core/models/estado';
 import { Municipio }						  from 'app/core/models/municipio';
-import { Ocupacion }						  from 'app/core/models/ocupacion';
 
 @Component({
 	selector: 'pehir-segubici-p1',
