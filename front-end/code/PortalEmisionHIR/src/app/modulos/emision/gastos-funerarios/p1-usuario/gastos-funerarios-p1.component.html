@@ -228,7 +228,12 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmGastosFunerariosP1.get('delegacionMunicipio').dirty"
 							[inputErrors]="frmGastosFunerariosP1.get('delegacionMunicipio').errors">
-								<input id="txtDelegacionMunicipio" type="text" class="form-control" formControlName="delegacionMunicipio">
+								<select id="cboMunicipio" class="form-control" formControlName="delegacionMunicipio">
+									<option value="">Selecciona</option>
+									<option *ngFor="let municipio of municipios" [ngValue]="municipio">
+										{{municipio.descMunicipio}}
+									</option>
+								</select>
 						</pehir-extend-form-control>
 					</div>
 				</div>
@@ -240,7 +245,12 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmGastosFunerariosP1.get('estado').dirty"
 							[inputErrors]="frmGastosFunerariosP1.get('estado').errors">
-								<input id="txtEstado" type="text" class="form-control" formControlName="estado">
+								<select id="cboEstado" class="form-control" formControlName="estado">
+									<option value="">Selecciona</option>
+									<option *ngFor="let estado of estados" [ngValue]="estado">
+										{{estado.descEstado}}
+									</option>
+								</select>
 						</pehir-extend-form-control>
 					</div>
 				</div>
