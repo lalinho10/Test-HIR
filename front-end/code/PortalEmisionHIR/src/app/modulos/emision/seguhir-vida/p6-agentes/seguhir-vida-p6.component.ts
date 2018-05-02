@@ -2,11 +2,16 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { WSClientService }					  from 'app/core/services/ws-client.service';
+
 import { ApellidoValidator } 				  from 'app/core/validators/apellido.validator';
 import { CodigoPostalValidator }			  from 'app/core/validators/codigo-postal.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
 import { TelefonoValidator }				  from 'app/core/validators/telefono.validator';
+
+import { Estado }							  from 'app/core/models/estado';
+import { Municipio }						  from 'app/core/models/municipio';
 
 @Component({
 	selector: 'pehir-seguhir-vida-p6',
@@ -18,12 +23,27 @@ export class SeguhirVidaP6Component implements OnInit {
 
 	frmSeguhirVidaP6: FormGroup;
 
+	estados: Estado[];
+	municipios: Municipio[];
+
 	constructor(
 		private fb: FormBuilder,
-		private router: Router
+		private router: Router,
+		private wsClientService: WSClientService
 	){}
 
 	ngOnInit() {
+		this.leerCatalogos();
+		this.crearFormulario();
+		this.registrarEventos();
+	}
+
+	private leerCatalogos(): void {
+		this.wsClientService.getObject( '/consultaEstados' )
+							.subscribe( data => this.estados = data );
+	}
+
+	private crearFormulario(): void {
 		this.frmSeguhirVidaP6 = this.fb.group({
 			'tipoIdentificacion': ['', Validators.compose([
 				Validators.required
@@ -87,6 +107,18 @@ export class SeguhirVidaP6Component implements OnInit {
 				Validators.required,
 				TelefonoValidator()
 			])]
+		});
+	}
+
+	private registrarEventos(): void {
+		this.frmSeguhirVidaP6.get( 'estado' ).valueChanges.subscribe( estado => {
+			if( estado.idEstado !== null && typeof estado.idEstado !== 'undefined' ) {
+				this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
+									.subscribe( response => this.municipios = response.data );
+			} else {
+				this.municipios = [];
+			}
+			this.frmSeguhirVidaP6.get( 'delegacionMunicipio' ).setValue( '' );
 		});
 	}
 

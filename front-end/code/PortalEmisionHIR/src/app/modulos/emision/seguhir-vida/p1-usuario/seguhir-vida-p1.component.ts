@@ -17,6 +17,8 @@ import { GENEROS }							  from 'app/core/data/generos';
 import { ESTADOSCIVILES }					  from 'app/core/data/estadosCiviles';
 import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
 
+import { Estado }							  from 'app/core/models/estado';
+import { Municipio }						  from 'app/core/models/municipio';
 import { Ocupacion }						  from 'app/core/models/ocupacion';
 
 @Component({
@@ -27,6 +29,9 @@ import { Ocupacion }						  from 'app/core/models/ocupacion';
 export class SeguhirVidaP1Component implements OnInit {
 	frmSeguhirVidaP1: FormGroup;
 
+	estados: Estado[];
+	municipiosCon: Municipio[];
+	municipiosTit: Municipio[];
 	ocupaciones: Ocupacion[];
 
 	generos = GENEROS;
@@ -39,14 +44,20 @@ export class SeguhirVidaP1Component implements OnInit {
 		private wsClientService: WSClientService
 	){}
 
-	readCatalogs(): void {
-		this.wsClientService.getObject( '/consultaOcupaciones' )
-							.subscribe( data => this.ocupaciones = data );
+	ngOnInit() {
+		this.leerCatalogos();
+		this.crearFormulario();
+		this.registrarEventos();
 	}
 
-	ngOnInit() {
-		this.readCatalogs();
+	private leerCatalogos(): void {
+		this.wsClientService.getObject( '/consultaOcupaciones' )
+							.subscribe( data => this.ocupaciones = data );
+		this.wsClientService.getObject( '/consultaEstados' )
+							.subscribe( data => this.estados = data );
+	}
 
+	private crearFormulario(): void {
 		this.frmSeguhirVidaP1 = this.fb.group({
 			'nombreCon': ['', Validators.compose([
 				Validators.required,
@@ -188,6 +199,28 @@ export class SeguhirVidaP1Component implements OnInit {
 				Validators.email,
 				Validators.maxLength(50)
 			])],
+		});
+	}
+
+	private registrarEventos(): void {
+		this.frmSeguhirVidaP1.get( 'estadoCon' ).valueChanges.subscribe( estado => {
+			if( estado.idEstado !== null && typeof estado.idEstado !== 'undefined' ) {
+				this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
+									.subscribe( response => this.municipiosCon = response.data );
+			} else {
+				this.municipiosCon = [];
+			}
+			this.frmSeguhirVidaP1.get( 'delegacionMunicipioCon' ).setValue( '' );
+		});
+
+		this.frmSeguhirVidaP1.get( 'estadoTit' ).valueChanges.subscribe( estado => {
+			if( estado.idEstado !== null && typeof estado.idEstado !== 'undefined' ) {
+				this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
+									.subscribe( response => this.municipiosTit = response.data );
+			} else {
+				this.municipiosTit = [];
+			}
+			this.frmSeguhirVidaP1.get( 'delegacionMunicipioTit' ).setValue( '' );
 		});
 	}
 
