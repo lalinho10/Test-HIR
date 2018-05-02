@@ -3,8 +3,8 @@ import { CommonModule } 				  from '@angular/common';
 import { ReactiveFormsModule }			  from '@angular/forms';
 
 import { SeguhirEmpresarioComponent }	  from './seguhir-empresario.component';
-import { SeguhirEmpresarioP1Component }	  from './seguhir-empresario-p1.component';
-import { SeguhirEmpresarioP2Component }	  from './seguhir-empresario-p2.component';
+import { SeguhirEmpresarioP1Component }	  from './p1-usuario/seguhir-empresario-p1.component';
+import { SeguhirEmpresarioP2Component }	  from './p2-beneficiarios/seguhir-empresario-p2.component';
 
 import { MyDatePickerModule }			  from 'mydatepicker';
 

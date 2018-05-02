@@ -2,8 +2,8 @@ import { NgModule }						from '@angular/core';
 import { RouterModule, Routes }			from '@angular/router';
 
 import { SeguhirEmpresarioComponent }	from './seguhir-empresario.component';
-import { SeguhirEmpresarioP1Component } from './seguhir-empresario-p1.component';
-import { SeguhirEmpresarioP2Component } from './seguhir-empresario-p2.component';
+import { SeguhirEmpresarioP1Component } from './p1-usuario/seguhir-empresario-p1.component';
+import { SeguhirEmpresarioP2Component } from './p2-beneficiarios/seguhir-empresario-p2.component';
 
 import { AuthenticationGuardService }	from 'app/core/services/authentication/authentication-guard.service';
 
