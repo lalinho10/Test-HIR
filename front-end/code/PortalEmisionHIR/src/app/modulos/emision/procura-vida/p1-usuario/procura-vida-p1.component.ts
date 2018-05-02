@@ -158,8 +158,13 @@ export class ProcuraVidaP1Component implements OnInit {
 
 	private registrarEventos(): void {
 		this.frmProcuraVidaP1.get( 'estado' ).valueChanges.subscribe( estado => {
-			this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
-								.subscribe( response => this.municipios = response.data );
+			if( estado.idEstado !== null && typeof estado.idEstado !== 'undefined' ) {
+				this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
+									.subscribe( response => this.municipios = response.data );
+			} else {
+				this.municipios = [];
+			}
+			this.frmProcuraVidaP1.get( 'delegacionMunicipio' ).setValue( '' );
 		});
 	}
 
