@@ -2,11 +2,13 @@ import { NgModule }					from '@angular/core';
 import { CommonModule } 			from '@angular/common';
 import { ReactiveFormsModule }		from '@angular/forms';
 
+import { MyDatePickerModule }		from 'mydatepicker';
+
 import { ProcuraVidaComponent }		from './procura-vida.component';
 import { ProcuraVidaP1Component }	from './p1-usuario/procura-vida-p1.component';
 import { ProcuraVidaP2Component }	from './p2-beneficiarios/procura-vida-p2.component';
 
-import { MyDatePickerModule }		from 'mydatepicker';
+import { ProcuraVidaP1Service }		from './p1-usuario/procura-vida-p1.service';
 
 import { ProcuraVidaRoutingModule } from './procura-vida-routing.module';
 import { ExtendFormControlModule }  from 'app/modulos/shared/extend-form-control/extend-form-control.module';
@@ -27,6 +29,9 @@ import { ProgressControlModule }	from 'app/modulos/shared/progress-control/progr
 		ProcuraVidaRoutingModule,
 		ExtendFormControlModule,
 		ProgressControlModule
+	],
+	providers: [
+		ProcuraVidaP1Service
 	]
 })
 

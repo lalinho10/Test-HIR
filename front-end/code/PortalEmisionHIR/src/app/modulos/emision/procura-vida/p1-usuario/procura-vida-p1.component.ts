@@ -2,6 +2,7 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { ProcuraVidaP1Service }				  from './procura-vida-p1.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator } 				  from 'app/core/validators/apellido.validator';
@@ -42,6 +43,7 @@ export class ProcuraVidaP1Component implements OnInit {
 
 	constructor(
 		private fb: FormBuilder,
+		private procuraVidaP1Service: ProcuraVidaP1Service,
 		private router: Router,
 		private wsClientService: WSClientService
 	){}
@@ -169,6 +171,7 @@ export class ProcuraVidaP1Component implements OnInit {
 	}
 
 	fnAvanzarP2(): void {
+		this.procuraVidaP1Service.setModelP1( this.frmProcuraVidaP1.value );
 		this.router.navigateByUrl( '/emision/procuravida/beneficiarios' );
 	}
 }

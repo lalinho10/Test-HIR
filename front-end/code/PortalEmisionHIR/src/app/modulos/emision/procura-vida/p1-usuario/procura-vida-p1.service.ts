@@ -4,9 +4,11 @@ import { ProcuraVidaP1 } from './procura-vida-p1';
 
 @Injectable()
 export class ProcuraVidaP1Service {
-	private procuraVidaP1: ProcuraVidaP1 = new ProcuraVidaP1();
+	private procuraVidaP1: ProcuraVidaP1;
 
 	setModelP1( frmProcuraVidaP1: any ): void {
+		this.procuraVidaP1 = new ProcuraVidaP1();
+
 		this.procuraVidaP1.padecimiento = frmProcuraVidaP1.padecimiento;
 		this.procuraVidaP1.peso = frmProcuraVidaP1.peso;
 		this.procuraVidaP1.estatura = frmProcuraVidaP1.estatura;
@@ -23,7 +25,7 @@ export class ProcuraVidaP1Service {
 		this.procuraVidaP1.coloniaPoblacion = frmProcuraVidaP1.coloniaPoblacion;
 		this.procuraVidaP1.delegacionMunicipio = frmProcuraVidaP1.delegacionMunicipio;
 		this.procuraVidaP1.estado = frmProcuraVidaP1.estado;
-		this.procuraVidaP1.telefono = frmProcuraVidaP1.telfonos.telefono;
+		this.procuraVidaP1.telefono = frmProcuraVidaP1.telefonos.telefono;
 		this.procuraVidaP1.celular = frmProcuraVidaP1.telefonos.celular;
 		this.procuraVidaP1.correoe1 = frmProcuraVidaP1.correos.correoe1;
 		this.procuraVidaP1.correoe2 = frmProcuraVidaP1.correos.correoe2;
@@ -31,5 +33,13 @@ export class ProcuraVidaP1Service {
 
 	getModelP1(): ProcuraVidaP1 {
 		return this.procuraVidaP1;
+	}
+
+	hasModelP1(): boolean {
+		return ( this.procuraVidaP1 !== null && typeof this.procuraVidaP1 !== 'undefined' );
+	}
+
+	cleanModelP1(): void {
+		this.procuraVidaP1 = undefined;
 	}
 }
