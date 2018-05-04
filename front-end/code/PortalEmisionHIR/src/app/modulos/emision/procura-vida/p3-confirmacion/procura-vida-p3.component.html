@@ -1,0 +1,102 @@
+<div class="row">
+	<div class="col col-100">
+		<pehir-progress-control [numSteps]="3" [selStep]="3">
+		</pehir-progress-control>
+	</div>
+</div>
+<div class="row">
+	<div class="col col-25">
+		<label class="form-label">Nombre:</label>
+	</div>
+	<div class="col col-25">
+		<label class="res-label">
+			{{ procuraVidaP1.nombre + ' ' + procuraVidaP1.apaterno + ' ' + procuraVidaP1.amaterno }}
+		</label>
+	</div>
+	<div class="col col-25">
+		<label class="form-label">Fecha de nacimiento:</label>
+	</div>
+	<div class="col col-25">
+		<label class="res-label">
+			{{ procuraVidaP1.fechanac.jsdate | date: 'dd/MM/yyyy' }}
+		</label>
+	</div>
+</div>
+<div class="row">
+	<div class="col col-25">
+		<label class="form-label">Estatura:</label>
+	</div>
+	<div class="col col-25">
+		<label class="res-label">
+			{{ procuraVidaP1.estatura }}
+		</label>
+	</div>
+	<div class="col col-25">
+		<label class="form-label">Peso:</label>
+	</div>
+	<div class="col col-25">
+		<label class="res-label">
+			{{ procuraVidaP1.peso }}
+		</label>
+	</div>
+</div>
+<div class="row">
+	<div class="col col-25">
+		<label class="form-label">Nacionalidad:</label>
+	</div>
+	<div class="col col-25">
+		<label class="res-label">
+			{{ procuraVidaP1.nacionalidad }}
+		</label>
+	</div>
+	<div class="col col-25">
+		<label class="form-label">Ocupación:</label>
+	</div>
+	<div class="col col-25">
+		<label class="res-label">
+			{{ procuraVidaP1.ocupacion.descOcupacion }}
+		</label>
+	</div>
+</div>
+<div class="row">
+	<div class="col col-25">
+		<label class="form-label">Estado civil:</label>
+	</div>
+	<div class="col col-25">
+		<label class="res-label">
+			{{ procuraVidaP1.estadoCivil.descEstadoCivil }}
+		</label>
+	</div>
+	<div class="col col-25">
+		<label class="form-label">Género:</label>
+	</div>
+	<div class="col col-25">
+		<label class="res-label">
+			{{ procuraVidaP1.genero.descGenero }}
+		</label>
+	</div>
+</div>
+<div class="row">
+	<div class="col col-25">
+		<label class="form-label">Estado:</label>
+	</div>
+	<div class="col col-25">
+		<label class="res-label">
+			{{ procuraVidaP1.estado.descEstado }}
+		</label>
+	</div>
+	<div class="col col-25">
+		<label class="form-label">Delegación o Municipio:</label>
+	</div>
+	<div class="col col-25">
+		<label class="res-label">
+			{{ procuraVidaP1.delegacionMunicipio.descMunicipio }}
+		</label>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="col col-100">
+		{{ procuraVidaP2 | json }}
+	</div>
+</div>
