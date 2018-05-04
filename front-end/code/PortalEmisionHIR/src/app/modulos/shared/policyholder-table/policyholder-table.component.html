@@ -26,7 +26,7 @@
 				</td>
 				<td class="center">
 					<label class="data" *ngIf="!frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
-						{{ beneficiarios[i].fechaNacimiento | date: 'dd/MM/yyyy' }}
+						{{ beneficiarios[i].fechaNacimiento.jsdate | date: 'dd/MM/yyyy' }}
 					</label>
 					<div *ngIf="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
 						<pehir-extend-form-control
@@ -38,7 +38,7 @@
 				</td>
 				<td class="center">
 					<label class="data" *ngIf="!frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
-						{{ beneficiarios[i].descParentesco }}
+						{{ beneficiarios[i].parentesco.descParentesco }}
 					</label>
 					<div *ngIf="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
 						<pehir-extend-form-control
@@ -46,7 +46,7 @@
 							[inputErrors]="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['parentesco'].errors">
 								<select id="cboParentesco" class="form-control" formControlName="parentesco">
 									<option value="">Selecciona</option>
-									<option *ngFor="let parentesco of parentescos" [value]="parentesco.idParentesco">
+									<option *ngFor="let parentesco of parentescos" [ngValue]="parentesco">
 										{{parentesco.descParentesco}}
 									</option>
 								</select>
@@ -55,7 +55,7 @@
 				</td>
 				<td class="center">
 					<label class="data" *ngIf="!frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
-						{{ beneficiarios[i].porcentajeSuma | percent }}
+						{{ beneficiarios[i].porcentajeSumaDec | percent }}
 					</label>
 					<div *ngIf="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
 						<pehir-extend-form-control
@@ -108,7 +108,7 @@
 						[inputErrors]="frmBeneficiario.get('grupoAlta.parentesco').errors">
 							<select id="cboParentesco" class="form-control" formControlName="parentesco">
 								<option value="">Selecciona</option>
-								<option *ngFor="let parentesco of parentescos" [value]="parentesco.idParentesco">
+								<option *ngFor="let parentesco of parentescos" [ngValue]="parentesco">
 									{{parentesco.descParentesco}}
 								</option>
 							</select>

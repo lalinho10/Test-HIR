@@ -42,18 +42,18 @@ export class PolicyHolderTableComponent implements OnInit {
 		return this.frmBeneficiario.controls[ 'gruposEdicion' ] as FormArray;
 	}
 
-	readCatalogs(): void {
-		this.wsClientService.getObject( '/consultaParentescos' )
-							.subscribe( data => this.parentescos = data );
-	}
-
 	ngOnInit() {
-		this.readCatalogs();
+		this.leerCatalogos();
 
 		this.frmBeneficiario = this.fb.group({
 			'grupoAlta': this.crearGrupo(),
 			'gruposEdicion': this.fb.array( [] )
 		});
+	}
+
+	private leerCatalogos(): void {
+		this.wsClientService.getObject( '/consultaParentescos' )
+							.subscribe( data => this.parentescos = data );
 	}
 
 	private crearGrupo(): FormGroup {
@@ -118,32 +118,19 @@ export class PolicyHolderTableComponent implements OnInit {
 	private editarBeneficiario( idBeneficiario: number ): void {
 		let gruposEdicion: FormArray = this.frmBeneficiario.controls[ 'gruposEdicion' ] as FormArray;
 		let grupoEdicion = gruposEdicion.at( idBeneficiario ) as FormGroup;
-		let fechaCapturada = this.beneficiarios[ idBeneficiario ].fechaNacimiento;
-		let objetoFechaCal = {
-			date: {
-				year: fechaCapturada.getFullYear(),
-				month: fechaCapturada.getMonth() + 1,
-				day: fechaCapturada.getDate()
-			},
-			epoc: fechaCapturada.getTime() / 1000
-		};
 
 		grupoEdicion.controls[ 'nombre' ].setValue( this.beneficiarios[ idBeneficiario ].nombre );
-		grupoEdicion.controls[ 'fechanac' ].patchValue( objetoFechaCal );
-		grupoEdicion.controls[ 'parentesco' ].setValue( this.beneficiarios[ idBeneficiario ].idParentesco );
-		grupoEdicion.controls[ 'porcentajeSuma' ].setValue( this.beneficiarios[ idBeneficiario ].porcentajeSuma * 100 );
+		grupoEdicion.controls[ 'fechanac' ].patchValue( this.beneficiarios[ idBeneficiario ].fechaNacimiento );
+		grupoEdicion.controls[ 'parentesco' ].setValue( this.beneficiarios[ idBeneficiario ].parentesco );
+		grupoEdicion.controls[ 'porcentajeSuma' ].setValue( this.beneficiarios[ idBeneficiario ].porcentajeSuma );
 		grupoEdicion.controls[ 'edicion' ].setValue( true );
 	}
 
 	private modificarBeneficiario( idBeneficiario: number, grupoEdicion: FormGroup ): void {
 		this.beneficiarios[ idBeneficiario ].nombre = grupoEdicion.get( 'nombre' ).value;
-		this.beneficiarios[ idBeneficiario ].fechaNacimiento = new Date( grupoEdicion.get( 'fechanac' ).value.epoc * 1000 );
-		this.beneficiarios[ idBeneficiario ].idParentesco = grupoEdicion.get( 'parentesco' ).value;
-
-		let parentesco = this.parentescos.filter( ( parentesco: Parentesco ) => parentesco.idParentesco == this.beneficiarios[ idBeneficiario ].idParentesco );
-
-		this.beneficiarios[ idBeneficiario ].descParentesco = parentesco[0].descParentesco;
-		this.beneficiarios[ idBeneficiario ].porcentajeSuma = grupoEdicion.get( 'porcentajeSuma' ).value / 100;
+		this.beneficiarios[ idBeneficiario ].fechaNacimiento = grupoEdicion.get( 'fechanac' ).value;
+		this.beneficiarios[ idBeneficiario ].parentesco = grupoEdicion.get( 'parentesco' ).value;
+		this.beneficiarios[ idBeneficiario ].porcentajeSuma = grupoEdicion.get( 'porcentajeSuma' ).value;
 
 		this.validarSumatoriaPorcentajes();
 	}
@@ -152,13 +139,9 @@ export class PolicyHolderTableComponent implements OnInit {
 		let beneficiario: Beneficiario = new Beneficiario();
 
 		beneficiario.nombre = this.frmBeneficiario.get( 'grupoAlta.nombre' ).value;
-		beneficiario.fechaNacimiento = new Date( this.frmBeneficiario.get( 'grupoAlta.fechanac' ).value.epoc * 1000 );
-		beneficiario.idParentesco = this.frmBeneficiario.get( 'grupoAlta.parentesco' ).value;
-
-		let parentesco = this.parentescos.filter( ( parentesco: Parentesco ) => parentesco.idParentesco == beneficiario.idParentesco );
-
-		beneficiario.descParentesco = parentesco[0].descParentesco;
-		beneficiario.porcentajeSuma = this.frmBeneficiario.get( 'grupoAlta.porcentajeSuma' ).value / 100;
+		beneficiario.fechaNacimiento = this.frmBeneficiario.get( 'grupoAlta.fechanac' ).value;
+		beneficiario.parentesco = this.frmBeneficiario.get( 'grupoAlta.parentesco' ).value;
+		beneficiario.porcentajeSuma = this.frmBeneficiario.get( 'grupoAlta.porcentajeSuma' ).value;
 
 		this.beneficiarios.push( beneficiario );
 
@@ -186,7 +169,7 @@ export class PolicyHolderTableComponent implements OnInit {
 
 	private validarSumatoriaPorcentajes(): void {
 		this.porcentaje = this.beneficiarios
-			.map( function( beneficiario ) { return beneficiario.porcentajeSuma } )
+			.map( function( beneficiario ) { return beneficiario.porcentajeSumaDec } )
 			.reduce( function( a, b ) { return a + b; }, 0 );
 
 		this.isValidSum = ( this.porcentaje === 1 );
