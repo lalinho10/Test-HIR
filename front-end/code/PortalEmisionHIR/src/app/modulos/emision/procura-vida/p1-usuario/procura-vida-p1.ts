@@ -23,6 +23,7 @@ export class ProcuraVidaP1 {
 	coloniaPoblacion: string;
 	delegacionMunicipio: Municipio;
 	estado: Estado;
+	cp: number;
 	telefono: string;
 	celular: string;
 	correoe1: string;
