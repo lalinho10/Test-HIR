@@ -56,7 +56,7 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmProcuraVidaP2.get('cobertura').dirty"
 							[inputErrors]="frmProcuraVidaP2.get('cobertura').errors">
-								<select id="cboModulo" class="form-control" formControlName="cobertura">
+								<select id="cboCobertura" class="form-control" formControlName="cobertura">
 									<option value="">Selecciona</option>
 									<option *ngFor="let cobertura of coberturas" [ngValue]="cobertura">
 										{{cobertura.descCobertura}}
