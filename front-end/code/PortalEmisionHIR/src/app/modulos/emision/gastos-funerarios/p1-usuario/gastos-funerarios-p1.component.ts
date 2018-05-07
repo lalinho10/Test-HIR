@@ -2,6 +2,7 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { GastosFunerariosP1Service }		  from './gastos-funerarios-p1.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator } 				  from 'app/core/validators/apellido.validator';
@@ -42,6 +43,7 @@ export class GastosFunerariosP1Component implements OnInit {
 
 	constructor(
 		private fb: FormBuilder,
+		private gastosFunerariosP1Service: GastosFunerariosP1Service,
 		private router: Router,
 		private wsClientService: WSClientService
 	){}
@@ -169,6 +171,7 @@ export class GastosFunerariosP1Component implements OnInit {
 	}
 
 	fnAvanzarP2(): void {
+		this.gastosFunerariosP1Service.setModelP1( this.frmGastosFunerariosP1.value );
 		this.router.navigateByUrl( '/emision/gastosfunerarios/beneficiarios' );
 	}
 }
