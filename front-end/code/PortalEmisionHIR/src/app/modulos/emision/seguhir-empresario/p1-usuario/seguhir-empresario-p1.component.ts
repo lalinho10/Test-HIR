@@ -2,6 +2,7 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { SeguhirEmpresarioP1Service }		  from './seguhir-empresario-p1.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator } 				  from 'app/core/validators/apellido.validator';
@@ -43,6 +44,7 @@ export class SeguhirEmpresarioP1Component implements OnInit {
 	constructor(
 		private fb: FormBuilder,
 		private router: Router,
+		private seguhirEmpresarioP1Service: SeguhirEmpresarioP1Service,
 		private wsClientService: WSClientService
 	){}
 
@@ -169,6 +171,7 @@ export class SeguhirEmpresarioP1Component implements OnInit {
 	}
 
 	fnAvanzarP2(): void {
+		this.seguhirEmpresarioP1Service.setModelP1( this.frmSeguhirEmpresarioP1.value );
 		this.router.navigateByUrl( '/emision/seguhirempresario/beneficiarios' );
 	}
 }

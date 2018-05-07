@@ -1,7 +1,10 @@
-import { Component, OnInit }				  from '@angular/core';
+import { Component, OnInit, ViewChild }		  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { PolicyHolderTableComponent }		  from 'app/modulos/shared/policyholder-table/policyholder-table.component';
+
+import { SeguhirEmpresarioP2Service }		  from './seguhir-empresario-p2.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.validator';
@@ -17,6 +20,8 @@ import { FormaPago }						  from 'app/core/models/forma-pago';
 })
 
 export class SeguhirEmpresarioP2Component implements OnInit {
+	@ViewChild( PolicyHolderTableComponent ) tablaBeneficiarios;
+
 	isValidTable = false;
 
 	frmSeguhirEmpresarioP2: FormGroup;
@@ -29,6 +34,7 @@ export class SeguhirEmpresarioP2Component implements OnInit {
 	constructor(
 		private fb: FormBuilder,
 		private router: Router,
+		private seguhirEmpresarioP2Service: SeguhirEmpresarioP2Service,
 		private wsClientService: WSClientService
 	){}
 
@@ -52,7 +58,7 @@ export class SeguhirEmpresarioP2Component implements OnInit {
 			'cobertura': ['', Validators.compose([
 				Validators.required
 			])],
-			'fpago': ['', Validators.compose([
+			'formaPago': ['', Validators.compose([
 				Validators.required
 			])],
 			'agente': ['', Validators.compose([
@@ -70,6 +76,7 @@ export class SeguhirEmpresarioP2Component implements OnInit {
 	}
 
 	fnAvanzarP3(): void {
-
+		this.seguhirEmpresarioP2Service.setModelP2( this.tablaBeneficiarios.beneficiarios, this.frmSeguhirEmpresarioP2.value );
+		this.router.navigateByUrl( '/emision/seguhirempresario/confirmacion' );
 	}
 }

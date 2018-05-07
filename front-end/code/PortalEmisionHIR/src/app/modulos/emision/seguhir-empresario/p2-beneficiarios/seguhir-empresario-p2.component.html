@@ -24,7 +24,7 @@
 							[inputErrors]="frmSeguhirEmpresarioP2.get('modulo').errors">
 								<select id="cboModulo" class="form-control" formControlName="modulo">
 									<option value="">Selecciona</option>
-									<option *ngFor="let modulo of modulos" [value]="modulo.idModulo">
+									<option *ngFor="let modulo of modulos" [ngValue]="modulo">
 										{{modulo.descModulo}}
 									</option>
 								</select>
@@ -56,9 +56,9 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmSeguhirEmpresarioP2.get('cobertura').dirty"
 							[inputErrors]="frmSeguhirEmpresarioP2.get('cobertura').errors">
-								<select id="cboModulo" class="form-control" formControlName="cobertura">
+								<select id="cboCobertura" class="form-control" formControlName="cobertura">
 									<option value="">Selecciona</option>
-									<option *ngFor="let cobertura of coberturas" [value]="cobertura.idCobertura">
+									<option *ngFor="let cobertura of coberturas" [ngValue]="cobertura">
 										{{cobertura.descCobertura}}
 									</option>
 								</select>
@@ -71,10 +71,10 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirEmpresarioP2.get('fpago').dirty"
-							[inputErrors]="frmSeguhirEmpresarioP2.get('fpago').errors">
+							[inputDirty]="frmSeguhirEmpresarioP2.get('formaPago').dirty"
+							[inputErrors]="frmSeguhirEmpresarioP2.get('formaPago').errors">
 								<div *ngFor="let formaPago of formasPago" class="rdoContainer two">
-									<input type="radio" formControlName="fpago" [value]="formaPago.idFormaPago">{{formaPago.descFormaPago}}
+									<input type="radio" formControlName="formaPago" [value]="formaPago">{{formaPago.descFormaPago}}
 								</div>
 						</pehir-extend-form-control>
 					</div>

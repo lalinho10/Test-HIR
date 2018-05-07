@@ -142,7 +142,7 @@
 							[inputErrors]="frmSeguhirEmpresarioP1.get('ocupacion').errors">
 								<select id="cboOcupacion" class="form-control" formControlName="ocupacion">
 									<option value="">Selecciona</option>
-									<option *ngFor="let ocupacion of ocupaciones" [value]="ocupacion.idOcupacion">
+									<option *ngFor="let ocupacion of ocupaciones" [ngValue]="ocupacion">
 										{{ocupacion.descOcupacion}}
 									</option>
 								</select>
@@ -170,7 +170,7 @@
 							[inputDirty]="frmSeguhirEmpresarioP1.get('estadoCivil').dirty"
 							[inputErrors]="frmSeguhirEmpresarioP1.get('estadoCivil').errors">
 								<div *ngFor="let estadoCivil of estadosCiviles" class="rdoContainer three">
-									<input type="radio" formControlName="estadoCivil" [value]="estadoCivil.idEstadoCivil">{{estadoCivil.descEstadoCivil}}
+									<input type="radio" formControlName="estadoCivil" [value]="estadoCivil">{{estadoCivil.descEstadoCivil}}
 								</div>
 						</pehir-extend-form-control>
 					</div>
@@ -184,7 +184,7 @@
 							[inputDirty]="frmSeguhirEmpresarioP1.get('genero').dirty"
 							[inputErrors]="frmSeguhirEmpresarioP1.get('genero').errors">
 								<div *ngFor="let genero of generos" class="rdoContainer two">
-									<input type="radio" formControlName="genero" [value]="genero.idGenero">{{genero.keyGenero}}
+									<input type="radio" formControlName="genero" [value]="genero">{{genero.keyGenero}}
 								</div>
 						</pehir-extend-form-control>
 					</div>
