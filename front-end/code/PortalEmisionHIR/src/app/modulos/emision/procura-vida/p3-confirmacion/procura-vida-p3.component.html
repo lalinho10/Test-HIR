@@ -4,99 +4,241 @@
 		</pehir-progress-control>
 	</div>
 </div>
-<div class="row">
-	<div class="col col-25">
-		<label class="form-label">Nombre:</label>
+<fieldset>
+	<legend>Datos del asegurado</legend>
+	<div class="row">
+		<div class="col col-16">
+			<label class="form-label">Nombre:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ procuraVidaP1.nombre + ' ' + procuraVidaP1.apaterno + ' ' + procuraVidaP1.amaterno }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Fecha de nacimiento:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ procuraVidaP1.fechanac.jsdate | date: 'dd/MM/yyyy' }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Nacionalidad:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ procuraVidaP1.nacionalidad }}
+			</label>
+		</div>
 	</div>
-	<div class="col col-25">
-		<label class="res-label">
-			{{ procuraVidaP1.nombre + ' ' + procuraVidaP1.apaterno + ' ' + procuraVidaP1.amaterno }}
-		</label>
+	<div class="row">
+		<div class="col col-16">
+			<label class="form-label">Estatura:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ procuraVidaP1.estatura }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Peso:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ procuraVidaP1.peso }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Padecimiento previo:</label>
+		</div>
+		<div class="col col-16">
+			<label *ngIf="procuraVidaP1.padecimiento" class="res-label">Sí</label>
+			<label *ngIf="!procuraVidaP1.padecimiento" class="res-label">No</label>
+		</div>
 	</div>
-	<div class="col col-25">
-		<label class="form-label">Fecha de nacimiento:</label>
+	<div class="row">
+		<div class="col col-16">
+			<label class="form-label">Ocupación:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ procuraVidaP1.ocupacion.descOcupacion }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Estado civil:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ procuraVidaP1.estadoCivil.descEstadoCivil }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Género:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ procuraVidaP1.genero.descGenero }}
+			</label>
+		</div>
 	</div>
-	<div class="col col-25">
-		<label class="res-label">
-			{{ procuraVidaP1.fechanac.jsdate | date: 'dd/MM/yyyy' }}
-		</label>
+</fieldset>
+<fieldset>
+	<legend>Datos de contacto</legend>
+	<div class="row">
+		<div class="col col-16">
+			<label class="form-label">Calle y número:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ procuraVidaP1.calleNumero }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Colonia o población:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ procuraVidaP1.coloniaPoblacion }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">CP:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ procuraVidaP1.cp }}
+			</label>
+		</div>
 	</div>
-</div>
-<div class="row">
-	<div class="col col-25">
-		<label class="form-label">Estatura:</label>
+	<div class="row">
+		<div class="col col-16">
+			<label class="form-label">Delegación o Municipio:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ procuraVidaP1.delegacionMunicipio.descMunicipio }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Estado:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ procuraVidaP1.estado.descEstado }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Teléfono:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ procuraVidaP1.telefono }}
+			</label>
+		</div>
 	</div>
-	<div class="col col-25">
-		<label class="res-label">
-			{{ procuraVidaP1.estatura }}
-		</label>
+	<div class="row">
+		<div class="col col-16">
+			<label class="form-label">Celular:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ procuraVidaP1.celular }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Email 1:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ procuraVidaP1.correoe1 }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Email 2:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ procuraVidaP1.correoe2 }}
+			</label>
+		</div>
 	</div>
-	<div class="col col-25">
-		<label class="form-label">Peso:</label>
+</fieldset>
+<fieldset>
+	<legend>Beneficiarios</legend>
+	<div *ngFor="let beneficiario of procuraVidaP2.beneficiarios" class="row">
+		<div class="col col-25">
+			<label class="res-label text-center">{{ beneficiario.nombre }}</label>
+		</div>
+		<div class="col col-25">
+			<label class="res-label text-center">{{ beneficiario.fechaNacimiento.jsdate | date: 'dd/MM/yyyy' }}</label>
+		</div>
+		<div class="col col-25">
+			<label class="res-label text-center">{{ beneficiario.parentesco.descParentesco }}</label>
+		</div>
+		<div class="col col-25">
+			<label class="res-label text-center">{{ beneficiario.porcentajeSumaDec | percent }}</label>
+		</div>
 	</div>
-	<div class="col col-25">
-		<label class="res-label">
-			{{ procuraVidaP1.peso }}
-		</label>
+</fieldset>
+<fieldset>
+	<legend>Datos del seguro</legend>
+	<div class="row">
+		<div class="col col-25">
+			<label class="form-label">Modulos:</label>
+		</div>
+		<div class="col col-25">
+			<label class="res-label">
+				{{ procuraVidaP2.modulo.descModulo }}
+			</label>
+		</div>
+		<div class="col col-25">
+			<label class="form-label">Cobertura:</label>
+		</div>
+		<div class="col col-25">
+			<label class="res-label">
+				{{ procuraVidaP2.cobertura.descCobertura }}
+			</label>
+		</div>
 	</div>
-</div>
-<div class="row">
-	<div class="col col-25">
-		<label class="form-label">Nacionalidad:</label>
+	<div class="row">
+		<div class="col col-25">
+			<label class="form-label">Forma de pago:</label>
+		</div>
+		<div class="col col-25">
+			<label class="res-label">
+				{{ procuraVidaP2.formaPago.descFormaPago }}
+			</label>
+		</div>
+		<div class="col col-25">
+			<label class="form-label">Suma asegurada:</label>
+		</div>
+		<div class="col col-25">
+			<label class="res-label">
+				{{ procuraVidaP2.sumasegurada | currency: 'MXN': true }}
+			</label>
+		</div>
 	</div>
-	<div class="col col-25">
-		<label class="res-label">
-			{{ procuraVidaP1.nacionalidad }}
-		</label>
+</fieldset>
+<fieldset>
+	<legend>Datos del agente</legend>
+	<div class="row">
+		<div class="col col-25">
+			<label class="form-label">Agente:</label>
+		</div>
+		<div class="col col-25">
+			<label class="res-label">
+				{{ procuraVidaP2.agente }}
+			</label>
+		</div>
+		<div class="col col-25">
+			<label class="form-label">Clave:</label>
+		</div>
+		<div class="col col-25">
+			<label class="res-label">
+				{{ procuraVidaP2.clave }}
+			</label>
+		</div>
 	</div>
-	<div class="col col-25">
-		<label class="form-label">Ocupación:</label>
-	</div>
-	<div class="col col-25">
-		<label class="res-label">
-			{{ procuraVidaP1.ocupacion.descOcupacion }}
-		</label>
-	</div>
-</div>
-<div class="row">
-	<div class="col col-25">
-		<label class="form-label">Estado civil:</label>
-	</div>
-	<div class="col col-25">
-		<label class="res-label">
-			{{ procuraVidaP1.estadoCivil.descEstadoCivil }}
-		</label>
-	</div>
-	<div class="col col-25">
-		<label class="form-label">Género:</label>
-	</div>
-	<div class="col col-25">
-		<label class="res-label">
-			{{ procuraVidaP1.genero.descGenero }}
-		</label>
-	</div>
-</div>
-<div class="row">
-	<div class="col col-25">
-		<label class="form-label">Estado:</label>
-	</div>
-	<div class="col col-25">
-		<label class="res-label">
-			{{ procuraVidaP1.estado.descEstado }}
-		</label>
-	</div>
-	<div class="col col-25">
-		<label class="form-label">Delegación o Municipio:</label>
-	</div>
-	<div class="col col-25">
-		<label class="res-label">
-			{{ procuraVidaP1.delegacionMunicipio.descMunicipio }}
-		</label>
-	</div>
-</div>
-<hr>
-<div class="row">
-	<div class="col col-100">
-		{{ procuraVidaP2 | json }}
-	</div>
-</div>
+</fieldset>
