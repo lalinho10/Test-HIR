@@ -16,7 +16,7 @@ export class CotizacionGuardService implements CanActivate {
 
 	canActivate(): boolean {
 		if ( !this.cotizacionService.hayDatosCotizacion() ) {
-			this.appModalService.openModal( 'error', 'Sin datos para el Resultado de la cotización.' );
+			this.appModalService.openModal( 'error', 'Sin datos para el Resultado de la cotización' );
 			this.router.navigateByUrl( '/cotizacion' );
 			return false;
 		}

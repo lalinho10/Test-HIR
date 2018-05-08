@@ -19,7 +19,7 @@ export class GastosFunerariosGuardService implements CanActivate {
 
 	canActivate( route: ActivatedRouteSnapshot, state: RouterStateSnapshot ): boolean {
 		if ( !this.gastosFunerariosService.isValidPath( route.routeConfig.path ) ) {
-			this.appModalService.openModal( 'error', 'Sin datos para el flujo de Emisión - Gastos Funerarios.' );
+			this.appModalService.openModal( 'error', 'Sin datos para el flujo de Emisión - Gastos Funerarios' );
 			this.router.navigateByUrl( '/emision/gastosfunerarios' );
 			return false;
 		}

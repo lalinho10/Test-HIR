@@ -19,7 +19,7 @@ export class SeguhirEmpresarioGuardService implements CanActivate {
 
 	canActivate( route: ActivatedRouteSnapshot, state: RouterStateSnapshot ): boolean {
 		if ( !this.seguhirEmpresarioService.isValidPath( route.routeConfig.path ) ) {
-			this.appModalService.openModal( 'error', 'Sin datos para el flujo de Emisión - SeguHIR Empresario.' );
+			this.appModalService.openModal( 'error', 'Sin datos para el flujo de Emisión - SeguHIR Empresario' );
 			this.router.navigateByUrl( '/emision/seguhirempresario' );
 			return false;
 		}

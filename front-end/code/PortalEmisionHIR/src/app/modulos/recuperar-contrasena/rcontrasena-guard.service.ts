@@ -19,7 +19,7 @@ export class RcontrasenaGuardService implements CanActivate {
 
 	canActivate( route: ActivatedRouteSnapshot, state: RouterStateSnapshot ): boolean {
 		if ( !this.rcontrasenaService.isValidPath( route.routeConfig.path ) ) {
-			this.appModalService.openModal( 'error', 'Sin datos para el flujo de Recuperación de contraseña.' );
+			this.appModalService.openModal( 'error', 'Sin datos para el flujo de Recuperación de contraseña' );
 			this.router.navigateByUrl( '/rcontrasena' );
 			return false;
 		}

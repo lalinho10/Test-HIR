@@ -52,7 +52,7 @@ export class DesbloqueoP3Component implements OnInit {
 
 	fnDesbloquear(): void {
 		if( this.frmDesP3.controls[ 'confirmacion' ].value ) {
-			this.appModalService.openModal( 'info', 'Llamada a servicio de Desbloqueo.' )
+			this.appModalService.openModal( 'info', 'Llamada a servicio de Desbloqueo' )
 		} else {
 			this.router.navigateByUrl( '/acceso/login' );
 		}

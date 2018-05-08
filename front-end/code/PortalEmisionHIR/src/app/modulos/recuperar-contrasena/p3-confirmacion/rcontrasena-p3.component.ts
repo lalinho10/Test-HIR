@@ -36,6 +36,6 @@ export class RcontrasenaP3Component implements OnInit {
 	}
 
 	fnRecuperarContrasena(): void {
-		this.appModalService.openModal( 'info', 'Llamada a servicio de Recuperación de contraseña.' );
+		this.appModalService.openModal( 'info', 'Llamada a servicio de Recuperación de contraseña' );
 	}
 }

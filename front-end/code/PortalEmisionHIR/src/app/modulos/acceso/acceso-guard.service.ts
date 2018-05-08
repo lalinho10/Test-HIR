@@ -19,7 +19,7 @@ export class AccesoGuardService implements CanActivate {
 
 	canActivate( route: ActivatedRouteSnapshot, state: RouterStateSnapshot ): boolean {
 		if ( !this.accesoService.isValidPath( route.routeConfig.path ) ) {
-			this.appModalService.openModal( 'error', 'Sin datos para el flujo de Acceso.' );
+			this.appModalService.openModal( 'error', 'Sin datos para el flujo de Acceso' );
 			this.router.navigateByUrl( '/acceso' );
 			return false;
 		}

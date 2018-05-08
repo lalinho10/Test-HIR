@@ -19,7 +19,7 @@ export class DesbloqueoGuardService implements CanActivate {
 
 	canActivate( route: ActivatedRouteSnapshot, state: RouterStateSnapshot ): boolean {
 		if ( !this.desbloqueoService.isValidPath( route.routeConfig.path ) ) {
-			this.appModalService.openModal( 'error', 'Sin datos para el flujo de Desbloqueo.' );
+			this.appModalService.openModal( 'error', 'Sin datos para el flujo de Desbloqueo' );
 			this.router.navigateByUrl( '/desbloqueo' );
 			return false;
 		}

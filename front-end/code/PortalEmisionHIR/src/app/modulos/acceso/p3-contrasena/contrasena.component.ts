@@ -44,6 +44,6 @@ export class ContrasenaComponent implements OnInit {
 	}
 
 	fnContinuarAcceso(): void {
-		this.modalService.openModal( 'info', 'Llamada a servicio de primer acceso.' );
+		this.modalService.openModal( 'info', 'Llamada a servicio de primer acceso' );
 	}
 }

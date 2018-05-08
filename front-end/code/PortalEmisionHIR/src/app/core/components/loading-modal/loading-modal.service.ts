@@ -25,7 +25,7 @@ export class LoadingModalService {
 
 	closeModal(): void {
 		if ( this.calls <= 0 ) {
-			console.error( 'Se intentó cerrar una modal de carga que no se ha abierto.' );
+			console.error( 'Se intentó cerrar una modal de carga que no se ha abierto' );
 		} else if ( this.calls === 1 ) {
 			this.loadingModal.closeModal();
 		}
