@@ -1,0 +1,279 @@
+<div class="row">
+	<div class="col col-100">
+		<pehir-progress-control [numSteps]="3" [selStep]="3">
+		</pehir-progress-control>
+	</div>
+</div>
+<fieldset>
+	<legend>Datos del asegurado</legend>
+	<div class="row">
+		<div class="col col-16">
+			<label class="form-label">Nombre:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ segubiciP1.nombre + ' ' + segubiciP1.apaterno + ' ' + segubiciP1.amaterno }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Fecha de nacimiento:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ segubiciP1.fechanac.jsdate | date: 'dd/MM/yyyy' }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Nacionalidad:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ segubiciP1.nacionalidad }}
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-16">
+			<label class="form-label">RFC:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ segubiciP1.rfc }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Estado civil:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ segubiciP1.estadoCivil.descEstadoCivil }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Género:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ segubiciP1.genero.descGenero }}
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-16">
+			<label class="form-label">Fumador:</label>
+		</div>
+		<div class="col col-16">
+			<label *ngIf="segubiciP1.fumador" class="res-label">Sí</label>
+			<label *ngIf="!segubiciP1.fumador" class="res-label">No</label>
+		</div>
+	</div>
+</fieldset>
+<fieldset>
+	<legend>Datos de contacto</legend>
+	<div class="row">
+		<div class="col col-16">
+			<label class="form-label">Calle y número:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ segubiciP1.calleNumero }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Colonia o población:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ segubiciP1.coloniaPoblacion }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">CP:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ segubiciP1.cp }}
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-16">
+			<label class="form-label">Delegación o Municipio:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ segubiciP1.delegacionMunicipio.descMunicipio }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Estado:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ segubiciP1.estado.descEstado }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Teléfono:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ segubiciP1.telefono }}
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-16">
+			<label class="form-label">Celular:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ segubiciP1.celular }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Email:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ segubiciP1.correoe }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Vigencia de la poliza:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ segubiciP1.vigenciaPoliza }}
+			</label>
+		</div>
+	</div>
+</fieldset>
+<fieldset>
+	<legend>Identificación y conocimiento del cliente</legend>
+	<div class="row">
+		<div class="col col-100">
+			<label id="lblGobierno" class="pregunta">
+				¿Usted desempeña o ha desempeñado en el año inmediato anterior alguna de las siguientes funciones o cargos: Jefe de Estado o de Gobierno, líder político, funcionario gubernamental, judicial o militar de alta jerarquía, alto ejecutivo de empresas estatales o funcionario o miembro importante de partidos políticos?
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-10">
+			<label *ngIf="segubiciP1.gobierno" class="res-label">Sí</label>
+			<label *ngIf="!segubiciP1.gobierno" class="res-label">No</label>
+		</div>
+		<div class="col col-90">
+			<label class="res-label">
+				{{ segubiciP1.especifiqueGob }}
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-100">
+			<label id="lblParienteGob" class="pregunta">
+				¿Es usted cónyugue, concubina, concubinario o tiene paretesco por consanguinidad o afinidad hasta el segundo grado con alguna persona de las mencionadas en el párrafo anterior?
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-10">
+			<label *ngIf="segubiciP1.parienteGob" class="res-label">Sí</label>
+			<label *ngIf="!segubiciP1.parienteGob" class="res-label">No</label>
+		</div>
+		<div class="col col-90">
+			<label class="res-label">
+				{{ segubiciP1.especifiqueParGob }}
+			</label>
+		</div>
+	</div>
+</fieldset>
+<fieldset>
+	<legend>Datos adicionales</legend>
+	<div class="row">
+		<div class="col col-25">
+			<label class="form-label">Ocupación:</label>
+		</div>
+		<div class="col col-25">
+			<label class="res-label">
+				{{ segubiciP2.ocupacion.descOcupacion }}
+			</label>
+		</div>
+		<div class="col col-25">
+			<label class="form-label">Breve descripción de actividad:</label>
+		</div>
+		<div class="col col-25">
+			<label class="res-label">
+				{{ segubiciP2.descactividad }}
+			</label>
+		</div>
+	</div>
+</fieldset>
+<fieldset>
+	<legend>Información del seguro</legend>
+	<div class="row">
+		<div class="col col-16">
+			<label class="form-label">Cobertura:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ segubiciP2.cobertura.descCobertura }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Suma asegurada:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ segubiciP2.sumasegurada | currency: 'MXN': true }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Deducible:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ segubiciP2.deducible | currency: 'MXN': true }}
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-16">
+			<label class="form-label">Forma de pago:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ segubiciP2.formaPago.descFormaPago }}
+			</label>
+		</div>
+		<div class="col col-16">
+			<label class="form-label">Plan:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ segubiciP2.plan.descPlan }}
+			</label>
+		</div>
+	</div>
+</fieldset>
+<fieldset>
+	<legend>Información para el agente</legend>
+	<div class="row">
+		<div class="col col-25">
+			<label class="form-label">Agente:</label>
+		</div>
+		<div class="col col-25">
+			<label class="res-label">
+				{{ segubiciP2.agente }}
+			</label>
+		</div>
+		<div class="col col-25">
+			<label class="form-label">Clave:</label>
+		</div>
+		<div class="col col-25">
+			<label class="res-label">
+				{{ segubiciP2.clave }}
+			</label>
+		</div>
+	</div>
+</fieldset>

@@ -2,6 +2,7 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { SegubiciP1Service }				  from './segubici-p1.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator } 				  from 'app/core/validators/apellido.validator';
@@ -38,6 +39,7 @@ export class SegubiciP1Component implements OnInit {
 	constructor(
 		private fb: FormBuilder,
 		private router: Router,
+		private segubiciP1Service: SegubiciP1Service,
 		private wsClientService: WSClientService
 	){}
 
@@ -172,6 +174,7 @@ export class SegubiciP1Component implements OnInit {
 	}
 
 	fnAvanzarP2(): void {
+		this.segubiciP1Service.setModelP1( this.frmSegubiciP1.value );
 		this.router.navigateByUrl( '/emision/segubici/seguro' );
 	}
 }

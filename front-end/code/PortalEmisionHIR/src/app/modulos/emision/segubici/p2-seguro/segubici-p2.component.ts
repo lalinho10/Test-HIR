@@ -2,6 +2,7 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { SegubiciP2Service }				  from './segubici-p2.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.validator';
@@ -27,6 +28,7 @@ export class SegubiciP2Component implements OnInit {
 	constructor(
 		private fb: FormBuilder,
 		private router: Router,
+		private segubiciP2Service: SegubiciP2Service,
 		private wsClientService: WSClientService
 	){}
 
@@ -60,7 +62,7 @@ export class SegubiciP2Component implements OnInit {
 			'deducible': ['', Validators.compose([
 				Validators.required
 			])],
-			'fpago': ['', Validators.compose([
+			'formaPago': ['', Validators.compose([
 				Validators.required
 			])],
 			'plan': ['', Validators.compose([
@@ -77,6 +79,7 @@ export class SegubiciP2Component implements OnInit {
 	}
 
 	fnAvanzarP3(): void {
-
+		this.segubiciP2Service.setModelP2( this.frmSegubiciP2.value );
+		this.router.navigateByUrl( '/emision/segubici/confirmacion' );
 	}
 }
