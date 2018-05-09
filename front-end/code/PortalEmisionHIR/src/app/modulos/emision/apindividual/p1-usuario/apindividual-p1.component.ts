@@ -2,6 +2,7 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { ApindividualP1Service }			  from './apindividual-p1.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator } 				  from 'app/core/validators/apellido.validator';
@@ -36,6 +37,7 @@ export class ApindividualP1Component implements OnInit {
 	estadosCiviles = ESTADOSCIVILES;
 
 	constructor(
+		private apindividualP1Service: ApindividualP1Service,
 		private fb: FormBuilder,
 		private router: Router,
 		private wsClientService: WSClientService
@@ -172,6 +174,7 @@ export class ApindividualP1Component implements OnInit {
 	}
 
 	fnAvanzarP2(): void {
+		this.apindividualP1Service.setModelP1( this.frmApindividualP1.value );
 		this.router.navigateByUrl( '/emision/apindividual/seguro' );
 	}
 }

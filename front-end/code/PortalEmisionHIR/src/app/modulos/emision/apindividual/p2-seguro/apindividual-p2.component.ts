@@ -2,6 +2,7 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { ApindividualP2Service }			  from './apindividual-p2.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.validator';
@@ -25,6 +26,7 @@ export class ApindividualP2Component implements OnInit {
 	planes: Plan[];
 
 	constructor(
+		private apindividualP2Service: ApindividualP2Service,
 		private fb: FormBuilder,
 		private router: Router,
 		private wsClientService: WSClientService
@@ -60,7 +62,7 @@ export class ApindividualP2Component implements OnInit {
 			'deducible': ['', Validators.compose([
 				Validators.required
 			])],
-			'fpago': ['', Validators.compose([
+			'formaPago': ['', Validators.compose([
 				Validators.required
 			])],
 			'plan': ['', Validators.compose([
@@ -77,6 +79,7 @@ export class ApindividualP2Component implements OnInit {
 	}
 
 	fnAvanzarP3(): void {
-
+		this.apindividualP2Service.setModelP2( this.frmApindividualP2.value );
+		this.router.navigateByUrl( '/emision/apindividual/confirmacion' );
 	}
 }

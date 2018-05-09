@@ -19,7 +19,7 @@
 							[inputErrors]="frmApindividualP2.get('ocupacion').errors">
 								<select id="cboOcupacion" class="form-control" formControlName="ocupacion">
 									<option value="">Selecciona</option>
-									<option *ngFor="let ocupacion of ocupaciones" [value]="ocupacion.idOcupacion">
+									<option *ngFor="let ocupacion of ocupaciones" [ngValue]="ocupacion">
 										{{ocupacion.descOcupacion}}
 									</option>
 								</select>
@@ -57,7 +57,7 @@
 							[inputErrors]="frmApindividualP2.get('cobertura').errors">
 								<select id="cboCobertura" class="form-control" formControlName="cobertura">
 									<option value="">Selecciona</option>
-									<option *ngFor="let cobertura of coberturas" [value]="cobertura.idCobertura">
+									<option *ngFor="let cobertura of coberturas" [ngValue]="cobertura">
 										{{cobertura.descCobertura}}
 									</option>
 								</select>
@@ -102,10 +102,10 @@
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP2.get('fpago').dirty"
-							[inputErrors]="frmApindividualP2.get('fpago').errors">
+							[inputDirty]="frmApindividualP2.get('formaPago').dirty"
+							[inputErrors]="frmApindividualP2.get('formaPago').errors">
 								<div *ngFor="let formaPago of formasPago" class="rdoContainer two">
-									<input type="radio" formControlName="fpago" [value]="formaPago.idFormaPago">{{formaPago.descFormaPago}}
+									<input type="radio" formControlName="formaPago" [value]="formaPago">{{formaPago.descFormaPago}}
 								</div>
 						</pehir-extend-form-control>
 					</div>
@@ -119,7 +119,7 @@
 							[inputDirty]="frmApindividualP2.get('plan').dirty"
 							[inputErrors]="frmApindividualP2.get('plan').errors">
 								<div *ngFor="let plan of planes" class="rdoContainer two">
-									<input type="radio" formControlName="plan" [value]="plan.idPlan">{{plan.descPlan}}
+									<input type="radio" formControlName="plan" [value]="plan">{{plan.descPlan}}
 								</div>
 						</pehir-extend-form-control>
 					</div>
