@@ -5,6 +5,9 @@ import { Router }							  from '@angular/router';
 import { EstaturaValidator }				  from 'app/core/validators/estatura.validator';
 import { PesoValidator }					  from 'app/core/validators/peso.validator';
 
+import { FRECUENCIASDEPORTE }				  from 'app/core/data/frecuencias-deporte';
+import { NIVELESCOMPETENCIA }				  from 'app/core/data/niveles-competencia';
+
 @Component({
 	selector: 'pehir-seguhir-vida-p3',
 	templateUrl: 'seguhir-vida-p3.component.html'
@@ -14,6 +17,9 @@ export class SeguhirVidaP3Component implements OnInit {
 	isValidQuestionary = false;
 
 	frmSeguhirVidaP3: FormGroup;
+
+	frecuenciasDeporte = FRECUENCIASDEPORTE;
+	nivelesCompetencia = NIVELESCOMPETENCIA;
 
 	preguntasCuestionario: string[] = [
 		'1. ¿Padece actualmente de alguna enfermedad?',

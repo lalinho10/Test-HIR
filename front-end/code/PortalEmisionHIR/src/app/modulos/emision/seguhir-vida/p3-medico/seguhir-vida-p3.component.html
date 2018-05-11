@@ -141,11 +141,8 @@
 							<input type="radio" (change)="fnCambiarCompetencias()" [value]="true" formControlName="competencias">Sí
 						</div>
 
-						<div class="rdoContainer two">
-							<input type="radio" [value]="1" formControlName="nivelCompetencia">Amateur
-						</div>
-						<div class="rdoContainer two">
-							<input type="radio" [value]="2" formControlName="nivelCompetencia">Profesional
+						<div *ngFor="let nivelCompetencia of nivelesCompetencia" class="rdoContainer two">
+							<input type="radio" formControlName="nivelCompetencia" [value]="nivelCompetencia">{{nivelCompetencia.descNivelCompetencia}}
 						</div>
 				</pehir-extend-form-control>
 			</div>
@@ -154,17 +151,8 @@
 				<pehir-extend-form-control
 					[inputDirty]="frmSeguhirVidaP3.get('frecuenciaDeporte').dirty"
 					[inputErrors]="frmSeguhirVidaP3.get('frecuenciaDeporte').errors">
-						<div class="rdoContainer two">
-							<input type="radio" [value]="1" formControlName="frecuenciaDeporte">Diario
-						</div>
-						<div class="rdoContainer two">
-							<input type="radio" [value]="2" formControlName="frecuenciaDeporte">Semanal
-						</div>
-						<div class="rdoContainer two">
-							<input type="radio" [value]="3" formControlName="frecuenciaDeporte">Quincelnal
-						</div>
-						<div class="rdoContainer two">
-							<input type="radio" [value]="4" formControlName="frecuenciaDeporte">Mensual
+						<div *ngFor="let frecuenciaDeporte of frecuenciasDeporte" class="rdoContainer two">
+							<input type="radio" formControlName="frecuenciaDeporte" [value]="frecuenciaDeporte">{{frecuenciaDeporte.descFrecuenciaDeporte}}
 						</div>
 				</pehir-extend-form-control>
 			</div>
