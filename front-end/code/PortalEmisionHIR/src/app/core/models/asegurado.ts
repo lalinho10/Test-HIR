@@ -1,12 +1,15 @@
+import { IMyDateModel } from 'mydatepicker';
+
+import { EstadoCivil }	from 'app/core/models/estadoCivil';
+import { Genero }		from 'app/core/models/genero';
+import { Ocupacion }	from 'app/core/models/ocupacion';
+
 export class Asegurado {
 	nombre: string;
 	apaterno: string;
 	amaterno: string;
 	fechaNacimiento: Date;
-	idEstadoCivil: number;
-	descEstadoCivil: string;
-	idGenero: number;
-	descGenero: string;
-	idOcupacion: number;
-	descOcupacion: string;
+	estadoCivil: EstadoCivil;
+	genero: Genero;
+	ocupacion: Ocupacion;
 }

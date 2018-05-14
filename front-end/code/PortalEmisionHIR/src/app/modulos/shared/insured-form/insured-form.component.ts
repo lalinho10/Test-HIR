@@ -36,14 +36,18 @@ export class InsuredFormComponent implements OnInit {
 		private wsClientService: WSClientService
 	) {}
 
-	readCatalogs() {
+	ngOnInit() {
+		this.leerCatalogos();
+		this.crearFormulario();
+		this.registrarEventos();
+	}
+
+	private leerCatalogos() {
 		this.wsClientService.getObject( '/consultaOcupaciones' )
 							.subscribe( data => this.ocupaciones = data );
 	}
 
-	ngOnInit() {
-		this.readCatalogs();
-
+	private crearFormulario(): void {
 		this.frmAsegurado = this.fb.group({
 			'nombre': ['', Validators.compose([
 				Validators.required,
@@ -73,7 +77,9 @@ export class InsuredFormComponent implements OnInit {
 				Validators.required
 			])]
 		});
+	}
 
+	private registrarEventos(): void {
 		this.frmAsegurado.statusChanges.subscribe(
 			data => this.onValidateForm.emit( this.frmAsegurado.valid )
 		);
