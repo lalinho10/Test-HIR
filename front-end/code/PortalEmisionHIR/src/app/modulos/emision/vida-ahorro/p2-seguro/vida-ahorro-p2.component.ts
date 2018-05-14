@@ -30,7 +30,12 @@ export class VidaAhorroP2Component implements OnInit {
 		private wsClientService: WSClientService
 	){}
 
-	private readCatalogs(): void {
+	ngOnInit() {
+		this.leerCatalogos();
+		this.crearFormulario();
+	}
+
+	private leerCatalogos(): void {
 		this.wsClientService.getObject( '/consultaFormasPagoProducto/5' )
 							.subscribe( response => this.formasPago = response.data );
 		this.wsClientService.getObject( '/consultaPaquetes' )
@@ -39,9 +44,7 @@ export class VidaAhorroP2Component implements OnInit {
 							.subscribe( response => this.planes = response.data );
 	}
 
-	ngOnInit() {
-		this.readCatalogs();
-
+	private crearFormulario(): void {
 		this.frmVidaAhorroP2 = this.fb.group({
 			'gobierno': ['', Validators.compose([
 				Validators.required

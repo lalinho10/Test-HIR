@@ -38,16 +38,19 @@ export class GastosFunerariosP2Component implements OnInit {
 		private wsClientService: WSClientService
 	){}
 
-	readCatalogs(): void {
+	ngOnInit() {
+		this.leerCatalogos();
+		this.crearFormulario();
+	}
+
+	private leerCatalogos(): void {
 		this.wsClientService.getObject( '/consultaCoberturasProducto/3' )
 							.subscribe( response => this.coberturas = response.data );
 		this.wsClientService.getObject( '/consultaFormasPagoProducto/3' )
 							.subscribe( response => this.formasPago = response.data );
 	}
 
-	ngOnInit() {
-		this.readCatalogs();
-
+	private crearFormulario(): void {
 		this.frmGastosFunerariosP2 = this.fb.group({
 			'modulo': ['', Validators.compose([
 				Validators.required

@@ -32,7 +32,12 @@ export class ApindividualP2Component implements OnInit {
 		private wsClientService: WSClientService
 	){}
 
-	readCatalogs(): void {
+	ngOnInit() {
+		this.leerCatalogos();
+		this.crearFormulario();
+	}
+
+	private leerCatalogos(): void {
 		this.wsClientService.getObject( '/consultaCoberturasProducto/7' )
 							.subscribe( response => this.coberturas = response.data );
 		this.wsClientService.getObject( '/consultaFormasPagoProducto/7' )
@@ -43,9 +48,7 @@ export class ApindividualP2Component implements OnInit {
 							.subscribe( response => this.planes = response.data );
 	}
 
-	ngOnInit() {
-		this.readCatalogs();
-
+	private crearFormulario(): void {
 		this.frmApindividualP2 = this.fb.group({
 			'ocupacion': ['', Validators.compose([
 				Validators.required
@@ -75,7 +78,7 @@ export class ApindividualP2Component implements OnInit {
 				Validators.required,
 				ClaveAgenteValidator()
 			])]
-		})
+		});
 	}
 
 	fnAvanzarP3(): void {

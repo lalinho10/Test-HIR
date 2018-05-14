@@ -21,6 +21,10 @@ export class VidaAhorroP4Component implements OnInit {
 	){}
 
 	ngOnInit() {
+		this.crearFormulario();
+	}
+
+	private crearFormulario(): void {
 		this.frmVidaAhorroP4 = this.fb.group({
 			'confirmacionConyuge': ['', Validators.compose([
 				Validators.required

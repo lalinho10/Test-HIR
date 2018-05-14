@@ -37,6 +37,10 @@ export class VidaAhorroP3Component implements OnInit {
 	){}
 
 	ngOnInit() {
+		this.crearFormulario();
+	}
+
+	private crearFormulario(): void {
 		this.frmVidaAhorroP3 = this.fb.group({
 			'estatura': ['', Validators.compose([
 				Validators.required,
