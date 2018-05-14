@@ -2,6 +2,7 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { SeguhirVidaP2Service }				  from './seguhir-vida-p2.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { MODULOS }							  from 'app/core/data/modulos';
@@ -25,12 +26,18 @@ export class SeguhirVidaP2Component implements OnInit {
 	modulos = MODULOS;
 
 	constructor(
-		private router: Router,
 		private fb: FormBuilder,
+		private router: Router,
+		private seguhirVidaP2Service: SeguhirVidaP2Service,
 		private wsClientService: WSClientService
 	){}
 
-	private readCatalogs(): void {
+	ngOnInit() {
+		this.leerCatalogos();
+		this.crearFormulario();
+	}
+
+	private leerCatalogos(): void {
 		this.wsClientService.getObject( '/consultaFormasPagoProducto/1' )
 							.subscribe( response => this.formasPago = response.data );
 		this.wsClientService.getObject( '/consultaPaquetes' )
@@ -39,9 +46,7 @@ export class SeguhirVidaP2Component implements OnInit {
 							.subscribe( response => this.planes = response.data );
 	}
 
-	ngOnInit() {
-		this.readCatalogs();
-
+	private crearFormulario(): void {
 		this.frmSeguhirVidaP2 = this.fb.group({
 			'gobierno': ['', Validators.compose([
 				Validators.required
@@ -58,7 +63,7 @@ export class SeguhirVidaP2Component implements OnInit {
 			'plan': ['', Validators.compose([
 				Validators.required
 			])],
-			'pcobertura': ['', Validators.compose([
+			'paqueteCobertura': ['', Validators.compose([
 				Validators.required
 			])],
 			'modulo': ['', Validators.compose([
@@ -70,7 +75,7 @@ export class SeguhirVidaP2Component implements OnInit {
 			'apfondoasegurado': ['', Validators.compose([
 				Validators.required
 			])],
-			'fpago': ['', Validators.compose([
+			'formaPago': ['', Validators.compose([
 				Validators.required
 			])],
 			'cobertura': ['', Validators.compose([
@@ -106,6 +111,7 @@ export class SeguhirVidaP2Component implements OnInit {
 	}
 
 	fnAvanzarP3(): void {
+		this.seguhirVidaP2Service.setModelP2( this.frmSeguhirVidaP2.value );
 		this.router.navigateByUrl( '/emision/seguhirvida/medico' );
 	}
 }

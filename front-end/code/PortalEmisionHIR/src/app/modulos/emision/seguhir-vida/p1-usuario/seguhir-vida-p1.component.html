@@ -82,7 +82,7 @@
 							[inputErrors]="frmSeguhirVidaP1.get('ocupacionCon').errors">
 								<select id="cboOcupacion" class="form-control" formControlName="ocupacionCon">
 									<option value="">Selecciona</option>
-									<option *ngFor="let ocupacion of ocupaciones" [value]="ocupacion.idOcupacion">
+									<option *ngFor="let ocupacion of ocupaciones" [ngValue]="ocupacion">
 										{{ocupacion.descOcupacion}}
 									</option>
 								</select>
@@ -110,7 +110,7 @@
 							[inputDirty]="frmSeguhirVidaP1.get('estadoCivilCon').dirty"
 							[inputErrors]="frmSeguhirVidaP1.get('estadoCivilCon').errors">
 								<div *ngFor="let estadoCivil of estadosCiviles" class="rdoContainer three">
-									<input type="radio" formControlName="estadoCivilCon" [value]="estadoCivil.idEstadoCivil">{{estadoCivil.descEstadoCivil}}
+									<input type="radio" formControlName="estadoCivilCon" [value]="estadoCivil">{{estadoCivil.descEstadoCivil}}
 								</div>
 						</pehir-extend-form-control>
 					</div>
@@ -124,7 +124,7 @@
 							[inputDirty]="frmSeguhirVidaP1.get('generoCon').dirty"
 							[inputErrors]="frmSeguhirVidaP1.get('generoCon').errors">
 								<div *ngFor="let genero of generos" class="rdoContainer two">
-									<input type="radio" formControlName="generoCon" [value]="genero.idGenero">{{genero.keyGenero}}
+									<input type="radio" formControlName="generoCon" [value]="genero">{{genero.keyGenero}}
 								</div>
 						</pehir-extend-form-control>
 					</div>
@@ -327,7 +327,7 @@
 							[inputErrors]="frmSeguhirVidaP1.get('ocupacionTit').errors">
 								<select id="cboOcupacion" class="form-control" formControlName="ocupacionTit">
 									<option value="">Selecciona</option>
-									<option *ngFor="let ocupacion of ocupaciones" [value]="ocupacion.idOcupacion">
+									<option *ngFor="let ocupacion of ocupaciones" [ngValue]="ocupacion">
 										{{ocupacion.descOcupacion}}
 									</option>
 								</select>
@@ -355,7 +355,7 @@
 							[inputDirty]="frmSeguhirVidaP1.get('estadoCivilTit').dirty"
 							[inputErrors]="frmSeguhirVidaP1.get('estadoCivilTit').errors">
 								<div *ngFor="let estadoCivil of estadosCiviles" class="rdoContainer three">
-									<input type="radio" formControlName="estadoCivilTit" [value]="estadoCivil.idEstadoCivil">{{estadoCivil.descEstadoCivil}}
+									<input type="radio" formControlName="estadoCivilTit" [value]="estadoCivil">{{estadoCivil.descEstadoCivil}}
 								</div>
 						</pehir-extend-form-control>
 					</div>
@@ -369,7 +369,7 @@
 							[inputDirty]="frmSeguhirVidaP1.get('generoTit').dirty"
 							[inputErrors]="frmSeguhirVidaP1.get('generoTit').errors">
 								<div *ngFor="let genero of generos" class="rdoContainer two">
-									<input type="radio" formControlName="generoTit" [value]="genero.idGenero">{{genero.keyGenero}}
+									<input type="radio" formControlName="generoTit" [value]="genero">{{genero.keyGenero}}
 								</div>
 						</pehir-extend-form-control>
 					</div>

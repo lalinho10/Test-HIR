@@ -8,7 +8,9 @@ import { SeguhirVidaP3Component }	  from './p3-medico/seguhir-vida-p3.component'
 import { SeguhirVidaP4Component }	  from './p4-asegurados/seguhir-vida-p4.component';
 import { SeguhirVidaP5Component }	  from './p5-beneficiarios/seguhir-vida-p5.component';
 import { SeguhirVidaP6Component }	  from './p6-agentes/seguhir-vida-p6.component';
+import { SeguhirVidaP7Component }	  from './p7-confirmacion/seguhir-vida-p7.component';
 
+import { SeguhirVidaGuardService }	  from './seguhir-vida-guard.service';
 import { AuthenticationGuardService } from 'app/core/services/authentication/authentication-guard.service';
 
 const seguhirVidaRoutes: Routes = [
@@ -19,11 +21,36 @@ const seguhirVidaRoutes: Routes = [
 		children: [
 			{ path: '', redirectTo: '/emision/seguhirvida/usuario', pathMatch: 'full' },
 			{ path: 'usuario', component: SeguhirVidaP1Component },
-			{ path: 'seguro', component: SeguhirVidaP2Component },
-			{ path: 'medico', component: SeguhirVidaP3Component },
-			{ path: 'asegurados', component: SeguhirVidaP4Component },
-			{ path: 'beneficiarios', component: SeguhirVidaP5Component },
-			{ path: 'agentes', component: SeguhirVidaP6Component }
+			{
+				path: 'seguro',
+				component: SeguhirVidaP2Component,
+				canActivate: [ SeguhirVidaGuardService ]
+			},
+			{
+				path: 'medico',
+				component: SeguhirVidaP3Component,
+				canActivate: [ SeguhirVidaGuardService ]
+			},
+			{
+				path: 'asegurados',
+				component: SeguhirVidaP4Component,
+				canActivate: [ SeguhirVidaGuardService ]
+			},
+			{
+				path: 'beneficiarios',
+				component: SeguhirVidaP5Component,
+				canActivate: [ SeguhirVidaGuardService ]
+			},
+			{
+				path: 'agentes',
+				component: SeguhirVidaP6Component,
+				canActivate: [ SeguhirVidaGuardService ]
+			},
+			{
+				path: 'confirmacion',
+				component: SeguhirVidaP7Component,
+				canActivate: [ SeguhirVidaGuardService ]
+			}
 		]
 	}
 ];
@@ -31,7 +58,7 @@ const seguhirVidaRoutes: Routes = [
 @NgModule({
 	imports:   [ RouterModule.forChild( seguhirVidaRoutes ) ],
 	exports:   [ RouterModule ],
-	providers: [ AuthenticationGuardService ]
+	providers: [ AuthenticationGuardService, SeguhirVidaGuardService ]
 })
 
 export class SeguhirVidaRoutingModule {}

@@ -116,7 +116,7 @@
 						[inputDirty]="frmSeguhirVidaP2.get('plan').dirty"
 						[inputErrors]="frmSeguhirVidaP2.get('plan').errors">
 							<div *ngFor="let plan of planes" class="rdoContainer">
-								<input type="radio" formControlName="plan" [value]="plan.idPlan">{{plan.descPlan}}
+								<input type="radio" formControlName="plan" [value]="plan">{{plan.descPlan}}
 							</div>
 					</pehir-extend-form-control>
 				</fieldset>
@@ -125,10 +125,10 @@
 				<fieldset>
 					<legend>Paquete de cobertura</legend>
 					<pehir-extend-form-control
-						[inputDirty]="frmSeguhirVidaP2.get('pcobertura').dirty"
-						[inputErrors]="frmSeguhirVidaP2.get('pcobertura').errors">
+						[inputDirty]="frmSeguhirVidaP2.get('paqueteCobertura').dirty"
+						[inputErrors]="frmSeguhirVidaP2.get('paqueteCobertura').errors">
 							<div *ngFor="let paquete of paquetes" class="rdoContainer two">
-								<input type="radio" formControlName="pcobertura" [value]="paquete.idPaquete">{{paquete.descPaquete}}
+								<input type="radio" formControlName="paqueteCobertura" [value]="paquete">{{paquete.descPaquete}}
 							</div>
 					</pehir-extend-form-control>
 				</fieldset>
@@ -137,10 +137,10 @@
 				<fieldset>
 					<legend>Forma de pago</legend>
 					<pehir-extend-form-control
-						[inputDirty]="frmSeguhirVidaP2.get('fpago').dirty"
-						[inputErrors]="frmSeguhirVidaP2.get('fpago').errors">
+						[inputDirty]="frmSeguhirVidaP2.get('formaPago').dirty"
+						[inputErrors]="frmSeguhirVidaP2.get('formaPago').errors">
 							<div *ngFor="let formaPago of formasPago" class="rdoContainer">
-								<input type="radio" formControlName="fpago" [value]="formaPago.idFormaPago">{{formaPago.descFormaPago}}
+								<input type="radio" formControlName="formaPago" [value]="formaPago">{{formaPago.descFormaPago}}
 							</div>
 					</pehir-extend-form-control>
 				</fieldset>
@@ -160,7 +160,7 @@
 								[inputErrors]="frmSeguhirVidaP2.get('modulo').errors">
 									<select id="cboModulo" class="form-control" formControlName="modulo">
 										<option value="">Selecciona</option>
-										<option *ngFor="let modulo of modulos" [value]="modulo.idModulo">
+										<option *ngFor="let modulo of modulos" [ngValue]="modulo">
 											{{modulo.descModulo}}
 										</option>
 									</select>
@@ -176,10 +176,10 @@
 								[inputDirty]="frmSeguhirVidaP2.get('ugastos').dirty"
 								[inputErrors]="frmSeguhirVidaP2.get('ugastos').errors">
 									<div class="rdoContainer two">
-										<input type="radio" formControlName="ugastos" [value]="0">No
+										<input type="radio" formControlName="ugastos" [value]="false">No
 									</div>
 									<div class="rdoContainer two">
-										<input type="radio" formControlName="ugastos" [value]="1">Sí
+										<input type="radio" formControlName="ugastos" [value]="true">Sí
 									</div>
 							</pehir-extend-form-control>
 						</div>
@@ -193,10 +193,10 @@
 								[inputDirty]="frmSeguhirVidaP2.get('apfondoasegurado').dirty"
 								[inputErrors]="frmSeguhirVidaP2.get('apfondoasegurado').errors">
 									<div class="rdoContainer two">
-										<input type="radio" formControlName="apfondoasegurado" [value]="0">No
+										<input type="radio" formControlName="apfondoasegurado" [value]="false">No
 									</div>
 									<div class="rdoContainer two">
-										<input type="radio" formControlName="apfondoasegurado" [value]="1">Sí
+										<input type="radio" formControlName="apfondoasegurado" [value]="true">Sí
 									</div>
 							</pehir-extend-form-control>
 						</div>

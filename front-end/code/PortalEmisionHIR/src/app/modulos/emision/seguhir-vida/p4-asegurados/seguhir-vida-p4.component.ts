@@ -2,6 +2,8 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { SeguhirVidaP4Service }				  from './seguhir-vida-p4.service';
+
 @Component({
 	selector: 'pehir-seguhir-vida-p4',
 	templateUrl: 'seguhir-vida-p4.component.html'
@@ -17,10 +19,15 @@ export class SeguhirVidaP4Component implements OnInit {
 
 	constructor(
 		private fb: FormBuilder,
-		private router: Router
+		private router: Router,
+		private seguhirVidaP4Service: SeguhirVidaP4Service
 	){}
 
 	ngOnInit() {
+		this.crearFormulario();
+	}
+
+	private crearFormulario(): void {
 		this.frmSeguhirVidaP4 = this.fb.group({
 			'confirmacionConyuge': ['', Validators.compose([
 				Validators.required
@@ -93,6 +100,7 @@ export class SeguhirVidaP4Component implements OnInit {
 	}
 
 	fnAvanzarP5(): void {
+		this.seguhirVidaP4Service.setModelP4( this.frmSeguhirVidaP4.value );
 		this.router.navigateByUrl( '/emision/seguhirvida/beneficiarios' );
 	}
 }

@@ -2,6 +2,8 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { SeguhirVidaP3Service }				  from './seguhir-vida-p3.service';
+
 import { EstaturaValidator }				  from 'app/core/validators/estatura.validator';
 import { PesoValidator }					  from 'app/core/validators/peso.validator';
 
@@ -33,10 +35,15 @@ export class SeguhirVidaP3Component implements OnInit {
 
 	constructor(
 		private fb: FormBuilder,
-		private router: Router
+		private router: Router,
+		private seguhirVidaP3Service: SeguhirVidaP3Service
 	){}
 
 	ngOnInit() {
+		this.crearFormulario();
+	}
+
+	private crearFormulario(): void {
 		this.frmSeguhirVidaP3 = this.fb.group({
 			'estatura': ['', Validators.compose([
 				Validators.required,
@@ -189,6 +196,7 @@ export class SeguhirVidaP3Component implements OnInit {
 	}
 
 	fnAvanzarP4(): void {
+		this.seguhirVidaP3Service.setModelP3( this.frmSeguhirVidaP3.value );
 		this.router.navigateByUrl( '/emision/seguhirvida/asegurados' );
 	}
 }

@@ -1,7 +1,10 @@
-import { Component, OnInit }				  from '@angular/core';
+import { Component, OnInit, ViewChild }		  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { AgentTableComponent }				  from 'app/modulos/shared/agent-table/agent-table.component';
+
+import { SeguhirVidaP6Service }				  from './seguhir-vida-p6.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator } 				  from 'app/core/validators/apellido.validator';
@@ -19,6 +22,8 @@ import { Municipio }						  from 'app/core/models/municipio';
 })
 
 export class SeguhirVidaP6Component implements OnInit {
+	@ViewChild( AgentTableComponent ) tablaAgentes;
+
 	isValidTableAgentes: boolean = false;
 
 	frmSeguhirVidaP6: FormGroup;
@@ -29,6 +34,7 @@ export class SeguhirVidaP6Component implements OnInit {
 	constructor(
 		private fb: FormBuilder,
 		private router: Router,
+		private seguhirVidaP6Service: SeguhirVidaP6Service,
 		private wsClientService: WSClientService
 	){}
 
@@ -127,6 +133,7 @@ export class SeguhirVidaP6Component implements OnInit {
 	}
 
 	fnAvanzarP7(): void {
-
+		this.seguhirVidaP6Service.setModelP6( this.tablaAgentes.agentes, this.frmSeguhirVidaP6.value );
+		this.router.navigateByUrl( '/emision/seguhirvida/confirmacion' );
 	}
 }
