@@ -2,6 +2,8 @@ import { Injectable }	 from '@angular/core';
 
 import { SeguhirVidaP2 } from './seguhir-vida-p2';
 
+import { Plan }			 from 'app/core/models/plan';
+
 @Injectable()
 export class SeguhirVidaP2Service {
 	private seguhirVidaP2: SeguhirVidaP2;
@@ -26,6 +28,10 @@ export class SeguhirVidaP2Service {
 
 	getModelP2(): SeguhirVidaP2 {
 		return this.seguhirVidaP2;
+	}
+
+	getPlan(): Plan {
+		return this.seguhirVidaP2.plan;
 	}
 
 	hasModelP2(): boolean {
