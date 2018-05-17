@@ -7,6 +7,8 @@ import { SeguhirVidaP4Service }	from './p4-asegurados/seguhir-vida-p4.service';
 import { SeguhirVidaP5Service }	from './p5-beneficiarios/seguhir-vida-p5.service';
 import { SeguhirVidaP6Service }	from './p6-agentes/seguhir-vida-p6.service';
 
+import { Plan }					from 'app/core/models/plan';
+
 @Injectable()
 export class SeguhirVidaService {
 	constructor(
@@ -55,6 +57,10 @@ export class SeguhirVidaService {
 				 this.seguhirVidaP4Service.hasModelP4() &&
 				 this.seguhirVidaP5Service.hasModelP5() &&
 				 this.seguhirVidaP6Service.hasModelP6() );	
+	}
+
+	getPlanSeleccionado(): Plan {
+		return this.seguhirVidaP2Service.getPlan();
 	}
 
 	isValidPath( path: string ): boolean {
