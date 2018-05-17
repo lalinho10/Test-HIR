@@ -5,496 +5,511 @@
 	</div>
 </div>
 <form [formGroup]="frmSeguhirVidaP1" (ngSubmit)="fnAvanzarP2()">
-	<fieldset>
-		<legend>Datos del contratante</legend>
-		<div class="row">
-			<div class="col col-50">
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblNombreCon" class="form-label">Nombre:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('nombreCon').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('nombreCon').errors">
-								<input id="txtNombreCon" type="text" class="form-control" formControlName="nombreCon">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblApaternoCon" class="form-label">Apellido paterno:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('apaternoCon').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('apaternoCon').errors">
-								<input id="txtApaternoCon" type="text" class="form-control" formControlName="apaternoCon">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblAmaternoCon" class="form-label">Apellido materno:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('amaternoCon').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('amaternoCon').errors">
-								<input id="txtAmaternoCon" type="text" class="form-control" formControlName="amaternoCon">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblFechaNacCon" class="form-label">Fecha de nacimiento:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('fechanacCon').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('fechanacCon').errors">
-								<my-date-picker name="fechanacCon" [options]="fecNacOptions" formControlName="fechanacCon">
-								</my-date-picker>
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblNacionalidadCon" class="form-label">Nacionalidad:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('nacionalidadCon').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('nacionalidadCon').errors">
-								<input id="txtNacionalidadCon" type="text" class="form-control" formControlName="nacionalidadCon">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-			</div>
-			<div class="col col-50">
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblOcupacionCon" class="form-label">Ocupación:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('ocupacionCon').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('ocupacionCon').errors">
-								<select id="cboOcupacion" class="form-control" formControlName="ocupacionCon">
-									<option value="">Selecciona</option>
-									<option *ngFor="let ocupacion of ocupaciones" [ngValue]="ocupacion">
-										{{ocupacion.descOcupacion}}
-									</option>
-								</select>
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblRFCCon" class="form-label">RFC:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('rfcCon').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('rfcCon').errors">
-								<input id="txtRFCCon" type="text" class="form-control" formControlName="rfcCon">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblEstadoCivilCon" class="form-label">Estado civil:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('estadoCivilCon').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('estadoCivilCon').errors">
-								<div *ngFor="let estadoCivil of estadosCiviles" class="rdoContainer three">
-									<input type="radio" formControlName="estadoCivilCon" [value]="estadoCivil">{{estadoCivil.descEstadoCivil}}
-								</div>
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblSexoCon" class="form-label">Sexo:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('generoCon').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('generoCon').errors">
-								<div *ngFor="let genero of generos" class="rdoContainer two">
-									<input type="radio" formControlName="generoCon" [value]="genero">{{genero.keyGenero}}
-								</div>
-						</pehir-extend-form-control>
-					</div>
-				</div>
-			</div>
-		</div>
-	</fieldset>
-	<fieldset>
-		<legend>Domicilio del contratante</legend>
-		<div class="row">
-			<div class="col col-50">
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblCalleNumeroCon" class="form-label">Calle y número:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('calleNumeroCon').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('calleNumeroCon').errors">
-								<input id="txtCalleNumeroCon" type="text" class="form-control" formControlName="calleNumeroCon">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblColoniaPoblacionCon" class="form-label">Colonia o población:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('coloniaPoblacionCon').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('coloniaPoblacionCon').errors">
-								<input id="txtColoniaPoblacionCon" type="text" class="form-control" formControlName="coloniaPoblacionCon">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblDelegacionMunicipioCon" class="form-label">Delegación o municipio:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('delegacionMunicipioCon').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('delegacionMunicipioCon').errors">
-								<select id="cboMunicipioCon" class="form-control" formControlName="delegacionMunicipioCon">
-									<option value="">Selecciona</option>
-									<option *ngFor="let municipio of municipiosCon" [ngValue]="municipio">
-										{{municipio.descMunicipio}}
-									</option>
-								</select>
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblEstadoCon" class="form-label">Estado:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('estadoCon').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('estadoCon').errors">
-								<select id="cboEstadoCon" class="form-control" formControlName="estadoCon">
-									<option value="">Selecciona</option>
-									<option *ngFor="let estado of estados" [ngValue]="estado">
-										{{estado.descEstado}}
-									</option>
-								</select>
-						</pehir-extend-form-control>
-					</div>
-				</div>
-			</div>
-			<div class="col col-50">
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblCPCon" class="form-label">Código postal:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('cpCon').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('cpCon').errors">
-								<input id="txtCPCon" type="text" class="form-control" formControlName="cpCon">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div formGroupName="telefonosCon">
+	<div formGroupName="contratante">
+		<fieldset>
+			<legend>Datos del contratante</legend>
+			<div class="row">
+				<div class="col col-50">
 					<div class="row">
 						<div class="col col-40">
-							<label id="lblTelefonoCon" class="form-label">Teléfono de casa/oficina:</label>
+							<label id="lblNombreCon" class="form-label">Nombre:</label>
 						</div>
 						<div class="col col-50">
 							<pehir-extend-form-control
-								[inputDirty]="frmSeguhirVidaP1.get('telefonosCon.telefonoCon').dirty"
-								[inputErrors]="frmSeguhirVidaP1.get('telefonosCon.telefonoCon').errors">
-									<input id="txtTelefonoCon" type="text" class="form-control" formControlName="telefonoCon">
+								[inputDirty]="frmSeguhirVidaP1.get('contratante.nombre').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('contratante.nombre').errors">
+									<input id="txtNombreCon" type="text" class="form-control" formControlName="nombre">
 							</pehir-extend-form-control>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col col-40">
-							<label id="lblCelularCon" class="form-label">Teléfono móvil:</label>
+							<label id="lblApaternoCon" class="form-label">Apellido paterno:</label>
 						</div>
 						<div class="col col-50">
 							<pehir-extend-form-control
-								[inputDirty]="frmSeguhirVidaP1.get('telefonosCon.celularCon').dirty"
-								[inputErrors]="frmSeguhirVidaP1.get('telefonosCon.celularCon').errors"
-								[formErrors]="frmSeguhirVidaP1.get('telefonosCon').errors">
-									<input id="txtCelularCon" type="text" class="form-control" formControlName="celularCon">
-							</pehir-extend-form-control>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblCorreoeCon" class="form-label">e-mail:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('correoeCon').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('correoeCon').errors">
-								<input id="txtCorreoeCon" type="text" class="form-control" formControlName="correoeCon">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-			</div>
-		</div>
-	</fieldset>
-	<fieldset>
-		<legend>Datos del asegurado titular</legend>
-		<div class="row">
-			<div class="col col-50">
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblNombreTit" class="form-label">Nombre:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('nombreTit').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('nombreTit').errors">
-								<input id="txtNombreTit" type="text" class="form-control" formControlName="nombreTit">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblApaternoTit" class="form-label">Apellido paterno:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('apaternoTit').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('apaternoTit').errors">
-								<input id="txtApaternoTit" type="text" class="form-control" formControlName="apaternoTit">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblAmaternoTit" class="form-label">Apellido materno:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('amaternoTit').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('amaternoTit').errors">
-								<input id="txtAmaternoTit" type="text" class="form-control" formControlName="amaternoTit">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblFechaNacTit" class="form-label">Fecha de nacimiento:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('fechanacTit').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('fechanacTit').errors">
-								<my-date-picker name="fechanacTit" [options]="fecNacOptions" formControlName="fechanacTit">
-								</my-date-picker>
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblNacionalidadTit" class="form-label">Nacionalidad:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('nacionalidadTit').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('nacionalidadTit').errors">
-								<input id="txtNacionalidadTit" type="text" class="form-control" formControlName="nacionalidadTit">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-			</div>
-			<div class="col col-50">
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblOcupacionTit" class="form-label">Ocupación:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('ocupacionTit').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('ocupacionTit').errors">
-								<select id="cboOcupacion" class="form-control" formControlName="ocupacionTit">
-									<option value="">Selecciona</option>
-									<option *ngFor="let ocupacion of ocupaciones" [ngValue]="ocupacion">
-										{{ocupacion.descOcupacion}}
-									</option>
-								</select>
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblRFCTit" class="form-label">RFC:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('rfcTit').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('rfcTit').errors">
-								<input id="txtRFCTit" type="text" class="form-control" formControlName="rfcTit">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblEstadoCivilTit" class="form-label">Estado civil:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('estadoCivilTit').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('estadoCivilTit').errors">
-								<div *ngFor="let estadoCivil of estadosCiviles" class="rdoContainer three">
-									<input type="radio" formControlName="estadoCivilTit" [value]="estadoCivil">{{estadoCivil.descEstadoCivil}}
-								</div>
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblSexoTit" class="form-label">Sexo:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('generoTit').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('generoTit').errors">
-								<div *ngFor="let genero of generos" class="rdoContainer two">
-									<input type="radio" formControlName="generoTit" [value]="genero">{{genero.keyGenero}}
-								</div>
-						</pehir-extend-form-control>
-					</div>
-				</div>
-			</div>
-		</div>
-	</fieldset>
-	<fieldset>
-		<legend>Domicilio del asegurado titular</legend>
-		<div class="row">
-			<div class="col col-50">
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblCalleNumeroTit" class="form-label">Calle y número:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('calleNumeroTit').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('calleNumeroTit').errors">
-								<input id="txtCalleNumeroTit" type="text" class="form-control" formControlName="calleNumeroTit">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblColoniaPoblacionTit" class="form-label">Colonia o población:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('coloniaPoblacionTit').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('coloniaPoblacionTit').errors">
-								<input id="txtColoniaPoblacionTit" type="text" class="form-control" formControlName="coloniaPoblacionTit">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblDelegacionMunicipioTit" class="form-label">Delegación o municipio:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('delegacionMunicipioTit').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('delegacionMunicipioTit').errors">
-								<select id="cboMunicipioTit" class="form-control" formControlName="delegacionMunicipioTit">
-									<option value="">Selecciona</option>
-									<option *ngFor="let municipio of municipiosTit" [ngValue]="municipio">
-										{{municipio.descMunicipio}}
-									</option>
-								</select>
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblEstadoTit" class="form-label">Estado:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('estadoTit').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('estadoTit').errors">
-								<select id="cboEstadoTit" class="form-control" formControlName="estadoTit">
-									<option value="">Selecciona</option>
-									<option *ngFor="let estado of estados" [ngValue]="estado">
-										{{estado.descEstado}}
-									</option>
-								</select>
-						</pehir-extend-form-control>
-					</div>
-				</div>
-			</div>
-			<div class="col col-50">
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblCPTit" class="form-label">Código postal:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('cpTit').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('cpTit').errors">
-								<input id="txtCPTit" type="text" class="form-control" formControlName="cpTit">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div formGroupName="telefonosTit">
-					<div class="row">
-						<div class="col col-40">
-							<label id="lblTelefonoTit" class="form-label">Teléfono de casa/oficina:</label>
-						</div>
-						<div class="col col-50">
-							<pehir-extend-form-control
-								[inputDirty]="frmSeguhirVidaP1.get('telefonosTit.telefonoTit').dirty"
-								[inputErrors]="frmSeguhirVidaP1.get('telefonosTit.telefonoTit').errors">
-									<input id="txtTelefonoTit" type="text" class="form-control" formControlName="telefonoTit">
+								[inputDirty]="frmSeguhirVidaP1.get('contratante.apaterno').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('contratante.apaterno').errors">
+									<input id="txtApaternoCon" type="text" class="form-control" formControlName="apaterno">
 							</pehir-extend-form-control>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col col-40">
-							<label id="lblCelularTit" class="form-label">Teléfono móvil:</label>
+							<label id="lblAmaternoCon" class="form-label">Apellido materno:</label>
 						</div>
 						<div class="col col-50">
 							<pehir-extend-form-control
-								[inputDirty]="frmSeguhirVidaP1.get('telefonosTit.celularTit').dirty"
-								[inputErrors]="frmSeguhirVidaP1.get('telefonosTit.celularTit').errors"
-								[formErrors]="frmSeguhirVidaP1.get('telefonosTit').errors">
-									<input id="txtCelularTit" type="text" class="form-control" formControlName="celularTit">
+								[inputDirty]="frmSeguhirVidaP1.get('contratante.amaterno').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('contratante.amaterno').errors">
+									<input id="txtAmaternoCon" type="text" class="form-control" formControlName="amaterno">
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblFechaNacCon" class="form-label">Fecha de nacimiento:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('contratante.fechanac').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('contratante.fechanac').errors">
+									<my-date-picker name="fechanac" [options]="fecNacOptions" formControlName="fechanac">
+									</my-date-picker>
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblNacionalidadCon" class="form-label">Nacionalidad:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('contratante.nacionalidad').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('contratante.nacionalidad').errors">
+									<input id="txtNacionalidadCon" type="text" class="form-control" formControlName="nacionalidad">
 							</pehir-extend-form-control>
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblCorreoeTit" class="form-label">e-mail:</label>
+				<div class="col col-50">
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblOcupacionCon" class="form-label">Ocupación:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('contratante.ocupacion').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('contratante.ocupacion').errors">
+									<select id="cboOcupacion" class="form-control" formControlName="ocupacion">
+										<option value="">Selecciona</option>
+										<option *ngFor="let ocupacion of ocupaciones" [ngValue]="ocupacion">
+											{{ocupacion.descOcupacion}}
+										</option>
+									</select>
+							</pehir-extend-form-control>
+						</div>
 					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP1.get('correoeTit').dirty"
-							[inputErrors]="frmSeguhirVidaP1.get('correoeTit').errors">
-								<input id="txtCorreoeTit" type="text" class="form-control" formControlName="correoeTit">
-						</pehir-extend-form-control>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblRFCCon" class="form-label">RFC:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('contratante.rfc').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('contratante.rfc').errors">
+									<input id="txtRFCCon" type="text" class="form-control" formControlName="rfc">
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblEstadoCivilCon" class="form-label">Estado civil:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('contratante.estadoCivil').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('contratante.estadoCivil').errors">
+									<div *ngFor="let estadoCivil of estadosCiviles" class="rdoContainer three">
+										<input type="radio" formControlName="estadoCivil" [value]="estadoCivil">{{estadoCivil.descEstadoCivil}}
+									</div>
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblSexoCon" class="form-label">Sexo:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('contratante.genero').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('contratante.genero').errors">
+									<div *ngFor="let genero of generos" class="rdoContainer two">
+										<input type="radio" formControlName="genero" [value]="genero">{{genero.keyGenero}}
+									</div>
+							</pehir-extend-form-control>
+						</div>
 					</div>
 				</div>
 			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Domicilio del contratante</legend>
+			<div class="row">
+				<div class="col col-50">
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblCalleNumeroCon" class="form-label">Calle y número:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('contratante.calleNumero').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('contratante.calleNumero').errors">
+									<input id="txtCalleNumeroCon" type="text" class="form-control" formControlName="calleNumero">
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblColoniaPoblacionCon" class="form-label">Colonia o población:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('contratante.coloniaPoblacion').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('contratante.coloniaPoblacion').errors">
+									<input id="txtColoniaPoblacionCon" type="text" class="form-control" formControlName="coloniaPoblacion">
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblDelegacionMunicipioCon" class="form-label">Delegación o municipio:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('contratante.delegacionMunicipio').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('contratante.delegacionMunicipio').errors">
+									<select id="cboMunicipioCon" class="form-control" formControlName="delegacionMunicipio">
+										<option value="">Selecciona</option>
+										<option *ngFor="let municipio of municipiosCon" [ngValue]="municipio">
+											{{municipio.descMunicipio}}
+										</option>
+									</select>
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblEstadoCon" class="form-label">Estado:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('contratante.estado').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('contratante.estado').errors">
+									<select id="cboEstadoCon" class="form-control" formControlName="estado">
+										<option value="">Selecciona</option>
+										<option *ngFor="let estado of estados" [ngValue]="estado">
+											{{estado.descEstado}}
+										</option>
+									</select>
+							</pehir-extend-form-control>
+						</div>
+					</div>
+				</div>
+				<div class="col col-50">
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblCPCon" class="form-label">Código postal:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('contratante.cp').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('contratante.cp').errors">
+									<input id="txtCPCon" type="text" class="form-control" formControlName="cp">
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div formGroupName="telefonos">
+						<div class="row">
+							<div class="col col-40">
+								<label id="lblTelefonoCon" class="form-label">Teléfono de casa/oficina:</label>
+							</div>
+							<div class="col col-50">
+								<pehir-extend-form-control
+									[inputDirty]="frmSeguhirVidaP1.get('contratante.telefonos.telefono').dirty"
+									[inputErrors]="frmSeguhirVidaP1.get('contratante.telefonos.telefono').errors">
+										<input id="txtTelefonoCon" type="text" class="form-control" formControlName="telefono">
+								</pehir-extend-form-control>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col col-40">
+								<label id="lblCelularCon" class="form-label">Teléfono móvil:</label>
+							</div>
+							<div class="col col-50">
+								<pehir-extend-form-control
+									[inputDirty]="frmSeguhirVidaP1.get('contratante.telefonos.celular').dirty"
+									[inputErrors]="frmSeguhirVidaP1.get('contratante.telefonos.celular').errors"
+									[formErrors]="frmSeguhirVidaP1.get('contratante.telefonos').errors">
+										<input id="txtCelularCon" type="text" class="form-control" formControlName="celular">
+								</pehir-extend-form-control>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblCorreoeCon" class="form-label">e-mail:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('contratante.correoe').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('contratante.correoe').errors">
+									<input id="txtCorreoeCon" type="text" class="form-control" formControlName="correoe">
+							</pehir-extend-form-control>
+						</div>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+	<div class="row">
+		<div class="col col-100">
+			<div class="text-center">
+				<pehir-extend-form-control
+					[inputDirty]="frmSeguhirVidaP1.get('contratanteTitular').dirty"
+					[inputErrors]="frmSeguhirVidaP1.get('contratanteTitular').errors">
+						<input id="cbxContranteTitular" type="checkbox" (change)="fnToggleTitular($event)" formControlName="contratanteTitular"> El Contratante es el Asegurado titular
+				</pehir-extend-form-control>
+			</div>
 		</div>
-	</fieldset>
+	</div>
+	<div formGroupName="titular">
+		<fieldset>
+			<legend>Datos del asegurado titular</legend>
+			<div class="row">
+				<div class="col col-50">
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblNombreTit" class="form-label">Nombre:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('titular.nombre').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('titular.nombre').errors">
+									<input id="txtNombreTit" type="text" class="form-control" formControlName="nombre">
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblApaternoTit" class="form-label">Apellido paterno:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('titular.apaterno').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('titular.apaterno').errors">
+									<input id="txtApaternoTit" type="text" class="form-control" formControlName="apaterno">
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblAmaternoTit" class="form-label">Apellido materno:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('titular.amaterno').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('titular.amaterno').errors">
+									<input id="txtAmaternoTit" type="text" class="form-control" formControlName="amaterno">
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblFechaNacTit" class="form-label">Fecha de nacimiento:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('titular.fechanac').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('titular.fechanac').errors">
+									<my-date-picker name="fechanac" [options]="fecNacOptions" formControlName="fechanac">
+									</my-date-picker>
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblNacionalidadTit" class="form-label">Nacionalidad:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('titular.nacionalidad').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('titular.nacionalidad').errors">
+									<input id="txtNacionalidadTit" type="text" class="form-control" formControlName="nacionalidad">
+							</pehir-extend-form-control>
+						</div>
+					</div>
+				</div>
+				<div class="col col-50">
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblOcupacionTit" class="form-label">Ocupación:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('titular.ocupacion').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('titular.ocupacion').errors">
+									<select id="cboOcupacion" class="form-control" formControlName="ocupacion">
+										<option value="">Selecciona</option>
+										<option *ngFor="let ocupacion of ocupaciones" [ngValue]="ocupacion">
+											{{ocupacion.descOcupacion}}
+										</option>
+									</select>
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblRFCTit" class="form-label">RFC:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('titular.rfc').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('titular.rfc').errors">
+									<input id="txtRFCTit" type="text" class="form-control" formControlName="rfc">
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblEstadoCivilTit" class="form-label">Estado civil:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('titular.estadoCivil').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('titular.estadoCivil').errors">
+									<div *ngFor="let estadoCivil of estadosCiviles" class="rdoContainer three">
+										<input type="radio" formControlName="estadoCivil" [value]="estadoCivil">{{estadoCivil.descEstadoCivil}}
+									</div>
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblSexoTit" class="form-label">Sexo:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('titular.genero').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('titular.genero').errors">
+									<div *ngFor="let genero of generos" class="rdoContainer two">
+										<input type="radio" formControlName="genero" [value]="genero">{{genero.keyGenero}}
+									</div>
+							</pehir-extend-form-control>
+						</div>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Domicilio del asegurado titular</legend>
+			<div class="row">
+				<div class="col col-50">
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblCalleNumeroTit" class="form-label">Calle y número:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('titular.calleNumero').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('titular.calleNumero').errors">
+									<input id="txtCalleNumeroTit" type="text" class="form-control" formControlName="calleNumero">
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblColoniaPoblacionTit" class="form-label">Colonia o población:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('titular.coloniaPoblacion').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('titular.coloniaPoblacion').errors">
+									<input id="txtColoniaPoblacionTit" type="text" class="form-control" formControlName="coloniaPoblacion">
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblDelegacionMunicipioTit" class="form-label">Delegación o municipio:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('titular.delegacionMunicipio').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('titular.delegacionMunicipio').errors">
+									<select id="cboMunicipioTit" class="form-control" formControlName="delegacionMunicipio">
+										<option value="">Selecciona</option>
+										<option *ngFor="let municipio of municipiosTit" [ngValue]="municipio">
+											{{municipio.descMunicipio}}
+										</option>
+									</select>
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblEstadoTit" class="form-label">Estado:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('titular.estado').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('titular.estado').errors">
+									<select id="cboEstadoTit" class="form-control" formControlName="estado">
+										<option value="">Selecciona</option>
+										<option *ngFor="let estado of estados" [ngValue]="estado">
+											{{estado.descEstado}}
+										</option>
+									</select>
+							</pehir-extend-form-control>
+						</div>
+					</div>
+				</div>
+				<div class="col col-50">
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblCPTit" class="form-label">Código postal:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('titular.cp').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('titular.cp').errors">
+									<input id="txtCPTit" type="text" class="form-control" formControlName="cp">
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div formGroupName="telefonos">
+						<div class="row">
+							<div class="col col-40">
+								<label id="lblTelefonoTit" class="form-label">Teléfono de casa/oficina:</label>
+							</div>
+							<div class="col col-50">
+								<pehir-extend-form-control
+									[inputDirty]="frmSeguhirVidaP1.get('titular.telefonos.telefono').dirty"
+									[inputErrors]="frmSeguhirVidaP1.get('titular.telefonos.telefono').errors">
+										<input id="txtTelefonoTit" type="text" class="form-control" formControlName="telefono">
+								</pehir-extend-form-control>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col col-40">
+								<label id="lblCelularTit" class="form-label">Teléfono móvil:</label>
+							</div>
+							<div class="col col-50">
+								<pehir-extend-form-control
+									[inputDirty]="frmSeguhirVidaP1.get('titular.telefonos.celular').dirty"
+									[inputErrors]="frmSeguhirVidaP1.get('titular.telefonos.celular').errors"
+									[formErrors]="frmSeguhirVidaP1.get('titular.telefonos').errors">
+										<input id="txtCelularTit" type="text" class="form-control" formControlName="celular">
+								</pehir-extend-form-control>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblCorreoeTit" class="form-label">e-mail:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP1.get('titular.correoe').dirty"
+								[inputErrors]="frmSeguhirVidaP1.get('titular.correoe').errors">
+									<input id="txtCorreoeTit" type="text" class="form-control" formControlName="correoe">
+							</pehir-extend-form-control>
+						</div>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+	</div>
 	<div class="row">
 		<div class="col col-100">
 			<button id="btnSiguiente" type="submit" class="next" [disabled]="!frmSeguhirVidaP1.valid">Siguiente</button>

@@ -61,169 +61,191 @@ export class SeguhirVidaP1Component implements OnInit {
 
 	private crearFormulario(): void {
 		this.frmSeguhirVidaP1 = this.fb.group({
-			'nombreCon': ['', Validators.compose([
-				Validators.required,
-				Validators.maxLength(50),
-				NombreValidator()
-			])],
-			'apaternoCon': ['', Validators.compose([
-				Validators.required,
-				Validators.maxLength(50),
-				ApellidoValidator()
-			])],
-			'amaternoCon': ['', Validators.compose([
-				Validators.required,
-				Validators.maxLength(50),
-				ApellidoValidator()
-			])],
-			'fechanacCon': ['', Validators.compose([
-				Validators.required,
-				EntreEdadesValidator(18,70)
-			])],
-			'nacionalidadCon': ['', Validators.compose([
-				Validators.required
-			])],
-			'ocupacionCon': ['', Validators.compose([
-				Validators.required
-			])],
-			'rfcCon': ['', Validators.compose([
-				Validators.required,
-				RfcValidator()
-			])],
-			'estadoCivilCon':['', Validators.compose([
-				Validators.required
-			])],
-			'generoCon': ['', Validators.compose([
-				Validators.required
-			])],
-
-			'calleNumeroCon': ['', Validators.compose([
-				Validators.required
-			])],
-			'coloniaPoblacionCon': ['', Validators.compose([
-				Validators.required
-			])],
-			'delegacionMunicipioCon': ['', Validators.compose([
-				Validators.required
-			])],
-			'estadoCon': ['', Validators.compose([
-				Validators.required
-			])],
-			'cpCon': ['', Validators.compose([
-				Validators.required,
-				CodigoPostalValidator()
-			])],
-			'telefonosCon': this.fb.group({
-				'telefonoCon': ['', Validators.compose([
-				Validators.required,
-				TelefonoValidator()
-				])],
-				'celularCon': ['', Validators.compose([
+			'contratante': this.fb.group({
+				'nombre': ['', Validators.compose([
 					Validators.required,
-					CelularValidator()
-				])]
-			},
-			{
-				validator: DiferenciaTelefonosValidator( 'telefonoCon', 'celularCon' )
-			}),
-			'correoeCon': ['', Validators.compose([
-				Validators.required,
-				Validators.email,
-				Validators.maxLength(50)
-			])],
-
-			'nombreTit': ['', Validators.compose([
-				Validators.required,
-				Validators.maxLength(50),
-				NombreValidator()
-			])],
-			'apaternoTit': ['', Validators.compose([
-				Validators.required,
-				Validators.maxLength(50),
-				ApellidoValidator()
-			])],
-			'amaternoTit': ['', Validators.compose([
-				Validators.required,
-				Validators.maxLength(50),
-				ApellidoValidator()
-			])],
-			'fechanacTit': ['', Validators.compose([
-				Validators.required
-			])],
-			'nacionalidadTit': ['', Validators.compose([
-				Validators.required
-			])],
-			'ocupacionTit': ['', Validators.compose([
-				Validators.required
-			])],
-			'rfcTit': ['', Validators.compose([
-				Validators.required,
-				RfcValidator()
-			])],
-			'estadoCivilTit':['', Validators.compose([
-				Validators.required
-			])],
-			'generoTit': ['', Validators.compose([
-				Validators.required
-			])],
-
-			'calleNumeroTit': ['', Validators.compose([
-				Validators.required
-			])],
-			'coloniaPoblacionTit': ['', Validators.compose([
-				Validators.required
-			])],
-			'delegacionMunicipioTit': ['', Validators.compose([
-				Validators.required
-			])],
-			'estadoTit': ['', Validators.compose([
-				Validators.required
-			])],
-			'cpTit': ['', Validators.compose([
-				Validators.required,
-				CodigoPostalValidator()
-			])],
-			'telefonosTit': this.fb.group({
-				'telefonoTit': ['', Validators.compose([
-				Validators.required,
-				TelefonoValidator()
+					Validators.maxLength(50),
+					NombreValidator()
 				])],
-				'celularTit': ['', Validators.compose([
+				'apaterno': ['', Validators.compose([
 					Validators.required,
-					CelularValidator()
+					Validators.maxLength(50),
+					ApellidoValidator()
+				])],
+				'amaterno': ['', Validators.compose([
+					Validators.required,
+					Validators.maxLength(50),
+					ApellidoValidator()
+				])],
+				'fechanac': ['', Validators.compose([
+					Validators.required,
+					EntreEdadesValidator(18,70)
+				])],
+				'nacionalidad': ['', Validators.compose([
+					Validators.required
+				])],
+				'ocupacion': ['', Validators.compose([
+					Validators.required
+				])],
+				'rfc': ['', Validators.compose([
+					Validators.required,
+					RfcValidator()
+				])],
+				'estadoCivil':['', Validators.compose([
+					Validators.required
+				])],
+				'genero': ['', Validators.compose([
+					Validators.required
+				])],
+
+				'calleNumero': ['', Validators.compose([
+					Validators.required
+				])],
+				'coloniaPoblacion': ['', Validators.compose([
+					Validators.required
+				])],
+				'delegacionMunicipio': ['', Validators.compose([
+					Validators.required
+				])],
+				'estado': ['', Validators.compose([
+					Validators.required
+				])],
+				'cp': ['', Validators.compose([
+					Validators.required,
+					CodigoPostalValidator()
+				])],
+				'telefonos': this.fb.group({
+					'telefono': ['', Validators.compose([
+					Validators.required,
+					TelefonoValidator()
+					])],
+					'celular': ['', Validators.compose([
+						Validators.required,
+						CelularValidator()
+					])]
+				},
+				{
+					validator: DiferenciaTelefonosValidator( 'telefono', 'celular' )
+				}),
+				'correoe': ['', Validators.compose([
+					Validators.required,
+					Validators.email,
+					Validators.maxLength(50)
 				])]
-			},
-			{
-				validator: DiferenciaTelefonosValidator( 'telefonoTit', 'celularTit' )
 			}),
-			'correoeTit': ['', Validators.compose([
-				Validators.required,
-				Validators.email,
-				Validators.maxLength(50)
-			])],
+			'contratanteTitular': [''],
+			'titular': this.fb.group({
+				'nombre': ['', Validators.compose([
+					Validators.required,
+					Validators.maxLength(50),
+					NombreValidator()
+				])],
+				'apaterno': ['', Validators.compose([
+					Validators.required,
+					Validators.maxLength(50),
+					ApellidoValidator()
+				])],
+				'amaterno': ['', Validators.compose([
+					Validators.required,
+					Validators.maxLength(50),
+					ApellidoValidator()
+				])],
+				'fechanac': ['', Validators.compose([
+					Validators.required
+				])],
+				'nacionalidad': ['', Validators.compose([
+					Validators.required
+				])],
+				'ocupacion': ['', Validators.compose([
+					Validators.required
+				])],
+				'rfc': ['', Validators.compose([
+					Validators.required,
+					RfcValidator()
+				])],
+				'estadoCivil':['', Validators.compose([
+					Validators.required
+				])],
+				'genero': ['', Validators.compose([
+					Validators.required
+				])],
+
+				'calleNumero': ['', Validators.compose([
+					Validators.required
+				])],
+				'coloniaPoblacion': ['', Validators.compose([
+					Validators.required
+				])],
+				'delegacionMunicipio': ['', Validators.compose([
+					Validators.required
+				])],
+				'estado': ['', Validators.compose([
+					Validators.required
+				])],
+				'cp': ['', Validators.compose([
+					Validators.required,
+					CodigoPostalValidator()
+				])],
+				'telefonos': this.fb.group({
+					'telefono': ['', Validators.compose([
+					Validators.required,
+					TelefonoValidator()
+					])],
+					'celular': ['', Validators.compose([
+						Validators.required,
+						CelularValidator()
+					])]
+				},
+				{
+					validator: DiferenciaTelefonosValidator( 'telefono', 'celular' )
+				}),
+				'correoe': ['', Validators.compose([
+					Validators.required,
+					Validators.email,
+					Validators.maxLength(50)
+				])]
+			})
 		});
 	}
 
 	private registrarEventos(): void {
-		this.frmSeguhirVidaP1.get( 'estadoCon' ).valueChanges.subscribe( estado => {
-			if( estado.idEstado !== null && typeof estado.idEstado !== 'undefined' ) {
-				this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
-									.subscribe( response => this.municipiosCon = response.data );
+		this.frmSeguhirVidaP1.get( 'contratante.estado' ).valueChanges.subscribe( estado => {
+			if( estado !== null && typeof estado !== 'undefined' ) {
+				if( estado.idEstado !== null && typeof estado.idEstado !== 'undefined' ) {
+					this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
+										.subscribe( response => this.municipiosCon = response.data );
+				} else {
+					this.municipiosCon = [];
+				}
 			} else {
-				this.municipiosCon = [];
+				this.frmSeguhirVidaP1.get( 'contratante.estado' ).setValue( '' );
 			}
-			this.frmSeguhirVidaP1.get( 'delegacionMunicipioCon' ).setValue( '' );
+			this.frmSeguhirVidaP1.get( 'contratante.delegacionMunicipio' ).setValue( '' );
 		});
 
-		this.frmSeguhirVidaP1.get( 'estadoTit' ).valueChanges.subscribe( estado => {
-			if( estado.idEstado !== null && typeof estado.idEstado !== 'undefined' ) {
-				this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
-									.subscribe( response => this.municipiosTit = response.data );
+		this.frmSeguhirVidaP1.get( 'titular.estado' ).valueChanges.subscribe( estado => {
+			if( estado !== null && typeof estado !== 'undefined' ) {
+				if( estado.idEstado !== null && typeof estado.idEstado !== 'undefined' ) {
+					this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
+										.subscribe( response => this.municipiosTit = response.data );
+				} else {
+					this.municipiosTit = [];
+				}
 			} else {
-				this.municipiosTit = [];
+				this.frmSeguhirVidaP1.get( 'titular.estado' ).setValue( '' );
 			}
-			this.frmSeguhirVidaP1.get( 'delegacionMunicipioTit' ).setValue( '' );
+			this.frmSeguhirVidaP1.get( 'titular.delegacionMunicipio' ).setValue( '' );
 		});
+	}
+
+	fnToggleTitular( event ): void {
+		this.frmSeguhirVidaP1.get( 'titular' ).reset();
+
+		if( event.target.checked ) {
+			this.frmSeguhirVidaP1.get( 'titular' ).disable();
+		} else {
+			this.frmSeguhirVidaP1.get( 'titular' ).enable();
+		}
 	}
 
 	fnAvanzarP2(): void {
