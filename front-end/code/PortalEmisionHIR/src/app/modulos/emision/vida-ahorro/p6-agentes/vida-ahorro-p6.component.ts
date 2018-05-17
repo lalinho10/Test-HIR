@@ -112,13 +112,15 @@ export class VidaAhorroP6Component implements OnInit {
 
 	private registrarEventos(): void {
 		this.frmVidaAhorroP6.get( 'estado' ).valueChanges.subscribe( estado => {
-			if( estado.idEstado !== null && typeof estado.idEstado !== 'undefined' ) {
-				this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
-									.subscribe( response => this.municipios = response.data );
-			} else {
-				this.municipios = [];
+			if( estado !== null && typeof estado !== 'undefined' ) {
+				if( estado.idEstado !== null && typeof estado.idEstado !== 'undefined' ) {
+					this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
+										.subscribe( response => this.municipios = response.data );
+				} else {
+					this.municipios = [];
+				}
+				this.frmVidaAhorroP6.get( 'delegacionMunicipio' ).setValue( '' );
 			}
-			this.frmVidaAhorroP6.get( 'delegacionMunicipio' ).setValue( '' );
 		});
 	}
 

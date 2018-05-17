@@ -143,13 +143,15 @@ export class ApindividualP1Component implements OnInit {
 
 	private registrarEventos(): void {
 		this.frmApindividualP1.get( 'estado' ).valueChanges.subscribe( estado => {
-			if( estado.idEstado !== null && typeof estado.idEstado !== 'undefined' ) {
-				this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
-									.subscribe( response => this.municipios = response.data );
-			} else {
-				this.municipios = [];
+			if( estado !== null && typeof estado !== 'undefined' ) {
+				if( estado.idEstado !== null && typeof estado.idEstado !== 'undefined' ) {
+					this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
+										.subscribe( response => this.municipios = response.data );
+				} else {
+					this.municipios = [];
+				}
+				this.frmApindividualP1.get( 'delegacionMunicipio' ).setValue( '' );
 			}
-			this.frmApindividualP1.get( 'delegacionMunicipio' ).setValue( '' );
 		});
 	}
 

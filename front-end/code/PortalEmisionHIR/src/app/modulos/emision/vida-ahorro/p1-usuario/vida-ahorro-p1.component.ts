@@ -204,23 +204,27 @@ export class VidaAhorroP1Component implements OnInit {
 
 	private registrarEventos(): void {
 		this.frmVidaAhorroP1.get( 'estadoCon' ).valueChanges.subscribe( estado => {
-			if( estado.idEstado !== null && typeof estado.idEstado !== 'undefined' ) {
-				this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
-									.subscribe( response => this.municipiosCon = response.data );
-			} else {
-				this.municipiosCon = [];
+			if( estado !== null && typeof estado !== 'undefined' ) {
+				if( estado.idEstado !== null && typeof estado.idEstado !== 'undefined' ) {
+					this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
+										.subscribe( response => this.municipiosCon = response.data );
+				} else {
+					this.municipiosCon = [];
+				}
+				this.frmVidaAhorroP1.get( 'delegacionMunicipioCon' ).setValue( '' );
 			}
-			this.frmVidaAhorroP1.get( 'delegacionMunicipioCon' ).setValue( '' );
 		});
 
 		this.frmVidaAhorroP1.get( 'estadoTit' ).valueChanges.subscribe( estado => {
-			if( estado.idEstado !== null && typeof estado.idEstado !== 'undefined' ) {
-				this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
-									.subscribe( response => this.municipiosTit = response.data );
-			} else {
-				this.municipiosTit = [];
+			if( estado !== null && typeof estado !== 'undefined' ) {
+				if( estado.idEstado !== null && typeof estado.idEstado !== 'undefined' ) {
+					this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
+										.subscribe( response => this.municipiosTit = response.data );
+				} else {
+					this.municipiosTit = [];
+				}
+				this.frmVidaAhorroP1.get( 'delegacionMunicipioTit' ).setValue( '' );
 			}
-			this.frmVidaAhorroP1.get( 'delegacionMunicipioTit' ).setValue( '' );
 		});
 	}
 

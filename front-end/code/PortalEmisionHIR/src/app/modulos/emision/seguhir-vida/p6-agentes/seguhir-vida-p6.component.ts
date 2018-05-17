@@ -118,13 +118,15 @@ export class SeguhirVidaP6Component implements OnInit {
 
 	private registrarEventos(): void {
 		this.frmSeguhirVidaP6.get( 'estado' ).valueChanges.subscribe( estado => {
-			if( estado.idEstado !== null && typeof estado.idEstado !== 'undefined' ) {
-				this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
-									.subscribe( response => this.municipios = response.data );
-			} else {
-				this.municipios = [];
+			if( estado !== null && typeof estado !== 'undefined' ) {
+				if( estado.idEstado !== null && typeof estado.idEstado !== 'undefined' ) {
+					this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
+										.subscribe( response => this.municipios = response.data );
+				} else {
+					this.municipios = [];
+				}
+				this.frmSeguhirVidaP6.get( 'delegacionMunicipio' ).setValue( '' );
 			}
-			this.frmSeguhirVidaP6.get( 'delegacionMunicipio' ).setValue( '' );
 		});
 	}
 

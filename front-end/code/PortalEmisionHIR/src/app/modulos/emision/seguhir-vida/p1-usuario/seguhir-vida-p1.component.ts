@@ -217,10 +217,8 @@ export class SeguhirVidaP1Component implements OnInit {
 				} else {
 					this.municipiosCon = [];
 				}
-			} else {
-				this.frmSeguhirVidaP1.get( 'contratante.estado' ).setValue( '' );
+				this.frmSeguhirVidaP1.get( 'contratante.delegacionMunicipio' ).setValue( '' );
 			}
-			this.frmSeguhirVidaP1.get( 'contratante.delegacionMunicipio' ).setValue( '' );
 		});
 
 		this.frmSeguhirVidaP1.get( 'titular.estado' ).valueChanges.subscribe( estado => {
@@ -231,10 +229,8 @@ export class SeguhirVidaP1Component implements OnInit {
 				} else {
 					this.municipiosTit = [];
 				}
-			} else {
-				this.frmSeguhirVidaP1.get( 'titular.estado' ).setValue( '' );
+				this.frmSeguhirVidaP1.get( 'titular.delegacionMunicipio' ).setValue( '' );
 			}
-			this.frmSeguhirVidaP1.get( 'titular.delegacionMunicipio' ).setValue( '' );
 		});
 	}
 
