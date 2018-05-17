@@ -2,7 +2,12 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { SeguhirVidaService }				  from '../seguhir-vida.service';
 import { SeguhirVidaP4Service }				  from './seguhir-vida-p4.service';
+
+import { Plan }								  from 'app/core/models/plan';
+
+import { EPLAN }							  from 'app/core/enum/plan';
 
 @Component({
 	selector: 'pehir-seguhir-vida-p4',
@@ -10,6 +15,9 @@ import { SeguhirVidaP4Service }				  from './seguhir-vida-p4.service';
 })
 
 export class SeguhirVidaP4Component implements OnInit {
+	capturaConyuge: boolean = false;
+	capturaHijos: boolean = false;
+
 	isValidFormConyuge: boolean = false;
 	isValidFormHijo1: boolean = false;
 	isValidFormHijo2: boolean = false;
@@ -20,11 +28,13 @@ export class SeguhirVidaP4Component implements OnInit {
 	constructor(
 		private fb: FormBuilder,
 		private router: Router,
+		private seguhirVidaService: SeguhirVidaService,
 		private seguhirVidaP4Service: SeguhirVidaP4Service
 	){}
 
 	ngOnInit() {
 		this.crearFormulario();
+		this.verificarPlan();
 	}
 
 	private crearFormulario(): void {
@@ -48,6 +58,29 @@ export class SeguhirVidaP4Component implements OnInit {
 				Validators.required
 			])]
 		});
+	}
+
+	private verificarPlan(): void {
+		let plan: Plan = this.seguhirVidaService.getPlanSeleccionado();
+
+		this.capturaConyuge = ( plan.idPlan === EPLAN.FAMILIAR || plan.idPlan === EPLAN.CONYUGAL );
+		this.capturaHijos   = ( plan.idPlan === EPLAN.FAMILIAR || plan.idPlan === EPLAN.HIJOS );
+
+		if( !this.capturaConyuge ) {
+			this.isValidFormConyuge = true;
+			this.frmSeguhirVidaP4.controls[ 'confirmacionConyuge' ].setValue( false );
+			this.fnCambiarConfirmacionConyuge();
+		}
+
+		if( !this.capturaHijos ) {
+			this.isValidFormHijo1 = this.isValidFormHijo2 = true;
+			this.frmSeguhirVidaP4.controls[ 'confirmacionHijo1' ].setValue( false );
+			this.frmSeguhirVidaP4.controls[ 'confirmacionHijo2' ].setValue( false );
+			this.fnCambiarConfirmacionHijo1();
+			this.fnCambiarConfirmacionHijo2();
+		}
+
+		this.updateFlag();
 	}
 
 	fnCambiarConfirmacionConyuge(): void {

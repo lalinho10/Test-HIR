@@ -4,7 +4,12 @@ import { Router }							  from '@angular/router';
 
 import { PolicyHolderTableComponent }		  from 'app/modulos/shared/policyholder-table/policyholder-table.component';
 
+import { SeguhirVidaService }				  from '../seguhir-vida.service';
 import { SeguhirVidaP5Service }				  from './seguhir-vida-p5.service';
+
+import { Plan }								  from 'app/core/models/plan';
+
+import { EPLAN }							  from 'app/core/enum/plan';
 
 @Component({
 	selector: 'pehir-seguhir-vida-p5',
@@ -12,6 +17,9 @@ import { SeguhirVidaP5Service }				  from './seguhir-vida-p5.service';
 })
 
 export class SeguhirVidaP5Component implements OnInit {
+	capturaConyuge: boolean = false;
+	capturaHijos: boolean = false;
+
 	isValidTableTitular: boolean = false;
 	isValidTableConyuge: boolean = false;
 	isValidTableHijo1: boolean = false;
@@ -23,11 +31,29 @@ export class SeguhirVidaP5Component implements OnInit {
 	constructor(
 		private fb: FormBuilder,
 		private router: Router,
+		private seguhirVidaService: SeguhirVidaService,
 		private seguhirVidaP5Service: SeguhirVidaP5Service
 	){}
 
 	ngOnInit() {
+		this.crearFormulario();
+		this.verificarPlan();
+	}
+
+	private crearFormulario(): void {
 		this.frmSeguhirVidaP5 = this.fb.group({});
+	}
+
+	private verificarPlan(): void {
+		let plan: Plan = this.seguhirVidaService.getPlanSeleccionado();
+
+		this.capturaConyuge = ( plan.idPlan === EPLAN.FAMILIAR || plan.idPlan === EPLAN.CONYUGAL );
+		this.capturaHijos   = ( plan.idPlan === EPLAN.FAMILIAR || plan.idPlan === EPLAN.HIJOS );
+
+		this.isValidTableConyuge = !this.capturaConyuge;
+		this.isValidTableHijo1 = this.isValidTableHijo2 = !this.capturaHijos;
+
+		this.updateFlag();
 	}
 
 	onValidateTableTitular( isValidTableTitular ): void {

@@ -10,17 +10,17 @@
 		<pehir-policyholder-table (onValidateTable)="onValidateTableTitular($event)">
 		</pehir-policyholder-table>
 	</fieldset>
-	<fieldset>
+	<fieldset *ngIf="capturaConyuge">
 		<legend>Designación de beneficiarios del cónyuge</legend>
 		<pehir-policyholder-table (onValidateTable)="onValidateTableConyuge($event)">
 		</pehir-policyholder-table>
 	</fieldset>
-	<fieldset>
+	<fieldset *ngIf="capturaHijos">
 		<legend>Designación de beneficiarios del hijo 1 mayores de 18 años</legend>
 		<pehir-policyholder-table (onValidateTable)="onValidateTableHijo1($event)">
 		</pehir-policyholder-table>
 	</fieldset>
-	<fieldset>
+	<fieldset *ngIf="capturaHijos">
 		<legend>Designación de beneficiarios del hijo 2 mayores de 18 años</legend>
 		<pehir-policyholder-table (onValidateTable)="onValidateTableHijo2($event)">
 		</pehir-policyholder-table>
