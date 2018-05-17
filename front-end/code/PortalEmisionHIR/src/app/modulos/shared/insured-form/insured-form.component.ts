@@ -25,6 +25,8 @@ export class InsuredFormComponent implements OnInit {
 
 	frmAsegurado: FormGroup;
 
+	asegurado: Asegurado
+
 	ocupaciones: Ocupacion[];
 
 	generos = GENEROS;
