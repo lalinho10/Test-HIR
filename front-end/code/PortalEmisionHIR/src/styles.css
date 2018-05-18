@@ -37,12 +37,36 @@ html {box-sizing:border-box;}
 .col-off-16 {margin-left:16.6666%;}
 .col-off-10 {margin-left:10%; }
 [class*=" push-"], [class*=" pull-"] {position:relative;}
-.push-33 {left:33.3333%;}
-.push-50 {left:50%;}
+.push-90 {left:90%;}
+.push-83 {left:83.3333%;}
+.push-80 {left:80%;}
+.push-75 {left:75%;}
+.push-70 {left:70%;}
 .push-66 {left:66.6666%;}
-.pull-33 {right:33.3333%;}
-.pull-50 {right:50%;}
+.push-60 {left:60%;}
+.push-50 {left:50%;}
+.push-40 {left:40%;}
+.push-33 {left:33.3333%;}
+.push-30 {left:30%;}
+.push-25 {left:25%;}
+.push-20 {left:20%;}
+.push-16 {left:16.6666%;}
+.push-10 {left:10%;}
+.pull-90 {right:90%;}
+.pull-83 {right:83.3333%;}
+.pull-80 {right:80%;}
+.pull-75 {right:75%;}
+.pull-70 {right:70%;}
 .pull-66 {right:66.6666%;}
+.pull-60 {right:60%;}
+.pull-50 {right:50%;}
+.pull-40 {right:40%;}
+.pull-33 {right:33.3333%;}
+.pull-30 {right:30%;}
+.pull-25 {right:25%;}
+.pull-20 {right:20%;}
+.pull-16 {right:16.6666%;}
+.pull-10 {right:10%;}
 .maincontainer {width:80%;margin:0 auto;}
 .leftcontainer {display:inline;float:left;}
 .rightcontainer {display:inline;float:right;}
