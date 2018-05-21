@@ -4,6 +4,7 @@ import { Router } 	 						  from '@angular/router';
 
 import { RcontrasenaService }				  from '../rcontrasena.service';
 
+import { AppModalService }					  from 'app/core/components/app-modal/app-modal.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class RcontrasenaP1Component implements OnInit {
 	frmRconP1: FormGroup;
 
 	constructor(
+		private appModalService: AppModalService,
 		private fb: FormBuilder,
 		private rcontrasenaService: RcontrasenaService,
 		private router: Router,
@@ -43,8 +45,10 @@ export class RcontrasenaP1Component implements OnInit {
 			.getObject( '/loginRecuperaClaveCorreo' )
 			.subscribe( response =>  {
 				if( response.codigoRespuesta === 200 ) {
-					this.rcontrasenaService.setContactoRcontrasena( this.frmRconP1.controls[ 'correoe' ].value );
-					this.router.navigateByUrl( '/rcontrasena/codigo' );
+					this.appModalService.openModal( 'success', response.mensaje );
+					this.router.navigateByUrl( '/acceso' );
+					//this.rcontrasenaService.setContactoRcontrasena( this.frmRconP1.controls[ 'correoe' ].value );
+					//this.router.navigateByUrl( '/rcontrasena/codigo' );
 				}
 			});
 	}
