@@ -3113,5 +3113,11 @@
 		"codigoRespuesta": 200,
 		"mensaje": "Correo y celular encontrados exitosamente",
 		"fechaOperacion": 1520957070339
+	},
+	"cambioClave":
+	{
+		"codigoRespuesta": 200,
+		"mensaje": "Clave de acceso modificicada correctamente",
+		"fechaOperacion": 1520957070339
 	}
 }
