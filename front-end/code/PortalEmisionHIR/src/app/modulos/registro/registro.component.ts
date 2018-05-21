@@ -83,6 +83,7 @@ export class RegistroComponent implements OnInit {
 			.subscribe( response =>  {
 				if( response.codigoRespuesta === 200 ) {
 					this.appModalService.openModal( 'success', response.mensaje );
+					this.router.navigateByUrl( '/acceso/login' );
 				}
 			});
 	}
