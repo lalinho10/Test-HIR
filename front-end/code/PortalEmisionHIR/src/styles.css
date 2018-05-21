@@ -138,8 +138,7 @@ div.rdoContainer.two > input[type="radio"] {margin-right:7px;}
 .header-site ul.submenu {display:none;list-style:none;padding:0;z-index:2;}
 .header-site ul.submenu > li {padding:15px 0 0 0;}
 .header-site ul.submenu > li .fa {color:#f68c2c;padding-right:5px;}
-/*.header-site div.submenu-layer {background-color:rgba(255,255,255,0.8);display:none;height:60px;position:absolute;top:30px;width:100%;}
-.header-site ul.menu:hover + div.submenu-layer {display:block;}*/
+.header-site div.submenu-layer {background-color:rgba(255,255,255,0.8);height:61px;position:absolute;top:30px;width:100%;}
 /*Contenedor principal*/
 .main {margin:20px 15px;font-size:14px;}
 .titulo {border-bottom:1px solid #e1e1e1;font-size:18px !important;margin-bottom:15px;text-align:center;padding-bottom:15px;}

@@ -9,11 +9,20 @@ import { SessionModalService } from 'app/core/components/session-modal/session-m
 
 export class MenuComponent {
 	isOpen: boolean = false;
+	hasLayer: boolean = false;
 
 	constructor( private sessionModalService: SessionModalService ){}
 
 	fnToggleMenu(): void {
 		this.isOpen = !this.isOpen;
+	}
+
+	fnMouseEnter(): void {
+		this.hasLayer = true;
+	}
+
+	fnMouseLeave(): void {
+		this.hasLayer = false;
 	}
 
 	fnConfirmarLogout(): void {
