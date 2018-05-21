@@ -144,6 +144,7 @@ div.rdoContainer.two > input[type="radio"] {margin-right:7px;}
 .main {margin:20px 15px;font-size:14px;}
 .titulo {border-bottom:1px solid #e1e1e1;font-size:18px !important;margin-bottom:15px;text-align:center;padding-bottom:15px;}
 .text-center {text-align:center;}
+.control-error .form-control, .control-error .control-text, .control-error .mydp {border:1px solid #a94442 !important;}
 .form-control {border:1px solid #b4b4b4;border-radius:5px;height:27px;width:100%;margin-bottom:15px;padding-left:5px;}
 .form-group > .form-control.left{float:left;padding-right:30px;}
 .form-group > .form-control.right{float:right;padding-left:30px;}

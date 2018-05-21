@@ -1,4 +1,6 @@
-<ng-content></ng-content>
+<div [ngClass]="{'control-error':hasError}">
+	<ng-content></ng-content>
+</div>
 <label *ngIf="hasError" class="msg error">
 		{{errorMessage}}
 </label>
