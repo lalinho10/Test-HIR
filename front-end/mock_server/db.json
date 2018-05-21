@@ -3099,7 +3099,7 @@
 	"loginRecuperaClaveCorreo":
 	{
 		"codigoRespuesta": 200,
-		"mensaje": "Correo encontrado exitosamente",
+		"mensaje": "Tu nueva contraseña de acceso ha sido enviada a tu correo electrónico",
 		"fechaOperacion": 1520957070339
 	},
 	"loginRecuperaClaveCodigo":
