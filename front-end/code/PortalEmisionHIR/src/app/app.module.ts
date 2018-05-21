@@ -38,6 +38,7 @@ import { SessionTimerComponent }		from './core/components/session-timer/session-
 import { PageNotFoundComponent }		from './core/components/page-not-found/page-not-found.component';
 import { RegistroComponent }			from './modulos/registro/registro.component';
 import { InicioComponent }				from './modulos/inicio/inicio.component';
+import { CambiarContrasenaComponent }	from './modulos/cambiar-contrasena/cambiar-contrasena.component';
 
 import { AuthenticationService }		from './core/services/authentication/authentication.service';
 import { WSClientService }				from './core/services/ws-client.service';
@@ -65,7 +66,8 @@ import { LoadingInterceptor }			from './core/interceptors/loading.interceptor'
 		SessionTimerComponent,
 		PageNotFoundComponent,
 		RegistroComponent,
-		InicioComponent
+		InicioComponent,
+		CambiarContrasenaComponent
 	],
 	imports: [
 		BrowserModule,
