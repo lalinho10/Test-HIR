@@ -46,6 +46,12 @@
 		{ "idProducto": 6, "descProducto": "SeguBici" },
 		{ "idProducto": 7, "descProducto": "Accidentes Personales Individual" }
 	],
+	"consultaTiposAhorro":
+	[
+		{ "idTipoAhorro": 1, "descTipoAhorro": "Ahorro personal" },
+		{ "idTipoAhorro": 2, "descTipoAhorro": "Ahorro con beneficios fiscales" },
+		{ "idTipoAhorro": 3, "descTipoAhorro": "Plan especial de ahorro" }
+	],
 	"consultaPlanesProducto":
 	[
 		{ "id": 1, "data":
