@@ -23,21 +23,22 @@ export class ExtendFormControlComponent implements OnChanges {
 		pattern: 'El formato del dato capturado es incorrecto',
 		email: 'Formato de correo electrónico incorrecto',
 		celular: 'Formato de celular incorrecto',
-		telefono: 'Formato de telefono incorrecto',
+		telefono: 'Formato de teléfono incorrecto',
 		codigo: 'Formato de código incorrecto',
 		contrasena: 'Formato de contraseña incorrecto',
+		rfc : 'Formato de RFC incorrecto',
+		claveAgente: 'Formato de clave incorrecto',
+		codigoPostal: 'Fomato de código postal incorrecto',
+		peso: 'Formato de peso incorrecto',
+		estatura: 'Formato de estatura incorrecto',
+		formatoMoneda: 'Formato de cantidad monetaria incorrecto',
 		igualdadContrasenas: 'Las contraseñas son diferentes',
 		diferenciaTelefonos: 'Los teléfonos deben ser diferentes',
 		diferenciaCorreos: 'Los correos deben ser diferentes',
 		nombre: 'El nombre contiene caracteres no permitidos',
 		apellido: 'El apellido contiene caracteres no permitidos',
-		rfc : 'Formato de RFC incorrecto',
 		porcentaje: 'El porcentaje asigando es inválido',
-		entreedades: 'No cumples con el rango de edad para la contratación de este producto',
-		claveAgente: 'Formato de clave incorrecto',
-		codigoPostal: 'Fomato de código postal incorrecto',
-		peso: 'Formato de peso incorrecto',
-		estatura: 'Formato de estatura incorrecto'
+		entreedades: 'No cumples con el rango de edad para la contratación de este producto'
 	};
 
 	ngOnChanges( changes: SimpleChanges ): void {
