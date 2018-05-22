@@ -9,6 +9,7 @@ import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator }				  from 'app/core/validators/apellido.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
+import { FormatoMonedaValidator }			  from 'app/core/validators/formato-moneda.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
 import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
 
@@ -92,7 +93,8 @@ export class SeguhirEmpresarioComponent implements OnInit {
 				Validators.required
 			])],
 			'sumasegurada': ['', Validators.compose([
-				Validators.required
+				Validators.required,
+				FormatoMonedaValidator()
 			])],
 			'cobertura': ['', Validators.compose([
 				Validators.required
