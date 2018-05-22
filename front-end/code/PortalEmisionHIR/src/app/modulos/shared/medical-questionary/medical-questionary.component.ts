@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators }  from '@angular/forms';
 
+import { CONDICIONESFISICAS }							  from 'app/core/data/condiciones-fisicas';
 import { PreguntaMedica }								  from 'app/core/models/pregunta-medica';
 
 @Component({
@@ -16,6 +17,8 @@ export class MedicalQuestionaryComponent implements OnInit {
 	onValidateQuestionary: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 	frmCuestionario: FormGroup;
+
+	condicionesFisicas = CONDICIONESFISICAS;
 
 	constructor(
 		private fb: FormBuilder

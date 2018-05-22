@@ -50,7 +50,12 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['condicionesActuales'].dirty"
 						[inputErrors]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['condicionesActuales'].errors">
-							<input id="txtCondicionesActuales" type="text" class="form-control" formControlName="condicionesActuales">
+							<select id="cboCondicionesActuales" class="form-control" formControlName="condicionesActuales">
+								<option value="">Selecciona</option>
+								<option *ngFor="let condicionFisica of condicionesFisicas" [ngValue]="condicionFisica">
+									{{condicionFisica.descCondicionFisica}}
+								</option>
+							</select>
 					</pehir-extend-form-control>
 				</div>
 			</div>
