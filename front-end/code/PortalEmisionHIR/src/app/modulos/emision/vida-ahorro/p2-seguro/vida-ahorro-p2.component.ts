@@ -4,11 +4,10 @@ import { Router }							  from '@angular/router';
 
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
-import { MODULOS }							  from 'app/core/data/modulos';
-
 import { FormaPago }						  from 'app/core/models/forma-pago';
 import { Paquete }							  from 'app/core/models/paquete';
 import { Plan }								  from 'app/core/models/plan';
+import { TipoAhorro }						  from 'app/core/models/tipo-ahorro';
 
 @Component({
 	selector: 'pehir-vida-ahorro-p2',
@@ -21,8 +20,7 @@ export class VidaAhorroP2Component implements OnInit {
 	formasPago: FormaPago[];
 	paquetes: Paquete[];
 	planes: Plan[];
-
-	modulos = MODULOS;
+	tiposAhorro: TipoAhorro[];
 
 	constructor(
 		private router: Router,
@@ -42,6 +40,8 @@ export class VidaAhorroP2Component implements OnInit {
 							.subscribe( data => this.paquetes = data );
 		this.wsClientService.getObject( '/consultaPlanesProducto/5' )
 							.subscribe( response => this.planes = response.data );
+		this.wsClientService.getObject( '/consultaTiposAhorro' )
+							.subscribe( data => this.tiposAhorro = data );
 	}
 
 	private crearFormulario(): void {
@@ -64,10 +64,7 @@ export class VidaAhorroP2Component implements OnInit {
 			'pcobertura': ['', Validators.compose([
 				Validators.required
 			])],
-			'modulo': ['', Validators.compose([
-				Validators.required
-			])],
-			'ugastos': ['', Validators.compose([
+			'tipoAhorro': ['', Validators.compose([
 				Validators.required
 			])],
 			'apfondoasegurado': ['', Validators.compose([
@@ -76,13 +73,13 @@ export class VidaAhorroP2Component implements OnInit {
 			'fpago': ['', Validators.compose([
 				Validators.required
 			])],
-			'cobertura': ['', Validators.compose([
+			'ahorroInicial': ['', Validators.compose([
 				Validators.required
 			])],
-			'aportacion': ['', Validators.compose([
+			'ahorroMensual': ['', Validators.compose([
 				Validators.required
 			])],
-			'total': ['', Validators.compose([
+			'ahorroExtraordinario': ['', Validators.compose([
 				Validators.required
 			])]
 		});

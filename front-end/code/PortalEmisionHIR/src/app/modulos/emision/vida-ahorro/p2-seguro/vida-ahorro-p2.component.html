@@ -152,35 +152,18 @@
 					<legend>Otros</legend>
 					<div class="row">
 						<div class="col col-40">
-							<label id="lblModulo" class="form-label">Módulo:</label>
+							<label id="lblTipoAhorro" class="form-label">Tipo de ahorro:</label>
 						</div>
 						<div class="col col-50">
 							<pehir-extend-form-control
-								[inputDirty]="frmVidaAhorroP2.get('modulo').dirty"
-								[inputErrors]="frmVidaAhorroP2.get('modulo').errors">
-									<select id="cboModulo" class="form-control" formControlName="modulo">
+								[inputDirty]="frmVidaAhorroP2.get('tipoAhorro').dirty"
+								[inputErrors]="frmVidaAhorroP2.get('tipoAhorro').errors">
+									<select id="cboTipoAhhorro" class="form-control" formControlName="tipoAhorro">
 										<option value="">Selecciona</option>
-										<option *ngFor="let modulo of modulos" [value]="modulo.idModulo">
-											{{modulo.descModulo}}
+										<option *ngFor="let tipoAhorro of tiposAhorro" [ngValue]="tipoAhorro">
+											{{tipoAhorro.descTipoAhorro}}
 										</option>
 									</select>
-							</pehir-extend-form-control>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col col-40">
-							<label id="lblUgastos" class="form-label">Últimos gastos:</label>
-						</div>
-						<div class="col col-50">
-							<pehir-extend-form-control
-								[inputDirty]="frmVidaAhorroP2.get('ugastos').dirty"
-								[inputErrors]="frmVidaAhorroP2.get('ugastos').errors">
-									<div class="rdoContainer two">
-										<input type="radio" formControlName="ugastos" [value]="0">No
-									</div>
-									<div class="rdoContainer two">
-										<input type="radio" formControlName="ugastos" [value]="1">Sí
-									</div>
 							</pehir-extend-form-control>
 						</div>
 					</div>
@@ -205,17 +188,17 @@
 			</div>
 			<div class="col col-50">
 				<fieldset>
-					<legend>Primas según forma de pago</legend>
+					<legend>Aportaciones</legend>
 					<div class="row">
 						<div class="col col-40">
-							<label id="lblCobertura" class="form-label">Cobertura:</label>
+							<label id="lblAhorroInical" class="form-label">Ahorro inicial:</label>
 						</div>
 						<div class="col col-50">
 							<pehir-extend-form-control
-								[inputDirty]="frmVidaAhorroP2.get('cobertura').dirty"
-								[inputErrors]="frmVidaAhorroP2.get('cobertura').errors">
+								[inputDirty]="frmVidaAhorroP2.get('ahorroInicial').dirty"
+								[inputErrors]="frmVidaAhorroP2.get('ahorroInicial').errors">
 									<div class="form-group">
-										<input id="txtCobertura" type="text" class="form-control right" formControlName="cobertura">
+										<input id="txtAhorroInicial" type="text" class="form-control right" formControlName="ahorroInicial">
 										<span class="control-text left">$</span>
 									</div>
 							</pehir-extend-form-control>
@@ -223,14 +206,14 @@
 					</div>
 					<div class="row">
 						<div class="col col-40">
-							<label id="lblAportacion" class="form-label">Aportación:</label>
+							<label id="lblAhorroMensual" class="form-label">Ahorro mensual:</label>
 						</div>
 						<div class="col col-50">
 							<pehir-extend-form-control
-								[inputDirty]="frmVidaAhorroP2.get('aportacion').dirty"
-								[inputErrors]="frmVidaAhorroP2.get('aportacion').errors">
+								[inputDirty]="frmVidaAhorroP2.get('ahorroMensual').dirty"
+								[inputErrors]="frmVidaAhorroP2.get('ahorroMensual').errors">
 									<div class="form-group">
-										<input id="txtAportacion" type="text" class="form-control right" formControlName="aportacion">
+										<input id="txtAhorroMensual" type="text" class="form-control right" formControlName="ahorroMensual">
 										<span class="control-text left">$</span>
 									</div>
 							</pehir-extend-form-control>
@@ -238,14 +221,14 @@
 					</div>
 					<div class="row">
 						<div class="col col-40">
-							<label id="lblTotal" class="form-label">Total:</label>
+							<label id="lblAhorroExtraordinario" class="form-label">Ahorro extraordinario:</label>
 						</div>
 						<div class="col col-50">
 							<pehir-extend-form-control
-								[inputDirty]="frmVidaAhorroP2.get('total').dirty"
-								[inputErrors]="frmVidaAhorroP2.get('total').errors">
+								[inputDirty]="frmVidaAhorroP2.get('ahorroExtraordinario').dirty"
+								[inputErrors]="frmVidaAhorroP2.get('ahorroExtraordinario').errors">
 									<div class="form-group">
-										<input id="txtTotal" type="text" class="form-control right" formControlName="total">
+										<input id="txtAhorroExtraordinario" type="text" class="form-control right" formControlName="ahorroExtraordinario">
 										<span class="control-text left">$</span>
 									</div>
 							</pehir-extend-form-control>
