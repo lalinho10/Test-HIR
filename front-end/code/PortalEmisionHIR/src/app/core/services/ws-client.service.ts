@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Injectable }			   from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable }			   from 'rxjs/Observable';
 
 @Injectable()
 export class WSClientService {
@@ -13,8 +13,8 @@ export class WSClientService {
 	}
 
 	postObject( serviceName: string, serviceBody: any ): Observable<any> {
-		let options = { 'Content-Type': 'application/json' }
+		let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );
 
-		return this.http.post( this.host + serviceName, serviceBody, options );
+		return this.http.post( this.host + serviceName, serviceBody, { headers: headers } );
 	}
 }

@@ -1,4 +1,6 @@
 import { LOCALE_ID }					from '@angular/core';
+import { registerLocaleData }			from '@angular/common';
+import localeESMX						from '@angular/common/locales/es-MX';
 
 import { BrowserModule }				from '@angular/platform-browser';
 import { NgModule }						from '@angular/core';
@@ -50,6 +52,8 @@ import { SessionTimerService }			from './core/components/session-timer/session-t
 
 import { ErrorHandlerInterceptor }		from './core/interceptors/error-handler.interceptor'
 import { LoadingInterceptor }			from './core/interceptors/loading.interceptor'
+
+registerLocaleData( localeESMX );
 
 @NgModule({
 	declarations: [
