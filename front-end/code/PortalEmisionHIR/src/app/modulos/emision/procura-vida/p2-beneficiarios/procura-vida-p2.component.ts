@@ -8,6 +8,7 @@ import { ProcuraVidaP2Service }				  from './procura-vida-p2.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.validator';
+import { FormatoMonedaValidator }			  from 'app/core/validators/formato-moneda.validator';
 
 import { MODULOS }							  from 'app/core/data/modulos';
 
@@ -56,7 +57,8 @@ export class ProcuraVidaP2Component implements OnInit {
 				Validators.required
 			])],
 			'sumasegurada': ['', Validators.compose([
-				Validators.required
+				Validators.required,
+				FormatoMonedaValidator()
 			])],
 			'cobertura': ['', Validators.compose([
 				Validators.required

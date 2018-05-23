@@ -4,6 +4,8 @@ import { Router }							  from '@angular/router';
 
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
+import { FormatoMonedaValidator }			  from 'app/core/validators/formato-moneda.validator';
+
 import { FormaPago }						  from 'app/core/models/forma-pago';
 import { Paquete }							  from 'app/core/models/paquete';
 import { Plan }								  from 'app/core/models/plan';
@@ -74,13 +76,16 @@ export class VidaAhorroP2Component implements OnInit {
 				Validators.required
 			])],
 			'ahorroInicial': ['', Validators.compose([
-				Validators.required
+				Validators.required,
+				FormatoMonedaValidator()
 			])],
 			'ahorroMensual': ['', Validators.compose([
-				Validators.required
+				Validators.required,
+				FormatoMonedaValidator()
 			])],
 			'ahorroExtraordinario': ['', Validators.compose([
-				Validators.required
+				Validators.required,
+				FormatoMonedaValidator()
 			])]
 		});
 	}

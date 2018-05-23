@@ -6,6 +6,7 @@ import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator } 				  from 'app/core/validators/apellido.validator';
 import { CodigoPostalValidator }			  from 'app/core/validators/codigo-postal.validator';
+import { FormatoMonedaValidator }			  from 'app/core/validators/formato-moneda.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
 import { TelefonoValidator }				  from 'app/core/validators/telefono.validator';
@@ -97,7 +98,8 @@ export class VidaAhorroP6Component implements OnInit {
 				Validators.required
 			])],
 			'retencionQuincenal': ['', Validators.compose([
-				Validators.required
+				Validators.required,
+				FormatoMonedaValidator()
 			])],
 			'rfc': ['', Validators.compose([
 				Validators.required,
