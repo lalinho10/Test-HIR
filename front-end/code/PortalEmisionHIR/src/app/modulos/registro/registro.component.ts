@@ -10,6 +10,7 @@ import { CelularValidator }					  from 'app/core/validators/celular.validator';
 import { ContrasenaValidator }				  from 'app/core/validators/contrasena.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { TelefonoValidator }				  from 'app/core/validators/telefono.validator';
+import { DiferenciaTelefonosValidator }		  from 'app/core/validators/diferencia-telefonos.validator';
 import { IgualdadContrasenasValidator }		  from 'app/core/validators/igualdad-contrasenas.validator';
 
 @Component({
@@ -49,27 +50,34 @@ export class RegistroComponent implements OnInit {
 				Validators.email,
 				Validators.maxLength(50)
 			])],
-			'contrasena': ['', Validators.compose([
-				Validators.required,
-				ContrasenaValidator()
-			])],
-			'confcontrasena': ['', Validators.compose([
-				Validators.required,
-				ContrasenaValidator()
-			])],
-			'celular': ['', Validators.compose([
-				Validators.required,
-				CelularValidator()
-			])],
-			'telefono': ['', Validators.compose([
-				TelefonoValidator()
-			])],
+			'contrasenas': this.fb.group({
+				'contrasena': ['', Validators.compose([
+					Validators.required,
+					ContrasenaValidator()
+				])],
+				'confcontrasena': ['', Validators.compose([
+					Validators.required,
+					ContrasenaValidator()
+				])]
+			},
+			{
+				validator: IgualdadContrasenasValidator( 'contrasena', 'confcontrasena' )
+			}),
+			'telefonos': this.fb.group({
+				'celular': ['', Validators.compose([
+					Validators.required,
+					CelularValidator()
+				])],
+				'telefono': ['', Validators.compose([
+					TelefonoValidator()
+				])]
+			},
+			{
+				validator: DiferenciaTelefonosValidator( 'telefono', 'celular' )
+			}),
 			'recaptcha': ['', Validators.compose([
 				Validators.required
 			])]
-		},
-		{
-			validator: IgualdadContrasenasValidator( 'contrasena', 'confcontrasena' )
 		})
 	}
 

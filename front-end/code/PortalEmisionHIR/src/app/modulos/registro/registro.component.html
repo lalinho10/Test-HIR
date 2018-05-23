@@ -50,29 +50,31 @@
 			</pehir-extend-form-control>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col col-20 col-off-20">
-			<label id="lblContrasena" class="form-label">Contraseña*</label>
+	<div formGroupName="contrasenas">
+		<div class="row">
+			<div class="col col-20 col-off-20">
+				<label id="lblContrasena" class="form-label">Contraseña*</label>
+			</div>
+			<div class="col col-30">
+				<pehir-extend-form-control
+					[inputDirty]="frmRegistro.get('contrasenas.contrasena').dirty"
+					[inputErrors]="frmRegistro.get('contrasenas.contrasena').errors">
+						<input id="txtContrasena" type="password" class="form-control" formControlName="contrasena">
+				</pehir-extend-form-control>
+			</div>
 		</div>
-		<div class="col col-30">
-			<pehir-extend-form-control
-				[inputDirty]="frmRegistro.get('contrasena').dirty"
-				[inputErrors]="frmRegistro.get('contrasena').errors">
-					<input id="txtContrasena" type="password" class="form-control" formControlName="contrasena">
-			</pehir-extend-form-control>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col col-20 col-off-20">
-			<label id="lblConfContrasena" class="form-label">Confirmar contraseña*</label>
-		</div>
-		<div class="col col-30">
-			<pehir-extend-form-control
-				[inputDirty]="frmRegistro.get('confcontrasena').dirty"
-				[inputErrors]="frmRegistro.get('confcontrasena').errors"
-				[formErrors]="frmRegistro.errors">
-					<input id="txtConfContrasena" type="password" class="form-control" formControlName="confcontrasena">
-			</pehir-extend-form-control>
+		<div class="row">
+			<div class="col col-20 col-off-20">
+				<label id="lblConfContrasena" class="form-label">Confirmar contraseña*</label>
+			</div>
+			<div class="col col-30">
+				<pehir-extend-form-control
+					[inputDirty]="frmRegistro.get('contrasenas.confcontrasena').dirty"
+					[inputErrors]="frmRegistro.get('contrasenas.confcontrasena').errors"
+					[formErrors]="frmRegistro.get('contrasenas').errors">
+						<input id="txtConfContrasena" type="password" class="form-control" formControlName="confcontrasena">
+				</pehir-extend-form-control>
+			</div>
 		</div>
 	</div>
 	<div class="row">
@@ -82,28 +84,31 @@
 			</label>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col col-20 col-off-20">
-			<label id="lblCelular" class="form-label">Teléfono celular*</label>
+	<div formGroupName="telefonos">
+		<div class="row">
+			<div class="col col-20 col-off-20">
+				<label id="lblCelular" class="form-label">Teléfono celular*</label>
+			</div>
+			<div class="col col-30">
+				<pehir-extend-form-control
+					[inputDirty]="frmRegistro.get('telefonos.celular').dirty"
+					[inputErrors]="frmRegistro.get('telefonos.celular').errors">
+						<input id="txtCelular" type="text" class="form-control" formControlName="celular">
+				</pehir-extend-form-control>
+			</div>
 		</div>
-		<div class="col col-30">
-			<pehir-extend-form-control
-				[inputDirty]="frmRegistro.get('celular').dirty"
-				[inputErrors]="frmRegistro.get('celular').errors">
-					<input id="txtCelular" type="text" class="form-control" formControlName="celular">
-			</pehir-extend-form-control>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col col-20 col-off-20">
-			<label id="lblTelefono" class="form-label">Teléfono fijo</label>
-		</div>
-		<div class="col col-30">
-			<pehir-extend-form-control
-				[inputDirty]="frmRegistro.get('telefono').dirty"
-				[inputErrors]="frmRegistro.get('telefono').errors">
-					<input id="txtTelefono" type="text" class="form-control" formControlName="telefono">
-			</pehir-extend-form-control>
+		<div class="row">
+			<div class="col col-20 col-off-20">
+				<label id="lblTelefono" class="form-label">Teléfono fijo</label>
+			</div>
+			<div class="col col-30">
+				<pehir-extend-form-control
+					[inputDirty]="frmRegistro.get('telefonos.telefono').dirty"
+					[inputErrors]="frmRegistro.get('telefonos.telefono').errors"
+					[formErrors]="frmRegistro.get('telefonos').errors">
+						<input id="txtTelefono" type="text" class="form-control" formControlName="telefono">
+				</pehir-extend-form-control>
+			</div>
 		</div>
 	</div>
 	<div class="row">
