@@ -15,13 +15,18 @@
 			<div class="col col-50">
 				<div class="row">
 					<div class="col col-40">
-						<label id="lblTipoIdentificacion" class="form-label">Tipo de identificación:</label>
+						<label id="lblIdentificacion" class="form-label">Tipo de identificación:</label>
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmSeguhirVidaP6.get('tipoIdentificacion').dirty"
-							[inputErrors]="frmSeguhirVidaP6.get('tipoIdentificacion').errors">
-								<input id="txtTipoIdentificacion" type="text" class="form-control" formControlName="tipoIdentificacion">
+							[inputDirty]="frmSeguhirVidaP6.get('identificacion').dirty"
+							[inputErrors]="frmSeguhirVidaP6.get('identificacion').errors">
+								<select id="cboIdentificacion" class="form-control" formControlName="identificacion">
+									<option value="">Selecciona</option>
+									<option *ngFor="let identificacion of identificaciones" [ngValue]="identificacion">
+										{{identificacion.descIdentificacion}}
+									</option>
+								</select>
 						</pehir-extend-form-control>
 					</div>
 				</div>

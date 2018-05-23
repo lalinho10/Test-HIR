@@ -14,6 +14,8 @@ import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
 import { TelefonoValidator }				  from 'app/core/validators/telefono.validator';
 
+import { IDENTIFICACIONES }					  from 'app/core/data/identificaciones';
+
 import { Estado }							  from 'app/core/models/estado';
 import { Municipio }						  from 'app/core/models/municipio';
 
@@ -31,6 +33,8 @@ export class SeguhirVidaP6Component implements OnInit {
 
 	estados: Estado[];
 	municipios: Municipio[];
+
+	identificaciones = IDENTIFICACIONES;
 
 	constructor(
 		private fb: FormBuilder,
@@ -52,7 +56,7 @@ export class SeguhirVidaP6Component implements OnInit {
 
 	private crearFormulario(): void {
 		this.frmSeguhirVidaP6 = this.fb.group({
-			'tipoIdentificacion': ['', Validators.compose([
+			'identificacion': ['', Validators.compose([
 				Validators.required
 			])],
 			'numeroIdentificacion': ['', Validators.compose([

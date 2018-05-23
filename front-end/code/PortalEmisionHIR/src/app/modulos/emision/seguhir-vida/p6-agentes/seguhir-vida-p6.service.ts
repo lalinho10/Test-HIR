@@ -12,7 +12,7 @@ export class SeguhirVidaP6Service {
 		this.seguhirVidaP6 = new SeguhirVidaP6();
 
 		this.seguhirVidaP6.agentes = agentes;
-		this.seguhirVidaP6.tipoIdentificacion = frmSeguhirVidaP6.tipoIdentificacion;
+		this.seguhirVidaP6.identificacion = frmSeguhirVidaP6.identificacion;
 		this.seguhirVidaP6.numeroIdentificacion = frmSeguhirVidaP6.numeroIdentificacion;
 		this.seguhirVidaP6.nombreEmpresa = frmSeguhirVidaP6.nombreEmpresa;
 		this.seguhirVidaP6.dependencia = frmSeguhirVidaP6.dependencia;
