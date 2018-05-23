@@ -16,3 +16,4 @@ table > tbody > tr:nth-child( even ) {background-color:#f0f0f0;}
 table > tbody > tr > td {vertical-align:top;}
 table > tfoot > tr > td {vertical-align:top;}
 table > tfoot > tr > td.result {font-weight:bold;text-align:center;}
+table > tfoot > tr > td.result.success {color:#3c763d;}

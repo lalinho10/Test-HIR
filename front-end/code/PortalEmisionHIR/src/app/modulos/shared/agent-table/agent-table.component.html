@@ -127,8 +127,8 @@
 			<tr>
 				<td></td>
 				<td></td>
-				<td class="result">Total</td>
-				<td class="result">{{ porcentaje | percent }}</td>
+				<td class="result" [ngClass]="{'success':isValidSum}">Total</td>
+				<td class="result" [ngClass]="{'success':isValidSum}">{{ porcentaje | percent }}</td>
 				<td></td>
 				<td></td>
 			</tr>
