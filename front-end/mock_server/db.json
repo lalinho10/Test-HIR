@@ -3102,6 +3102,12 @@
 		"mensaje": "Usuario registrado exitosamente",
 		"fechaOperacion": 1520957070339
 	},
+	"loginRecuperaClave":
+	{
+		"codigoRespuesta": 200,
+		"mensaje": "Se ha enviado un correo con las credenciales actualizadas de forma exitosa",
+		"fechaOperacion": 1520957070339
+	},
 	"loginRecuperaClaveCorreo":
 	{
 		"codigoRespuesta": 200,
