@@ -3090,6 +3090,22 @@
 			]
 		}
 	],
+	"loginNormal":
+	{
+		"codigoRespuesta": 200,
+		"mensaje": "Inicio de sesión con éxito. Fecha inicio: May 23 2018 9:23AM",
+		"fechaOperacion": 1520957070339,
+		"idCodigo": 6
+	},
+	"loginAutenticacion":
+	{
+		"codigoRespuesta": 200,
+		"mensaje": "",
+		"fechaOperacion": 1520957070339,
+		"nombreUsuario": "Pancho Pantera Brown",
+		"ultimoLogin": 1520952020339,
+		"claveRol": "ROLES"
+	},
 	"loginValidarSMS":
 	{
 		"codigoRespuesta": 200,
