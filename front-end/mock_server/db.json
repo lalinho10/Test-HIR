@@ -3096,7 +3096,7 @@
 		"mensaje": "Código válido",
 		"fechaOperacion": 1520957070339
 	},
-	"registro":
+	"loginRegistro":
 	{
 		"codigoRespuesta": 200,
 		"mensaje": "Usuario registrado exitosamente",
