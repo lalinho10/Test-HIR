@@ -11,6 +11,7 @@ import { RcontrasenaP2Component }	from './p2-codigo/rcontrasena-p2.component';
 import { RcontrasenaP3Component }	from './p3-confirmacion/rcontrasena-p3.component';
 
 import { RcontrasenaService }		from './rcontrasena.service';
+import { RcontrasenaP1Service }		from './p1-contacto/rcontrasena-p1.service';
 
 import { RcontrasenaRoutingModule }	from './rcontrasena-routing.module';
 import { ExtendFormControlModule }	from 'app/modulos/shared/extend-form-control/extend-form-control.module';
@@ -33,7 +34,8 @@ import { ProgressControlModule }	from 'app/modulos/shared/progress-control/progr
 		ProgressControlModule
 	],
 	providers: [
-		RcontrasenaService
+		RcontrasenaService,
+		RcontrasenaP1Service
 	]
 })
 

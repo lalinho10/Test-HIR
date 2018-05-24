@@ -2,7 +2,9 @@ import { Component, OnInit } 				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } 	 						  from '@angular/router';
 
-import { RcontrasenaService }				  from '../rcontrasena.service';
+import { RcontrasenaP1Request }				  from './rcontrasena-p1.request';
+
+import { RcontrasenaP1Service }				  from './rcontrasena-p1.service';
 
 import { AppModalService }					  from 'app/core/components/app-modal/app-modal.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
@@ -18,7 +20,7 @@ export class RcontrasenaP1Component implements OnInit {
 	constructor(
 		private appModalService: AppModalService,
 		private fb: FormBuilder,
-		private rcontrasenaService: RcontrasenaService,
+		private rcontrasenaP1Service: RcontrasenaP1Service,
 		private router: Router,
 		private wsClientService: WSClientService
 	) {}
@@ -41,14 +43,14 @@ export class RcontrasenaP1Component implements OnInit {
 	}
 
 	fnAvanzarP2Rcon(): void {
+		let rcontrasenaP1Request: RcontrasenaP1Request = this.rcontrasenaP1Service.getRequest( this.frmRconP1.value );
+
 		this.wsClientService
-			.getObject( '/loginRecuperaClaveCorreo' )
-			.subscribe( response =>  {
+			.postObject( '/loginRecuperaClave', rcontrasenaP1Request )
+			.subscribe( response => {
 				if( response.codigoRespuesta === 200 ) {
 					this.appModalService.openModal( 'success', response.mensaje );
 					this.router.navigateByUrl( '/acceso' );
-					//this.rcontrasenaService.setContactoRcontrasena( this.frmRconP1.controls[ 'correoe' ].value );
-					//this.router.navigateByUrl( '/rcontrasena/codigo' );
 				}
 			});
 	}
