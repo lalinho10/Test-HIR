@@ -2,6 +2,10 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { CodigoRequest }					  from './codigo.request';
+
+import { CodigoService }					  from './codigo.service';
+
 import { AccesoService }					  from '../acceso.service';
 
 import { AuthenticationService }			  from 'app/core/services/authentication/authentication.service';
@@ -20,6 +24,7 @@ export class CodigoComponent implements OnInit {
 	constructor(
 		private accesoService: AccesoService,
 		private authenticationService: AuthenticationService,
+		private codigoService: CodigoService,
 		private fb: FormBuilder,
 		private router: Router,
 		private wsClientService: WSClientService
@@ -39,13 +44,14 @@ export class CodigoComponent implements OnInit {
 	}
 
 	fnValidarCodigo(): void {
+		let codigoRequest: CodigoRequest = this.codigoService.getRequest( this.frmAccesoCodigo.value );
+
 		this.wsClientService
-			.getObject( '/loginValidarSMS' )
+			.postObject( '/loginAutenticacion', codigoRequest )
 			.subscribe( response =>  {
 				if( response.codigoRespuesta === 200 ) {
-					this.accesoService.setCodigoDesbloqueo( this.frmAccesoCodigo.controls[ 'codigo' ].value );
-					this.authenticationService.tokenLogin( this.frmAccesoCodigo.controls[ 'codigo' ].value );
-					//this.router.navigateByUrl( '/acceso/contrasena' );
+					this.accesoService.setCodigoDesbloqueo( codigoRequest.codigo );
+					this.authenticationService.tokenLogin( codigoRequest.codigo );
 				}
 			});
 	}

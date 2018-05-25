@@ -9,6 +9,7 @@ import { AppModalService } from 'app/core/components/app-modal/app-modal.service
 
 @Injectable()
 export class AuthenticationService {
+	private idCodigo: string;
 	private authenticated = new BehaviorSubject<boolean>( false );
 
 	constructor(
@@ -20,12 +21,8 @@ export class AuthenticationService {
 		return this.authenticated.asObservable();
 	}
 
-	public login( usuario: Usuario ): void {
-		if( usuario.nombre !== 'ppantera@hir.com' || usuario.clave !== 'ChocoMilk$2018' ) {
-			this.appModalService.openModal( 'error', 'Usuario o contraseña incorrectos, intenta nuevamente' );
-		} else {
-			this.router.navigateByUrl( '/acceso/codigo' );
-		}
+	public login( idCodigo: string ): void {
+		this.idCodigo = idCodigo;;
 	}
 
 	public tokenLogin( token: string ) {

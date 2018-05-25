@@ -4,7 +4,8 @@ import { Observable }			   from 'rxjs/Observable';
 
 @Injectable()
 export class WSClientService {
-	private host: string = 'http://localhost:3005';
+	//private host: string = 'http://localhost:3005';
+	private host: string = 'http://localhost:8080/service-rest/dtiServices';
 
 	constructor( private http: HttpClient ) {}
 

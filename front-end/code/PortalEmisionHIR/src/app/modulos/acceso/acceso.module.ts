@@ -8,6 +8,8 @@ import { CodigoComponent }		   from './p2-codigo/codigo.component';
 import { ContrasenaComponent }	   from './p3-contrasena/contrasena.component';
 
 import { AccesoService }		   from './acceso.service';
+import { LoginService }			   from './p1-login/login.service';
+import { CodigoService }		   from './p2-codigo/codigo.service';
 
 import { AccesoRoutingModule }	   from './acceso-routing.module';
 import { ExtendFormControlModule } from 'app/modulos/shared/extend-form-control/extend-form-control.module';
@@ -26,7 +28,9 @@ import { ExtendFormControlModule } from 'app/modulos/shared/extend-form-control/
 		ExtendFormControlModule
 	],
 	providers: [
-		AccesoService
+		AccesoService,
+		LoginService,
+		CodigoService
 	]
 })
 

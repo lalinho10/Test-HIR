@@ -2,6 +2,10 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { RegistroRequest }					  from './registro.request';
+
+import { RegistroService }					  from './registro.service';
+
 import { AppModalService }					  from 'app/core/components/app-modal/app-modal.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
@@ -25,6 +29,7 @@ export class RegistroComponent implements OnInit {
 	constructor(
 		private appModalService: AppModalService,
 		private fb: FormBuilder,
+		private registroService: RegistroService,
 		private router: Router,
 		private wsClientService: WSClientService
 	) {}
@@ -86,9 +91,11 @@ export class RegistroComponent implements OnInit {
 	}
 
 	fnRegistrar(): void {
+		let registroRequest: RegistroRequest = this.registroService.getRequest( this.frmRegistro.value );
+
 		this.wsClientService
-			.getObject( '/registro' )
-			.subscribe( response =>  {
+			.postObject( '/loginRegistro', registroRequest )
+			.subscribe( response => {
 				if( response.codigoRespuesta === 200 ) {
 					this.appModalService.openModal( 'success', response.mensaje );
 					this.router.navigateByUrl( '/acceso/login' );

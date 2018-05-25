@@ -31,7 +31,7 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
 						errorMessage = 'Error de comunicación, por favor intenta nuevamente';
 					break;
 					default:
-						//Mensajes de error definidos en la respuesta de los servicios.
+						errorMessage = ( err.error ) ? err.error.mensaje : err.message;
 					break;
 				}
 
