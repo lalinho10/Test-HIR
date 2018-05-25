@@ -44,15 +44,20 @@ export class CodigoComponent implements OnInit {
 	}
 
 	fnValidarCodigo(): void {
-		let codigoRequest: CodigoRequest = this.codigoService.getRequest( this.frmAccesoCodigo.value );
+		let idCodigo: number = this.authenticationService.idCodigo;
+		let codigoRequest: CodigoRequest = this.codigoService.getRequest( idCodigo, this.frmAccesoCodigo.value );
 
 		this.wsClientService
 			.postObject( '/loginAutenticacion', codigoRequest )
-			.subscribe( response =>  {
+			.subscribe( response => {
 				if( response.codigoRespuesta === 200 ) {
-					this.accesoService.setCodigoDesbloqueo( codigoRequest.codigo );
-					this.authenticationService.tokenLogin( codigoRequest.codigo );
+					this.accesoService.setCodigoAcceso( codigoRequest.codigo );
+					this.authenticationService.codigoAcceso( codigoRequest.codigo );
+					this.router.navigateByUrl( '/inicio' );
 				}
+			},
+			error => {
+				this.authenticationService.logout();
 			});
 	}
 }

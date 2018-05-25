@@ -52,8 +52,8 @@ export class LoginComponent implements OnInit {
 			.postObject( '/loginNormal', loginRequest )
 			.subscribe( response => {
 				if( response.codigoRespuesta === 200 ) {
-					this.accesoService.setLogin( loginRequest.usuario, loginRequest.contrasenia );
-					this.authenticationService.login( response.idCodigo );
+					this.accesoService.setLoginAcceso( loginRequest.usuario, loginRequest.contrasenia );
+					this.authenticationService.loginAcceso( response.idCodigo );
 					this.router.navigateByUrl( '/acceso/codigo' );
 				}
 			});

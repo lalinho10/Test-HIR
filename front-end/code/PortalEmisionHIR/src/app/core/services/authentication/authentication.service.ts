@@ -9,7 +9,7 @@ import { AppModalService } from 'app/core/components/app-modal/app-modal.service
 
 @Injectable()
 export class AuthenticationService {
-	private idCodigo: string;
+	private _idCodigo: number;
 	private authenticated = new BehaviorSubject<boolean>( false );
 
 	constructor(
@@ -17,21 +17,23 @@ export class AuthenticationService {
 		private router: Router
 	){}
 
+	get idCodigo(): number {
+		return this._idCodigo;
+	}
+
 	getAuthenticated(): Observable<boolean> {
 		return this.authenticated.asObservable();
 	}
 
-	public login( idCodigo: string ): void {
-		this.idCodigo = idCodigo;;
+	public loginAcceso( idCodigo: number ): void {
+		this._idCodigo = idCodigo;
 	}
 
-	public tokenLogin( token: string ) {
-		if( token != 'a1b2c3d4' ) {
-			this.appModalService.openModal( 'error', 'Código incorrecto, intenta nuevamente' );
-		} else {
+	public codigoAcceso( codigo: string ) {
+		if( this._idCodigo !== null && typeof this._idCodigo !== 'undefined' && 
+					codigo !== null && typeof codigo !== 'undefined' ) {
 			localStorage.setItem( 'token', 'fooSession' );
 			this.authenticated.next( true );
-			this.router.navigateByUrl( '/inicio' );
 		}
 	}
 
@@ -47,6 +49,7 @@ export class AuthenticationService {
 
 	public logout(): void {
 		localStorage.clear();
+		this._idCodigo = undefined;
 		this.authenticated.next( false );
 		this.router.navigateByUrl( '/acceso/login' );
 		this.appModalService.openModal( 'success', 'Su sesión ha sido cerrada correctamente' );

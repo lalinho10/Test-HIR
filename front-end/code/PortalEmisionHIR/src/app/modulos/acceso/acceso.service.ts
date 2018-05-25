@@ -40,18 +40,18 @@ export class AccesoService {
 		return isValidPath;
 	}
 
-	setLogin( usuario: string, contrasena: string ): void {
+	setLoginAcceso( usuario: string, contrasena: string ): void {
 		this.acceso.usuario = usuario;
 		this.acceso.contrasena = contrasena;
 		this._isLoginValidForm = true;
 	}
 
-	setCodigoDesbloqueo( codigo: string ): void {
+	setCodigoAcceso( codigo: string ): void {
 		this.acceso.codigo = codigo;
 		this._isCodigoValidForm = true;
 	}
 
-	setConfirmacionDesbloqueo( contrasena_pa: string, confcontrasena_pa: string ): void {
+	setConfirmacionAcceso( contrasena_pa: string, confcontrasena_pa: string ): void {
 		this.acceso.contrasena_pa = contrasena_pa;
 		this.acceso.confcontrasena_pa = confcontrasena_pa;
 		this._isConfirmacionValidForm = true;
