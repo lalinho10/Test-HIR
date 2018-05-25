@@ -1,6 +1,8 @@
 import { Component, OnDestroy }	 from '@angular/core';
 import { Subscription }			 from 'rxjs/Subscription';
 
+import { environment }			 from '../../environments/environment';
+
 import { AuthenticationService } from 'app/core/services/authentication/authentication.service';
 
 @Component({
@@ -10,6 +12,9 @@ import { AuthenticationService } from 'app/core/services/authentication/authenti
 
 export class AppHeaderComponent implements OnDestroy {
 	authenticated: boolean;
+	isProduction: boolean = environment.production;
+	environmentName: string = environment.environmentName;
+
 	private subscription: Subscription;
 
 	constructor( private authenticationService: AuthenticationService ){
