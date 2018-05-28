@@ -1,15 +1,16 @@
-import { Injectable }	   from '@angular/core';
-import { Router }		   from '@angular/router';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable }	   from 'rxjs/Observable';
+import { Injectable }		 from '@angular/core';
+import { Router }			 from '@angular/router';
+import { BehaviorSubject }	 from 'rxjs/BehaviorSubject';
+import { Observable }		 from 'rxjs/Observable';
 
-import { Usuario }		   from 'app/core/models/acceso/usuario';
+import { AuthenticatedUser } from './authenticated-user';
 
-import { AppModalService } from 'app/core/components/app-modal/app-modal.service';
+import { AppModalService }	 from 'app/core/components/app-modal/app-modal.service';
 
 @Injectable()
 export class AuthenticationService {
 	private _idCodigo: number;
+	private _authenticatedUser: AuthenticatedUser;
 	private authenticated = new BehaviorSubject<boolean>( false );
 
 	constructor(
@@ -19,6 +20,10 @@ export class AuthenticationService {
 
 	get idCodigo(): number {
 		return this._idCodigo;
+	}
+
+	get authenticatedUser(): AuthenticatedUser {
+		return this._authenticatedUser;
 	}
 
 	getAuthenticated(): Observable<boolean> {
@@ -35,6 +40,15 @@ export class AuthenticationService {
 			localStorage.setItem( 'token', 'fooSession' );
 			this.authenticated.next( true );
 		}
+	}
+
+	public authenticatedUserAcceso( response: any ) {
+		this._authenticatedUser = new AuthenticatedUser();
+
+		this._authenticatedUser.claveRol = response.claveRol;
+		this._authenticatedUser.fechaOperacion = new Date( response.fechaOperacion );
+		this._authenticatedUser.nombreUsuario = response.nombreUsuario;
+		this._authenticatedUser.ultimoLogin = new Date( response.ultimoLogin );
 	}
 
 	public isAuthenticated(): boolean {

@@ -52,6 +52,7 @@ export class CodigoComponent implements OnInit {
 			.subscribe( response => {
 				if( response.codigoRespuesta === 200 ) {
 					this.accesoService.setCodigoAcceso( codigoRequest.codigo );
+					this.authenticationService.authenticatedUserAcceso( response );
 					this.authenticationService.codigoAcceso( codigoRequest.codigo );
 					this.router.navigateByUrl( '/inicio' );
 				}
