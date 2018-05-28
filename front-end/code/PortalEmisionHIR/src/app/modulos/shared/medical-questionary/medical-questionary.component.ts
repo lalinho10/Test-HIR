@@ -54,40 +54,34 @@ export class MedicalQuestionaryComponent implements OnInit {
 			'pregunta': ['', Validators.compose([
 				Validators.required
 			])],
-			'nombrePadecimiento': ['', Validators.compose([
-				Validators.required
-			])],
-			'fechaPadecimiento': ['', Validators.compose([
-				Validators.required
-			])],
-			'duracionPadecimiento': ['', Validators.compose([
-				Validators.required
-			])],
-			'condicionesActuales': ['', Validators.compose([
-				Validators.required
-			])]
-		})
+			'detalleRespuesta': this.fb.group({
+				'nombrePadecimiento': ['', Validators.compose([
+					Validators.required
+				])],
+				'fechaPadecimiento': ['', Validators.compose([
+					Validators.required
+				])],
+				'duracionPadecimiento': ['', Validators.compose([
+					Validators.required
+				])],
+				'condicionesActuales': ['', Validators.compose([
+					Validators.required
+				])]
+			})
+		});
 	}
 
 	private fnCambiarRespuesta( idPregunta: number ): void {
 		let grupoPreguntas: FormArray = this.frmCuestionario.controls[ 'grupoPreguntas' ] as FormArray;
 		let grupoPregunta: FormGroup = grupoPreguntas.at( idPregunta ) as FormGroup;
+		let grupoDetalleRespuesta: FormGroup = grupoPregunta.controls[ 'detalleRespuesta' ] as FormGroup;
 
-		grupoPregunta.controls[ 'nombrePadecimiento' ].setValue( '' );
-		grupoPregunta.controls[ 'fechaPadecimiento' ].setValue( '' );
-		grupoPregunta.controls[ 'duracionPadecimiento' ].setValue( '' );
-		grupoPregunta.controls[ 'condicionesActuales' ].setValue( '' );
+		grupoDetalleRespuesta.reset();
 
 		if( grupoPregunta.controls[ 'pregunta' ].value ) {
-			grupoPregunta.controls[ 'nombrePadecimiento' ].enable();
-			grupoPregunta.controls[ 'fechaPadecimiento' ].enable();
-			grupoPregunta.controls[ 'duracionPadecimiento' ].enable();
-			grupoPregunta.controls[ 'condicionesActuales' ].enable();
+			grupoDetalleRespuesta.enable();
 		} else  {
-			grupoPregunta.controls[ 'nombrePadecimiento' ].disable();
-			grupoPregunta.controls[ 'fechaPadecimiento' ].disable();
-			grupoPregunta.controls[ 'duracionPadecimiento' ].disable();
-			grupoPregunta.controls[ 'condicionesActuales' ].disable();
+			grupoDetalleRespuesta.disable();
 		}
 	}
 }

@@ -20,36 +20,36 @@
 					</pehir-extend-form-control>
 				</div>
 			</div>
-			<div *ngIf="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['pregunta'].value" class="row">
+			<div *ngIf="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['pregunta'].value" formGroupName="detalleRespuesta" class="row">
 				<div class="col col-25">
 					<label id="lblNombrePadecimiento" class="form-label cuestionario">Nombre de las enfermedades, lesiones estudios o tratamientos</label>
 					<pehir-extend-form-control
-						[inputDirty]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['nombrePadecimiento'].dirty"
-						[inputErrors]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['nombrePadecimiento'].errors">
+						[inputDirty]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['detalleRespuesta'].controls['nombrePadecimiento'].dirty"
+						[inputErrors]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['detalleRespuesta'].controls['nombrePadecimiento'].errors">
 							<input id="txtNombrePadecimiento" type="text" class="form-control" formControlName="nombrePadecimiento">
 					</pehir-extend-form-control>
 				</div>
 				<div class="col col-25">
 					<label id="lblFechaPadecimiento" class="form-label cuestionario">Fecha en que las sufrió o se las practicaron</label>
 					<pehir-extend-form-control
-						[inputDirty]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['fechaPadecimiento'].dirty"
-						[inputErrors]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['fechaPadecimiento'].errors">
+						[inputDirty]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['detalleRespuesta'].controls['fechaPadecimiento'].dirty"
+						[inputErrors]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['detalleRespuesta'].controls['fechaPadecimiento'].errors">
 							<my-date-picker name="fechanac" [options]="fecNacOptions" formControlName="fechaPadecimiento"></my-date-picker>
 					</pehir-extend-form-control>
 				</div>
 				<div class="col col-25">
 					<label id="lblDuracionPadecimiento" class="form-label cuestionario">Duración</label>
 					<pehir-extend-form-control
-						[inputDirty]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['duracionPadecimiento'].dirty"
-						[inputErrors]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['duracionPadecimiento'].errors">
+						[inputDirty]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['detalleRespuesta'].controls['duracionPadecimiento'].dirty"
+						[inputErrors]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['detalleRespuesta'].controls['duracionPadecimiento'].errors">
 							<input id="txtDuracionPadecimiento" type="text" class="form-control" formControlName="duracionPadecimiento">
 					</pehir-extend-form-control>
 				</div>
 				<div class="col col-25">
 					<label id="lblCondicionesActuales" class="form-label cuestionario">Condiciones físicas actualmente (sano o en tratamiento)</label>
 					<pehir-extend-form-control
-						[inputDirty]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['condicionesActuales'].dirty"
-						[inputErrors]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['condicionesActuales'].errors">
+						[inputDirty]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['detalleRespuesta'].controls['condicionesActuales'].dirty"
+						[inputErrors]="frmCuestionario.controls['grupoPreguntas'].controls[i].controls['detalleRespuesta'].controls['condicionesActuales'].errors">
 							<select id="cboCondicionesActuales" class="form-control" formControlName="condicionesActuales">
 								<option value="">Selecciona</option>
 								<option *ngFor="let condicionFisica of condicionesFisicas" [ngValue]="condicionFisica">
