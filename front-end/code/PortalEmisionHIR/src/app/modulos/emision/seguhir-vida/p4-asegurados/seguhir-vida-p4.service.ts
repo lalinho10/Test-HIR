@@ -2,16 +2,23 @@ import { Injectable }	 from '@angular/core';
 
 import { SeguhirVidaP4 } from './seguhir-vida-p4';
 
+import { Asegurado }	 from 'app/core/models/asegurado';
+
 @Injectable()
 export class SeguhirVidaP4Service {
 	private seguhirVidaP4: SeguhirVidaP4;
 
-	setModelP4( frmSeguhirVidaP4: any ) {
+	setModelP4( asegurados: Asegurado[], frmSeguhirVidaP4: any ) {
 		this.seguhirVidaP4 = new SeguhirVidaP4();
 
-		this.seguhirVidaP4.conyuge = undefined;
-		this.seguhirVidaP4.hijo1 = undefined;
-		this.seguhirVidaP4.hijo2 = undefined;
+		let aseguradoC  = asegurados.filter( ( asegurado: Asegurado ) => asegurado.tipoAsegurado == 'Conyuge' );
+		let aseguradoH1 = asegurados.filter( ( asegurado: Asegurado ) => asegurado.tipoAsegurado == 'Hijo1' );
+		let aseguradoH2 = asegurados.filter( ( asegurado: Asegurado ) => asegurado.tipoAsegurado == 'Hijo2' );
+
+		this.seguhirVidaP4.conyuge = ( aseguradoC.length > 0 ) ? aseguradoC[ 0 ] : undefined;
+		this.seguhirVidaP4.hijo1 = ( aseguradoH1.length > 0 ) ? aseguradoH1[ 0 ] : undefined;
+		this.seguhirVidaP4.hijo2 = ( aseguradoH2.length > 0 ) ? aseguradoH2[ 0 ] : undefined;
+
 		this.seguhirVidaP4.confirmacionConyuge = frmSeguhirVidaP4.confirmacionConyuge;
 		this.seguhirVidaP4.padecimientoConyuge = ( frmSeguhirVidaP4.confirmacionConyuge ) ? frmSeguhirVidaP4.padecimientoConyuge : undefined;
 		this.seguhirVidaP4.confirmacionHijo1 = frmSeguhirVidaP4.confirmacionHijo1;

@@ -7,15 +7,15 @@
 <form [formGroup]="frmSeguhirVidaP4" (ngSubmit)="fnAvanzarP5()">
 	<fieldset *ngIf="capturaConyuge">
 		<legend>Datos del cónyuge</legend>
-		<pehir-insured-form (onValidateForm)="onValidateFormConyuge($event)"></pehir-insured-form>
+		<pehir-insured-form [tipoAsegurado]="'Conyuge'" (onValidateForm)="onValidateFormConyuge($event)"></pehir-insured-form>
 	</fieldset>
 	<fieldset *ngIf="capturaHijos">
 		<legend>Datos del hijo 1</legend>
-		<pehir-insured-form (onValidateForm)="onValidateFormHijo1($event)"></pehir-insured-form>
+		<pehir-insured-form [tipoAsegurado]="'Hijo1'" (onValidateForm)="onValidateFormHijo1($event)"></pehir-insured-form>
 	</fieldset>
 	<fieldset *ngIf="capturaHijos">
 		<legend>Datos del hijo 2</legend>
-		<pehir-insured-form (onValidateForm)="onValidateFormHijo2($event)"></pehir-insured-form>
+		<pehir-insured-form [tipoAsegurado]="'Hijo2'" (onValidateForm)="onValidateFormHijo2($event)"></pehir-insured-form>
 	</fieldset>
 	<fieldset>
 		<legend>Cuestionario médico para dependientes</legend>

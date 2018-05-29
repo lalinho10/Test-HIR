@@ -1,10 +1,13 @@
-import { Component, OnInit }				  from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
+
+import { InsuredFormComponent }				  from 'app/modulos/shared/insured-form/insured-form.component';
 
 import { SeguhirVidaService }				  from '../seguhir-vida.service';
 import { SeguhirVidaP4Service }				  from './seguhir-vida-p4.service';
 
+import { Asegurado }						  from 'app/core/models/asegurado';
 import { Plan }								  from 'app/core/models/plan';
 
 import { EPLAN }							  from 'app/core/enum/plan';
@@ -15,6 +18,8 @@ import { EPLAN }							  from 'app/core/enum/plan';
 })
 
 export class SeguhirVidaP4Component implements OnInit {
+	@ViewChildren( InsuredFormComponent ) cmpsAsegurados: QueryList<InsuredFormComponent>;
+
 	capturaConyuge: boolean = false;
 	capturaHijos: boolean = false;
 
@@ -25,12 +30,14 @@ export class SeguhirVidaP4Component implements OnInit {
 
 	frmSeguhirVidaP4: FormGroup;
 
+	asegurados: Asegurado[] = [];
+
 	constructor(
 		private fb: FormBuilder,
 		private router: Router,
 		private seguhirVidaService: SeguhirVidaService,
 		private seguhirVidaP4Service: SeguhirVidaP4Service
-	){}
+	) {}
 
 	ngOnInit() {
 		this.crearFormulario();
@@ -133,7 +140,11 @@ export class SeguhirVidaP4Component implements OnInit {
 	}
 
 	fnAvanzarP5(): void {
-		this.seguhirVidaP4Service.setModelP4( this.frmSeguhirVidaP4.value );
+		this.cmpsAsegurados.forEach(
+			cmpAsegurado => this.asegurados.push( cmpAsegurado.asegurado )
+		);
+
+		this.seguhirVidaP4Service.setModelP4( this.asegurados, this.frmSeguhirVidaP4.value );
 		this.router.navigateByUrl( '/emision/seguhirvida/beneficiarios' );
 	}
 }

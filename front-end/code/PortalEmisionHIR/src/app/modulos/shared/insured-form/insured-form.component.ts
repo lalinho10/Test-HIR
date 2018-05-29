@@ -1,18 +1,18 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators }	   from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators }			  from '@angular/forms';
 
-import { WSClientService }						   from 'app/core/services/ws-client.service';
+import { WSClientService }								  from 'app/core/services/ws-client.service';
 
-import { ApellidoValidator } 					   from 'app/core/validators/apellido.validator';
-import { NombreValidator }						   from 'app/core/validators/nombre.validator';
-import { PorcentajeValidator }					   from 'app/core/validators/porcentaje.validator';
+import { ApellidoValidator } 							  from 'app/core/validators/apellido.validator';
+import { NombreValidator }								  from 'app/core/validators/nombre.validator';
+import { PorcentajeValidator }							  from 'app/core/validators/porcentaje.validator';
 
-import { Asegurado }							   from 'app/core/models/asegurado';
-import { Ocupacion }							   from 'app/core/models/ocupacion';
+import { Asegurado }									  from 'app/core/models/asegurado';
+import { Ocupacion }									  from 'app/core/models/ocupacion';
 
-import { GENEROS }								   from 'app/core/data/generos';
-import { ESTADOSCIVILES }						   from 'app/core/data/estadosCiviles';
-import { FECNACOPTIONS }						   from 'app/core/data/fecNacOptions';
+import { GENEROS }										  from 'app/core/data/generos';
+import { ESTADOSCIVILES }								  from 'app/core/data/estadosCiviles';
+import { FECNACOPTIONS }								  from 'app/core/data/fecNacOptions';
 
 @Component({
 	selector: 'pehir-insured-form',
@@ -20,12 +20,15 @@ import { FECNACOPTIONS }						   from 'app/core/data/fecNacOptions';
 })
 
 export class InsuredFormComponent implements OnInit {
+	@Input()
+	tipoAsegurado: string;
+
 	@Output()
 	onValidateForm: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 	frmAsegurado: FormGroup;
 
-	asegurado: Asegurado
+	asegurado: Asegurado = new Asegurado();
 
 	ocupaciones: Ocupacion[];
 
@@ -77,13 +80,20 @@ export class InsuredFormComponent implements OnInit {
 			])],
 			'ocupacion': ['', Validators.compose([
 				Validators.required
-			])]
+			])],
+			'tipoAsegurado': this.tipoAsegurado
 		});
 	}
 
 	private registrarEventos(): void {
 		this.frmAsegurado.statusChanges.subscribe(
-			data => this.onValidateForm.emit( this.frmAsegurado.valid )
+			data =>  {
+				this.onValidateForm.emit( this.frmAsegurado.valid );
+
+				if( this.frmAsegurado.valid ) {
+					this.asegurado = this.frmAsegurado.value;
+				}
+			}
 		);
 	}
 }

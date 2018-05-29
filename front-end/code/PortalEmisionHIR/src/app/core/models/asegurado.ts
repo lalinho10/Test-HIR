@@ -8,8 +8,9 @@ export class Asegurado {
 	nombre: string;
 	apaterno: string;
 	amaterno: string;
-	fechaNacimiento: Date;
+	fechaNacimiento: IMyDateModel;
 	estadoCivil: EstadoCivil;
 	genero: Genero;
 	ocupacion: Ocupacion;
+	tipoAsegurado: string;
 }
