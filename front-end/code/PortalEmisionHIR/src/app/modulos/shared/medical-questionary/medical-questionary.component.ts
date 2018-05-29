@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators }  from '@angular/forms';
 
 import { CONDICIONESFISICAS }							  from 'app/core/data/condiciones-fisicas';
+
 import { PreguntaMedica }								  from 'app/core/models/pregunta-medica';
 
 @Component({
@@ -11,12 +12,14 @@ import { PreguntaMedica }								  from 'app/core/models/pregunta-medica';
 
 export class MedicalQuestionaryComponent implements OnInit {
 	@Input()
-	preguntasMedicas: PreguntaMedica[];
+	preguntas: string[];
 
 	@Output()
 	onValidateQuestionary: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 	frmCuestionario: FormGroup;
+
+	preguntasMedicas: PreguntaMedica[] = [];
 
 	condicionesFisicas = CONDICIONESFISICAS;
 
@@ -29,21 +32,22 @@ export class MedicalQuestionaryComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.crearFormulario();
+		this.registrarEventos();
+	}
+
+	private crearFormulario(): void {
 		this.frmCuestionario = this.fb.group({
 			'grupoPreguntas': this.fb.array( [] )
 		});
 
 		this.crearArregloGrupos();
-
-		this.frmCuestionario.statusChanges.subscribe(
-			data => this.onValidateQuestionary.emit( this.frmCuestionario.valid )
-		);
 	}
 
 	private crearArregloGrupos(): void {
 		let grupoPreguntas: FormArray = this.frmCuestionario.controls[ 'grupoPreguntas' ] as FormArray;
 
-		for( let i = 0; i < this.preguntasMedicas.length; i++ ) {
+		for( let i: number = 0; i < this.preguntas.length; i++ ) {
 			let grupoPregunta: FormGroup = this.crearGrupo();
 			grupoPreguntas.push( grupoPregunta );
 		}
@@ -69,6 +73,38 @@ export class MedicalQuestionaryComponent implements OnInit {
 				])]
 			})
 		});
+	}
+
+	private registrarEventos() {
+		this.frmCuestionario.statusChanges.subscribe(
+			data => {
+				this.onValidateQuestionary.emit( this.frmCuestionario.valid );
+
+				if( this.frmCuestionario.valid ) {
+					this.crearModelo();
+				}
+			}
+		);
+	}
+
+	private crearModelo() {
+		for( let i: number = 0; i < this.preguntas.length; i++ ) {
+			let grupoPreguntas: FormArray = this.frmCuestionario.controls[ 'grupoPreguntas' ] as FormArray;
+			let grupoPregunta: FormGroup = grupoPreguntas.at( i ) as FormGroup;
+			let grupoDetalleRespuesta: FormGroup = grupoPregunta.controls[ 'detalleRespuesta' ] as FormGroup;
+
+			let pregunta: PreguntaMedica = new PreguntaMedica();
+
+			pregunta.idPregunta = i;
+			pregunta.textoPregunta = this.preguntas[ i ];
+			pregunta.confirmacionPregunta = grupoPregunta.controls[ 'pregunta' ].value;
+			pregunta.nombrePadecimiento = ( grupoPregunta.controls[ 'pregunta' ].value ) ? grupoDetalleRespuesta.controls[ 'nombrePadecimiento' ].value : undefined;
+			pregunta.fechaPadecimiento = ( grupoPregunta.controls[ 'pregunta' ].value ) ? grupoDetalleRespuesta.controls[ 'fechaPadecimiento' ].value : undefined;
+			pregunta.duracionPadecimiento = ( grupoPregunta.controls[ 'pregunta' ].value ) ? grupoDetalleRespuesta.controls[ 'duracionPadecimiento' ].value : undefined;
+			pregunta.condicionesActuales = ( grupoPregunta.controls[ 'pregunta' ].value ) ? grupoDetalleRespuesta.controls[ 'condicionesActuales' ].value : undefined;
+
+			this.preguntasMedicas.push( pregunta );
+		}
 	}
 
 	private fnCambiarRespuesta( idPregunta: number ): void {

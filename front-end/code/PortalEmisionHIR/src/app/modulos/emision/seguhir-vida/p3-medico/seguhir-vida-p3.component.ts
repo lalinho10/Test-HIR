@@ -1,6 +1,8 @@
-import { Component, OnInit }				  from '@angular/core';
+import { Component, OnInit, ViewChild }		  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
+
+import { MedicalQuestionaryComponent }		  from 'app/modulos/shared/medical-questionary/medical-questionary.component';
 
 import { SeguhirVidaP3Service }				  from './seguhir-vida-p3.service';
 
@@ -16,6 +18,8 @@ import { NIVELESCOMPETENCIA }				  from 'app/core/data/niveles-competencia';
 })
 
 export class SeguhirVidaP3Component implements OnInit {
+	@ViewChild( MedicalQuestionaryComponent ) cmpCuestionario;
+
 	isValidQuestionary = false;
 
 	frmSeguhirVidaP3: FormGroup;
@@ -196,7 +200,7 @@ export class SeguhirVidaP3Component implements OnInit {
 	}
 
 	fnAvanzarP4(): void {
-		this.seguhirVidaP3Service.setModelP3( this.frmSeguhirVidaP3.value );
+		this.seguhirVidaP3Service.setModelP3( this.cmpCuestionario.preguntasMedicas, this.frmSeguhirVidaP3.value );
 		this.router.navigateByUrl( '/emision/seguhirvida/asegurados' );
 	}
 }

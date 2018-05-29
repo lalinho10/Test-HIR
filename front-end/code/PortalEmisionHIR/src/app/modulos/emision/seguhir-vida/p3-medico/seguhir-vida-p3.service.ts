@@ -1,14 +1,17 @@
-import { Injectable }	 from '@angular/core';
+import { Injectable }	  from '@angular/core';
 
-import { SeguhirVidaP3 } from './seguhir-vida-p3';
+import { SeguhirVidaP3 }  from './seguhir-vida-p3';
+
+import { PreguntaMedica } from 'app/core/models/pregunta-medica';
 
 @Injectable()
 export class SeguhirVidaP3Service {
 	private seguhirVidaP3: SeguhirVidaP3;
 
-	setModelP3( frmSeguhirVidaP3: any ) {
+	setModelP3( preguntasMedicas: PreguntaMedica[], frmSeguhirVidaP3: any ) {
 		this.seguhirVidaP3 = new SeguhirVidaP3();
 
+		this.seguhirVidaP3.preguntasMedicas = preguntasMedicas;
 		this.seguhirVidaP3.estatura = frmSeguhirVidaP3.estatura;
 		this.seguhirVidaP3.peso = frmSeguhirVidaP3.peso;
 		this.seguhirVidaP3.variacionPeso = frmSeguhirVidaP3.variacionPeso;
