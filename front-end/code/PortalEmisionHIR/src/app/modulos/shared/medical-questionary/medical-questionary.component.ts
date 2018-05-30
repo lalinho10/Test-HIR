@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators }  from '@angular/forms';
 
 import { CONDICIONESFISICAS }							  from 'app/core/data/condiciones-fisicas';
+import { FECPRVOPTIONS }								  from 'app/core/data/calendarios/fecPrvOptions';
 
 import { PreguntaMedica }								  from 'app/core/models/pregunta-medica';
 
@@ -22,6 +23,7 @@ export class MedicalQuestionaryComponent implements OnInit {
 	preguntasMedicas: PreguntaMedica[] = [];
 
 	condicionesFisicas = CONDICIONESFISICAS;
+	fecPrvOptions = FECPRVOPTIONS;
 
 	constructor(
 		private fb: FormBuilder
