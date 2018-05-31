@@ -1,8 +1,14 @@
 import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { CambiarContrasenaRequest }			  from './cambiar-contrasena.request';
+
+import { CambiarContrasenaService }			  from './cambiar-contrasena.service';
+
 import { AppModalService }					  from 'app/core/components/app-modal/app-modal.service';
+
 import { WSClientService }					  from 'app/core/services/ws-client.service';
+import { AuthenticationService }			  from 'app/core/services/authentication/authentication.service';
 
 import { ContrasenaValidator }				  from 'app/core/validators/contrasena.validator';
 import { IgualdadContrasenasValidator }		  from 'app/core/validators/igualdad-contrasenas.validator';
@@ -14,10 +20,13 @@ import { IgualdadContrasenasValidator }		  from 'app/core/validators/igualdad-co
 
 export class CambiarContrasenaComponent implements OnInit {
 	titulo: string = 'Cambio de contraseña de acceso';
+
 	frmCambiarContrasena: FormGroup;
 
 	constructor(
 		private appModalService: AppModalService,
+		private authenticationService: AuthenticationService,
+		private cambiarContrasenaService: CambiarContrasenaService,
 		private fb: FormBuilder,
 		private wsClientService: WSClientService
 	) {}
@@ -47,8 +56,10 @@ export class CambiarContrasenaComponent implements OnInit {
 	}
 
 	fnCambiarContrasena(): void {
+		let cambiarContrasenaRequest: CambiarContrasenaRequest = this.cambiarContrasenaService.getRequest( this.authenticationService.idUsuario, this.frmCambiarContrasena.value );
+
 		this.wsClientService
-			.getObject( '/cambioClave' )
+			.postObject( '/loginCambiaClave', cambiarContrasenaRequest )
 			.subscribe( response =>  {
 				if( response.codigoRespuesta === 200 ) {
 					this.appModalService.openModal( 'success', response.mensaje );

@@ -50,6 +50,7 @@ import { SessionModalService }			from './core/components/session-modal/session-m
 import { SessionExpireModalService }	from './core/components/session-expire-modal/session-expire-modal.service';
 import { SessionTimerService }			from './core/components/session-timer/session-timer.service';
 import { RegistroService }				from './modulos/registro/registro.service';
+import { CambiarContrasenaService }		from './modulos/cambiar-contrasena/cambiar-contrasena.service';
 
 import { ErrorHandlerInterceptor }		from './core/interceptors/error-handler.interceptor'
 import { LoadingInterceptor }			from './core/interceptors/loading.interceptor'
@@ -101,6 +102,7 @@ registerLocaleData( localeESMX );
 		SessionExpireModalService,
 		SessionTimerService,
 		RegistroService,
+		CambiarContrasenaService,
 		{
 			provide: LOCALE_ID, useValue: "es-MX"
 		},
