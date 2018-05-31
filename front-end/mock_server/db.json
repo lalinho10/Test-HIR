@@ -3142,10 +3142,10 @@
 		"mensaje": "Correo y celular encontrados exitosamente",
 		"fechaOperacion": 1520957070339
 	},
-	"cambioClave":
+	"loginCambiaClave":
 	{
 		"codigoRespuesta": 200,
-		"mensaje": "Clave de acceso modificicada correctamente",
+		"mensaje": "Se ha cambiado la contraseña",
 		"fechaOperacion": 1520957070339
 	}
 }
