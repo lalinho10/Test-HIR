@@ -35,10 +35,13 @@ export class ExtendFormControlComponent implements OnChanges {
 		igualdadContrasenas: 'Las contraseñas son diferentes',
 		diferenciaTelefonos: 'Los teléfonos deben ser diferentes',
 		diferenciaCorreos: 'Los correos deben ser diferentes',
+		cambioIgualdadContrasenas: 'La contraseña nueva y la contraseña actual deben ser diferentes',
+		cambioDiferenciaContrasenas: 'La contraseña nueva y la confirmación de contraseña nueva deben ser iguales',
 		nombre: 'El nombre contiene caracteres no permitidos',
 		apellido: 'El apellido contiene caracteres no permitidos',
 		porcentaje: 'El porcentaje asigando es inválido',
-		entreedades: 'No cumples con el rango de edad para la contratación de este producto'
+		entreedades: 'No cumples con el rango de edad para la contratación de este producto',
+		numerico: 'El campo debe ser numérico'
 	};
 
 	ngOnChanges( changes: SimpleChanges ): void {
