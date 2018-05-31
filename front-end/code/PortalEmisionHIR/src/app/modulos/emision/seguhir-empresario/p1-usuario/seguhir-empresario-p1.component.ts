@@ -3,6 +3,15 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
 import { SeguhirEmpresarioP1Service }		  from './seguhir-empresario-p1.service';
+
+import { GENEROS }							  from 'app/core/data/generos';
+import { ESTADOSCIVILES }					  from 'app/core/data/estadosCiviles';
+import { FECNACOPTIONS }					  from 'app/core/data/calendarios/fecNacOptions';
+
+import { Estado }							  from 'app/core/models/estado';
+import { Municipio }						  from 'app/core/models/municipio';
+import { Ocupacion }						  from 'app/core/models/ocupacion';
+
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator } 				  from 'app/core/validators/apellido.validator';
@@ -16,14 +25,6 @@ import { TelefonoValidator }				  from 'app/core/validators/telefono.validator';
 import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
 import { DiferenciaCorreosValidator }		  from 'app/core/validators/diferencia-correos.validator';
 import { DiferenciaTelefonosValidator }		  from 'app/core/validators/diferencia-telefonos.validator';
-
-import { GENEROS }							  from 'app/core/data/generos';
-import { ESTADOSCIVILES }					  from 'app/core/data/estadosCiviles';
-import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
-
-import { Estado }							  from 'app/core/models/estado';
-import { Municipio }						  from 'app/core/models/municipio';
-import { Ocupacion }						  from 'app/core/models/ocupacion';
 
 @Component({
 	selector: 'pehir-seguhir-empresario-p1',

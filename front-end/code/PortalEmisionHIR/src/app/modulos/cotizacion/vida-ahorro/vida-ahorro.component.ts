@@ -5,20 +5,21 @@ import { Router }							  from '@angular/router';
 import { Cotizacion }						  from '../cotizacion';
 
 import { CotizacionService }				  from '../cotizacion.service';
+
+import { GENEROS }							  from 'app/core/data/generos';
+import { MODULOS }							  from 'app/core/data/modulos';
+import { FECNACOPTIONS }					  from 'app/core/data/calendarios/fecNacOptions';
+
+import { FormaPago }						  from 'app/core/models/forma-pago';
+import { Paquete }							  from 'app/core/models/paquete';
+import { Plan }								  from 'app/core/models/plan';
+
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator } 				  from 'app/core/validators/apellido.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
 import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
-
-import { GENEROS }							  from 'app/core/data/generos';
-import { MODULOS }							  from 'app/core/data/modulos';
-import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
-
-import { FormaPago }						  from 'app/core/models/forma-pago';
-import { Paquete }							  from 'app/core/models/paquete';
-import { Plan }								  from 'app/core/models/plan';
 
 @Component({
 	selector: 'pehir-vida-ahorro',

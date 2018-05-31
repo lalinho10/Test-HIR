@@ -1,18 +1,18 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators }			  from '@angular/forms';
 
+import { ESTADOSCIVILES }								  from 'app/core/data/estadosCiviles';
+import { GENEROS }										  from 'app/core/data/generos';
+import { FECNACOPTIONS }								  from 'app/core/data/calendarios/fecNacOptions';
+
+import { Asegurado }									  from 'app/core/models/asegurado';
+import { Ocupacion }									  from 'app/core/models/ocupacion';
+
 import { WSClientService }								  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator } 							  from 'app/core/validators/apellido.validator';
 import { NombreValidator }								  from 'app/core/validators/nombre.validator';
 import { PorcentajeValidator }							  from 'app/core/validators/porcentaje.validator';
-
-import { Asegurado }									  from 'app/core/models/asegurado';
-import { Ocupacion }									  from 'app/core/models/ocupacion';
-
-import { GENEROS }										  from 'app/core/data/generos';
-import { ESTADOSCIVILES }								  from 'app/core/data/estadosCiviles';
-import { FECNACOPTIONS }								  from 'app/core/data/fecNacOptions';
 
 @Component({
 	selector: 'pehir-insured-form',

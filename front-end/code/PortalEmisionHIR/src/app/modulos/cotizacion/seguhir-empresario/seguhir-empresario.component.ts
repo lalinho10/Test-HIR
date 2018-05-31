@@ -5,6 +5,14 @@ import { Router }							  from '@angular/router';
 import { Cotizacion }						  from '../cotizacion';
 
 import { CotizacionService }				  from '../cotizacion.service';
+
+import { MODULOS }							  from 'app/core/data/modulos';
+import { GENEROS }							  from 'app/core/data/generos';
+import { FECNACOPTIONS }					  from 'app/core/data/calendarios/fecNacOptions';
+
+import { Cobertura }						  from 'app/core/models/cobertura';
+import { FormaPago }						  from 'app/core/models/forma-pago';
+
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator }				  from 'app/core/validators/apellido.validator';
@@ -12,13 +20,6 @@ import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { FormatoMonedaValidator }			  from 'app/core/validators/formato-moneda.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
 import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
-
-import { MODULOS }							  from 'app/core/data/modulos';
-import { GENEROS }							  from 'app/core/data/generos';
-import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
-
-import { Cobertura }						  from 'app/core/models/cobertura';
-import { FormaPago }						  from 'app/core/models/forma-pago';
 
 @Component({
 	selector: 'pehir-seguhir-empresario',

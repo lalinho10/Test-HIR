@@ -1,16 +1,15 @@
 import { Component, EventEmitter, OnInit, Output }		 from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { FECNACOPTIONS }								 from 'app/core/data/calendarios/fecNacOptions';
+
+import { Beneficiario }									 from 'app/core/models/beneficiario';
+import { Parentesco }									 from 'app/core/models/parentesco';
+
 import { WSClientService }								 from 'app/core/services/ws-client.service';
 
 import { NombreValidator }								 from 'app/core/validators/nombre.validator';
 import { PorcentajeValidator }							 from 'app/core/validators/porcentaje.validator';
-
-import { Beneficiario }									 from 'app/core/models/beneficiario';
-
-import { FECNACOPTIONS }								 from 'app/core/data/fecNacOptions';
-
-import { Parentesco }									 from 'app/core/models/parentesco';
 
 @Component({
 	selector: 'pehir-policyholder-table',
