@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
 			.subscribe( response => {
 				if( response.codigoRespuesta === 200 ) {
 					this.accesoService.setLoginAcceso( loginRequest.usuario, loginRequest.contrasenia );
-					this.authenticationService.loginAcceso( response.idCodigo );
+					this.authenticationService.loginAcceso( loginRequest.usuario, response.idCodigo );
 					this.router.navigateByUrl( '/acceso/codigo' );
 				}
 			});

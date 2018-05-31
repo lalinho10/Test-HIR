@@ -10,6 +10,7 @@ import { AppModalService }	 from 'app/core/components/app-modal/app-modal.servic
 @Injectable()
 export class AuthenticationService {
 	private _idCodigo: number;
+	private _idUsuario: string;
 	private _authenticatedUser: AuthenticatedUser;
 	private authenticated = new BehaviorSubject<boolean>( false );
 
@@ -22,6 +23,10 @@ export class AuthenticationService {
 		return this._idCodigo;
 	}
 
+	get idUsuario(): string {
+		return this._idUsuario;
+	}
+
 	get authenticatedUser(): AuthenticatedUser {
 		return this._authenticatedUser;
 	}
@@ -30,14 +35,15 @@ export class AuthenticationService {
 		return this.authenticated.asObservable();
 	}
 
-	public loginAcceso( idCodigo: number ): void {
+	public loginAcceso( idUsuario: string, idCodigo: number ): void {
+		this._idUsuario = idUsuario;
 		this._idCodigo = idCodigo;
 	}
 
 	public codigoAcceso( codigo: string ) {
 		if( this._idCodigo !== null && typeof this._idCodigo !== 'undefined' && 
 					codigo !== null && typeof codigo !== 'undefined' ) {
-			localStorage.setItem( 'token', 'fooSession' );
+			sessionStorage.setItem( 'token', 'fooSession' );
 			this.authenticated.next( true );
 		}
 	}
@@ -52,7 +58,7 @@ export class AuthenticationService {
 	}
 
 	public isAuthenticated(): boolean {
-		const token = localStorage.getItem( 'token' );
+		const token = sessionStorage.getItem( 'token' );
 
 		let hasToken = ( token ) ? true : false;
 		
@@ -62,7 +68,7 @@ export class AuthenticationService {
 	}
 
 	public logout(): void {
-		localStorage.clear();
+		sessionStorage.clear();
 		this._idCodigo = undefined;
 		this.authenticated.next( false );
 		this.router.navigateByUrl( '/acceso/login' );
