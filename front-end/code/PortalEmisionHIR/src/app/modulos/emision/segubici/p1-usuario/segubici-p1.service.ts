@@ -23,8 +23,8 @@ export class SegubiciP1Service {
 		this.segubiciP1.delegacionMunicipio = frmSegubiciP1.delegacionMunicipio;
 		this.segubiciP1.estado = frmSegubiciP1.estado;
 		this.segubiciP1.cp = frmSegubiciP1.cp;
-		this.segubiciP1.telefono = frmSegubiciP1.telefono;
-		this.segubiciP1.celular = frmSegubiciP1.celular;
+		this.segubiciP1.telefono = frmSegubiciP1.telefonos.telefono;
+		this.segubiciP1.celular = frmSegubiciP1.telefonos.celular;
 		this.segubiciP1.correoe = frmSegubiciP1.correoe;
 		this.segubiciP1.vigenciaPoliza = frmSegubiciP1.vigenciaPoliza;
 		this.segubiciP1.gobierno = frmSegubiciP1.gobierno;

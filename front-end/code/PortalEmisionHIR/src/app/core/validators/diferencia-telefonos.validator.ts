@@ -6,7 +6,7 @@ export function DiferenciaTelefonosValidator( telefono1Key: string, telefono2Key
 		const valor1 = formGroup.controls[ telefono1Key ].value;
 		const valor2 = formGroup.controls[ telefono2Key ].value;
 
-		if( valor1 === valor2 ) {
+		if( valor1 !== '' && valor2 !== '' && valor1 === valor2 ) {
 			return { 'diferenciaTelefonos': true }
 		}
 

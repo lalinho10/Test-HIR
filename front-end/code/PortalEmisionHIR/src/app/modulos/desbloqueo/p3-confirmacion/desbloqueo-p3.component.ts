@@ -23,17 +23,20 @@ export class DesbloqueoP3Component implements OnInit {
 
 	ngOnInit() {
 		this.frmDesP3 = this.fb.group({
-			'contrasena': ['', Validators.compose([
-				Validators.required,
-				ContrasenaValidator()
-			])],
-			'confcontrasena': ['', Validators.compose([
-				Validators.required,
-				ContrasenaValidator()
-			])],
-			'confirmacion': [true, Validators.required]
-		}, {
-			validator: IgualdadContrasenasValidator( 'contrasena', 'confcontrasena' )
+			'confirmacion': [true, Validators.required],
+			'contrasenas': this.fb.group({
+				'contrasena': ['', Validators.compose([
+					Validators.required,
+					ContrasenaValidator()
+				])],
+				'confcontrasena': ['', Validators.compose([
+					Validators.required,
+					ContrasenaValidator()
+				])]
+			},
+			{
+				validator: IgualdadContrasenasValidator( 'contrasena', 'confcontrasena' )
+			})
 		});
 	}
 

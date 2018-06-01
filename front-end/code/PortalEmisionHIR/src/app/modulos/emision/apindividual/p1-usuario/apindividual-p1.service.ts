@@ -23,8 +23,8 @@ export class ApindividualP1Service {
 		this.apindividualP1.delegacionMunicipio = frmApindividualP1.delegacionMunicipio;
 		this.apindividualP1.estado = frmApindividualP1.estado;
 		this.apindividualP1.cp = frmApindividualP1.cp;
-		this.apindividualP1.telefono = frmApindividualP1.telefono;
-		this.apindividualP1.celular = frmApindividualP1.celular;
+		this.apindividualP1.telefono = frmApindividualP1.telefonos.telefono;
+		this.apindividualP1.celular = frmApindividualP1.telefonos.celular;
 		this.apindividualP1.correoe = frmApindividualP1.correoe;
 		this.apindividualP1.vigenciaPoliza = frmApindividualP1.vigenciaPoliza;
 		this.apindividualP1.gobierno = frmApindividualP1.gobierno;

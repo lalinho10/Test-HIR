@@ -208,29 +208,35 @@
 				</div>
 			</div>
 			<div class="col col-50">
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblTelefono" class="form-label">Teléfono de casa/oficina:</label>
+				<div formGroupName="telefonos">
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblTelefono" class="form-label">Teléfono de casa/oficina:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmApindividualP1.get('telefonos.telefono').dirty"
+								[inputErrors]="frmApindividualP1.get('telefonos.telefono').errors"
+								[groupDirty]="frmApindividualP1.get('telefonos').dirty"
+								[groupErrors]="frmApindividualP1.get('telefonos').errors">
+									<input id="txtTelefono" type="text" class="form-control" formControlName="telefono">
+							</pehir-extend-form-control>
+						</div>
 					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.get('telefono').dirty"
-							[inputErrors]="frmApindividualP1.get('telefono').errors">
-								<input id="txtTelefono" type="text" class="form-control" formControlName="telefono">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblCelular" class="form-label">Teléfono móvil:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmApindividualP1.get('celular').dirty"
-							[inputErrors]="frmApindividualP1.get('celular').errors"
-							[formErrors]="frmApindividualP1.errors">
-								<input id="txtCelular" type="text" class="form-control" formControlName="celular">
-						</pehir-extend-form-control>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblCelular" class="form-label">Teléfono móvil:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmApindividualP1.get('telefonos.celular').dirty"
+								[inputErrors]="frmApindividualP1.get('telefonos.celular').errors"
+								[groupDirty]="frmApindividualP1.get('telefonos').dirty"
+								[groupErrors]="frmApindividualP1.get('telefonos').errors"
+								[isInputForGroupError]="true">
+									<input id="txtCelular" type="text" class="form-control" formControlName="celular">
+							</pehir-extend-form-control>
+						</div>
 					</div>
 				</div>
 				<div class="row">

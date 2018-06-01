@@ -108,14 +108,21 @@ export class ApindividualP1Component implements OnInit {
 				Validators.required,
 				CodigoPostalValidator()
 			])],
-			'telefono': ['', Validators.compose([
-				Validators.required,
-				TelefonoValidator()
-			])],
-			'celular': ['', Validators.compose([
-				Validators.required,
-				CelularValidator()
-			])],
+
+			'telefonos': this.fb.group({
+				'telefono': ['', Validators.compose([
+					Validators.required,
+					TelefonoValidator()
+				])],
+				'celular': ['', Validators.compose([
+					Validators.required,
+					CelularValidator()
+				])]
+			},
+			{
+				validator: DiferenciaTelefonosValidator( 'telefono', 'celular' )
+			}),
+
 			'correoe': ['', Validators.compose([
 				Validators.required,
 				Validators.email,
@@ -136,9 +143,6 @@ export class ApindividualP1Component implements OnInit {
 			'especifiqueParGob': ['', Validators.compose([
 				Validators.required
 			])]
-		},
-		{
-			validator: DiferenciaTelefonosValidator( 'telefono', 'celular' )
 		});
 	}
 

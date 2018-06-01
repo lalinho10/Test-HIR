@@ -58,7 +58,9 @@
 			<div class="col col-30">
 				<pehir-extend-form-control
 					[inputDirty]="frmRegistro.get('contrasenas.contrasena').dirty"
-					[inputErrors]="frmRegistro.get('contrasenas.contrasena').errors">
+					[inputErrors]="frmRegistro.get('contrasenas.contrasena').errors"
+					[groupDirty]="frmRegistro.get('contrasenas').dirty"
+					[groupErrors]="frmRegistro.get('contrasenas').errors">
 						<input id="txtContrasena" type="password" class="form-control" formControlName="contrasena">
 				</pehir-extend-form-control>
 			</div>
@@ -71,7 +73,9 @@
 				<pehir-extend-form-control
 					[inputDirty]="frmRegistro.get('contrasenas.confcontrasena').dirty"
 					[inputErrors]="frmRegistro.get('contrasenas.confcontrasena').errors"
-					[formErrors]="frmRegistro.get('contrasenas').errors">
+					[groupDirty]="frmRegistro.get('contrasenas').dirty"
+					[groupErrors]="frmRegistro.get('contrasenas').errors"
+					[isInputForGroupError]="true">
 						<input id="txtConfContrasena" type="password" class="form-control" formControlName="confcontrasena">
 				</pehir-extend-form-control>
 			</div>
@@ -80,7 +84,7 @@
 	<div class="row">
 		<div class="col col-30 col-off-40">
 			<label class="msg info">
-				La contraseña debe contener al menos una mayúscula, una minúscula, un número, así mismo la longitud no puede ser menor a 8 ni mayor a 20.
+				La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un dígito y uno de los siguientes caracteres especiales: $@¡%*?&. Así mismo, la longitud no puede ser menor a 8 ni mayor a 20 caracteres.
 			</label>
 		</div>
 	</div>
@@ -92,7 +96,9 @@
 			<div class="col col-30">
 				<pehir-extend-form-control
 					[inputDirty]="frmRegistro.get('telefonos.celular').dirty"
-					[inputErrors]="frmRegistro.get('telefonos.celular').errors">
+					[inputErrors]="frmRegistro.get('telefonos.celular').errors"
+					[groupDirty]="frmRegistro.get('telefonos').dirty"
+					[groupErrors]="frmRegistro.get('telefonos').errors">
 						<input id="txtCelular" type="text" class="form-control" formControlName="celular">
 				</pehir-extend-form-control>
 			</div>
@@ -105,7 +111,9 @@
 				<pehir-extend-form-control
 					[inputDirty]="frmRegistro.get('telefonos.telefono').dirty"
 					[inputErrors]="frmRegistro.get('telefonos.telefono').errors"
-					[formErrors]="frmRegistro.get('telefonos').errors">
+					[groupDirty]="frmRegistro.get('telefonos').dirty"
+					[groupErrors]="frmRegistro.get('telefonos').errors"
+					[isInputForGroupError]="true">
 						<input id="txtTelefono" type="text" class="form-control" formControlName="telefono">
 				</pehir-extend-form-control>
 			</div>

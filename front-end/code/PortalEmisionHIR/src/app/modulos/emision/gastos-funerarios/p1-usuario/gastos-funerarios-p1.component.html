@@ -276,7 +276,9 @@
 						<div class="col col-50">
 							<pehir-extend-form-control
 								[inputDirty]="frmGastosFunerariosP1.get('telefonos.telefono').dirty"
-								[inputErrors]="frmGastosFunerariosP1.get('telefonos.telefono').errors">
+								[inputErrors]="frmGastosFunerariosP1.get('telefonos.telefono').errors"
+								[groupDirty]="frmGastosFunerariosP1.get('telefonos').dirty"
+								[groupErrors]="frmGastosFunerariosP1.get('telefonos').errors">
 									<input id="txtTelefono" type="text" class="form-control" formControlName="telefono">
 							</pehir-extend-form-control>
 						</div>
@@ -289,7 +291,9 @@
 							<pehir-extend-form-control
 								[inputDirty]="frmGastosFunerariosP1.get('telefonos.celular').dirty"
 								[inputErrors]="frmGastosFunerariosP1.get('telefonos.celular').errors"
-								[formErrors]="frmGastosFunerariosP1.get('telefonos').errors">
+								[groupDirty]="frmGastosFunerariosP1.get('telefonos').dirty"
+								[groupErrors]="frmGastosFunerariosP1.get('telefonos').errors"
+								[isInputForGroupError]="true">
 									<input id="txtCelular" type="text" class="form-control" formControlName="celular">
 							</pehir-extend-form-control>
 						</div>
@@ -303,7 +307,9 @@
 						<div class="col col-50">
 							<pehir-extend-form-control
 								[inputDirty]="frmGastosFunerariosP1.get('correos.correoe1').dirty"
-								[inputErrors]="frmGastosFunerariosP1.get('correos.correoe1').errors">
+								[inputErrors]="frmGastosFunerariosP1.get('correos.correoe1').errors"
+								[groupDirty]="frmGastosFunerariosP1.get('correos').dirty"
+								[groupErrors]="frmGastosFunerariosP1.get('correos').errors">
 									<input id="txtCorreoe1" type="text" class="form-control" formControlName="correoe1">
 							</pehir-extend-form-control>
 						</div>
@@ -316,7 +322,9 @@
 							<pehir-extend-form-control
 								[inputDirty]="frmGastosFunerariosP1.get('correos.correoe2').dirty"
 								[inputErrors]="frmGastosFunerariosP1.get('correos.correoe2').errors"
-								[formErrors]="frmGastosFunerariosP1.get('correos').errors">
+								[groupDirty]="frmGastosFunerariosP1.get('correos').dirty"
+								[groupErrors]="frmGastosFunerariosP1.get('correos').errors"
+								[isInputForGroupError]="true">
 									<input id="txtCorreoe2" type="text" class="form-control" formControlName="correoe2">
 							</pehir-extend-form-control>
 						</div>

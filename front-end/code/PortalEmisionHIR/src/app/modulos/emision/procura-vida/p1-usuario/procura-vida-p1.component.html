@@ -276,7 +276,9 @@
 						<div class="col col-50">
 							<pehir-extend-form-control
 								[inputDirty]="frmProcuraVidaP1.get('telefonos.telefono').dirty"
-								[inputErrors]="frmProcuraVidaP1.get('telefonos.telefono').errors">
+								[inputErrors]="frmProcuraVidaP1.get('telefonos.telefono').errors"
+								[groupDirty]="frmProcuraVidaP1.get('telefonos').dirty"
+								[groupErrors]="frmProcuraVidaP1.get('telefonos').errors">
 									<input id="txtTelefono" type="text" class="form-control" formControlName="telefono">
 							</pehir-extend-form-control>
 						</div>
@@ -289,7 +291,9 @@
 							<pehir-extend-form-control
 								[inputDirty]="frmProcuraVidaP1.get('telefonos.celular').dirty"
 								[inputErrors]="frmProcuraVidaP1.get('telefonos.celular').errors"
-								[formErrors]="frmProcuraVidaP1.get('telefonos').errors">
+								[groupDirty]="frmProcuraVidaP1.get('telefonos').dirty"
+								[groupErrors]="frmProcuraVidaP1.get('telefonos').errors"
+								[isInputForGroupError]="true">
 									<input id="txtCelular" type="text" class="form-control" formControlName="celular">
 							</pehir-extend-form-control>
 						</div>
@@ -303,7 +307,9 @@
 						<div class="col col-50">
 							<pehir-extend-form-control
 								[inputDirty]="frmProcuraVidaP1.get('correos.correoe1').dirty"
-								[inputErrors]="frmProcuraVidaP1.get('correos.correoe1').errors">
+								[inputErrors]="frmProcuraVidaP1.get('correos.correoe1').errors"
+								[groupDirty]="frmProcuraVidaP1.get('correos').dirty"
+								[groupErrors]="frmProcuraVidaP1.get('correos').errors">
 									<input id="txtCorreoe1" type="text" class="form-control" formControlName="correoe1">
 							</pehir-extend-form-control>
 						</div>
@@ -316,7 +322,9 @@
 							<pehir-extend-form-control
 								[inputDirty]="frmProcuraVidaP1.get('correos.correoe2').dirty"
 								[inputErrors]="frmProcuraVidaP1.get('correos.correoe2').errors"
-								[formErrors]="frmProcuraVidaP1.get('correos').errors">
+								[groupDirty]="frmProcuraVidaP1.get('correos').dirty"
+								[groupErrors]="frmProcuraVidaP1.get('correos').errors"
+								[isInputForGroupError]="true">
 									<input id="txtCorreoe2" type="text" class="form-control" formControlName="correoe2">
 							</pehir-extend-form-control>
 						</div>

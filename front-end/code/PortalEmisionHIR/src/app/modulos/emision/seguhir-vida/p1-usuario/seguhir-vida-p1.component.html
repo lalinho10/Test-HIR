@@ -217,7 +217,9 @@
 							<div class="col col-50">
 								<pehir-extend-form-control
 									[inputDirty]="frmSeguhirVidaP1.get('contratante.telefonos.telefono').dirty"
-									[inputErrors]="frmSeguhirVidaP1.get('contratante.telefonos.telefono').errors">
+									[inputErrors]="frmSeguhirVidaP1.get('contratante.telefonos.telefono').errors"
+									[groupDirty]="frmSeguhirVidaP1.get('contratante.telefonos').dirty"
+									[groupErrors]="frmSeguhirVidaP1.get('contratante.telefonos').errors">
 										<input id="txtTelefonoCon" type="text" class="form-control" formControlName="telefono">
 								</pehir-extend-form-control>
 							</div>
@@ -230,7 +232,9 @@
 								<pehir-extend-form-control
 									[inputDirty]="frmSeguhirVidaP1.get('contratante.telefonos.celular').dirty"
 									[inputErrors]="frmSeguhirVidaP1.get('contratante.telefonos.celular').errors"
-									[formErrors]="frmSeguhirVidaP1.get('contratante.telefonos').errors">
+									[groupDirty]="frmSeguhirVidaP1.get('contratante.telefonos').dirty"
+									[groupErrors]="frmSeguhirVidaP1.get('contratante.telefonos').errors"
+									[isInputForGroupError]="true">
 										<input id="txtCelularCon" type="text" class="form-control" formControlName="celular">
 								</pehir-extend-form-control>
 							</div>
@@ -475,7 +479,9 @@
 							<div class="col col-50">
 								<pehir-extend-form-control
 									[inputDirty]="frmSeguhirVidaP1.get('titular.telefonos.telefono').dirty"
-									[inputErrors]="frmSeguhirVidaP1.get('titular.telefonos.telefono').errors">
+									[inputErrors]="frmSeguhirVidaP1.get('titular.telefonos.telefono').errors"
+									[groupDirty]="frmSeguhirVidaP1.get('titular.telefonos').dirty"
+									[groupErrors]="frmSeguhirVidaP1.get('titular.telefonos').errors">
 										<input id="txtTelefonoTit" type="text" class="form-control" formControlName="telefono">
 								</pehir-extend-form-control>
 							</div>
@@ -488,7 +494,9 @@
 								<pehir-extend-form-control
 									[inputDirty]="frmSeguhirVidaP1.get('titular.telefonos.celular').dirty"
 									[inputErrors]="frmSeguhirVidaP1.get('titular.telefonos.celular').errors"
-									[formErrors]="frmSeguhirVidaP1.get('titular.telefonos').errors">
+									[groupDirty]="frmSeguhirVidaP1.get('titular.telefonos').dirty"
+									[groupErrors]="frmSeguhirVidaP1.get('titular.telefonos').errors"
+									[isInputForGroupError]="true">
 										<input id="txtCelularTit" type="text" class="form-control" formControlName="celular">
 								</pehir-extend-form-control>
 							</div>

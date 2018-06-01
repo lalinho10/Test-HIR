@@ -8,10 +8,14 @@ import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
 export class ExtendFormControlComponent implements OnChanges {
 	@Input() inputDirty: boolean;
 	@Input() inputErrors: Object;
-	@Input() formErrors: Object;
+	@Input() groupDirty?: boolean = false;
+	@Input() groupErrors?: Object = undefined;
+	@Input() isInputForGroupError?: boolean = false;
 
 	hasError: boolean;
 	errorMessage: string;
+	hasGroupError: boolean;
+	groupErrorMessage: string;
 
 	private errorDefs: Object = 
 	{
@@ -47,18 +51,27 @@ export class ExtendFormControlComponent implements OnChanges {
 	ngOnChanges( changes: SimpleChanges ): void {
 		this.hasError = false;
 		this.errorMessage = '';
+		this.hasGroupError = false;
+		this.groupErrorMessage = '';
 
 		let errors: any = ( changes.inputErrors ) ? changes.inputErrors.currentValue : this.inputErrors;
-
-		if( !errors && changes.formErrors ) {
-			errors = changes.formErrors.currentValue;
-		}
+		let groupErrors: any = ( changes.groupErrors ) ? changes.groupErrors.currentValue : this.groupErrors;
 
 		if ( errors && this.inputDirty ) {
 			Object.keys( this.errorDefs ).some( key => {
 				if ( errors[ key ] ) {
 					this.errorMessage = this.errorDefs[ key ];
 					this.hasError = true;
+					return true;
+				}
+			});
+		}
+
+		if( groupErrors && this.groupDirty ) {
+			Object.keys( this.errorDefs ).some( key => {
+				if ( groupErrors[ key ] ) {
+					this.groupErrorMessage = this.errorDefs[ key ];
+					this.hasGroupError = true;
 					return true;
 				}
 			});
