@@ -95,14 +95,6 @@ export class ApindividualComponent implements OnInit {
 			'cobertura': ['', Validators.compose([
 				Validators.required
 			])],
-			'sumasegurada': ['', Validators.compose([
-				Validators.required,
-				FormatoMonedaValidator()
-			])],
-			'deducible': ['', Validators.compose([
-				Validators.required,
-				FormatoMonedaValidator()
-			])],
 			'fpago': ['', Validators.compose([
 				Validators.required
 			])],
@@ -136,8 +128,6 @@ export class ApindividualComponent implements OnInit {
 		this.frmApindividual.get( 'plan' ).setValue( cotizacion.plan.idPlan );
 		this.frmApindividual.get( 'fpago' ).setValue( cotizacion.formaPago.idFormaPago );
 		this.frmApindividual.get( 'cobertura' ).setValue( cotizacion.cobertura.idCobertura );
-		this.frmApindividual.get( 'sumasegurada' ).setValue( cotizacion.sumaAsegurada );
-		this.frmApindividual.get( 'deducible' ).setValue( cotizacion.deducible );
 	}
 
 	private crearModeloCotizacion(): Cotizacion {
@@ -160,9 +150,7 @@ export class ApindividualComponent implements OnInit {
 			genero: fGeneros[ 0 ],
 			plan: fPlanes[ 0 ],
 			formaPago: fFormasPago[ 0 ],
-			cobertura: fCoberturas[ 0 ],
-			sumaAsegurada: this.frmApindividual.get( 'sumasegurada' ).value,
-			deducible: this.frmApindividual.get( 'deducible' ).value,
+			cobertura: fCoberturas[ 0 ]
 		}
 
 		return cotizacion;

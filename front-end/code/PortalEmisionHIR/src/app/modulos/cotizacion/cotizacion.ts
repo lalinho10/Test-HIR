@@ -18,6 +18,4 @@ export class Cotizacion {
 	modulo?: Modulo;
 	paqueteCobertura?: Paquete;
 	cobertura?: Cobertura;
-	sumaAsegurada?: number;
-	deducible?: number;
 }

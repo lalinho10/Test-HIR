@@ -65,6 +65,8 @@
 					</pehir-extend-form-control>
 				</div>
 			</div>
+		</div>
+		<div class="col col-50">
 			<div class="row">
 				<div class="col col-40">
 					<label id="lblSexo" class="form-label">Sexo:</label>
@@ -79,8 +81,6 @@
 					</pehir-extend-form-control>
 				</div>
 			</div>
-		</div>
-		<div class="col col-50">
 			<div class="row">
 				<div class="col col-40">
 					<label id="lblModulo" class="form-label">Módulo:</label>
@@ -95,21 +95,6 @@
 									{{modulo.descModulo}}
 								</option>
 							</select>
-					</pehir-extend-form-control>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col col-40">
-					<label id="lblSumasegurada" class="form-label">Suma asegurada:</label>
-				</div>
-				<div class="col col-50">
-					<pehir-extend-form-control
-						[inputDirty]="frmGastosFunerarios.get('sumasegurada').dirty"
-						[inputErrors]="frmGastosFunerarios.get('sumasegurada').errors">
-							<div class="form-group">
-								<input id="txtSumasegurada" type="text" class="form-control right" formControlName="sumasegurada">
-								<span class="control-text left">$</span>
-							</div>
 					</pehir-extend-form-control>
 				</div>
 			</div>

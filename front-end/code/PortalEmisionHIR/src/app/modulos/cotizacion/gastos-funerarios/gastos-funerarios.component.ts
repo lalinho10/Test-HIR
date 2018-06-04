@@ -93,10 +93,6 @@ export class GastosFunerariosComponent implements OnInit {
 			'modulo': ['', Validators.compose([
 				Validators.required
 			])],
-			'sumasegurada': ['', Validators.compose([
-				Validators.required,
-				FormatoMonedaValidator()
-			])],
 			'cobertura': ['', Validators.compose([
 				Validators.required
 			])],
@@ -130,7 +126,6 @@ export class GastosFunerariosComponent implements OnInit {
 		this.frmGastosFunerarios.get( 'fpago' ).setValue( cotizacion.formaPago.idFormaPago );
 		this.frmGastosFunerarios.get( 'modulo' ).setValue( cotizacion.modulo.idModulo );
 		this.frmGastosFunerarios.get( 'cobertura' ).setValue( cotizacion.cobertura.idCobertura );
-		this.frmGastosFunerarios.get( 'sumasegurada' ).setValue( cotizacion.sumaAsegurada );
 	}
 
 	private crearModeloCotizacion(): Cotizacion {
@@ -153,8 +148,7 @@ export class GastosFunerariosComponent implements OnInit {
 			genero: fGeneros[ 0 ],
 			formaPago: fFormasPago[ 0 ],
 			modulo: fModulos[ 0 ],
-			cobertura: fCoberturas[ 0 ],
-			sumaAsegurada: this.frmGastosFunerarios.get( 'sumasegurada' ).value
+			cobertura: fCoberturas[ 0 ]
 		}
 
 		return cotizacion;

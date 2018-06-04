@@ -95,14 +95,6 @@ export class SegubiciComponent implements OnInit {
 			'cobertura': ['', Validators.compose([
 				Validators.required
 			])],
-			'sumasegurada': ['', Validators.compose([
-				Validators.required,
-				FormatoMonedaValidator()
-			])],
-			'deducible': ['', Validators.compose([
-				Validators.required,
-				FormatoMonedaValidator()
-			])],
 			'fpago': ['', Validators.compose([
 				Validators.required
 			])],
@@ -136,8 +128,6 @@ export class SegubiciComponent implements OnInit {
 		this.frmSegubici.get( 'plan' ).setValue( cotizacion.plan.idPlan );
 		this.frmSegubici.get( 'fpago' ).setValue( cotizacion.formaPago.idFormaPago );
 		this.frmSegubici.get( 'cobertura' ).setValue( cotizacion.cobertura.idCobertura );
-		this.frmSegubici.get( 'sumasegurada' ).setValue( cotizacion.sumaAsegurada );
-		this.frmSegubici.get( 'deducible' ).setValue( cotizacion.deducible );
 	}
 
 	private crearModeloCotizacion(): Cotizacion {
@@ -160,9 +150,7 @@ export class SegubiciComponent implements OnInit {
 			genero: fGeneros[ 0 ],
 			plan: fPlanes[ 0 ],
 			formaPago: fFormasPago[ 0 ],
-			cobertura: fCoberturas[ 0 ],
-			sumaAsegurada: this.frmSegubici.get( 'sumasegurada' ).value,
-			deducible: this.frmSegubici.get( 'deducible' ).value,
+			cobertura: fCoberturas[ 0 ]
 		}
 
 		return cotizacion;

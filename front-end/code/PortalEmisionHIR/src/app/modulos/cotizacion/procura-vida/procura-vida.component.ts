@@ -93,10 +93,6 @@ export class ProcuraVidaComponent implements OnInit {
 			'modulo': ['', Validators.compose([
 				Validators.required
 			])],
-			'sumasegurada': ['', Validators.compose([
-				Validators.required,
-				FormatoMonedaValidator()
-			])],
 			'cobertura': ['', Validators.compose([
 				Validators.required
 			])],
@@ -130,7 +126,6 @@ export class ProcuraVidaComponent implements OnInit {
 		this.frmProcuraVida.get( 'fpago' ).setValue( cotizacion.formaPago.idFormaPago );
 		this.frmProcuraVida.get( 'modulo' ).setValue( cotizacion.modulo.idModulo );
 		this.frmProcuraVida.get( 'cobertura' ).setValue( cotizacion.cobertura.idCobertura );
-		this.frmProcuraVida.get( 'sumasegurada' ).setValue( cotizacion.sumaAsegurada );
 	}
 
 	private crearModeloCotizacion(): Cotizacion {
@@ -153,8 +148,7 @@ export class ProcuraVidaComponent implements OnInit {
 			genero: fGeneros[ 0 ],
 			formaPago: fFormasPago[ 0 ],
 			modulo: fModulos[ 0 ],
-			cobertura: fCoberturas[ 0 ],
-			sumaAsegurada: this.frmProcuraVida.get( 'sumasegurada' ).value
+			cobertura: fCoberturas[ 0 ]
 		}
 
 		return cotizacion;
