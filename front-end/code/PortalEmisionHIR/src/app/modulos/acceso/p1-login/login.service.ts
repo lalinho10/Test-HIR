@@ -1,6 +1,6 @@
 import { Injectable }	from '@angular/core';
 
-import { LoginRequest } from './login.request'
+import { LoginRequest } from './login.request';
 
 @Injectable()
 export class LoginService {
