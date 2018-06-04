@@ -3147,5 +3147,71 @@
 		"codigoRespuesta": 200,
 		"mensaje": "Se ha cambiado la contraseña",
 		"fechaOperacion": 1520957070339
+	},
+	"cotizacionSeguHIRVida":
+	{
+		"sumaAsegurada": 36000,
+		"nombreUsuario": "Pancho Pantera Brown",
+		"correoUsuario": "ppantera@hir.com",
+		"telefono": "5501010101",
+		"edad": 35,
+		"sexo": "Masculino",
+		"tipoPago": "Anual",
+		"montoPago": 36000
+	},
+	"cotizacionProcuraVida":
+	{
+		"sumaAsegurada": 2400,
+		"nombreUsuario": "Pancho Pantera Brown",
+		"correoUsuario": "ppantera@hir.com",
+		"telefono": "5501010101",
+		"edad": 35,
+		"sexo": "Masculino",
+		"tipoPago": "Anual",
+		"montoPago": 2400
+	},
+	"cotizacionGastosFunerarios":
+	{
+		"sumaAsegurada": 3600,
+		"nombreUsuario": "Pancho Pantera Brown",
+		"correoUsuario": "ppantera@hir.com",
+		"telefono": "5501010101",
+		"edad": 35,
+		"sexo": "Masculino",
+		"tipoPago": "Anual",
+		"montoPago": 3600
+	},
+	"cotizacionSeguHIREmpresario":
+	{
+		"sumaAsegurada": 4800,
+		"nombreUsuario": "Pancho Pantera Brown",
+		"correoUsuario": "ppantera@hir.com",
+		"telefono": "5501010101",
+		"edad": 35,
+		"sexo": "Masculino",
+		"tipoPago": "Anual",
+		"montoPago": 4800
+	},
+	"cotizacionSeguBici":
+	{
+		"sumaAsegurada": 1000,
+		"nombreUsuario": "Pancho Pantera Brown",
+		"correoUsuario": "ppantera@hir.com",
+		"telefono": "5501010101",
+		"edad": 35,
+		"sexo": "Masculino",
+		"tipoPago": "Anual",
+		"montoPago": 1000
+	},
+	"cotizacionAccidentesPersonalesIndividual":
+	{
+		"sumaAsegurada": 1200,
+		"nombreUsuario": "Pancho Pantera Brown",
+		"correoUsuario": "ppantera@hir.com",
+		"telefono": "5501010101",
+		"edad": 35,
+		"sexo": "Masculino",
+		"tipoPago": "Anual",
+		"montoPago": 1200
 	}
 }
