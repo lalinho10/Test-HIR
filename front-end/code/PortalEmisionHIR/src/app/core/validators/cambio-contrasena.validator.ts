@@ -7,11 +7,11 @@ export function CambioContrasenaValidator( contrasenaActualKey: string, contrase
 		const valor2 = formGroup.controls[ contrasenaNuevaKey ].value;
 		const valor3 = formGroup.controls[ confContrasenaNuevaKey ].value;
 
-		if( valor1 === valor2 ) {
+		if( valor1 !== '' && valor2 !== '' && valor1 === valor2 ) {
 			return { 'cambioIgualdadContrasenas': true }
 		}
 
-		if( valor2 !== valor3 ) {
+		if( valor2 !== '' && valor3 !== '' && valor2 !== valor3 ) {
 			return { 'cambioDiferenciaContrasenas': true }
 		}
 

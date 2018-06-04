@@ -11,7 +11,7 @@ import { WSClientService }					  from 'app/core/services/ws-client.service';
 import { AuthenticationService }			  from 'app/core/services/authentication/authentication.service';
 
 import { ContrasenaValidator }				  from 'app/core/validators/contrasena.validator';
-import { IgualdadContrasenasValidator }		  from 'app/core/validators/igualdad-contrasenas.validator';
+import { CambioContrasenaValidator }		  from 'app/core/validators/cambio-contrasena.validator';
 
 @Component({
 	selector: 'pehir-cambiar-contrasena',
@@ -51,7 +51,7 @@ export class CambiarContrasenaComponent implements OnInit {
 			])],
 		},
 		{
-			validator: IgualdadContrasenasValidator( 'contrasenaNueva', 'confContrasenaNueva' )
+			validator: CambioContrasenaValidator( 'contrasenaActual', 'contrasenaNueva', 'confContrasenaNueva' )
 		});
 	}
 

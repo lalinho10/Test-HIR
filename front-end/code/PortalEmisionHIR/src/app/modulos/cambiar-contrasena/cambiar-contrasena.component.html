@@ -28,7 +28,9 @@
 				<div class="col col-50">
 					<pehir-extend-form-control
 						[inputDirty]="frmCambiarContrasena.get('contrasenaActual').dirty"
-						[inputErrors]="frmCambiarContrasena.get('contrasenaActual').errors">
+						[inputErrors]="frmCambiarContrasena.get('contrasenaActual').errors"
+						[groupDirty]="frmCambiarContrasena.dirty"
+						[groupErrors]="frmCambiarContrasena.errors">
 							<input id="pwdContrasenaActual" type="password" class="form-control" formControlName="contrasenaActual">
 					</pehir-extend-form-control>
 				</div>
@@ -40,7 +42,9 @@
 				<div class="col col-50">
 					<pehir-extend-form-control
 						[inputDirty]="frmCambiarContrasena.get('contrasenaNueva').dirty"
-						[inputErrors]="frmCambiarContrasena.get('contrasenaNueva').errors">
+						[inputErrors]="frmCambiarContrasena.get('contrasenaNueva').errors"
+						[groupDirty]="frmCambiarContrasena.dirty"
+						[groupErrors]="frmCambiarContrasena.errors">
 							<input id="pwdContrasenaNueva" type="password" class="form-control" formControlName="contrasenaNueva">
 					</pehir-extend-form-control>
 				</div>
@@ -53,7 +57,9 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmCambiarContrasena.get('confContrasenaNueva').dirty"
 						[inputErrors]="frmCambiarContrasena.get('confContrasenaNueva').errors"
-						[formErrors]="frmCambiarContrasena.errors">
+						[groupDirty]="frmCambiarContrasena.dirty"
+						[groupErrors]="frmCambiarContrasena.errors"
+						[isInputForGroupError]="true">
 							<input id="pwdConfContrasenaNueva" type="password" class="form-control" formControlName="confContrasenaNueva">
 					</pehir-extend-form-control>
 				</div>
