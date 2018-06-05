@@ -3,8 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
 import { Cotizacion }						  from '../cotizacion';
+import { SeguhirVidaRequest }				  from './seguhir-vida.request';
 
 import { CotizacionService }				  from '../cotizacion.service';
+import { SeguhirVidaService }				  from './seguhir-vida.service';
 
 import { GENEROS }							  from 'app/core/data/generos';
 import { MODULOS }							  from 'app/core/data/modulos';
@@ -44,6 +46,7 @@ export class SeguhirVidaComponent implements OnInit {
 		private cotizacionService: CotizacionService,
 		private fb: FormBuilder,
 		private router: Router,
+		private seguhirVidaService: SeguhirVidaService,
 		private wsClientService: WSClientService
 	) {}
 
@@ -165,8 +168,15 @@ export class SeguhirVidaComponent implements OnInit {
 	}
 
 	fnCotizar(): void {
-		this.cotizacionService.definirProducto( this.idProducto );
-		this.cotizacionService.definirCotizacion( this.crearModeloCotizacion() );
-		this.router.navigateByUrl( '/cotizacion/resultado' );
+		let seguhirVidaRequest: SeguhirVidaRequest = this.seguhirVidaService.getRequest( this.frmSeguhirVida.value );
+
+		this.wsClientService
+			.postObject( '/cotizacionSeguHIRVida', seguhirVidaRequest )
+			.subscribe( ( response ) => {
+				this.cotizacionService.definirProducto( this.idProducto );
+				this.cotizacionService.definirCotizacion( this.crearModeloCotizacion() );
+				this.cotizacionService.definirResultadoCotizacion( response.data );
+				this.router.navigateByUrl( '/cotizacion/resultado' );
+			});
 	}
 }
