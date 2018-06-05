@@ -15,7 +15,7 @@ export class PageNotFoundComponent {
 		private router: Router
 	){}
 
-	irInicio(): void {
+	fnIrInicio(): void {
 		if( !this.autheticationService.isAuthenticated() ) {
 			this.router.navigateByUrl( '/acceso/login' );
 		} else {
