@@ -11,7 +11,6 @@ import { SeguhirVidaComponent }			 from './seguhir-vida/seguhir-vida.component';
 import { ProcuraVidaComponent }			 from './procura-vida/procura-vida.component';
 import { GastosFunerariosComponent }	 from './gastos-funerarios/gastos-funerarios.component';
 import { SeguhirEmpresarioComponent }	 from './seguhir-empresario/seguhir-empresario.component';
-import { VidaAhorroComponent }			 from './vida-ahorro/vida-ahorro.component';
 import { SegubiciComponent }			 from './segubici/segubici.component';
 import { ApindividualComponent }		 from './apindividual/apindividual.component';
 import { ResultadoCotizacionComponent }	 from './resultado-cotizacion/resultado-cotizacion.component';
@@ -37,7 +36,6 @@ import { ImageLinkModule }				 from 'app/modulos/shared/image-link/image-link.mo
 		ProcuraVidaComponent,
 		GastosFunerariosComponent,
 		SeguhirEmpresarioComponent,
-		VidaAhorroComponent,
 		SegubiciComponent,
 		ApindividualComponent,
 		ResultadoCotizacionComponent

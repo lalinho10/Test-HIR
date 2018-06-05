@@ -40,10 +40,6 @@ const emisionRoutes: Routes = [
 		loadChildren: 'app/modulos/emision/seguhir-empresario/seguhir-empresario.module#SeguhirEmpresarioModule'
 	},
 	{
-		path: 'vidaahorro',
-		loadChildren: 'app/modulos/emision/vida-ahorro/vida-ahorro.module#VidaAhorroModule'
-	},
-	{
 		path: 'segubici',
 		loadChildren: 'app/modulos/emision/segubici/segubici.module#SegubiciModule'
 	},
