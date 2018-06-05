@@ -5,6 +5,7 @@ import { RegistroComponent }		  from 'app/modulos/registro/registro.component';
 import { InicioComponent }			  from 'app/modulos/inicio/inicio.component';
 import { CambiarContrasenaComponent } from 'app/modulos/cambiar-contrasena/cambiar-contrasena.component';
 import { PageNotFoundComponent }	  from 'app/core/components/page-not-found/page-not-found.component';
+import { WorkInProgressComponent }	  from 'app/core/components/work-in-progress/work-in-progress.component';
 
 import { AuthenticationGuardService } from 'app/core/services/authentication/authentication-guard.service';
 
@@ -45,6 +46,7 @@ const routes: Routes = [
 		component: CambiarContrasenaComponent,
 		canActivate: [ AuthenticationGuardService ]
 	},
+	{ path: 'inprogress', component: WorkInProgressComponent },
 	{ path: 'notfound', component: PageNotFoundComponent },
 	{ path: '**', redirectTo: '/notfound' }
 ];

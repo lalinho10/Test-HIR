@@ -38,6 +38,7 @@ import { SessionModalComponent }		from './core/components/session-modal/session-
 import { SessionExpireModalComponent }	from './core/components/session-expire-modal/session-expire-modal.component';
 import { SessionTimerComponent }		from './core/components/session-timer/session-timer.component';
 import { PageNotFoundComponent }		from './core/components/page-not-found/page-not-found.component';
+import { WorkInProgressComponent }		from 'app/core/components/work-in-progress/work-in-progress.component';
 import { RegistroComponent }			from './modulos/registro/registro.component';
 import { InicioComponent }				from './modulos/inicio/inicio.component';
 import { CambiarContrasenaComponent }	from './modulos/cambiar-contrasena/cambiar-contrasena.component';
@@ -71,6 +72,7 @@ registerLocaleData( localeESMX );
 		SessionExpireModalComponent,
 		SessionTimerComponent,
 		PageNotFoundComponent,
+		WorkInProgressComponent,
 		RegistroComponent,
 		InicioComponent,
 		CambiarContrasenaComponent
