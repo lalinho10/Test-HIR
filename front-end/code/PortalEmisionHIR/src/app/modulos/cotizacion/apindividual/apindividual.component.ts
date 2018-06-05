@@ -3,8 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
 import { Cotizacion }						  from '../cotizacion';
+import { ApindividualRequest }				  from './apindividual.request';
 
 import { CotizacionService }				  from '../cotizacion.service';
+import { ApindividualService }				  from './apindividual.service';
 
 import { GENEROS }							  from 'app/core/data/generos';
 import { FECNACOPTIONS }					  from 'app/core/data/calendarios/fecNacOptions';
@@ -40,6 +42,7 @@ export class ApindividualComponent implements OnInit {
 	fecNacOptions = FECNACOPTIONS;
 
 	constructor(
+		private apindividualService: ApindividualService,
 		private cotizacionService: CotizacionService,
 		private fb: FormBuilder,
 		private router: Router,
@@ -157,8 +160,15 @@ export class ApindividualComponent implements OnInit {
 	}
 
 	fnCotizar(): void {
-		this.cotizacionService.definirProducto( this.idProducto );
-		this.cotizacionService.definirCotizacion( this.crearModeloCotizacion() );
-		this.router.navigateByUrl( '/cotizacion/resultado' );
+		let apindividualRequest: ApindividualRequest = this.apindividualService.getRequest( this.frmApindividual.value );
+
+		this.wsClientService
+			.postObject( '/cotizacionAccidentesPersonalesIndividual', apindividualRequest )
+			.subscribe( ( response ) => {
+				this.cotizacionService.definirProducto( this.idProducto );
+				this.cotizacionService.definirCotizacion( this.crearModeloCotizacion() );
+				this.cotizacionService.definirResultadoCotizacion( response.data );
+				this.router.navigateByUrl( '/cotizacion/resultado' );
+			});
 	}
 }
