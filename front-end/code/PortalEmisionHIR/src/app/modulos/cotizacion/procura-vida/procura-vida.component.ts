@@ -3,8 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
 import { Cotizacion }						  from '../cotizacion';
+import { ProcuraVidaRequest }				  from './procura-vida.request';
 
 import { CotizacionService }				  from '../cotizacion.service';
+import { ProcuraVidaService }				  from './procura-vida.service';
 
 import { MODULOS }							  from 'app/core/data/modulos';
 import { GENEROS }							  from 'app/core/data/generos';
@@ -42,6 +44,7 @@ export class ProcuraVidaComponent implements OnInit {
 	constructor(
 		private cotizacionService: CotizacionService,
 		private fb: FormBuilder,
+		private procuraVidaService: ProcuraVidaService,
 		private router: Router,
 		private wsClientService: WSClientService
 	) {}
@@ -155,8 +158,15 @@ export class ProcuraVidaComponent implements OnInit {
 	}
 
 	fnCotizar(): void {
-		this.cotizacionService.definirProducto( this.idProducto );
-		this.cotizacionService.definirCotizacion( this.crearModeloCotizacion() );
-		this.router.navigateByUrl( '/cotizacion/resultado' );
+		let procuraVidaRequest: ProcuraVidaRequest = this.procuraVidaService.getRequest( this.frmProcuraVida.value );
+
+		this.wsClientService
+			.postObject( '/cotizacionProcuraVida', procuraVidaRequest )
+			.subscribe( ( response ) => {
+				this.cotizacionService.definirProducto( this.idProducto );
+				this.cotizacionService.definirCotizacion( this.crearModeloCotizacion() );
+				this.cotizacionService.definirResultadoCotizacion( response.data );
+				this.router.navigateByUrl( '/cotizacion/resultado' );
+			});
 	}
 }
