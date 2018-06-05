@@ -1,10 +1,10 @@
 import { Component, OnInit }   from '@angular/core';
 import { Router }			   from '@angular/router';
 
-import { CotizacionService }   from '../cotizacion.service';
-
 import { Cotizacion }		   from '../cotizacion';
 import { ResultadoCotizacion } from './resultado-cotizacion';
+
+import { CotizacionService }   from '../cotizacion.service';
 
 @Component({
 	selector: 'pehir-resultado-cotizacion',
@@ -12,13 +12,11 @@ import { ResultadoCotizacion } from './resultado-cotizacion';
 })
 
 export class ResultadoCotizacionComponent implements OnInit {
-	private cotizacion: Cotizacion;
-
 	titulo: string = 'Resultado de la cotización';
 
 	tipoCotizacion: string;
 
-	resultadoCotizacion: ResultadoCotizacion = new ResultadoCotizacion();
+	resultadoCotizacion: ResultadoCotizacion;
 
 	constructor(
 		private router: Router,
@@ -27,23 +25,7 @@ export class ResultadoCotizacionComponent implements OnInit {
 
 	ngOnInit() {
 		this.tipoCotizacion = this.cotizacionService.obtenerDescripcionProducto();
-		this.cotizacion = this.cotizacionService.obtenerCotizacion();
-		this.mapResultadoCotizacion();
-	}
-
-	private mapResultadoCotizacion(): void {
-		let edad: number = new Date().getFullYear() - this.cotizacion.fechanac.getFullYear();
-
-		this.resultadoCotizacion.sumaAsegurada = this.cotizacion.sumaAsegurada;
-		this.resultadoCotizacion.nombreUsuario = this.cotizacion.nombre + ' ' +
-												 this.cotizacion.apaterno + ' ' +
-												 this.cotizacion.amaterno;
-		this.resultadoCotizacion.correoUsuario = '';
-		this.resultadoCotizacion.telefonoUsuario = '';
-		this.resultadoCotizacion.edad = edad;
-		this.resultadoCotizacion.sexo = this.cotizacion.genero.descGenero;
-		this.resultadoCotizacion.tipoPago = this.cotizacion.formaPago.descFormaPago;
-		this.resultadoCotizacion.montoPago = 0;
+		this.resultadoCotizacion = this.cotizacionService.obtenerResultadoCotizacion();
 	}
 
 	fnIrEmision(): void {
