@@ -1,31 +1,35 @@
-import { Injectable }  from '@angular/core';
+import { Injectable }		   from '@angular/core';
 
-import { Cotizacion } from './cotizacion';
+import { Cotizacion }		   from './cotizacion';
+import { ResultadoCotizacion } from './resultado-cotizacion/resultado-cotizacion';
 
-import { PRODUCTOS }   from 'app/core/data/productos';
+import { PRODUCTOS }		   from 'app/core/data/productos';
 
-import { Producto }    from 'app/core/models/producto';
+import { Producto }			   from 'app/core/models/producto';
 
 @Injectable()
 export class CotizacionService {
-	private producto: Producto;
+	private editarCotizacion: boolean = false;
 
 	private cotizacion: Cotizacion;
-
-	private editarCotizacion: boolean = false;
+	private producto: Producto;
+	private resultadoCotizacion: ResultadoCotizacion;
 
 	private productos = PRODUCTOS;
 
-	definirProducto( idProducto: number ) {
-		let filtroProductos = this.productos.filter( ( producto: Producto ) => producto.idProducto == idProducto );
-		this.producto = filtroProductos[ 0 ];
+	definirEdicion( editarCotizacion: boolean ): void {
+		if( !editarCotizacion ) {
+			this.definirCotizacion( null );
+		}
+
+		this.editarCotizacion = editarCotizacion;
 	}
 
-	obtenerDescripcionProducto() {
-		return this.producto.descProducto;
+	esEdicion(): boolean {
+		return this.editarCotizacion;
 	}
 
-	definirCotizacion( cotizacion: Cotizacion ) {
+	definirCotizacion( cotizacion: Cotizacion ): void {
 		this.cotizacion = cotizacion;
 	}
 
@@ -37,16 +41,21 @@ export class CotizacionService {
 		return ( this.cotizacion !== null && typeof this.cotizacion !== 'undefined' );
 	}
 
-	definirEdicion( editarCotizacion: boolean ) {
-		if( !editarCotizacion ) {
-			this.definirCotizacion( null );
-		}
-
-		this.editarCotizacion = editarCotizacion;
+	definirProducto( idProducto: number ): void {
+		let filtroProductos = this.productos.filter( ( producto: Producto ) => producto.idProducto == idProducto );
+		this.producto = filtroProductos[ 0 ];
 	}
 
-	esEdicion() {
-		return this.editarCotizacion;
+	obtenerDescripcionProducto(): string {
+		return this.producto.descProducto;
+	}
+
+	definirResultadoCotizacion( resultadoCotizacion: ResultadoCotizacion ): void {
+		this.resultadoCotizacion = resultadoCotizacion;
+	}
+
+	obtenerResultadoCotizacion(): ResultadoCotizacion {
+		return this.resultadoCotizacion;
 	}
 
 	obtenerRutaRegreso(): string {
