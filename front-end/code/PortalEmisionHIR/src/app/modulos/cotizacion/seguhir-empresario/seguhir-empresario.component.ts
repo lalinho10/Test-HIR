@@ -44,8 +44,8 @@ export class SeguhirEmpresarioComponent implements OnInit {
 	constructor(
 		private cotizacionService: CotizacionService,
 		private fb: FormBuilder,
-		private seguhirEmpresarioService: SeguhirEmpresarioService,
 		private router: Router,
+		private seguhirEmpresarioService: SeguhirEmpresarioService,
 		private wsClientService: WSClientService
 	) {}
 
