@@ -3,8 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
 import { Cotizacion }						  from '../cotizacion';
+import { GastosFunerariosRequest }			  from './gastos-funerarios.request';
 
 import { CotizacionService }				  from '../cotizacion.service';
+import { GastosFunerariosService }			  from './gastos-funerarios.service';
 
 import { MODULOS }							  from 'app/core/data/modulos';
 import { GENEROS }							  from 'app/core/data/generos';
@@ -42,6 +44,7 @@ export class GastosFunerariosComponent implements OnInit {
 	constructor(
 		private cotizacionService: CotizacionService,
 		private fb: FormBuilder,
+		private gastosFunerariosService: GastosFunerariosService,
 		private router: Router,
 		private wsClientService: WSClientService
 	) {}
@@ -155,8 +158,15 @@ export class GastosFunerariosComponent implements OnInit {
 	}
 
 	fnCotizar(): void {
-		this.cotizacionService.definirProducto( this.idProducto );
-		this.cotizacionService.definirCotizacion( this.crearModeloCotizacion() );
-		this.router.navigateByUrl( '/cotizacion/resultado' );
+		let gastosFunerariosRequest: GastosFunerariosRequest = this.gastosFunerariosService.getRequest( this.frmGastosFunerarios.value );
+
+		this.wsClientService
+			.postObject( '/cotizacionGastosFunerarios', gastosFunerariosRequest )
+			.subscribe( ( response ) => {
+				this.cotizacionService.definirProducto( this.idProducto );
+				this.cotizacionService.definirCotizacion( this.crearModeloCotizacion() );
+				this.cotizacionService.definirResultadoCotizacion( response.data );
+				this.router.navigateByUrl( '/cotizacion/resultado' );
+			});
 	}
 }

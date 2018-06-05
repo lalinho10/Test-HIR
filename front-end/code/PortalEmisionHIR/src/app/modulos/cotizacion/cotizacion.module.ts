@@ -18,6 +18,7 @@ import { ResultadoCotizacionComponent }	 from './resultado-cotizacion/resultado-
 
 import { CotizacionService }			 from './cotizacion.service';
 import { ProcuraVidaService }			 from './procura-vida/procura-vida.service';
+import { GastosFunerariosService }		 from './gastos-funerarios/gastos-funerarios.service';
 
 import { CotizacionRoutingModule }		 from './cotizacion-routing.module';
 import { ExtendFormControlModule }		 from 'app/modulos/shared/extend-form-control/extend-form-control.module';
@@ -47,7 +48,8 @@ import { ImageLinkModule }				 from 'app/modulos/shared/image-link/image-link.mo
 	],
 	providers: [
 		CotizacionService,
-		ProcuraVidaService
+		ProcuraVidaService,
+		GastosFunerariosService
 	]
 })
 
