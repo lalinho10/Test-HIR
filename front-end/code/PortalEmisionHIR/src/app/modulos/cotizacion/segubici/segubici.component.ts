@@ -3,8 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
 import { Cotizacion }						  from '../cotizacion';
+import { SegubiciRequest }					  from './segubici.request';
 
 import { CotizacionService }				  from '../cotizacion.service';
+import { SegubiciService }					  from './segubici.service';
 
 import { GENEROS }							  from 'app/core/data/generos';
 import { FECNACOPTIONS }					  from 'app/core/data/calendarios/fecNacOptions';
@@ -43,6 +45,7 @@ export class SegubiciComponent implements OnInit {
 		private cotizacionService: CotizacionService,
 		private fb: FormBuilder,
 		private router: Router,
+		private segubiciService: SegubiciService,
 		private wsClientService: WSClientService
 	) {}
 
@@ -157,8 +160,15 @@ export class SegubiciComponent implements OnInit {
 	}
 
 	fnCotizar(): void {
-		this.cotizacionService.definirProducto( this.idProducto );
-		this.cotizacionService.definirCotizacion( this.crearModeloCotizacion() );
-		this.router.navigateByUrl( '/cotizacion/resultado' );
+		let segubiciRequest: SegubiciRequest = this.segubiciService.getRequest( this.frmSegubici.value );
+
+		this.wsClientService
+			.postObject( '/cotizacionSeguBici', segubiciRequest )
+			.subscribe( ( response ) => {
+				this.cotizacionService.definirProducto( this.idProducto );
+				this.cotizacionService.definirCotizacion( this.crearModeloCotizacion() );
+				this.cotizacionService.definirResultadoCotizacion( response.data );
+				this.router.navigateByUrl( '/cotizacion/resultado' );
+			});
 	}
 }
