@@ -19,6 +19,8 @@ import { Plan }								  from 'app/core/models/plan';
 })
 
 export class SegubiciP2Component implements OnInit {
+	private idProducto: number = 1585;
+
 	frmSegubiciP2: FormGroup;
 
 	coberturas: Cobertura[];
@@ -39,14 +41,33 @@ export class SegubiciP2Component implements OnInit {
 	}
 
 	private leerCatalogos(): void {
-		this.wsClientService.getObject( '/consultaCoberturasProducto/6' )
-							.subscribe( response => this.coberturas = response.data );
-		this.wsClientService.getObject( '/consultaFormasPagoProducto/6' )
-							.subscribe( response => this.formasPago = response.data );
-		this.wsClientService.getObject( '/consultaOcupaciones' )
-							.subscribe( data => this.ocupaciones = data );
-		this.wsClientService.getObject( '/consultaPlanesProducto/6' )
-							.subscribe( response => this.planes = response.data );
+		this.wsClientService
+			.postObject( '/catCobertura', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.coberturas = response.data;
+				}
+			});
+
+		this.wsClientService
+			.postObject( '/catFormaPago', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.formasPago = response.data;
+				}
+			});
+
+		this.wsClientService
+			.postObject( '/consultaOcupaciones', {} )
+			.subscribe( data => this.ocupaciones = data );
+
+		this.wsClientService
+			.postObject( '/catPlan', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.planes = response.data;
+				}
+			});
 	}
 
 	private crearFormulario(): void {

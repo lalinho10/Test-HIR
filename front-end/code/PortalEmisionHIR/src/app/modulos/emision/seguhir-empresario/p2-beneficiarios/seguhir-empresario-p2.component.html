@@ -59,7 +59,7 @@
 								<select id="cboCobertura" class="form-control" formControlName="cobertura">
 									<option value="">Selecciona</option>
 									<option *ngFor="let cobertura of coberturas" [ngValue]="cobertura">
-										{{cobertura.descCobertura}}
+										{{cobertura.desc}}
 									</option>
 								</select>
 						</pehir-extend-form-control>
@@ -73,9 +73,12 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmSeguhirEmpresarioP2.get('formaPago').dirty"
 							[inputErrors]="frmSeguhirEmpresarioP2.get('formaPago').errors">
-								<div *ngFor="let formaPago of formasPago" class="rdoContainer two">
-									<input type="radio" formControlName="formaPago" [value]="formaPago">{{formaPago.descFormaPago}}
-								</div>
+								<select id="cboFpago" class="form-control" formControlName="formaPago">
+									<option value="">Selecciona</option>
+									<option *ngFor="let formaPago of formasPago" [ngValue]="formaPago">
+										{{formaPago.desc}}
+									</option>
+								</select>
 						</pehir-extend-form-control>
 					</div>
 				</div>

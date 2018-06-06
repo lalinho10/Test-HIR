@@ -2,18 +2,20 @@ import { Component, OnInit, ViewChild }		  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
-import { PolicyHolderTableComponent }		  from 'app/modulos/shared/policyholder-table/policyholder-table.component';
-
 import { ProcuraVidaP2Service }				  from './procura-vida-p2.service';
-import { WSClientService }					  from 'app/core/services/ws-client.service';
-
-import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.validator';
-import { FormatoMonedaValidator }			  from 'app/core/validators/formato-moneda.validator';
 
 import { MODULOS }							  from 'app/core/data/modulos';
 
 import { Cobertura }						  from 'app/core/models/cobertura';
 import { FormaPago }						  from 'app/core/models/forma-pago';
+import { Plan }								  from 'app/core/models/plan';
+
+import { WSClientService }					  from 'app/core/services/ws-client.service';
+
+import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.validator';
+import { FormatoMonedaValidator }			  from 'app/core/validators/formato-moneda.validator';
+
+import { PolicyHolderTableComponent }		  from 'app/modulos/shared/policyholder-table/policyholder-table.component';
 
 @Component({
 	selector: 'pehir-procura-vida-p2',
@@ -23,12 +25,15 @@ import { FormaPago }						  from 'app/core/models/forma-pago';
 export class ProcuraVidaP2Component implements OnInit {
 	@ViewChild( PolicyHolderTableComponent ) tablaBeneficiarios;
 
+	private idProducto: number = 1484;
+
 	isValidTable: boolean = false;
 
 	frmProcuraVidaP2: FormGroup;
 
 	coberturas: Cobertura[];
 	formasPago: FormaPago[];
+	planes: Plan[];
 
 	modulos = MODULOS;
 
@@ -45,10 +50,29 @@ export class ProcuraVidaP2Component implements OnInit {
 	}
 
 	private leerCatalogos(): void {
-		this.wsClientService.getObject( '/consultaCoberturasProducto/2' )
-							.subscribe( response => this.coberturas = response.data );
-		this.wsClientService.getObject( '/consultaFormasPagoProducto/2' )
-							.subscribe( response => this.formasPago = response.data );
+		this.wsClientService
+			.postObject( '/catCobertura', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.coberturas = response.data;
+				}
+			});
+
+		this.wsClientService
+			.postObject( '/catFormaPago', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.formasPago = response.data;
+				}
+			});
+
+		this.wsClientService
+			.postObject( '/catPlan', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.planes = response.data;
+				}
+			});
 	}
 
 	private crearFormulario(): void {

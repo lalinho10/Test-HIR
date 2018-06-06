@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
 import { SeguhirVidaP2Service }				  from './seguhir-vida-p2.service';
-import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { MODULOS }							  from 'app/core/data/modulos';
 
@@ -11,12 +10,16 @@ import { FormaPago }						  from 'app/core/models/forma-pago';
 import { Paquete }							  from 'app/core/models/paquete';
 import { Plan }								  from 'app/core/models/plan';
 
+import { WSClientService }					  from 'app/core/services/ws-client.service';
+
 @Component({
 	selector: 'pehir-seguhir-vida-p2',
 	templateUrl: 'seguhir-vida-p2.component.html'
 })
 
 export class SeguhirVidaP2Component implements OnInit {
+	private idProducto: number = 1;
+
 	frmSeguhirVidaP2: FormGroup;
 
 	formasPago: FormaPago[];
@@ -38,12 +41,25 @@ export class SeguhirVidaP2Component implements OnInit {
 	}
 
 	private leerCatalogos(): void {
-		this.wsClientService.getObject( '/consultaFormasPagoProducto/1' )
-							.subscribe( response => this.formasPago = response.data );
-		this.wsClientService.getObject( '/consultaPaquetes' )
-							.subscribe( data => this.paquetes = data );
-		this.wsClientService.getObject( '/consultaPlanesProducto/1' )
-							.subscribe( response => this.planes = response.data );
+		this.wsClientService
+			.postObject( '/catFormaPago', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.formasPago = response.data;
+				}
+			});
+
+		this.wsClientService
+			.postObject( '/consultaPaquetes', {} )
+			.subscribe( data => this.paquetes = data );
+
+		this.wsClientService
+			.postObject( '/catPlan', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.planes = response.data;
+				}
+			});
 	}
 
 	private crearFormulario(): void {
