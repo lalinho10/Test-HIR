@@ -29,7 +29,7 @@ import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.vali
 })
 
 export class ApindividualComponent implements OnInit {
-	private idProducto: number = 7;
+	private idProducto: number = 1588;
 
 	titulo: string = 'Cotización - Accidentes Personales Individual';
 	frmApindividual: FormGroup;
@@ -59,12 +59,29 @@ export class ApindividualComponent implements OnInit {
 	}
 
 	private leerCatalogos(): void {
-		this.wsClientService.getObject( '/consultaCoberturasProducto/7' )
-							.subscribe( response => this.coberturas = response.data );
-		this.wsClientService.getObject( '/consultaFormasPagoProducto/7' )
-							.subscribe( response => this.formasPago = response.data );
-		this.wsClientService.getObject( '/consultaPlanesProducto/7' )
-							.subscribe( response => this.planes = response.data );
+		this.wsClientService
+			.getObject( '/catCobertura/' + this.idProducto )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.coberturas = response.data;
+				}
+			});
+
+		this.wsClientService
+			.getObject( '/catFormaPago/' + this.idProducto )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.formasPago = response.data;
+				}
+			});
+
+		this.wsClientService
+			.getObject( '/catPlan/' + this.idProducto )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.planes = response.data;
+				}
+			});
 	}
 
 	private crearFormulario(): void {
@@ -128,9 +145,9 @@ export class ApindividualComponent implements OnInit {
 		this.frmApindividual.get( 'fechanac' ).patchValue( objetoFechaCal );
 		this.frmApindividual.get( 'rfc' ).setValue( cotizacion.rfc );
 		this.frmApindividual.get( 'genero' ).setValue( cotizacion.genero.idGenero );
-		this.frmApindividual.get( 'plan' ).setValue( cotizacion.plan.idPlan );
-		this.frmApindividual.get( 'fpago' ).setValue( cotizacion.formaPago.idFormaPago );
-		this.frmApindividual.get( 'cobertura' ).setValue( cotizacion.cobertura.idCobertura );
+		this.frmApindividual.get( 'plan' ).setValue( cotizacion.plan.id );
+		this.frmApindividual.get( 'fpago' ).setValue( cotizacion.formaPago.id );
+		this.frmApindividual.get( 'cobertura' ).setValue( cotizacion.cobertura.id );
 	}
 
 	private crearModeloCotizacion(): Cotizacion {
@@ -140,9 +157,9 @@ export class ApindividualComponent implements OnInit {
 		let idCobertura = this.frmApindividual.get( 'cobertura' ).value;
 
 		let fGeneros = this.generos.filter( ( genero: any ) => genero.idGenero == idGenero );
-		let fPlanes = this.planes.filter( ( plan: any ) => plan.idPlan == idPlan );
-		let fFormasPago = this.formasPago.filter( ( formaPago: any ) => formaPago.idFormaPago == idFormaPago );
-		let fCoberturas = this.coberturas.filter( ( cobertura: any ) => cobertura.idCobertura == idCobertura );
+		let fPlanes = this.planes.filter( ( plan: any ) => plan.id == idPlan );
+		let fFormasPago = this.formasPago.filter( ( formaPago: any ) => formaPago.id == idFormaPago );
+		let fCoberturas = this.coberturas.filter( ( cobertura: any ) => cobertura.id == idCobertura );
 
 		let cotizacion: Cotizacion = {
 			nombre: this.frmApindividual.get( 'nombre' ).value,

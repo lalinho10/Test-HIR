@@ -60,12 +60,27 @@ export class SeguhirVidaComponent implements OnInit {
 	}
 
 	private leerCatalogos(): void {
-		this.wsClientService.getObject( '/consultaFormasPagoProducto/1' )
-							.subscribe( response => this.formasPago = response.data );
-		this.wsClientService.getObject( '/consultaPaquetes' )
-							.subscribe( data => this.paquetes = data );
-		this.wsClientService.getObject( '/consultaPlanesProducto/1' )
-							.subscribe( response => this.planes = response.data );
+		this.wsClientService
+			.getObject( '/catCobertura/' + this.idProducto )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.formasPago = response.data;
+				}
+			});
+
+		this.wsClientService
+			.getObject( '/consultaPaquetes' )
+			.subscribe( data => {
+				this.paquetes = data;
+			});
+
+		this.wsClientService
+			.getObject( '/catPlan/' + this.idProducto )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.planes = response.data;
+				}
+			});
 	}
 
 	private crearFormulario(): void {
@@ -132,8 +147,8 @@ export class SeguhirVidaComponent implements OnInit {
 		this.frmSeguhirVida.get( 'fechanac' ).patchValue( objetoFechaCal );
 		this.frmSeguhirVida.get( 'rfc' ).setValue( cotizacion.rfc );
 		this.frmSeguhirVida.get( 'genero' ).setValue( cotizacion.genero.idGenero );
-		this.frmSeguhirVida.get( 'plan' ).setValue( cotizacion.plan.idPlan );
-		this.frmSeguhirVida.get( 'fpago' ).setValue( cotizacion.formaPago.idFormaPago );
+		this.frmSeguhirVida.get( 'plan' ).setValue( cotizacion.plan.id );
+		this.frmSeguhirVida.get( 'fpago' ).setValue( cotizacion.formaPago.id );
 		this.frmSeguhirVida.get( 'modulo' ).setValue( cotizacion.modulo.idModulo );
 		this.frmSeguhirVida.get( 'pcobertura' ).setValue( cotizacion.paqueteCobertura.idPaquete );
 	}
@@ -146,8 +161,8 @@ export class SeguhirVidaComponent implements OnInit {
 		let idPaquete = this.frmSeguhirVida.get( 'pcobertura' ).value;
 
 		let fGeneros = this.generos.filter( ( genero: any ) => genero.idGenero == idGenero );
-		let fPlanes = this.planes.filter( ( plan: any ) => plan.idPlan == idPlan );
-		let fFormasPago = this.formasPago.filter( ( formaPago: any ) => formaPago.idFormaPago == idFormaPago );
+		let fPlanes = this.planes.filter( ( plan: any ) => plan.id == idPlan );
+		let fFormasPago = this.formasPago.filter( ( formaPago: any ) => formaPago.id == idFormaPago );
 		let fModulos = this.modulos.filter( ( modulo: any ) => modulo.idModulo == idModulo );
 		let fPaquetes = this.paquetes.filter( ( paquete: any ) => paquete.idPaquete == idPaquete );
 

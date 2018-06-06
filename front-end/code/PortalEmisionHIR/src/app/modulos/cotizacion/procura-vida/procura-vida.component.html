@@ -108,8 +108,8 @@
 						[inputErrors]="frmProcuraVida.get('cobertura').errors">
 							<select id="cboCobertura" class="form-control" formControlName="cobertura">
 								<option value="">Selecciona</option>
-								<option *ngFor="let cobertura of coberturas" [value]="cobertura.idCobertura">
-									{{cobertura.descCobertura}}
+								<option *ngFor="let cobertura of coberturas" [value]="cobertura.id">
+									{{cobertura.desc}}
 								</option>
 							</select>
 					</pehir-extend-form-control>
@@ -123,9 +123,29 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmProcuraVida.get('fpago').dirty"
 						[inputErrors]="frmProcuraVida.get('fpago').errors">
-							<div *ngFor="let formaPago of formasPago" class="rdoContainer two">
-								<input type="radio" formControlName="fpago" [value]="formaPago.idFormaPago">{{formaPago.descFormaPago}}
-							</div>
+							<select id="cboFpago" class="form-control" formControlName="fpago">
+								<option value="">Selecciona</option>
+								<option *ngFor="let formaPago of formasPago" [value]="formaPago.id">
+									{{formaPago.desc}}
+								</option>
+							</select>
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblPlan" class="form-label">Plan:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmProcuraVida.get('plan').dirty"
+						[inputErrors]="frmProcuraVida.get('plan').errors">
+							<select id="cboPlan" class="form-control" formControlName="plan">
+								<option value="">Selecciona</option>
+								<option *ngFor="let plan of planes" [value]="plan.id">
+									{{plan.desc}}
+								</option>
+							</select>
 					</pehir-extend-form-control>
 				</div>
 			</div>

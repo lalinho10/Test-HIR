@@ -87,9 +87,12 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmSeguhirVida.get('plan').dirty"
 						[inputErrors]="frmSeguhirVida.get('plan').errors">
-							<div *ngFor="let plan of planes" class="rdoContainer two">
-								<input type="radio" formControlName="plan" [value]="plan.idPlan">{{plan.descPlan}}
-							</div>
+							<select id="cboPlan" class="form-control" formControlName="plan">
+								<option value="">Selecciona</option>
+								<option *ngFor="let plan of planes" [value]="plan.id">
+									{{plan.desc}}
+								</option>
+							</select>
 					</pehir-extend-form-control>
 				</div>
 			</div>
@@ -101,9 +104,12 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmSeguhirVida.get('fpago').dirty"
 						[inputErrors]="frmSeguhirVida.get('fpago').errors">
-							<div *ngFor="let formaPago of formasPago" class="rdoContainer two">
-								<input type="radio" formControlName="fpago" [value]="formaPago.idFormaPago">{{formaPago.descFormaPago}}
-							</div>
+							<select id="cboFpago" class="form-control" formControlName="fpago">
+								<option value="">Selecciona</option>
+								<option *ngFor="let formaPago of formasPago" [value]="formaPago.id">
+									{{formaPago.desc}}
+								</option>
+							</select>
 					</pehir-extend-form-control>
 				</div>
 			</div>
@@ -134,9 +140,12 @@
 					<pehir-extend-form-control
 						[inputDirty]="frmSeguhirVida.get('pcobertura').dirty"
 						[inputErrors]="frmSeguhirVida.get('pcobertura').errors">
-							<div *ngFor="let paquete of paquetes" class="rdoContainer two">
-								<input type="radio" formControlName="pcobertura" [value]="paquete.idPaquete">{{paquete.descPaquete}}
-							</div>
+							<select id="cboPcobertura" class="form-control" formControlName="pcobertura">
+								<option value="">Selecciona</option>
+								<option *ngFor="let paquete of paquetes" [value]="paquete.idPaquete">
+									{{paquete.descPaquete}}
+								</option>
+							</select>
 					</pehir-extend-form-control>
 				</div>
 			</div>

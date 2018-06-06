@@ -14,6 +14,7 @@ import { FECNACOPTIONS }					  from 'app/core/data/calendarios/fecNacOptions';
 
 import { Cobertura }						  from 'app/core/models/cobertura';
 import { FormaPago }						  from 'app/core/models/forma-pago';
+import { Plan }								  from 'app/core/models/plan';
 
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
@@ -29,13 +30,14 @@ import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.vali
 })
 
 export class GastosFunerariosComponent implements OnInit {
-	private idProducto: number = 3;
+	private idProducto: number = 721;
 
 	titulo: string = 'Cotización - Gastos Funerarios';
 	frmGastosFunerarios: FormGroup;
 
 	coberturas: Cobertura[];
 	formasPago: FormaPago[];
+	planes: Plan[];
 
 	modulos = MODULOS;
 	generos = GENEROS;
@@ -59,10 +61,29 @@ export class GastosFunerariosComponent implements OnInit {
 	}
 
 	private leerCatalogos(): void {
-		this.wsClientService.getObject( '/consultaCoberturasProducto/3' )
-							.subscribe( response => this.coberturas = response.data );
-		this.wsClientService.getObject( '/consultaFormasPagoProducto/3' )
-							.subscribe( response => this.formasPago = response.data );
+		this.wsClientService
+			.getObject( '/catCobertura/' + this.idProducto )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.coberturas = response.data;
+				}
+			});
+
+		this.wsClientService
+			.getObject( '/catFormaPago/' + this.idProducto )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.formasPago = response.data;
+				}
+			});
+
+		this.wsClientService
+			.getObject( '/catPlan/' + this.idProducto )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.planes = response.data;
+				}
+			});
 	}
 
 	private crearFormulario(): void {
@@ -101,6 +122,9 @@ export class GastosFunerariosComponent implements OnInit {
 			])],
 			'fpago': ['', Validators.compose([
 				Validators.required
+			])],
+			'plan': ['', Validators.compose([
+				Validators.required
 			])]
 		});
 	}
@@ -126,9 +150,10 @@ export class GastosFunerariosComponent implements OnInit {
 		this.frmGastosFunerarios.get( 'fechanac' ).patchValue( objetoFechaCal );
 		this.frmGastosFunerarios.get( 'rfc' ).setValue( cotizacion.rfc );
 		this.frmGastosFunerarios.get( 'genero' ).setValue( cotizacion.genero.idGenero );
-		this.frmGastosFunerarios.get( 'fpago' ).setValue( cotizacion.formaPago.idFormaPago );
+		this.frmGastosFunerarios.get( 'fpago' ).setValue( cotizacion.formaPago.id );
 		this.frmGastosFunerarios.get( 'modulo' ).setValue( cotizacion.modulo.idModulo );
-		this.frmGastosFunerarios.get( 'cobertura' ).setValue( cotizacion.cobertura.idCobertura );
+		this.frmGastosFunerarios.get( 'cobertura' ).setValue( cotizacion.cobertura.id );
+		this.frmGastosFunerarios.get( 'plan' ).setValue( cotizacion.plan.id );
 	}
 
 	private crearModeloCotizacion(): Cotizacion {
@@ -136,11 +161,13 @@ export class GastosFunerariosComponent implements OnInit {
 		let idFormaPago = this.frmGastosFunerarios.get( 'fpago' ).value;
 		let idModulo = this.frmGastosFunerarios.get( 'modulo' ).value;
 		let idCobertura = this.frmGastosFunerarios.get( 'cobertura' ).value;
+		let idPlan = this.frmGastosFunerarios.get( 'plan' ).value;
 
 		let fGeneros = this.generos.filter( ( genero: any ) => genero.idGenero == idGenero );
-		let fFormasPago = this.formasPago.filter( ( formaPago: any ) => formaPago.idFormaPago == idFormaPago );
+		let fFormasPago = this.formasPago.filter( ( formaPago: any ) => formaPago.id == idFormaPago );
 		let fModulos = this.modulos.filter( ( modulo: any ) => modulo.idModulo == idModulo );
-		let fCoberturas = this.coberturas.filter( ( cobertura: any ) => cobertura.idCobertura == idCobertura );
+		let fCoberturas = this.coberturas.filter( ( cobertura: any ) => cobertura.id == idCobertura );
+		let fPlanes = this.planes.filter( ( plan: any ) => plan.id == idPlan );
 
 		let cotizacion: Cotizacion = {
 			nombre: this.frmGastosFunerarios.get( 'nombre' ).value,
@@ -151,7 +178,8 @@ export class GastosFunerariosComponent implements OnInit {
 			genero: fGeneros[ 0 ],
 			formaPago: fFormasPago[ 0 ],
 			modulo: fModulos[ 0 ],
-			cobertura: fCoberturas[ 0 ]
+			cobertura: fCoberturas[ 0 ],
+			plan: fPlanes[ 0 ]
 		}
 
 		return cotizacion;

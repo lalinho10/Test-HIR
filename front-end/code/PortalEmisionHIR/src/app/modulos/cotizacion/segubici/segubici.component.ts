@@ -29,7 +29,7 @@ import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.vali
 })
 
 export class SegubiciComponent implements OnInit {
-	private idProducto: number = 6;
+	private idProducto: number = 1585;
 
 	titulo: string = 'Cotización - Segubici';
 	frmSegubici: FormGroup;
@@ -59,12 +59,29 @@ export class SegubiciComponent implements OnInit {
 	}
 
 	private leerCatalogos(): void {
-		this.wsClientService.getObject( '/consultaCoberturasProducto/6' )
-							.subscribe( response => this.coberturas = response.data );
-		this.wsClientService.getObject( '/consultaFormasPagoProducto/6' )
-							.subscribe( response => this.formasPago = response.data );
-		this.wsClientService.getObject( '/consultaPlanesProducto/6' )
-							.subscribe( response => this.planes = response.data );
+		this.wsClientService
+			.getObject( '/catCobertura/' + this.idProducto )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.coberturas = response.data;
+				}
+			});
+
+		this.wsClientService
+			.getObject( '/catFormaPago/' + this.idProducto )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.formasPago = response.data;
+				}
+			});
+
+		this.wsClientService
+			.getObject( '/catPlan/' + this.idProducto )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.planes = response.data;
+				}
+			});
 	}
 
 	private crearFormulario(): void {
@@ -128,9 +145,9 @@ export class SegubiciComponent implements OnInit {
 		this.frmSegubici.get( 'fechanac' ).patchValue( objetoFechaCal );
 		this.frmSegubici.get( 'rfc' ).setValue( cotizacion.rfc );
 		this.frmSegubici.get( 'genero' ).setValue( cotizacion.genero.idGenero );
-		this.frmSegubici.get( 'plan' ).setValue( cotizacion.plan.idPlan );
-		this.frmSegubici.get( 'fpago' ).setValue( cotizacion.formaPago.idFormaPago );
-		this.frmSegubici.get( 'cobertura' ).setValue( cotizacion.cobertura.idCobertura );
+		this.frmSegubici.get( 'plan' ).setValue( cotizacion.plan.id );
+		this.frmSegubici.get( 'fpago' ).setValue( cotizacion.formaPago.id );
+		this.frmSegubici.get( 'cobertura' ).setValue( cotizacion.cobertura.id );
 	}
 
 	private crearModeloCotizacion(): Cotizacion {
@@ -140,9 +157,9 @@ export class SegubiciComponent implements OnInit {
 		let idCobertura = this.frmSegubici.get( 'cobertura' ).value;
 
 		let fGeneros = this.generos.filter( ( genero: any ) => genero.idGenero == idGenero );
-		let fPlanes = this.planes.filter( ( plan: any ) => plan.idPlan == idPlan );
-		let fFormasPago = this.formasPago.filter( ( formaPago: any ) => formaPago.idFormaPago == idFormaPago );
-		let fCoberturas = this.coberturas.filter( ( cobertura: any ) => cobertura.idCobertura == idCobertura );
+		let fPlanes = this.planes.filter( ( plan: any ) => plan.id == idPlan );
+		let fFormasPago = this.formasPago.filter( ( formaPago: any ) => formaPago.id == idFormaPago );
+		let fCoberturas = this.coberturas.filter( ( cobertura: any ) => cobertura.id == idCobertura );
 
 		let cotizacion: Cotizacion = {
 			nombre: this.frmSegubici.get( 'nombre' ).value,
