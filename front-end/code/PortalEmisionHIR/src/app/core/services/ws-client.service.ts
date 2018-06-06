@@ -17,11 +17,19 @@ export class WSClientService {
 
 	postObject( serviceName: string, serviceBody: any ): Observable<any> {
 		if( this.isDevelopment ) {
-			return this.http.get( this.appHost + serviceName );
+			return this.createMockRequest( serviceName, serviceBody );
 		} else {
 			let headers = new HttpHeaders().set( 'Content-Type', 'application/json' );
 
 			return this.http.post( this.appHost + serviceName, serviceBody, { headers: headers } );
 		}
+	}
+
+	private createMockRequest( serviceName: string, serviceBody: any ): Observable<any> {
+		let serviceId = ( serviceBody.id !== null && typeof serviceBody.id !== 'undefined' ) ? '/' + serviceBody.id : '';
+
+		let mockService = serviceName + serviceId;
+
+		return this.http.get( this.appHost + mockService );
 	}
 }
