@@ -70,8 +70,8 @@ export class SeguhirVidaP4Component implements OnInit {
 	private verificarPlan(): void {
 		let plan: Plan = this.seguhirVidaService.getPlanSeleccionado();
 
-		this.capturaConyuge = ( plan.idPlan === EPLAN.FAMILIAR || plan.idPlan === EPLAN.CONYUGAL );
-		this.capturaHijos   = ( plan.idPlan === EPLAN.FAMILIAR || plan.idPlan === EPLAN.HIJOS );
+		this.capturaConyuge = ( plan.id === EPLAN.FAMILIAR || plan.id === EPLAN.CONYUGAL );
+		this.capturaHijos   = ( plan.id === EPLAN.FAMILIAR || plan.id === EPLAN.HIJOS );
 
 		if( !this.capturaConyuge ) {
 			this.isValidFormConyuge = true;
