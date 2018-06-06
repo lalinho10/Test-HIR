@@ -34,8 +34,8 @@ const cotizacionRoutes: Routes = [
 	},
 	{
 		path: 'seguhirvida',
-		component: SeguhirVidaComponent,
-		canActivate: [ AuthenticationGuardService ]
+		redirectTo: '/inprogress',
+		pathMatch: 'full'
 	},
 	{
 		path: 'procuravida',
