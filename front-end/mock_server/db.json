@@ -36,15 +36,15 @@
 		{ "idCobertura": 6, "descCobertura": "Rembolso de gastos médicos" },
 		{ "idCobertura": 7, "descCobertura": "Rembolso de gastos médicos por accidente" }
 	],
-	"consultaProductos":
+	"catalogoProducto":
 	[
-		{ "idProducto": 1, "descProducto": "SeguHIR Vida" },
-		{ "idProducto": 2, "descProducto": "Procura Vida" },
-		{ "idProducto": 3, "descProducto": "Gastos Funerarios" },
-		{ "idProducto": 4, "descProducto": "SeguHIR Empresario" },
-		{ "idProducto": 5, "descProducto": "Vida con Ahorro línea 2018" },
-		{ "idProducto": 6, "descProducto": "SeguBici" },
-		{ "idProducto": 7, "descProducto": "Accidentes Personales Individual" }
+		{ "id": 1,    "desc": "SeguHIR Vida" },
+		{ "id": 5,    "desc": "Vida con Ahorro línea 2018" },
+		{ "id": 721,  "desc": "GASTOS FUNERARIOS" },
+		{ "id": 1484, "desc": "PROCURA VIDA" },
+		{ "id": 1565, "desc": "SEGUHIR EMPRESARIO" },
+		{ "id": 1585, "desc": "SEGUBICI" },
+		{ "id": 1588, "desc": "ACCIDENTES PERSONALES INDIVIDUAL" }
 	],
 	"consultaTiposAhorro":
 	[
@@ -52,115 +52,390 @@
 		{ "idTipoAhorro": 2, "descTipoAhorro": "Ahorro con beneficios fiscales" },
 		{ "idTipoAhorro": 3, "descTipoAhorro": "Plan especial de ahorro" }
 	],
-	"consultaPlanesProducto":
+	"catPlan":
 	[
-		{ "id": 1, "data":
+		{
+			"id": 1,
+			"code": 200,
+			"status": null,
+			"message": "Catalogo recuperado con éxito",
+			"dateTime": 1528300849479,
+			"data": []
+		},
+		{
+			"id": 5,
+			"code": 200,
+			"status": null,
+			"message": "Catalogo recuperado con éxito",
+			"dateTime": 1528300849479,
+			"data": []
+		},
+		{
+			"id": 721,
+			"code": 200,
+			"status": null,
+			"message": "Catalogo recuperado con éxito",
+			"dateTime": 1528300849479,
+			"data":
 			[
-				{ "idPlan": 1, "descPlan": "Individual" },
-				{ "idPlan": 2, "descPlan": "Conyugal" },
-				{ "idPlan": 3, "descPlan": "Hijos" },
-				{ "idPlan": 4, "descPlan": "Familiar" }
+				{
+					"id": 1181,
+					"desc": "GF INDIVIDUAL(F, MA)"
+				},
+				{
+					"id": 1182,
+					"desc": "GF CONYUGAL(F, MA)"
+				},
+				{
+					"id": 1183,
+					"desc": "GF FAMILIAR(F, MA)"
+				},
+				{
+					"id": 1303,
+					"desc": "GF HIJOS(F, MA)"
+				}
 			]
 		},
-		{ "id": 2, "data": [] },
-		{ "id": 3, "data": [] },
-		{ "id": 4, "data": [] },
-		{ "id": 5, "data":
+		{
+			"id": 1484,
+			"code": 200,
+			"status": null,
+			"message": "Catalogo recuperado con éxito",
+			"dateTime": 1528300891948,
+			"data":
 			[
-				{ "idPlan": 1, "descPlan": "Individual" },
-				{ "idPlan": 2, "descPlan": "Conyugal" },
-				{ "idPlan": 3, "descPlan": "Hijos" },
-				{ "idPlan": 4, "descPlan": "Familiar" }
+				{
+					"id": 1744,
+					"desc": "TARJETA EMPLEADOS INDIVIDUAL"
+				}
 			]
 		},
-		{ "id": 6, "data":
+		{
+			"id": 1565,
+			"code": 200,
+			"status": null,
+			"message": "Catalogo recuperado con éxito",
+			"dateTime": 1528300934732,
+			"data":
 			[
-				{ "idPlan": 1, "descPlan": "Individual" }
+				{
+					"id": 1823,
+					"desc": "SEGUHIR EMPRESARIO INDIVIDUAL"
+				},
+				{
+					"id": 1918,
+					"desc": "SEGUHIR EMPRESARIO INDIVIDUAL DESCUENTO"
+				}
 			]
 		},
-		{ "id": 7, "data":
+		{
+			"id": 1585,
+			"code": 200,
+			"status": null,
+			"message": "Catalogo recuperado con éxito",
+			"dateTime": 1528300967654,
+			"data":
 			[
-				{ "idPlan": 1, "descPlan": "Individual" }
+				{
+					"id": 1835,
+					"desc": "SEGUBUCI-SEGUROS S INDIVIDUAL"
+				},
+				{
+					"id": 1849,
+					"desc": "SEGUBICI-SEGUROS S 371 INDIVIDUAL"
+				},
+				{
+					"id": 1924,
+					"desc": "SEGUBICI-SEGUROS S 458 INDIVIDUAL"
+				},
+				{
+					"id": 1925,
+					"desc": "SEGUBICI-SEGUROS S 829 INDIVIDUAL"
+				},
+				{
+					"id": 1926,
+					"desc": "SEGUBICI-SEGUROS S 1200 INDIVIDUAL"
+				}
+			]
+		},
+		{
+			"id": 1588,
+			"code": 200,
+			"status": null,
+			"message": "Catalogo recuperado con éxito",
+			"dateTime": 1528301012410,
+			"data":
+			[
+				{
+					"id": 1893,
+					"desc": "ME PROTEGE SC 300"
+				},
+				{
+					"id": 1894,
+					"desc": "ME PROTEGE SC 370"
+				},
+				{
+					"id": 1895,
+					"desc": "ME PROTEGE SC 555"
+				}
 			]
 		}
 	],
-	"consultaFormasPagoProducto":
+	"catFormaPago":
 	[
-		{ "id": 1, "data":
+		{
+			"id": 1,
+			"code": 200,
+			"status": null,
+			"message": "Catalogo recuperado con éxito",
+			"dateTime": 1528301270279,
+			"data": []
+		},
+		{
+			"id": 5,
+			"code": 200,
+			"status": null,
+			"message": "Catalogo recuperado con éxito",
+			"dateTime": 1528301270279,
+			"data": []
+		},
+		{
+			"id": 721,
+			"code": 200,
+			"status": null,
+			"message": "Catalogo recuperado con éxito",
+			"dateTime": 1528301270279,
+			"data":
 			[
-				{ "idFormaPago": 1, "descFormaPago": "Anual" },
-				{ "idFormaPago": 2, "descFormaPago": "Semestral" },
-				{ "idFormaPago": 4, "descFormaPago": "Trimestral" },
-				{ "idFormaPago": 6, "descFormaPago": "Mensual" }
+				{
+					"id": 72,
+					"desc": "Anual"
+				},
+				{
+					"id": 73,
+					"desc": "Semestral"
+				},
+				{
+					"id": 74,
+					"desc": "Trimestral"
+				},
+				{
+					"id": 75,
+					"desc": "Mensual"
+				}
 			]
 		},
-		{ "id": 2, "data":
+		{
+			"id": 1484,
+			"code": 200,
+			"status": null,
+			"message": "Catalogo recuperado con éxito",
+			"dateTime": 1528301391245,
+			"data":
 			[
-				{ "idFormaPago": 1, "descFormaPago": "Anual" }
+				{
+					"id": 72,
+					"desc": "Anual"
+				},
+				{
+					"id": 73,
+					"desc": "Semestral"
+				},
+				{
+					"id": 74,
+					"desc": "Trimestral"
+				},
+				{
+					"id": 75,
+					"desc": "Mensual"
+				}
 			]
 		},
-		{ "id": 3, "data":
+		{
+			"id": 1565,
+			"code": 200,
+			"status": null,
+			"message": "Catalogo recuperado con éxito",
+			"dateTime": 1528301455429,
+			"data":
 			[
-				{ "idFormaPago": 1, "descFormaPago": "Anual" }
+				{
+					"id": 72,
+					"desc": "Anual"
+				},
+				{
+					"id": 73,
+					"desc": "Semestral"
+				},
+				{
+					"id": 74,
+					"desc": "Trimestral"
+				},
+				{
+					"id": 75,
+					"desc": "Mensual"
+				}
 			]
 		},
-		{ "id": 4, "data":
+		{
+			"id": 1585,
+			"code": 200,
+			"status": null,
+			"message": "Catalogo recuperado con éxito",
+			"dateTime": 1528301498672,
+			"data":
 			[
-				{ "idFormaPago": 1, "descFormaPago": "Anual" }
+				{
+					"id": 72,
+					"desc": "Anual"
+				},
+				{
+					"id": 73,
+					"desc": "Semestral"
+				},
+				{
+					"id": 74,
+					"desc": "Trimestral"
+				},
+				{
+					"id": 75,
+					"desc": "Mensual"
+				}
 			]
 		},
-		{ "id": 5, "data":
+		{
+			"id": 1588,
+			"code": 200,
+			"status": null,
+			"message": "Catalogo recuperado con éxito",
+			"dateTime": 1528301538686,
+			"data":
 			[
-				{ "idFormaPago": 1, "descFormaPago": "Anual" },
-				{ "idFormaPago": 2, "descFormaPago": "Semestral" },
-				{ "idFormaPago": 4, "descFormaPago": "Trimestral" },
-				{ "idFormaPago": 6, "descFormaPago": "Mensual" }
-			]
-		},
-		{ "id": 6, "data":
-			[
-				{ "idFormaPago": 1, "descFormaPago": "Anual" }
-			]
-		},
-		{ "id": 7, "data":
-			[
-				{ "idFormaPago": 1, "descFormaPago": "Anual" }
+				{
+					"id": 72,
+					"desc": "Anual"
+				},
+				{
+					"id": 73,
+					"desc": "Semestral"
+				},
+				{
+					"id": 74,
+					"desc": "Trimestral"
+				},
+				{
+					"id": 75,
+					"desc": "Mensual"
+				}
 			]
 		}
 	],
-	"consultaCoberturasProducto":
+	"catCobertura":
 	[
-		{ "id": 1, "data": [] },
-		{ "id": 2, "data":
+		{
+			"id": 1,
+			"code": 200,
+			"status": null,
+			"message": "Catalogo recuperado con éxito",
+			"dateTime": 1528282907826,
+			"data": []
+		},
+		{
+			"id": 5,
+			"code": 200,
+			"status": null,
+			"message": "Catalogo recuperado con éxito",
+			"dateTime": 1528282907826,
+			"data": []
+		},
+		{
+			"id": 721,
+			"code": 200,
+			"status": null,
+			"message": "Catalogo recuperado con éxito",
+			"dateTime": 1528282907826,
+			"data":
 			[
-				{ "idCobertura": 1, "descCobertura": "Fallecimiento" },
-				{ "idCobertura": 2, "descCobertura": "Muerte accidental" }
+				{
+					"id": 1088,
+					"desc": "MUERTE ACCIDENTAL"
+				},
+				{
+					"id": 1091,
+					"desc": "GASTOS FUNERARIOS"
+				}
 			]
 		},
-		{ "id": 3, "data":
+		{
+			"id": 1484,
+			"code": 200,
+			"status": null,
+			"message": "Catalogo recuperado con éxito",
+			"dateTime": 1528300175231,
+			"data":
 			[
-				{ "idCobertura": 2, "descCobertura": "Muerte accidental" }
+				{
+					"id": 364,
+					"desc": "FALLECIMIENTO"
+				},
+				{
+					"id": 1088,
+					"desc": "MUERTE ACCIDENTAL"
+				}
 			]
 		},
-		{ "id": 4, "data":
+		{
+			"id": 1565,
+			"code": 200,
+			"status": null,
+			"message": "Catalogo recuperado con éxito",
+			"dateTime": 1528300262462,
+			"data":
 			[
-				{ "idCobertura": 1, "descCobertura": "Fallecimiento" },
-				{ "idCobertura": 3, "descCobertura": "Doble indemnización por muerte accidental" },
-				{ "idCobertura": 4, "descCobertura": "Control de la salud" },
-				{ "idCobertura": 5, "descCobertura": "Asistencia funeraria" }
+				{
+					"id": 364,
+					"desc": "FALLECIMIENTO"
+				},
+				{
+					"id": 1088,
+					"desc": "MUERTE ACCIDENTAL"
+				}
 			]
 		},
-		{ "id": 5, "data": [] },
-		{ "id": 6, "data":
+		{
+			"id": 1585,
+			"code": 200,
+			"status": null,
+			"message": "Catalogo recuperado con éxito",
+			"dateTime": 1528300576193,
+			"data":
 			[
-				{ "idCobertura": 2, "descCobertura": "Muerte accidental" },
-				{ "idCobertura": 6, "descCobertura": "Rembolso de gastos médicos" }
+				{
+					"id": 1088,
+					"desc": "MUERTE ACCIDENTAL"
+				},
+				{
+					"id": 6322,
+					"desc": "REEMBOLSO DE GASTOS MEDICOS POR ACCIDENTE"
+				}
 			]
 		},
-		{ "id": 7, "data":
+		{
+			"id": 1588,
+			"code": 200,
+			"status": null,
+			"message": "Catalogo recuperado con éxito",
+			"dateTime": 1528300661274,
+			"data":
 			[
-				{ "idCobertura": 2, "descCobertura": "Muerte accidental" },
-				{ "idCobertura": 7, "descCobertura": "Rembolso de gastos médicos por accidente" }
+				{
+					"id": 1088,
+					"desc": "MUERTE ACCIDENTAL"
+				},
+				{
+					"id": 6322,
+					"desc": "REEMBOLSO DE GASTOS MEDICOS POR ACCIDENTE"
+				}
 			]
 		}
 	],
