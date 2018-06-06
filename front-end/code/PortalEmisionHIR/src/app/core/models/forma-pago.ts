@@ -1,4 +1,4 @@
 export class FormaPago {
-	idFormaPago: number;
-	descFormaPago: string;
+	id: number;
+	desc: string;
 }

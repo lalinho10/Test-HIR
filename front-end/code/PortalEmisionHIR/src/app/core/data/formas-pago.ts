@@ -1,8 +1,8 @@
 import { FormaPago } from 'app/core/models/forma-pago';
 
 export const FORMASPAGO: FormaPago[] = [
-	{ idFormaPago: 1, descFormaPago: 'Anual' },
-	{ idFormaPago: 2, descFormaPago: 'Semestral' },
-	{ idFormaPago: 3, descFormaPago: 'Trimestral' },
-	{ idFormaPago: 4, descFormaPago: 'Mensual' }
+	{ id: 1, desc: 'Anual' },
+	{ id: 2, desc: 'Semestral' },
+	{ id: 3, desc: 'Trimestral' },
+	{ id: 4, desc: 'Mensual' }
 ];

@@ -1,4 +1,4 @@
 export class Cobertura {
-	idCobertura: number;
-	descCobertura: string;
+	id: number;
+	desc: string;
 }
