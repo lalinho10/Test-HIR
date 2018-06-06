@@ -61,7 +61,7 @@ export class SeguhirVidaComponent implements OnInit {
 
 	private leerCatalogos(): void {
 		this.wsClientService
-			.getObject( '/catCobertura/' + this.idProducto )
+			.postObject( '/catCobertura', { 'id': this.idProducto } )
 			.subscribe( response => {
 				if( response.code === 200 ) {
 					this.formasPago = response.data;
@@ -69,13 +69,13 @@ export class SeguhirVidaComponent implements OnInit {
 			});
 
 		this.wsClientService
-			.getObject( '/consultaPaquetes' )
+			.postObject( '/consultaPaquetes', {} )
 			.subscribe( data => {
 				this.paquetes = data;
 			});
 
 		this.wsClientService
-			.getObject( '/catPlan/' + this.idProducto )
+			.postObject( '/catPlan', { 'id': this.idProducto } )
 			.subscribe( response => {
 				if( response.code === 200 ) {
 					this.planes = response.data;

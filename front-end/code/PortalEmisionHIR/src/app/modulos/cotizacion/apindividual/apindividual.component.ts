@@ -60,7 +60,7 @@ export class ApindividualComponent implements OnInit {
 
 	private leerCatalogos(): void {
 		this.wsClientService
-			.getObject( '/catCobertura/' + this.idProducto )
+			.postObject( '/catCobertura', { 'id': this.idProducto } )
 			.subscribe( response => {
 				if( response.code === 200 ) {
 					this.coberturas = response.data;
@@ -68,7 +68,7 @@ export class ApindividualComponent implements OnInit {
 			});
 
 		this.wsClientService
-			.getObject( '/catFormaPago/' + this.idProducto )
+			.postObject( '/catFormaPago', { 'id': this.idProducto } )
 			.subscribe( response => {
 				if( response.code === 200 ) {
 					this.formasPago = response.data;
@@ -76,7 +76,7 @@ export class ApindividualComponent implements OnInit {
 			});
 
 		this.wsClientService
-			.getObject( '/catPlan/' + this.idProducto )
+			.postObject( '/catPlan', { 'id': this.idProducto } )
 			.subscribe( response => {
 				if( response.code === 200 ) {
 					this.planes = response.data;
