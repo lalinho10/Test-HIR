@@ -25,7 +25,8 @@ const emisionRoutes: Routes = [
 	},
 	{
 		path: 'seguhirvida',
-		loadChildren: 'app/modulos/emision/seguhir-vida/seguhir-vida.module#SeguhirVidaModule'
+		redirectTo: '/inprogress',
+		pathMatch: 'full'
 	},
 	{
 		path: 'procuravida',
