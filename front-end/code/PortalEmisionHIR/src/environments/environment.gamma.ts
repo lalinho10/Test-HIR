@@ -4,7 +4,7 @@
 // archivo (environment.gamma.ts) en vez del default (environment.ts)
 
 export const environment = {
-	appHost: 'http://localhost:8080/service-rest/dtiServices',
+	appHost: 'http://177.241.244.250:8080/service-rest/dtiServices',
 	environmentName: 'Gamma',
 	development: false,
 	production: false
