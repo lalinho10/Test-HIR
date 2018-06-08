@@ -61,7 +61,7 @@ export class SeguhirVidaComponent implements OnInit {
 
 	private leerCatalogos(): void {
 		this.wsClientService
-			.postObject( '/catCobertura', { 'id': this.idProducto } )
+			.postObject( '/catFormaPago', { 'id': this.idProducto } )
 			.subscribe( response => {
 				if( response.code === 200 ) {
 					this.formasPago = response.data;

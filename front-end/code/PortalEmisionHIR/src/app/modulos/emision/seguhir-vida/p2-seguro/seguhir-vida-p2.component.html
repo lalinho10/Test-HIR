@@ -116,7 +116,7 @@
 						[inputDirty]="frmSeguhirVidaP2.get('plan').dirty"
 						[inputErrors]="frmSeguhirVidaP2.get('plan').errors">
 							<div *ngFor="let plan of planes" class="rdoContainer">
-								<input type="radio" formControlName="plan" [value]="plan">{{plan.descPlan}}
+								<input type="radio" formControlName="plan" [value]="plan">{{plan.desc}}
 							</div>
 					</pehir-extend-form-control>
 				</fieldset>
@@ -140,7 +140,7 @@
 						[inputDirty]="frmSeguhirVidaP2.get('formaPago').dirty"
 						[inputErrors]="frmSeguhirVidaP2.get('formaPago').errors">
 							<div *ngFor="let formaPago of formasPago" class="rdoContainer">
-								<input type="radio" formControlName="formaPago" [value]="formaPago">{{formaPago.descFormaPago}}
+								<input type="radio" formControlName="formaPago" [value]="formaPago">{{formaPago.desc}}
 							</div>
 					</pehir-extend-form-control>
 				</fieldset>
