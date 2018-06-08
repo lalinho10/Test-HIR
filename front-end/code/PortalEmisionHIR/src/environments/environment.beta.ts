@@ -7,5 +7,6 @@ export const environment = {
 	appHost: 'http://192.168.10.39:8080/service-rest/dtiServices',
 	environmentName: 'Beta',
 	development: false,
-	production: false
+	production: false,
+	recaptchaSiteKey: '6LfJhU8UAAAAANQjlRZ0Byk4M5iG7vCaCtxzLuof'
 };

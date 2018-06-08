@@ -6,5 +6,6 @@ export const environment = {
 	appHost: 'http://localhost:3005',
 	environmentName: 'Development',
 	development: true,
-	production: false
+	production: false,
+	recaptchaSiteKey: '6LfJhU8UAAAAANQjlRZ0Byk4M5iG7vCaCtxzLuof'
 };

@@ -7,5 +7,6 @@ export const environment = {
 	appHost: 'http://177.241.244.250:8080/service-rest/dtiServices',
 	environmentName: 'Gamma',
 	development: false,
-	production: false
+	production: false,
+	recaptchaSiteKey: '6LfG6V0UAAAAAAnADp0QFhJzKeG2CIYzRQ0jzKqj'
 };
