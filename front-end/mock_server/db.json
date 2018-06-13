@@ -210,18 +210,6 @@
 				{
 					"id": 72,
 					"desc": "Anual"
-				},
-				{
-					"id": 73,
-					"desc": "Semestral"
-				},
-				{
-					"id": 74,
-					"desc": "Trimestral"
-				},
-				{
-					"id": 75,
-					"desc": "Mensual"
 				}
 			]
 		},
@@ -236,18 +224,6 @@
 				{
 					"id": 72,
 					"desc": "Anual"
-				},
-				{
-					"id": 73,
-					"desc": "Semestral"
-				},
-				{
-					"id": 74,
-					"desc": "Trimestral"
-				},
-				{
-					"id": 75,
-					"desc": "Mensual"
 				}
 			]
 		},
@@ -262,18 +238,6 @@
 				{
 					"id": 72,
 					"desc": "Anual"
-				},
-				{
-					"id": 73,
-					"desc": "Semestral"
-				},
-				{
-					"id": 74,
-					"desc": "Trimestral"
-				},
-				{
-					"id": 75,
-					"desc": "Mensual"
 				}
 			]
 		},
@@ -288,18 +252,6 @@
 				{
 					"id": 72,
 					"desc": "Anual"
-				},
-				{
-					"id": 73,
-					"desc": "Semestral"
-				},
-				{
-					"id": 74,
-					"desc": "Trimestral"
-				},
-				{
-					"id": 75,
-					"desc": "Mensual"
 				}
 			]
 		},
@@ -314,18 +266,6 @@
 				{
 					"id": 72,
 					"desc": "Anual"
-				},
-				{
-					"id": 73,
-					"desc": "Semestral"
-				},
-				{
-					"id": 74,
-					"desc": "Trimestral"
-				},
-				{
-					"id": 75,
-					"desc": "Mensual"
 				}
 			]
 		}
