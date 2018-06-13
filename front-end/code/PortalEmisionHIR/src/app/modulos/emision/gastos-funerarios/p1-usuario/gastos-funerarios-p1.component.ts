@@ -92,7 +92,7 @@ export class GastosFunerariosP1Component implements OnInit {
 			])],
 			'fechanac': ['', Validators.compose([
 				Validators.required,
-				EntreEdadesValidator(18,64)
+				EntreEdadesValidator(12,70)
 			])],
 			'nacionalidad': ['', Validators.compose([
 				Validators.required

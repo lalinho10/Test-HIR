@@ -74,7 +74,7 @@ export class SegubiciP1Component implements OnInit {
 			])],
 			'fechanac': ['', Validators.compose([
 				Validators.required,
-				EntreEdadesValidator(18,64)
+				EntreEdadesValidator(18,65)
 			])],
 			'nacionalidad': ['', Validators.compose([
 				Validators.required

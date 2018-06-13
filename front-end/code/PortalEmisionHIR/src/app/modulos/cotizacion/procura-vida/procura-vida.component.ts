@@ -105,7 +105,7 @@ export class ProcuraVidaComponent implements OnInit {
 			])],
 			'fechanac': ['', Validators.compose([
 				Validators.required,
-				EntreEdadesValidator(18,64)
+				EntreEdadesValidator(18,74)
 			])],
 			'rfc': ['', Validators.compose([
 				Validators.required,

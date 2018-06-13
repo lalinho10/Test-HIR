@@ -103,7 +103,7 @@ export class SegubiciComponent implements OnInit {
 			])],
 			'fechanac': ['', Validators.compose([
 				Validators.required,
-				EntreEdadesValidator(18,64)
+				EntreEdadesValidator(18,65)
 			])],
 			'rfc': ['', Validators.compose([
 				Validators.required,
