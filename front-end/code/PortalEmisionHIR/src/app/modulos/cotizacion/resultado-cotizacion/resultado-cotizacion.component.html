@@ -40,6 +40,14 @@
 		<label class="res-label">{{resultadoCotizacion.tipoPago}}</label>
 	</div>
 </div>
+<div *ngIf="resultadoCotizacion.deducible" class="row">
+	<div class="col col-50">
+		<label class="form-label">Deducible:</label>
+	</div>
+	<div class="col col-50">
+		<label class="res-label">{{resultadoCotizacion.deducible}}</label>
+	</div>
+</div>
 <div class="row">
 	<div class="col col-50">
 		<label class="form-label">Edad:</label>
