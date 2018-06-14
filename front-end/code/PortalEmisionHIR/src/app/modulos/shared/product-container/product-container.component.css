@@ -1,0 +1,11 @@
+.product-container .center {text-align:center;}
+.product-container .productFooter {font-size:10px;}
+.product-container .productImage2 {float:right;height:78px;}
+.product-container .productImage1 {width:100%;}
+.product-container .sectionTitle {background-color:#f68c2c;border-radius:5px;color:#ffffff;margin-bottom:15px;padding:15px 0 15px 40px;}
+.product-container .sectionContent {margin-bottom:20px;}
+.product-container .sectionContact {margin-bottom:10px;}
+.product-container .sectionContent.text {padding:0 0 0 40px;}
+.product-container ul {list-style:none;margin:0;padding:0;}
+.product-container ul li {padding:0 0 5px 0;}
+.product-container .sectionTitle .fa {color:#ffffff;}
