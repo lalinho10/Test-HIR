@@ -8,4 +8,6 @@
 .product-container .sectionContent.text {padding:0 0 0 40px;}
 .product-container ul {list-style:none;margin:0;padding:0;}
 .product-container ul li {padding:0 0 5px 0;}
+.product-container a > .fa {color:#333333;}
+.product-container a:hover > .fa {color:#f68c2c;}
 .product-container .sectionTitle .fa {color:#ffffff;}

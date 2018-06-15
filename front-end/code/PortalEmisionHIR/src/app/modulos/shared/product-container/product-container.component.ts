@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input }	from '@angular/core';
+import { Location }			from '@angular/common';
 
-import { DetalleProducto }  from 'app/core/data/productos/detalle-producto';
+import { DetalleProducto }	from 'app/core/data/productos/detalle-producto';
 
 @Component({
 	selector: 'pehir-product-container',
@@ -11,5 +12,11 @@ import { DetalleProducto }  from 'app/core/data/productos/detalle-producto';
 export class ProductContainerComponent {
 	@Input() detalleProducto: DetalleProducto;
 
-	imageHIRPath: string = './assets/img/logoHIR.png';
+	constructor(
+		private location: Location
+	) {}
+
+	fnRegresar(): void {
+		this.location.back();
+	}
 }

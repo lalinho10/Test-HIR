@@ -1,10 +1,17 @@
 <div class ="product-container">
 	<div class="row">
+		<div class="col col-100">
+			<a id="lnkRegresar" (click)="fnRegresar()">
+				<i class="fa fa-chevron-circle-left fa-lg"></i>
+			</a>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col col-50 push-50">
 			<div class="row">
 				<div class="col col-100">
 					<div class="sectionContent">
-						<img class="companyImage" src="{{ imageHIRPath }}">
+						<img class="companyImage" src="./assets/img/logoHIR.png">
 						<img class="productImage2" src="{{ detalleProducto.rutaImagen2 }}">
 					</div>
 				</div>
@@ -20,7 +27,9 @@
 		<div class="col col-50 pull-50">
 			<div class="row">
 				<div class="col col-100">
-					<div class="sectionContent text center">{{ detalleProducto.encabezado }}</div>
+					<div class="sectionContent text center">
+						En HIR Seguros sabemos que tu protección y la de tu familia es lo más importante. Por eso siempre te ofrecemos productos a la medida de tus necesidades y con un precio muy accesible.
+					</div>
 				</div>
 			</div>
 			<div class="row">
@@ -60,36 +69,46 @@
 				<div class="col col-100">
 					<div class="sectionContact center">
 						<i class="fa fa-comments-o fa-lg"></i><br>
-						{{ detalleProducto.telefono }}<br>{{ detalleProducto.lada }}
+						5262 1780<br>01 800 SEGUHIR (734 8447)
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col col-50">
 					<div class="sectionContact center">
-						<i class="fa fa-twitter-square fa-lg"></i> {{ detalleProducto.twitter }}
+						<a id="lnkTwitter" href="https://twitter.com/HIR_Seguros" target="_blank">
+							<i class="fa fa-twitter-square fa-lg"></i> @HIR_Seguros
+						</a>
 					</div>
 				</div>
 				<div class="col col-50">
 					<div class="sectionContact center">
-						<i class="fa fa-facebook-square fa-lg"></i> {{ detalleProducto.facebook }}
+						<a id="lnkFacebook" href="https://www.facebook.com/pages/HIR-Seguros/652281194868589?" target="_blank">
+							<i class="fa fa-facebook-square fa-lg"></i> /HIR Seguros
+						</a>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col col-100">
-					<div class="sectionContact center">{{ detalleProducto.correo }}</div>
+					<div class="sectionContact center">
+						<a id="lnkCorreo" href="http://www.hirseguros.mx" target="_blank">
+							www.hirseguros.mx
+						</a>
+					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col col-100">
-					<div class="sectionContact center">{{ detalleProducto.direccion }}</div>
+					<div class="sectionContact center">
+						Insurgentes Sur No. 617, Col. Nápoles, Del. Benito Juárez, C.P. 03810.
+					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col col-100">
 					<div class="sectionContent text center productFooter">
-						{{ detalleProducto.piePagina }}
+						HIR Seguros es una empresa 100% mexicana, autorizada por la Secretaría de Hacienda y Crédito Público y regulada por la Comisión Nacional de Seguros y Fianza.
 					</div>
 				</div>
 			</div>
