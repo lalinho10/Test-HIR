@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component }	   from '@angular/core';
 
 import { DetalleProducto } from 'app/core/data/productos/detalle-producto';
 import { DET_PROD_SE }	   from 'app/core/data/productos/seguhir-empresario';
