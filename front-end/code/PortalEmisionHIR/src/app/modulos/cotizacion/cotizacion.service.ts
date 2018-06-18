@@ -50,8 +50,12 @@ export class CotizacionService {
 		return this.producto.descProducto;
 	}
 
-	definirResultadoCotizacion( resultadoCotizacion: ResultadoCotizacion ): void {
-		this.resultadoCotizacion = resultadoCotizacion;
+	definirResultadoCotizacion( responseTarifa: any ): void {
+		this.resultadoCotizacion = new ResultadoCotizacion();
+
+		this.resultadoCotizacion.montoPago = responseTarifa.tarifa;
+		this.resultadoCotizacion.sumaAsegurada = responseTarifa.suma;
+		this.resultadoCotizacion.deducible = responseTarifa.deducible;
 	}
 
 	obtenerResultadoCotizacion(): ResultadoCotizacion {

@@ -3422,6 +3422,15 @@
 		"mensaje": "Se ha cambiado la contraseña",
 		"fechaOperacion": 1520957070339
 	},
+	"obtTarifa":
+	{
+		"codigoRespuesta": 200,
+		"mensaje": "Se ha mostrado la tarifa a pagar ",
+		"fechaOperacion": 1528283328187,
+		"tarifa": 192.5,
+		"deducible": 0.0,
+		"suma": 0.0
+	},
 	"cotizacionSeguHIRVida":
 	{
 		"codigoRespuesta": 200,
@@ -3437,91 +3446,6 @@
 			"sexo": "Masculino",
 			"tipoPago": "Anual",
 			"montoPago": 36000
-		}
-	},
-	"cotizacionProcuraVida":
-	{
-		"codigoRespuesta": 200,
-		"mensaje": "Consulta de cotización exitosa",
-		"fechaOperacion": 1520957070339,
-		"data":
-		{
-			"sumaAsegurada": 2400,
-			"nombreUsuario": "Pancho Pantera Brown",
-			"correoUsuario": "ppantera@hir.com",
-			"telefono": "5501010101",
-			"edad": 35,
-			"sexo": "Masculino",
-			"tipoPago": "Anual",
-			"montoPago": 2400
-		}
-	},
-	"cotizacionGastosFunerarios":
-	{
-		"codigoRespuesta": 200,
-		"mensaje": "Consulta de cotización exitosa",
-		"fechaOperacion": 1520957070339,
-		"data":
-		{
-			"sumaAsegurada": 3600,
-			"nombreUsuario": "Pancho Pantera Brown",
-			"correoUsuario": "ppantera@hir.com",
-			"telefono": "5501010101",
-			"edad": 35,
-			"sexo": "Masculino",
-			"tipoPago": "Anual",
-			"montoPago": 3600
-		}
-	},
-	"cotizacionSeguHIREmpresario":
-	{
-		"codigoRespuesta": 200,
-		"mensaje": "Consulta de cotización exitosa",
-		"fechaOperacion": 1520957070339,
-		"data":
-		{
-			"sumaAsegurada": 4800,
-			"nombreUsuario": "Pancho Pantera Brown",
-			"correoUsuario": "ppantera@hir.com",
-			"telefono": "5501010101",
-			"edad": 35,
-			"sexo": "Masculino",
-			"tipoPago": "Anual",
-			"montoPago": 4800
-		}
-	},
-	"cotizacionSeguBici":
-	{
-		"codigoRespuesta": 200,
-		"mensaje": "Consulta de cotización exitosa",
-		"fechaOperacion": 1520957070339,
-		"data":
-		{
-			"sumaAsegurada": 1000,
-			"nombreUsuario": "Pancho Pantera Brown",
-			"correoUsuario": "ppantera@hir.com",
-			"telefono": "5501010101",
-			"edad": 35,
-			"sexo": "Masculino",
-			"tipoPago": "Anual",
-			"montoPago": 1000
-		}
-	},
-	"cotizacionAccidentesPersonalesIndividual":
-	{
-		"codigoRespuesta": 200,
-		"mensaje": "Consulta de cotización exitosa",
-		"fechaOperacion": 1520957070339,
-		"data":
-		{
-			"sumaAsegurada": 1200,
-			"nombreUsuario": "Pancho Pantera Brown",
-			"correoUsuario": "ppantera@hir.com",
-			"telefono": "5501010101",
-			"edad": 35,
-			"sexo": "Masculino",
-			"tipoPago": "Anual",
-			"montoPago": 1200
 		}
 	}
 }

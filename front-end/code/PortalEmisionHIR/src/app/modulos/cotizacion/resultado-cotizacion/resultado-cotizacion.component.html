@@ -21,7 +21,7 @@
 		<label class="form-label">Nombre:</label>
 	</div>
 	<div class="col col-50">
-		<label class="res-label">{{resultadoCotizacion.nombreUsuario}}</label>
+		<label class="res-label">{{cotizacion.nombre + ' ' + cotizacion.apaterno + ' ' + cotizacion.amaterno}}</label>
 	</div>
 </div>
 <div class="row">
@@ -37,15 +37,15 @@
 		<label class="form-label">Forma de Pago:</label>
 	</div>
 	<div class="col col-50">
-		<label class="res-label">{{resultadoCotizacion.tipoPago}}</label>
+		<label class="res-label">{{cotizacion.formaPago.desc}}</label>
 	</div>
 </div>
-<div *ngIf="resultadoCotizacion.deducible" class="row">
+<div class="row">
 	<div class="col col-50">
 		<label class="form-label">Deducible:</label>
 	</div>
 	<div class="col col-50">
-		<label class="res-label">{{resultadoCotizacion.deducible}}</label>
+		<label class="res-label">{{resultadoCotizacion.deducible | currency: 'MXN': 'symbol-narrow'}}</label>
 	</div>
 </div>
 <div class="row">
@@ -61,7 +61,7 @@
 		<label class="form-label">Sexo:</label>
 	</div>
 	<div class="col col-50">
-		<label class="res-label">{{resultadoCotizacion.sexo}}</label>
+		<label class="res-label">{{cotizacion.genero.descGenero}}</label>
 	</div>
 </div>
 <div class="row">

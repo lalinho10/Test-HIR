@@ -3,10 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
 import { Cotizacion }						  from '../cotizacion';
-import { SeguhirEmpresarioRequest }			  from './seguhir-empresario.request';
+import { TarifaRequest }					  from '../tarifa.request';
 
 import { CotizacionService }				  from '../cotizacion.service';
-import { SeguhirEmpresarioService }			  from './seguhir-empresario.service';
+import { TarifaService }					  from '../tarifa.service';
 
 import { GENEROS }							  from 'app/core/data/generos';
 import { FECNACOPTIONS }					  from 'app/core/data/calendarios/fecNacOptions';
@@ -47,7 +47,7 @@ export class SeguhirEmpresarioComponent implements OnInit {
 		private cotizacionService: CotizacionService,
 		private fb: FormBuilder,
 		private router: Router,
-		private seguhirEmpresarioService: SeguhirEmpresarioService,
+		private tarifaService: TarifaService,
 		private wsClientService: WSClientService
 	) {}
 
@@ -201,15 +201,17 @@ export class SeguhirEmpresarioComponent implements OnInit {
 	}
 
 	fnCotizar(): void {
-		let seguhirEmpresarioRequest: SeguhirEmpresarioRequest = this.seguhirEmpresarioService.getRequest( this.frmSeguhirEmpresario.value );
+		let tarifaRequest: TarifaRequest = this.tarifaService.getRequest( this.idProducto, this.frmSeguhirEmpresario.value );
 
 		this.wsClientService
-			.postObject( '/cotizacionSeguHIREmpresario', seguhirEmpresarioRequest )
+			.postObject( '/obtTarifa', tarifaRequest )
 			.subscribe( ( response ) => {
-				this.cotizacionService.definirProducto( this.idProducto );
-				this.cotizacionService.definirCotizacion( this.crearModeloCotizacion() );
-				this.cotizacionService.definirResultadoCotizacion( response.data );
-				this.router.navigateByUrl( '/cotizacion/resultado' );
+				if( response.codigoRespuesta ) {
+					this.cotizacionService.definirProducto( this.idProducto );
+					this.cotizacionService.definirCotizacion( this.crearModeloCotizacion() );
+					this.cotizacionService.definirResultadoCotizacion( response );
+					this.router.navigateByUrl( '/cotizacion/resultado' );
+				}
 			});
 	}
 }

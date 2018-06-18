@@ -16,12 +16,7 @@ import { ApindividualComponent }		 from './apindividual/apindividual.component';
 import { ResultadoCotizacionComponent }	 from './resultado-cotizacion/resultado-cotizacion.component';
 
 import { CotizacionService }			 from './cotizacion.service';
-import { SeguhirVidaService }			 from './seguhir-vida/seguhir-vida.service';
-import { ProcuraVidaService }			 from './procura-vida/procura-vida.service';
-import { GastosFunerariosService }		 from './gastos-funerarios/gastos-funerarios.service';
-import { SeguhirEmpresarioService }		 from './seguhir-empresario/seguhir-empresario.service';
-import { SegubiciService }				 from './segubici/segubici.service';
-import { ApindividualService }			 from './apindividual/apindividual.service';
+import { TarifaService }				 from './tarifa.service';
 
 import { CotizacionRoutingModule }		 from './cotizacion-routing.module';
 import { ExtendFormControlModule }		 from 'app/modulos/shared/extend-form-control/extend-form-control.module';
@@ -50,12 +45,7 @@ import { ImageLinkModule }				 from 'app/modulos/shared/image-link/image-link.mo
 	],
 	providers: [
 		CotizacionService,
-		SeguhirVidaService,
-		ProcuraVidaService,
-		GastosFunerariosService,
-		SeguhirEmpresarioService,
-		SegubiciService,
-		ApindividualService
+		TarifaService
 	]
 })
 

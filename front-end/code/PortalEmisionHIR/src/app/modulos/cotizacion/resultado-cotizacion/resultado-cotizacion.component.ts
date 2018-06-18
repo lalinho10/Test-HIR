@@ -16,6 +16,7 @@ export class ResultadoCotizacionComponent implements OnInit {
 
 	tipoCotizacion: string;
 
+	cotizacion: Cotizacion;
 	resultadoCotizacion: ResultadoCotizacion;
 
 	constructor(
@@ -25,6 +26,7 @@ export class ResultadoCotizacionComponent implements OnInit {
 
 	ngOnInit() {
 		this.tipoCotizacion = this.cotizacionService.obtenerDescripcionProducto();
+		this.cotizacion = this.cotizacionService.obtenerCotizacion();
 		this.resultadoCotizacion = this.cotizacionService.obtenerResultadoCotizacion();
 	}
 
