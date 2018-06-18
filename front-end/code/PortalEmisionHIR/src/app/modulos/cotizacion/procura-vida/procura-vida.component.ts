@@ -8,12 +8,12 @@ import { ProcuraVidaRequest }				  from './procura-vida.request';
 import { CotizacionService }				  from '../cotizacion.service';
 import { ProcuraVidaService }				  from './procura-vida.service';
 
-import { MODULOS }							  from 'app/core/data/modulos';
 import { GENEROS }							  from 'app/core/data/generos';
 import { FECNACOPTIONS }					  from 'app/core/data/calendarios/fecNacOptions';
 
 import { Cobertura }						  from 'app/core/models/cobertura';
 import { FormaPago }						  from 'app/core/models/forma-pago';
+import { Modulo }							  from 'app/core/models/modulo';
 import { Plan }								  from 'app/core/models/plan';
 
 import { WSClientService }					  from 'app/core/services/ws-client.service';
@@ -37,9 +37,9 @@ export class ProcuraVidaComponent implements OnInit {
 
 	coberturas: Cobertura[];
 	formasPago: FormaPago[];
+	modulos: Modulo[];
 	planes: Plan[];
 
-	modulos = MODULOS;
 	generos = GENEROS;
 	fecNacOptions = FECNACOPTIONS;
 
@@ -74,6 +74,21 @@ export class ProcuraVidaComponent implements OnInit {
 			.subscribe( response => {
 				if( response.code === 200 ) {
 					this.formasPago = response.data;
+				}
+			});
+
+		this.wsClientService
+			.postObject( '/catalogoModulo', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.codigoRespuesta === 200 ) {
+					this.modulos = new Array<Modulo>();
+
+					for( let i:number = response.min; i <= response.max; i++ ) {
+						let modulo: Modulo = new Modulo();
+						modulo.idModulo = i;
+						modulo.descModulo = String( i );
+						this.modulos.push( modulo );
+					}
 				}
 			});
 

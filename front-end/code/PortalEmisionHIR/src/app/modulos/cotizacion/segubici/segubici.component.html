@@ -83,6 +83,23 @@
 			</div>
 			<div class="row">
 				<div class="col col-40">
+					<label id="lblModulo" class="form-label">Módulo:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmSegubici.get('modulo').dirty"
+						[inputErrors]="frmSegubici.get('modulo').errors">
+							<select id="cboModulo" class="form-control" formControlName="modulo">
+								<option value="">Selecciona</option>
+								<option *ngFor="let modulo of modulos" [value]="modulo.idModulo">
+									{{modulo.descModulo}}
+								</option>
+							</select>
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
 					<label id="lblCobertura" class="form-label">Cobertura:</label>
 				</div>
 				<div class="col col-50">

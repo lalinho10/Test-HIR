@@ -13,6 +13,7 @@ import { FECNACOPTIONS }					  from 'app/core/data/calendarios/fecNacOptions';
 
 import { Cobertura }						  from 'app/core/models/cobertura';
 import { FormaPago }						  from 'app/core/models/forma-pago';
+import { Modulo }							  from 'app/core/models/modulo';
 import { Plan }								  from 'app/core/models/plan';
 
 import { WSClientService }					  from 'app/core/services/ws-client.service';
@@ -36,6 +37,7 @@ export class SegubiciComponent implements OnInit {
 
 	coberturas: Cobertura[];
 	formasPago: FormaPago[];
+	modulos: Modulo[];
 	planes: Plan[];
 
 	generos = GENEROS;
@@ -76,6 +78,21 @@ export class SegubiciComponent implements OnInit {
 			});
 
 		this.wsClientService
+			.postObject( '/catalogoModulo', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.codigoRespuesta === 200 ) {
+					this.modulos = new Array<Modulo>();
+
+					for( let i:number = response.min; i <= response.max; i++ ) {
+						let modulo: Modulo = new Modulo();
+						modulo.idModulo = i;
+						modulo.descModulo = String( i );
+						this.modulos.push( modulo );
+					}
+				}
+			});
+
+		this.wsClientService
 			.postObject( '/catPlan', { 'id': this.idProducto } )
 			.subscribe( response => {
 				if( response.code === 200 ) {
@@ -110,6 +127,9 @@ export class SegubiciComponent implements OnInit {
 				RfcValidator()
 			])],
 			'genero': ['', Validators.compose([
+				Validators.required
+			])],
+			'modulo': ['', Validators.compose([
 				Validators.required
 			])],
 			'cobertura': ['', Validators.compose([

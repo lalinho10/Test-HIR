@@ -9,10 +9,10 @@ import { CotizacionService }				  from '../cotizacion.service';
 import { SeguhirVidaService }				  from './seguhir-vida.service';
 
 import { GENEROS }							  from 'app/core/data/generos';
-import { MODULOS }							  from 'app/core/data/modulos';
 import { FECNACOPTIONS }					  from 'app/core/data/calendarios/fecNacOptions';
 
 import { FormaPago }						  from 'app/core/models/forma-pago';
+import { Modulo }							  from 'app/core/models/modulo';
 import { Paquete }							  from 'app/core/models/paquete';
 import { Plan }								  from 'app/core/models/plan';
 
@@ -35,11 +35,11 @@ export class SeguhirVidaComponent implements OnInit {
 	frmSeguhirVida: FormGroup;
 
 	formasPago: FormaPago[];
+	modulos: Modulo[];
 	paquetes: Paquete[];
 	planes: Plan[];
 
 	generos = GENEROS;
-	modulos = MODULOS;
 	fecNacOptions = FECNACOPTIONS;
 
 	constructor(
@@ -65,6 +65,21 @@ export class SeguhirVidaComponent implements OnInit {
 			.subscribe( response => {
 				if( response.code === 200 ) {
 					this.formasPago = response.data;
+				}
+			});
+
+		this.wsClientService
+			.postObject( '/catalogoModulo', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.codigoRespuesta === 200 ) {
+					this.modulos = new Array<Modulo>();
+
+					for( let i:number = response.min; i <= response.max; i++ ) {
+						let modulo: Modulo = new Modulo();
+						modulo.idModulo = i;
+						modulo.descModulo = String( i );
+						this.modulos.push( modulo );
+					}
 				}
 			});
 
