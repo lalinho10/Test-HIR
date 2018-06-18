@@ -10,6 +10,7 @@ import { FormatoMonedaValidator }			  from 'app/core/validators/formato-moneda.v
 
 import { Cobertura }						  from 'app/core/models/cobertura';
 import { FormaPago }						  from 'app/core/models/forma-pago';
+import { Modulo }							  from 'app/core/models/modulo';
 import { Ocupacion }						  from 'app/core/models/ocupacion';
 import { Plan }								  from 'app/core/models/plan';
 
@@ -25,6 +26,7 @@ export class ApindividualP2Component implements OnInit {
 
 	coberturas: Cobertura[];
 	formasPago: FormaPago[];
+	modulos: Modulo[];
 	ocupaciones: Ocupacion[];
 	planes: Plan[];
 
@@ -54,6 +56,21 @@ export class ApindividualP2Component implements OnInit {
 			.subscribe( response => {
 				if( response.code === 200 ) {
 					this.formasPago = response.data;
+				}
+			});
+
+		this.wsClientService
+			.postObject( '/catalogoModulo', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.codigoRespuesta === 200 ) {
+					this.modulos = new Array<Modulo>();
+
+					for( let i:number = response.min; i <= response.max; i++ ) {
+						let modulo: Modulo = new Modulo();
+						modulo.idModulo = i;
+						modulo.descModulo = String( i );
+						this.modulos.push( modulo );
+					}
 				}
 			});
 
@@ -93,6 +110,9 @@ export class ApindividualP2Component implements OnInit {
 				Validators.required
 			])],
 			'plan': ['', Validators.compose([
+				Validators.required
+			])],
+			'modulo': ['', Validators.compose([
 				Validators.required
 			])],
 			'agente': ['', Validators.compose([

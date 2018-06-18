@@ -4,9 +4,8 @@ import { Router }							  from '@angular/router';
 
 import { SeguhirVidaP2Service }				  from './seguhir-vida-p2.service';
 
-import { MODULOS }							  from 'app/core/data/modulos';
-
 import { FormaPago }						  from 'app/core/models/forma-pago';
+import { Modulo }							  from 'app/core/models/modulo';
 import { Paquete }							  from 'app/core/models/paquete';
 import { Plan }								  from 'app/core/models/plan';
 
@@ -23,10 +22,9 @@ export class SeguhirVidaP2Component implements OnInit {
 	frmSeguhirVidaP2: FormGroup;
 
 	formasPago: FormaPago[];
+	modulos: Modulo[];
 	paquetes: Paquete[];
 	planes: Plan[];
-
-	modulos = MODULOS;
 
 	constructor(
 		private fb: FormBuilder,
@@ -46,6 +44,21 @@ export class SeguhirVidaP2Component implements OnInit {
 			.subscribe( response => {
 				if( response.code === 200 ) {
 					this.formasPago = response.data;
+				}
+			});
+
+		this.wsClientService
+			.postObject( '/catalogoModulo', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.codigoRespuesta === 200 ) {
+					this.modulos = new Array<Modulo>();
+
+					for( let i:number = response.min; i <= response.max; i++ ) {
+						let modulo: Modulo = new Modulo();
+						modulo.idModulo = i;
+						modulo.descModulo = String( i );
+						this.modulos.push( modulo );
+					}
 				}
 			});
 
