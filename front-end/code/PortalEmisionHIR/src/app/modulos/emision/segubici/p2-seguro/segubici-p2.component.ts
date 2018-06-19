@@ -20,7 +20,7 @@ import { Plan }								  from 'app/core/models/plan';
 })
 
 export class SegubiciP2Component implements OnInit {
-	private idProducto: number = 1585;
+	private idProducto: number = 1560;
 
 	frmSegubiciP2: FormGroup;
 

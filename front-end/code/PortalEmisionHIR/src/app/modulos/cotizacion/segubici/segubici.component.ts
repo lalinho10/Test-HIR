@@ -30,7 +30,7 @@ import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.vali
 })
 
 export class SegubiciComponent implements OnInit {
-	private idProducto: number = 1585;
+	private idProducto: number = 1560;
 
 	titulo: string = 'Cotización - Segubici';
 	frmSegubici: FormGroup;

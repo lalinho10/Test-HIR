@@ -6,6 +6,6 @@ export const PRODUCTOS: Producto[] = [
 	{ idProducto: 721,  descProducto: 'Gastos Funerarios', pathProducto: 'gastosfunerarios' },
 	{ idProducto: 1565, descProducto: 'SeguHIR Empresario', pathProducto: 'seguhirempresario' },
 	{ idProducto: 5,    descProducto: 'Vida con Ahorro línea 2018', pathProducto: 'vidaahorro' },
-	{ idProducto: 1585, descProducto: 'SeguBici', pathProducto: 'segubici' },
+	{ idProducto: 1560, descProducto: 'SeguBici', pathProducto: 'segubici' },
 	{ idProducto: 1588, descProducto: 'Accidentes Personales Individual', pathProducto: 'apindividual' }
 ];

@@ -43,7 +43,7 @@
 		{ "id": 721,  "desc": "GASTOS FUNERARIOS" },
 		{ "id": 1484, "desc": "PROCURA VIDA" },
 		{ "id": 1565, "desc": "SEGUHIR EMPRESARIO" },
-		{ "id": 1585, "desc": "SEGUBICI" },
+		{ "id": 1560, "desc": "SEGUBICI" },
 		{ "id": 1588, "desc": "ACCIDENTES PERSONALES INDIVIDUAL" }
 	],
 	"consultaTiposAhorro":
@@ -129,7 +129,7 @@
 			]
 		},
 		{
-			"id": 1585,
+			"id": 1560,
 			"code": 200,
 			"status": null,
 			"message": "Catalogo recuperado con éxito",
@@ -242,7 +242,7 @@
 			]
 		},
 		{
-			"id": 1585,
+			"id": 1560,
 			"code": 200,
 			"status": null,
 			"message": "Catalogo recuperado con éxito",
@@ -343,7 +343,7 @@
 			]
 		},
 		{
-			"id": 1585,
+			"id": 1560,
 			"code": 200,
 			"status": null,
 			"message": "Catalogo recuperado con éxito",
@@ -422,7 +422,7 @@
 			"max": 10
 		},
 		{
-			"id": 1585,
+			"id": 1560,
 			"fechaOperacion": 1529341481555,
 			"mensaje": "Se ha mostrado el total de los modulos",
 			"codigoRespuesta": 200,
