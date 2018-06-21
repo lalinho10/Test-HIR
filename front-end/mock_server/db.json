@@ -3425,11 +3425,12 @@
 	"obtTarifa":
 	{
 		"codigoRespuesta": 200,
-		"mensaje": "Se ha mostrado la tarifa a pagar ",
-		"fechaOperacion": 1528283328187,
-		"tarifa": 192.5,
-		"deducible": 0.0,
-		"suma": 0.0
+		"mensaje": "Tarifa obtenida satisfactoriamente",
+		"fechaOperacion": 1529601298399,
+		"tarifa": 1925,
+		"deducible": 0,
+		"suma": 100000,
+		"edad": 34
 	},
 	"cotizacionSeguHIRVida":
 	{

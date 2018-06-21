@@ -13,6 +13,8 @@ export class TarifaService {
 		this.tarifaRequest.idCob = frmCotizacion.cobertura;
 		this.tarifaRequest.idPlan = frmCotizacion.plan;
 		this.tarifaRequest.fechaNacimiento = frmCotizacion.fechanac.epoc * 1000;
+		this.tarifaRequest.idFormaPago = frmCotizacion.fpago;
+		this.tarifaRequest.modulos = frmCotizacion.modulo;
 
 		return this.tarifaRequest;
 	}

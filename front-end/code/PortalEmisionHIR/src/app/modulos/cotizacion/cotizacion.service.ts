@@ -56,6 +56,7 @@ export class CotizacionService {
 		this.resultadoCotizacion.montoPago = responseTarifa.tarifa;
 		this.resultadoCotizacion.sumaAsegurada = responseTarifa.suma;
 		this.resultadoCotizacion.deducible = responseTarifa.deducible;
+		this.resultadoCotizacion.edad = responseTarifa.edad;
 	}
 
 	obtenerResultadoCotizacion(): ResultadoCotizacion {
