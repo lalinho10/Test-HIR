@@ -1,4 +1,3 @@
-/*Layout general*/
 html {box-sizing:border-box;}
 *, *::before, *::after{box-sizing:inherit}
 .row {margin-left:-15px;margin-right:-15px;}
@@ -72,9 +71,7 @@ html {box-sizing:border-box;}
 .rightcontainer {display:inline;float:right;}
 .clearfix {clear:both;}
 .clearfix:after{clear:both;content:"";display:block;}
-/*Devices*/
 .hidden-desktop {display:none !important;}
-/*Elementos sitio*/
 * {font-family:"PT Sans", Arial, Helvetica, sans-serif;color:#747474;}
 a {color:#333333;text-decoration:none;}
 a.active {color:#f68c2c;font-weight:bold;}
@@ -95,9 +92,7 @@ div.rdoContainer{height:27px;margin-bottom:15px;padding-top:4px;}
 div.rdoContainer.two {float:left;width:50%;}
 div.rdoContainer.three {float:left;width:33.3333%;}
 div.rdoContainer.two > input[type="radio"] {margin-right:7px;}
-/*reCapctha*/
 .recaptcha > div {margin-bottom:15px;}
-/*Datepicker*/
 .mydp {border:1px solid #b4b4b4 !important;margin-bottom:12px !important;}
 .mydp .selection {color:#aaa9a9 !important;height:25px !important;padding-left:5px !important;}
 .mydp .selbtngroup {height:25px !important;}
@@ -109,7 +104,6 @@ div.rdoContainer.two > input[type="radio"] {margin-right:7px;}
 .mydp .markcurrday,
 .mydp .markcurrmonth,
 .mydp .markcurryear {color:#f68c2c;font-weight:bold;text-decoration:none !important;}
-/*Header*/
 .header {border-top:4px solid #f68c2c;font-size:12px;}
 .header-social {border-bottom:1px solid #e1e1e1;color:#747474 !important;min-height:43px;padding:0 10px;}
 .header-social .leftcontainer {padding:15px;}
@@ -139,7 +133,6 @@ div.rdoContainer.two > input[type="radio"] {margin-right:7px;}
 .header-site ul.submenu > li {padding:15px 0 0 0;}
 .header-site ul.submenu > li .fa {color:#f68c2c;padding-right:5px;}
 .header-site div.submenu-layer {background-color:rgba(255,255,255,0.8);height:61px;position:absolute;top:30px;width:100%;}
-/*Contenedor principal*/
 .main {margin:20px 15px;font-size:14px;}
 .titulo {border-bottom:1px solid #e1e1e1;font-size:18px !important;margin-bottom:15px;text-align:center;padding-bottom:15px;}
 .text-center {text-align:center;}
@@ -168,7 +161,6 @@ div.rdoContainer.two > input[type="radio"] {margin-right:7px;}
 .main .accesocontainer {background-color:#f0f0f0;border-radius:5px;padding:40px 15px;}
 .main .accesolinks {margin:20px 0 0 0;}
 .main .accesolinks a.first {display:block;margin:0 0 10px 0;}
-/*Footer*/
 .footer {background-color:#282a2b !important;border-top:1px solid #e9eaee !important;color:#8C8989 !important;font-size:12px;padding:0px 10px;}
 .footer .leftcontainer {padding:15px;}
 .footer .rightcontainer {padding:0 15px 0 0;}
