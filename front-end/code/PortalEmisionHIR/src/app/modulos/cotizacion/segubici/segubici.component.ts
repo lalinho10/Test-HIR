@@ -165,21 +165,24 @@ export class SegubiciComponent implements OnInit {
 		this.frmSegubici.get( 'fechanac' ).patchValue( objetoFechaCal );
 		this.frmSegubici.get( 'rfc' ).setValue( cotizacion.rfc );
 		this.frmSegubici.get( 'genero' ).setValue( cotizacion.genero.idGenero );
-		this.frmSegubici.get( 'plan' ).setValue( cotizacion.plan.id );
 		this.frmSegubici.get( 'fpago' ).setValue( cotizacion.formaPago.id );
+		this.frmSegubici.get( 'modulo' ).setValue( cotizacion.modulo.idModulo );
 		this.frmSegubici.get( 'cobertura' ).setValue( cotizacion.cobertura.id );
+		this.frmSegubici.get( 'plan' ).setValue( cotizacion.plan.id );
 	}
 
 	private crearModeloCotizacion(): Cotizacion {
 		let idGenero = this.frmSegubici.get( 'genero' ).value;
-		let idPlan = this.frmSegubici.get( 'plan' ).value;
 		let idFormaPago = this.frmSegubici.get( 'fpago' ).value;
+		let idModulo = this.frmSegubici.get( 'modulo' ).value;
 		let idCobertura = this.frmSegubici.get( 'cobertura' ).value;
+		let idPlan = this.frmSegubici.get( 'plan' ).value;
 
 		let fGeneros = this.generos.filter( ( genero: any ) => genero.idGenero == idGenero );
-		let fPlanes = this.planes.filter( ( plan: any ) => plan.id == idPlan );
 		let fFormasPago = this.formasPago.filter( ( formaPago: any ) => formaPago.id == idFormaPago );
+		let fModulos = this.modulos.filter( ( modulo: any ) => modulo.idModulo == idModulo );
 		let fCoberturas = this.coberturas.filter( ( cobertura: any ) => cobertura.id == idCobertura );
+		let fPlanes = this.planes.filter( ( plan: any ) => plan.id == idPlan );
 
 		let cotizacion: Cotizacion = {
 			nombre: this.frmSegubici.get( 'nombre' ).value,
@@ -188,9 +191,10 @@ export class SegubiciComponent implements OnInit {
 			fechanac: this.frmSegubici.get( 'fechanac' ).value.jsdate,
 			rfc: this.frmSegubici.get( 'rfc' ).value,
 			genero: fGeneros[ 0 ],
-			plan: fPlanes[ 0 ],
 			formaPago: fFormasPago[ 0 ],
-			cobertura: fCoberturas[ 0 ]
+			modulo: fModulos[ 0 ],
+			cobertura: fCoberturas[ 0 ],
+			plan: fPlanes[ 0 ]
 		}
 
 		return cotizacion;

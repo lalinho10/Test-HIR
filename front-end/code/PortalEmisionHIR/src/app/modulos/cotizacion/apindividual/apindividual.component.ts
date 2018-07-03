@@ -165,21 +165,24 @@ export class ApindividualComponent implements OnInit {
 		this.frmApindividual.get( 'fechanac' ).patchValue( objetoFechaCal );
 		this.frmApindividual.get( 'rfc' ).setValue( cotizacion.rfc );
 		this.frmApindividual.get( 'genero' ).setValue( cotizacion.genero.idGenero );
-		this.frmApindividual.get( 'plan' ).setValue( cotizacion.plan.id );
 		this.frmApindividual.get( 'fpago' ).setValue( cotizacion.formaPago.id );
+		this.frmApindividual.get( 'modulo' ).setValue( cotizacion.modulo.idModulo );
 		this.frmApindividual.get( 'cobertura' ).setValue( cotizacion.cobertura.id );
+		this.frmApindividual.get( 'plan' ).setValue( cotizacion.plan.id );
 	}
 
 	private crearModeloCotizacion(): Cotizacion {
 		let idGenero = this.frmApindividual.get( 'genero' ).value;
-		let idPlan = this.frmApindividual.get( 'plan' ).value;
 		let idFormaPago = this.frmApindividual.get( 'fpago' ).value;
+		let idModulo = this.frmApindividual.get( 'modulo' ).value;
 		let idCobertura = this.frmApindividual.get( 'cobertura' ).value;
+		let idPlan = this.frmApindividual.get( 'plan' ).value;
 
 		let fGeneros = this.generos.filter( ( genero: any ) => genero.idGenero == idGenero );
-		let fPlanes = this.planes.filter( ( plan: any ) => plan.id == idPlan );
 		let fFormasPago = this.formasPago.filter( ( formaPago: any ) => formaPago.id == idFormaPago );
+		let fModulos = this.modulos.filter( ( modulo: any ) => modulo.idModulo == idModulo );
 		let fCoberturas = this.coberturas.filter( ( cobertura: any ) => cobertura.id == idCobertura );
+		let fPlanes = this.planes.filter( ( plan: any ) => plan.id == idPlan );
 
 		let cotizacion: Cotizacion = {
 			nombre: this.frmApindividual.get( 'nombre' ).value,
@@ -188,9 +191,10 @@ export class ApindividualComponent implements OnInit {
 			fechanac: this.frmApindividual.get( 'fechanac' ).value.jsdate,
 			rfc: this.frmApindividual.get( 'rfc' ).value,
 			genero: fGeneros[ 0 ],
-			plan: fPlanes[ 0 ],
 			formaPago: fFormasPago[ 0 ],
-			cobertura: fCoberturas[ 0 ]
+			modulo: fModulos[ 0 ],
+			cobertura: fCoberturas[ 0 ],
+			plan: fPlanes[ 0 ]
 		}
 
 		return cotizacion;
