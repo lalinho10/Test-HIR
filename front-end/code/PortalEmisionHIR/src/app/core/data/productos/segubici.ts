@@ -17,7 +17,7 @@ let detalleSegubici: DetalleProducto = new DetalleProducto();
 		'Tarifa única',
 		'Formato de pago: efectivo, cheque, tarjeta de crédito o débito.'
 	],
-	detalleSegubici.rutaImagen1 = './assets/img/sinImagen.png';
+	detalleSegubici.rutaImagen1 = './assets/img/Prod_SeguBici.gif';
 	detalleSegubici.rutaImagen2 = './assets/img/sinImagen.png';
 
 export const DET_PROD_SB = detalleSegubici;

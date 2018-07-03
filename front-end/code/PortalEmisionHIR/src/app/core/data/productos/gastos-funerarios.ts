@@ -17,7 +17,7 @@ let detalleGastosFunerarios: DetalleProducto = new DetalleProducto();
 		'Formato de pago: efectivo, cheque, tarjeta de crédito o débito.',
 		'Edades de aceptación de 18 a 64 años.'
 	],
-	detalleGastosFunerarios.rutaImagen1 = './assets/img/sinImagen.png';
+	detalleGastosFunerarios.rutaImagen1 = './assets/img/Prod_GastosFunerarios.gif';
 	detalleGastosFunerarios.rutaImagen2 = './assets/img/sinImagen.png';
 
 export const DET_PROD_GF = detalleGastosFunerarios;

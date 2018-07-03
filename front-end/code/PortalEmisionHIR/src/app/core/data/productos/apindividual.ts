@@ -17,7 +17,7 @@ let detalleApindividual: DetalleProducto = new DetalleProducto();
 		'Tarifa única.',
 		'Formato de pago: efectivo, cheque, tarjeta de crédito o débito.'
 	],
-	detalleApindividual.rutaImagen1 = './assets/img/sinImagen.png';
+	detalleApindividual.rutaImagen1 = './assets/img/Prod_APIndividual.gif';
 	detalleApindividual.rutaImagen2 = './assets/img/sinImagen.png';
 
 export const DET_PROD_API = detalleApindividual;

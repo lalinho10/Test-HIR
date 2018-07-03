@@ -18,7 +18,7 @@ let detalleProcuraVida: DetalleProducto = new DetalleProducto();
 		'Tarifa única.',
 		'Formato de pago: efectivo, cheque, tarjeta de crédito o débito.'
 	],
-	detalleProcuraVida.rutaImagen1 = './assets/img/sinImagen.png';
+	detalleProcuraVida.rutaImagen1 = './assets/img/Prod_ProcuraVida.gif';
 	detalleProcuraVida.rutaImagen2 = './assets/img/sinImagen.png';
 
 export const DET_PROD_PV = detalleProcuraVida;

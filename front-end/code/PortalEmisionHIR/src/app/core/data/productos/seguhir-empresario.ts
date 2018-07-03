@@ -18,7 +18,7 @@ Costo $850 adquiere una indemnización de $100,000 y el doble si la muerte ocurr
 		'Tarifa única.',
 		'Forma de pago:Efectivo, tarjeta de crédito o débito.'
 	],
-	detalleSeguhirEmpresario.rutaImagen1 = './assets/img/sinImagen.png';
+	detalleSeguhirEmpresario.rutaImagen1 = './assets/img/Prod_SeguHIREmpresario.gif';
 	detalleSeguhirEmpresario.rutaImagen2 = './assets/img/sinImagen.png';
 
 export const DET_PROD_SE = detalleSeguhirEmpresario;
