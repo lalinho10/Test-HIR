@@ -132,9 +132,6 @@ export class GastosFunerariosComponent implements OnInit {
 			'modulo': ['', Validators.compose([
 				Validators.required
 			])],
-			'cobertura': ['', Validators.compose([
-				Validators.required
-			])],
 			'fpago': ['', Validators.compose([
 				Validators.required
 			])],
@@ -167,7 +164,6 @@ export class GastosFunerariosComponent implements OnInit {
 		this.frmGastosFunerarios.get( 'genero' ).setValue( cotizacion.genero.idGenero );
 		this.frmGastosFunerarios.get( 'fpago' ).setValue( cotizacion.formaPago.id );
 		this.frmGastosFunerarios.get( 'modulo' ).setValue( cotizacion.modulo.idModulo );
-		this.frmGastosFunerarios.get( 'cobertura' ).setValue( cotizacion.cobertura.id );
 		this.frmGastosFunerarios.get( 'plan' ).setValue( cotizacion.plan.id );
 	}
 
@@ -175,13 +171,11 @@ export class GastosFunerariosComponent implements OnInit {
 		let idGenero = this.frmGastosFunerarios.get( 'genero' ).value;
 		let idFormaPago = this.frmGastosFunerarios.get( 'fpago' ).value;
 		let idModulo = this.frmGastosFunerarios.get( 'modulo' ).value;
-		let idCobertura = this.frmGastosFunerarios.get( 'cobertura' ).value;
 		let idPlan = this.frmGastosFunerarios.get( 'plan' ).value;
 
 		let fGeneros = this.generos.filter( ( genero: any ) => genero.idGenero == idGenero );
 		let fFormasPago = this.formasPago.filter( ( formaPago: any ) => formaPago.id == idFormaPago );
 		let fModulos = this.modulos.filter( ( modulo: any ) => modulo.idModulo == idModulo );
-		let fCoberturas = this.coberturas.filter( ( cobertura: any ) => cobertura.id == idCobertura );
 		let fPlanes = this.planes.filter( ( plan: any ) => plan.id == idPlan );
 
 		let cotizacion: Cotizacion = {
@@ -193,7 +187,6 @@ export class GastosFunerariosComponent implements OnInit {
 			genero: fGeneros[ 0 ],
 			formaPago: fFormasPago[ 0 ],
 			modulo: fModulos[ 0 ],
-			cobertura: fCoberturas[ 0 ],
 			plan: fPlanes[ 0 ]
 		}
 

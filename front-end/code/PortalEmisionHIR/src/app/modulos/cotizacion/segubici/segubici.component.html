@@ -100,23 +100,6 @@
 			</div>
 			<div class="row">
 				<div class="col col-40">
-					<label id="lblCobertura" class="form-label">Cobertura:</label>
-				</div>
-				<div class="col col-50">
-					<pehir-extend-form-control
-						[inputDirty]="frmSegubici.get('cobertura').dirty"
-						[inputErrors]="frmSegubici.get('cobertura').errors">
-							<select id="cboCobertura" class="form-control" formControlName="cobertura">
-								<option value="">Selecciona</option>
-								<option *ngFor="let cobertura of coberturas" [value]="cobertura.id">
-									{{cobertura.desc}}
-								</option>
-							</select>
-					</pehir-extend-form-control>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col col-40">
 					<label id="lblFpago" class="form-label">Forma de pago:</label>
 				</div>
 				<div class="col col-50">
@@ -149,6 +132,18 @@
 					</pehir-extend-form-control>
 				</div>
 			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-80 col-off-10">
+			<fieldset>
+				<legend>Coberturas</legend>
+				<div class="row">
+					<div *ngFor="let cobertura of coberturas" class="col col-50 text-center">
+						<span>{{cobertura.desc}}</span>
+					</div>
+				</div>
+			</fieldset>
 		</div>
 	</div>
 	<div class="row">
