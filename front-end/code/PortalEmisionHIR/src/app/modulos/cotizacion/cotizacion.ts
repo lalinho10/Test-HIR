@@ -1,4 +1,3 @@
-import { Cobertura } from 'app/core/models/cobertura';
 import { FormaPago } from 'app/core/models/forma-pago';
 import { Genero }	 from 'app/core/models/genero';
 import { Modulo }	 from 'app/core/models/modulo';
@@ -17,5 +16,4 @@ export class Cotizacion {
 	formaPago: FormaPago;
 	modulo?: Modulo;
 	paqueteCobertura?: Paquete;
-	cobertura?: Cobertura;
 }
