@@ -56,6 +56,9 @@
 			<div class="row">
 				<div class="col col-100">
 					<div class="sectionContent text" [innerHTML]="detalleProducto.descProductoHTML"></div>
+					<div *ngIf="detalleProducto.dataTable" class="sectionContent text">
+						<pehir-data-table [dataTable]="detalleProducto.dataTable"></pehir-data-table>
+					</div>
 				</div>
 			</div>
 			<div class="row">

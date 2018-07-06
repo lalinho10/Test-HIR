@@ -2,10 +2,6 @@
 .product-container a:hover > .fa {color:#f68c2c;}
 .product-container ul {list-style:none;margin:0;padding:0;}
 .product-container ul li {padding:0 0 5px 0;}
-.product-container table {border-spacing:0;width:100%;}
-.product-container table thead th {font-weight:bold;}
-.product-container table thead tr:last-child th {border-bottom:1px solid #747474;}
-.product-container table tbody td {text-align:center;}
 .product-container .productFooter {font-size:10px;}
 .product-container .productImage2 {float:right;height:78px;}
 .product-container .productImage1 {width:100%;}
