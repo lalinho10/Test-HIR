@@ -5,38 +5,47 @@ let detalleProcuraVida: DetalleProducto = new DetalleProducto();
 	detalleProcuraVida.descProductoHTML =
 		`HIR Seguros es soporte en los momentos más difíciles con un seguro de vida con cobertura por fallecimiento desde $150 pesos, cuenta con un respaldo y la seguridad para que la familia tenga recursos para solventar un momento difícil.<br><br>
 		Amparado por Fallecimiento y Muerte accidental.<br><br>
-		Paquetes a tu elección<br><br>
-		<table>
-			<thead>
-				<tr>
-					<th></th>
-					<th>Costo por año</th>
-					<th>Indemnización por fallecimiento por accidente</th>
-					<th>Indemnización por fallecimineto por cualquier causa</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td> A </td>
-					<td>$150.00</td>
-					<td>$40,000.00</td>
-					<td>$20,000.00</td>
-				</tr>
-				<tr>
-					<td> B </td>
-					<td>$300.00</td>
-					<td>$80,000.00</td>
-					<td>$40,000.00</td>
-				</tr>
-				<tr>
-					<td> C </td>
-					<td>$450.00</td>
-					<td>$60,000.00</td>
-					<td>$120,000.00</td>
-				</tr>
-			</tbody>
-		</table>
-		`;
+		Paquetes a tu elección`;
+	detalleProcuraVida.dataTable =
+	{
+		columns:
+		[
+			{ key: 'tipo', name: '' },
+			{ key: 'costo', name: 'Costo por año' },
+			{ key: 'indFallAcc', name: 'Indemnización por fallecimiento por accidente' },
+			{ key: 'indFallCua', name: 'Indemnización por fallecimineto por cualquier causa' }
+		],
+		rows:
+		[
+			{
+				cells:
+				[
+					{ columnKey: 'tipo', cellData: 'A' },
+					{ columnKey: 'costo', cellData: '$150.00' },
+					{ columnKey: 'indFallAcc', cellData: '$40,000.00' },
+					{ columnKey: 'indFallCua', cellData: '$20,000.00' }
+				]
+			},
+			{
+				cells:
+				[
+					{ columnKey: 'tipo', cellData: 'B' },
+					{ columnKey: 'costo', cellData: '$300.00' },
+					{ columnKey: 'indFallAcc', cellData: '$80,000.00' },
+					{ columnKey: 'indFallCua', cellData: '$40,000.00' }
+				]
+			},
+			{
+				cells:
+				[
+					{ columnKey: 'tipo', cellData: 'C' },
+					{ columnKey: 'costo', cellData: '$450.00' },
+					{ columnKey: 'indFallAcc', cellData: '$120,000.00' },
+					{ columnKey: 'indFallCua', cellData: '$60,000.00' }
+				]
+			}
+		]
+	};
 	detalleProcuraVida.tipoProducto = 'vida';
 	detalleProcuraVida.beneficios =
 	[

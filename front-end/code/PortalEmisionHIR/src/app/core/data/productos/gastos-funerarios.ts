@@ -3,40 +3,51 @@ import { DetalleProducto } from './detalle-producto';
 let detalleGastosFunerarios: DetalleProducto = new DetalleProducto();
 
 	detalleGastosFunerarios.descProductoHTML = 
-		`Siempre los últimos gastos son un imprevisto y no sabes quién los pueda cubrir, asegúrate de contar con la protección necesaria con un seguro de gastos funerarios, cobertura de fallecimiento.
-		<br><br>
-		<table>
-			<thead>
-				<tr>
-					<th>Prima</th>
-					<th>Prima Anual (MA) solo el titular</th>
-					<th>Suma Asegurada</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>$360</td>
-					<td>$385</td>
-					<td>$25 mil</td>
-				</tr>
-				<tr>
-					<td>$720</td>
-					<td>$770</td>
-					<td>$50 mil</td>
-				</tr>
-				<tr>
-					<td>$1080</td>
-					<td>$1155</td>
-					<td>$75 mil</td>
-				</tr>
-				<tr>
-					<td>$1440</td>
-					<td>$1540</td>
-					<td>$100 mil</td>
-				</tr>
-			</tbody>
-		</table>
-		`;
+		`Siempre los últimos gastos son un imprevisto y no sabes quién los pueda cubrir, asegúrate de contar con la protección necesaria con un seguro de gastos funerarios, cobertura de fallecimiento.`;
+	detalleGastosFunerarios.dataTable =
+	{
+		columns:
+		[
+			{ key: 'prima', name: 'Prima' },
+			{ key: 'primaAnual', name: 'Prima Anual (MA) solo el titular' },
+			{ key: 'sumaSegurada', name: 'Suma Asegurada' }
+		],
+		rows:
+		[
+			{
+				cells:
+				[
+					{ columnKey: 'prima', cellData: '$360.00' },
+					{ columnKey: 'primaAnual', cellData: '$385.00' },
+					{ columnKey: 'sumaSegurada', cellData: '$25,000.00' }
+				]
+			},
+			{
+				cells:
+				[
+					{ columnKey: 'prima', cellData: '$720.00' },
+					{ columnKey: 'primaAnual', cellData: '$770.00' },
+					{ columnKey: 'sumaSegurada', cellData: '$50,000.00' }
+				]
+			},
+			{
+				cells:
+				[
+					{ columnKey: 'prima', cellData: '$1,080.00' },
+					{ columnKey: 'primaAnual', cellData: '$1,115.00' },
+					{ columnKey: 'sumaSegurada', cellData: '$75,000.00' }
+				]
+			},
+			{
+				cells:
+				[
+					{ columnKey: 'prima', cellData: '$1,140.00' },
+					{ columnKey: 'primaAnual', cellData: '$1,540.00' },
+					{ columnKey: 'sumaSegurada', cellData: '$100,000.00' }
+				]
+			}
+		]
+	};
 	detalleGastosFunerarios.tipoProducto = 'vida';
 	detalleGastosFunerarios.beneficios =
 	[

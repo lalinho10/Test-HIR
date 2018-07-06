@@ -4,38 +4,47 @@ let detalleSegubici: DetalleProducto = new DetalleProducto();
 
 	detalleSegubici.descProductoHTML =
 		`Seguro de accidentes personales con reembolso de gastos médicos y cobertura por muerte accidental.<br><br>
-		Paquetes a tu elección<br><br>
-		<table>
-			<thead>
-				<tr>
-					<th></th>
-					<th>Costo por año</th>
-					<th>Indemnización por fallecimiento por accidente</th>
-					<th>Indemnización por reembolso de gastos médicos</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td> A </td>
-					<td>$370.00</td>
-					<td>$25,000.00</td>
-					<td>$25,000.00</td>
-				</tr>
-				<tr>
-					<td> B </td>
-					<td>$740.00</td>
-					<td>$50,000.00</td>
-					<td>$50,000.00</td>
-				</tr>
-				<tr>
-					<td> C </td>
-					<td>$1110.00</td>
-					<td>$75,000.00</td>
-					<td>$75,000.00</td>
-				</tr>
-			</tbody>
-		</table>
-		`;
+		Paquetes a tu elección`;
+	detalleSegubici.dataTable =
+	{
+		columns:
+		[
+			{ key: 'tipo', name: '' },
+			{ key: 'costo', name: 'Costo por año' },
+			{ key: 'indFallAcc', name: 'Indemnización por fallecimiento por accidente' },
+			{ key: 'indRemGM', name: 'Indemnización por reembolso de gastos médicos' }
+		],
+		rows:
+		[
+			{
+				cells:
+				[
+					{ columnKey: 'tipo', cellData: 'A' },
+					{ columnKey: 'costo', cellData: '$370.00' },
+					{ columnKey: 'indFallAcc', cellData: '$25,000.00' },
+					{ columnKey: 'indRemGM', cellData: '$25,000.00' }
+				]
+			},
+			{
+				cells:
+				[
+					{ columnKey: 'tipo', cellData: 'B' },
+					{ columnKey: 'costo', cellData: '$740.00' },
+					{ columnKey: 'indFallAcc', cellData: '$50,000.00' },
+					{ columnKey: 'indRemGM', cellData: '$50,000.00' }
+				]
+			},
+			{
+				cells:
+				[
+					{ columnKey: 'tipo', cellData: 'C' },
+					{ columnKey: 'costo', cellData: '$1,110.00' },
+					{ columnKey: 'indFallAcc', cellData: '$75,000.00' },
+					{ columnKey: 'indRemGM', cellData: '$75,000.00' }
+				]
+			}
+		]
+	};
 	detalleSegubici.tipoProducto = 'accidentes';
 	detalleSegubici.beneficios =
 	[

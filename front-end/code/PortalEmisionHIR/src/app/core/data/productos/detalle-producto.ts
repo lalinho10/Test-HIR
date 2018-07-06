@@ -1,5 +1,6 @@
 export class DetalleProducto {
 	descProductoHTML: string;
+	dataTable: any;
 	tipoProducto: string;
 	beneficios: string[];
 	ventajas: string[];
