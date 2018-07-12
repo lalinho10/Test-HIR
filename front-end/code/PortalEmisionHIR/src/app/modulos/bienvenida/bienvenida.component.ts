@@ -2,6 +2,8 @@ import { Component, OnInit }	 from '@angular/core';
 
 import { AuthenticationService } from 'app/core/services/authentication/authentication.service';
 
+import { AuthenticatedUser }	 from 'app/core/services/authentication/authenticated-user';
+
 @Component({
 	selector: 'pehir-bienvenida',
 	templateUrl: './bienvenida.component.html'
@@ -12,10 +14,10 @@ export class BienvenidaComponent implements OnInit {
 	loginTime: Date;
 	lastAccess: Date;
 
-	//private authenticatedUser: AuthenticatedUser;
+	private authenticatedUser: AuthenticatedUser;
 
 	constructor(
-		 private authenticationService: AuthenticationService
+		private authenticationService: AuthenticationService
 	) {}
 
 	ngOnInit() {
