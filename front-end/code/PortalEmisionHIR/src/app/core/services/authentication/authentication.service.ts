@@ -28,6 +28,10 @@ export class AuthenticationService {
 	}
 
 	get authenticatedUser(): AuthenticatedUser {
+		if( this._authenticatedUser === null || typeof this._authenticatedUser === 'undefined' ) {
+			let sessionUserObj = JSON.parse( window.atob( sessionStorage.getItem( 'loggedUser' ) ) );
+			this._authenticatedUser = sessionUserObj;
+		}
 		return this._authenticatedUser;
 	}
 
@@ -44,6 +48,7 @@ export class AuthenticationService {
 		if( this._idCodigo !== null && typeof this._idCodigo !== 'undefined' && 
 					codigo !== null && typeof codigo !== 'undefined' ) {
 			sessionStorage.setItem( 'token', 'fooSession' );
+			sessionStorage.setItem( 'loggedUser', window.btoa( JSON.stringify( this._authenticatedUser ) ) );
 			this.authenticated.next( true );
 		}
 	}
