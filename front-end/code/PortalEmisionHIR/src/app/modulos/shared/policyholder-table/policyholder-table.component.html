@@ -38,7 +38,7 @@
 				</td>
 				<td class="center">
 					<label class="data" *ngIf="!frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
-						{{ beneficiarios[i].parentesco.descParentesco }}
+						{{ beneficiarios[i].parentesco.desc }}
 					</label>
 					<div *ngIf="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
 						<pehir-extend-form-control
@@ -47,7 +47,7 @@
 								<select id="cboParentesco" class="form-control" formControlName="parentesco">
 									<option value="">Selecciona</option>
 									<option *ngFor="let parentesco of parentescos" [ngValue]="parentesco">
-										{{parentesco.descParentesco}}
+										{{parentesco.desc}}
 									</option>
 								</select>
 						</pehir-extend-form-control>
@@ -109,7 +109,7 @@
 							<select id="cboParentesco" class="form-control" formControlName="parentesco">
 								<option value="">Selecciona</option>
 								<option *ngFor="let parentesco of parentescos" [ngValue]="parentesco">
-									{{parentesco.descParentesco}}
+									{{parentesco.desc}}
 								</option>
 							</select>
 					</pehir-extend-form-control>
