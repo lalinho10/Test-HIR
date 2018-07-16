@@ -51,8 +51,13 @@ export class PolicyHolderTableComponent implements OnInit {
 	}
 
 	private leerCatalogos(): void {
-		this.wsClientService.getObject( '/consultaParentescos' )
-							.subscribe( data => this.parentescos = data );
+		this.wsClientService
+			.postObject( '/catalogoTipoParentesco', {} )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.parentescos = response.data;
+				}
+			});
 	}
 
 	private crearGrupo(): FormGroup {

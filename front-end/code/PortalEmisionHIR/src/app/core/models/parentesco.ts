@@ -1,4 +1,4 @@
 export class Parentesco {
-	idParentesco: number;
-	descParentesco: string;
+	id: number;
+	desc: string;
 }
