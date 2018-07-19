@@ -172,7 +172,7 @@
 									<select id="cboMunicipioCon" class="form-control" formControlName="delegacionMunicipio">
 										<option value="">Selecciona</option>
 										<option *ngFor="let municipio of municipiosCon" [ngValue]="municipio">
-											{{municipio.descMunicipio}}
+											{{municipio.descripcionEntidad}}
 										</option>
 									</select>
 							</pehir-extend-form-control>
@@ -434,7 +434,7 @@
 									<select id="cboMunicipioTit" class="form-control" formControlName="delegacionMunicipio">
 										<option value="">Selecciona</option>
 										<option *ngFor="let municipio of municipiosTit" [ngValue]="municipio">
-											{{municipio.descMunicipio}}
+											{{municipio.descripcionEntidad}}
 										</option>
 									</select>
 							</pehir-extend-form-control>

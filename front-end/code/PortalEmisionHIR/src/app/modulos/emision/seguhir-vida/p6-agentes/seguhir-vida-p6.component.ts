@@ -131,8 +131,13 @@ export class SeguhirVidaP6Component implements OnInit {
 		this.frmSeguhirVidaP6.get( 'estado' ).valueChanges.subscribe( estado => {
 			if( estado !== null && typeof estado !== 'undefined' ) {
 				if( estado.claveEntidad !== null && typeof estado.claveEntidad !== 'undefined' ) {
-					this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.claveEntidad )
-										.subscribe( response => this.municipios = response.data );
+					this.wsClientService
+						.postObject( '/catalogoMunicipio', { 'clave': estado.claveEntidad } )
+						.subscribe( response => {
+							if( response.code === 200 ) {
+								this.municipios = response.data;
+							}
+						});
 				} else {
 					this.municipios = [];
 				}

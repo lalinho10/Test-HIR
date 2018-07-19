@@ -219,8 +219,13 @@ export class SeguhirVidaP1Component implements OnInit {
 		this.frmSeguhirVidaP1.get( 'contratante.estado' ).valueChanges.subscribe( estado => {
 			if( estado !== null && typeof estado !== 'undefined' ) {
 				if( estado.claveEntidad !== null && typeof estado.claveEntidad !== 'undefined' ) {
-					this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.claveEntidad )
-										.subscribe( response => this.municipiosCon = response.data );
+					this.wsClientService
+						.postObject( '/catalogoMunicipio', { 'clave': estado.claveEntidad } )
+						.subscribe( response => {
+							if( response.code === 200 ) {
+								this.municipiosCon = response.data;
+							}
+						});
 				} else {
 					this.municipiosCon = [];
 				}
@@ -231,8 +236,13 @@ export class SeguhirVidaP1Component implements OnInit {
 		this.frmSeguhirVidaP1.get( 'titular.estado' ).valueChanges.subscribe( estado => {
 			if( estado !== null && typeof estado !== 'undefined' ) {
 				if( estado.claveEntidad !== null && typeof estado.claveEntidad !== 'undefined' ) {
-					this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.claveEntidad )
-										.subscribe( response => this.municipiosTit = response.data );
+					this.wsClientService
+						.postObject( '/catalogoMunicipio', { 'clave': estado.claveEntidad } )
+						.subscribe( response => {
+							if( response.code === 200 ) {
+								this.municipiosTit = response.data;
+							}
+						});
 				} else {
 					this.municipiosTit = [];
 				}

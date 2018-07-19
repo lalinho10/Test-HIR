@@ -1,4 +1,4 @@
 export class Municipio {
-	idMunicipio: string;
-	descMunicipio: string;
+	claveEntidad: string;
+	descripcionEntidad: string;
 }
