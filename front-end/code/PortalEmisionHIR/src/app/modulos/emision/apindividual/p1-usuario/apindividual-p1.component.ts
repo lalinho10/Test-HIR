@@ -154,8 +154,8 @@ export class ApindividualP1Component implements OnInit {
 	private registrarEventos(): void {
 		this.frmApindividualP1.get( 'estado' ).valueChanges.subscribe( estado => {
 			if( estado !== null && typeof estado !== 'undefined' ) {
-				if( estado.idEstado !== null && typeof estado.idEstado !== 'undefined' ) {
-					this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEstado )
+				if( estado.idEntidad !== null && typeof estado.idEntidad !== 'undefined' ) {
+					this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEntidad )
 										.subscribe( response => this.municipios = response.data );
 				} else {
 					this.municipios = [];
