@@ -189,7 +189,7 @@
 									<select id="cboEstadoCon" class="form-control" formControlName="estado">
 										<option value="">Selecciona</option>
 										<option *ngFor="let estado of estados" [ngValue]="estado">
-											{{estado.descEstado}}
+											{{estado.descripcionEntidad}}
 										</option>
 									</select>
 							</pehir-extend-form-control>
@@ -451,7 +451,7 @@
 									<select id="cboEstadoTit" class="form-control" formControlName="estado">
 										<option value="">Selecciona</option>
 										<option *ngFor="let estado of estados" [ngValue]="estado">
-											{{estado.descEstado}}
+											{{estado.descripcionEntidad}}
 										</option>
 									</select>
 							</pehir-extend-form-control>

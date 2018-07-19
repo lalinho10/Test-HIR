@@ -1,4 +1,4 @@
 export class Estado {
-	idEstado: string;
-	descEstado: string;
+	claveEntidad: string;
+	descripcionEntidad: string;
 }

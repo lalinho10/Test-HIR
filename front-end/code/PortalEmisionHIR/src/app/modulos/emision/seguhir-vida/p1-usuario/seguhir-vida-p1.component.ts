@@ -56,8 +56,14 @@ export class SeguhirVidaP1Component implements OnInit {
 	private leerCatalogos(): void {
 		this.wsClientService.getObject( '/consultaOcupaciones' )
 							.subscribe( data => this.ocupaciones = data );
-		this.wsClientService.getObject( '/consultaEstados' )
-							.subscribe( data => this.estados = data );
+
+		this.wsClientService
+			.postObject( '/catalogoEstado', {} )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.estados = response.data;
+				}
+			});
 	}
 
 	private crearFormulario(): void {

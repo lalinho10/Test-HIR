@@ -51,8 +51,13 @@ export class ApindividualP1Component implements OnInit {
 	}
 
 	private leerCatalogos(): void {
-		this.wsClientService.getObject( '/consultaEstados' )
-							.subscribe( data => this.estados = data );
+		this.wsClientService
+			.postObject( '/catalogoEstado', {} )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.estados = response.data;
+				}
+			});
 	}
 
 	private crearFormulario(): void {
