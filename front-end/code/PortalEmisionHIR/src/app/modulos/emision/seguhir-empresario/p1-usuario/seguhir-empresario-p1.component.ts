@@ -168,8 +168,8 @@ export class SeguhirEmpresarioP1Component implements OnInit {
 	private registrarEventos(): void {
 		this.frmSeguhirEmpresarioP1.get( 'estado' ).valueChanges.subscribe( estado => {
 			if( estado !== null && typeof estado !== 'undefined' ) {
-				if( estado.idEntidad !== null && typeof estado.idEntidad !== 'undefined' ) {
-					this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.idEntidad )
+				if( estado.claveEntidad !== null && typeof estado.claveEntidad !== 'undefined' ) {
+					this.wsClientService.getObject( '/consultaMunicipiosEstado/' + estado.claveEntidad )
 										.subscribe( response => this.municipios = response.data );
 				} else {
 					this.municipios = [];
