@@ -26,7 +26,13 @@ export class WSClientService {
 	}
 
 	private createMockRequest( serviceName: string, serviceBody: any ): Observable<any> {
-		let serviceId = ( serviceBody.id !== null && typeof serviceBody.id !== 'undefined' ) ? '/' + serviceBody.id : '';
+		let serviceId = '';
+
+		if( serviceBody.id !== null && typeof serviceBody.id !== 'undefined' ) {
+			serviceId = '/' + serviceBody.id;
+		} else if( serviceBody.clave !== null && typeof serviceBody.clave !== 'undefined' ) {
+			serviceId = '/' + serviceBody.clave;
+		}
 
 		let mockService = serviceName + serviceId;
 
