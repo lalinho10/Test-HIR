@@ -3570,6 +3570,103 @@
 			]
 		}
 	],
+	"catalogoPostal":
+	[
+		{
+			"id": "03400",
+			"code": 200,
+			"status": null,
+			"mensaje": "Se ha mostrado la localidad",
+			"dateTime": 1532039869164,
+			"data":
+			{
+				"claveEstado": "09",
+				"claveMunicipio": "014",
+				"claveColonia": "0516",
+				"descripcionEstado": "Ciudad de México",
+				"descripcionMunicipio": "Benito Juárez",
+				"descripcionColonia": "Álamos"
+			}
+		},
+		{
+			"id": "07810",
+			"code": 200,
+			"status": null,
+			"mensaje": "Se ha mostrado la localidad",
+			"dateTime": 1532040173987,
+			"data":
+			{
+				"claveEstado": "09",
+				"claveMunicipio": "005",
+				"claveColonia": "1172",
+				"descripcionEstado": "Ciudad de México",
+				"descripcionMunicipio": "Gustavo A. Madero",
+				"descripcionColonia": "Estrella"
+			}
+		},
+		{
+			"id": "15530",
+			"code": 200,
+			"status": null,
+			"mensaje": "Se ha mostrado la localidad",
+			"dateTime": 1532040373108,
+			"data":
+			{
+				"claveEstado": "09",
+				"claveMunicipio": "017",
+				"claveColonia": "2332",
+				"descripcionEstado": "Ciudad de México",
+				"descripcionMunicipio": "Venustiano Carranza",
+				"descripcionColonia": "Moctezuma 2a Sección"
+			}
+		},
+		{
+			"id": "53950",
+			"code": 200,
+			"status": null,
+			"mensaje": "Se ha mostrado la localidad",
+			"dateTime": 1532040116501,
+			"data":
+			{
+				"claveEstado": "15",
+				"claveMunicipio": "057",
+				"claveColonia": "2562",
+				"descripcionEstado": "México",
+				"descripcionMunicipio": "Naucalpan de Juárez",
+				"descripcionColonia": "Lomas de Tecamachalco"
+			}
+		},
+		{
+			"id": "59940",
+			"code": 200,
+			"status": null,
+			"mensaje": "Se ha mostrado la localidad",
+			"dateTime": 1532040440152,
+			"data":
+			{
+				"claveEstado": "16",
+				"claveMunicipio": "019",
+				"claveColonia": "1467",
+				"descripcionEstado": "Michoacán de Ocampo",
+				"descripcionMunicipio": "Cotija",
+				"descripcionColonia": "Centro"
+			}
+		}
+	],
+	"catalogoTipoIdentificacion":
+	{
+		"code": 200,
+		"status": null,
+		"mensaje": "Se ha mostrado el catalogo de tipo de identificación",
+		"dateTime": 1531739855810,
+		"data":
+		[
+			{ "id": 1, "desc": "INE" },
+			{ "id": 2, "desc": "Cartilla" },
+			{ "id": 3, "desc": "Pasaporte" },
+			{ "id": 4, "desc": "Cedula Profesional" }
+		]
+	},
 	"loginNormal":
 	{
 		"codigoRespuesta": 200,

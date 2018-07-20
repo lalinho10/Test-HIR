@@ -1,4 +1,4 @@
 export class Identificacion {
-	idIdentificacion: number;
-	descIdentificacion: string;
+	id: number;
+	desc: string;
 }

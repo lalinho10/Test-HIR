@@ -14,9 +14,8 @@ import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
 import { TelefonoValidator }				  from 'app/core/validators/telefono.validator';
 
-import { IDENTIFICACIONES }					  from 'app/core/data/identificaciones';
-
 import { Estado }							  from 'app/core/models/estado';
+import { Identificacion }					  from 'app/core/models/identificacion';
 import { Municipio }						  from 'app/core/models/municipio';
 
 @Component({
@@ -32,9 +31,8 @@ export class SeguhirVidaP6Component implements OnInit {
 	frmSeguhirVidaP6: FormGroup;
 
 	estados: Estado[];
+	identificaciones: Identificacion[];
 	municipios: Municipio[];
-
-	identificaciones = IDENTIFICACIONES;
 
 	constructor(
 		private fb: FormBuilder,
@@ -55,6 +53,14 @@ export class SeguhirVidaP6Component implements OnInit {
 			.subscribe( response => {
 				if( response.code === 200 ) {
 					this.estados = response.data;
+				}
+			});
+
+		this.wsClientService
+			.postObject( '/catalogoTipoIdentificacion', {} )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.identificaciones = response.data;
 				}
 			});
 	}
