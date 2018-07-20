@@ -10,7 +10,9 @@ import { WSClientService }					  from 'app/core/services/ws-client.service';
 import { EstaturaValidator }				  from 'app/core/validators/estatura.validator';
 import { PesoValidator }					  from 'app/core/validators/peso.validator';
 
+import { FrecuenciaBebida }					  from 'app/core/models/frecuencia-bebida';
 import { FrecuenciaDeporte }				  from 'app/core/models/frecuencia-deporte';
+import { FrecuenciaFuma }					  from 'app/core/models/frecuencia-fuma';
 import { TipoDeporte }						  from 'app/core/models/tipo-deporte';
 
 @Component({
@@ -25,7 +27,9 @@ export class SeguhirVidaP3Component implements OnInit {
 
 	frmSeguhirVidaP3: FormGroup;
 
+	frecuenciasBebida: FrecuenciaBebida[];
 	frecuenciasDeporte: FrecuenciaDeporte[];
+	frecuenciasFuma: FrecuenciaFuma[];
 	tiposDeporte: TipoDeporte[];
 
 	preguntasCuestionario: string[] = [
@@ -60,10 +64,26 @@ export class SeguhirVidaP3Component implements OnInit {
 			});
 
 		this.wsClientService
+			.postObject( '/catalogoFrecuenciaBebida', {} )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.frecuenciasBebida = response.data;
+				}
+			});
+
+		this.wsClientService
 			.postObject( '/catalogoFrecuenciaDeporte', {} )
 			.subscribe( response => {
 				if( response.code === 200 ) {
 					this.frecuenciasDeporte = response.data;
+				}
+			});
+
+		this.wsClientService
+			.postObject( '/catalogoFrecuenciaFuma', {} )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.frecuenciasFuma = response.data;
 				}
 			});
 	}

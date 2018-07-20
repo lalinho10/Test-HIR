@@ -3653,12 +3653,40 @@
 			}
 		}
 	],
+	"catalogoFrecuenciaBebida":
+	{
+		"code": 200,
+		"status": null,
+		"mensaje": "Se ha mostrado la frecuencia de bebida",
+		"dateTime": 1532108206231,
+		"data":
+		[
+			{ "id": 1, "desc": "Diario" },
+			{ "id": 2, "desc": "Semanal" },
+			{ "id": 3, "desc": "Quincenal" },
+			{ "id": 4, "desc": "Mensual" }
+		]
+	},
 	"catalogoFrecuenciaDeporte":
 	{
 		"code": 200,
 		"status": null,
 		"mensaje": "Se ha mostrado la frecuencia de deporte",
 		"dateTime": 1531739439524,
+		"data":
+		[
+			{ "id": 1, "desc": "Diario" },
+			{ "id": 2, "desc": "Semanal" },
+			{ "id": 3, "desc": "Quincenal" },
+			{ "id": 4, "desc": "Mensual" }
+		]
+	},
+	"catalogoFrecuenciaFuma":
+	{
+		"code": 200,
+		"status": null,
+		"mensaje": "Se ha mostrado la frecuencia de fumar",
+		"dateTime": 1532108307511,
 		"data":
 		[
 			{ "id": 1, "desc": "Diario" },

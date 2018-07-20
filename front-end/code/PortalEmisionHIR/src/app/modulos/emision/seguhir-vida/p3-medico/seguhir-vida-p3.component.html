@@ -201,7 +201,12 @@
 				<pehir-extend-form-control
 					[inputDirty]="frmSeguhirVidaP3.get('consumoAlcohol.frecuencia').dirty"
 					[inputErrors]="frmSeguhirVidaP3.get('consumoAlcohol.frecuencia').errors">
-						<input id="txtFrecuencia" type="text" class="form-control" formControlName="frecuencia">
+						<select id="cboFrecuencia" class="form-control" formControlName="frecuencia">
+							<option value="">Selecciona</option>
+							<option *ngFor="let frecuenciaBebida of frecuenciasBebida" [ngValue]="frecuenciaBebida">
+								{{frecuenciaBebida.desc}}
+							</option>
+						</select>
 				</pehir-extend-form-control>
 			</div>
 		</div>
@@ -241,7 +246,12 @@
 				<pehir-extend-form-control
 					[inputDirty]="frmSeguhirVidaP3.get('fuma.frecuencia').dirty"
 					[inputErrors]="frmSeguhirVidaP3.get('fuma.frecuencia').errors">
-						<input id="txtFrecuencia" type="text" class="form-control" formControlName="frecuencia">
+						<select id="cboFrecuencia" class="form-control" formControlName="frecuencia">
+							<option value="">Selecciona</option>
+							<option *ngFor="let frecuenciaFuma of frecuenciasFuma" [ngValue]="frecuenciaFuma">
+								{{frecuenciaFuma.desc}}
+							</option>
+						</select>
 				</pehir-extend-form-control>
 			</div>
 		</div>
