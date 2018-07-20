@@ -3653,6 +3653,18 @@
 			}
 		}
 	],
+	"catalogoTipoDeporte":
+	{
+		"code": 200,
+		"status": null,
+		"mensaje": "Se ha mostrado el tipo de deporte",
+		"dateTime": 1531739787312,
+		"data":
+		[
+			{ "id": 1, "desc": "Amateur" },
+			{ "id": 2, "desc": "Profesional" }
+		]
+	},
 	"catalogoTipoIdentificacion":
 	{
 		"code": 200,

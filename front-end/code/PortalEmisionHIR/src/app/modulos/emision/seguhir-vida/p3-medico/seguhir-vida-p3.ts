@@ -1,6 +1,6 @@
 import { FrecuenciaDeporte } from 'app/core/models/frecuencia-deporte';
-import { NivelCompetencia }  from 'app/core/models/nivel-competencia';
 import { PreguntaMedica }    from 'app/core/models/pregunta-medica';
+import { TipoDeporte }       from 'app/core/models/tipo-deporte';
 
 export class SeguhirVidaP3 {
 	preguntasMedicas: PreguntaMedica[];
@@ -13,7 +13,7 @@ export class SeguhirVidaP3 {
 	datosAtencion: string;
 	deportes: string;
 	competencias: boolean;
-	nivelCompetencia: NivelCompetencia;
+	nivelCompetencia: TipoDeporte;
 	frecuenciaDeporte: FrecuenciaDeporte;
 	confirmacionAlcohol: boolean;
 	claseAlcohol?: string;

@@ -5,12 +5,14 @@ import { Router }							  from '@angular/router';
 import { MedicalQuestionaryComponent }		  from 'app/modulos/shared/medical-questionary/medical-questionary.component';
 
 import { SeguhirVidaP3Service }				  from './seguhir-vida-p3.service';
+import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { EstaturaValidator }				  from 'app/core/validators/estatura.validator';
 import { PesoValidator }					  from 'app/core/validators/peso.validator';
 
 import { FRECUENCIASDEPORTE }				  from 'app/core/data/frecuencias-deporte';
-import { NIVELESCOMPETENCIA }				  from 'app/core/data/niveles-competencia';
+
+import { TipoDeporte }						  from 'app/core/models/tipo-deporte';
 
 @Component({
 	selector: 'pehir-seguhir-vida-p3',
@@ -24,8 +26,9 @@ export class SeguhirVidaP3Component implements OnInit {
 
 	frmSeguhirVidaP3: FormGroup;
 
+	tiposDeporte: TipoDeporte[];
+
 	frecuenciasDeporte = FRECUENCIASDEPORTE;
-	nivelesCompetencia = NIVELESCOMPETENCIA;
 
 	preguntasCuestionario: string[] = [
 		'1. ¿Padece actualmente de alguna enfermedad?',
@@ -40,11 +43,23 @@ export class SeguhirVidaP3Component implements OnInit {
 	constructor(
 		private fb: FormBuilder,
 		private router: Router,
-		private seguhirVidaP3Service: SeguhirVidaP3Service
+		private seguhirVidaP3Service: SeguhirVidaP3Service,
+		private wsClientService: WSClientService
 	){}
 
 	ngOnInit() {
+		this.leerCatalogos();
 		this.crearFormulario();
+	}
+
+	private leerCatalogos(): void {
+		this.wsClientService
+			.postObject( '/catalogoTipoDeporte', {} )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.tiposDeporte = response.data;
+				}
+			});
 	}
 
 	private crearFormulario(): void {
@@ -111,7 +126,7 @@ export class SeguhirVidaP3Component implements OnInit {
 			'competencias': ['', Validators.compose([
 				Validators.required
 			])],
-			'nivelCompetencia': ['', Validators.compose([
+			'tipoDeporte': ['', Validators.compose([
 				Validators.required
 			])],
 			'frecuenciaDeporte': ['', Validators.compose([
@@ -176,12 +191,12 @@ export class SeguhirVidaP3Component implements OnInit {
 	}
 
 	fnCambiarCompetencias(): void {
-		this.frmSeguhirVidaP3.controls[ 'nivelCompetencia' ].setValue( '' );
+		this.frmSeguhirVidaP3.controls[ 'tipoDeporte' ].setValue( '' );
 
 		if( this.frmSeguhirVidaP3.controls[ 'competencias' ].value ) {
-			this.frmSeguhirVidaP3.controls[ 'nivelCompetencia' ].enable();
+			this.frmSeguhirVidaP3.controls[ 'tipoDeporte' ].enable();
 		} else {
-			this.frmSeguhirVidaP3.controls[ 'nivelCompetencia' ].disable();
+			this.frmSeguhirVidaP3.controls[ 'tipoDeporte' ].disable();
 		}
 	}
 

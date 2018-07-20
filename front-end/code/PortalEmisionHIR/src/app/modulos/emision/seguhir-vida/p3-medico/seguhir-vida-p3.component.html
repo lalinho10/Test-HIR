@@ -141,8 +141,8 @@
 							<input type="radio" (change)="fnCambiarCompetencias()" [value]="true" formControlName="competencias">Sí
 						</div>
 
-						<div *ngFor="let nivelCompetencia of nivelesCompetencia" class="rdoContainer two">
-							<input type="radio" formControlName="nivelCompetencia" [value]="nivelCompetencia">{{nivelCompetencia.descNivelCompetencia}}
+						<div *ngFor="let tipoDeporte of tiposDeporte" class="rdoContainer two">
+							<input type="radio" formControlName="tipoDeporte" [value]="tipoDeporte">{{tipoDeporte.desc}}
 						</div>
 				</pehir-extend-form-control>
 			</div>
