@@ -152,7 +152,7 @@
 					[inputDirty]="frmSeguhirVidaP3.get('frecuenciaDeporte').dirty"
 					[inputErrors]="frmSeguhirVidaP3.get('frecuenciaDeporte').errors">
 						<div *ngFor="let frecuenciaDeporte of frecuenciasDeporte" class="rdoContainer two">
-							<input type="radio" formControlName="frecuenciaDeporte" [value]="frecuenciaDeporte">{{frecuenciaDeporte.descFrecuenciaDeporte}}
+							<input type="radio" formControlName="frecuenciaDeporte" [value]="frecuenciaDeporte">{{frecuenciaDeporte.desc}}
 						</div>
 				</pehir-extend-form-control>
 			</div>

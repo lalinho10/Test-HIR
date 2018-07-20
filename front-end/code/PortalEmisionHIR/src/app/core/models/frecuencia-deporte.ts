@@ -1,4 +1,4 @@
 export class FrecuenciaDeporte {
-	idFrecuenciaDeporte: number;
-	descFrecuenciaDeporte: string;
+	id: number;
+	desc: string;
 }

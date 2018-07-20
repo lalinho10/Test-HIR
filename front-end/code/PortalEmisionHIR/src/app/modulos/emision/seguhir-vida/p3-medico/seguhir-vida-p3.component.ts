@@ -10,8 +10,7 @@ import { WSClientService }					  from 'app/core/services/ws-client.service';
 import { EstaturaValidator }				  from 'app/core/validators/estatura.validator';
 import { PesoValidator }					  from 'app/core/validators/peso.validator';
 
-import { FRECUENCIASDEPORTE }				  from 'app/core/data/frecuencias-deporte';
-
+import { FrecuenciaDeporte }				  from 'app/core/models/frecuencia-deporte';
 import { TipoDeporte }						  from 'app/core/models/tipo-deporte';
 
 @Component({
@@ -26,9 +25,8 @@ export class SeguhirVidaP3Component implements OnInit {
 
 	frmSeguhirVidaP3: FormGroup;
 
+	frecuenciasDeporte: FrecuenciaDeporte[];
 	tiposDeporte: TipoDeporte[];
-
-	frecuenciasDeporte = FRECUENCIASDEPORTE;
 
 	preguntasCuestionario: string[] = [
 		'1. ¿Padece actualmente de alguna enfermedad?',
@@ -58,6 +56,14 @@ export class SeguhirVidaP3Component implements OnInit {
 			.subscribe( response => {
 				if( response.code === 200 ) {
 					this.tiposDeporte = response.data;
+				}
+			});
+
+		this.wsClientService
+			.postObject( '/catalogoFrecuenciaDeporte', {} )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.frecuenciasDeporte = response.data;
 				}
 			});
 	}
