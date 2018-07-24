@@ -58,7 +58,7 @@ export class CodigoComponent implements OnInit {
 				}
 			},
 			error => {
-				this.authenticationService.logout();
+				this.router.navigateByUrl( '/acceso/login' );
 			});
 	}
 }
