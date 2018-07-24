@@ -75,8 +75,12 @@ export class SegubiciP2Component implements OnInit {
 			});
 
 		this.wsClientService
-			.postObject( '/consultaOcupaciones', {} )
-			.subscribe( data => this.ocupaciones = data );
+			.postObject( '/catalogoOcupacion', {} )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.ocupaciones = response.data;
+				}
+			});
 
 		this.wsClientService
 			.postObject( '/catPlan', { 'id': this.idProducto } )

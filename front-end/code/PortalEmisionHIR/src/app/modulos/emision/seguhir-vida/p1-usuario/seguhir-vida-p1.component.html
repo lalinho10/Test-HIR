@@ -84,7 +84,7 @@
 									<select id="cboOcupacionCon" class="form-control" formControlName="ocupacion">
 										<option value="">Selecciona</option>
 										<option *ngFor="let ocupacion of ocupaciones" [ngValue]="ocupacion">
-											{{ocupacion.descOcupacion}}
+											{{ocupacion.desc}}
 										</option>
 									</select>
 							</pehir-extend-form-control>
@@ -346,7 +346,7 @@
 									<select id="cboOcupacionTit" class="form-control" formControlName="ocupacion">
 										<option value="">Selecciona</option>
 										<option *ngFor="let ocupacion of ocupaciones" [ngValue]="ocupacion">
-											{{ocupacion.descOcupacion}}
+											{{ocupacion.desc}}
 										</option>
 									</select>
 							</pehir-extend-form-control>

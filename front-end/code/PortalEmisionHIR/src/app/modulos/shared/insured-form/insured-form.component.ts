@@ -48,8 +48,13 @@ export class InsuredFormComponent implements OnInit {
 	}
 
 	private leerCatalogos() {
-		this.wsClientService.getObject( '/consultaOcupaciones' )
-							.subscribe( data => this.ocupaciones = data );
+		this.wsClientService
+			.postObject( '/catalogoOcupacion', {} )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.ocupaciones = response.data;
+				}
+			});
 	}
 
 	private crearFormulario(): void {
