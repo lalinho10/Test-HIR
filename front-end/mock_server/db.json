@@ -3786,6 +3786,13 @@
 		"mensaje": "Se ha cambiado la contraseña",
 		"fechaOperacion": 1520957070339
 	},
+	"loginCerrarSesion":
+	{
+		"idCodigo": null,
+		"mensaje": "Cierre de sesión con éxito. Fecha finalizacion: Jul 24 2018 9:50AM",
+		"codigoRespuesta": 200,
+		"fechaOperacion": 1532443880814
+	},
 	"obtTarifa":
 	{
 		"codigoRespuesta": 200,

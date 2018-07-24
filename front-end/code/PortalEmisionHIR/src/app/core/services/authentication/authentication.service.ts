@@ -6,6 +6,7 @@ import { Observable }		 from 'rxjs/Observable';
 import { AuthenticatedUser } from './authenticated-user';
 
 import { AppModalService }	 from 'app/core/components/app-modal/app-modal.service';
+import { WSClientService }	 from 'app/core/services/ws-client.service';
 
 @Injectable()
 export class AuthenticationService {
@@ -16,7 +17,8 @@ export class AuthenticationService {
 
 	constructor(
 		private appModalService: AppModalService,
-		private router: Router
+		private router: Router,
+		private wsClientService: WSClientService
 	){}
 
 	get idCodigo(): number {
@@ -56,6 +58,7 @@ export class AuthenticationService {
 	public authenticatedUserAcceso( response: any ) {
 		this._authenticatedUser = new AuthenticatedUser();
 
+		this._authenticatedUser.idUsuario = this._idUsuario;
 		this._authenticatedUser.claveRol = response.claveRol;
 		this._authenticatedUser.fechaOperacion = new Date( response.fechaOperacion );
 		this._authenticatedUser.nombreUsuario = response.nombreUsuario;
@@ -73,11 +76,19 @@ export class AuthenticationService {
 	}
 
 	public logout(): void {
-		sessionStorage.clear();
-		this._idCodigo = undefined;
-		this.authenticated.next( false );
-		this.router.navigateByUrl( '/acceso/login' );
-		this.appModalService.openModal( 'success', 'Su sesión ha sido cerrada correctamente' );
+		let loggedUser = JSON.parse( window.atob( sessionStorage.getItem( 'loggedUser' ) ) );
+
+		this.wsClientService
+			.postObject( '/loginCerrarSesion', { usuario: loggedUser.idUsuario } )
+			.subscribe( response => {
+				if( response.codigoRespuesta === 200 ) {
+					sessionStorage.clear();
+					this._idCodigo = undefined;
+					this.authenticated.next( false );
+					this.router.navigateByUrl( '/acceso/login' );
+					this.appModalService.openModal( 'success', 'Su sesión ha sido cerrada correctamente' );
+				}
+			});
 	}
 
 }
