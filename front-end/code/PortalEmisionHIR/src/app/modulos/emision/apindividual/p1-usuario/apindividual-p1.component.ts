@@ -133,9 +133,6 @@ export class ApindividualP1Component implements OnInit {
 				Validators.email,
 				Validators.maxLength(50)
 			])],
-			'vigenciaPoliza': ['', Validators.compose([
-				Validators.required
-			])],
 			'gobierno': ['', Validators.compose([
 				Validators.required
 			])],

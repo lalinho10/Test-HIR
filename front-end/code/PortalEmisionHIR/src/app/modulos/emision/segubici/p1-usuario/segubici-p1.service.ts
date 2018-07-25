@@ -26,7 +26,6 @@ export class SegubiciP1Service {
 		this.segubiciP1.telefono = frmSegubiciP1.telefonos.telefono;
 		this.segubiciP1.celular = frmSegubiciP1.telefonos.celular;
 		this.segubiciP1.correoe = frmSegubiciP1.correoe;
-		this.segubiciP1.vigenciaPoliza = frmSegubiciP1.vigenciaPoliza;
 		this.segubiciP1.gobierno = frmSegubiciP1.gobierno;
 		this.segubiciP1.especifiqueGob = ( frmSegubiciP1.gobierno ) ? frmSegubiciP1.especifiqueGob : undefined;
 		this.segubiciP1.parienteGob = frmSegubiciP1.parienteGob;

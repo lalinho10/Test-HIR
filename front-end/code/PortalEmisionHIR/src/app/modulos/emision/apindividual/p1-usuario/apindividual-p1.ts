@@ -23,7 +23,6 @@ export class ApindividualP1 {
 	telefono: string;
 	celular: string;
 	correoe: string;
-	vigenciaPoliza: IMyDateModel;
 	gobierno: boolean;
 	especifiqueGob?: string;
 	parienteGob: boolean;
