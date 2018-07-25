@@ -13,7 +13,6 @@ export class GastosFunerariosP2Service {
 
 		this.gastosFunerariosP2.beneficiarios = beneficiarios;
 		this.gastosFunerariosP2.modulo = frmGastosFunerariosP2.modulo;
-		this.gastosFunerariosP2.sumasegurada = frmGastosFunerariosP2.sumasegurada;
 		this.gastosFunerariosP2.cobertura = frmGastosFunerariosP2.cobertura;
 		this.gastosFunerariosP2.formaPago = frmGastosFunerariosP2.formaPago;
 		this.gastosFunerariosP2.agente = frmGastosFunerariosP2.agente;

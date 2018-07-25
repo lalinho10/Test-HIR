@@ -12,8 +12,6 @@ export class SegubiciP2Service {
 		this.segubiciP2.ocupacion = frmSegubiciP2.ocupacion;
 		this.segubiciP2.descactividad = frmSegubiciP2.descactividad;
 		this.segubiciP2.cobertura = frmSegubiciP2.cobertura;
-		this.segubiciP2.sumasegurada = frmSegubiciP2.sumasegurada;
-		this.segubiciP2.deducible = frmSegubiciP2.deducible;
 		this.segubiciP2.formaPago = frmSegubiciP2.formaPago;
 		this.segubiciP2.plan = frmSegubiciP2.plan;
 		this.segubiciP2.agente = frmSegubiciP2.agente;

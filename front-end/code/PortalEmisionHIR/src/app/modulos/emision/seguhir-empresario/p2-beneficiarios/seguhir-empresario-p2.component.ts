@@ -12,7 +12,6 @@ import { Plan }								  from 'app/core/models/plan';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.validator';
-import { FormatoMonedaValidator }			  from 'app/core/validators/formato-moneda.validator';
 
 import { PolicyHolderTableComponent }		  from 'app/modulos/shared/policyholder-table/policyholder-table.component';
 
@@ -92,10 +91,6 @@ export class SeguhirEmpresarioP2Component implements OnInit {
 		this.frmSeguhirEmpresarioP2 = this.fb.group({
 			'modulo': ['', Validators.compose([
 				Validators.required
-			])],
-			'sumasegurada': ['', Validators.compose([
-				Validators.required,
-				FormatoMonedaValidator()
 			])],
 			'cobertura': ['', Validators.compose([
 				Validators.required

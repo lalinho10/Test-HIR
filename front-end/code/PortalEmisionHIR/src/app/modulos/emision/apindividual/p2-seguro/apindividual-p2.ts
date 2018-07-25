@@ -7,8 +7,6 @@ export class ApindividualP2 {
 	ocupacion: Ocupacion;
 	descactividad: string;
 	cobertura: Cobertura;
-	sumasegurada: number;
-	deducible: number;
 	formaPago: FormaPago;
 	plan: Plan;
 	agente: string;

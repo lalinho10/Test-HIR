@@ -6,7 +6,6 @@ import { FormaPago }	from 'app/core/models/forma-pago';
 export class GastosFunerariosP2 {
 	beneficiarios: Beneficiario[];
 	modulo: Modulo;
-	sumasegurada: number;
 	cobertura: Cobertura;
 	formaPago: FormaPago;
 	agente: string;

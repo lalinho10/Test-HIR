@@ -12,8 +12,6 @@ export class ApindividualP2Service {
 		this.apindividualP2.ocupacion = frmApindividualP2.ocupacion;
 		this.apindividualP2.descactividad = frmApindividualP2.descactividad;
 		this.apindividualP2.cobertura = frmApindividualP2.cobertura;
-		this.apindividualP2.sumasegurada = frmApindividualP2.sumasegurada;
-		this.apindividualP2.deducible = frmApindividualP2.deducible;
 		this.apindividualP2.formaPago = frmApindividualP2.formaPago;
 		this.apindividualP2.plan = frmApindividualP2.plan;
 		this.apindividualP2.agente = frmApindividualP2.agente;

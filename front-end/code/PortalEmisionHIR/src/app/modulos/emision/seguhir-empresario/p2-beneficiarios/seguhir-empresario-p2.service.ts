@@ -13,7 +13,6 @@ export class SeguhirEmpresarioP2Service {
 
 		this.seguhirEmpresarioP2.beneficiarios = beneficiarios;
 		this.seguhirEmpresarioP2.modulo = frmSeguhirEmpresarioP2.modulo;
-		this.seguhirEmpresarioP2.sumasegurada = frmSeguhirEmpresarioP2.sumasegurada;
 		this.seguhirEmpresarioP2.cobertura = frmSeguhirEmpresarioP2.cobertura;
 		this.seguhirEmpresarioP2.formaPago = frmSeguhirEmpresarioP2.formaPago;
 		this.seguhirEmpresarioP2.agente = frmSeguhirEmpresarioP2.agente;

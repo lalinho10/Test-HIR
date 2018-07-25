@@ -13,7 +13,6 @@ export class ProcuraVidaP2Service {
 
 		this.procuraVidaP2.beneficiarios = beneficiarios;
 		this.procuraVidaP2.modulo = frmProcuraVidaP2.modulo;
-		this.procuraVidaP2.sumasegurada = frmProcuraVidaP2.sumasegurada;
 		this.procuraVidaP2.cobertura = frmProcuraVidaP2.cobertura;
 		this.procuraVidaP2.formaPago = frmProcuraVidaP2.formaPago;
 		this.procuraVidaP2.agente = frmProcuraVidaP2.agente;

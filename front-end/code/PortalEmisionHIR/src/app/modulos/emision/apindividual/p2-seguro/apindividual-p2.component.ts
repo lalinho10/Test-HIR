@@ -6,7 +6,6 @@ import { ApindividualP2Service }			  from './apindividual-p2.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.validator';
-import { FormatoMonedaValidator }			  from 'app/core/validators/formato-moneda.validator';
 
 import { Cobertura }						  from 'app/core/models/cobertura';
 import { FormaPago }						  from 'app/core/models/forma-pago';
@@ -101,14 +100,6 @@ export class ApindividualP2Component implements OnInit {
 			])],
 			'cobertura': ['', Validators.compose([
 				Validators.required
-			])],
-			'sumasegurada': ['', Validators.compose([
-				Validators.required,
-				FormatoMonedaValidator()
-			])],
-			'deducible': ['', Validators.compose([
-				Validators.required,
-				FormatoMonedaValidator()
 			])],
 			'formaPago': ['', Validators.compose([
 				Validators.required
