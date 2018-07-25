@@ -20,8 +20,6 @@ import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator }				  from 'app/core/validators/apellido.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
-import { FormatoMonedaValidator }			  from 'app/core/validators/formato-moneda.validator';
-import { RfcValidator }						  from 'app/core/validators/rfc.validator';
 import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
 
 @Component({
@@ -122,10 +120,6 @@ export class SegubiciComponent implements OnInit {
 				Validators.required,
 				EntreEdadesValidator(18,65)
 			])],
-			'rfc': ['', Validators.compose([
-				Validators.required,
-				RfcValidator()
-			])],
 			'genero': ['', Validators.compose([
 				Validators.required
 			])],
@@ -160,7 +154,6 @@ export class SegubiciComponent implements OnInit {
 		this.frmSegubici.get( 'apaterno' ).setValue( cotizacion.apaterno );
 		this.frmSegubici.get( 'amaterno' ).setValue( cotizacion.amaterno );
 		this.frmSegubici.get( 'fechanac' ).patchValue( objetoFechaCal );
-		this.frmSegubici.get( 'rfc' ).setValue( cotizacion.rfc );
 		this.frmSegubici.get( 'genero' ).setValue( cotizacion.genero.idGenero );
 		this.frmSegubici.get( 'fpago' ).setValue( cotizacion.formaPago.id );
 		this.frmSegubici.get( 'modulo' ).setValue( cotizacion.modulo.idModulo );
@@ -183,7 +176,6 @@ export class SegubiciComponent implements OnInit {
 			apaterno: this.frmSegubici.get( 'apaterno' ).value,
 			amaterno: this.frmSegubici.get( 'amaterno' ).value,
 			fechanac: this.frmSegubici.get( 'fechanac' ).value.jsdate,
-			rfc: this.frmSegubici.get( 'rfc' ).value,
 			genero: fGeneros[ 0 ],
 			formaPago: fFormasPago[ 0 ],
 			modulo: fModulos[ 0 ],

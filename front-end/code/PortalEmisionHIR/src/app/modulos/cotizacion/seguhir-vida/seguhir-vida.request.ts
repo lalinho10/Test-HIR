@@ -3,7 +3,6 @@ export class SeguhirVidaRequest {
 	apPaterno: string;
 	apMaterno: string;
 	fechaNacimiento: number;
-	rfc: string;
 	sexo: string;
 	plan: number;
 	formaPago: number;

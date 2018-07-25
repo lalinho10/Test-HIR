@@ -20,8 +20,6 @@ import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator }				  from 'app/core/validators/apellido.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
-import { FormatoMonedaValidator }			  from 'app/core/validators/formato-moneda.validator';
-import { RfcValidator }						  from 'app/core/validators/rfc.validator';
 import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
 
 @Component({
@@ -122,10 +120,6 @@ export class ProcuraVidaComponent implements OnInit {
 				Validators.required,
 				EntreEdadesValidator(18,74)
 			])],
-			'rfc': ['', Validators.compose([
-				Validators.required,
-				RfcValidator()
-			])],
 			'genero': ['', Validators.compose([
 				Validators.required
 			])],
@@ -160,7 +154,6 @@ export class ProcuraVidaComponent implements OnInit {
 		this.frmProcuraVida.get( 'apaterno' ).setValue( cotizacion.apaterno );
 		this.frmProcuraVida.get( 'amaterno' ).setValue( cotizacion.amaterno );
 		this.frmProcuraVida.get( 'fechanac' ).patchValue( objetoFechaCal );
-		this.frmProcuraVida.get( 'rfc' ).setValue( cotizacion.rfc );
 		this.frmProcuraVida.get( 'genero' ).setValue( cotizacion.genero.idGenero );
 		this.frmProcuraVida.get( 'fpago' ).setValue( cotizacion.formaPago.id );
 		this.frmProcuraVida.get( 'modulo' ).setValue( cotizacion.modulo.idModulo );
@@ -183,7 +176,6 @@ export class ProcuraVidaComponent implements OnInit {
 			apaterno: this.frmProcuraVida.get( 'apaterno' ).value,
 			amaterno: this.frmProcuraVida.get( 'amaterno' ).value,
 			fechanac: this.frmProcuraVida.get( 'fechanac' ).value.jsdate,
-			rfc: this.frmProcuraVida.get( 'rfc' ).value,
 			genero: fGeneros[ 0 ],
 			formaPago: fFormasPago[ 0 ],
 			modulo: fModulos[ 0 ],

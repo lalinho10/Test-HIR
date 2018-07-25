@@ -10,7 +10,6 @@ export class Cotizacion {
 	apaterno: string;
 	amaterno: string;
 	fechanac: Date;
-	rfc: string;
 	genero: Genero;
 	plan?: Plan;
 	formaPago: FormaPago;

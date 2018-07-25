@@ -20,7 +20,6 @@ import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator } 				  from 'app/core/validators/apellido.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
-import { RfcValidator }						  from 'app/core/validators/rfc.validator';
 import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
 
 @Component({
@@ -119,10 +118,6 @@ export class SeguhirVidaComponent implements OnInit {
 				Validators.required,
 				EntreEdadesValidator(18,70)
 			])],
-			'rfc': ['', Validators.compose([
-				Validators.required,
-				RfcValidator()
-			])],
 			'genero': ['', Validators.compose([
 				Validators.required
 			])],
@@ -160,7 +155,6 @@ export class SeguhirVidaComponent implements OnInit {
 		this.frmSeguhirVida.get( 'apaterno' ).setValue( cotizacion.apaterno );
 		this.frmSeguhirVida.get( 'amaterno' ).setValue( cotizacion.amaterno );
 		this.frmSeguhirVida.get( 'fechanac' ).patchValue( objetoFechaCal );
-		this.frmSeguhirVida.get( 'rfc' ).setValue( cotizacion.rfc );
 		this.frmSeguhirVida.get( 'genero' ).setValue( cotizacion.genero.idGenero );
 		this.frmSeguhirVida.get( 'plan' ).setValue( cotizacion.plan.id );
 		this.frmSeguhirVida.get( 'fpago' ).setValue( cotizacion.formaPago.id );
@@ -186,7 +180,6 @@ export class SeguhirVidaComponent implements OnInit {
 			apaterno: this.frmSeguhirVida.get( 'apaterno' ).value,
 			amaterno: this.frmSeguhirVida.get( 'amaterno' ).value,
 			fechanac: this.frmSeguhirVida.get( 'fechanac' ).value.jsdate,
-			rfc: this.frmSeguhirVida.get( 'rfc' ).value,
 			genero: fGeneros[ 0 ],
 			plan: fPlanes[ 0 ],
 			formaPago: fFormasPago[ 0 ],

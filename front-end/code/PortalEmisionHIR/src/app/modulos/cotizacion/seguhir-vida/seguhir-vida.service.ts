@@ -13,7 +13,6 @@ export class SeguhirVidaService {
 		this.seguhirVidaRequest.apPaterno = frmSeguhirVida.apaterno;
 		this.seguhirVidaRequest.apMaterno = frmSeguhirVida.amaterno;
 		this.seguhirVidaRequest.fechaNacimiento = frmSeguhirVida.fechanac.epoc * 1000;
-		this.seguhirVidaRequest.rfc = frmSeguhirVida.rfc;
 		this.seguhirVidaRequest.sexo = frmSeguhirVida.genero;
 		this.seguhirVidaRequest.plan = frmSeguhirVida.plan;
 		this.seguhirVidaRequest.formaPago = frmSeguhirVida.fpago;

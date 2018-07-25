@@ -20,8 +20,6 @@ import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator }				  from 'app/core/validators/apellido.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
-import { FormatoMonedaValidator }			  from 'app/core/validators/formato-moneda.validator';
-import { RfcValidator }						  from 'app/core/validators/rfc.validator';
 import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
 
 @Component({
@@ -122,10 +120,6 @@ export class ApindividualComponent implements OnInit {
 				Validators.required,
 				EntreEdadesValidator(12,64)
 			])],
-			'rfc': ['', Validators.compose([
-				Validators.required,
-				RfcValidator()
-			])],
 			'genero': ['', Validators.compose([
 				Validators.required
 			])],
@@ -160,7 +154,6 @@ export class ApindividualComponent implements OnInit {
 		this.frmApindividual.get( 'apaterno' ).setValue( cotizacion.apaterno );
 		this.frmApindividual.get( 'amaterno' ).setValue( cotizacion.amaterno );
 		this.frmApindividual.get( 'fechanac' ).patchValue( objetoFechaCal );
-		this.frmApindividual.get( 'rfc' ).setValue( cotizacion.rfc );
 		this.frmApindividual.get( 'genero' ).setValue( cotizacion.genero.idGenero );
 		this.frmApindividual.get( 'fpago' ).setValue( cotizacion.formaPago.id );
 		this.frmApindividual.get( 'modulo' ).setValue( cotizacion.modulo.idModulo );
@@ -183,7 +176,6 @@ export class ApindividualComponent implements OnInit {
 			apaterno: this.frmApindividual.get( 'apaterno' ).value,
 			amaterno: this.frmApindividual.get( 'amaterno' ).value,
 			fechanac: this.frmApindividual.get( 'fechanac' ).value.jsdate,
-			rfc: this.frmApindividual.get( 'rfc' ).value,
 			genero: fGeneros[ 0 ],
 			formaPago: fFormasPago[ 0 ],
 			modulo: fModulos[ 0 ],

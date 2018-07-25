@@ -20,8 +20,6 @@ import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator }				  from 'app/core/validators/apellido.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
-import { FormatoMonedaValidator }			  from 'app/core/validators/formato-moneda.validator';
-import { RfcValidator }						  from 'app/core/validators/rfc.validator';
 import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
 
 @Component({
@@ -122,10 +120,6 @@ export class SeguhirEmpresarioComponent implements OnInit {
 				Validators.required,
 				EntreEdadesValidator(18,64)
 			])],
-			'rfc': ['', Validators.compose([
-				Validators.required,
-				RfcValidator()
-			])],
 			'genero': ['', Validators.compose([
 				Validators.required
 			])],
@@ -160,7 +154,6 @@ export class SeguhirEmpresarioComponent implements OnInit {
 		this.frmSeguhirEmpresario.get( 'apaterno' ).setValue( cotizacion.apaterno );
 		this.frmSeguhirEmpresario.get( 'amaterno' ).setValue( cotizacion.amaterno );
 		this.frmSeguhirEmpresario.get( 'fechanac' ).patchValue( objetoFechaCal );
-		this.frmSeguhirEmpresario.get( 'rfc' ).setValue( cotizacion.rfc );
 		this.frmSeguhirEmpresario.get( 'genero' ).setValue( cotizacion.genero.idGenero );
 		this.frmSeguhirEmpresario.get( 'fpago' ).setValue( cotizacion.formaPago.id );
 		this.frmSeguhirEmpresario.get( 'modulo' ).setValue( cotizacion.modulo.idModulo );
@@ -183,7 +176,6 @@ export class SeguhirEmpresarioComponent implements OnInit {
 			apaterno: this.frmSeguhirEmpresario.get( 'apaterno' ).value,
 			amaterno: this.frmSeguhirEmpresario.get( 'amaterno' ).value,
 			fechanac: this.frmSeguhirEmpresario.get( 'fechanac' ).value.jsdate,
-			rfc: this.frmSeguhirEmpresario.get( 'rfc' ).value,
 			genero: fGeneros[ 0 ],
 			formaPago: fFormasPago[ 0 ],
 			modulo: fModulos[ 0 ],
