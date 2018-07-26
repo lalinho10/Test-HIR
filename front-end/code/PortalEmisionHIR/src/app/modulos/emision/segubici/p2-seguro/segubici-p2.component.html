@@ -49,23 +49,21 @@
 			<div class="col col-50">
 				<div class="row">
 					<div class="col col-40">
-						<label id="lblCobertura" class="form-label">Cobertura:</label>
+						<label id="lblModulo" class="form-label">Módulo:</label>
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmSegubiciP2.get('cobertura').dirty"
-							[inputErrors]="frmSegubiciP2.get('cobertura').errors">
-								<select id="cboCobertura" class="form-control" formControlName="cobertura">
+							[inputDirty]="frmSegubiciP2.get('modulo').dirty"
+							[inputErrors]="frmSegubiciP2.get('modulo').errors">
+								<select id="cboModulo" class="form-control" formControlName="modulo">
 									<option value="">Selecciona</option>
-									<option *ngFor="let cobertura of coberturas" [ngValue]="cobertura">
-										{{cobertura.desc}}
+									<option *ngFor="let modulo of modulos" [ngValue]="modulo">
+										{{modulo.descModulo}}
 									</option>
 								</select>
 						</pehir-extend-form-control>
 					</div>
 				</div>
-			</div>
-			<div class="col col-50">
 				<div class="row">
 					<div class="col col-40">
 						<label id="lblFpago" class="form-label">Forma de pago:</label>
@@ -100,21 +98,18 @@
 						</pehir-extend-form-control>
 					</div>
 				</div>
+			</div>
+			<div class="col col-50">
 				<div class="row">
-					<div class="col col-40">
-						<label id="lblModulo" class="form-label">Módulo:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSegubiciP2.get('modulo').dirty"
-							[inputErrors]="frmSegubiciP2.get('modulo').errors">
-								<select id="cboModulo" class="form-control" formControlName="modulo">
-									<option value="">Selecciona</option>
-									<option *ngFor="let modulo of modulos" [ngValue]="modulo">
-										{{modulo.descModulo}}
-									</option>
-								</select>
-						</pehir-extend-form-control>
+					<div class="col col-60 col-off-20">
+						<fieldset>
+							<legend>Coberturas</legend>
+							<div class="row">
+								<div *ngFor="let cobertura of coberturas" class="col col-100">
+									<label class="msg info">{{cobertura.desc}}</label>
+								</div>
+							</div>
+						</fieldset>
 					</div>
 				</div>
 			</div>

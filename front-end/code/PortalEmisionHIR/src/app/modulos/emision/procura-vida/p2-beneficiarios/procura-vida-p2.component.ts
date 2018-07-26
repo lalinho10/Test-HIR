@@ -92,10 +92,10 @@ export class ProcuraVidaP2Component implements OnInit {
 			'modulo': ['', Validators.compose([
 				Validators.required
 			])],
-			'cobertura': ['', Validators.compose([
+			'formaPago': ['', Validators.compose([
 				Validators.required
 			])],
-			'formaPago': ['', Validators.compose([
+			'plan': ['', Validators.compose([
 				Validators.required
 			])],
 			'agente': ['', Validators.compose([

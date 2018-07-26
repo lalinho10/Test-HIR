@@ -98,16 +98,13 @@ export class ApindividualP2Component implements OnInit {
 			'descactividad': ['', Validators.compose([
 				Validators.required
 			])],
-			'cobertura': ['', Validators.compose([
+			'modulo': ['', Validators.compose([
 				Validators.required
 			])],
 			'formaPago': ['', Validators.compose([
 				Validators.required
 			])],
 			'plan': ['', Validators.compose([
-				Validators.required
-			])],
-			'modulo': ['', Validators.compose([
 				Validators.required
 			])],
 			'agente': ['', Validators.compose([

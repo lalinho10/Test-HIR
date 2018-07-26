@@ -31,25 +31,6 @@
 						</pehir-extend-form-control>
 					</div>
 				</div>
-			</div>
-			<div class="col col-50">
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblCobertura" class="form-label">Cobertura:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmGastosFunerariosP2.get('cobertura').dirty"
-							[inputErrors]="frmGastosFunerariosP2.get('cobertura').errors">
-								<select id="cboCobertura" class="form-control" formControlName="cobertura">
-									<option value="">Selecciona</option>
-									<option *ngFor="let cobertura of coberturas" [ngValue]="cobertura">
-										{{cobertura.desc}}
-									</option>
-								</select>
-						</pehir-extend-form-control>
-					</div>
-				</div>
 				<div class="row">
 					<div class="col col-40">
 						<label id="lblFpago" class="form-label">Forma de pago:</label>
@@ -65,6 +46,37 @@
 									</option>
 								</select>
 						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblPlan" class="form-label">Plan:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmGastosFunerariosP2.get('plan').dirty"
+							[inputErrors]="frmGastosFunerariosP2.get('plan').errors">
+								<select id="cboPlan" class="form-control" formControlName="plan">
+									<option value="">Selecciona</option>
+									<option *ngFor="let plan of planes" [ngValue]="plan">
+										{{plan.desc}}
+									</option>
+								</select>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-60 col-off-20">
+						<fieldset>
+							<legend>Coberturas</legend>
+							<div class="row">
+								<div *ngFor="let cobertura of coberturas" class="col col-100">
+									<label class="msg info">{{cobertura.desc}}</label>
+								</div>
+							</div>
+						</fieldset>
 					</div>
 				</div>
 			</div>
