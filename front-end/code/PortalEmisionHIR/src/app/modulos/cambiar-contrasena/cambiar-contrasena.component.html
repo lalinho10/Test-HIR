@@ -1,0 +1,74 @@
+<div class="row">
+	<div class="col col-100 titulo">{{titulo}}</div>
+</div>
+<form [formGroup]="frmCambiarContrasena" (ngSubmit)="fnCambiarContrasena()">
+	<div class="row">
+		<div class="col col-100">
+			<label class="text-center">
+				Al realizar este cambio podrá seguir trabajando dentro del portal y podrá utilizar su nueva contraseña de acceso la próxima vez que inicie sesión.
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-40 push-60">
+			<fieldset>
+				<legend>Reglas para la captura de la contraseña</legend>
+				<label class="msg info">La longitud debe ser de mínimo 8 y máximo 20 caracteres</label>
+				<label class="msg info">Debe contener al menos una letra mayúscula</label>
+				<label class="msg info">Debe contener al menos una letra minúscula</label>
+				<label class="msg info">Debe contener al menos un dígito</label>
+				<label class="msg info">Debe contener al menos uno de los siguientes caracteres especiales: $@¡%*?&</label>
+			</fieldset>
+		</div>
+		<div class="col col-60 pull-40">
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblContrasenaActual" class="form-label">Contraseña actual:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmCambiarContrasena.get('contrasenaActual').dirty"
+						[inputErrors]="frmCambiarContrasena.get('contrasenaActual').errors"
+						[groupDirty]="frmCambiarContrasena.dirty"
+						[groupErrors]="frmCambiarContrasena.errors">
+							<input id="pwdContrasenaActual" type="password" class="form-control" formControlName="contrasenaActual">
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblContrasenaNueva" class="form-label">Contraseña nueva:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmCambiarContrasena.get('contrasenaNueva').dirty"
+						[inputErrors]="frmCambiarContrasena.get('contrasenaNueva').errors"
+						[groupDirty]="frmCambiarContrasena.dirty"
+						[groupErrors]="frmCambiarContrasena.errors">
+							<input id="pwdContrasenaNueva" type="password" class="form-control" formControlName="contrasenaNueva">
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblConfContrasenaNueva" class="form-label">Confirma tu contraseña nueva:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmCambiarContrasena.get('confContrasenaNueva').dirty"
+						[inputErrors]="frmCambiarContrasena.get('confContrasenaNueva').errors"
+						[groupDirty]="frmCambiarContrasena.dirty"
+						[groupErrors]="frmCambiarContrasena.errors"
+						[isInputForGroupError]="true">
+							<input id="pwdConfContrasenaNueva" type="password" class="form-control" formControlName="confContrasenaNueva">
+					</pehir-extend-form-control>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-100">
+			<button id="btnGuardar" type="submit" class="next" [disabled]="!frmCambiarContrasena.valid">Guardar</button>
+		</div>
+	</div>
+</form>

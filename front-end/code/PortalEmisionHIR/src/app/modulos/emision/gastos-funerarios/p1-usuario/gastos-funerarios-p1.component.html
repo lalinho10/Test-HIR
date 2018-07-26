@@ -1,0 +1,341 @@
+<div class="row">
+	<div class="col col-100">
+		<pehir-progress-control [numSteps]="3" [selStep]="1">
+		</pehir-progress-control>
+	</div>
+</div>
+<form [formGroup]="frmGastosFunerariosP1" (ngSubmit)="fnAvanzarP2()">
+	<fieldset>
+		<legend>Información médica</legend>
+		<div class="row">
+			<div class="col col-100">
+				<label id="lblPadecimiento" class="pregunta medica">
+					¿Padece o ha padecido: diabetes, leucemia, SIDA, insuficiencia renal, enfermedades del cerebro, hipertensión arterial, tumores malignos, cardiopatías (infartos, isquemia o arritmia), problemas del hígado, cáncer o enfisema pulmonar?
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-25 col-off-70">
+				<pehir-extend-form-control
+					[inputDirty]="frmGastosFunerariosP1.get('padecimiento').dirty"
+					[inputErrors]="frmGastosFunerariosP1.get('padecimiento').errors">
+						<div class="rdoContainer two">
+							<input type="radio" formControlName="padecimiento" [value]="false">No
+						</div>
+						<div class="rdoContainer two">
+							<input type="radio" formControlName="padecimiento" [value]="true">Sí
+						</div>
+				</pehir-extend-form-control>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblPeso" class="form-label">Peso:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmGastosFunerariosP1.get('peso').dirty"
+							[inputErrors]="frmGastosFunerariosP1.get('peso').errors">
+								<div class="form-group">
+									<input id="txtPeso" type="text" class="form-control left" formControlName="peso">
+									<span class="control-text right">kg</span>
+								</div>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblEstatura" class="form-label">Estatura:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmGastosFunerariosP1.get('estatura').dirty"
+							[inputErrors]="frmGastosFunerariosP1.get('estatura').errors">
+								<div class="form-group">
+									<input id="txtEstatura" type="text" class="form-control left" formControlName="estatura">
+									<span class="control-text right">m</span>
+								</div>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Datos del asegurado</legend>
+		<div class="row">
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblNombre" class="form-label">Nombre(s):</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmGastosFunerariosP1.get('nombre').dirty"
+							[inputErrors]="frmGastosFunerariosP1.get('nombre').errors">
+								<input id="txtNombre" type="text" class="form-control" formControlName="nombre">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblApaterno" class="form-label">Apellido paterno:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmGastosFunerariosP1.get('apaterno').dirty"
+							[inputErrors]="frmGastosFunerariosP1.get('apaterno').errors">
+								<input id="txtApaterno" type="text" class="form-control" formControlName="apaterno">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblAmaterno" class="form-label">Apellido materno:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmGastosFunerariosP1.get('amaterno').dirty"
+							[inputErrors]="frmGastosFunerariosP1.get('amaterno').errors">
+								<input id="txtAmaterno" type="text" class="form-control" formControlName="amaterno">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblFechaNac" class="form-label">Fecha de nacimiento:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmGastosFunerariosP1.get('fechanac').dirty"
+							[inputErrors]="frmGastosFunerariosP1.get('fechanac').errors">
+								<my-date-picker name="fechanac" [options]="fecNacOptions" formControlName="fechanac">
+								</my-date-picker>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblNacionalidad" class="form-label">Nacionalidad:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmGastosFunerariosP1.get('nacionalidad').dirty"
+							[inputErrors]="frmGastosFunerariosP1.get('nacionalidad').errors">
+								<input id="txtNacionalidad" type="text" class="form-control" formControlName="nacionalidad">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblOcupacion" class="form-label">Ocupación:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmGastosFunerariosP1.get('ocupacion').dirty"
+							[inputErrors]="frmGastosFunerariosP1.get('ocupacion').errors">
+								<select id="cboOcupacion" class="form-control" formControlName="ocupacion">
+									<option value="">Selecciona</option>
+									<option *ngFor="let ocupacion of ocupaciones" [ngValue]="ocupacion">
+										{{ocupacion.desc}}
+									</option>
+								</select>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblRFC" class="form-label">RFC:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmGastosFunerariosP1.get('rfc').dirty"
+							[inputErrors]="frmGastosFunerariosP1.get('rfc').errors">
+								<input id="txtRFC" type="text" class="form-control" formControlName="rfc">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblEstadoCivil" class="form-label">Estado civil:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmGastosFunerariosP1.get('estadoCivil').dirty"
+							[inputErrors]="frmGastosFunerariosP1.get('estadoCivil').errors">
+								<div *ngFor="let estadoCivil of estadosCiviles" class="rdoContainer three">
+									<input type="radio" formControlName="estadoCivil" [value]="estadoCivil">{{estadoCivil.descEstadoCivil}}
+								</div>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblSexo" class="form-label">Sexo:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmGastosFunerariosP1.get('genero').dirty"
+							[inputErrors]="frmGastosFunerariosP1.get('genero').errors">
+								<div *ngFor="let genero of generos" class="rdoContainer two">
+									<input type="radio" formControlName="genero" [value]="genero">{{genero.keyGenero}}
+								</div>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Datos de contacto</legend>
+		<div class="row">
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblCalleNumero" class="form-label">Calle y número:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmGastosFunerariosP1.get('calleNumero').dirty"
+							[inputErrors]="frmGastosFunerariosP1.get('calleNumero').errors">
+								<input id="txtCalleNumero" type="text" class="form-control" formControlName="calleNumero">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblColoniaPoblacion" class="form-label">Colonia o población:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmGastosFunerariosP1.get('coloniaPoblacion').dirty"
+							[inputErrors]="frmGastosFunerariosP1.get('coloniaPoblacion').errors">
+								<input id="txtColoniaPoblacion" type="text" class="form-control" formControlName="coloniaPoblacion">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblDelegacionMunicipio" class="form-label">Delegación o municipio:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmGastosFunerariosP1.get('delegacionMunicipio').dirty"
+							[inputErrors]="frmGastosFunerariosP1.get('delegacionMunicipio').errors">
+								<select id="cboMunicipio" class="form-control" formControlName="delegacionMunicipio">
+									<option value="">Selecciona</option>
+									<option *ngFor="let municipio of municipios" [ngValue]="municipio">
+										{{municipio.descripcionEntidad}}
+									</option>
+								</select>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblEstado" class="form-label">Estado:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmGastosFunerariosP1.get('estado').dirty"
+							[inputErrors]="frmGastosFunerariosP1.get('estado').errors">
+								<select id="cboEstado" class="form-control" formControlName="estado">
+									<option value="">Selecciona</option>
+									<option *ngFor="let estado of estados" [ngValue]="estado">
+										{{estado.descripcionEntidad}}
+									</option>
+								</select>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblCP" class="form-label">Código postal:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmGastosFunerariosP1.get('cp').dirty"
+							[inputErrors]="frmGastosFunerariosP1.get('cp').errors">
+								<input id="txtCP" type="text" class="form-control" formControlName="cp">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+			<div class="col col-50">
+				<div formGroupName="telefonos">
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblTelefono" class="form-label">Teléfono de casa/oficina:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmGastosFunerariosP1.get('telefonos.telefono').dirty"
+								[inputErrors]="frmGastosFunerariosP1.get('telefonos.telefono').errors"
+								[groupDirty]="frmGastosFunerariosP1.get('telefonos').dirty"
+								[groupErrors]="frmGastosFunerariosP1.get('telefonos').errors">
+									<input id="txtTelefono" type="text" class="form-control" formControlName="telefono">
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblCelular" class="form-label">Teléfono móvil:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmGastosFunerariosP1.get('telefonos.celular').dirty"
+								[inputErrors]="frmGastosFunerariosP1.get('telefonos.celular').errors"
+								[groupDirty]="frmGastosFunerariosP1.get('telefonos').dirty"
+								[groupErrors]="frmGastosFunerariosP1.get('telefonos').errors"
+								[isInputForGroupError]="true">
+									<input id="txtCelular" type="text" class="form-control" formControlName="celular">
+							</pehir-extend-form-control>
+						</div>
+					</div>
+				</div>
+				<div formGroupName="correos">
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblCorreoe1" class="form-label">e-mail 1:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmGastosFunerariosP1.get('correos.correoe1').dirty"
+								[inputErrors]="frmGastosFunerariosP1.get('correos.correoe1').errors"
+								[groupDirty]="frmGastosFunerariosP1.get('correos').dirty"
+								[groupErrors]="frmGastosFunerariosP1.get('correos').errors">
+									<input id="txtCorreoe1" type="text" class="form-control" formControlName="correoe1">
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblCorreoe2" class="form-label">e-mail 2:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmGastosFunerariosP1.get('correos.correoe2').dirty"
+								[inputErrors]="frmGastosFunerariosP1.get('correos.correoe2').errors"
+								[groupDirty]="frmGastosFunerariosP1.get('correos').dirty"
+								[groupErrors]="frmGastosFunerariosP1.get('correos').errors"
+								[isInputForGroupError]="true">
+									<input id="txtCorreoe2" type="text" class="form-control" formControlName="correoe2">
+							</pehir-extend-form-control>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+	<div class="row">
+		<div class="col col-100">
+			<button id="btnSiguiente" type="submit" class="next" [disabled]="!frmGastosFunerariosP1.valid">Siguiente</button>
+		</div>
+	</div>
+</form>

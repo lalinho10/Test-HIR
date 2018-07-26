@@ -1,11 +1,11 @@
 import { Cobertura } from 'app/core/models/cobertura';
 
 export const COBERTURAS: Cobertura[] = [
-	{ idCobertura: 1, descCobertura: 'Fallecimiento' },
-	{ idCobertura: 2, descCobertura: 'Muerte accidental' },
-	{ idCobertura: 3, descCobertura: 'Doble indemnización por muerte accidental' },
-	{ idCobertura: 4, descCobertura: 'Control de la salud' },
-	{ idCobertura: 5, descCobertura: 'Asistencia funeraria' },
-	{ idCobertura: 6, descCobertura: 'Rembolso de gastos médicos' },
-	{ idCobertura: 7, descCobertura: 'Rembolso de gastos médicos por accidente' }
+	{ id: 1, desc: 'Fallecimiento' },
+	{ id: 2, desc: 'Muerte accidental' },
+	{ id: 3, desc: 'Doble indemnización por muerte accidental' },
+	{ id: 4, desc: 'Control de la salud' },
+	{ id: 5, desc: 'Asistencia funeraria' },
+	{ id: 6, desc: 'Rembolso de gastos médicos' },
+	{ id: 7, desc: 'Rembolso de gastos médicos por accidente' }
 ];

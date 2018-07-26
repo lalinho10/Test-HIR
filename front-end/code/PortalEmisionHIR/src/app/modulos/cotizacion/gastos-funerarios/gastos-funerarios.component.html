@@ -10,8 +10,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmGastosFunerarios.controls['nombre'].dirty"
-						[inputErrors]="frmGastosFunerarios.controls['nombre'].errors">
+						[inputDirty]="frmGastosFunerarios.get('nombre').dirty"
+						[inputErrors]="frmGastosFunerarios.get('nombre').errors">
 							<input id="txtNombre" type="text" class="form-control" formControlName="nombre">
 					</pehir-extend-form-control>
 				</div>
@@ -22,8 +22,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmGastosFunerarios.controls['apaterno'].dirty"
-						[inputErrors]="frmGastosFunerarios.controls['apaterno'].errors">
+						[inputDirty]="frmGastosFunerarios.get('apaterno').dirty"
+						[inputErrors]="frmGastosFunerarios.get('apaterno').errors">
 							<input id="txtApaterno" type="text" class="form-control" formControlName="apaterno">
 					</pehir-extend-form-control>
 				</div>
@@ -34,8 +34,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmGastosFunerarios.controls['amaterno'].dirty"
-						[inputErrors]="frmGastosFunerarios.controls['amaterno'].errors">
+						[inputDirty]="frmGastosFunerarios.get('amaterno').dirty"
+						[inputErrors]="frmGastosFunerarios.get('amaterno').errors">
 							<input id="txtAmaterno" type="text" class="form-control" formControlName="amaterno">
 					</pehir-extend-form-control>
 				</div>
@@ -46,36 +46,10 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmGastosFunerarios.controls['fechanac'].dirty"
-						[inputErrors]="frmGastosFunerarios.controls['fechanac'].errors">
+						[inputDirty]="frmGastosFunerarios.get('fechanac').dirty"
+						[inputErrors]="frmGastosFunerarios.get('fechanac').errors">
 							<my-date-picker name="fechanac" [options]="fecNacOptions" formControlName="fechanac">
 							</my-date-picker>
-					</pehir-extend-form-control>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col col-40">
-					<label id="lblRFC" class="form-label">RFC:</label>
-				</div>
-				<div class="col col-50">
-					<pehir-extend-form-control
-						[inputDirty]="frmGastosFunerarios.controls['rfc'].dirty"
-						[inputErrors]="frmGastosFunerarios.controls['rfc'].errors">
-							<input id="txtRFC" type="text" class="form-control" formControlName="rfc">
-					</pehir-extend-form-control>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col col-40">
-					<label id="lblSexo" class="form-label">Sexo:</label>
-				</div>
-				<div class="col col-50">
-					<pehir-extend-form-control
-						[inputDirty]="frmGastosFunerarios.controls['genero'].dirty"
-						[inputErrors]="frmGastosFunerarios.controls['genero'].errors">
-							<div *ngFor="let genero of generos" class="rdoContainer two">
-								<input type="radio" formControlName="genero" [value]="genero.idGenero">{{genero.descGenero}}
-							</div>
 					</pehir-extend-form-control>
 				</div>
 			</div>
@@ -83,12 +57,26 @@
 		<div class="col col-50">
 			<div class="row">
 				<div class="col col-40">
+					<label id="lblSexo" class="form-label">Sexo:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmGastosFunerarios.get('genero').dirty"
+						[inputErrors]="frmGastosFunerarios.get('genero').errors">
+							<div *ngFor="let genero of generos" class="rdoContainer two">
+								<input type="radio" formControlName="genero" [value]="genero.idGenero">{{genero.keyGenero}}
+							</div>
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
 					<label id="lblModulo" class="form-label">Módulo:</label>
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmGastosFunerarios.controls['modulo'].dirty"
-						[inputErrors]="frmGastosFunerarios.controls['modulo'].errors">
+						[inputDirty]="frmGastosFunerarios.get('modulo').dirty"
+						[inputErrors]="frmGastosFunerarios.get('modulo').errors">
 							<select id="cboModulo" class="form-control" formControlName="modulo">
 								<option value="">Selecciona</option>
 								<option *ngFor="let modulo of modulos" [value]="modulo.idModulo">
@@ -100,31 +88,16 @@
 			</div>
 			<div class="row">
 				<div class="col col-40">
-					<label id="lblSumasegurada" class="form-label">Suma asegurada:</label>
+					<label id="lblFpago" class="form-label">Forma de pago:</label>
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmGastosFunerarios.controls['sumasegurada'].dirty"
-						[inputErrors]="frmGastosFunerarios.controls['sumasegurada'].errors">
-							<div class="form-group">
-								<input id="txtSumasegurada" type="text" class="form-control right" formControlName="sumasegurada">
-								<span class="control-text left">$</span>
-							</div>
-					</pehir-extend-form-control>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col col-40">
-					<label id="lblCobertura" class="form-label">Cobertura:</label>
-				</div>
-				<div class="col col-50">
-					<pehir-extend-form-control
-						[inputDirty]="frmGastosFunerarios.controls['cobertura'].dirty"
-						[inputErrors]="frmGastosFunerarios.controls['cobertura'].errors">
-							<select id="cboCoberturas" class="form-control" formControlName="cobertura">
+						[inputDirty]="frmGastosFunerarios.get('fpago').dirty"
+						[inputErrors]="frmGastosFunerarios.get('fpago').errors">
+							<select id="cboFpago" class="form-control" formControlName="fpago">
 								<option value="">Selecciona</option>
-								<option *ngFor="let cobertura of coberturas" [value]="cobertura.idCobertura">
-									{{cobertura.descCobertura}}
+								<option *ngFor="let formaPago of formasPago" [value]="formaPago.id">
+									{{formaPago.desc}}
 								</option>
 							</select>
 					</pehir-extend-form-control>
@@ -132,18 +105,33 @@
 			</div>
 			<div class="row">
 				<div class="col col-40">
-					<label id="lblFpago" class="form-label">Forma de pago:</label>
+					<label id="lblPlan" class="form-label">Plan:</label>
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmGastosFunerarios.controls['fpago'].dirty"
-						[inputErrors]="frmGastosFunerarios.controls['fpago'].errors">
-							<div *ngFor="let formaPago of formasPago" class="rdoContainer two">
-								<input type="radio" formControlName="fpago" [value]="formaPago.idFormaPago">{{formaPago.descFormaPago}}
-							</div>
+						[inputDirty]="frmGastosFunerarios.get('plan').dirty"
+						[inputErrors]="frmGastosFunerarios.get('plan').errors">
+							<select id="cboPlan" class="form-control" formControlName="plan">
+								<option value="">Selecciona</option>
+								<option *ngFor="let plan of planes" [value]="plan.id">
+									{{plan.desc}}
+								</option>
+							</select>
 					</pehir-extend-form-control>
 				</div>
 			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-80 col-off-10">
+			<fieldset>
+				<legend>Coberturas</legend>
+				<div class="row">
+					<div *ngFor="let cobertura of coberturas" class="col col-50 text-center">
+						<span>{{cobertura.desc}}</span>
+					</div>
+				</div>
+			</fieldset>
 		</div>
 	</div>
 	<div class="row">

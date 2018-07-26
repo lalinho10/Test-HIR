@@ -1,0 +1,11 @@
+<div *ngIf="isVisible" class="modal">
+	<div class="modal-header">¡Su sesión está a punto de expirar!</div>
+	<div class="modal-body">
+		Estimado usuario, su sesión se cerrará en 1 minuto ¿Desea continuar en el portal?
+	</div>
+	<div class="modal-footer">
+		<button id="btnCerrarSesion" (click)="closeSession()">Cerrar sesión</button>
+		<button id="btnContinuar" (click)="renewSession()">Continuar</button>
+	</div>
+</div>
+<div *ngIf="isVisible" class="modal-overlay">

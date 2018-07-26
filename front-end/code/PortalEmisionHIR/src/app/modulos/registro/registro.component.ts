@@ -2,6 +2,10 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { RegistroRequest }					  from './registro.request';
+
+import { RegistroService }					  from './registro.service';
+
 import { AppModalService }					  from 'app/core/components/app-modal/app-modal.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
@@ -10,6 +14,7 @@ import { CelularValidator }					  from 'app/core/validators/celular.validator';
 import { ContrasenaValidator }				  from 'app/core/validators/contrasena.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { TelefonoValidator }				  from 'app/core/validators/telefono.validator';
+import { DiferenciaTelefonosValidator }		  from 'app/core/validators/diferencia-telefonos.validator';
 import { IgualdadContrasenasValidator }		  from 'app/core/validators/igualdad-contrasenas.validator';
 
 @Component({
@@ -18,12 +23,13 @@ import { IgualdadContrasenasValidator }		  from 'app/core/validators/igualdad-co
 })
 
 export class RegistroComponent implements OnInit {
-	private titulo: string = 'Registro';
-	private frmRegistro: FormGroup;
+	titulo: string = 'Registro';
+	frmRegistro: FormGroup;
 
 	constructor(
 		private appModalService: AppModalService,
 		private fb: FormBuilder,
+		private registroService: RegistroService,
 		private router: Router,
 		private wsClientService: WSClientService
 	) {}
@@ -49,24 +55,34 @@ export class RegistroComponent implements OnInit {
 				Validators.email,
 				Validators.maxLength(50)
 			])],
-			'contrasena': ['', Validators.compose([
-				Validators.required,
-				ContrasenaValidator()
-			])],
-			'confcontrasena': ['', Validators.compose([
-				Validators.required,
-				ContrasenaValidator()
-			])],
-			'celular': ['', Validators.compose([
-				Validators.required,
-				CelularValidator()
-			])],
-			'telefono': ['', Validators.compose([
-				TelefonoValidator()
+			'contrasenas': this.fb.group({
+				'contrasena': ['', Validators.compose([
+					Validators.required,
+					ContrasenaValidator()
+				])],
+				'confcontrasena': ['', Validators.compose([
+					Validators.required,
+					ContrasenaValidator()
+				])]
+			},
+			{
+				validator: IgualdadContrasenasValidator( 'contrasena', 'confcontrasena' )
+			}),
+			'telefonos': this.fb.group({
+				'celular': ['', Validators.compose([
+					Validators.required,
+					CelularValidator()
+				])],
+				'telefono': ['', Validators.compose([
+					TelefonoValidator()
+				])]
+			},
+			{
+				validator: DiferenciaTelefonosValidator( 'telefono', 'celular' )
+			}),
+			'recaptcha': ['', Validators.compose([
+				Validators.required
 			])]
-		},
-		{
-			validator: IgualdadContrasenasValidator( 'contrasena', 'confcontrasena' )
 		})
 	}
 
@@ -75,11 +91,14 @@ export class RegistroComponent implements OnInit {
 	}
 
 	fnRegistrar(): void {
+		let registroRequest: RegistroRequest = this.registroService.getRequest( this.frmRegistro.value );
+
 		this.wsClientService
-			.getObject( '/registro' )
-			.subscribe( response =>  {
+			.postObject( '/loginRegistro', registroRequest )
+			.subscribe( response => {
 				if( response.codigoRespuesta === 200 ) {
 					this.appModalService.openModal( 'success', response.mensaje );
+					this.router.navigateByUrl( '/acceso/login' );
 				}
 			});
 	}

@@ -1,0 +1,5 @@
+table {border-spacing:0;width:100%;}
+table th, table td {padding:7px;}
+table > thead > tr:last-child > th {border-bottom:1px solid #bbbbbb;}
+table > tbody > tr > td:not(:last-child) {border-right:1px solid #bbbbbb;}
+table > tfoot > tr > td {font-style:italic;font-size:12px;text-align:center;}

@@ -9,21 +9,21 @@ import { AppModalService }   from './app-modal.service';
 })
 
 export class AppModalComponent implements OnInit {
-	private modalMessage: string = '';
-	private iconClass: string = '';
-	private isVisible: boolean = false;
-
-	constructor( private appModalService: AppModalService ) {}
-
-	ngOnInit() {
-		this.appModalService.setAppModal( this );
-	}
+	modalMessage: string = '';
+	iconClass: string = '';
+	isVisible: boolean = false;
 
 	private modalIcons: Object = {
 		'success': 'fa-check-circle',
 		'info':    'fa-info-circle',
 		'warning': 'fa-exclamation-circle',
 		'error':   'fa-times-circle'
+	}
+
+	constructor( private appModalService: AppModalService ) {}
+
+	ngOnInit() {
+		this.appModalService.setAppModal( this );
 	}
 
 	openModal( modalType: string, modalMessage: string ): void {

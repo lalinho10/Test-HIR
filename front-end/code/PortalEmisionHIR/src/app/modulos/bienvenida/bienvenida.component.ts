@@ -1,18 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit }	 from '@angular/core';
+
+import { AuthenticationService } from 'app/core/services/authentication/authentication.service';
+
+import { AuthenticatedUser }	 from 'app/core/services/authentication/authenticated-user';
 
 @Component({
 	selector: 'pehir-bienvenida',
 	templateUrl: './bienvenida.component.html'
 })
 
-export class BienvenidaComponent {
-	private loggedUser: string = 'Pancho Pantera Brown';
+export class BienvenidaComponent implements OnInit {
+	loggedUser: string;
+	loginTime: Date;
+	lastAccess: Date;
 
-	private today: Date = new Date();
-	private lastAccess: Date = new Date();
+	private authenticatedUser: AuthenticatedUser;
 
-	constructor() {
-		const TWO_DAYS: number = 2*24*60*60*1000;
-		this.lastAccess.setTime( this.today.getTime() - TWO_DAYS );
+	constructor(
+		private authenticationService: AuthenticationService
+	) {}
+
+	ngOnInit() {
+		this.loggedUser = this.authenticationService.authenticatedUser.nombreUsuario;
+		this.loginTime = this.authenticationService.authenticatedUser.fechaOperacion;
+		this.lastAccess = this.authenticationService.authenticatedUser.ultimoLogin;
 	}
 }

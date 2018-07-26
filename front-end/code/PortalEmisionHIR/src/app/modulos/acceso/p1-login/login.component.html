@@ -1,0 +1,43 @@
+<form [formGroup]="frmLogin" (ngSubmit)="fnIngresar()">
+	<div class="row">
+		<div class="col col-100">
+			<label id="lblUsuario" class="form-label login">Usuario</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-100">
+			<pehir-extend-form-control
+				[inputDirty]="frmLogin.get('nombre').dirty"
+				[inputErrors]="frmLogin.get('nombre').errors">
+					<input id="txtUsuario" type="text" class="form-control" formControlName="nombre">
+			</pehir-extend-form-control>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-100">
+			<label id="lblContrasena" class="form-label login">Contraseña</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-100">
+			<pehir-extend-form-control
+				[inputDirty]="frmLogin.get('clave').dirty"
+				[inputErrors]="frmLogin.get('clave').errors">
+					<input id="txtContrasena" type="password" class="form-control" formControlName="clave">
+			</pehir-extend-form-control>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-100">
+			<button id="btnIngresar" type="submit" class="next login" [disabled]="!frmLogin.valid">Ingresar</button>
+		</div>
+	</div>
+	<div class="row accesolinks">
+		<div class="col col-100 text-center">
+			<a id="lnkContraseña" class="first" routerLink="/rcontrasena">Olvidé mi contraseña</a>
+		</div>
+		<div class="col col-100 text-center">
+			<a id="lnkRegistro" routerLink="/registro">Registro</a>
+		</div>
+	</div>
+</form>

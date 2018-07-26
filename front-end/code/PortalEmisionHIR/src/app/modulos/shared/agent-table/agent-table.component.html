@@ -1,0 +1,144 @@
+<form [formGroup]="frmAgente">
+	<table id="tblAgennte">
+		<thead>
+			<tr>
+				<th class="agente">Agente</th>
+				<th class="cliente">Cliente</th>
+				<th class="parentesco">Correo elctrónico</th>
+				<th class="porcentaje">% de participación</th>
+				<th class="control"></th>
+				<th class="control"></th>
+			</tr>
+		</thead>
+		<tbody formArrayName="gruposEdicion">
+			<tr *ngFor="let item of gruposEdicion.controls; let i=index;" [formGroupName]="i">
+				<td class="center">
+					<label class="data" *ngIf="!frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						{{ agentes[i].agente }}
+					</label>
+					<div *ngIf="frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						<pehir-extend-form-control
+							[inputDirty]="frmAgente.controls['gruposEdicion'].controls[i].controls['agente'].dirty"
+							[inputErrors]="frmAgente.controls['gruposEdicion'].controls[i].controls['agente'].errors">
+								<input id="txtAgente" type="text" class="form-control" formControlName="agente">
+						</pehir-extend-form-control>
+					</div>
+				</td>
+				<td class="center">
+					<label class="data" *ngIf="!frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						{{ agentes[i].cliente }}
+					</label>
+					<div *ngIf="frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						<pehir-extend-form-control
+							[inputDirty]="frmAgente.controls['gruposEdicion'].controls[i].controls['cliente'].dirty"
+							[inputErrors]="frmAgente.controls['gruposEdicion'].controls[i].controls['cliente'].errors">
+								<input id="txtCliente" type="text" class="form-control" formControlName="cliente">
+						</pehir-extend-form-control>
+					</div>
+				</td>
+				<td class="center">
+					<label class="data" *ngIf="!frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						{{ agentes[i].correoe }}
+					</label>
+					<div *ngIf="frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						<pehir-extend-form-control
+							[inputDirty]="frmAgente.controls['gruposEdicion'].controls[i].controls['correoe'].dirty"
+							[inputErrors]="frmAgente.controls['gruposEdicion'].controls[i].controls['correoe'].errors">
+								<input id="txtCorreoe" type="text" class="form-control" formControlName="correoe">
+						</pehir-extend-form-control>
+					</div>
+				</td>
+				<td class="center">
+					<label class="data" *ngIf="!frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						{{ agentes[i].porcentajeParticipacion | percent }}
+					</label>
+					<div *ngIf="frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						<pehir-extend-form-control
+							[inputDirty]="frmAgente.controls['gruposEdicion'].controls[i].controls['porcentajeParticipacion'].dirty"
+							[inputErrors]="frmAgente.controls['gruposEdicion'].controls[i].controls['porcentajeParticipacion'].errors">
+								<div class="form-group">
+									<input id="txtPorcentajeParticipacion" type="text" class="form-control left" formControlName="porcentajeParticipacion">
+									<span class="control-text right">%</span>
+								</div>
+						</pehir-extend-form-control>
+					</div>
+				</td>
+				<td class="center">
+					<a (click)="editarAgente(i)" *ngIf="!frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						<i class="fa fa-pencil-square-o fa-lg"></i>
+					</a>
+					<a (click)="modificarGrupoEdicion(i)" *ngIf="frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						<i class="fa fa-check-square-o fa-lg"></i>
+					</a>
+				</td>
+				<td class="center">
+					<a (click)="eliminarRegistro(i)" *ngIf="!frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						<i class="fa fa-minus-square-o fa-lg"></i>
+					</a>
+					<a (click)="cancelarEdicion(i)" *ngIf="frmAgente.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						<i class="fa fa-window-close-o fa-lg"></i>
+					</a>
+				</td>
+			</tr>
+		</tbody>
+		<tfoot formGroupName="grupoAlta">
+			<tr>
+				<td>
+					<pehir-extend-form-control
+						[inputDirty]="frmAgente.get('grupoAlta.agente').dirty"
+						[inputErrors]="frmAgente.get('grupoAlta.agente').errors">
+							<input id="txtAgente" type="text" class="form-control" formControlName="agente">
+					</pehir-extend-form-control>
+				</td>
+				<td>
+					<pehir-extend-form-control
+						[inputDirty]="frmAgente.get('grupoAlta.cliente').dirty"
+						[inputErrors]="frmAgente.get('grupoAlta.cliente').errors">
+							<input id="txtCliente" type="text" class="form-control" formControlName="cliente">
+					</pehir-extend-form-control>
+				</td>
+				<td>
+					<pehir-extend-form-control
+						[inputDirty]="frmAgente.get('grupoAlta.correoe').dirty"
+						[inputErrors]="frmAgente.get('grupoAlta.correoe').errors">
+							<input id="txtCorreoe" type="text" class="form-control" formControlName="correoe">
+					</pehir-extend-form-control>
+				</td>
+				<td>
+					<pehir-extend-form-control
+						[inputDirty]="frmAgente.get('grupoAlta.porcentajeParticipacion').dirty"
+						[inputErrors]="frmAgente.get('grupoAlta.porcentajeParticipacion').errors">
+							<div class="form-group">
+								<input id="txtPorcentajeParticipacion" type="text" class="form-control left" formControlName="porcentajeParticipacion">
+								<span class="control-text right">%</span>
+							</div>
+					</pehir-extend-form-control>
+				</td>
+				<td class="center">
+					<a (click)="validarGrupoAlta()" *ngIf="!isValidSum">
+						<i class="fa fa-plus-square-o fa-lg"></i>
+					</a>
+					<a class="disabled" *ngIf="isValidSum">
+						<i class="fa fa-plus-square-o fa-lg"></i>
+					</a>
+				</td>
+				<td class="center"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td class="result" [ngClass]="{'success':isValidSum}">Total</td>
+				<td class="result" [ngClass]="{'success':isValidSum}">{{ porcentaje | percent }}</td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tfoot>
+	</table>
+	<div class="row">
+		<div class="col col-100">
+			<label *ngIf="!isValidSum" class="msg error">
+				{{sumErrorMsg}}
+			</label>
+		</div>
+	</div>
+</form>

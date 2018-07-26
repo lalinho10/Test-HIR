@@ -1,0 +1,6 @@
+export enum EPLAN {
+	INDIVIDUAL = 1,
+	CONYUGAL,
+	HIJOS,
+	FAMILIAR
+}

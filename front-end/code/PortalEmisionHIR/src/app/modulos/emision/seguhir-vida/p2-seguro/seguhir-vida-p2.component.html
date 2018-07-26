@@ -1,0 +1,263 @@
+<div class="row">
+	<div class="col col-100">
+		<pehir-progress-control [numSteps]="7" [selStep]="2">
+		</pehir-progress-control>
+	</div>
+</div>
+<form [formGroup]="frmSeguhirVidaP2" (ngSubmit)="fnAvanzarP3()">
+	<fieldset>
+		<legend>Identificación y conocimiento del cliente</legend>
+		<div class="row">
+			<div class="col col-100">
+				<label id="lblGobierno" class="pregunta">
+					¿Usted desempeña o ha desempeñado en el año inmediato anterior alguna de las siguientes funciones o cargos: Jefe de Estado o de Gobierno, líder político, funcionario gubernamental, judicial o militar de alta jerarquía, alto ejecutivo de empresas estatales o funcionario o miembro importante de partidos políticos?
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-50">
+				<pehir-extend-form-control
+					[inputDirty]="frmSeguhirVidaP2.get('gobierno').dirty"
+					[inputErrors]="frmSeguhirVidaP2.get('gobierno').errors">
+						<div class="rdoContainer two">
+							<input type="radio" (change)="fnCambiarGobierno()" [value]="false" formControlName="gobierno">No
+						</div>
+						<div class="rdoContainer two">
+							<input type="radio" (change)="fnCambiarGobierno()" [value]="true" formControlName="gobierno">Sí
+						</div>
+				</pehir-extend-form-control>
+			</div>
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblEspecifiqueGob" class="form-label">Especifique:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP2.get('especifiqueGob').dirty"
+							[inputErrors]="frmSeguhirVidaP2.get('especifiqueGob').errors">
+								<input id="txtEspecifiqueGob" type="text" class="form-control" formControlName="especifiqueGob">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-100">
+				<label id="lblParienteGob" class="pregunta">
+					¿Es usted cónyugue, concubina, concubinario o tiene paretesco por consanguinidad o afinidad hasta el segundo grado con alguna persona de las mencionadas en el párrafo anterior?
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-50">
+				<pehir-extend-form-control
+					[inputDirty]="frmSeguhirVidaP2.get('parienteGob').dirty"
+					[inputErrors]="frmSeguhirVidaP2.get('parienteGob').errors">
+						<div class="rdoContainer two">
+							<input type="radio" (change)="fnCambiarParienteGob()" [value]="false" formControlName="parienteGob">No
+						</div>
+						<div class="rdoContainer two">
+							<input type="radio" (change)="fnCambiarParienteGob()" [value]="true" formControlName="parienteGob">Sí
+						</div>
+				</pehir-extend-form-control>
+			</div>
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblEspecifiqueParGob" class="form-label">Especifique:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP2.get('especifiqueParGob').dirty"
+							[inputErrors]="frmSeguhirVidaP2.get('especifiqueParGob').errors">
+								<input id="txtEspecifiqueParGob" type="text" class="form-control" formControlName="especifiqueParGob">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Planes y coberturas contratadas</legend>
+		<div class="row">
+			<div class="col col-100">
+				<label class="msg info">
+					Regla para determinar la suma asegurada. La suma asegurada máxima se establecerá de acuerdo a las Condiciones del Contrato de Adhesión suscrito entre el asegurado y el contratante.
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-100">
+				<fieldset>
+					<legend>Descripción de coberturas</legend>
+					<div class="row">
+						<div class="col col-25">
+							<label class="msg info">F (Fallecimiento)</label>
+						</div>
+						<div class="col col-25">
+							<label class="msg info">MA (Muerte Accidental)</label>
+						</div>
+						<div class="col col-25">
+							<label class="msg info">C (Cáncer)</label>
+						</div>
+						<div class="col col-25">
+							<label class="msg info">IITP (Indemnización por Invalidez Total y Permanente)</label>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-33">
+				<fieldset>
+					<legend>Plan</legend>
+					<pehir-extend-form-control
+						[inputDirty]="frmSeguhirVidaP2.get('plan').dirty"
+						[inputErrors]="frmSeguhirVidaP2.get('plan').errors">
+							<div *ngFor="let plan of planes" class="rdoContainer">
+								<input type="radio" formControlName="plan" [value]="plan">{{plan.desc}}
+							</div>
+					</pehir-extend-form-control>
+				</fieldset>
+			</div>
+			<div class="col col-33">
+				<fieldset>
+					<legend>Paquete de cobertura</legend>
+					<pehir-extend-form-control
+						[inputDirty]="frmSeguhirVidaP2.get('paqueteCobertura').dirty"
+						[inputErrors]="frmSeguhirVidaP2.get('paqueteCobertura').errors">
+							<div *ngFor="let paquete of paquetes" class="rdoContainer two">
+								<input type="radio" formControlName="paqueteCobertura" [value]="paquete">{{paquete.descPaquete}}
+							</div>
+					</pehir-extend-form-control>
+				</fieldset>
+			</div>
+			<div class="col col-33">
+				<fieldset>
+					<legend>Forma de pago</legend>
+					<pehir-extend-form-control
+						[inputDirty]="frmSeguhirVidaP2.get('formaPago').dirty"
+						[inputErrors]="frmSeguhirVidaP2.get('formaPago').errors">
+							<div *ngFor="let formaPago of formasPago" class="rdoContainer">
+								<input type="radio" formControlName="formaPago" [value]="formaPago">{{formaPago.desc}}
+							</div>
+					</pehir-extend-form-control>
+				</fieldset>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-50">
+				<fieldset>
+					<legend>Otros</legend>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblModulo" class="form-label">Módulo:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP2.get('modulo').dirty"
+								[inputErrors]="frmSeguhirVidaP2.get('modulo').errors">
+									<select id="cboModulo" class="form-control" formControlName="modulo">
+										<option value="">Selecciona</option>
+										<option *ngFor="let modulo of modulos" [ngValue]="modulo">
+											{{modulo.descModulo}}
+										</option>
+									</select>
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblUgastos" class="form-label">Últimos gastos:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP2.get('ugastos').dirty"
+								[inputErrors]="frmSeguhirVidaP2.get('ugastos').errors">
+									<div class="rdoContainer two">
+										<input type="radio" formControlName="ugastos" [value]="false">No
+									</div>
+									<div class="rdoContainer two">
+										<input type="radio" formControlName="ugastos" [value]="true">Sí
+									</div>
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblApFondoAsegurado" class="form-label">Aportación al fondo del asegurado titular:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP2.get('apfondoasegurado').dirty"
+								[inputErrors]="frmSeguhirVidaP2.get('apfondoasegurado').errors">
+									<div class="rdoContainer two">
+										<input type="radio" formControlName="apfondoasegurado" [value]="false">No
+									</div>
+									<div class="rdoContainer two">
+										<input type="radio" formControlName="apfondoasegurado" [value]="true">Sí
+									</div>
+							</pehir-extend-form-control>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+			<div class="col col-50">
+				<fieldset>
+					<legend>Primas según forma de pago</legend>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblCobertura" class="form-label">Cobertura:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP2.get('cobertura').dirty"
+								[inputErrors]="frmSeguhirVidaP2.get('cobertura').errors">
+									<div class="form-group">
+										<input id="txtCobertura" type="text" class="form-control right" formControlName="cobertura">
+										<span class="control-text left">$</span>
+									</div>
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblAportacion" class="form-label">Aportación:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP2.get('aportacion').dirty"
+								[inputErrors]="frmSeguhirVidaP2.get('aportacion').errors">
+									<div class="form-group">
+										<input id="txtAportacion" type="text" class="form-control right" formControlName="aportacion">
+										<span class="control-text left">$</span>
+									</div>
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblTotal" class="form-label">Total:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSeguhirVidaP2.get('total').dirty"
+								[inputErrors]="frmSeguhirVidaP2.get('total').errors">
+									<div class="form-group">
+										<input id="txtTotal" type="text" class="form-control right" formControlName="total">
+										<span class="control-text left">$</span>
+									</div>
+							</pehir-extend-form-control>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+	</fieldset>
+	<div class="row">
+		<div class="col col-100">
+			<button id="btnSiguiente" type="submit" class="next" [disabled]="!frmSeguhirVidaP2.valid">Siguiente</button>
+		</div>
+	</div>
+</form>

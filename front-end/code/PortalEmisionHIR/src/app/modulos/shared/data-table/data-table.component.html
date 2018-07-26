@@ -1,0 +1,21 @@
+<table>
+	<thead>
+		<tr>
+			<th *ngFor="let column of dataTable.columns">{{ column.name }}</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let row of dataTable.rows; let rowid=index">
+			<td *ngFor="let column of dataTable.columns" class="text-center">
+				{{ getCellData( rowid, column.key ) }}
+			</td>
+		</tr>
+	</tbody>
+	<tfoot *ngIf="dataTable.footer">
+		<tr>
+			<td attr.colspan="{{dataTable.columns.length}}">
+				{{ dataTable.footer }}
+			</td>
+		</tr>
+	</tfoot>
+</table>

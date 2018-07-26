@@ -6,11 +6,17 @@
 	.hidden-desktop {display:block !important;}
 	button, input[type="button"], input[type="submit"] {width:100% !important;}
 	button.right, input[type="button"].right, input[type="submit"].right {margin:0 0 15px 0;}
-	.header-site .logo {float:none;width:auto;}
+	.recaptcha > div {transform:scale(0.7);-webkit-transform:scale(0.7);transform-origin:0 0;-webkit-transform-origin:0 0;}
+	.header-site .logo, .header-site .loggedContent {float:none;width:auto;}
+	.header-site .loggedContent .greetContainer > p {text-align:left;}
+	.header-site ul.menu {display:none;}
+	.header-site ul.menu.open {display:block;}
 	.header-site ul.menu > li:first-child {padding:25px 0 0 0;}
 	.header-site ul.menu > li {float:none;padding:20px 0 0 0;position:static;}
 	.header-site ul.menu > li:last-child {float:none;}
 	.header-site ul.menu > li:hover ul.submenu {display:block;position:static;width:165px;}
 	.header-site ul.submenu > li {padding:20px 0 0 0;}
+	.header-site div.submenu-layer {display:none;}
 	.main label.form-label {text-align:left;}
+	.main label.pregunta.medica {margin-bottom:15px;}
 }

@@ -1,10 +1,10 @@
 <nav class="navcontainer">
-	<i class="fa fa-bars fa-2x hidden-desktop"></i>
-	<ul class="menu">
+	<i class="fa fa-bars fa-2x hidden-desktop" (click)="fnToggleMenu()"></i>
+	<ul class="menu" [ngClass]="{'open':isOpen}">
 		<li>
 			<a routerLink="/inicio" routerLinkActive="active">Inicio</a>
 		</li>
-		<li>
+		<li (mouseenter)="fnMouseEnter()" (mouseleave)="fnMouseLeave()">
 			<a routerLink="/productos" routerLinkActive="active">Productos</a>
 			<ul class="submenu">
 				<li>
@@ -19,7 +19,7 @@
 				</li>
 			</ul>
 		</li>
-		<li>
+		<li (mouseenter)="fnMouseEnter()" (mouseleave)="fnMouseLeave()">
 			<a routerLink="/cotizacion" routerLinkActive="active">Cotización</a>
 			<ul class="submenu">
 				<li>
@@ -34,7 +34,7 @@
 				</li>
 			</ul>
 		</li>
-		<li>
+		<li (mouseenter)="fnMouseEnter()" (mouseleave)="fnMouseLeave()">
 			<a routerLink="/emision" routerLinkActive="active">Emisión</a>
 			<ul class="submenu">
 				<li>
@@ -50,10 +50,13 @@
 			</ul>
 		</li>
 		<li>
+			<a routerLink="/cambiarcontrasena" routerLinkActive="active">Cambio de contraseña</a>
+		</li>
+		<li>
 			<a (click)="fnConfirmarLogout()" routerLinkActive="active">
 				Salir<i class="fa fa-sign-out fa-lg"></i>
 			</a>
 		</li>
 	</ul>
-	<div class="submenu-layer"></div>
+	<div class="submenu-layer" *ngIf="hasLayer"></div>
 </nav>

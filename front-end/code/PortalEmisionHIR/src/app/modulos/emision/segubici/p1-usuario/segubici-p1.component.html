@@ -1,0 +1,335 @@
+<div class="row">
+	<div class="col col-100">
+		<pehir-progress-control [numSteps]="3" [selStep]="1">
+		</pehir-progress-control>
+	</div>
+</div>
+<form [formGroup]="frmSegubiciP1" (ngSubmit)="fnAvanzarP2()">
+	<fieldset>
+		<legend>Datos del contratante</legend>
+		<div class="row">
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblNombre" class="form-label">Nombre:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP1.get('nombre').dirty"
+							[inputErrors]="frmSegubiciP1.get('nombre').errors">
+								<input id="txtNombre" type="text" class="form-control" formControlName="nombre">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblApaterno" class="form-label">Apellido paterno:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP1.get('apaterno').dirty"
+							[inputErrors]="frmSegubiciP1.get('apaterno').errors">
+								<input id="txtApaterno" type="text" class="form-control" formControlName="apaterno">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblAmaterno" class="form-label">Apellido materno:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP1.get('amaterno').dirty"
+							[inputErrors]="frmSegubiciP1.get('amaterno').errors">
+								<input id="txtAmaterno" type="text" class="form-control" formControlName="amaterno">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblFechaNac" class="form-label">Fecha de nacimiento:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP1.get('fechanac').dirty"
+							[inputErrors]="frmSegubiciP1.get('fechanac').errors">
+								<my-date-picker name="fechanac" [options]="fecNacOptions" formControlName="fechanac">
+								</my-date-picker>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblNacionalidad" class="form-label">Nacionalidad:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP1.get('nacionalidad').dirty"
+							[inputErrors]="frmSegubiciP1.get('nacionalidad').errors">
+								<input id="txtNacionalidad" type="text" class="form-control" formControlName="nacionalidad">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblRFC" class="form-label">RFC:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP1.get('rfc').dirty"
+							[inputErrors]="frmSegubiciP1.get('rfc').errors">
+								<input id="txtRFC" type="text" class="form-control" formControlName="rfc">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblEstadoCivil" class="form-label">Estado civil:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP1.get('estadoCivil').dirty"
+							[inputErrors]="frmSegubiciP1.get('estadoCivil').errors">
+								<div *ngFor="let estadoCivil of estadosCiviles" class="rdoContainer three">
+									<input type="radio" formControlName="estadoCivil" [value]="estadoCivil">{{estadoCivil.descEstadoCivil}}
+								</div>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblSexo" class="form-label">Sexo:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP1.get('genero').dirty"
+							[inputErrors]="frmSegubiciP1.get('genero').errors">
+								<div *ngFor="let genero of generos" class="rdoContainer two">
+									<input type="radio" formControlName="genero" [value]="genero">{{genero.keyGenero}}
+								</div>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblFumador" class="form-label">Fumador:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP1.get('fumador').dirty"
+							[inputErrors]="frmSegubiciP1.get('fumador').errors">
+								<div class="rdoContainer two">
+									<input type="radio" formControlName="fumador" [value]="false">No
+								</div>
+								<div class="rdoContainer two">
+									<input type="radio" formControlName="fumador" [value]="true">Sí
+								</div>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Domicilio</legend>
+		<div class="row">
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblCalleNumero" class="form-label">Calle y número:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP1.get('calleNumero').dirty"
+							[inputErrors]="frmSegubiciP1.get('calleNumero').errors">
+								<input id="txtCalleNumero" type="text" class="form-control" formControlName="calleNumero">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblColoniaPoblacion" class="form-label">Colonia o población:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP1.get('coloniaPoblacion').dirty"
+							[inputErrors]="frmSegubiciP1.get('coloniaPoblacion').errors">
+								<input id="txtColoniaPoblacion" type="text" class="form-control" formControlName="coloniaPoblacion">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblDelegacionMunicipio" class="form-label">Delegación o municipio:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP1.get('delegacionMunicipio').dirty"
+							[inputErrors]="frmSegubiciP1.get('delegacionMunicipio').errors">
+								<select id="cboMunicipio" class="form-control" formControlName="delegacionMunicipio">
+									<option value="">Selecciona</option>
+									<option *ngFor="let municipio of municipios" [ngValue]="municipio">
+										{{municipio.descripcionEntidad}}
+									</option>
+								</select>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblCiudadEstado" class="form-label">Estado:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP1.get('estado').dirty"
+							[inputErrors]="frmSegubiciP1.get('estado').errors">
+								<select id="cboEstado" class="form-control" formControlName="estado">
+									<option value="">Selecciona</option>
+									<option *ngFor="let estado of estados" [ngValue]="estado">
+										{{estado.descripcionEntidad}}
+									</option>
+								</select>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblCP" class="form-label">Código postal:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP1.get('cp').dirty"
+							[inputErrors]="frmSegubiciP1.get('cp').errors">
+								<input id="txtCP" type="text" class="form-control" formControlName="cp">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+			<div class="col col-50">
+				<div formGroupName="telefonos">
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblTelefono" class="form-label">Teléfono de casa/oficina:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSegubiciP1.get('telefonos.telefono').dirty"
+								[inputErrors]="frmSegubiciP1.get('telefonos.telefono').errors"
+								[groupDirty]="frmSegubiciP1.get('telefonos').dirty"
+								[groupErrors]="frmSegubiciP1.get('telefonos').errors">
+									<input id="txtTelefono" type="text" class="form-control" formControlName="telefono">
+							</pehir-extend-form-control>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-40">
+							<label id="lblCelular" class="form-label">Teléfono móvil:</label>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmSegubiciP1.get('telefonos.celular').dirty"
+								[inputErrors]="frmSegubiciP1.get('telefonos.celular').errors"
+								[groupDirty]="frmSegubiciP1.get('telefonos').dirty"
+								[groupErrors]="frmSegubiciP1.get('telefonos').errors"
+								[isInputForGroupError]="true">
+									<input id="txtCelular" type="text" class="form-control" formControlName="celular">
+							</pehir-extend-form-control>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblCorreo" class="form-label">e-mail:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP1.get('correoe').dirty"
+							[inputErrors]="frmSegubiciP1.get('correoe').errors">
+								<input id="txtCorreoe" type="text" class="form-control" formControlName="correoe">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Identificación y conocimiento del cliente</legend>
+		<div class="row">
+			<div class="col col-100">
+				<label id="lblGobierno" class="pregunta">
+					¿Usted desempeña o ha desempeñado en el año inmediato anterior alguna de las siguientes funciones o cargos: Jefe de Estado o de Gobierno, líder político, funcionario gubernamental, judicial o militar de alta jerarquía, alto ejecutivo de empresas estatales o funcionario o miembro importante de partidos políticos?
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-50">
+				<pehir-extend-form-control
+					[inputDirty]="frmSegubiciP1.get('gobierno').dirty"
+					[inputErrors]="frmSegubiciP1.get('gobierno').errors">
+						<div class="rdoContainer two">
+							<input type="radio" (change)="fnCambiarGobierno()" [value]="false" formControlName="gobierno">No
+						</div>
+						<div class="rdoContainer two">
+							<input type="radio" (change)="fnCambiarGobierno()" [value]="true" formControlName="gobierno">Sí
+						</div>
+				</pehir-extend-form-control>
+			</div>
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblEspecifiqueGob" class="form-label">Especifique:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP1.get('especifiqueGob').dirty"
+							[inputErrors]="frmSegubiciP1.get('especifiqueGob').errors">
+								<input id="txtEspecifiqueGob" type="text" class="form-control" formControlName="especifiqueGob">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-100">
+				<label id="lblParienteGob" class="pregunta">
+					¿Es usted cónyugue, concubina, concubinario o tiene paretesco por consanguinidad o afinidad hasta el segundo grado con alguna persona de las mencionadas en el párrafo anterior?
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-50">
+				<pehir-extend-form-control
+					[inputDirty]="frmSegubiciP1.get('parienteGob').dirty"
+					[inputErrors]="frmSegubiciP1.get('parienteGob').errors">
+						<div class="rdoContainer two">
+							<input type="radio" (change)="fnCambiarParienteGob()" [value]="false" formControlName="parienteGob">No
+						</div>
+						<div class="rdoContainer two">
+							<input type="radio" (change)="fnCambiarParienteGob()" [value]="true" formControlName="parienteGob">Sí
+						</div>
+				</pehir-extend-form-control>
+			</div>
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblEspecifiqueParGob" class="form-label">Especifique:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP1.get('especifiqueParGob').dirty"
+							[inputErrors]="frmSegubiciP1.get('especifiqueParGob').errors">
+								<input id="txtEspecifiqueParGob" type="text" class="form-control" formControlName="especifiqueParGob">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+	<div class="row">
+		<div class="col col-100">
+			<button id="btnSiguiente" type="submit" class="next" [disabled]="!frmSegubiciP1.valid">Siguiente</button>
+		</div>
+	</div>
+</form>

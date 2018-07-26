@@ -2,19 +2,25 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { Cotizacion }						  from '../cotizacion';
+import { TarifaRequest }					  from '../tarifa.request';
+
+import { CotizacionService }				  from '../cotizacion.service';
+import { TarifaService }					  from '../tarifa.service';
+
+import { GENEROS }							  from 'app/core/data/generos';
+import { FECNACOPTIONS }					  from 'app/core/data/calendarios/fecNacOptions';
+
+import { Cobertura }						  from 'app/core/models/cobertura';
+import { FormaPago }						  from 'app/core/models/forma-pago';
+import { Modulo }							  from 'app/core/models/modulo';
+import { Plan }								  from 'app/core/models/plan';
+
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator }				  from 'app/core/validators/apellido.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
-import { RfcValidator }						  from 'app/core/validators/rfc.validator';
 import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
-
-import { GENEROS }							  from 'app/core/data/generos';
-import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
-
-import { Cobertura }						  from 'app/core/models/cobertura';
-import { FormaPago }						  from 'app/core/models/forma-pago';
-import { Plan }								  from 'app/core/models/plan';
 
 @Component({
 	selector: 'pehir-apindividual',
@@ -22,34 +28,78 @@ import { Plan }								  from 'app/core/models/plan';
 })
 
 export class ApindividualComponent implements OnInit {
-	private titulo: string = 'Cotización - Accidentes Personales Individual';
-	private frmApindividual: FormGroup;
+	private idProducto: number = 1588;
 
-	private coberturas: Cobertura[];
-	private formasPago: FormaPago[];
-	private planes: Plan[];
+	titulo: string = 'Cotización - Accidentes Personales Individual';
+	frmApindividual: FormGroup;
 
-	private generos = GENEROS;
-	private fecNacOptions = FECNACOPTIONS;
+	coberturas: Cobertura[];
+	formasPago: FormaPago[];
+	modulos: Modulo[];
+	planes: Plan[];
+
+	generos = GENEROS;
+	fecNacOptions = FECNACOPTIONS;
 
 	constructor(
-		private router: Router,
+		private cotizacionService: CotizacionService,
 		private fb: FormBuilder,
+		private router: Router,
+		private tarifaService: TarifaService,
 		private wsClientService: WSClientService
 	) {}
 
-	readCatalogs(): void {
-		this.wsClientService.getObject( '/consultaCoberturasProducto/7' )
-							.subscribe( response => this.coberturas = response.data );
-		this.wsClientService.getObject( '/consultaFormasPagoProducto/7' )
-							.subscribe( response => this.formasPago = response.data );
-		this.wsClientService.getObject( '/consultaPlanesProducto/7' )
-							.subscribe( response => this.planes = response.data );
+	ngOnInit() {
+		this.leerCatalogos();
+		this.crearFormulario();
+
+		if( this.cotizacionService.esEdicion() ) {
+			this.mostrarDatosEdicion();
+		}
 	}
 
-	ngOnInit() {
-		this.readCatalogs();
+	private leerCatalogos(): void {
+		this.wsClientService
+			.postObject( '/catCobertura', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.coberturas = response.data;
+				}
+			});
 
+		this.wsClientService
+			.postObject( '/catFormaPago', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.formasPago = response.data;
+				}
+			});
+
+		this.wsClientService
+			.postObject( '/catalogoModulo', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.codigoRespuesta === 200 ) {
+					this.modulos = new Array<Modulo>();
+
+					for( let i:number = response.min; i <= response.max; i++ ) {
+						let modulo: Modulo = new Modulo();
+						modulo.idModulo = i;
+						modulo.descModulo = String( i );
+						this.modulos.push( modulo );
+					}
+				}
+			});
+
+		this.wsClientService
+			.postObject( '/catPlan', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.planes = response.data;
+				}
+			});
+	}
+
+	private crearFormulario(): void {
 		this.frmApindividual = this.fb.group({
 			'nombre': ['', Validators.compose([
 				Validators.required,
@@ -70,20 +120,10 @@ export class ApindividualComponent implements OnInit {
 				Validators.required,
 				EntreEdadesValidator(12,64)
 			])],
-			'rfc': ['', Validators.compose([
-				Validators.required,
-				RfcValidator()
-			])],
 			'genero': ['', Validators.compose([
 				Validators.required
 			])],
-			'cobertura': ['', Validators.compose([
-				Validators.required
-			])],
-			'sumasegurada': ['', Validators.compose([
-				Validators.required
-			])],
-			'deducible': ['', Validators.compose([
+			'modulo': ['', Validators.compose([
 				Validators.required
 			])],
 			'fpago': ['', Validators.compose([
@@ -92,10 +132,71 @@ export class ApindividualComponent implements OnInit {
 			'plan': ['', Validators.compose([
 				Validators.required
 			])]
-		})
+		});
+	}
+
+	private mostrarDatosEdicion(): void {
+		let cotizacion: Cotizacion = this.cotizacionService.obtenerCotizacion();
+
+		let fechaCapturada: Date = cotizacion.fechanac;
+
+		let objetoFechaCal = {
+			date: {
+				year: fechaCapturada.getFullYear(),
+				month: fechaCapturada.getMonth() + 1,
+				day: fechaCapturada.getDate()
+			},
+			epoc: fechaCapturada.getTime() / 1000,
+			jsdate: fechaCapturada
+		};
+
+		this.frmApindividual.get( 'nombre' ).setValue( cotizacion.nombre );
+		this.frmApindividual.get( 'apaterno' ).setValue( cotizacion.apaterno );
+		this.frmApindividual.get( 'amaterno' ).setValue( cotizacion.amaterno );
+		this.frmApindividual.get( 'fechanac' ).patchValue( objetoFechaCal );
+		this.frmApindividual.get( 'genero' ).setValue( cotizacion.genero.idGenero );
+		this.frmApindividual.get( 'fpago' ).setValue( cotizacion.formaPago.id );
+		this.frmApindividual.get( 'modulo' ).setValue( cotizacion.modulo.idModulo );
+		this.frmApindividual.get( 'plan' ).setValue( cotizacion.plan.id );
+	}
+
+	private crearModeloCotizacion(): Cotizacion {
+		let idGenero = this.frmApindividual.get( 'genero' ).value;
+		let idFormaPago = this.frmApindividual.get( 'fpago' ).value;
+		let idModulo = this.frmApindividual.get( 'modulo' ).value;
+		let idPlan = this.frmApindividual.get( 'plan' ).value;
+
+		let fGeneros = this.generos.filter( ( genero: any ) => genero.idGenero == idGenero );
+		let fFormasPago = this.formasPago.filter( ( formaPago: any ) => formaPago.id == idFormaPago );
+		let fModulos = this.modulos.filter( ( modulo: any ) => modulo.idModulo == idModulo );
+		let fPlanes = this.planes.filter( ( plan: any ) => plan.id == idPlan );
+
+		let cotizacion: Cotizacion = {
+			nombre: this.frmApindividual.get( 'nombre' ).value,
+			apaterno: this.frmApindividual.get( 'apaterno' ).value,
+			amaterno: this.frmApindividual.get( 'amaterno' ).value,
+			fechanac: this.frmApindividual.get( 'fechanac' ).value.jsdate,
+			genero: fGeneros[ 0 ],
+			formaPago: fFormasPago[ 0 ],
+			modulo: fModulos[ 0 ],
+			plan: fPlanes[ 0 ]
+		}
+
+		return cotizacion;
 	}
 
 	fnCotizar(): void {
-		this.router.navigateByUrl( '/cotizacion/resultado' );
+		let tarifaRequest: TarifaRequest = this.tarifaService.getRequest( this.idProducto, this.frmApindividual.value );
+
+		this.wsClientService
+			.postObject( '/obtTarifa', tarifaRequest )
+			.subscribe( ( response ) => {
+				if( response.codigoRespuesta ) {
+					this.cotizacionService.definirProducto( this.idProducto );
+					this.cotizacionService.definirCotizacion( this.crearModeloCotizacion() );
+					this.cotizacionService.definirResultadoCotizacion( response );
+					this.router.navigateByUrl( '/cotizacion/resultado' );
+				}
+			});
 	}
 }

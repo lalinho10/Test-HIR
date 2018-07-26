@@ -1,0 +1,140 @@
+<div class="row">
+	<div class="col col-100">
+		<pehir-progress-control [numSteps]="7" [selStep]="4">
+		</pehir-progress-control>
+	</div>
+</div>
+<form [formGroup]="frmSeguhirVidaP4" (ngSubmit)="fnAvanzarP5()">
+	<fieldset *ngIf="capturaConyuge">
+		<legend>Datos del cónyuge</legend>
+		<pehir-insured-form [tipoAsegurado]="'Conyuge'" (onValidateForm)="onValidateFormConyuge($event)"></pehir-insured-form>
+	</fieldset>
+	<fieldset *ngIf="capturaHijos">
+		<legend>Datos del hijo 1</legend>
+		<pehir-insured-form [tipoAsegurado]="'Hijo1'" (onValidateForm)="onValidateFormHijo1($event)"></pehir-insured-form>
+	</fieldset>
+	<fieldset *ngIf="capturaHijos">
+		<legend>Datos del hijo 2</legend>
+		<pehir-insured-form [tipoAsegurado]="'Hijo2'" (onValidateForm)="onValidateFormHijo2($event)"></pehir-insured-form>
+	</fieldset>
+	<fieldset>
+		<legend>Cuestionario médico para dependientes</legend>
+		<div class="row">
+			<div class="col col-100">
+				<label id="lblPadecimiento" class="pregunta">
+					¿Ha(n) padecido o padece(n) el (los) proponentes(s) alguna de las siguientes enferemedades: hipertensión arterial, enfermedades cardiovasculares, diabetes, artritis, tuberculosis, hernias discales, enfermedades cancerosas o ha(n) dado positivo al test de anticuerpos de SIDA o algún otro padecimiento no especificado?
+				</label>
+			</div>
+		</div>
+		<div *ngIf="capturaConyuge" class="row">
+			<div class="col col-33">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblConfirmacionConyuge" class="form-label">Cónyuge:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP4.get('confirmacionConyuge').dirty"
+							[inputErrors]="frmSeguhirVidaP4.get('confirmacionConyuge').errors">
+								<div class="rdoContainer two">
+									<input type="radio" (change)="fnCambiarConfirmacionConyuge()" [value]="false" formControlName="confirmacionConyuge">No
+								</div>
+								<div class="rdoContainer two">
+									<input type="radio" (change)="fnCambiarConfirmacionConyuge()" [value]="true" formControlName="confirmacionConyuge">Sí
+								</div>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+			<div class="col col-66">
+				<div class="row">
+					<div class="col col-20">
+						<label id="lblCualConyuge" class="form-label">Indique cual:</label>
+					</div>
+					<div class="col col-70">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP4.get('padecimientoConyuge').dirty"
+							[inputErrors]="frmSeguhirVidaP4.get('padecimientoConyuge').errors">
+								<input id="txtPadecimientoConyuge" type="text" class="form-control" formControlName="padecimientoConyuge">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div *ngIf="capturaHijos" class="row">
+			<div class="col col-33">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblConfirmacionHijo1" class="form-label">Hijo 1:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP4.get('confirmacionHijo1').dirty"
+							[inputErrors]="frmSeguhirVidaP4.get('confirmacionHijo1').errors">
+								<div class="rdoContainer two">
+									<input type="radio" (change)="fnCambiarConfirmacionHijo1()" [value]="false" formControlName="confirmacionHijo1">No
+								</div>
+								<div class="rdoContainer two">
+									<input type="radio" (change)="fnCambiarConfirmacionHijo1()" [value]="true" formControlName="confirmacionHijo1">Sí
+								</div>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+			<div class="col col-66">
+				<div class="row">
+					<div class="col col-20">
+						<label id="lblCualHijo1" class="form-label">Indique cual:</label>
+					</div>
+					<div class="col col-70">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP4.get('padecimientoHijo1').dirty"
+							[inputErrors]="frmSeguhirVidaP4.get('padecimientoHijo1').errors">
+								<input id="txtPadecimientoHijo1" type="text" class="form-control" formControlName="padecimientoHijo1">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div *ngIf="capturaHijos" class="row">
+			<div class="col col-33">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblConfirmacionHijo2" class="form-label">Hijo 2:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP4.get('confirmacionHijo2').dirty"
+							[inputErrors]="frmSeguhirVidaP4.get('confirmacionHijo2').errors">
+								<div class="rdoContainer two">
+									<input type="radio" (change)="fnCambiarConfirmacionHijo2()" [value]="false" formControlName="confirmacionHijo2">No
+								</div>
+								<div class="rdoContainer two">
+									<input type="radio" (change)="fnCambiarConfirmacionHijo2()" [value]="true" formControlName="confirmacionHijo2">Sí
+								</div>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+			<div class="col col-66">
+				<div class="row">
+					<div class="col col-20">
+						<label id="lblCualHijo2" class="form-label">Indique cual:</label>
+					</div>
+					<div class="col col-70">
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP4.get('padecimientoHijo2').dirty"
+							[inputErrors]="frmSeguhirVidaP4.get('padecimientoHijo2').errors">
+								<input id="txtPadecimientoHijo2" type="text" class="form-control" formControlName="padecimientoHijo2">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+	<div class="row">
+		<div class="col col-100">
+			<button id="btnSiguiente" type="submit" class="next" [disabled]="!frmSeguhirVidaP4.valid || !areValidComponents">Siguiente</button>
+		</div>
+	</div>
+</form>

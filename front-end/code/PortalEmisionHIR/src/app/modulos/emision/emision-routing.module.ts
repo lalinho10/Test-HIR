@@ -2,10 +2,9 @@ import { NgModule }					  from '@angular/core';
 import { RouterModule, Routes }		  from '@angular/router';
 
 import { EmisionComponent }			  from './emision.component';
-import { EmisionVidaComponent }		  from './emision-vida.component';
-import { EmisionAccidentesComponent } from './emision-accidentes.component';
+import { EmisionVidaComponent }		  from './vida/emision-vida.component';
+import { EmisionAccidentesComponent } from './accidentes/emision-accidentes.component';
 
-import { AuthenticationService }	  from 'app/core/services/authentication/authentication.service';
 import { AuthenticationGuardService } from 'app/core/services/authentication/authentication-guard.service';
 
 const emisionRoutes: Routes = [
@@ -26,7 +25,8 @@ const emisionRoutes: Routes = [
 	},
 	{
 		path: 'seguhirvida',
-		loadChildren: 'app/modulos/emision/seguhir-vida/seguhir-vida.module#SeguhirVidaModule'
+		redirectTo: '/inprogress',
+		pathMatch: 'full'
 	},
 	{
 		path: 'procuravida',
@@ -41,10 +41,6 @@ const emisionRoutes: Routes = [
 		loadChildren: 'app/modulos/emision/seguhir-empresario/seguhir-empresario.module#SeguhirEmpresarioModule'
 	},
 	{
-		path: 'vidaahorro',
-		loadChildren: 'app/modulos/emision/vida-ahorro/vida-ahorro.module#VidaAhorroModule'
-	},
-	{
 		path: 'segubici',
 		loadChildren: 'app/modulos/emision/segubici/segubici.module#SegubiciModule'
 	},
@@ -55,16 +51,9 @@ const emisionRoutes: Routes = [
 ];
 
 @NgModule({
-	imports: [
-		RouterModule.forChild( emisionRoutes )
-	],
-	exports: [
-		RouterModule
-	],
-	providers: [
-		AuthenticationService,
-		AuthenticationGuardService
-	]
+	imports:   [ RouterModule.forChild( emisionRoutes ) ],
+	exports:   [ RouterModule ],
+	providers: [ AuthenticationGuardService ]
 })
 
 export class EmisionRoutingModule {}

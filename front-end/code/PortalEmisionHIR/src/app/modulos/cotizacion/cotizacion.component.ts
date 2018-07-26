@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component }		 from '@angular/core';
+
+import { CotizacionService } from './cotizacion.service';
 
 @Component({
 	selector: 'pehir-cotizacion',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
 })
 
 export class CotizacionComponent {
-	private titulo: string = 'Cotización';
+	titulo: string = 'Cotización';
+
+	constructor( private cotizacionService: CotizacionService ){
+		this.cotizacionService.definirEdicion( false );
+	}
 }

@@ -6,18 +6,19 @@
 					(55) 5262-1780  o Lada sin costo 01 800 SEGUHIR (7348447)
 					<span class="sep">|</span>
 					<a href="mailto:atencionaclientes@hirseguros.com.mx ">atencionaclientes@hirseguros.com.mx </a>
+					<span *ngIf="!isProduction" class="sep">| {{ environmentName }}</span>
 				</div>
 			</div>
 			<div class="rightcontainer">
 				<ul class="social-networks">
 					<li class="facebook">
-						<a target="_self" href="https://www.facebook.com/pages/HIR-Seguros/652281194868589?"></a>
+						<a target="_blank" href="https://www.facebook.com/pages/HIR-Seguros/652281194868589?"></a>
 					</li>
 					<li class="twitter">
-						<a target="_self" href="https://twitter.com/HIR_Seguros"></a>
+						<a target="_blank" href="https://twitter.com/HIR_Seguros"></a>
 					</li>
 					<li class="youtube">
-						<a target="_self" href="https://www.youtube.com/channel/UCywfCLr8ET-ix2ZLB8hvZEQ"></a>
+						<a target="_blank" href="https://www.youtube.com/channel/UCywfCLr8ET-ix2ZLB8hvZEQ"></a>
 					</li>
 				</ul>
 			</div>
@@ -27,10 +28,11 @@
 		<div class="clearfix">
 			<div class="logo">
 				<a href="http://hirseguros.mx">
-					<img src="/assets/img/logoHIR.png" alt="Hir Seguros">
+					<img src="./assets/img/logoHIR.png" alt="Hir Seguros">
 				</a>
 			</div>
 			<div *ngIf="authenticated" class="loggedContent">
+				<pehir-session-timer></pehir-session-timer>
 				<pehir-bienvenida></pehir-bienvenida>
 				<pehir-menu></pehir-menu>
 			</div>

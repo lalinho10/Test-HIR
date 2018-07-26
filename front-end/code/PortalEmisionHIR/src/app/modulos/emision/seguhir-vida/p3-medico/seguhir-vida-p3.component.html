@@ -1,0 +1,295 @@
+<div class="row">
+	<div class="col col-100">
+		<pehir-progress-control [numSteps]="7" [selStep]="3">
+		</pehir-progress-control>
+	</div>
+</div>
+<form [formGroup]="frmSeguhirVidaP3" (ngSubmit)="fnAvanzarP4()">
+	<fieldset>
+		<legend>Cuestionario médico del titular</legend>
+
+		<pehir-medical-questionary [preguntas]="preguntasCuestionario" (onValidateQuestionary)="onValidateQuestionary($event)">
+		</pehir-medical-questionary>
+
+		<div class="row">
+			<div class="col col-33">
+				<div class="row">
+					<div class="col col-100">
+						<label id="lblEstatura" class="form-label cuestionario">8. Estatura:</label>
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP3.get('estatura').dirty"
+							[inputErrors]="frmSeguhirVidaP3.get('estatura').errors">
+								<div class="form-group">
+									<input id="txtEstatura" type="text" class="form-control left" formControlName="estatura">
+									<span class="control-text right">m</span>
+								</div>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+			<div class="col col-33">
+				<div class="row">
+					<div class="col col-100">
+						<label id="lblPeso" class="form-label cuestionario">9. Peso:</label>
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP3.get('peso').dirty"
+							[inputErrors]="frmSeguhirVidaP3.get('peso').errors">
+								<div class="form-group">
+									<input id="txtPeso" type="text" class="form-control left" formControlName="peso">
+									<span class="control-text right">kg</span>
+								</div>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+			<div class="col col-33">
+				<div class="row">
+					<div class="col col-100">
+						<label id="lblVariacionPeso" class="form-label cuestionario">10. ¿Ha variado su peso en los últimos 12 meses?</label>
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP3.get('variacionPeso').dirty"
+							[inputErrors]="frmSeguhirVidaP3.get('variacionPeso').errors">
+								<div class="rdoContainer two">
+									<input type="radio" (change)="fnCambiarVariacion()" [value]="false" formControlName="variacionPeso">No
+								</div>
+								<div class="rdoContainer two">
+									<input type="radio" (change)="fnCambiarVariacion()" [value]="true" formControlName="variacionPeso">Sí
+								</div>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col col-33">
+				<div class="row">
+					<div class="col col-100">
+						<label id="lblDisminucionPeso" class="form-label cuestionario">Disminución:</label>
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP3.get('disminucionPeso').dirty"
+							[inputErrors]="frmSeguhirVidaP3.get('disminucionPeso').errors">
+								<div class="form-group">
+									<input id="txtDisminucionPeso" type="text" class="form-control left" formControlName="disminucionPeso">
+									<span class="control-text right">kg</span>
+								</div>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+			<div class="col col-33">
+				<div class="row">
+					<div class="col col-100">
+						<label id="lblAumentoPeso" class="form-label cuestionario">Aumento:</label>
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP3.get('aumentoPeso').dirty"
+							[inputErrors]="frmSeguhirVidaP3.get('aumentoPeso').errors">
+								<div class="form-group">
+									<input id="txtAumentoPeso" type="text" class="form-control left" formControlName="aumentoPeso">
+									<span class="control-text right">kg</span>
+								</div>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+			<div class="col col-33">
+				<div class="row">
+					<div class="col col-100">
+						<label id="lblCausaVariacion" class="form-label cuestionario">11. Causa:</label>
+						<pehir-extend-form-control
+							[inputDirty]="frmSeguhirVidaP3.get('causaVariacion').dirty"
+							[inputErrors]="frmSeguhirVidaP3.get('causaVariacion').errors">
+								<input id="txtCausaVariacion" type="text" class="form-control" formControlName="causaVariacion">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col col-100">
+				<label id="lblDatosAtencion" class="form-label cuestionario">12. Nombre y domicilio de los médicos, clínicas y hospitales que lo atendieron por sus padecimientos actuales:</label>
+				<pehir-extend-form-control
+					[inputDirty]="frmSeguhirVidaP3.get('datosAtencion').dirty"
+					[inputErrors]="frmSeguhirVidaP3.get('datosAtencion').errors">
+						<textarea id="txtDatosAtencion" class="form-control" rows="3" formControlName="datosAtencion"></textarea>
+				</pehir-extend-form-control>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col col-100">
+				<label id="lblDeportes" class="form-label cuestionario">13. Deportes y aficiones que practica:</label>
+				<pehir-extend-form-control
+					[inputDirty]="frmSeguhirVidaP3.get('deportes').dirty"
+					[inputErrors]="frmSeguhirVidaP3.get('deportes').errors">
+						<textarea id="txtDeportes" class="form-control" rows="3" formControlName="deportes"></textarea>
+				</pehir-extend-form-control>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col col-33">
+				<label id="lblCompetencias" class="form-label cuestionario">14. ¿Participa en competecias?</label>
+				<pehir-extend-form-control
+					[inputDirty]="frmSeguhirVidaP3.get('competencias').dirty"
+					[inputErrors]="frmSeguhirVidaP3.get('competencias').errors">
+						<div class="rdoContainer two">
+							<input type="radio" (change)="fnCambiarCompetencias()" [value]="false" formControlName="competencias">No
+						</div>
+						<div class="rdoContainer two">
+							<input type="radio" (change)="fnCambiarCompetencias()" [value]="true" formControlName="competencias">Sí
+						</div>
+
+						<div *ngFor="let tipoDeporte of tiposDeporte" class="rdoContainer two">
+							<input type="radio" formControlName="tipoDeporte" [value]="tipoDeporte">{{tipoDeporte.desc}}
+						</div>
+				</pehir-extend-form-control>
+			</div>
+			<div class="col col-33">
+				<label id="lblFrecuenciaDeporte" class="form-label cuestionario">15. Frecuencia</label>
+				<pehir-extend-form-control
+					[inputDirty]="frmSeguhirVidaP3.get('frecuenciaDeporte').dirty"
+					[inputErrors]="frmSeguhirVidaP3.get('frecuenciaDeporte').errors">
+						<div *ngFor="let frecuenciaDeporte of frecuenciasDeporte" class="rdoContainer two">
+							<input type="radio" formControlName="frecuenciaDeporte" [value]="frecuenciaDeporte">{{frecuenciaDeporte.desc}}
+						</div>
+				</pehir-extend-form-control>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col col-100">
+				<label class="msg info">
+					Si practica algún deporte peligroso como alpinismo, buceo, automovilismo, motociclismo, etc. con o sin competencia, es necesario llenar el cuestionario correspondiente
+				</label>
+			</div>
+		</div>
+
+		<div class="row" formGroupName="consumoAlcohol">
+			<div class="col col-25">
+				<label id="lblAlcohol" class="form-label cuestionario">16. ¿Toma bebidas alcoholicas?</label>
+				<pehir-extend-form-control
+					[inputDirty]="frmSeguhirVidaP3.get('consumoAlcohol.confirmacion').dirty"
+					[inputErrors]="frmSeguhirVidaP3.get('consumoAlcohol.confirmacion').errors">
+						<div class="rdoContainer two">
+							<input type="radio" (change)="fnCambiarAlcohol()" [value]="false" formControlName="confirmacion">No
+						</div>
+						<div class="rdoContainer two">
+							<input type="radio" (change)="fnCambiarAlcohol()" [value]="true" formControlName="confirmacion">Sí
+						</div>
+				</pehir-extend-form-control>
+			</div>
+			<div class="col col-25">
+				<label id="lblClase" class="form-label cuestionario">Clase:</label>
+				<pehir-extend-form-control
+					[inputDirty]="frmSeguhirVidaP3.get('consumoAlcohol.clase').dirty"
+					[inputErrors]="frmSeguhirVidaP3.get('consumoAlcohol.clase').errors">
+						<input id="txtClase" type="text" class="form-control" formControlName="clase">
+				</pehir-extend-form-control>
+			</div>
+			<div class="col col-25">
+				<label id="lblCantidad" class="form-label cuestionario">Cantidad:</label>
+				<pehir-extend-form-control
+					[inputDirty]="frmSeguhirVidaP3.get('consumoAlcohol.cantidad').dirty"
+					[inputErrors]="frmSeguhirVidaP3.get('consumoAlcohol.cantidad').errors">
+						<input id="txtCantidad" type="text" class="form-control" formControlName="cantidad">
+				</pehir-extend-form-control>
+			</div>
+			<div class="col col-25">
+				<label id="lblFrecuencia" class="form-label cuestionario">Frecuencia:</label>
+				<pehir-extend-form-control
+					[inputDirty]="frmSeguhirVidaP3.get('consumoAlcohol.frecuencia').dirty"
+					[inputErrors]="frmSeguhirVidaP3.get('consumoAlcohol.frecuencia').errors">
+						<select id="cboFrecuencia" class="form-control" formControlName="frecuencia">
+							<option value="">Selecciona</option>
+							<option *ngFor="let frecuenciaBebida of frecuenciasBebida" [ngValue]="frecuenciaBebida">
+								{{frecuenciaBebida.desc}}
+							</option>
+						</select>
+				</pehir-extend-form-control>
+			</div>
+		</div>
+
+		<div class="row" formGroupName="fuma">
+			<div class="col col-25">
+				<label id="lblAlcohol" class="form-label cuestionario">17. ¿Fuma?</label>
+				<pehir-extend-form-control
+					[inputDirty]="frmSeguhirVidaP3.get('fuma.confirmacion').dirty"
+					[inputErrors]="frmSeguhirVidaP3.get('fuma.confirmacion').errors">
+						<div class="rdoContainer two">
+							<input type="radio" (change)="fnCambiarFuma()" [value]="false" formControlName="confirmacion">No
+						</div>
+						<div class="rdoContainer two">
+							<input type="radio" (change)="fnCambiarFuma()" [value]="true" formControlName="confirmacion">Sí
+						</div>
+				</pehir-extend-form-control>
+			</div>
+			<div class="col col-25">
+				<label id="lblClase" class="form-label cuestionario">Clase:</label>
+				<pehir-extend-form-control
+					[inputDirty]="frmSeguhirVidaP3.get('fuma.clase').dirty"
+					[inputErrors]="frmSeguhirVidaP3.get('fuma.clase').errors">
+						<input id="txtClase" type="text" class="form-control" formControlName="clase">
+				</pehir-extend-form-control>
+			</div>
+			<div class="col col-25">
+				<label id="lblCantidad" class="form-label cuestionario">Cantidad:</label>
+				<pehir-extend-form-control
+					[inputDirty]="frmSeguhirVidaP3.get('fuma.cantidad').dirty"
+					[inputErrors]="frmSeguhirVidaP3.get('fuma.cantidad').errors">
+						<input id="txtCantidad" type="text" class="form-control" formControlName="cantidad">
+				</pehir-extend-form-control>
+			</div>
+			<div class="col col-25">
+				<label id="lblFrecuencia" class="form-label cuestionario">Frecuencia:</label>
+				<pehir-extend-form-control
+					[inputDirty]="frmSeguhirVidaP3.get('fuma.frecuencia').dirty"
+					[inputErrors]="frmSeguhirVidaP3.get('fuma.frecuencia').errors">
+						<select id="cboFrecuencia" class="form-control" formControlName="frecuencia">
+							<option value="">Selecciona</option>
+							<option *ngFor="let frecuenciaFuma of frecuenciasFuma" [ngValue]="frecuenciaFuma">
+								{{frecuenciaFuma.desc}}
+							</option>
+						</select>
+				</pehir-extend-form-control>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col col-33">
+				<label id="lblPasajeroAvion" class="form-label cuestionario">18. ¿Viaja en aviones particulares o militares como pasajero?</label>
+				<pehir-extend-form-control
+					[inputDirty]="frmSeguhirVidaP3.get('pasajeroAvion').dirty"
+					[inputErrors]="frmSeguhirVidaP3.get('pasajeroAvion').errors">
+						<div class="rdoContainer two">
+							<input type="radio" (change)="fnCambiarPasajeroAvion()" [value]="false" formControlName="pasajeroAvion">No
+						</div>
+						<div class="rdoContainer two">
+							<input type="radio" (change)="fnCambiarPasajeroAvion()" [value]="true" formControlName="pasajeroAvion">Sí
+						</div>
+				</pehir-extend-form-control>
+			</div>
+			<div class="col col-33">
+				<label id="lblHorasVuelo" class="form-label cuestionario">No. de horas anuales en los últimos 12 meses</label>
+				<pehir-extend-form-control
+					[inputDirty]="frmSeguhirVidaP3.get('horasVuelo').dirty"
+					[inputErrors]="frmSeguhirVidaP3.get('horasVuelo').errors">
+						<input id="txtHorasVuelo" type="text" class="form-control" formControlName="horasVuelo">
+				</pehir-extend-form-control>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col col-100">
+				<label class="msg info">En caso de responder de manera afirmativa a la pregunta anterior, solicitar el cuestionario de aviación respectivo.</label>
+			</div>
+		</div>
+
+	</fieldset>
+	<div class="row">
+		<div class="col col-100">
+			<button id="btnSiguiente" type="submit" class="next" [disabled]="!frmSeguhirVidaP3.valid || !isValidQuestionary">Siguiente</button>
+		</div>
+	</div>
+</form>

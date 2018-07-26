@@ -1,4 +1,4 @@
 export class Plan {
-	idPlan: number;
-	descPlan: string;
+	id: number;
+	desc: string;
 }

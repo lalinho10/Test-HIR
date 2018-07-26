@@ -1,4 +1,9 @@
-<ng-content></ng-content>
+<div [ngClass]="{'control-error':hasError || hasGroupError}">
+	<ng-content></ng-content>
+</div>
 <label *ngIf="hasError" class="msg error">
-		{{errorMessage}}
+	{{errorMessage}}
+</label>
+<label *ngIf="hasGroupError && isInputForGroupError" class="msg error">
+	{{groupErrorMessage}}
 </label>

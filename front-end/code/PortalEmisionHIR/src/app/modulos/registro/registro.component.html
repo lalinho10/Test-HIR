@@ -8,8 +8,8 @@
 		</div>
 		<div class="col col-30">
 			<pehir-extend-form-control
-				[inputDirty]="frmRegistro.controls['nombre'].dirty"
-				[inputErrors]="frmRegistro.controls['nombre'].errors">
+				[inputDirty]="frmRegistro.get('nombre').dirty"
+				[inputErrors]="frmRegistro.get('nombre').errors">
 					<input id="txtNombre" type="text" class="form-control" formControlName="nombre">
 			</pehir-extend-form-control>
 		</div>
@@ -20,8 +20,8 @@
 		</div>
 		<div class="col col-30">
 			<pehir-extend-form-control
-				[inputDirty]="frmRegistro.controls['apaterno'].dirty"
-				[inputErrors]="frmRegistro.controls['apaterno'].errors">
+				[inputDirty]="frmRegistro.get('apaterno').dirty"
+				[inputErrors]="frmRegistro.get('apaterno').errors">
 					<input id="txtApaterno" type="text" class="form-control" formControlName="apaterno">
 			</pehir-extend-form-control>
 		</div>
@@ -32,8 +32,8 @@
 		</div>
 		<div class="col col-30">
 			<pehir-extend-form-control
-				[inputDirty]="frmRegistro.controls['amaterno'].dirty"
-				[inputErrors]="frmRegistro.controls['amaterno'].errors">
+				[inputDirty]="frmRegistro.get('amaterno').dirty"
+				[inputErrors]="frmRegistro.get('amaterno').errors">
 					<input id="txtAmaterno" type="text" class="form-control" formControlName="amaterno">
 			</pehir-extend-form-control>
 		</div>
@@ -44,66 +44,79 @@
 		</div>
 		<div class="col col-30">
 			<pehir-extend-form-control
-				[inputDirty]="frmRegistro.controls['correoe'].dirty"
-				[inputErrors]="frmRegistro.controls['correoe'].errors">
+				[inputDirty]="frmRegistro.get('correoe').dirty"
+				[inputErrors]="frmRegistro.get('correoe').errors">
 					<input id="txtCorreoe" type="text" class="form-control" formControlName="correoe">
 			</pehir-extend-form-control>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col col-20 col-off-20">
-			<label id="lblContrasena" class="form-label">Contraseña*</label>
+	<div formGroupName="contrasenas">
+		<div class="row">
+			<div class="col col-20 col-off-20">
+				<label id="lblContrasena" class="form-label">Contraseña*</label>
+			</div>
+			<div class="col col-30">
+				<pehir-extend-form-control
+					[inputDirty]="frmRegistro.get('contrasenas.contrasena').dirty"
+					[inputErrors]="frmRegistro.get('contrasenas.contrasena').errors"
+					[groupDirty]="frmRegistro.get('contrasenas').dirty"
+					[groupErrors]="frmRegistro.get('contrasenas').errors">
+						<input id="txtContrasena" type="password" class="form-control" formControlName="contrasena">
+				</pehir-extend-form-control>
+			</div>
 		</div>
-		<div class="col col-30">
-			<pehir-extend-form-control
-				[inputDirty]="frmRegistro.controls['contrasena'].dirty"
-				[inputErrors]="frmRegistro.controls['contrasena'].errors">
-					<input id="txtContrasena" type="password" class="form-control" formControlName="contrasena">
-			</pehir-extend-form-control>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col col-20 col-off-20">
-			<label id="lblConfContrasena" class="form-label">Confirmar contraseña*</label>
-		</div>
-		<div class="col col-30">
-			<pehir-extend-form-control
-				[inputDirty]="frmRegistro.controls['confcontrasena'].dirty"
-				[inputErrors]="frmRegistro.controls['confcontrasena'].errors"
-				[formErrors]="frmRegistro.errors">
-					<input id="txtConfContrasena" type="password" class="form-control" formControlName="confcontrasena">
-			</pehir-extend-form-control>
+		<div class="row">
+			<div class="col col-20 col-off-20">
+				<label id="lblConfContrasena" class="form-label">Confirmar contraseña*</label>
+			</div>
+			<div class="col col-30">
+				<pehir-extend-form-control
+					[inputDirty]="frmRegistro.get('contrasenas.confcontrasena').dirty"
+					[inputErrors]="frmRegistro.get('contrasenas.confcontrasena').errors"
+					[groupDirty]="frmRegistro.get('contrasenas').dirty"
+					[groupErrors]="frmRegistro.get('contrasenas').errors"
+					[isInputForGroupError]="true">
+						<input id="txtConfContrasena" type="password" class="form-control" formControlName="confcontrasena">
+				</pehir-extend-form-control>
+			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col col-30 col-off-40">
 			<label class="msg info">
-				La contraseña debe contener al menos una mayúscula, una minúscula, un número, así mismo la longitud no puede ser menor a 8 ni mayor a 20.
+				La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un dígito y uno de los siguientes caracteres especiales: $@¡%*?&. Así mismo, la longitud no puede ser menor a 8 ni mayor a 20 caracteres.
 			</label>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col col-20 col-off-20">
-			<label id="lblCelular" class="form-label">Teléfono celular*</label>
+	<div formGroupName="telefonos">
+		<div class="row">
+			<div class="col col-20 col-off-20">
+				<label id="lblCelular" class="form-label">Teléfono celular*</label>
+			</div>
+			<div class="col col-30">
+				<pehir-extend-form-control
+					[inputDirty]="frmRegistro.get('telefonos.celular').dirty"
+					[inputErrors]="frmRegistro.get('telefonos.celular').errors"
+					[groupDirty]="frmRegistro.get('telefonos').dirty"
+					[groupErrors]="frmRegistro.get('telefonos').errors">
+						<input id="txtCelular" type="text" class="form-control" formControlName="celular">
+				</pehir-extend-form-control>
+			</div>
 		</div>
-		<div class="col col-30">
-			<pehir-extend-form-control
-				[inputDirty]="frmRegistro.controls['celular'].dirty"
-				[inputErrors]="frmRegistro.controls['celular'].errors">
-					<input id="txtCelular" type="text" class="form-control" formControlName="celular">
-			</pehir-extend-form-control>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col col-20 col-off-20">
-			<label id="lblTelefono" class="form-label">Teléfono fijo</label>
-		</div>
-		<div class="col col-30">
-			<pehir-extend-form-control
-				[inputDirty]="frmRegistro.controls['telefono'].dirty"
-				[inputErrors]="frmRegistro.controls['telefono'].errors">
-					<input id="txtTelefono" type="text" class="form-control" formControlName="telefono">
-			</pehir-extend-form-control>
+		<div class="row">
+			<div class="col col-20 col-off-20">
+				<label id="lblTelefono" class="form-label">Teléfono fijo</label>
+			</div>
+			<div class="col col-30">
+				<pehir-extend-form-control
+					[inputDirty]="frmRegistro.get('telefonos.telefono').dirty"
+					[inputErrors]="frmRegistro.get('telefonos.telefono').errors"
+					[groupDirty]="frmRegistro.get('telefonos').dirty"
+					[groupErrors]="frmRegistro.get('telefonos').errors"
+					[isInputForGroupError]="true">
+						<input id="txtTelefono" type="text" class="form-control" formControlName="telefono">
+				</pehir-extend-form-control>
+			</div>
 		</div>
 	</div>
 	<div class="row">
@@ -112,8 +125,8 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col col-100">
-			<!--Control de captcha-->
+		<div class="col col-33 col-off-33">
+			<re-captcha class="recaptcha" formControlName="recaptcha"></re-captcha>
 		</div>
 	</div>
 	<div class="row">

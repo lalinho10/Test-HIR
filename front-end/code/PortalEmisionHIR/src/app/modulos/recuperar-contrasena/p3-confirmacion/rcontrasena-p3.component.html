@@ -1,0 +1,49 @@
+<div class="row">
+	<div class="col col-100">
+		<pehir-progress-control [numSteps]="3" [selStep]="3">
+		</pehir-progress-control>
+	</div>
+</div>
+<form [formGroup]="frmRconP3" (ngSubmit)="fnRecuperarContrasena()">
+	<div class="row">
+		<div class="col col-20 col-off-20">
+			<label id="lblContrasena" class="form-label">Nueva contraseña</label>
+		</div>
+		<div class="col col-30">
+			<pehir-extend-form-control
+				[inputDirty]="frmRconP3.get('contrasena').dirty"
+				[inputErrors]="frmRconP3.get('contrasena').errors"
+				[groupDirty]="frmRconP3.dirty"
+				[groupErrors]="frmRconP3.errors">
+					<input id="pwdContrasena" type="password" class="form-control" formControlName="contrasena">
+			</pehir-extend-form-control>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-20 col-off-20">
+			<label id="lblConfContrasena" class="form-label">Confirma tu nueva contraseña</label>
+		</div>
+		<div class="col col-30">
+			<pehir-extend-form-control
+				[inputDirty]="frmRconP3.get('confcontrasena').dirty"
+				[inputErrors]="frmRconP3.get('confcontrasena').errors"
+				[groupDirty]="frmRconP3.dirty"
+				[groupErrors]="frmRconP3.errors"
+				[isInputForGroupError]="true">
+					<input id="pwdConfContrasena" type="password" class="form-control" formControlName="confcontrasena">
+			</pehir-extend-form-control>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-30 col-off-40">
+			<label class="msg info">
+				La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un dígito y uno de los siguientes caracteres especiales: $@¡%*?&. Así mismo, la longitud no puede ser menor a 8 ni mayor a 20 caracteres.
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-100">
+			<button id="btnFinalizar" type="submit" class="next" [disabled]="!frmRconP3.valid">Finalizar</button>
+		</div>
+	</div>
+</form>

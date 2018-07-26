@@ -1,0 +1,161 @@
+<div class="row">
+	<div class="col col-100">
+		<pehir-progress-control [numSteps]="3" [selStep]="2">
+		</pehir-progress-control>
+	</div>
+</div>
+<form [formGroup]="frmSegubiciP2" (ngSubmit)="fnAvanzarP3()">
+	<fieldset>
+		<legend>Datos adicionales</legend>
+		<div class="row">
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblOcupacion" class="form-label">Ocupación:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP2.get('ocupacion').dirty"
+							[inputErrors]="frmSegubiciP2.get('ocupacion').errors">
+								<select id="cboOcupacion" class="form-control" formControlName="ocupacion">
+									<option value="">Selecciona</option>
+									<option *ngFor="let ocupacion of ocupaciones" [ngValue]="ocupacion">
+										{{ocupacion.desc}}
+									</option>
+								</select>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblDescActividad" class="form-label">Breve descripción de actividad:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP2.get('descactividad').dirty"
+							[inputErrors]="frmSegubiciP2.get('descactividad').errors">
+								<input id="txtDescactividad" type="text" class="form-control" formControlName="descactividad">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Información del seguro</legend>
+		<div class="row">
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblCobertura" class="form-label">Cobertura:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP2.get('cobertura').dirty"
+							[inputErrors]="frmSegubiciP2.get('cobertura').errors">
+								<select id="cboCobertura" class="form-control" formControlName="cobertura">
+									<option value="">Selecciona</option>
+									<option *ngFor="let cobertura of coberturas" [ngValue]="cobertura">
+										{{cobertura.desc}}
+									</option>
+								</select>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblFpago" class="form-label">Forma de pago:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP2.get('formaPago').dirty"
+							[inputErrors]="frmSegubiciP2.get('formaPago').errors">
+								<select id="cboFpago" class="form-control" formControlName="formaPago">
+									<option value="">Selecciona</option>
+									<option *ngFor="let formaPago of formasPago" [ngValue]="formaPago">
+										{{formaPago.desc}}
+									</option>
+								</select>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblPlan" class="form-label">Plan:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP2.get('plan').dirty"
+							[inputErrors]="frmSegubiciP2.get('plan').errors">
+								<select id="cboPlan" class="form-control" formControlName="plan">
+									<option value="">Selecciona</option>
+									<option *ngFor="let plan of planes" [ngValue]="plan">
+										{{plan.desc}}
+									</option>
+								</select>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblModulo" class="form-label">Módulo:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP2.get('modulo').dirty"
+							[inputErrors]="frmSegubiciP2.get('modulo').errors">
+								<select id="cboModulo" class="form-control" formControlName="modulo">
+									<option value="">Selecciona</option>
+									<option *ngFor="let modulo of modulos" [ngValue]="modulo">
+										{{modulo.descModulo}}
+									</option>
+								</select>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Información para el agente</legend>
+		<div class="row">
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblAgente" class="form-label">Nombre del agente:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP2.get('agente').dirty"
+							[inputErrors]="frmSegubiciP2.get('agente').errors">
+								<input id="txtAgente" type="text" class="form-control" formControlName="agente">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblClave" class="form-label">Clave:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmSegubiciP2.get('clave').dirty"
+							[inputErrors]="frmSegubiciP2.get('clave').errors">
+								<input id="txtClave" type="text" class="form-control" formControlName="clave">
+						</pehir-extend-form-control>
+					</div>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+	<div class="row">
+		<div class="col col-100">
+			<button id="btnSiguiente" type="submit" class="next" [disabled]="!frmSegubiciP2.valid">Siguiente</button>
+		</div>
+	</div>
+</form>

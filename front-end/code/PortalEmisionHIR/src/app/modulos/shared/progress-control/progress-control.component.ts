@@ -10,7 +10,7 @@ export class ProgressControlComponent implements OnInit {
 	@Input() numSteps: number;
 	@Input() selStep: number;
 
-	private stepsClass: Array<String> = new Array<String>();
+	stepsClass: Array<String> = new Array<String>();
 
 	ngOnInit() {
 		for( let i = 0; i < this.numSteps; i++ ) {

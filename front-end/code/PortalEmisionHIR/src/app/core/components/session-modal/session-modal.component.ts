@@ -3,6 +3,7 @@ import { Component, OnInit }     from '@angular/core';
 import { SessionModalService }   from './session-modal.service';
 
 import { AuthenticationService } from 'app/core/services/authentication/authentication.service';
+import { SessionTimerService }   from 'app/core/components/session-timer/session-timer.service';
 
 @Component({
 	selector: 'pehir-session-modal',
@@ -11,11 +12,12 @@ import { AuthenticationService } from 'app/core/services/authentication/authenti
 })
 
 export class SessionModalComponent implements OnInit {
-	private isVisible: boolean = false;
+	isVisible: boolean = false;
 
 	constructor(
+		private authenticationService: AuthenticationService,
 		private sessionModalService: SessionModalService,
-		private authenticationService: AuthenticationService
+		private sessionTimerService: SessionTimerService
 	){}
 
 	ngOnInit() {
@@ -32,6 +34,7 @@ export class SessionModalComponent implements OnInit {
 
 	closeSession(): void {
 		this.closeModal();
+		this.sessionTimerService.stopTimer();
 		this.authenticationService.logout();
 	}
 }

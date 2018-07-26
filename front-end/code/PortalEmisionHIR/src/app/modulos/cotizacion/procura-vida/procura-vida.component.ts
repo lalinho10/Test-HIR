@@ -2,19 +2,25 @@ import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
+import { Cotizacion }						  from '../cotizacion';
+import { TarifaRequest }					  from '../tarifa.request';
+
+import { CotizacionService }				  from '../cotizacion.service';
+import { TarifaService }					  from '../tarifa.service';
+
+import { GENEROS }							  from 'app/core/data/generos';
+import { FECNACOPTIONS }					  from 'app/core/data/calendarios/fecNacOptions';
+
+import { Cobertura }						  from 'app/core/models/cobertura';
+import { FormaPago }						  from 'app/core/models/forma-pago';
+import { Modulo }							  from 'app/core/models/modulo';
+import { Plan }								  from 'app/core/models/plan';
+
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ApellidoValidator }				  from 'app/core/validators/apellido.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
-import { RfcValidator }						  from 'app/core/validators/rfc.validator';
 import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
-
-import { MODULOS }							  from 'app/core/data/modulos';
-import { GENEROS }							  from 'app/core/data/generos';
-import { FECNACOPTIONS }					  from 'app/core/data/fecNacOptions';
-
-import { Cobertura }						  from 'app/core/models/cobertura';
-import { FormaPago }						  from 'app/core/models/forma-pago';
 
 @Component({
 	selector: 'pehir-procura-vida',
@@ -22,32 +28,78 @@ import { FormaPago }						  from 'app/core/models/forma-pago';
 })
 
 export class ProcuraVidaComponent implements OnInit {
-	private titulo: string = 'Cotización - Procura Vida';
-	private frmProcuraVida: FormGroup;
+	private idProducto: number = 1484;
 
-	private coberturas: Cobertura[];
-	private formasPago: FormaPago[];
+	titulo: string = 'Cotización - Procura Vida';
+	frmProcuraVida: FormGroup;
 
-	private modulos = MODULOS;
-	private generos = GENEROS;
-	private fecNacOptions = FECNACOPTIONS;
+	coberturas: Cobertura[];
+	formasPago: FormaPago[];
+	modulos: Modulo[];
+	planes: Plan[];
+
+	generos = GENEROS;
+	fecNacOptions = FECNACOPTIONS;
 
 	constructor(
-		private router: Router,
+		private cotizacionService: CotizacionService,
 		private fb: FormBuilder,
+		private router: Router,
+		private tarifaService: TarifaService,
 		private wsClientService: WSClientService
 	) {}
 
-	readCatalogs(): void {
-		this.wsClientService.getObject( '/consultaCoberturasProducto/2' )
-							.subscribe( response => this.coberturas = response.data );
-		this.wsClientService.getObject( '/consultaFormasPagoProducto/2' )
-							.subscribe( response => this.formasPago = response.data );
+	ngOnInit() {
+		this.leerCatalogos();
+		this.crearFormulario();
+
+		if( this.cotizacionService.esEdicion() ) {
+			this.mostrarDatosEdicion();
+		}
 	}
 
-	ngOnInit() {
-		this.readCatalogs();
+	private leerCatalogos(): void {
+		this.wsClientService
+			.postObject( '/catCobertura', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.coberturas = response.data;
+				}
+			});
 
+		this.wsClientService
+			.postObject( '/catFormaPago', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.formasPago = response.data;
+				}
+			});
+
+		this.wsClientService
+			.postObject( '/catalogoModulo', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.codigoRespuesta === 200 ) {
+					this.modulos = new Array<Modulo>();
+
+					for( let i:number = response.min; i <= response.max; i++ ) {
+						let modulo: Modulo = new Modulo();
+						modulo.idModulo = i;
+						modulo.descModulo = String( i );
+						this.modulos.push( modulo );
+					}
+				}
+			});
+
+		this.wsClientService
+			.postObject( '/catPlan', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.planes = response.data;
+				}
+			});
+	}
+
+	private crearFormulario(): void {
 		this.frmProcuraVida = this.fb.group({
 			'nombre': ['', Validators.compose([
 				Validators.required,
@@ -66,11 +118,7 @@ export class ProcuraVidaComponent implements OnInit {
 			])],
 			'fechanac': ['', Validators.compose([
 				Validators.required,
-				EntreEdadesValidator(18,64)
-			])],
-			'rfc': ['', Validators.compose([
-				Validators.required,
-				RfcValidator()
+				EntreEdadesValidator(18,74)
 			])],
 			'genero': ['', Validators.compose([
 				Validators.required
@@ -78,19 +126,77 @@ export class ProcuraVidaComponent implements OnInit {
 			'modulo': ['', Validators.compose([
 				Validators.required
 			])],
-			'sumasegurada': ['', Validators.compose([
-				Validators.required
-			])],
-			'cobertura': ['', Validators.compose([
-				Validators.required
-			])],
 			'fpago': ['', Validators.compose([
+				Validators.required
+			])],
+			'plan': ['', Validators.compose([
 				Validators.required
 			])]
 		});
 	}
 
+	private mostrarDatosEdicion(): void {
+		let cotizacion: Cotizacion = this.cotizacionService.obtenerCotizacion();
+
+		let fechaCapturada: Date = cotizacion.fechanac;
+
+		let objetoFechaCal = {
+			date: {
+				year: fechaCapturada.getFullYear(),
+				month: fechaCapturada.getMonth() + 1,
+				day: fechaCapturada.getDate()
+			},
+			epoc: fechaCapturada.getTime() / 1000,
+			jsdate: fechaCapturada
+		};
+
+		this.frmProcuraVida.get( 'nombre' ).setValue( cotizacion.nombre );
+		this.frmProcuraVida.get( 'apaterno' ).setValue( cotizacion.apaterno );
+		this.frmProcuraVida.get( 'amaterno' ).setValue( cotizacion.amaterno );
+		this.frmProcuraVida.get( 'fechanac' ).patchValue( objetoFechaCal );
+		this.frmProcuraVida.get( 'genero' ).setValue( cotizacion.genero.idGenero );
+		this.frmProcuraVida.get( 'fpago' ).setValue( cotizacion.formaPago.id );
+		this.frmProcuraVida.get( 'modulo' ).setValue( cotizacion.modulo.idModulo );
+		this.frmProcuraVida.get( 'plan' ).setValue( cotizacion.plan.id );
+	}
+
+	private crearModeloCotizacion(): Cotizacion {
+		let idGenero = this.frmProcuraVida.get( 'genero' ).value;
+		let idFormaPago = this.frmProcuraVida.get( 'fpago' ).value;
+		let idModulo = this.frmProcuraVida.get( 'modulo' ).value;
+		let idPlan = this.frmProcuraVida.get( 'plan' ).value;
+
+		let fGeneros = this.generos.filter( ( genero: any ) => genero.idGenero == idGenero );
+		let fFormasPago = this.formasPago.filter( ( formaPago: any ) => formaPago.id == idFormaPago );
+		let fModulos = this.modulos.filter( ( modulo: any ) => modulo.idModulo == idModulo );
+		let fPlanes = this.planes.filter( ( plan: any ) => plan.id == idPlan );
+
+		let cotizacion: Cotizacion = {
+			nombre: this.frmProcuraVida.get( 'nombre' ).value,
+			apaterno: this.frmProcuraVida.get( 'apaterno' ).value,
+			amaterno: this.frmProcuraVida.get( 'amaterno' ).value,
+			fechanac: this.frmProcuraVida.get( 'fechanac' ).value.jsdate,
+			genero: fGeneros[ 0 ],
+			formaPago: fFormasPago[ 0 ],
+			modulo: fModulos[ 0 ],
+			plan: fPlanes[ 0 ]
+		}
+
+		return cotizacion;
+	}
+
 	fnCotizar(): void {
-		this.router.navigateByUrl( '/cotizacion/resultado' );
+		let tarifaRequest: TarifaRequest = this.tarifaService.getRequest( this.idProducto, this.frmProcuraVida.value );
+
+		this.wsClientService
+			.postObject( '/obtTarifa', tarifaRequest )
+			.subscribe( ( response ) => {
+				if( response.codigoRespuesta ) {
+					this.cotizacionService.definirProducto( this.idProducto );
+					this.cotizacionService.definirCotizacion( this.crearModeloCotizacion() );
+					this.cotizacionService.definirResultadoCotizacion( response );
+					this.router.navigateByUrl( '/cotizacion/resultado' );
+				}
+			});
 	}
 }

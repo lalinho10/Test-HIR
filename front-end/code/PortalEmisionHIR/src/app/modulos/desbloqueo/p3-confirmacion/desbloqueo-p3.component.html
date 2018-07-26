@@ -1,0 +1,70 @@
+<div class="row">
+	<div class="col col-100">
+		<pehir-progress-control [numSteps]="3" [selStep]="3">
+		</pehir-progress-control>
+	</div>
+</div>
+<form [formGroup]="frmDesP3" (ngSubmit)="fnDesbloquear()">
+	<div class="row">
+		<div class="col col-100">
+			<p class="text-center">Su usuario ha sido desbloqueado.<br>¿Deseas cambiar tu contraseña?</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-40 col-off-30">
+			<pehir-extend-form-control
+				[inputDirty]="frmDesP3.get('confirmacion').dirty"
+				[inputErrors]="frmDesP3.get('confirmacion').errors">
+					<div class="rdoContainer two text-center">
+						<input id="rdoSi" type="radio" (change)="fnConfirmarCambio()" [value]="true" formControlName="confirmacion"> Sí
+					</div>
+					<div class="rdoContainer two text-center">
+						<input id="rdoNo" type="radio" (change)="fnConfirmarCambio()" [value]="false" formControlName="confirmacion"> No
+					</div>
+			</pehir-extend-form-control>
+		</div>
+	</div>
+	<div formGroupName="contrasenas">
+		<div class="row">
+			<div class="col col-20 col-off-20">
+				<label id="lblContrasena" class="form-label">Nueva contraseña</label>
+			</div>
+			<div class="col col-30">
+				<pehir-extend-form-control
+					[inputDirty]="frmDesP3.get('contrasenas.contrasena').dirty"
+					[inputErrors]="frmDesP3.get('contrasenas.contrasena').errors"
+					[groupDirty]="frmDesP3.get('contrasenas').dirty"
+					[groupErrors]="frmDesP3.get('contrasenas').errors">
+						<input id="pwdContrasena" type="password" class="form-control" formControlName="contrasena">
+				</pehir-extend-form-control>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-20 col-off-20">
+				<label id="lblConfContrasena" class="form-label">Confirma tu nueva contraseña</label>
+			</div>
+			<div class="col col-30">
+				<pehir-extend-form-control
+					[inputDirty]="frmDesP3.get('contrasenas.confcontrasena').dirty"
+					[inputErrors]="frmDesP3.get('contrasenas.confcontrasena').errors"
+					[groupDirty]="frmDesP3.get('contrasenas').dirty"
+					[groupErrors]="frmDesP3.get('contrasenas').errors"
+					[isInputForGroupError]="true">
+						<input id="pwdConfContrasena" type="password" class="form-control" formControlName="confcontrasena">
+				</pehir-extend-form-control>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-30 col-off-40">
+			<label class="msg info">
+				La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un dígito y uno de los siguientes caracteres especiales: $@¡%*?&. Así mismo, la longitud no puede ser menor a 8 ni mayor a 20 caracteres.
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-100">
+			<button id="btnSiguiente" type="submit" class="next" [disabled]="!frmDesP3.valid && frmDesP3.get('confirmacion').value">Siguiente</button>
+		</div>
+	</div>
+</form>

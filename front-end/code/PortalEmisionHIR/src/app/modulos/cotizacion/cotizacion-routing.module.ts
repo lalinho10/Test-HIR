@@ -2,19 +2,19 @@ import { NgModule }						 from '@angular/core';
 import { RouterModule, Routes }			 from '@angular/router';
 
 import { CotizacionComponent }			 from './cotizacion.component';
-import { CotizacionVidaComponent }		 from './cotizacion-vida.component';
-import { CotizacionAccidentesComponent } from './cotizacion-accidentes.component';
+import { CotizacionVidaComponent }		 from './vida/cotizacion-vida.component';
+import { CotizacionAccidentesComponent } from './accidentes/cotizacion-accidentes.component';
 import { SeguhirVidaComponent }			 from './seguhir-vida/seguhir-vida.component';
 import { ProcuraVidaComponent }			 from './procura-vida/procura-vida.component';
 import { GastosFunerariosComponent }	 from './gastos-funerarios/gastos-funerarios.component';
 import { SeguhirEmpresarioComponent }	 from './seguhir-empresario/seguhir-empresario.component';
-import { VidaAhorroComponent }			 from './vida-ahorro/vida-ahorro.component';
 import { SegubiciComponent }			 from './segubici/segubici.component';
 import { ApindividualComponent }		 from './apindividual/apindividual.component';
-import { ResultadoCotizacionComponent }	 from './resultado-cotizacion.component';
+import { ResultadoCotizacionComponent }	 from './resultado-cotizacion/resultado-cotizacion.component';
 
-import { AuthenticationService }		 from 'app/core/services/authentication/authentication.service';
+import { CotizacionGuardService }		 from './cotizacion-guard.service';
 import { AuthenticationGuardService }	 from 'app/core/services/authentication/authentication-guard.service';
+
 
 const cotizacionRoutes: Routes = [
 	{
@@ -34,8 +34,8 @@ const cotizacionRoutes: Routes = [
 	},
 	{
 		path: 'seguhirvida',
-		component: SeguhirVidaComponent,
-		canActivate: [ AuthenticationGuardService ]
+		redirectTo: '/inprogress',
+		pathMatch: 'full'
 	},
 	{
 		path: 'procuravida',
@@ -53,11 +53,6 @@ const cotizacionRoutes: Routes = [
 		canActivate: [ AuthenticationGuardService ]
 	},
 	{
-		path: 'vidaahorro',
-		component: VidaAhorroComponent,
-		canActivate: [ AuthenticationGuardService ]
-	},
-	{
 		path: 'segubici',
 		component: SegubiciComponent,
 		canActivate: [ AuthenticationGuardService ]
@@ -70,21 +65,14 @@ const cotizacionRoutes: Routes = [
 	{
 		path: 'resultado',
 		component: ResultadoCotizacionComponent,
-		canActivate: [ AuthenticationGuardService ]
+		canActivate: [ AuthenticationGuardService, CotizacionGuardService ]
 	}
 ];
 
 @NgModule({
-	imports: [
-		RouterModule.forChild( cotizacionRoutes )
-	],
-	exports: [
-		RouterModule
-	],
-	providers: [
-		AuthenticationService,
-		AuthenticationGuardService
-	]
+	imports:   [ RouterModule.forChild( cotizacionRoutes ) ],
+	exports:   [ RouterModule ],
+	providers: [ AuthenticationGuardService, CotizacionGuardService ]
 })
 
 export class CotizacionRoutingModule {}

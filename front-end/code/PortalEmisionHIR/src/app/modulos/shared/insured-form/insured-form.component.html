@@ -1,0 +1,102 @@
+<form [formGroup]="frmAsegurado">
+	<div class="row">
+		<div class="col col-50">
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblNombre" class="form-label">Nombre(s):</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmAsegurado.get('nombre').dirty"
+						[inputErrors]="frmAsegurado.get('nombre').errors">
+							<input id="txtNombre" type="text" class="form-control" formControlName="nombre">
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblApaterno" class="form-label">Apellido paterno:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmAsegurado.get('apaterno').dirty"
+						[inputErrors]="frmAsegurado.get('apaterno').errors">
+							<input id="txtApaterno" type="text" class="form-control" formControlName="apaterno">
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblAmaterno" class="form-label">Apellido materno:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmAsegurado.get('amaterno').dirty"
+						[inputErrors]="frmAsegurado.get('amaterno').errors">
+							<input id="txtAmaterno" type="text" class="form-control" formControlName="amaterno">
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblFechaNac" class="form-label">Fecha de nacimiento:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmAsegurado.get('fechanac').dirty"
+						[inputErrors]="frmAsegurado.get('fechanac').errors">
+							<my-date-picker name="fechanac" [options]="fecNacOptions" formControlName="fechanac">
+							</my-date-picker>
+					</pehir-extend-form-control>
+				</div>
+			</div>
+		</div>
+		<div class="col col-50">
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblEstadoCivil" class="form-label">Estado civil:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmAsegurado.get('estadoCivil').dirty"
+						[inputErrors]="frmAsegurado.get('estadoCivil').errors">
+							<div *ngFor="let estadoCivil of estadosCiviles" class="rdoContainer three">
+								<input type="radio" formControlName="estadoCivil" [value]="estadoCivil">{{estadoCivil.descEstadoCivil}}
+							</div>
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblSexo" class="form-label">Sexo:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmAsegurado.get('genero').dirty"
+						[inputErrors]="frmAsegurado.get('genero').errors">
+							<div *ngFor="let genero of generos" class="rdoContainer two">
+								<input type="radio" formControlName="genero" [value]="genero">{{genero.keyGenero}}
+							</div>
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblOcupacion" class="form-label">Ocupación:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmAsegurado.get('ocupacion').dirty"
+						[inputErrors]="frmAsegurado.get('ocupacion').errors">
+							<select id="cboOcupacion" class="form-control" formControlName="ocupacion">
+								<option value="">Selecciona</option>
+								<option *ngFor="let ocupacion of ocupaciones" [ngValue]="ocupacion">
+									{{ocupacion.desc}}
+								</option>
+							</select>
+					</pehir-extend-form-control>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

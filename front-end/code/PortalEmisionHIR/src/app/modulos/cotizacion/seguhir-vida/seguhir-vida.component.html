@@ -10,8 +10,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmSeguhirVida.controls['nombre'].dirty"
-						[inputErrors]="frmSeguhirVida.controls['nombre'].errors">
+						[inputDirty]="frmSeguhirVida.get('nombre').dirty"
+						[inputErrors]="frmSeguhirVida.get('nombre').errors">
 							<input id="txtNombre" type="text" class="form-control" formControlName="nombre">
 					</pehir-extend-form-control>
 				</div>
@@ -22,8 +22,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmSeguhirVida.controls['apaterno'].dirty"
-						[inputErrors]="frmSeguhirVida.controls['apaterno'].errors">
+						[inputDirty]="frmSeguhirVida.get('apaterno').dirty"
+						[inputErrors]="frmSeguhirVida.get('apaterno').errors">
 							<input id="txtApaterno" type="text" class="form-control" formControlName="apaterno">
 					</pehir-extend-form-control>
 				</div>
@@ -34,8 +34,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmSeguhirVida.controls['amaterno'].dirty"
-						[inputErrors]="frmSeguhirVida.controls['amaterno'].errors">
+						[inputDirty]="frmSeguhirVida.get('amaterno').dirty"
+						[inputErrors]="frmSeguhirVida.get('amaterno').errors">
 							<input id="txtAmaterno" type="text" class="form-control" formControlName="amaterno">
 					</pehir-extend-form-control>
 				</div>
@@ -46,22 +46,10 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmSeguhirVida.controls['fechanac'].dirty"
-						[inputErrors]="frmSeguhirVida.controls['fechanac'].errors">
+						[inputDirty]="frmSeguhirVida.get('fechanac').dirty"
+						[inputErrors]="frmSeguhirVida.get('fechanac').errors">
 							<my-date-picker name="fechanac" [options]="fecNacOptions" formControlName="fechanac">
 							</my-date-picker>
-					</pehir-extend-form-control>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col col-40">
-					<label id="lblRFC" class="form-label">RFC:</label>
-				</div>
-				<div class="col col-50">
-					<pehir-extend-form-control
-						[inputDirty]="frmSeguhirVida.controls['rfc'].dirty"
-						[inputErrors]="frmSeguhirVida.controls['rfc'].errors">
-							<input id="txtRFC" type="text" class="form-control" formControlName="rfc">
 					</pehir-extend-form-control>
 				</div>
 			</div>
@@ -71,10 +59,10 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmSeguhirVida.controls['genero'].dirty"
-						[inputErrors]="frmSeguhirVida.controls['genero'].errors">
+						[inputDirty]="frmSeguhirVida.get('genero').dirty"
+						[inputErrors]="frmSeguhirVida.get('genero').errors">
 							<div *ngFor="let genero of generos" class="rdoContainer two">
-								<input type="radio" formControlName="genero" [value]="genero.idGenero">{{genero.descGenero}}
+								<input type="radio" formControlName="genero" [value]="genero.idGenero">{{genero.keyGenero}}
 							</div>
 					</pehir-extend-form-control>
 				</div>
@@ -85,11 +73,14 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmSeguhirVida.controls['plan'].dirty"
-						[inputErrors]="frmSeguhirVida.controls['plan'].errors">
-							<div *ngFor="let plan of planes" class="rdoContainer two">
-								<input type="radio" formControlName="plan" [value]="plan.idPlan">{{plan.descPlan}}
-							</div>
+						[inputDirty]="frmSeguhirVida.get('plan').dirty"
+						[inputErrors]="frmSeguhirVida.get('plan').errors">
+							<select id="cboPlan" class="form-control" formControlName="plan">
+								<option value="">Selecciona</option>
+								<option *ngFor="let plan of planes" [value]="plan.id">
+									{{plan.desc}}
+								</option>
+							</select>
 					</pehir-extend-form-control>
 				</div>
 			</div>
@@ -99,11 +90,14 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmSeguhirVida.controls['fpago'].dirty"
-						[inputErrors]="frmSeguhirVida.controls['fpago'].errors">
-							<div *ngFor="let formaPago of formasPago" class="rdoContainer two">
-								<input type="radio" formControlName="fpago" [value]="formaPago.idFormaPago">{{formaPago.descFormaPago}}
-							</div>
+						[inputDirty]="frmSeguhirVida.get('fpago').dirty"
+						[inputErrors]="frmSeguhirVida.get('fpago').errors">
+							<select id="cboFpago" class="form-control" formControlName="fpago">
+								<option value="">Selecciona</option>
+								<option *ngFor="let formaPago of formasPago" [value]="formaPago.id">
+									{{formaPago.desc}}
+								</option>
+							</select>
 					</pehir-extend-form-control>
 				</div>
 			</div>
@@ -115,8 +109,8 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmSeguhirVida.controls['modulo'].dirty"
-						[inputErrors]="frmSeguhirVida.controls['modulo'].errors">
+						[inputDirty]="frmSeguhirVida.get('modulo').dirty"
+						[inputErrors]="frmSeguhirVida.get('modulo').errors">
 							<select id="cboModulo" class="form-control" formControlName="modulo">
 								<option value="">Selecciona</option>
 								<option *ngFor="let modulo of modulos" [value]="modulo.idModulo">
@@ -132,11 +126,14 @@
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmSeguhirVida.controls['pcobertura'].dirty"
-						[inputErrors]="frmSeguhirVida.controls['pcobertura'].errors">
-							<div *ngFor="let paquete of paquetes" class="rdoContainer two">
-								<input type="radio" formControlName="pcobertura" [value]="paquete.idPaquete">{{paquete.descPaquete}}
-							</div>
+						[inputDirty]="frmSeguhirVida.get('pcobertura').dirty"
+						[inputErrors]="frmSeguhirVida.get('pcobertura').errors">
+							<select id="cboPcobertura" class="form-control" formControlName="pcobertura">
+								<option value="">Selecciona</option>
+								<option *ngFor="let paquete of paquetes" [value]="paquete.idPaquete">
+									{{paquete.descPaquete}}
+								</option>
+							</select>
 					</pehir-extend-form-control>
 				</div>
 			</div>
