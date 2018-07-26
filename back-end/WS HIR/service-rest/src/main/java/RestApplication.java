@@ -16,7 +16,7 @@ import mx.com.dti.os.service.rest.configuracion.StatesRestService;
 import mx.com.dti.os.service.rest.login.LoginRestService;
 
 
-@ApplicationPath("eservicesProducto")
+@ApplicationPath("dtiServices")
 public class RestApplication extends Application
 {
 	private static final Logger LOG = Logger.getLogger(RestApplication.class.getName());

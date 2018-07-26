@@ -19,7 +19,7 @@ public class StatesService {
 	@PostConstruct
 	private void init()throws WebServiceException{
 		try{
-			URL url = new URL("http://localhost:8080/service-soap/StateServiceWS?wsdl");
+			URL url = new URL("http://localhost:8080/service-soap-hir/StateServiceWS?wsdl");
 			QName qName = new QName("http://states.configuracion.soap.service.os.dti.com.mx", "StateServiceWS");
 			port = new StateServiceWS(url,qName);
 		}catch(Exception e){

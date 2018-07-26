@@ -52,16 +52,19 @@
 	</dependency>
 	
 	<!-- Dependencias de clientes webservice  -->
-<!-- 	<dependency>
-		<groupId>com.omnisuite.services</groupId>
-		<artifactId>eservices-wsclient</artifactId>
-		<version>1.0-SNAPSHOT</version>
-	</dependency> -->
+	<dependency>
+		<groupId>com.dtisoluciones</groupId>
+		<artifactId>dtisoluciones-hir-service-logn</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
   </dependencies>
 
   <profiles>
   	<profile>
   		<id>jboss-ga</id>
+  		<properties>
+			<wsdlLocation-host-name>http://localhost:8080/</wsdlLocation-host-name>
+		</properties>	
   	</profile>
   </profiles>
   <packaging>war</packaging>

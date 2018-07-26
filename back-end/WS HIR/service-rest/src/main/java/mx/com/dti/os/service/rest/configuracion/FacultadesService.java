@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import javax.xml.namespace.QName;
 import javax.xml.ws.WebServiceException;
 
-import mx.com.dti.os.service.common.util.comunes.ResponseTxVO;
+import mx.com.dti.os.service.common.util.comunes.RespuestaVO;
 import mx.com.dti.os.service.common.util.comunes.WsdlLocationConstant;
 import mx.com.dti.os.service.soap.configuracion.facultades.CatFacultadRequestVO;
 import mx.com.dti.os.service.soap.configuracion.facultades.FacRolRequestVO;
@@ -26,7 +26,8 @@ public class FacultadesService {
 	@PostConstruct
 	private void init()throws WebServiceException{
 		try{
-			URL url = new URL("http://localhost:8080/service-soap/FacultadServiceWS?wsdl");
+			//URL url = new URL("http://localhost:8080/service-soap/FacultadServiceWS?wsdl");
+			URL url = new URL("http://localhost:8080/service-soap-hir/FacultadServiceWS?wsdl");
 			QName qName = new QName("http://facultades.configuracion.soap.service.os.dti.com.mx", "FacultadServiceWS");
 			port = new FacultadServiceWS(url,qName);
 		}catch(Exception e){
@@ -51,8 +52,8 @@ public class FacultadesService {
 		return respuesta;
 	}
 	
-	public ResponseTxVO guardaFacultad(CatFacultadRequestVO facultad){
-		ResponseTxVO respuesta = null;
+	public RespuestaVO guardaFacultad(CatFacultadRequestVO facultad){
+		RespuestaVO respuesta = null;
 		try {
 			respuesta = this.getInstanceFacultadService().getFacultadServiceImplPort().guardarFacultad(facultad);
 		} catch (WebServiceException | ServiceException_Exception e) {

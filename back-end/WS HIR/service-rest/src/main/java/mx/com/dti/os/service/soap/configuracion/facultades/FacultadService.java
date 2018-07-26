@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
 
-import mx.com.dti.os.service.common.util.comunes.ResponseTxVO;
+import mx.com.dti.os.service.common.util.comunes.RespuestaVO;
 import mx.com.dti.os.service.vo.configuracion.facultades.FacultadesResponseVO;
 
 
@@ -70,7 +70,7 @@ public interface FacultadService {
     @WebResult(name = "GuardarFacultadResponse", targetNamespace = "http://facultades.configuracion.soap.eservices.os.planetmedia.com.mx")
     @RequestWrapper(localName = "GuardarFacultad", targetNamespace = "http://facultades.configuracion.soap.eservices.os.planetmedia.com.mx", className = "mx.com.planetmedia.os.eservices.soap.configuracion.facultades.GuardarFacultad")
     @ResponseWrapper(localName = "GuardarFacultadResponse", targetNamespace = "http://facultades.configuracion.soap.eservices.os.planetmedia.com.mx", className = "mx.com.planetmedia.os.eservices.soap.configuracion.facultades.GuardarFacultadResponse")
-    public ResponseTxVO guardarFacultad(
+    public RespuestaVO guardarFacultad(
         @WebParam(name = "GuardarFacultadRequest", targetNamespace = "")
         CatFacultadRequestVO guardarFacultadRequest)
         throws ServiceException_Exception

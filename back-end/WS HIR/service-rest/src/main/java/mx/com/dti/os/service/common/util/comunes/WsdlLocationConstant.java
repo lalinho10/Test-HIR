@@ -10,9 +10,11 @@ import javax.inject.Inject;
 @Default
 public class WsdlLocationConstant {
 	
+	@Inject @PropertiesWsdlLocation
 	private ResourceBundle rb;
 
 	private String wsldLocationHostName;
+	
 	public String getWsdlLocationHostName() {
 		wsldLocationHostName = rb.getString("wsdlLocation-host-name");
 		return wsldLocationHostName;

@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
 
-import mx.com.dti.os.service.common.util.comunes.ResponseTxVO;
+import mx.com.dti.os.service.common.util.comunes.RespuestaVO;
 import mx.com.dti.os.service.vo.configuracion.rolfac.ConfigRolFacRequestVO;
 
 
@@ -39,7 +39,7 @@ public interface RolFacService {
     @WebResult(name = "GuardarRelacionFacRolResponse", targetNamespace = "http://rolfac.configuracion.soap.eservices.os.planetmedia.com.mx")
     @RequestWrapper(localName = "GuardarRelacionFacRol", targetNamespace = "http://rolfac.configuracion.soap.eservices.os.planetmedia.com.mx", className = "mx.com.planetmedia.os.eservices.soap.configuracion.rolfac.GuardarRelacionFacRol")
     @ResponseWrapper(localName = "GuardarRelacionFacRolResponse", targetNamespace = "http://rolfac.configuracion.soap.eservices.os.planetmedia.com.mx", className = "mx.com.planetmedia.os.eservices.soap.configuracion.rolfac.GuardarRelacionFacRolResponse")
-    public ResponseTxVO guardarRelacionFacRol(
+    public RespuestaVO guardarRelacionFacRol(
         @WebParam(name = "GuardarRelacionFacRolRequest", targetNamespace = "")
         ConfigRolFacRequestVO guardarRelacionFacRolRequest)
         throws ServiceException_Exception

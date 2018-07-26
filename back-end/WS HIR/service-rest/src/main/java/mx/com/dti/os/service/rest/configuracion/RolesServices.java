@@ -7,7 +7,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.xml.namespace.QName;
 import javax.xml.ws.WebServiceException;
 
-import mx.com.dti.os.service.common.util.comunes.ResponseTxVO;
+import mx.com.dti.os.service.common.util.comunes.RespuestaVO;
 import mx.com.dti.os.service.soap.configuracion.roles.RolServiceWS;
 import mx.com.dti.os.service.soap.configuracion.roles.ServiceException_Exception;
 import mx.com.dti.os.service.vo.configuracion.roles.CatRolVO;
@@ -21,7 +21,7 @@ public class RolesServices {
 	@PostConstruct
 	private void init()throws WebServiceException{
 		try{
-			URL url = new URL("http://localhost:8080/service-soap/RolServiceWS?wsdl");
+			URL url = new URL("http://localhost:8080/service-soap-hir/RolServiceWS?wsdl");
 			QName qName = new QName("http://roles.configuracion.soap.service.os.dti.com.mx", "RolServiceWS");
 			port = new RolServiceWS(url,qName);
 		}catch(Exception e){
@@ -48,8 +48,8 @@ public class RolesServices {
 		return respuesta;
 	}
 	
-	public ResponseTxVO guardaRol(CatRolVO rol){
-		ResponseTxVO respuesta = null;
+	public RespuestaVO guardaRol(CatRolVO rol){
+		RespuestaVO respuesta = null;
 		try {
 			respuesta = this.getInstanceRolService().getRolServiceImplPort().guardarRol(rol);
 		} catch (WebServiceException | ServiceException_Exception e) {
