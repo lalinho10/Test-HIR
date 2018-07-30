@@ -139,6 +139,10 @@ export class SeguhirVidaP4Component implements OnInit {
 		this.areValidComponents = this.isValidFormConyuge && this.isValidFormHijo1 && this.isValidFormHijo2;
 	}
 
+	fnRegresar(): void {
+		this.router.navigateByUrl( '/emision/seguhirvida/medico' );
+	}
+
 	fnAvanzarP5(): void {
 		this.cmpsAsegurados.forEach(
 			cmpAsegurado => this.asegurados.push( cmpAsegurado.asegurado )

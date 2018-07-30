@@ -156,6 +156,10 @@ export class SeguhirVidaP6Component implements OnInit {
 		this.isValidTableAgentes = isValidTableAgentes
 	}
 
+	fnRegresar(): void {
+		this.router.navigateByUrl( '/emision/seguhirvida/beneficiarios' );
+	}
+
 	fnAvanzarP7(): void {
 		this.seguhirVidaP6Service.setModelP6( this.tablaAgentes.agentes, this.frmSeguhirVidaP6.value );
 		this.router.navigateByUrl( '/emision/seguhirvida/confirmacion' );

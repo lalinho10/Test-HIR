@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router }			 from '@angular/router';
 
 import { SegubiciP1Service } from '../p1-usuario/segubici-p1.service';
 import { SegubiciP2Service } from '../p2-seguro/segubici-p2.service';
@@ -17,11 +18,20 @@ export class SegubiciP3Component implements OnInit {
 
 	constructor(
 		private segubiciP1Service: SegubiciP1Service,
-		private segubiciP2Service: SegubiciP2Service
+		private segubiciP2Service: SegubiciP2Service,
+		private router: Router
 	){}
 
 	ngOnInit() {
 		this.segubiciP1 = this.segubiciP1Service.getModelP1();
 		this.segubiciP2 = this.segubiciP2Service.getModelP2();
+	}
+
+	fnRegresar(): void {
+		this.router.navigateByUrl( '/emision/segubici/seguro' );
+	}
+
+	fnContinuar(): void {
+		this.router.navigateByUrl( '/openpay' );
 	}
 }

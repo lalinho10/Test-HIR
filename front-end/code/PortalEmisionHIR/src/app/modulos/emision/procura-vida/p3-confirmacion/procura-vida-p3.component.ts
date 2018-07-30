@@ -1,4 +1,5 @@
 import { Component, OnInit }	from '@angular/core';
+import { Router }				from '@angular/router';
 
 import { ProcuraVidaP1Service }	from '../p1-usuario/procura-vida-p1.service';
 import { ProcuraVidaP2Service }	from '../p2-beneficiarios/procura-vida-p2.service';
@@ -17,11 +18,20 @@ export class ProcuraVidaP3Component implements OnInit {
 
 	constructor(
 		private procuraVidaP1Service: ProcuraVidaP1Service,
-		private procuraVidaP2Service: ProcuraVidaP2Service
+		private procuraVidaP2Service: ProcuraVidaP2Service,
+		private router: Router
 	) {}
 
 	ngOnInit() {
 		this.procuraVidaP1 = this.procuraVidaP1Service.getModelP1();
 		this.procuraVidaP2 = this.procuraVidaP2Service.getModelP2();
+	}
+
+	fnRegresar(): void {
+		this.router.navigateByUrl( '/emision/procuravida/beneficiarios' );
+	}
+
+	fnContinuar(): void {
+		this.router.navigateByUrl( '/openpay' );
 	}
 }

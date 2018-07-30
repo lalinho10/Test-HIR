@@ -149,8 +149,11 @@
 		</div>
 	</fieldset>
 	<div class="row">
-		<div class="col col-100">
-			<button id="btnSiguiente" type="submit" class="next" [disabled]="!frmApindividualP2.valid">Siguiente</button>
+		<div class="col col-50">
+			<button id="btnRegresar" type="button" class="back right" (click)="fnRegresar()">Regresar</button>
+		</div>
+		<div class="col col-50">
+			<button id="btnSiguiente" type="submit" class="next left" [disabled]="!frmApindividualP2.valid">Siguiente</button>
 		</div>
 	</div>
 </form>

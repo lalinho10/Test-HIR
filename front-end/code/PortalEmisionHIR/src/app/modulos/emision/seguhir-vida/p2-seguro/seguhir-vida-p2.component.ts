@@ -139,6 +139,10 @@ export class SeguhirVidaP2Component implements OnInit {
 		}
 	}
 
+	fnRegresar(): void {
+		this.router.navigateByUrl( '/emision/seguhirvida' );
+	}
+
 	fnAvanzarP3(): void {
 		this.seguhirVidaP2Service.setModelP2( this.frmSeguhirVidaP2.value );
 		this.router.navigateByUrl( '/emision/seguhirvida/medico' );

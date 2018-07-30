@@ -112,6 +112,10 @@ export class ProcuraVidaP2Component implements OnInit {
 		this.isValidTable = isValidTable;
 	}
 
+	fnRegresar(): void {
+		this.router.navigateByUrl( '/emision/procuravida' );
+	}
+
 	fnAvanzarP3(): void {
 		this.procuraVidaP2Service.setModelP2( this.tablaBeneficiarios.beneficiarios, this.coberturas, this.frmProcuraVidaP2.value );
 		this.router.navigateByUrl( '/emision/procuravida/confirmacion' );

@@ -83,6 +83,10 @@ export class SeguhirVidaP5Component implements OnInit {
 							  this.isValidTableHijo2;
 	}
 
+	fnRegresar(): void {
+		this.router.navigateByUrl( '/emision/seguhirvida/asegurados' );
+	}
+
 	fnAvanzarP6(): void {
 		this.seguhirVidaP5Service.setModelP5();
 		this.router.navigateByUrl( '/emision/seguhirvida/agentes' );

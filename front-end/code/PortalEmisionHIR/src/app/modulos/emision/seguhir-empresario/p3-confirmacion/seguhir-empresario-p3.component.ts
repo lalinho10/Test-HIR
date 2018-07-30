@@ -1,4 +1,5 @@
 import { Component, OnInit }		  from '@angular/core';
+import { Router }					  from '@angular/router';
 
 import { SeguhirEmpresarioP1Service } from '../p1-usuario/seguhir-empresario-p1.service';
 import { SeguhirEmpresarioP2Service } from '../p2-beneficiarios/seguhir-empresario-p2.service';
@@ -17,11 +18,20 @@ export class SeguhirEmpresarioP3Component implements OnInit {
 
 	constructor(
 		private seguhirEmpresarioP1Service: SeguhirEmpresarioP1Service,
-		private seguhirEmpresarioP2Service: SeguhirEmpresarioP2Service
+		private seguhirEmpresarioP2Service: SeguhirEmpresarioP2Service,
+		private router: Router
 	) {}
 
 	ngOnInit() {
 		this.seguhirEmpresarioP1 = this.seguhirEmpresarioP1Service.getModelP1();
 		this.seguhirEmpresarioP2 = this.seguhirEmpresarioP2Service.getModelP2();
+	}
+
+	fnRegresar(): void {
+		this.router.navigateByUrl( '/emision/seguhirempresario/beneficiarios' );
+	}
+
+	fnContinuar(): void {
+		this.router.navigateByUrl( '/openpay' );
 	}
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit }	from '@angular/core';
+import { Router }				from '@angular/router';
 
 import { SeguhirVidaP1Service }	from '../p1-usuario/seguhir-vida-p1.service';
 import { SeguhirVidaP2Service }	from '../p2-seguro/seguhir-vida-p2.service';
@@ -29,6 +30,7 @@ export class SeguhirVidaP7Component implements OnInit {
 	seguhirVidaP6: SeguhirVidaP6;
 
 	constructor(
+		private router: Router,
 		private seguhirVidaP1Service: SeguhirVidaP1Service,
 		private seguhirVidaP2Service: SeguhirVidaP2Service,
 		private seguhirVidaP3Service: SeguhirVidaP3Service,
@@ -44,5 +46,13 @@ export class SeguhirVidaP7Component implements OnInit {
 		this.seguhirVidaP4 = this.seguhirVidaP4Service.getModelP4();
 		this.seguhirVidaP5 = this.seguhirVidaP5Service.getModelP5();
 		this.seguhirVidaP6 = this.seguhirVidaP6Service.getModelP6();
+	}
+
+	fnRegresar(): void {
+		this.router.navigateByUrl( '/emision/seguhirvida/agentes' );
+	}
+
+	fnContinuar(): void {
+		this.router.navigateByUrl( '/openpay' );
 	}
 }

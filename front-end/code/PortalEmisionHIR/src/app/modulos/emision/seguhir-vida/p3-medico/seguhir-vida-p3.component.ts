@@ -240,6 +240,10 @@ export class SeguhirVidaP3Component implements OnInit {
 		this.isValidQuestionary = isValidQuestionary;
 	}
 
+	fnRegresar(): void {
+		this.router.navigateByUrl( '/emision/seguhirvida/seguro' );
+	}
+
 	fnAvanzarP4(): void {
 		this.seguhirVidaP3Service.setModelP3( this.cmpCuestionario.preguntasMedicas, this.frmSeguhirVidaP3.value );
 		this.router.navigateByUrl( '/emision/seguhirvida/asegurados' );

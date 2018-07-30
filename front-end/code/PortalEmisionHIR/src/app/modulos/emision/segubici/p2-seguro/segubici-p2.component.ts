@@ -117,6 +117,10 @@ export class SegubiciP2Component implements OnInit {
 		});
 	}
 
+	fnRegresar(): void {
+		this.router.navigateByUrl( '/emision/segubici' );
+	}
+
 	fnAvanzarP3(): void {
 		this.segubiciP2Service.setModelP2( this.coberturas, this.frmSegubiciP2.value );
 		this.router.navigateByUrl( '/emision/segubici/confirmacion' );

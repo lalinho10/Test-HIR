@@ -117,6 +117,10 @@ export class ApindividualP2Component implements OnInit {
 		});
 	}
 
+	fnRegresar(): void {
+		this.router.navigateByUrl( '/emision/apindividual' );
+	}
+
 	fnAvanzarP3(): void {
 		this.apindividualP2Service.setModelP2( this.coberturas, this.frmApindividualP2.value );
 		this.router.navigateByUrl( '/emision/apindividual/confirmacion' );

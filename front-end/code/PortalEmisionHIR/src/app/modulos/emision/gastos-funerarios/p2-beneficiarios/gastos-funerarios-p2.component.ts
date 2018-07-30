@@ -112,6 +112,10 @@ export class GastosFunerariosP2Component implements OnInit {
 		this.isValidTable = isValidTable;
 	}
 
+	fnRegresar(): void {
+		this.router.navigateByUrl( '/emision/gastosfunerarios' );
+	}
+
 	fnAvanzarP3(): void {
 		this.gastosFunerariosP1Service.setModelP2( this.tablaBeneficiarios.beneficiarios, this.coberturas, this.frmGastosFunerariosP2.value );
 		this.router.navigateByUrl( '/emision/gastosfunerarios/confirmacion' );
