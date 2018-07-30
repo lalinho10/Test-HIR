@@ -113,7 +113,7 @@ export class GastosFunerariosP2Component implements OnInit {
 	}
 
 	fnAvanzarP3(): void {
-		this.gastosFunerariosP1Service.setModelP2( this.tablaBeneficiarios.beneficiarios, this.frmGastosFunerariosP2.value );
+		this.gastosFunerariosP1Service.setModelP2( this.tablaBeneficiarios.beneficiarios, this.coberturas, this.frmGastosFunerariosP2.value );
 		this.router.navigateByUrl( '/emision/gastosfunerarios/confirmacion' );
 	}
 }

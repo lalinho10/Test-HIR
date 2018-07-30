@@ -113,7 +113,7 @@ export class SeguhirEmpresarioP2Component implements OnInit {
 	}
 
 	fnAvanzarP3(): void {
-		this.seguhirEmpresarioP2Service.setModelP2( this.tablaBeneficiarios.beneficiarios, this.frmSeguhirEmpresarioP2.value );
+		this.seguhirEmpresarioP2Service.setModelP2( this.tablaBeneficiarios.beneficiarios, this.coberturas, this.frmSeguhirEmpresarioP2.value );
 		this.router.navigateByUrl( '/emision/seguhirempresario/confirmacion' );
 	}
 }

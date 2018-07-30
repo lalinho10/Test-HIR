@@ -1,13 +1,15 @@
 import { Beneficiario } from 'app/core/models/beneficiario';
-import { Modulo }		from 'app/core/models/modulo';
 import { Cobertura }	from 'app/core/models/cobertura';
 import { FormaPago }	from 'app/core/models/forma-pago';
+import { Modulo }		from 'app/core/models/modulo';
+import { Plan }			from 'app/core/models/plan';
 
 export class GastosFunerariosP2 {
 	beneficiarios: Beneficiario[];
 	modulo: Modulo;
-	cobertura: Cobertura;
 	formaPago: FormaPago;
+	plan: Plan;
+	coberturas: Cobertura[];
 	agente: string;
 	clave: number;
 }
