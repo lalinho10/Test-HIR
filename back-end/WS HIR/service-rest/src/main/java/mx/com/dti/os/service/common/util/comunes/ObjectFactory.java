@@ -30,11 +30,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ResponseTxVO }
+     * Create an instance of {@link RespuestaVO }
      * 
      */
-    public ResponseTxVO createResponseTxVO() {
-        return new ResponseTxVO();
+    public RespuestaVO createResponseTxVO() {
+        return new RespuestaVO();
     }
 
 }

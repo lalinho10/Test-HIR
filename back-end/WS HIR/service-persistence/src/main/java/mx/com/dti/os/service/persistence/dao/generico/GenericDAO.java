@@ -22,7 +22,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 /**
- * @author Erick Jacobo Castillo Medina
+ * @author DTI
  *
  */
 public class GenericDAO<T, ID extends Serializable> {

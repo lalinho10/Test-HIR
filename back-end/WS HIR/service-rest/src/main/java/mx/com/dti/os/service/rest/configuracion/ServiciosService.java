@@ -18,7 +18,7 @@ public class ServiciosService {
 	@PostConstruct
 	private void init()throws WebServiceException{
 		try{
-			URL url = new URL("http://localhost:8080/service-soap/ServiciosServiceWS?wsdl");
+			URL url = new URL("http://localhost:8080/service-soap-hir/ServiciosServiceWS?wsdl");
 			QName qName = new QName("http://servicios.configuracion.soap.service.os.dti.com.mx", "ServiciosServiceWS");
 			port = new ServiciosServiceWS(url,qName);
 		}catch(Exception e){

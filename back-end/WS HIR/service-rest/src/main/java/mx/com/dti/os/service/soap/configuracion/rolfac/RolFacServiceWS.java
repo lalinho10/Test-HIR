@@ -30,7 +30,7 @@ public class RolFacServiceWS
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://192.168.79.88:8080/eservices-soap/RolFacServiceWS?wsdl");
+            url = new URL("http://localhost:8080/service-soap-hir/RolFacServiceWS?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

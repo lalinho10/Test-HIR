@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
-import mx.com.dti.os.service.common.util.comunes.ResponseTxVO;
+import mx.com.dti.os.service.common.util.comunes.RespuestaVO;
 import mx.com.dti.os.service.vo.configuracion.rolfac.ConfigRolFacRequestVO;
 
 
@@ -83,12 +83,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ResponseTxVO }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RespuestaVO }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://rolfac.configuracion.soap.eservices.os.planetmedia.com.mx", name = "ResponseTxVO")
-    public JAXBElement<ResponseTxVO> createResponseTxVO(ResponseTxVO value) {
-        return new JAXBElement<ResponseTxVO>(_ResponseTxVO_QNAME, ResponseTxVO.class, null, value);
+    public JAXBElement<RespuestaVO> createResponseTxVO(RespuestaVO value) {
+        return new JAXBElement<RespuestaVO>(_ResponseTxVO_QNAME, RespuestaVO.class, null, value);
     }
 
     /**

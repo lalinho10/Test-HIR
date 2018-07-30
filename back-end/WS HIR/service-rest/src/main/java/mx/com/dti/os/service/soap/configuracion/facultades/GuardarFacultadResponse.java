@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-import mx.com.dti.os.service.common.util.comunes.ResponseTxVO;
+import mx.com.dti.os.service.common.util.comunes.RespuestaVO;
 
 
 /**
@@ -35,17 +35,17 @@ import mx.com.dti.os.service.common.util.comunes.ResponseTxVO;
 public class GuardarFacultadResponse {
 
     @XmlElement(name = "GuardarFacultadResponse", namespace = "http://facultades.configuracion.soap.eservices.os.planetmedia.com.mx")
-    protected ResponseTxVO guardarFacultadResponse;
+    protected RespuestaVO guardarFacultadResponse;
 
     /**
      * Gets the value of the guardarFacultadResponse property.
      * 
      * @return
      *     possible object is
-     *     {@link ResponseTxVO }
+     *     {@link RespuestaVO }
      *     
      */
-    public ResponseTxVO getGuardarFacultadResponse() {
+    public RespuestaVO getGuardarFacultadResponse() {
         return guardarFacultadResponse;
     }
 
@@ -54,10 +54,10 @@ public class GuardarFacultadResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link ResponseTxVO }
+     *     {@link RespuestaVO }
      *     
      */
-    public void setGuardarFacultadResponse(ResponseTxVO value) {
+    public void setGuardarFacultadResponse(RespuestaVO value) {
         this.guardarFacultadResponse = value;
     }
 

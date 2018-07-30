@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-import mx.com.dti.os.service.common.util.comunes.ResponseTxVO;
+import mx.com.dti.os.service.common.util.comunes.RespuestaVO;
 
 
 /**
@@ -35,17 +35,17 @@ import mx.com.dti.os.service.common.util.comunes.ResponseTxVO;
 public class GuardarRelacionFacRolResponse {
 
     @XmlElement(name = "GuardarRelacionFacRolResponse", namespace = "http://rolfac.configuracion.soap.eservices.os.planetmedia.com.mx")
-    protected ResponseTxVO guardarRelacionFacRolResponse;
+    protected RespuestaVO guardarRelacionFacRolResponse;
 
     /**
      * Gets the value of the guardarRelacionFacRolResponse property.
      * 
      * @return
      *     possible object is
-     *     {@link ResponseTxVO }
+     *     {@link RespuestaVO }
      *     
      */
-    public ResponseTxVO getGuardarRelacionFacRolResponse() {
+    public RespuestaVO getGuardarRelacionFacRolResponse() {
         return guardarRelacionFacRolResponse;
     }
 
@@ -54,10 +54,10 @@ public class GuardarRelacionFacRolResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link ResponseTxVO }
+     *     {@link RespuestaVO }
      *     
      */
-    public void setGuardarRelacionFacRolResponse(ResponseTxVO value) {
+    public void setGuardarRelacionFacRolResponse(RespuestaVO value) {
         this.guardarRelacionFacRolResponse = value;
     }
 

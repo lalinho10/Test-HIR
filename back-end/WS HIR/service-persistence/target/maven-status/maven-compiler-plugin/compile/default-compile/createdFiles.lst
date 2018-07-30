@@ -1,5 +1,5 @@
-mx\com\dti\os\service\persistence\entity\configuracion\CatState.class
 mx\com\dti\os\service\persistence\dao\configuracion\ModuloReglaDAOImpl.class
+mx\com\dti\os\service\persistence\entity\configuracion\CatState.class
 mx\com\dti\os\service\persistence\entity\configuracion\TblFacRol.class
 mx\com\dti\os\service\persistence\dao\configuracion\CatServiciosDAOImpl.class
 mx\com\dti\os\service\persistence\entity\configuracion\CatModulo.class
@@ -10,8 +10,8 @@ mx\com\dti\os\service\persistence\dao\configuracion\CatStateDAO.class
 mx\com\dti\os\service\persistence\dao\generico\CriterioGenerico.class
 mx\com\dti\os\service\persistence\dao\generico\GenericDAO.class
 mx\com\dti\os\service\persistence\dao\configuracion\TblFacRolDAOimpl.class
-mx\com\dti\os\service\persistence\entity\configuracion\CatServicios.class
 mx\com\dti\os\service\persistence\dao\configuracion\CatModuloDAOImpl.class
+mx\com\dti\os\service\persistence\entity\configuracion\CatServicios.class
 mx\com\dti\os\service\persistence\dao\configuracion\CatRolDAOImpl.class
 mx\com\dti\os\service\persistence\dao\configuracion\CatModuloDAO.class
 mx\com\dti\os\service\persistence\dao\configuracion\TblFacRolDAO.class

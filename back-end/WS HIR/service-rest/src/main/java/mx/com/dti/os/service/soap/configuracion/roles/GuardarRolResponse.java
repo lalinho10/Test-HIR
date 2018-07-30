@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-import mx.com.dti.os.service.common.util.comunes.ResponseTxVO;
+import mx.com.dti.os.service.common.util.comunes.RespuestaVO;
 
 
 /**
@@ -35,17 +35,17 @@ import mx.com.dti.os.service.common.util.comunes.ResponseTxVO;
 public class GuardarRolResponse {
 
     @XmlElement(name = "GuardarRolResponse")
-    protected ResponseTxVO guardarRolResponse;
+    protected RespuestaVO guardarRolResponse;
 
     /**
      * Gets the value of the guardarRolResponse property.
      * 
      * @return
      *     possible object is
-     *     {@link ResponseTxVO }
+     *     {@link RespuestaVO }
      *     
      */
-    public ResponseTxVO getGuardarRolResponse() {
+    public RespuestaVO getGuardarRolResponse() {
         return guardarRolResponse;
     }
 
@@ -54,10 +54,10 @@ public class GuardarRolResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link ResponseTxVO }
+     *     {@link RespuestaVO }
      *     
      */
-    public void setGuardarRolResponse(ResponseTxVO value) {
+    public void setGuardarRolResponse(RespuestaVO value) {
         this.guardarRolResponse = value;
     }
 
