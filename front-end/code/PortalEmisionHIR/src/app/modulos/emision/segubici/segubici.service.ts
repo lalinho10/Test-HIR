@@ -36,4 +36,9 @@ export class SegubiciService {
 
 		return isValidPath;
 	}
+
+	cleanModels(): void {
+		this.segubiciP1Service.cleanModelP1();
+		this.segubiciP2Service.cleanModelP2();
+	}
 }

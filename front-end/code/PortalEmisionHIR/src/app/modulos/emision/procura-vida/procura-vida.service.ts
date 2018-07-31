@@ -36,4 +36,9 @@ export class ProcuraVidaService {
 
 		return isValidPath;
 	}
+
+	cleanModels(): void {
+		this.procuraVidaP1Service.cleanModelP1();
+		this.procuraVidaP2Service.cleanModelP2();
+	}
 }

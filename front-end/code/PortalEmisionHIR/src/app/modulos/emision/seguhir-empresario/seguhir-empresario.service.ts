@@ -36,4 +36,9 @@ export class SeguhirEmpresarioService {
 
 		return isValidPath;
 	}
+
+	cleanModels(): void {
+		this.seguhirEmpresarioP1Service.cleanModelP1();
+		this.seguhirEmpresarioP2Service.cleanModelP2();
+	}
 }

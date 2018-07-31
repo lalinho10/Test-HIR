@@ -36,4 +36,9 @@ export class ApindividualService {
 
 		return isValidPath;
 	}
+
+	cleanModels(): void {
+		this.apindividualP1Service.cleanModelP1();
+		this.apindividualP2Service.cleanModelP2();
+	}
 }

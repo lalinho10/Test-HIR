@@ -36,4 +36,9 @@ export class GastosFunerariosService {
 
 		return isValidPath;
 	}
+
+	cleanModels(): void {
+		this.gastosFunerariosP1Service.cleanModelP1();
+		this.gastosFunerariosP2Service.cleanModelP2();
+	}
 }
