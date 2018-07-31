@@ -9,10 +9,6 @@ import { ProcuraVidaP1Component }	from './p1-usuario/procura-vida-p1.component';
 import { ProcuraVidaP2Component }	from './p2-beneficiarios/procura-vida-p2.component';
 import { ProcuraVidaP3Component }	from './p3-confirmacion/procura-vida-p3.component';
 
-import { ProcuraVidaService }		from './procura-vida.service';
-import { ProcuraVidaP1Service }		from './p1-usuario/procura-vida-p1.service';
-import { ProcuraVidaP2Service }		from './p2-beneficiarios/procura-vida-p2.service';
-
 import { ProcuraVidaRoutingModule } from './procura-vida-routing.module';
 import { ExtendFormControlModule }  from 'app/modulos/shared/extend-form-control/extend-form-control.module';
 import { PolicyHolderTableModule }  from 'app/modulos/shared/policyholder-table/policyholder-table.module';
@@ -33,11 +29,6 @@ import { ProgressControlModule }	from 'app/modulos/shared/progress-control/progr
 		ProcuraVidaRoutingModule,
 		ExtendFormControlModule,
 		ProgressControlModule
-	],
-	providers: [
-		ProcuraVidaService,
-		ProcuraVidaP1Service,
-		ProcuraVidaP2Service
 	]
 })
 
