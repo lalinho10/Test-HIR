@@ -1,6 +1,8 @@
 import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
+import { Observable }						  from 'rxjs/Observable';
+import											   'rxjs/add/observable/forkJoin';
 
 import { ProcuraVidaP1Service }				  from './procura-vida-p1.service';
 
@@ -50,27 +52,28 @@ export class ProcuraVidaP1Component implements OnInit {
 	){}
 
 	ngOnInit() {
-		this.leerCatalogos();
 		this.crearFormulario();
 		this.registrarEventos();
+		this.leerCatalogos();
 	}
 
 	private leerCatalogos(): void {
-		this.wsClientService
-			.postObject( '/catalogoOcupacion', {} )
-			.subscribe( response => {
-				if( response.code === 200 ) {
-					this.ocupaciones = response.data;
-				}
-			});
+		Observable.forkJoin(
+			this.wsClientService.postObject( '/catalogoOcupacion', {} ),
+			this.wsClientService.postObject( '/catalogoEstado', {} )
+		).subscribe( response => {
+			if( response[ 0 ].code === 200 ) {
+				this.ocupaciones = response[ 0 ].data;
+			}
 
-		this.wsClientService
-			.postObject( '/catalogoEstado', {} )
-			.subscribe( response => {
-				if( response.code === 200 ) {
-					this.estados = response.data;
-				}
-			});
+			if( response[ 1 ].code === 200 ) {
+				this.estados = response[ 1 ].data;
+			}
+
+			if( this.procuraVidaP1Service.hasModelP1() ) {
+				this.mostrarDatosCapturados();
+			}
+		});
 	}
 
 	private crearFormulario(): void {
@@ -179,6 +182,11 @@ export class ProcuraVidaP1Component implements OnInit {
 						.subscribe( response => {
 							if( response.code === 200 ) {
 								this.municipios = response.data;
+
+								if( this.procuraVidaP1Service.hasModelP1() ) {
+									let fMunicipio = this.municipios.filter( ( municipio: any ) => municipio.claveEntidad === this.procuraVidaP1Service.getModelP1().delegacionMunicipio.claveEntidad );
+									this.frmProcuraVidaP1.get( 'delegacionMunicipio' ).setValue( fMunicipio[ 0 ] );
+								}
 							}
 						});
 				} else {
@@ -187,6 +195,33 @@ export class ProcuraVidaP1Component implements OnInit {
 				this.frmProcuraVidaP1.get( 'delegacionMunicipio' ).setValue( '' );
 			}
 		});
+	}
+
+	private mostrarDatosCapturados(): void {
+		this.frmProcuraVidaP1.get( 'padecimiento' ).setValue( this.procuraVidaP1Service.getModelP1().padecimiento );
+		this.frmProcuraVidaP1.get( 'peso' ).setValue( this.procuraVidaP1Service.getModelP1().peso );
+		this.frmProcuraVidaP1.get( 'estatura' ).setValue( this.procuraVidaP1Service.getModelP1().estatura );
+		this.frmProcuraVidaP1.get( 'nombre' ).setValue( this.procuraVidaP1Service.getModelP1().nombre );
+		this.frmProcuraVidaP1.get( 'apaterno' ).setValue( this.procuraVidaP1Service.getModelP1().apaterno );
+		this.frmProcuraVidaP1.get( 'amaterno' ).setValue( this.procuraVidaP1Service.getModelP1().amaterno );
+		this.frmProcuraVidaP1.get( 'fechanac' ).patchValue( this.procuraVidaP1Service.getModelP1().fechanac );
+		this.frmProcuraVidaP1.get( 'nacionalidad' ).setValue( this.procuraVidaP1Service.getModelP1().nacionalidad );
+		this.frmProcuraVidaP1.get( 'rfc' ).setValue( this.procuraVidaP1Service.getModelP1().rfc );
+		this.frmProcuraVidaP1.get( 'estadoCivil' ).setValue( this.procuraVidaP1Service.getModelP1().estadoCivil );
+		this.frmProcuraVidaP1.get( 'genero' ).setValue( this.procuraVidaP1Service.getModelP1().genero );
+		this.frmProcuraVidaP1.get( 'calleNumero' ).setValue( this.procuraVidaP1Service.getModelP1().calleNumero );
+		this.frmProcuraVidaP1.get( 'coloniaPoblacion' ).setValue( this.procuraVidaP1Service.getModelP1().coloniaPoblacion );
+		this.frmProcuraVidaP1.get( 'cp' ).setValue( this.procuraVidaP1Service.getModelP1().cp );
+		this.frmProcuraVidaP1.get( 'telefonos.telefono' ).setValue( this.procuraVidaP1Service.getModelP1().telefono );
+		this.frmProcuraVidaP1.get( 'telefonos.celular' ).setValue( this.procuraVidaP1Service.getModelP1().celular );
+		this.frmProcuraVidaP1.get( 'correos.correoe1' ).setValue( this.procuraVidaP1Service.getModelP1().correoe1 );
+		this.frmProcuraVidaP1.get( 'correos.correoe2' ).setValue( this.procuraVidaP1Service.getModelP1().correoe2 );
+
+		let fOcupacion = this.ocupaciones.filter( ( ocupacion: any ) => ocupacion.id === this.procuraVidaP1Service.getModelP1().ocupacion.id );
+		this.frmProcuraVidaP1.get( 'ocupacion' ).setValue( fOcupacion[ 0 ] );
+
+		let fEstado = this.estados.filter( ( estado: any ) => estado.claveEntidad === this.procuraVidaP1Service.getModelP1().estado.claveEntidad );
+		this.frmProcuraVidaP1.get( 'estado' ).setValue( fEstado[ 0 ] );
 	}
 
 	fnAvanzarP2(): void {

@@ -1,6 +1,8 @@
 import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
+import { Observable }						  from 'rxjs/Observable';
+import											   'rxjs/add/observable/forkJoin';
 
 import { SegubiciP1Service }				  from './segubici-p1.service';
 
@@ -45,19 +47,23 @@ export class SegubiciP1Component implements OnInit {
 	){}
 
 	ngOnInit() {
-		this.leerCatalogos();
 		this.crearFormulario();
 		this.registrarEventos();
+		this.leerCatalogos();
 	}
 
 	private leerCatalogos(): void {
-		this.wsClientService
-			.postObject( '/catalogoEstado', {} )
-			.subscribe( response => {
-				if( response.code === 200 ) {
-					this.estados = response.data;
-				}
-			});
+		Observable.forkJoin(
+			this.wsClientService.postObject( '/catalogoEstado', {} )
+		).subscribe( response => {
+			if( response[ 0 ].code === 200 ) {
+				this.estados = response[ 0 ].data;
+			}
+
+			if( this.segubiciP1Service.hasModelP1() ) {
+				this.mostrarDatosCapturados();
+			}
+		});
 	}
 
 	private crearFormulario(): void {
@@ -157,6 +163,11 @@ export class SegubiciP1Component implements OnInit {
 						.subscribe( response => {
 							if( response.code === 200 ) {
 								this.municipios = response.data;
+
+								if( this.segubiciP1Service.hasModelP1() ) {
+									let fMunicipio = this.municipios.filter( ( municipio: any ) => municipio.claveEntidad === this.segubiciP1Service.getModelP1().delegacionMunicipio.claveEntidad );
+									this.frmSegubiciP1.get( 'delegacionMunicipio' ).setValue( fMunicipio[ 0 ] );
+								}
 							}
 						});
 				} else {
@@ -165,6 +176,31 @@ export class SegubiciP1Component implements OnInit {
 				this.frmSegubiciP1.get( 'delegacionMunicipio' ).setValue( '' );
 			}
 		});
+	}
+
+	private mostrarDatosCapturados(): void {
+		this.frmSegubiciP1.get( 'nombre' ).setValue( this.segubiciP1Service.getModelP1().nombre );
+		this.frmSegubiciP1.get( 'apaterno' ).setValue( this.segubiciP1Service.getModelP1().apaterno );
+		this.frmSegubiciP1.get( 'amaterno' ).setValue( this.segubiciP1Service.getModelP1().amaterno );
+		this.frmSegubiciP1.get( 'fechanac' ).patchValue( this.segubiciP1Service.getModelP1().fechanac );
+		this.frmSegubiciP1.get( 'nacionalidad' ).setValue( this.segubiciP1Service.getModelP1().nacionalidad );
+		this.frmSegubiciP1.get( 'rfc' ).setValue( this.segubiciP1Service.getModelP1().rfc );
+		this.frmSegubiciP1.get( 'estadoCivil' ).setValue( this.segubiciP1Service.getModelP1().estadoCivil );
+		this.frmSegubiciP1.get( 'genero' ).setValue( this.segubiciP1Service.getModelP1().genero );
+		this.frmSegubiciP1.get( 'fumador' ).setValue( this.segubiciP1Service.getModelP1().fumador );
+		this.frmSegubiciP1.get( 'calleNumero' ).setValue( this.segubiciP1Service.getModelP1().calleNumero );
+		this.frmSegubiciP1.get( 'coloniaPoblacion' ).setValue( this.segubiciP1Service.getModelP1().coloniaPoblacion );
+		this.frmSegubiciP1.get( 'cp' ).setValue( this.segubiciP1Service.getModelP1().cp );
+		this.frmSegubiciP1.get( 'telefonos.telefono' ).setValue( this.segubiciP1Service.getModelP1().telefono );
+		this.frmSegubiciP1.get( 'telefonos.celular' ).setValue( this.segubiciP1Service.getModelP1().celular );
+		this.frmSegubiciP1.get( 'correoe' ).setValue( this.segubiciP1Service.getModelP1().correoe );
+		this.frmSegubiciP1.get( 'gobierno' ).setValue( this.segubiciP1Service.getModelP1().gobierno );
+		this.frmSegubiciP1.get( 'especifiqueGob' ).setValue( this.segubiciP1Service.getModelP1().especifiqueGob );
+		this.frmSegubiciP1.get( 'parienteGob' ).setValue( this.segubiciP1Service.getModelP1().parienteGob );
+		this.frmSegubiciP1.get( 'especifiqueParGob' ).setValue( this.segubiciP1Service.getModelP1().especifiqueParGob );
+
+		let fEstado = this.estados.filter( ( estado: any ) => estado.claveEntidad === this.segubiciP1Service.getModelP1().estado.claveEntidad );
+		this.frmSegubiciP1.get( 'estado' ).setValue( fEstado[ 0 ] );
 	}
 
 	fnCambiarGobierno(): void {

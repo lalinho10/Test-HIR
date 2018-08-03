@@ -1,6 +1,8 @@
 import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
+import { Observable }						  from 'rxjs/Observable';
+import											   'rxjs/add/observable/forkJoin';
 
 import { ApindividualP1Service }			  from './apindividual-p1.service';
 
@@ -45,19 +47,23 @@ export class ApindividualP1Component implements OnInit {
 	){}
 
 	ngOnInit() {
-		this.leerCatalogos();
 		this.crearFormulario();
 		this.registrarEventos();
+		this.leerCatalogos();
 	}
 
 	private leerCatalogos(): void {
-		this.wsClientService
-			.postObject( '/catalogoEstado', {} )
-			.subscribe( response => {
-				if( response.code === 200 ) {
-					this.estados = response.data;
-				}
-			});
+		Observable.forkJoin(
+			this.wsClientService.postObject( '/catalogoEstado', {} )
+		).subscribe( response => {
+			if( response[ 0 ].code === 200 ) {
+				this.estados = response[ 0 ].data;
+			}
+
+			if( this.apindividualP1Service.hasModelP1() ) {
+				this.mostrarDatosCapturados();
+			}
+		});
 	}
 
 	private crearFormulario(): void {
@@ -157,6 +163,11 @@ export class ApindividualP1Component implements OnInit {
 						.subscribe( response => {
 							if( response.code === 200 ) {
 								this.municipios = response.data;
+
+								if( this.apindividualP1Service.hasModelP1() ) {
+									let fMunicipio = this.municipios.filter( ( municipio: any ) => municipio.claveEntidad === this.apindividualP1Service.getModelP1().delegacionMunicipio.claveEntidad );
+									this.frmApindividualP1.get( 'delegacionMunicipio' ).setValue( fMunicipio[ 0 ] );
+								}
 							}
 						});
 				} else {
@@ -165,6 +176,31 @@ export class ApindividualP1Component implements OnInit {
 				this.frmApindividualP1.get( 'delegacionMunicipio' ).setValue( '' );
 			}
 		});
+	}
+
+	private mostrarDatosCapturados(): void {
+		this.frmApindividualP1.get( 'nombre' ).setValue( this.apindividualP1Service.getModelP1().nombre );
+		this.frmApindividualP1.get( 'apaterno' ).setValue( this.apindividualP1Service.getModelP1().apaterno );
+		this.frmApindividualP1.get( 'amaterno' ).setValue( this.apindividualP1Service.getModelP1().amaterno );
+		this.frmApindividualP1.get( 'fechanac' ).patchValue( this.apindividualP1Service.getModelP1().fechanac );
+		this.frmApindividualP1.get( 'nacionalidad' ).setValue( this.apindividualP1Service.getModelP1().nacionalidad );
+		this.frmApindividualP1.get( 'rfc' ).setValue( this.apindividualP1Service.getModelP1().rfc );
+		this.frmApindividualP1.get( 'estadoCivil' ).setValue( this.apindividualP1Service.getModelP1().estadoCivil );
+		this.frmApindividualP1.get( 'genero' ).setValue( this.apindividualP1Service.getModelP1().genero );
+		this.frmApindividualP1.get( 'fumador' ).setValue( this.apindividualP1Service.getModelP1().fumador );
+		this.frmApindividualP1.get( 'calleNumero' ).setValue( this.apindividualP1Service.getModelP1().calleNumero );
+		this.frmApindividualP1.get( 'coloniaPoblacion' ).setValue( this.apindividualP1Service.getModelP1().coloniaPoblacion );
+		this.frmApindividualP1.get( 'cp' ).setValue( this.apindividualP1Service.getModelP1().cp );
+		this.frmApindividualP1.get( 'telefonos.telefono' ).setValue( this.apindividualP1Service.getModelP1().telefono );
+		this.frmApindividualP1.get( 'telefonos.celular' ).setValue( this.apindividualP1Service.getModelP1().celular );
+		this.frmApindividualP1.get( 'correoe' ).setValue( this.apindividualP1Service.getModelP1().correoe );
+		this.frmApindividualP1.get( 'gobierno' ).setValue( this.apindividualP1Service.getModelP1().gobierno );
+		this.frmApindividualP1.get( 'especifiqueGob' ).setValue( this.apindividualP1Service.getModelP1().especifiqueGob );
+		this.frmApindividualP1.get( 'parienteGob' ).setValue( this.apindividualP1Service.getModelP1().parienteGob );
+		this.frmApindividualP1.get( 'especifiqueParGob' ).setValue( this.apindividualP1Service.getModelP1().especifiqueParGob );
+
+		let fEstado = this.estados.filter( ( estado: any ) => estado.claveEntidad === this.apindividualP1Service.getModelP1().estado.claveEntidad );
+		this.frmApindividualP1.get( 'estado' ).setValue( fEstado[ 0 ] );
 	}
 
 	fnCambiarGobierno(): void {

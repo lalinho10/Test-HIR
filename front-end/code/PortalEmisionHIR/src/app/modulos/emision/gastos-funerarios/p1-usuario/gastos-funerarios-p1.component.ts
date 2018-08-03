@@ -1,6 +1,8 @@
 import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
+import { Observable }						  from 'rxjs/Observable';
+import											   'rxjs/add/observable/forkJoin';
 
 import { GastosFunerariosP1Service }		  from './gastos-funerarios-p1.service';
 
@@ -50,27 +52,28 @@ export class GastosFunerariosP1Component implements OnInit {
 	){}
 
 	ngOnInit() {
-		this.leerCatalogos();
 		this.crearFormulario();
 		this.registrarEventos();
+		this.leerCatalogos();
 	}
 
 	private leerCatalogos(): void {
-		this.wsClientService
-			.postObject( '/catalogoOcupacion', {} )
-			.subscribe( response => {
-				if( response.code === 200 ) {
-					this.ocupaciones = response.data;
-				}
-			});
+		Observable.forkJoin(
+			this.wsClientService.postObject( '/catalogoOcupacion', {} ),
+			this.wsClientService.postObject( '/catalogoEstado', {} )
+		).subscribe( response => {
+			if( response[ 0 ].code === 200 ) {
+				this.ocupaciones = response[ 0 ].data;
+			}
 
-		this.wsClientService
-			.postObject( '/catalogoEstado', {} )
-			.subscribe( response => {
-				if( response.code === 200 ) {
-					this.estados = response.data;
-				}
-			});
+			if( response[ 1 ].code === 200 ) {
+				this.estados = response[ 1 ].data;
+			}
+
+			if( this.gastosFunerariosP1Service.hasModelP1() ) {
+				this.mostrarDatosCapturados();
+			}
+		});
 	}
 
 	private crearFormulario(): void {
@@ -179,6 +182,11 @@ export class GastosFunerariosP1Component implements OnInit {
 						.subscribe( response => {
 							if( response.code === 200 ) {
 								this.municipios = response.data;
+
+								if( this.gastosFunerariosP1Service.hasModelP1() ) {
+									let fMunicipio = this.municipios.filter( ( municipio: any ) => municipio.claveEntidad === this.gastosFunerariosP1Service.getModelP1().delegacionMunicipio.claveEntidad );
+									this.frmGastosFunerariosP1.get( 'delegacionMunicipio' ).setValue( fMunicipio[ 0 ] );
+								}
 							}
 						});
 				} else {
@@ -187,6 +195,33 @@ export class GastosFunerariosP1Component implements OnInit {
 				this.frmGastosFunerariosP1.get( 'delegacionMunicipio' ).setValue( '' );
 			}
 		});
+	}
+
+	private mostrarDatosCapturados(): void {
+		this.frmGastosFunerariosP1.get( 'padecimiento' ).setValue( this.gastosFunerariosP1Service.getModelP1().padecimiento );
+		this.frmGastosFunerariosP1.get( 'peso' ).setValue( this.gastosFunerariosP1Service.getModelP1().peso );
+		this.frmGastosFunerariosP1.get( 'estatura' ).setValue( this.gastosFunerariosP1Service.getModelP1().estatura );
+		this.frmGastosFunerariosP1.get( 'nombre' ).setValue( this.gastosFunerariosP1Service.getModelP1().nombre );
+		this.frmGastosFunerariosP1.get( 'apaterno' ).setValue( this.gastosFunerariosP1Service.getModelP1().apaterno );
+		this.frmGastosFunerariosP1.get( 'amaterno' ).setValue( this.gastosFunerariosP1Service.getModelP1().amaterno );
+		this.frmGastosFunerariosP1.get( 'fechanac' ).patchValue( this.gastosFunerariosP1Service.getModelP1().fechanac );
+		this.frmGastosFunerariosP1.get( 'nacionalidad' ).setValue( this.gastosFunerariosP1Service.getModelP1().nacionalidad );
+		this.frmGastosFunerariosP1.get( 'rfc' ).setValue( this.gastosFunerariosP1Service.getModelP1().rfc );
+		this.frmGastosFunerariosP1.get( 'estadoCivil' ).setValue( this.gastosFunerariosP1Service.getModelP1().estadoCivil );
+		this.frmGastosFunerariosP1.get( 'genero' ).setValue( this.gastosFunerariosP1Service.getModelP1().genero );
+		this.frmGastosFunerariosP1.get( 'calleNumero' ).setValue( this.gastosFunerariosP1Service.getModelP1().calleNumero );
+		this.frmGastosFunerariosP1.get( 'coloniaPoblacion' ).setValue( this.gastosFunerariosP1Service.getModelP1().coloniaPoblacion );
+		this.frmGastosFunerariosP1.get( 'cp' ).setValue( this.gastosFunerariosP1Service.getModelP1().cp );
+		this.frmGastosFunerariosP1.get( 'telefonos.telefono' ).setValue( this.gastosFunerariosP1Service.getModelP1().telefono );
+		this.frmGastosFunerariosP1.get( 'telefonos.celular' ).setValue( this.gastosFunerariosP1Service.getModelP1().celular );
+		this.frmGastosFunerariosP1.get( 'correos.correoe1' ).setValue( this.gastosFunerariosP1Service.getModelP1().correoe1 );
+		this.frmGastosFunerariosP1.get( 'correos.correoe2' ).setValue( this.gastosFunerariosP1Service.getModelP1().correoe2 );
+
+		let fOcupacion = this.ocupaciones.filter( ( ocupacion: any ) => ocupacion.id === this.gastosFunerariosP1Service.getModelP1().ocupacion.id );
+		this.frmGastosFunerariosP1.get( 'ocupacion' ).setValue( fOcupacion[ 0 ] );
+
+		let fEstado = this.estados.filter( ( estado: any ) => estado.claveEntidad === this.gastosFunerariosP1Service.getModelP1().estado.claveEntidad );
+		this.frmGastosFunerariosP1.get( 'estado' ).setValue( fEstado[ 0 ] );
 	}
 
 	fnAvanzarP2(): void {

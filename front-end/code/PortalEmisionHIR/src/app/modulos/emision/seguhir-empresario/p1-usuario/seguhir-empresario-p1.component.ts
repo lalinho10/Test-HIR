@@ -1,6 +1,8 @@
 import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
+import { Observable }						  from 'rxjs/Observable';
+import											   'rxjs/add/observable/forkJoin';
 
 import { SeguhirEmpresarioP1Service }		  from './seguhir-empresario-p1.service';
 
@@ -50,27 +52,28 @@ export class SeguhirEmpresarioP1Component implements OnInit {
 	){}
 
 	ngOnInit() {
-		this.leerCatalogos();
 		this.crearFormulario();
 		this.registrarEventos();
+		this.leerCatalogos();
 	}
 
 	private leerCatalogos(): void {
-		this.wsClientService
-			.postObject( '/catalogoOcupacion', {} )
-			.subscribe( response => {
-				if( response.code === 200 ) {
-					this.ocupaciones = response.data;
-				}
-			});
+		Observable.forkJoin(
+			this.wsClientService.postObject( '/catalogoOcupacion', {} ),
+			this.wsClientService.postObject( '/catalogoEstado', {} )
+		).subscribe( response => {
+			if( response[ 0 ].code === 200 ) {
+				this.ocupaciones = response[ 0 ].data;
+			}
 
-		this.wsClientService
-			.postObject( '/catalogoEstado', {} )
-			.subscribe( response => {
-				if( response.code === 200 ) {
-					this.estados = response.data;
-				}
-			});
+			if( response[ 1 ].code === 200 ) {
+				this.estados = response[ 1 ].data;
+			}
+
+			if( this.seguhirEmpresarioP1Service.hasModelP1() ) {
+				this.mostrarDatosCapturados();
+			}
+		});
 	}
 
 	private crearFormulario(): void {
@@ -179,6 +182,11 @@ export class SeguhirEmpresarioP1Component implements OnInit {
 						.subscribe( response => {
 							if( response.code === 200 ) {
 								this.municipios = response.data;
+
+								if( this.seguhirEmpresarioP1Service.hasModelP1() ) {
+									let fMunicipio = this.municipios.filter( ( municipio: any ) => municipio.claveEntidad === this.seguhirEmpresarioP1Service.getModelP1().delegacionMunicipio.claveEntidad );
+									this.frmSeguhirEmpresarioP1.get( 'delegacionMunicipio' ).setValue( fMunicipio[ 0 ] );
+								}
 							}
 						});
 				} else {
@@ -187,6 +195,33 @@ export class SeguhirEmpresarioP1Component implements OnInit {
 				this.frmSeguhirEmpresarioP1.get( 'delegacionMunicipio' ).setValue( '' );
 			}
 		});
+	}
+
+	private mostrarDatosCapturados(): void {
+		this.frmSeguhirEmpresarioP1.get( 'padecimiento' ).setValue( this.seguhirEmpresarioP1Service.getModelP1().padecimiento );
+		this.frmSeguhirEmpresarioP1.get( 'peso' ).setValue( this.seguhirEmpresarioP1Service.getModelP1().peso );
+		this.frmSeguhirEmpresarioP1.get( 'estatura' ).setValue( this.seguhirEmpresarioP1Service.getModelP1().estatura );
+		this.frmSeguhirEmpresarioP1.get( 'nombre' ).setValue( this.seguhirEmpresarioP1Service.getModelP1().nombre );
+		this.frmSeguhirEmpresarioP1.get( 'apaterno' ).setValue( this.seguhirEmpresarioP1Service.getModelP1().apaterno );
+		this.frmSeguhirEmpresarioP1.get( 'amaterno' ).setValue( this.seguhirEmpresarioP1Service.getModelP1().amaterno );
+		this.frmSeguhirEmpresarioP1.get( 'fechanac' ).patchValue( this.seguhirEmpresarioP1Service.getModelP1().fechanac );
+		this.frmSeguhirEmpresarioP1.get( 'nacionalidad' ).setValue( this.seguhirEmpresarioP1Service.getModelP1().nacionalidad );
+		this.frmSeguhirEmpresarioP1.get( 'rfc' ).setValue( this.seguhirEmpresarioP1Service.getModelP1().rfc );
+		this.frmSeguhirEmpresarioP1.get( 'estadoCivil' ).setValue( this.seguhirEmpresarioP1Service.getModelP1().estadoCivil );
+		this.frmSeguhirEmpresarioP1.get( 'genero' ).setValue( this.seguhirEmpresarioP1Service.getModelP1().genero );
+		this.frmSeguhirEmpresarioP1.get( 'calleNumero' ).setValue( this.seguhirEmpresarioP1Service.getModelP1().calleNumero );
+		this.frmSeguhirEmpresarioP1.get( 'coloniaPoblacion' ).setValue( this.seguhirEmpresarioP1Service.getModelP1().coloniaPoblacion );
+		this.frmSeguhirEmpresarioP1.get( 'cp' ).setValue( this.seguhirEmpresarioP1Service.getModelP1().cp );
+		this.frmSeguhirEmpresarioP1.get( 'telefonos.telefono' ).setValue( this.seguhirEmpresarioP1Service.getModelP1().telefono );
+		this.frmSeguhirEmpresarioP1.get( 'telefonos.celular' ).setValue( this.seguhirEmpresarioP1Service.getModelP1().celular );
+		this.frmSeguhirEmpresarioP1.get( 'correos.correoe1' ).setValue( this.seguhirEmpresarioP1Service.getModelP1().correoe1 );
+		this.frmSeguhirEmpresarioP1.get( 'correos.correoe2' ).setValue( this.seguhirEmpresarioP1Service.getModelP1().correoe2 );
+
+		let fOcupacion = this.ocupaciones.filter( ( ocupacion: any ) => ocupacion.id === this.seguhirEmpresarioP1Service.getModelP1().ocupacion.id );
+		this.frmSeguhirEmpresarioP1.get( 'ocupacion' ).setValue( fOcupacion[ 0 ] );
+
+		let fEstado = this.estados.filter( ( estado: any ) => estado.claveEntidad === this.seguhirEmpresarioP1Service.getModelP1().estado.claveEntidad );
+		this.frmSeguhirEmpresarioP1.get( 'estado' ).setValue( fEstado[ 0 ] );
 	}
 
 	fnAvanzarP2(): void {
