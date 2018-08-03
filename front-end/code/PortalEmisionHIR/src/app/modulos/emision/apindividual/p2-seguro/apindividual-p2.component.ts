@@ -1,6 +1,8 @@
 import { Component, OnInit }				  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
+import { Observable }						  from 'rxjs/Observable';
+import											   'rxjs/add/observable/forkJoin';
 
 import { ApindividualP2Service }			  from './apindividual-p2.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
@@ -37,57 +39,49 @@ export class ApindividualP2Component implements OnInit {
 	){}
 
 	ngOnInit() {
-		this.leerCatalogos();
 		this.crearFormulario();
+		this.leerCatalogos();
 	}
 
 	private leerCatalogos(): void {
-		this.wsClientService
-			.postObject( '/catCobertura', { 'id': this.idProducto } )
-			.subscribe( response => {
-				if( response.code === 200 ) {
-					this.coberturas = response.data;
-				}
-			});
+		Observable.forkJoin(
+			this.wsClientService.postObject( '/catCobertura', { 'id': this.idProducto } ),
+			this.wsClientService.postObject( '/catFormaPago', { 'id': this.idProducto } ),
+			this.wsClientService.postObject( '/catalogoModulo', { 'id': this.idProducto } ),
+			this.wsClientService.postObject( '/catalogoOcupacion', {} ),
+			this.wsClientService.postObject( '/catPlan', { 'id': this.idProducto } )
+		).subscribe( response => {
+			if( response[ 0 ].code === 200 ) {
+				this.coberturas = response[ 0 ].data;
+			}
 
-		this.wsClientService
-			.postObject( '/catFormaPago', { 'id': this.idProducto } )
-			.subscribe( response => {
-				if( response.code === 200 ) {
-					this.formasPago = response.data;
-				}
-			});
+			if( response[ 1 ].code === 200 ) {
+				this.formasPago = response[ 1 ].data;
+			}
 
-		this.wsClientService
-			.postObject( '/catalogoModulo', { 'id': this.idProducto } )
-			.subscribe( response => {
-				if( response.codigoRespuesta === 200 ) {
-					this.modulos = new Array<Modulo>();
+			if( response[ 2 ].codigoRespuesta === 200 ) {
+				this.modulos = new Array<Modulo>();
 
-					for( let i:number = response.min; i <= response.max; i++ ) {
-						let modulo: Modulo = new Modulo();
-						modulo.idModulo = i;
-						modulo.descModulo = String( i );
-						this.modulos.push( modulo );
-					}
+				for( let i:number = response[ 2 ].min; i <= response[ 2 ].max; i++ ) {
+					let modulo: Modulo = new Modulo();
+					modulo.idModulo = i;
+					modulo.descModulo = String( i );
+					this.modulos.push( modulo );
 				}
-			});
+			}
 
-		this.wsClientService
-			.postObject( '/catalogoOcupacion', {} )
-			.subscribe( response => {
-				if( response.code === 200 ) {
-					this.ocupaciones = response.data;
-				}
-			});
+			if( response[ 3 ].code === 200 ) {
+				this.ocupaciones = response[ 3 ].data;
+			}
 
-		this.wsClientService
-			.postObject( '/catPlan', { 'id': this.idProducto } )
-			.subscribe( response => {
-				if( response.code === 200 ) {
-					this.planes = response.data;
-				}
-			});
+			if( response[ 4 ].code === 200 ) {
+				this.planes = response[ 4 ].data;
+			}
+
+			if( this.apindividualP2Service.hasModelP2() ) {
+				this.mostrarDatosCapturados();
+			}
+		});
 	}
 
 	private crearFormulario(): void {
@@ -115,6 +109,24 @@ export class ApindividualP2Component implements OnInit {
 				ClaveAgenteValidator()
 			])]
 		});
+	}
+
+	private mostrarDatosCapturados(): void {
+		this.frmApindividualP2.get( 'descactividad' ).setValue( this.apindividualP2Service.getModelP2().descactividad );
+		this.frmApindividualP2.get( 'agente' ).setValue( this.apindividualP2Service.getModelP2().agente );
+		this.frmApindividualP2.get( 'clave' ).setValue( this.apindividualP2Service.getModelP2().clave );
+
+		let fOcupacion = this.ocupaciones.filter( ( ocupacion: any ) => ocupacion.id === this.apindividualP2Service.getModelP2().ocupacion.id );
+		this.frmApindividualP2.get( 'ocupacion' ).setValue( fOcupacion[ 0 ] );
+
+		let fModulo = this.modulos.filter( ( modulo: any ) => modulo.idModulo === this.apindividualP2Service.getModelP2().modulo.idModulo );
+		this.frmApindividualP2.get( 'modulo' ).setValue( fModulo[ 0 ] );
+
+		let fFormaPago = this.formasPago.filter( ( formaPago: any ) => formaPago.id === this.apindividualP2Service.getModelP2().formaPago.id );
+		this.frmApindividualP2.get( 'formaPago' ).setValue( fFormaPago[ 0 ] );
+
+		let fPlan = this.planes.filter( ( plan: any ) => plan.id === this.apindividualP2Service.getModelP2().plan.id );
+		this.frmApindividualP2.get( 'plan' ).setValue( fPlan[ 0 ] );
 	}
 
 	fnRegresar(): void {

@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild }		  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
+import { Observable }						  from 'rxjs/Observable';
+import											   'rxjs/add/observable/forkJoin';
 
 import { GastosFunerariosP2Service }		  from './gastos-funerarios-p2.service';
 
@@ -47,44 +49,39 @@ export class GastosFunerariosP2Component implements OnInit {
 	}
 
 	private leerCatalogos(): void {
-		this.wsClientService
-			.postObject( '/catCobertura', { 'id': this.idProducto } )
-			.subscribe( response => {
-				if( response.code === 200 ) {
-					this.coberturas = response.data;
-				}
-			});
+		Observable.forkJoin(
+			this.wsClientService.postObject( '/catCobertura', { 'id': this.idProducto } ),
+			this.wsClientService.postObject( '/catFormaPago', { 'id': this.idProducto } ),
+			this.wsClientService.postObject( '/catalogoModulo', { 'id': this.idProducto } ),
+			this.wsClientService.postObject( '/catPlan', { 'id': this.idProducto } )
+		).subscribe( response => {
+			if( response[ 0 ].code === 200 ) {
+				this.coberturas = response[ 0 ].data;
+			}
 
-		this.wsClientService
-			.postObject( '/catFormaPago', { 'id': this.idProducto } )
-			.subscribe( response => {
-				if( response.code === 200 ) {
-					this.formasPago = response.data;
-				}
-			});
+			if( response[ 1 ].code === 200 ) {
+				this.formasPago = response[ 1 ].data;
+			}
 
-		this.wsClientService
-			.postObject( '/catalogoModulo', { 'id': this.idProducto } )
-			.subscribe( response => {
-				if( response.codigoRespuesta === 200 ) {
-					this.modulos = new Array<Modulo>();
+			if( response[ 2 ].codigoRespuesta === 200 ) {
+				this.modulos = new Array<Modulo>();
 
-					for( let i:number = response.min; i <= response.max; i++ ) {
-						let modulo: Modulo = new Modulo();
-						modulo.idModulo = i;
-						modulo.descModulo = String( i );
-						this.modulos.push( modulo );
-					}
+				for( let i:number = response[ 2 ].min; i <= response[ 2 ].max; i++ ) {
+					let modulo: Modulo = new Modulo();
+					modulo.idModulo = i;
+					modulo.descModulo = String( i );
+					this.modulos.push( modulo );
 				}
-			});
+			}
 
-		this.wsClientService
-			.postObject( '/catPlan', { 'id': this.idProducto } )
-			.subscribe( response => {
-				if( response.code === 200 ) {
-					this.planes = response.data;
-				}
-			});
+			if( response[ 3 ].code === 200 ) {
+				this.planes = response[ 3 ].data;
+			}
+
+			if( this.gastosFunerariosP1Service.hasModelP2() ) {
+				this.mostrarDatosCapturados();
+			}
+		});
 	}
 
 	private crearFormulario(): void {
@@ -106,6 +103,22 @@ export class GastosFunerariosP2Component implements OnInit {
 				ClaveAgenteValidator()
 			])]
 		});
+	}
+
+	private mostrarDatosCapturados(): void {
+		this.frmGastosFunerariosP2.get( 'agente' ).setValue( this.gastosFunerariosP1Service.getModelP2().agente );
+		this.frmGastosFunerariosP2.get( 'clave' ).setValue( this.gastosFunerariosP1Service.getModelP2().clave );
+
+		let fModulo = this.modulos.filter( ( modulo: any ) => modulo.idModulo === this.gastosFunerariosP1Service.getModelP2().modulo.idModulo );
+		this.frmGastosFunerariosP2.get( 'modulo' ).setValue( fModulo[ 0 ] );
+
+		let fFormaPago = this.formasPago.filter( ( formaPago: any ) => formaPago.id === this.gastosFunerariosP1Service.getModelP2().formaPago.id );
+		this.frmGastosFunerariosP2.get( 'formaPago' ).setValue( fFormaPago[ 0 ] );
+
+		let fPlan = this.planes.filter( ( plan: any ) => plan.id === this.gastosFunerariosP1Service.getModelP2().plan.id );
+		this.frmGastosFunerariosP2.get( 'plan' ).setValue( fPlan[ 0 ] );
+
+		//this.tablaBeneficiarios.beneficiarios = this.gastosFunerariosP1Service.getModelP2().beneficiarios;
 	}
 
 	onValidateTable( isValidTable ): void {
