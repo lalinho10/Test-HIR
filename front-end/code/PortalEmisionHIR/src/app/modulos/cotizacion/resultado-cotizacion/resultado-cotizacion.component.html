@@ -7,16 +7,6 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col col-100">
-		<label class="text-center">Suma asegurada</label>
-	</div>
-</div>
-<div class="row">
-	<div class="col col-100">
-		<label class="sum-label">{{resultadoCotizacion.sumaAsegurada | currency: 'MXN': 'symbol-narrow'}}</label>
-	</div>
-</div>
-<div class="row">
 	<div class="col col-50">
 		<label class="form-label">Nombre:</label>
 	</div>
@@ -26,26 +16,10 @@
 </div>
 <div class="row">
 	<div class="col col-50">
-		<label class="form-label">Pago:</label>
+		<label class="form-label">Sexo:</label>
 	</div>
 	<div class="col col-50">
-		<label class="res-label">{{resultadoCotizacion.montoPago | currency: 'MXN': 'symbol-narrow'}}</label>
-	</div>
-</div>
-<div class="row">
-	<div class="col col-50">
-		<label class="form-label">Forma de Pago:</label>
-	</div>
-	<div class="col col-50">
-		<label class="res-label">{{cotizacion.formaPago.desc}}</label>
-	</div>
-</div>
-<div class="row">
-	<div class="col col-50">
-		<label class="form-label">Deducible:</label>
-	</div>
-	<div class="col col-50">
-		<label class="res-label">{{resultadoCotizacion.deducible | currency: 'MXN': 'symbol-narrow'}}</label>
+		<label class="res-label">{{cotizacion.genero.descGenero}}</label>
 	</div>
 </div>
 <div class="row">
@@ -58,10 +32,43 @@
 </div>
 <div class="row">
 	<div class="col col-50">
-		<label class="form-label">Sexo:</label>
+		<label class="form-label">Forma de Pago:</label>
 	</div>
 	<div class="col col-50">
-		<label class="res-label">{{cotizacion.genero.descGenero}}</label>
+		<label class="res-label">{{cotizacion.formaPago.desc}}</label>
+	</div>
+</div>
+<div class="row">
+	<div *ngFor="let tarifaCobertura of resultadoCotizacion.tarifas" class="col col-50">
+		<div class="row">
+			<div class="col col-100">
+				<label class="cob-label">{{tarifaCobertura.descripcion}}</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-50">
+				<label class="form-label">Suma asegurada</label>
+			</div>
+			<div class="col col-50">
+				<label class="res-label">{{tarifaCobertura.suma | currency: 'MXN': 'symbol-narrow'}}</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-50">
+				<label class="form-label">Pago:</label>
+			</div>
+			<div class="col col-50">
+				<label class="res-label">{{tarifaCobertura.tarifa | currency: 'MXN': 'symbol-narrow'}}</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-50">
+				<label class="form-label">Deducible:</label>
+			</div>
+			<div class="col col-50">
+				<label class="res-label">{{tarifaCobertura.deducible | currency: 'MXN': 'symbol-narrow'}}</label>
+			</div>
+		</div>
 	</div>
 </div>
 <div class="row">

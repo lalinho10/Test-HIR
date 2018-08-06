@@ -6,6 +6,7 @@ import { ResultadoCotizacion } from './resultado-cotizacion/resultado-cotizacion
 import { PRODUCTOS }		   from 'app/core/data/productos';
 
 import { Producto }			   from 'app/core/models/producto';
+import { TarifaCobertura }	   from 'app/core/models/tarifa-cobertura';
 
 @Injectable()
 export class CotizacionService {
@@ -53,10 +54,19 @@ export class CotizacionService {
 	definirResultadoCotizacion( responseTarifa: any ): void {
 		this.resultadoCotizacion = new ResultadoCotizacion();
 
-		this.resultadoCotizacion.montoPago = responseTarifa.tarifa;
-		this.resultadoCotizacion.sumaAsegurada = responseTarifa.suma;
-		this.resultadoCotizacion.deducible = responseTarifa.deducible;
 		this.resultadoCotizacion.edad = responseTarifa.edad;
+		this.resultadoCotizacion.tarifas = new Array();
+
+		for( let i = 0; i < responseTarifa.data.length; i++ ) {
+			let tarifaCobertura: TarifaCobertura = new TarifaCobertura();
+
+			tarifaCobertura.tarifa = responseTarifa.data[ i ].tarifa;
+			tarifaCobertura.deducible = responseTarifa.data[ i ].deducible;
+			tarifaCobertura.suma = responseTarifa.data[ i ].suma;
+			tarifaCobertura.descripcion = responseTarifa.data[ i ].descripcion;
+
+			this.resultadoCotizacion.tarifas.push( tarifaCobertura );
+		}
 	}
 
 	obtenerResultadoCotizacion(): ResultadoCotizacion {

@@ -1,6 +1,6 @@
+import { TarifaCobertura } from 'app/core/models/tarifa-cobertura';
+
 export class ResultadoCotizacion {
 	edad: number;
-	deducible: number;
-	montoPago: number;
-	sumaAsegurada: number;
+	tarifas: TarifaCobertura[];
 }
