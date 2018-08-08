@@ -5,15 +5,17 @@ import { Observable }						  from 'rxjs/Observable';
 import											   'rxjs/add/observable/forkJoin';
 
 import { ApindividualP2Service }			  from './apindividual-p2.service';
-import { WSClientService }					  from 'app/core/services/ws-client.service';
-
-import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.validator';
 
 import { Cobertura }						  from 'app/core/models/cobertura';
 import { FormaPago }						  from 'app/core/models/forma-pago';
 import { Modulo }							  from 'app/core/models/modulo';
 import { Ocupacion }						  from 'app/core/models/ocupacion';
 import { Plan }								  from 'app/core/models/plan';
+
+import { AuthenticationService }			  from 'app/core/services/authentication/authentication.service';
+import { WSClientService }					  from 'app/core/services/ws-client.service';
+
+import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.validator';
 
 @Component({
 	selector: 'pehir-apindividual-p2',
@@ -22,6 +24,8 @@ import { Plan }								  from 'app/core/models/plan';
 
 export class ApindividualP2Component implements OnInit {
 	private idProducto: number = 1588;
+
+	editaAgente: boolean = false;
 
 	frmApindividualP2: FormGroup;
 
@@ -33,6 +37,7 @@ export class ApindividualP2Component implements OnInit {
 
 	constructor(
 		private apindividualP2Service: ApindividualP2Service,
+		private authenticationService: AuthenticationService,
 		private fb: FormBuilder,
 		private router: Router,
 		private wsClientService: WSClientService
@@ -41,6 +46,17 @@ export class ApindividualP2Component implements OnInit {
 	ngOnInit() {
 		this.crearFormulario();
 		this.leerCatalogos();
+		this.obtenerTipoUsuario();
+	}
+
+	private obtenerTipoUsuario(): void {
+		this.editaAgente = ( this.authenticationService.authenticatedUser.claveRol === 'Agente' ||
+							 this.authenticationService.authenticatedUser.claveRol === 'Operativo' );
+
+		if( !this.editaAgente ) {
+			this.frmApindividualP2.get( 'agente' ).clearValidators();
+			this.frmApindividualP2.get( 'clave' ).clearValidators();
+		}
 	}
 
 	private leerCatalogos(): void {

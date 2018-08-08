@@ -1,11 +1,13 @@
-import { Component, OnInit }	from '@angular/core';
-import { Router }				from '@angular/router';
+import { Component, OnInit }	 from '@angular/core';
+import { Router }				 from '@angular/router';
 
-import { ProcuraVidaP1Service }	from '../p1-usuario/procura-vida-p1.service';
-import { ProcuraVidaP2Service }	from '../p2-beneficiarios/procura-vida-p2.service';
+import { ProcuraVidaP1Service }	 from '../p1-usuario/procura-vida-p1.service';
+import { ProcuraVidaP2Service }	 from '../p2-beneficiarios/procura-vida-p2.service';
 
-import { ProcuraVidaP1 }		from '../p1-usuario/procura-vida-p1';
-import { ProcuraVidaP2 }		from '../p2-beneficiarios/procura-vida-p2';
+import { ProcuraVidaP1 }		 from '../p1-usuario/procura-vida-p1';
+import { ProcuraVidaP2 }		 from '../p2-beneficiarios/procura-vida-p2';
+
+import { AuthenticationService } from 'app/core/services/authentication/authentication.service';
 
 @Component({
 	selector: 'pehir-procura-vida-p3',
@@ -13,10 +15,13 @@ import { ProcuraVidaP2 }		from '../p2-beneficiarios/procura-vida-p2';
 })
 
 export class ProcuraVidaP3Component implements OnInit {
+	editaAgente: boolean = false;
+
 	procuraVidaP1: ProcuraVidaP1;
 	procuraVidaP2: ProcuraVidaP2;
 
 	constructor(
+		private authenticationService: AuthenticationService,
 		private procuraVidaP1Service: ProcuraVidaP1Service,
 		private procuraVidaP2Service: ProcuraVidaP2Service,
 		private router: Router
@@ -25,6 +30,8 @@ export class ProcuraVidaP3Component implements OnInit {
 	ngOnInit() {
 		this.procuraVidaP1 = this.procuraVidaP1Service.getModelP1();
 		this.procuraVidaP2 = this.procuraVidaP2Service.getModelP2();
+		this.editaAgente = ( this.authenticationService.authenticatedUser.claveRol === 'Agente' ||
+							 this.authenticationService.authenticatedUser.claveRol === 'Operativo' );
 	}
 
 	fnRegresar(): void {

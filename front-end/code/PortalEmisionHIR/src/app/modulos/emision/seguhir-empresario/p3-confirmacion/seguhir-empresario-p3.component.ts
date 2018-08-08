@@ -7,16 +7,21 @@ import { SeguhirEmpresarioP2Service } from '../p2-beneficiarios/seguhir-empresar
 import { SeguhirEmpresarioP1 }		  from '../p1-usuario/seguhir-empresario-p1';
 import { SeguhirEmpresarioP2 }		  from '../p2-beneficiarios/seguhir-empresario-p2';
 
+import { AuthenticationService }	  from 'app/core/services/authentication/authentication.service';
+
 @Component({
 	selector: 'pehir-seguhir-empresario-p3',
 	templateUrl: 'seguhir-empresario-p3.component.html'
 })
 
 export class SeguhirEmpresarioP3Component implements OnInit {
+	editaAgente: boolean = false;
+
 	seguhirEmpresarioP1: SeguhirEmpresarioP1;
 	seguhirEmpresarioP2: SeguhirEmpresarioP2;
 
 	constructor(
+		private authenticationService: AuthenticationService,
 		private seguhirEmpresarioP1Service: SeguhirEmpresarioP1Service,
 		private seguhirEmpresarioP2Service: SeguhirEmpresarioP2Service,
 		private router: Router
@@ -25,6 +30,8 @@ export class SeguhirEmpresarioP3Component implements OnInit {
 	ngOnInit() {
 		this.seguhirEmpresarioP1 = this.seguhirEmpresarioP1Service.getModelP1();
 		this.seguhirEmpresarioP2 = this.seguhirEmpresarioP2Service.getModelP2();
+		this.editaAgente = ( this.authenticationService.authenticatedUser.claveRol === 'Agente' ||
+							 this.authenticationService.authenticatedUser.claveRol === 'Operativo' );
 	}
 
 	fnRegresar(): void {

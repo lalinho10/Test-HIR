@@ -5,15 +5,17 @@ import { Observable }						  from 'rxjs/Observable';
 import											   'rxjs/add/observable/forkJoin';
 
 import { SegubiciP2Service }				  from './segubici-p2.service';
-import { WSClientService }					  from 'app/core/services/ws-client.service';
-
-import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.validator';
 
 import { Cobertura }						  from 'app/core/models/cobertura';
 import { FormaPago }						  from 'app/core/models/forma-pago';
 import { Modulo }							  from 'app/core/models/modulo';
 import { Ocupacion }						  from 'app/core/models/ocupacion';
 import { Plan }								  from 'app/core/models/plan';
+
+import { AuthenticationService }			  from 'app/core/services/authentication/authentication.service';
+import { WSClientService }					  from 'app/core/services/ws-client.service';
+
+import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.validator';
 
 @Component({
 	selector: 'pehir-segubici-p2',
@@ -22,6 +24,8 @@ import { Plan }								  from 'app/core/models/plan';
 
 export class SegubiciP2Component implements OnInit {
 	private idProducto: number = 1560;
+
+	editaAgente: boolean = false;
 
 	frmSegubiciP2: FormGroup;
 
@@ -32,6 +36,7 @@ export class SegubiciP2Component implements OnInit {
 	planes: Plan[];
 
 	constructor(
+		private authenticationService: AuthenticationService,
 		private fb: FormBuilder,
 		private router: Router,
 		private segubiciP2Service: SegubiciP2Service,
@@ -41,6 +46,17 @@ export class SegubiciP2Component implements OnInit {
 	ngOnInit() {
 		this.crearFormulario();
 		this.leerCatalogos();
+		this.obtenerTipoUsuario();
+	}
+
+	private obtenerTipoUsuario(): void {
+		this.editaAgente = ( this.authenticationService.authenticatedUser.claveRol === 'Agente' ||
+							 this.authenticationService.authenticatedUser.claveRol === 'Operativo' );
+
+		if( !this.editaAgente ) {
+			this.frmSegubiciP2.get( 'agente' ).clearValidators();
+			this.frmSegubiciP2.get( 'clave' ).clearValidators();
+		}
 	}
 
 	private leerCatalogos(): void {

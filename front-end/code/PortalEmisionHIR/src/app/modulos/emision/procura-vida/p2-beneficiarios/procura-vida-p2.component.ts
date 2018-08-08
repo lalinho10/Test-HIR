@@ -11,6 +11,7 @@ import { FormaPago }						  from 'app/core/models/forma-pago';
 import { Modulo }							  from 'app/core/models/modulo';
 import { Plan }								  from 'app/core/models/plan';
 
+import { AuthenticationService }			  from 'app/core/services/authentication/authentication.service';
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.validator';
@@ -28,6 +29,7 @@ export class ProcuraVidaP2Component implements OnInit {
 	private idProducto: number = 1484;
 
 	isValidTable: boolean = false;
+	editaAgente: boolean = false;
 
 	frmProcuraVidaP2: FormGroup;
 
@@ -37,6 +39,7 @@ export class ProcuraVidaP2Component implements OnInit {
 	planes: Plan[];
 
 	constructor(
+		private authenticationService: AuthenticationService,
 		private fb: FormBuilder,
 		private procuraVidaP2Service: ProcuraVidaP2Service,
 		private router: Router,
@@ -46,6 +49,17 @@ export class ProcuraVidaP2Component implements OnInit {
 	ngOnInit() {
 		this.crearFormulario();
 		this.leerCatalogos();
+		this.obtenerTipoUsuario();
+	}
+
+	private obtenerTipoUsuario(): void {
+		this.editaAgente = ( this.authenticationService.authenticatedUser.claveRol === 'Agente' ||
+							 this.authenticationService.authenticatedUser.claveRol === 'Operativo' );
+
+		if( !this.editaAgente ) {
+			this.frmProcuraVidaP2.get( 'agente' ).clearValidators();
+			this.frmProcuraVidaP2.get( 'clave' ).clearValidators();
+		}
 	}
 
 	private leerCatalogos(): void {
