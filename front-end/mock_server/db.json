@@ -3800,16 +3800,15 @@
 		"mensaje": "Tarifa obtenida satisfactoriamente",
 		"fechaOperacion": 1533593964994,
 		"edad": 34,
+		"tarifa": 5550,
 		"data":
 		[
 			{
-				"tarifa": 5550,
 				"deducible": 0,
 				"suma": 250000,
 				"descripcion": "MUERTE ACCIDENTAL"
 			},
 			{
-				"tarifa": 5550,
 				"deducible": 500,
 				"suma": 250000,
 				"descripcion": "REEMBOLSO DE GASTOS MEDICOS POR ACCIDENTE"

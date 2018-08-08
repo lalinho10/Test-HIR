@@ -32,6 +32,14 @@
 </div>
 <div class="row">
 	<div class="col col-50">
+		<label class="form-label">Pago:</label>
+	</div>
+	<div class="col col-50">
+		<label class="res-label">{{resultadoCotizacion.pago | currency: 'MXN': 'symbol-narrow'}}</label>
+	</div>
+</div>
+<div class="row">
+	<div class="col col-50">
 		<label class="form-label">Forma de Pago:</label>
 	</div>
 	<div class="col col-50">
@@ -51,14 +59,6 @@
 			</div>
 			<div class="col col-50">
 				<label class="res-label">{{tarifaCobertura.suma | currency: 'MXN': 'symbol-narrow'}}</label>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col col-50">
-				<label class="form-label">Pago:</label>
-			</div>
-			<div class="col col-50">
-				<label class="res-label">{{tarifaCobertura.tarifa | currency: 'MXN': 'symbol-narrow'}}</label>
 			</div>
 		</div>
 		<div class="row">

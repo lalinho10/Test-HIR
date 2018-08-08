@@ -55,12 +55,12 @@ export class CotizacionService {
 		this.resultadoCotizacion = new ResultadoCotizacion();
 
 		this.resultadoCotizacion.edad = responseTarifa.edad;
+		this.resultadoCotizacion.pago = responseTarifa.tarifa;
 		this.resultadoCotizacion.tarifas = new Array();
 
 		for( let i = 0; i < responseTarifa.data.length; i++ ) {
 			let tarifaCobertura: TarifaCobertura = new TarifaCobertura();
 
-			tarifaCobertura.tarifa = responseTarifa.data[ i ].tarifa;
 			tarifaCobertura.deducible = responseTarifa.data[ i ].deducible;
 			tarifaCobertura.suma = responseTarifa.data[ i ].suma;
 			tarifaCobertura.descripcion = responseTarifa.data[ i ].descripcion;
