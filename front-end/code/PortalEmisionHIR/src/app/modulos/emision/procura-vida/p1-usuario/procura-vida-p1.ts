@@ -26,6 +26,4 @@ export class ProcuraVidaP1 {
 	cp: number;
 	telefono: string;
 	celular: string;
-	correoe1: string;
-	correoe2: string;
 }

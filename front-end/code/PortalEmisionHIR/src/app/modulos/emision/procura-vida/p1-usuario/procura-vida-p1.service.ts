@@ -28,8 +28,6 @@ export class ProcuraVidaP1Service {
 		this.procuraVidaP1.cp = frmProcuraVidaP1.cp;
 		this.procuraVidaP1.telefono = frmProcuraVidaP1.telefonos.telefono;
 		this.procuraVidaP1.celular = frmProcuraVidaP1.telefonos.celular;
-		this.procuraVidaP1.correoe1 = frmProcuraVidaP1.correos.correoe1;
-		this.procuraVidaP1.correoe2 = frmProcuraVidaP1.correos.correoe2;
 	}
 
 	getModelP1(): ProcuraVidaP1 {
