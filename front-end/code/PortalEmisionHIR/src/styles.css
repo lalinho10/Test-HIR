@@ -86,8 +86,8 @@ button.left, input[type="button"].left, input[type="submit"].left {margin:0 auto
 button.right, input[type="button"].right, input[type="submit"].right {margin:0 0 0 auto;width:33.3333%;}
 button.login, input[type="button"].login, input[type="submit"].login {margin:10px 0 0 0;width:100%;}
 button:disabled, input[type="button"]:disabled, input[type="submit"]:disabled {cursor:not-allowed;opacity:0.5;}
-fieldset {border:1px solid #e1e1e1;border-radius:5px;margin-bottom:15px;padding:15px;}
-legend {padding:0 8px;}
+fieldset {border:1px solid #747474;border-radius:5px;margin-bottom:15px;padding:15px;}
+legend {color:#747474;font-weight:bold;padding:0 8px;}
 div.rdoContainer{height:27px;margin-bottom:15px;padding-top:4px;}
 div.rdoContainer.two {float:left;width:50%;}
 div.rdoContainer.three {float:left;width:33.3333%;}
