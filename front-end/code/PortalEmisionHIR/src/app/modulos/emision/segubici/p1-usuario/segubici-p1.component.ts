@@ -134,11 +134,6 @@ export class SegubiciP1Component implements OnInit {
 				validator: DiferenciaTelefonosValidator( 'telefono', 'celular' )
 			}),
 
-			'correoe': ['', Validators.compose([
-				Validators.required,
-				Validators.email,
-				Validators.maxLength(50)
-			])],
 			'gobierno': ['', Validators.compose([
 				Validators.required
 			])],
@@ -189,11 +184,10 @@ export class SegubiciP1Component implements OnInit {
 		this.frmSegubiciP1.get( 'genero' ).setValue( this.segubiciP1Service.getModelP1().genero );
 		this.frmSegubiciP1.get( 'fumador' ).setValue( this.segubiciP1Service.getModelP1().fumador );
 		this.frmSegubiciP1.get( 'calleNumero' ).setValue( this.segubiciP1Service.getModelP1().calleNumero );
-		this.frmSegubiciP1.get( 'coloniaPoblacion' ).setValue( this.segubiciP1Service.getModelP1().coloniaPoblacion );
 		this.frmSegubiciP1.get( 'cp' ).setValue( this.segubiciP1Service.getModelP1().cp );
+		this.frmSegubiciP1.get( 'coloniaPoblacion' ).setValue( this.segubiciP1Service.getModelP1().coloniaPoblacion );
 		this.frmSegubiciP1.get( 'telefonos.telefono' ).setValue( this.segubiciP1Service.getModelP1().telefono );
 		this.frmSegubiciP1.get( 'telefonos.celular' ).setValue( this.segubiciP1Service.getModelP1().celular );
-		this.frmSegubiciP1.get( 'correoe' ).setValue( this.segubiciP1Service.getModelP1().correoe );
 		this.frmSegubiciP1.get( 'gobierno' ).setValue( this.segubiciP1Service.getModelP1().gobierno );
 		this.frmSegubiciP1.get( 'especifiqueGob' ).setValue( this.segubiciP1Service.getModelP1().especifiqueGob );
 		this.frmSegubiciP1.get( 'parienteGob' ).setValue( this.segubiciP1Service.getModelP1().parienteGob );
