@@ -23,8 +23,6 @@ export class ApindividualP1Service {
 		this.apindividualP1.estado = frmApindividualP1.estado;
 		this.apindividualP1.delegacionMunicipio = frmApindividualP1.delegacionMunicipio;
 		this.apindividualP1.coloniaPoblacion = frmApindividualP1.coloniaPoblacion;
-		this.apindividualP1.telefono = frmApindividualP1.telefonos.telefono;
-		this.apindividualP1.celular = frmApindividualP1.telefonos.celular;
 		this.apindividualP1.gobierno = frmApindividualP1.gobierno;
 		this.apindividualP1.especifiqueGob = ( frmApindividualP1.gobierno ) ? frmApindividualP1.especifiqueGob : undefined;
 		this.apindividualP1.parienteGob = frmApindividualP1.parienteGob;

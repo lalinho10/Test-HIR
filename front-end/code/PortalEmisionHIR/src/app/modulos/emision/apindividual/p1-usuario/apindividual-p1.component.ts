@@ -20,9 +20,7 @@ import { CelularValidator }					  from 'app/core/validators/celular.validator';
 import { CodigoPostalValidator }			  from 'app/core/validators/codigo-postal.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
-import { TelefonoValidator }				  from 'app/core/validators/telefono.validator';
 import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
-import { DiferenciaTelefonosValidator }		  from 'app/core/validators/diferencia-telefonos.validator';
 
 @Component({
 	selector: 'pehir-apindividual-p1',
@@ -119,21 +117,6 @@ export class ApindividualP1Component implements OnInit {
 				Validators.required,
 				CodigoPostalValidator()
 			])],
-
-			'telefonos': this.fb.group({
-				'telefono': ['', Validators.compose([
-					Validators.required,
-					TelefonoValidator()
-				])],
-				'celular': ['', Validators.compose([
-					Validators.required,
-					CelularValidator()
-				])]
-			},
-			{
-				validator: DiferenciaTelefonosValidator( 'telefono', 'celular' )
-			}),
-
 			'gobierno': ['', Validators.compose([
 				Validators.required
 			])],
@@ -186,8 +169,6 @@ export class ApindividualP1Component implements OnInit {
 		this.frmApindividualP1.get( 'calleNumero' ).setValue( this.apindividualP1Service.getModelP1().calleNumero );
 		this.frmApindividualP1.get( 'cp' ).setValue( this.apindividualP1Service.getModelP1().cp );
 		this.frmApindividualP1.get( 'coloniaPoblacion' ).setValue( this.apindividualP1Service.getModelP1().coloniaPoblacion );
-		this.frmApindividualP1.get( 'telefonos.telefono' ).setValue( this.apindividualP1Service.getModelP1().telefono );
-		this.frmApindividualP1.get( 'telefonos.celular' ).setValue( this.apindividualP1Service.getModelP1().celular );
 		this.frmApindividualP1.get( 'gobierno' ).setValue( this.apindividualP1Service.getModelP1().gobierno );
 		this.frmApindividualP1.get( 'especifiqueGob' ).setValue( this.apindividualP1Service.getModelP1().especifiqueGob );
 		this.frmApindividualP1.get( 'parienteGob' ).setValue( this.apindividualP1Service.getModelP1().parienteGob );
