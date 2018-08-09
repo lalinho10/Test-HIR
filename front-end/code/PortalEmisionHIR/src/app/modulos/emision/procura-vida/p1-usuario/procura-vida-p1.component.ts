@@ -23,9 +23,7 @@ import { EstaturaValidator }				  from 'app/core/validators/estatura.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { PesoValidator }					  from 'app/core/validators/peso.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
-import { TelefonoValidator }				  from 'app/core/validators/telefono.validator';
 import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
-import { DiferenciaTelefonosValidator }		  from 'app/core/validators/diferencia-telefonos.validator';
 
 @Component({
 	selector: 'pehir-procura-vida-p1',
@@ -138,21 +136,7 @@ export class ProcuraVidaP1Component implements OnInit {
 			])],
 			'coloniaPoblacion': ['', Validators.compose([
 				Validators.required
-			])],
-
-			'telefonos': this.fb.group({
-				'telefono': ['', Validators.compose([
-				Validators.required,
-				TelefonoValidator()
-				])],
-				'celular': ['', Validators.compose([
-					Validators.required,
-					CelularValidator()
-				])]
-			},
-			{
-				validator: DiferenciaTelefonosValidator( 'telefono', 'celular' )
-			}),
+			])]
 		});
 	}
 
@@ -195,8 +179,6 @@ export class ProcuraVidaP1Component implements OnInit {
 		this.frmProcuraVidaP1.get( 'calleNumero' ).setValue( this.procuraVidaP1Service.getModelP1().calleNumero );
 		this.frmProcuraVidaP1.get( 'cp' ).setValue( this.procuraVidaP1Service.getModelP1().cp );
 		this.frmProcuraVidaP1.get( 'coloniaPoblacion' ).setValue( this.procuraVidaP1Service.getModelP1().coloniaPoblacion );
-		this.frmProcuraVidaP1.get( 'telefonos.telefono' ).setValue( this.procuraVidaP1Service.getModelP1().telefono );
-		this.frmProcuraVidaP1.get( 'telefonos.celular' ).setValue( this.procuraVidaP1Service.getModelP1().celular );
 
 		let fOcupacion = this.ocupaciones.filter( ( ocupacion: any ) => ocupacion.id === this.procuraVidaP1Service.getModelP1().ocupacion.id );
 		this.frmProcuraVidaP1.get( 'ocupacion' ).setValue( fOcupacion[ 0 ] );

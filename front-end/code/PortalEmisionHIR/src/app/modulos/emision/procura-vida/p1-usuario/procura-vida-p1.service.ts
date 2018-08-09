@@ -26,8 +26,6 @@ export class ProcuraVidaP1Service {
 		this.procuraVidaP1.estado = frmProcuraVidaP1.estado;
 		this.procuraVidaP1.delegacionMunicipio = frmProcuraVidaP1.delegacionMunicipio;
 		this.procuraVidaP1.coloniaPoblacion = frmProcuraVidaP1.coloniaPoblacion;
-		this.procuraVidaP1.telefono = frmProcuraVidaP1.telefonos.telefono;
-		this.procuraVidaP1.celular = frmProcuraVidaP1.telefonos.celular;
 	}
 
 	getModelP1(): ProcuraVidaP1 {

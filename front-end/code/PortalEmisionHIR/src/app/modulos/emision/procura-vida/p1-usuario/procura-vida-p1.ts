@@ -24,6 +24,4 @@ export class ProcuraVidaP1 {
 	estado: Estado;
 	delegacionMunicipio: Municipio;
 	coloniaPoblacion: string;
-	telefono: string;
-	celular: string;
 }
