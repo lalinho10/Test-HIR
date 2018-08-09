@@ -22,14 +22,12 @@ export class SeguhirEmpresarioP1Service {
 		this.seguhirEmpresarioP1.estadoCivil = frmSeguhirEmpresarioP1.estadoCivil;
 		this.seguhirEmpresarioP1.genero = frmSeguhirEmpresarioP1.genero;
 		this.seguhirEmpresarioP1.calleNumero = frmSeguhirEmpresarioP1.calleNumero;
-		this.seguhirEmpresarioP1.coloniaPoblacion = frmSeguhirEmpresarioP1.coloniaPoblacion;
-		this.seguhirEmpresarioP1.delegacionMunicipio = frmSeguhirEmpresarioP1.delegacionMunicipio;
-		this.seguhirEmpresarioP1.estado = frmSeguhirEmpresarioP1.estado;
 		this.seguhirEmpresarioP1.cp = frmSeguhirEmpresarioP1.cp;
+		this.seguhirEmpresarioP1.estado = frmSeguhirEmpresarioP1.estado;
+		this.seguhirEmpresarioP1.delegacionMunicipio = frmSeguhirEmpresarioP1.delegacionMunicipio;
+		this.seguhirEmpresarioP1.coloniaPoblacion = frmSeguhirEmpresarioP1.coloniaPoblacion;
 		this.seguhirEmpresarioP1.telefono = frmSeguhirEmpresarioP1.telefonos.telefono;
 		this.seguhirEmpresarioP1.celular = frmSeguhirEmpresarioP1.telefonos.celular;
-		this.seguhirEmpresarioP1.correoe1 = frmSeguhirEmpresarioP1.correos.correoe1;
-		this.seguhirEmpresarioP1.correoe2 = frmSeguhirEmpresarioP1.correos.correoe2;
 	}
 
 	getModelP1(): SeguhirEmpresarioP1 {
