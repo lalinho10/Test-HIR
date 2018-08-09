@@ -20,8 +20,6 @@ export class SegubiciP1 {
 	estado: Estado;
 	delegacionMunicipio: Municipio;
 	coloniaPoblacion: string;
-	telefono: string;
-	celular: string;
 	gobierno: boolean;
 	especifiqueGob?: string;
 	parienteGob: boolean;

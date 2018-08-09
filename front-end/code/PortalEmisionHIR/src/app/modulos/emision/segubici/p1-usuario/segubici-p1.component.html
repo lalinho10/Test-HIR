@@ -177,6 +177,8 @@
 						</pehir-extend-form-control>
 					</div>
 				</div>
+			</div>
+			<div class="col col-50">
 				<div class="row">
 					<div class="col col-40">
 						<label id="lblDelegacionMunicipio" class="form-label">Delegación o municipio:</label>
@@ -194,8 +196,6 @@
 						</pehir-extend-form-control>
 					</div>
 				</div>
-			</div>
-			<div class="col col-50">
 				<div class="row">
 					<div class="col col-40">
 						<label id="lblColoniaPoblacion" class="form-label">Colonia o población:</label>
@@ -206,37 +206,6 @@
 							[inputErrors]="frmSegubiciP1.get('coloniaPoblacion').errors">
 								<input id="txtColoniaPoblacion" type="text" class="form-control" formControlName="coloniaPoblacion">
 						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div formGroupName="telefonos">
-					<div class="row">
-						<div class="col col-40">
-							<label id="lblTelefono" class="form-label">Teléfono de casa/oficina:</label>
-						</div>
-						<div class="col col-50">
-							<pehir-extend-form-control
-								[inputDirty]="frmSegubiciP1.get('telefonos.telefono').dirty"
-								[inputErrors]="frmSegubiciP1.get('telefonos.telefono').errors"
-								[groupDirty]="frmSegubiciP1.get('telefonos').dirty"
-								[groupErrors]="frmSegubiciP1.get('telefonos').errors">
-									<input id="txtTelefono" type="text" class="form-control" formControlName="telefono">
-							</pehir-extend-form-control>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col col-40">
-							<label id="lblCelular" class="form-label">Teléfono móvil:</label>
-						</div>
-						<div class="col col-50">
-							<pehir-extend-form-control
-								[inputDirty]="frmSegubiciP1.get('telefonos.celular').dirty"
-								[inputErrors]="frmSegubiciP1.get('telefonos.celular').errors"
-								[groupDirty]="frmSegubiciP1.get('telefonos').dirty"
-								[groupErrors]="frmSegubiciP1.get('telefonos').errors"
-								[isInputForGroupError]="true">
-									<input id="txtCelular" type="text" class="form-control" formControlName="celular">
-							</pehir-extend-form-control>
-						</div>
 					</div>
 				</div>
 			</div>
