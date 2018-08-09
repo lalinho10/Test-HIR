@@ -154,6 +154,26 @@ export class SegubiciP1Component implements OnInit {
 				this.frmSegubiciP1.get( 'delegacionMunicipio' ).setValue( '' );
 			}
 		});
+
+		this.frmSegubiciP1.get( 'gobierno' ).valueChanges.subscribe( gobierno => {
+			this.frmSegubiciP1.get( 'especifiqueGob' ).setValue( '' );
+
+			if( gobierno ) {
+				this.frmSegubiciP1.get( 'especifiqueGob' ).enable();
+			} else {
+				this.frmSegubiciP1.get( 'especifiqueGob' ).disable();
+			}
+		});
+
+		this.frmSegubiciP1.get( 'parienteGob' ).valueChanges.subscribe( parienteGob => {
+			this.frmSegubiciP1.get( 'especifiqueParGob' ).setValue( '' );
+
+			if( parienteGob ) {
+				this.frmSegubiciP1.get( 'especifiqueParGob' ).enable();
+			} else {
+				this.frmSegubiciP1.get( 'especifiqueParGob' ).disable();
+			}
+		});
 	}
 
 	private mostrarDatosCapturados(): void {
@@ -176,26 +196,6 @@ export class SegubiciP1Component implements OnInit {
 
 		let fEstado = this.estados.filter( ( estado: any ) => estado.claveEntidad === this.segubiciP1Service.getModelP1().estado.claveEntidad );
 		this.frmSegubiciP1.get( 'estado' ).setValue( fEstado[ 0 ] );
-	}
-
-	fnCambiarGobierno(): void {
-		this.frmSegubiciP1.controls[ 'especifiqueGob' ].setValue( '' );
-
-		if( this.frmSegubiciP1.controls[ 'gobierno' ].value ) {
-			this.frmSegubiciP1.controls[ 'especifiqueGob' ].enable();
-		} else {
-			this.frmSegubiciP1.controls[ 'especifiqueGob' ].disable();
-		}
-	}
-
-	fnCambiarParienteGob(): void {
-		this.frmSegubiciP1.controls[ 'especifiqueParGob' ].setValue( '' );
-
-		if( this.frmSegubiciP1.controls[ 'parienteGob' ].value ) {
-			this.frmSegubiciP1.controls[ 'especifiqueParGob' ].enable();
-		} else {
-			this.frmSegubiciP1.controls[ 'especifiqueParGob' ].disable();
-		}
 	}
 
 	fnAvanzarP2(): void {

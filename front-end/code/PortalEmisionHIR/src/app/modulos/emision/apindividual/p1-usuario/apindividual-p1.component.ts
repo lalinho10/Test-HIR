@@ -154,6 +154,26 @@ export class ApindividualP1Component implements OnInit {
 				this.frmApindividualP1.get( 'delegacionMunicipio' ).setValue( '' );
 			}
 		});
+
+		this.frmApindividualP1.get( 'gobierno' ).valueChanges.subscribe( gobierno => {
+			this.frmApindividualP1.get( 'especifiqueGob' ).setValue( '' );
+
+			if( gobierno ) {
+				this.frmApindividualP1.get( 'especifiqueGob' ).enable();
+			} else {
+				this.frmApindividualP1.get( 'especifiqueGob' ).disable();
+			}
+		});
+
+		this.frmApindividualP1.get( 'parienteGob' ).valueChanges.subscribe( parienteGob => {
+			this.frmApindividualP1.get( 'especifiqueParGob' ).setValue( '' );
+
+			if( parienteGob ) {
+				this.frmApindividualP1.get( 'especifiqueParGob' ).enable();
+			} else {
+				this.frmApindividualP1.get( 'especifiqueParGob' ).disable();
+			}
+		});
 	}
 
 	private mostrarDatosCapturados(): void {
@@ -176,26 +196,6 @@ export class ApindividualP1Component implements OnInit {
 
 		let fEstado = this.estados.filter( ( estado: any ) => estado.claveEntidad === this.apindividualP1Service.getModelP1().estado.claveEntidad );
 		this.frmApindividualP1.get( 'estado' ).setValue( fEstado[ 0 ] );
-	}
-
-	fnCambiarGobierno(): void {
-		this.frmApindividualP1.controls[ 'especifiqueGob' ].setValue( '' );
-
-		if( this.frmApindividualP1.controls[ 'gobierno' ].value ) {
-			this.frmApindividualP1.controls[ 'especifiqueGob' ].enable();
-		} else {
-			this.frmApindividualP1.controls[ 'especifiqueGob' ].disable();
-		}
-	}
-
-	fnCambiarParienteGob(): void {
-		this.frmApindividualP1.controls[ 'especifiqueParGob' ].setValue( '' );
-
-		if( this.frmApindividualP1.controls[ 'parienteGob' ].value ) {
-			this.frmApindividualP1.controls[ 'especifiqueParGob' ].enable();
-		} else {
-			this.frmApindividualP1.controls[ 'especifiqueParGob' ].disable();
-		}
 	}
 
 	fnAvanzarP2(): void {
