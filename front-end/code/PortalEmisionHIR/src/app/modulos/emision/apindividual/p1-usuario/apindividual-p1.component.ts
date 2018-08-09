@@ -134,11 +134,6 @@ export class ApindividualP1Component implements OnInit {
 				validator: DiferenciaTelefonosValidator( 'telefono', 'celular' )
 			}),
 
-			'correoe': ['', Validators.compose([
-				Validators.required,
-				Validators.email,
-				Validators.maxLength(50)
-			])],
 			'gobierno': ['', Validators.compose([
 				Validators.required
 			])],
@@ -189,11 +184,10 @@ export class ApindividualP1Component implements OnInit {
 		this.frmApindividualP1.get( 'genero' ).setValue( this.apindividualP1Service.getModelP1().genero );
 		this.frmApindividualP1.get( 'fumador' ).setValue( this.apindividualP1Service.getModelP1().fumador );
 		this.frmApindividualP1.get( 'calleNumero' ).setValue( this.apindividualP1Service.getModelP1().calleNumero );
-		this.frmApindividualP1.get( 'coloniaPoblacion' ).setValue( this.apindividualP1Service.getModelP1().coloniaPoblacion );
 		this.frmApindividualP1.get( 'cp' ).setValue( this.apindividualP1Service.getModelP1().cp );
+		this.frmApindividualP1.get( 'coloniaPoblacion' ).setValue( this.apindividualP1Service.getModelP1().coloniaPoblacion );
 		this.frmApindividualP1.get( 'telefonos.telefono' ).setValue( this.apindividualP1Service.getModelP1().telefono );
 		this.frmApindividualP1.get( 'telefonos.celular' ).setValue( this.apindividualP1Service.getModelP1().celular );
-		this.frmApindividualP1.get( 'correoe' ).setValue( this.apindividualP1Service.getModelP1().correoe );
 		this.frmApindividualP1.get( 'gobierno' ).setValue( this.apindividualP1Service.getModelP1().gobierno );
 		this.frmApindividualP1.get( 'especifiqueGob' ).setValue( this.apindividualP1Service.getModelP1().especifiqueGob );
 		this.frmApindividualP1.get( 'parienteGob' ).setValue( this.apindividualP1Service.getModelP1().parienteGob );
