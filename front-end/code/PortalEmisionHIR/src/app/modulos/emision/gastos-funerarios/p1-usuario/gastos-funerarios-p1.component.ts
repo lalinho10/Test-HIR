@@ -23,9 +23,7 @@ import { EstaturaValidator }				  from 'app/core/validators/estatura.validator';
 import { NombreValidator }					  from 'app/core/validators/nombre.validator';
 import { PesoValidator }					  from 'app/core/validators/peso.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
-import { TelefonoValidator }				  from 'app/core/validators/telefono.validator';
 import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
-import { DiferenciaTelefonosValidator }		  from 'app/core/validators/diferencia-telefonos.validator';
 
 @Component({
 	selector: 'pehir-gastos-funerarios-p1',
@@ -138,21 +136,7 @@ export class GastosFunerariosP1Component implements OnInit {
 			])],
 			'coloniaPoblacion': ['', Validators.compose([
 				Validators.required
-			])],
-
-			'telefonos': this.fb.group({
-				'telefono': ['', Validators.compose([
-				Validators.required,
-				TelefonoValidator()
-				])],
-				'celular': ['', Validators.compose([
-					Validators.required,
-					CelularValidator()
-				])]
-			},
-			{
-				validator: DiferenciaTelefonosValidator( 'telefono', 'celular' )
-			}),
+			])]
 		});
 	}
 
@@ -195,8 +179,6 @@ export class GastosFunerariosP1Component implements OnInit {
 		this.frmGastosFunerariosP1.get( 'calleNumero' ).setValue( this.gastosFunerariosP1Service.getModelP1().calleNumero );
 		this.frmGastosFunerariosP1.get( 'cp' ).setValue( this.gastosFunerariosP1Service.getModelP1().cp );
 		this.frmGastosFunerariosP1.get( 'coloniaPoblacion' ).setValue( this.gastosFunerariosP1Service.getModelP1().coloniaPoblacion );
-		this.frmGastosFunerariosP1.get( 'telefonos.telefono' ).setValue( this.gastosFunerariosP1Service.getModelP1().telefono );
-		this.frmGastosFunerariosP1.get( 'telefonos.celular' ).setValue( this.gastosFunerariosP1Service.getModelP1().celular );
 
 		let fOcupacion = this.ocupaciones.filter( ( ocupacion: any ) => ocupacion.id === this.gastosFunerariosP1Service.getModelP1().ocupacion.id );
 		this.frmGastosFunerariosP1.get( 'ocupacion' ).setValue( fOcupacion[ 0 ] );

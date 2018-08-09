@@ -24,6 +24,4 @@ export class GastosFunerariosP1 {
 	estado: Estado;
 	delegacionMunicipio: Municipio;
 	coloniaPoblacion: string;
-	telefono: string;
-	celular: string;
 }

@@ -26,8 +26,6 @@ export class GastosFunerariosP1Service {
 		this.gastosFunerariosP1.estado = frmGastosFunerariosP1.estado;
 		this.gastosFunerariosP1.delegacionMunicipio = frmGastosFunerariosP1.delegacionMunicipio;
 		this.gastosFunerariosP1.coloniaPoblacion = frmGastosFunerariosP1.coloniaPoblacion;
-		this.gastosFunerariosP1.telefono = frmGastosFunerariosP1.telefonos.telefono;
-		this.gastosFunerariosP1.celular = frmGastosFunerariosP1.telefonos.celular;
 	}
 
 	getModelP1(): GastosFunerariosP1 {
