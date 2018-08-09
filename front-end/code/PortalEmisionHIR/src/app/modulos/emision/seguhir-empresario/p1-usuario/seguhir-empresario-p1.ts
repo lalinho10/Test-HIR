@@ -24,6 +24,4 @@ export class SeguhirEmpresarioP1 {
 	estado: Estado;
 	delegacionMunicipio: Municipio;
 	coloniaPoblacion: string;
-	telefono: string;
-	celular: string;
 }

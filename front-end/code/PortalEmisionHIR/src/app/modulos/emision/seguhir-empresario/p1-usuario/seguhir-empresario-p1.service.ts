@@ -26,8 +26,6 @@ export class SeguhirEmpresarioP1Service {
 		this.seguhirEmpresarioP1.estado = frmSeguhirEmpresarioP1.estado;
 		this.seguhirEmpresarioP1.delegacionMunicipio = frmSeguhirEmpresarioP1.delegacionMunicipio;
 		this.seguhirEmpresarioP1.coloniaPoblacion = frmSeguhirEmpresarioP1.coloniaPoblacion;
-		this.seguhirEmpresarioP1.telefono = frmSeguhirEmpresarioP1.telefonos.telefono;
-		this.seguhirEmpresarioP1.celular = frmSeguhirEmpresarioP1.telefonos.celular;
 	}
 
 	getModelP1(): SeguhirEmpresarioP1 {
