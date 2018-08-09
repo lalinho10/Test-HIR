@@ -20,10 +20,10 @@ export class ProcuraVidaP1 {
 	estadoCivil: EstadoCivil;
 	genero: Genero;
 	calleNumero: string;
-	coloniaPoblacion: string;
-	delegacionMunicipio: Municipio;
-	estado: Estado;
 	cp: number;
+	estado: Estado;
+	delegacionMunicipio: Municipio;
+	coloniaPoblacion: string;
 	telefono: string;
 	celular: string;
 }

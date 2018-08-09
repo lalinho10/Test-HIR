@@ -22,10 +22,10 @@ export class ProcuraVidaP1Service {
 		this.procuraVidaP1.estadoCivil = frmProcuraVidaP1.estadoCivil;
 		this.procuraVidaP1.genero = frmProcuraVidaP1.genero;
 		this.procuraVidaP1.calleNumero = frmProcuraVidaP1.calleNumero;
-		this.procuraVidaP1.coloniaPoblacion = frmProcuraVidaP1.coloniaPoblacion;
-		this.procuraVidaP1.delegacionMunicipio = frmProcuraVidaP1.delegacionMunicipio;
-		this.procuraVidaP1.estado = frmProcuraVidaP1.estado;
 		this.procuraVidaP1.cp = frmProcuraVidaP1.cp;
+		this.procuraVidaP1.estado = frmProcuraVidaP1.estado;
+		this.procuraVidaP1.delegacionMunicipio = frmProcuraVidaP1.delegacionMunicipio;
+		this.procuraVidaP1.coloniaPoblacion = frmProcuraVidaP1.coloniaPoblacion;
 		this.procuraVidaP1.telefono = frmProcuraVidaP1.telefonos.telefono;
 		this.procuraVidaP1.celular = frmProcuraVidaP1.telefonos.celular;
 	}
