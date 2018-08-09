@@ -25,7 +25,6 @@ import { PesoValidator }					  from 'app/core/validators/peso.validator';
 import { RfcValidator }						  from 'app/core/validators/rfc.validator';
 import { TelefonoValidator }				  from 'app/core/validators/telefono.validator';
 import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
-import { DiferenciaCorreosValidator }		  from 'app/core/validators/diferencia-correos.validator';
 import { DiferenciaTelefonosValidator }		  from 'app/core/validators/diferencia-telefonos.validator';
 
 @Component({
@@ -127,18 +126,18 @@ export class GastosFunerariosP1Component implements OnInit {
 			'calleNumero': ['', Validators.compose([
 				Validators.required
 			])],
-			'coloniaPoblacion': ['', Validators.compose([
+			'cp': ['', Validators.compose([
+				Validators.required,
+				CodigoPostalValidator()
+			])],
+			'estado': ['', Validators.compose([
 				Validators.required
 			])],
 			'delegacionMunicipio': ['', Validators.compose([
 				Validators.required
 			])],
-			'estado': ['', Validators.compose([
+			'coloniaPoblacion': ['', Validators.compose([
 				Validators.required
-			])],
-			'cp': ['', Validators.compose([
-				Validators.required,
-				CodigoPostalValidator()
 			])],
 
 			'telefonos': this.fb.group({
@@ -154,22 +153,6 @@ export class GastosFunerariosP1Component implements OnInit {
 			{
 				validator: DiferenciaTelefonosValidator( 'telefono', 'celular' )
 			}),
-
-			'correos': this.fb.group({
-				'correoe1': ['', Validators.compose([
-					Validators.required,
-					Validators.email,
-					Validators.maxLength(50)
-				])],
-				'correoe2': ['', Validators.compose([
-					Validators.required,
-					Validators.email,
-					Validators.maxLength(50)
-				])]
-			},
-			{
-				validator: DiferenciaCorreosValidator( 'correoe1', 'correoe2' )
-			})
 		});
 	}
 
@@ -210,12 +193,10 @@ export class GastosFunerariosP1Component implements OnInit {
 		this.frmGastosFunerariosP1.get( 'estadoCivil' ).setValue( this.gastosFunerariosP1Service.getModelP1().estadoCivil );
 		this.frmGastosFunerariosP1.get( 'genero' ).setValue( this.gastosFunerariosP1Service.getModelP1().genero );
 		this.frmGastosFunerariosP1.get( 'calleNumero' ).setValue( this.gastosFunerariosP1Service.getModelP1().calleNumero );
-		this.frmGastosFunerariosP1.get( 'coloniaPoblacion' ).setValue( this.gastosFunerariosP1Service.getModelP1().coloniaPoblacion );
 		this.frmGastosFunerariosP1.get( 'cp' ).setValue( this.gastosFunerariosP1Service.getModelP1().cp );
+		this.frmGastosFunerariosP1.get( 'coloniaPoblacion' ).setValue( this.gastosFunerariosP1Service.getModelP1().coloniaPoblacion );
 		this.frmGastosFunerariosP1.get( 'telefonos.telefono' ).setValue( this.gastosFunerariosP1Service.getModelP1().telefono );
 		this.frmGastosFunerariosP1.get( 'telefonos.celular' ).setValue( this.gastosFunerariosP1Service.getModelP1().celular );
-		this.frmGastosFunerariosP1.get( 'correos.correoe1' ).setValue( this.gastosFunerariosP1Service.getModelP1().correoe1 );
-		this.frmGastosFunerariosP1.get( 'correos.correoe2' ).setValue( this.gastosFunerariosP1Service.getModelP1().correoe2 );
 
 		let fOcupacion = this.ocupaciones.filter( ( ocupacion: any ) => ocupacion.id === this.gastosFunerariosP1Service.getModelP1().ocupacion.id );
 		this.frmGastosFunerariosP1.get( 'ocupacion' ).setValue( fOcupacion[ 0 ] );

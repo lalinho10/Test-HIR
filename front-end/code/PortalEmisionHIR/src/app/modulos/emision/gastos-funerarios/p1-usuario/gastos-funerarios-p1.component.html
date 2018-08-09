@@ -210,30 +210,13 @@
 				</div>
 				<div class="row">
 					<div class="col col-40">
-						<label id="lblColoniaPoblacion" class="form-label">Colonia o población:</label>
+						<label id="lblCP" class="form-label">Código postal:</label>
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmGastosFunerariosP1.get('coloniaPoblacion').dirty"
-							[inputErrors]="frmGastosFunerariosP1.get('coloniaPoblacion').errors">
-								<input id="txtColoniaPoblacion" type="text" class="form-control" formControlName="coloniaPoblacion">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
-						<label id="lblDelegacionMunicipio" class="form-label">Delegación o municipio:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmGastosFunerariosP1.get('delegacionMunicipio').dirty"
-							[inputErrors]="frmGastosFunerariosP1.get('delegacionMunicipio').errors">
-								<select id="cboMunicipio" class="form-control" formControlName="delegacionMunicipio">
-									<option value="">Selecciona</option>
-									<option *ngFor="let municipio of municipios" [ngValue]="municipio">
-										{{municipio.descripcionEntidad}}
-									</option>
-								</select>
+							[inputDirty]="frmGastosFunerariosP1.get('cp').dirty"
+							[inputErrors]="frmGastosFunerariosP1.get('cp').errors">
+								<input id="txtCP" type="text" class="form-control" formControlName="cp">
 						</pehir-extend-form-control>
 					</div>
 				</div>
@@ -256,18 +239,35 @@
 				</div>
 				<div class="row">
 					<div class="col col-40">
-						<label id="lblCP" class="form-label">Código postal:</label>
+						<label id="lblDelegacionMunicipio" class="form-label">Delegación o municipio:</label>
 					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmGastosFunerariosP1.get('cp').dirty"
-							[inputErrors]="frmGastosFunerariosP1.get('cp').errors">
-								<input id="txtCP" type="text" class="form-control" formControlName="cp">
+							[inputDirty]="frmGastosFunerariosP1.get('delegacionMunicipio').dirty"
+							[inputErrors]="frmGastosFunerariosP1.get('delegacionMunicipio').errors">
+								<select id="cboMunicipio" class="form-control" formControlName="delegacionMunicipio">
+									<option value="">Selecciona</option>
+									<option *ngFor="let municipio of municipios" [ngValue]="municipio">
+										{{municipio.descripcionEntidad}}
+									</option>
+								</select>
 						</pehir-extend-form-control>
 					</div>
 				</div>
 			</div>
 			<div class="col col-50">
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblColoniaPoblacion" class="form-label">Colonia o población:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmGastosFunerariosP1.get('coloniaPoblacion').dirty"
+							[inputErrors]="frmGastosFunerariosP1.get('coloniaPoblacion').errors">
+								<input id="txtColoniaPoblacion" type="text" class="form-control" formControlName="coloniaPoblacion">
+						</pehir-extend-form-control>
+					</div>
+				</div>
 				<div formGroupName="telefonos">
 					<div class="row">
 						<div class="col col-40">
@@ -295,37 +295,6 @@
 								[groupErrors]="frmGastosFunerariosP1.get('telefonos').errors"
 								[isInputForGroupError]="true">
 									<input id="txtCelular" type="text" class="form-control" formControlName="celular">
-							</pehir-extend-form-control>
-						</div>
-					</div>
-				</div>
-				<div formGroupName="correos">
-					<div class="row">
-						<div class="col col-40">
-							<label id="lblCorreoe1" class="form-label">e-mail 1:</label>
-						</div>
-						<div class="col col-50">
-							<pehir-extend-form-control
-								[inputDirty]="frmGastosFunerariosP1.get('correos.correoe1').dirty"
-								[inputErrors]="frmGastosFunerariosP1.get('correos.correoe1').errors"
-								[groupDirty]="frmGastosFunerariosP1.get('correos').dirty"
-								[groupErrors]="frmGastosFunerariosP1.get('correos').errors">
-									<input id="txtCorreoe1" type="text" class="form-control" formControlName="correoe1">
-							</pehir-extend-form-control>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col col-40">
-							<label id="lblCorreoe2" class="form-label">e-mail 2:</label>
-						</div>
-						<div class="col col-50">
-							<pehir-extend-form-control
-								[inputDirty]="frmGastosFunerariosP1.get('correos.correoe2').dirty"
-								[inputErrors]="frmGastosFunerariosP1.get('correos.correoe2').errors"
-								[groupDirty]="frmGastosFunerariosP1.get('correos').dirty"
-								[groupErrors]="frmGastosFunerariosP1.get('correos').errors"
-								[isInputForGroupError]="true">
-									<input id="txtCorreoe2" type="text" class="form-control" formControlName="correoe2">
 							</pehir-extend-form-control>
 						</div>
 					</div>

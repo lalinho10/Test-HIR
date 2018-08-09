@@ -22,14 +22,12 @@ export class GastosFunerariosP1Service {
 		this.gastosFunerariosP1.estadoCivil = frmGastosFunerariosP1.estadoCivil;
 		this.gastosFunerariosP1.genero = frmGastosFunerariosP1.genero;
 		this.gastosFunerariosP1.calleNumero = frmGastosFunerariosP1.calleNumero;
-		this.gastosFunerariosP1.coloniaPoblacion = frmGastosFunerariosP1.coloniaPoblacion;
-		this.gastosFunerariosP1.delegacionMunicipio = frmGastosFunerariosP1.delegacionMunicipio;
-		this.gastosFunerariosP1.estado = frmGastosFunerariosP1.estado;
 		this.gastosFunerariosP1.cp = frmGastosFunerariosP1.cp;
+		this.gastosFunerariosP1.estado = frmGastosFunerariosP1.estado;
+		this.gastosFunerariosP1.delegacionMunicipio = frmGastosFunerariosP1.delegacionMunicipio;
+		this.gastosFunerariosP1.coloniaPoblacion = frmGastosFunerariosP1.coloniaPoblacion;
 		this.gastosFunerariosP1.telefono = frmGastosFunerariosP1.telefonos.telefono;
 		this.gastosFunerariosP1.celular = frmGastosFunerariosP1.telefonos.celular;
-		this.gastosFunerariosP1.correoe1 = frmGastosFunerariosP1.correos.correoe1;
-		this.gastosFunerariosP1.correoe2 = frmGastosFunerariosP1.correos.correoe2;
 	}
 
 	getModelP1(): GastosFunerariosP1 {
