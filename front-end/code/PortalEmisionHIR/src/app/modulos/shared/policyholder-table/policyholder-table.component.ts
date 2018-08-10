@@ -50,6 +50,13 @@ export class PolicyHolderTableComponent implements OnInit {
 		});
 	}
 
+	cargarDatosCapturados(): void {
+		for( let i: number = 0; i < this.beneficiarios.length; i++ ) {
+			this.agregarGrupoEdicion();
+		}
+		this.validarSumatoriaPorcentajes();
+	}
+
 	private leerCatalogos(): void {
 		this.wsClientService
 			.postObject( '/catalogoTipoParentesco', {} )

@@ -132,7 +132,8 @@ export class ProcuraVidaP2Component implements OnInit {
 		let fPlan = this.planes.filter( ( plan: any ) => plan.id === this.procuraVidaP2Service.getModelP2().plan.id );
 		this.frmProcuraVidaP2.get( 'plan' ).setValue( fPlan[ 0 ] );
 
-		//this.tablaBeneficiarios.beneficiarios = this.procuraVidaP2Service.getModelP2().beneficiarios;
+		this.tablaBeneficiarios.beneficiarios = this.procuraVidaP2Service.getModelP2().beneficiarios;
+		this.tablaBeneficiarios.cargarDatosCapturados();
 	}
 
 	onValidateTable( isValidTable ): void {

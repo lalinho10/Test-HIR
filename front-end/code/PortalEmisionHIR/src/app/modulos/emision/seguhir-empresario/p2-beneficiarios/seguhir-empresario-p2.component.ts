@@ -132,7 +132,8 @@ export class SeguhirEmpresarioP2Component implements OnInit {
 		let fPlan = this.planes.filter( ( plan: any ) => plan.id === this.seguhirEmpresarioP2Service.getModelP2().plan.id );
 		this.frmSeguhirEmpresarioP2.get( 'plan' ).setValue( fPlan[ 0 ] );
 
-		//this.tablaBeneficiarios.beneficiarios = this.seguhirEmpresarioP2Service.getModelP2().beneficiarios;
+		this.tablaBeneficiarios.beneficiarios = this.seguhirEmpresarioP2Service.getModelP2().beneficiarios;
+		this.tablaBeneficiarios.cargarDatosCapturados();
 	}
 
 	onValidateTable( isValidTable ): void {
