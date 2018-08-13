@@ -184,6 +184,11 @@ export class GastosFunerariosP1Component implements OnInit {
 						.subscribe( response => {
 							if( response.code === 200 ) {
 								this.colonias = response.data;
+
+								if( this.gastosFunerariosP1Service.hasModelP1() ) {
+									let fColonia = this.colonias.filter( ( colonia: any ) => colonia.claveEntidad === this.gastosFunerariosP1Service.getModelP1().coloniaPoblacion.claveEntidad );
+									this.frmGastosFunerariosP1.get( 'coloniaPoblacion' ).setValue( fColonia[ 0 ] );
+								}
 							}
 						});
 				} else {
@@ -226,7 +231,6 @@ export class GastosFunerariosP1Component implements OnInit {
 		this.frmGastosFunerariosP1.get( 'genero' ).setValue( this.gastosFunerariosP1Service.getModelP1().genero );
 		this.frmGastosFunerariosP1.get( 'calleNumero' ).setValue( this.gastosFunerariosP1Service.getModelP1().calleNumero );
 		this.frmGastosFunerariosP1.get( 'cp' ).setValue( this.gastosFunerariosP1Service.getModelP1().cp );
-		this.frmGastosFunerariosP1.get( 'coloniaPoblacion' ).setValue( this.gastosFunerariosP1Service.getModelP1().coloniaPoblacion );
 
 		let fOcupacion = this.ocupaciones.filter( ( ocupacion: any ) => ocupacion.id === this.gastosFunerariosP1Service.getModelP1().ocupacion.id );
 		this.frmGastosFunerariosP1.get( 'ocupacion' ).setValue( fOcupacion[ 0 ] );

@@ -176,6 +176,11 @@ export class SegubiciP1Component implements OnInit {
 						.subscribe( response => {
 							if( response.code === 200 ) {
 								this.colonias = response.data;
+
+								if( this.segubiciP1Service.hasModelP1() ) {
+									let fColonia = this.colonias.filter( ( colonia: any ) => colonia.claveEntidad === this.segubiciP1Service.getModelP1().coloniaPoblacion.claveEntidad );
+									this.frmSegubiciP1.get( 'coloniaPoblacion' ).setValue( fColonia[ 0 ] );
+								}
 							}
 						});
 				} else {
@@ -236,7 +241,6 @@ export class SegubiciP1Component implements OnInit {
 		this.frmSegubiciP1.get( 'fumador' ).setValue( this.segubiciP1Service.getModelP1().fumador );
 		this.frmSegubiciP1.get( 'calleNumero' ).setValue( this.segubiciP1Service.getModelP1().calleNumero );
 		this.frmSegubiciP1.get( 'cp' ).setValue( this.segubiciP1Service.getModelP1().cp );
-		this.frmSegubiciP1.get( 'coloniaPoblacion' ).setValue( this.segubiciP1Service.getModelP1().coloniaPoblacion );
 		this.frmSegubiciP1.get( 'gobierno' ).setValue( this.segubiciP1Service.getModelP1().gobierno );
 		this.frmSegubiciP1.get( 'especifiqueGob' ).setValue( this.segubiciP1Service.getModelP1().especifiqueGob );
 		this.frmSegubiciP1.get( 'parienteGob' ).setValue( this.segubiciP1Service.getModelP1().parienteGob );

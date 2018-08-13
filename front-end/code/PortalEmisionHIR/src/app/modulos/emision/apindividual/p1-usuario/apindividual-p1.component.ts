@@ -176,6 +176,11 @@ export class ApindividualP1Component implements OnInit {
 						.subscribe( response => {
 							if( response.code === 200 ) {
 								this.colonias = response.data;
+
+								if( this.apindividualP1Service.hasModelP1() ) {
+									let fColonia = this.colonias.filter( ( colonia: any ) => colonia.claveEntidad === this.apindividualP1Service.getModelP1().coloniaPoblacion.claveEntidad );
+									this.frmApindividualP1.get( 'coloniaPoblacion' ).setValue( fColonia[ 0 ] );
+								}
 							}
 						});
 				} else {
@@ -236,7 +241,6 @@ export class ApindividualP1Component implements OnInit {
 		this.frmApindividualP1.get( 'fumador' ).setValue( this.apindividualP1Service.getModelP1().fumador );
 		this.frmApindividualP1.get( 'calleNumero' ).setValue( this.apindividualP1Service.getModelP1().calleNumero );
 		this.frmApindividualP1.get( 'cp' ).setValue( this.apindividualP1Service.getModelP1().cp );
-		this.frmApindividualP1.get( 'coloniaPoblacion' ).setValue( this.apindividualP1Service.getModelP1().coloniaPoblacion );
 		this.frmApindividualP1.get( 'gobierno' ).setValue( this.apindividualP1Service.getModelP1().gobierno );
 		this.frmApindividualP1.get( 'especifiqueGob' ).setValue( this.apindividualP1Service.getModelP1().especifiqueGob );
 		this.frmApindividualP1.get( 'parienteGob' ).setValue( this.apindividualP1Service.getModelP1().parienteGob );

@@ -184,6 +184,11 @@ export class ProcuraVidaP1Component implements OnInit {
 						.subscribe( response => {
 							if( response.code === 200 ) {
 								this.colonias = response.data;
+
+								if( this.procuraVidaP1Service.hasModelP1() ) {
+									let fColonia = this.colonias.filter( ( colonia: any ) => colonia.claveEntidad === this.procuraVidaP1Service.getModelP1().coloniaPoblacion.claveEntidad );
+									this.frmProcuraVidaP1.get( 'coloniaPoblacion' ).setValue( fColonia[ 0 ] );
+								}
 							}
 						});
 				} else {
@@ -226,7 +231,6 @@ export class ProcuraVidaP1Component implements OnInit {
 		this.frmProcuraVidaP1.get( 'genero' ).setValue( this.procuraVidaP1Service.getModelP1().genero );
 		this.frmProcuraVidaP1.get( 'calleNumero' ).setValue( this.procuraVidaP1Service.getModelP1().calleNumero );
 		this.frmProcuraVidaP1.get( 'cp' ).setValue( this.procuraVidaP1Service.getModelP1().cp );
-		this.frmProcuraVidaP1.get( 'coloniaPoblacion' ).setValue( this.procuraVidaP1Service.getModelP1().coloniaPoblacion );
 
 		let fOcupacion = this.ocupaciones.filter( ( ocupacion: any ) => ocupacion.id === this.procuraVidaP1Service.getModelP1().ocupacion.id );
 		this.frmProcuraVidaP1.get( 'ocupacion' ).setValue( fOcupacion[ 0 ] );

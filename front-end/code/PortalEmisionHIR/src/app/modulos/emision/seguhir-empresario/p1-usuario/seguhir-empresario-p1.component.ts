@@ -184,6 +184,11 @@ export class SeguhirEmpresarioP1Component implements OnInit {
 						.subscribe( response => {
 							if( response.code === 200 ) {
 								this.colonias = response.data;
+
+								if( this.seguhirEmpresarioP1Service.hasModelP1() ) {
+									let fColonia = this.colonias.filter( ( colonia: any ) => colonia.claveEntidad === this.seguhirEmpresarioP1Service.getModelP1().coloniaPoblacion.claveEntidad );
+									this.frmSeguhirEmpresarioP1.get( 'coloniaPoblacion' ).setValue( fColonia[ 0 ] );
+								}
 							}
 						});
 				} else {
@@ -226,7 +231,6 @@ export class SeguhirEmpresarioP1Component implements OnInit {
 		this.frmSeguhirEmpresarioP1.get( 'genero' ).setValue( this.seguhirEmpresarioP1Service.getModelP1().genero );
 		this.frmSeguhirEmpresarioP1.get( 'calleNumero' ).setValue( this.seguhirEmpresarioP1Service.getModelP1().calleNumero );
 		this.frmSeguhirEmpresarioP1.get( 'cp' ).setValue( this.seguhirEmpresarioP1Service.getModelP1().cp );
-		this.frmSeguhirEmpresarioP1.get( 'coloniaPoblacion' ).setValue( this.seguhirEmpresarioP1Service.getModelP1().coloniaPoblacion );
 
 		let fOcupacion = this.ocupaciones.filter( ( ocupacion: any ) => ocupacion.id === this.seguhirEmpresarioP1Service.getModelP1().ocupacion.id );
 		this.frmSeguhirEmpresarioP1.get( 'ocupacion' ).setValue( fOcupacion[ 0 ] );
