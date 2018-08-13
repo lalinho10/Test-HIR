@@ -1,5 +1,6 @@
 import { IMyDateModel } from 'mydatepicker';
 
+import { Colonia }		from 'app/core/models/colonia';
 import { Estado }		from 'app/core/models/estado';
 import { EstadoCivil }	from 'app/core/models/estadoCivil';
 import { Genero }		from 'app/core/models/genero';
@@ -23,5 +24,5 @@ export class SeguhirEmpresarioP1 {
 	cp: number;
 	estado: Estado;
 	delegacionMunicipio: Municipio;
-	coloniaPoblacion: string;
+	coloniaPoblacion: Colonia;
 }
