@@ -3577,6 +3577,60 @@
 			]
 		}
 	],
+	"catalogoColonia":
+	[
+		{
+			"id": "09",
+			"code": 200,
+			"status": null,
+			"mensaje": "Se ha mostrado el catalogo de colonias",
+			"dateTime": 1534168007072,
+			"data":
+			[
+				{ "claveEntidad": "0984", "descripcionEntidad": "Algarin" },
+				{ "claveEntidad": "0986", "descripcionEntidad": "Ampliación Asturias" },
+				{ "claveEntidad": "0981", "descripcionEntidad": "Asturias" },
+				{ "claveEntidad": "0914", "descripcionEntidad": "Atlampa" },
+				{ "claveEntidad": "0906", "descripcionEntidad": "Buenavista" },
+				{ "claveEntidad": "0970", "descripcionEntidad": "Buenos Aires" },
+				{ "claveEntidad": "0838", "descripcionEntidad": "Centro (Área 1)" },
+				{ "claveEntidad": "0847", "descripcionEntidad": "Centro (Área 2)" },
+				{ "claveEntidad": "0850", "descripcionEntidad": "Centro (Área 3)" },
+				{ "claveEntidad": "0860", "descripcionEntidad": "Centro (Área 4)" },
+				{ "claveEntidad": "0863", "descripcionEntidad": "Centro (Área 5)" },
+				{ "claveEntidad": "0867", "descripcionEntidad": "Centro (Área 6)" },
+				{ "claveEntidad": "0873", "descripcionEntidad": "Centro (Área 7)" },
+				{ "claveEntidad": "0875", "descripcionEntidad": "Centro (Área 8)" },
+				{ "claveEntidad": "0879", "descripcionEntidad": "Centro (Área 9)" },
+				{ "claveEntidad": "0884", "descripcionEntidad": "Condesa" },
+				{ "claveEntidad": "0919", "descripcionEntidad": "Cuauhtémoc" },
+				{ "claveEntidad": "0955", "descripcionEntidad": "Doctores" },
+				{ "claveEntidad": "0980", "descripcionEntidad": "Esperanza" },
+				{ "claveEntidad": "0896", "descripcionEntidad": "Ex-Hipódromo de Peralvillo" },
+				{ "claveEntidad": "0899", "descripcionEntidad": "Felipe Pescador" },
+				{ "claveEntidad": "0900", "descripcionEntidad": "Guerrero" },
+				{ "claveEntidad": "0882", "descripcionEntidad": "Hipódromo" },
+				{ "claveEntidad": "0886", "descripcionEntidad": "Hipódromo Condesa" },
+				{ "claveEntidad": "0930", "descripcionEntidad": "Juárez" },
+				{ "claveEntidad": "0898", "descripcionEntidad": "Maza" },
+				{ "claveEntidad": "0891", "descripcionEntidad": "Morelos" },
+				{ "claveEntidad": "0988", "descripcionEntidad": "Nonoalco Tlatelolco" },
+				{ "claveEntidad": "0974", "descripcionEntidad": "Obrera" },
+				{ "claveEntidad": "0983", "descripcionEntidad": "Paulino Navarro" },
+				{ "claveEntidad": "0894", "descripcionEntidad": "Peralvillo" },
+				{ "claveEntidad": "0947", "descripcionEntidad": "Roma Norte" },
+				{ "claveEntidad": "0966", "descripcionEntidad": "Roma Sur" },
+				{ "claveEntidad": "0915", "descripcionEntidad": "San Rafael" },
+				{ "claveEntidad": "0989", "descripcionEntidad": "San Simón Tolnáhuac" },
+				{ "claveEntidad": "0913", "descripcionEntidad": "Santa María Insurgentes" },
+				{ "claveEntidad": "0911", "descripcionEntidad": "Santa María la Ribera" },
+				{ "claveEntidad": "0853", "descripcionEntidad": "Tabacalera" },
+				{ "claveEntidad": "0978", "descripcionEntidad": "Tránsito" },
+				{ "claveEntidad": "0895", "descripcionEntidad": "Valle Gómez" },
+				{ "claveEntidad": "0982", "descripcionEntidad": "Vista Alegre" }
+			]
+		}
+	],
 	"catalogoPostal":
 	[
 		{
