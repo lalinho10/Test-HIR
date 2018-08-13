@@ -10,6 +10,7 @@ import { ESTADOSCIVILES }					  from 'app/core/data/estadosCiviles';
 import { GENEROS }							  from 'app/core/data/generos';
 import { FECNACOPTIONS }					  from 'app/core/data/calendarios/fecNacOptions';
 
+import { Colonia }							  from 'app/core/models/colonia';
 import { Estado }							  from 'app/core/models/estado';
 import { Municipio }						  from 'app/core/models/municipio';
 import { Ocupacion }						  from 'app/core/models/ocupacion';
@@ -37,6 +38,7 @@ export class GastosFunerariosP1Component implements OnInit {
 
 	frmGastosFunerariosP1: FormGroup;
 
+	colonias: Colonia[];
 	estados: Estado[];
 	municipios: Municipio[];
 	ocupaciones: Ocupacion[];
@@ -170,6 +172,24 @@ export class GastosFunerariosP1Component implements OnInit {
 					this.municipios = [];
 				}
 				this.frmGastosFunerariosP1.get( 'delegacionMunicipio' ).setValue( '' );
+			}
+		});
+
+		this.frmGastosFunerariosP1.get( 'delegacionMunicipio' ).valueChanges.subscribe( municipio => {
+			if( municipio !== null && typeof municipio !== 'undefined' ) {
+				if( municipio.claveEntidad !== null && typeof municipio.claveEntidad !== 'undefined' ) {
+					let estado = this.frmGastosFunerariosP1.get( 'estado' ).value;
+					this.wsClientService
+						.postObject( '/catalogoColonia', { 'clave': estado.claveEntidad, 'clave2': municipio.claveEntidad } )
+						.subscribe( response => {
+							if( response.code === 200 ) {
+								this.colonias = response.data;
+							}
+						});
+				} else {
+					this.colonias = [];
+				}
+				this.frmGastosFunerariosP1.get( 'coloniaPoblacion' ).setValue( '' );
 			}
 		});
 
