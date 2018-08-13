@@ -3650,6 +3650,22 @@
 			}
 		},
 		{
+			"id": "06850",
+			"code": 200,
+			"status": null,
+			"mensaje": "Se ha mostrado la localidad",
+			"dateTime": 1534183452037,
+			"data":
+			{
+				"claveEstado": "09",
+				"claveMunicipio": "015",
+				"claveColonia": "0981",
+				"descripcionEstado": "Ciudad de México",
+				"descripcionMunicipio": "Cuauhtémoc",
+				"descripcionColonia": "Asturias"
+			}
+		},
+		{
 			"id": "07810",
 			"code": 200,
 			"status": null,
