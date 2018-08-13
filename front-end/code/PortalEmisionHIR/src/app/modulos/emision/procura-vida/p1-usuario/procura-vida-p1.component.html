@@ -264,7 +264,12 @@
 						<pehir-extend-form-control
 							[inputDirty]="frmProcuraVidaP1.get('coloniaPoblacion').dirty"
 							[inputErrors]="frmProcuraVidaP1.get('coloniaPoblacion').errors">
-								<input id="txtColoniaPoblacion" type="text" class="form-control" formControlName="coloniaPoblacion">
+								<select id="cboColonia" class="form-control" formControlName="coloniaPoblacion">
+									<option value="">Selecciona</option>
+									<option *ngFor="let colonia of colonias" [ngValue]="colonia">
+										{{colonia.descripcionEntidad}}
+									</option>
+								</select>
 						</pehir-extend-form-control>
 					</div>
 				</div>
