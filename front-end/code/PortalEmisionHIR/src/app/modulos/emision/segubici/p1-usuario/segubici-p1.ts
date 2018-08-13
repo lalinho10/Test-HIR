@@ -1,5 +1,6 @@
 import { IMyDateModel } from 'mydatepicker';
 
+import { Colonia }		from 'app/core/models/colonia';
 import { EstadoCivil }	from 'app/core/models/estadoCivil';
 import { Estado }		from 'app/core/models/estado';
 import { Genero }		from 'app/core/models/genero';
@@ -19,7 +20,7 @@ export class SegubiciP1 {
 	cp: number;
 	estado: Estado;
 	delegacionMunicipio: Municipio;
-	coloniaPoblacion: string;
+	coloniaPoblacion: Colonia;
 	gobierno: boolean;
 	especifiqueGob?: string;
 	parienteGob: boolean;

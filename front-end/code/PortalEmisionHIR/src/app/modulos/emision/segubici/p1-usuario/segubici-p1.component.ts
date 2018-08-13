@@ -10,6 +10,7 @@ import { ESTADOSCIVILES }					  from 'app/core/data/estadosCiviles';
 import { GENEROS }							  from 'app/core/data/generos';
 import { FECNACOPTIONS }					  from 'app/core/data/calendarios/fecNacOptions';
 
+import { Colonia }							  from 'app/core/models/colonia';
 import { Estado }							  from 'app/core/models/estado';
 import { Municipio }						  from 'app/core/models/municipio';
 
@@ -34,6 +35,7 @@ export class SegubiciP1Component implements OnInit {
 
 	frmSegubiciP1: FormGroup;
 
+	colonias: Colonia[];
 	estados: Estado[];
 	municipios: Municipio[];
 
@@ -162,6 +164,24 @@ export class SegubiciP1Component implements OnInit {
 					this.municipios = [];
 				}
 				this.frmSegubiciP1.get( 'delegacionMunicipio' ).setValue( '' );
+			}
+		});
+
+		this.frmSegubiciP1.get( 'delegacionMunicipio' ).valueChanges.subscribe( municipio => {
+			if( municipio !== null && typeof municipio !== 'undefined' ) {
+				if( municipio.claveEntidad !== null && typeof municipio.claveEntidad !== 'undefined' ) {
+					let estado = this.frmSegubiciP1.get( 'estado' ).value;
+					this.wsClientService
+						.postObject( '/catalogoColonia', { 'clave': estado.claveEntidad, 'clave2': municipio.claveEntidad } )
+						.subscribe( response => {
+							if( response.code === 200 ) {
+								this.colonias = response.data;
+							}
+						});
+				} else {
+					this.colonias = [];
+				}
+				this.frmSegubiciP1.get( 'coloniaPoblacion' ).setValue( '' );
 			}
 		});
 
