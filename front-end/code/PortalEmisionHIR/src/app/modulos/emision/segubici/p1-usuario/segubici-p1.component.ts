@@ -28,6 +28,10 @@ import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.vali
 })
 
 export class SegubiciP1Component implements OnInit {
+	consultaCP: boolean = false;
+
+	idMunicipioCP: string = '';
+
 	frmSegubiciP1: FormGroup;
 
 	estados: Estado[];
@@ -146,12 +150,36 @@ export class SegubiciP1Component implements OnInit {
 									let fMunicipio = this.municipios.filter( ( municipio: any ) => municipio.claveEntidad === this.segubiciP1Service.getModelP1().delegacionMunicipio.claveEntidad );
 									this.frmSegubiciP1.get( 'delegacionMunicipio' ).setValue( fMunicipio[ 0 ] );
 								}
+
+								if( this.consultaCP ) {
+									let fMunicipio = this.municipios.filter( ( municipio: any ) => municipio.claveEntidad === this.idMunicipioCP );
+									this.frmSegubiciP1.get( 'delegacionMunicipio' ).setValue( fMunicipio[ 0 ] );
+									this.consultaCP = false;
+								}
 							}
 						});
 				} else {
 					this.municipios = [];
 				}
 				this.frmSegubiciP1.get( 'delegacionMunicipio' ).setValue( '' );
+			}
+		});
+
+		this.frmSegubiciP1.get( 'cp' ).valueChanges.subscribe( cp => {
+			if( cp !== null && typeof cp !== 'undefined' ) {
+				if( !Number.isNaN( Number( cp ) ) && cp.length === 5 ) {
+					this.wsClientService
+						.postObject( '/catalogoPostal', { 'clave': cp } )
+						.subscribe( response => {
+							if( response.code === 200 ) {
+								this.consultaCP = true;
+								this.idMunicipioCP = response.data.claveMunicipio;
+
+								let fEstados = this.estados.filter( ( estado: any ) => estado.claveEntidad == response.data.claveEstado );
+								this.frmSegubiciP1.get( 'estado' ).setValue( fEstados[ 0 ] );
+							}
+						});
+				}
 			}
 		});
 
