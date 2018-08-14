@@ -8,6 +8,7 @@ import { Parentesco }									 from 'app/core/models/parentesco';
 
 import { WSClientService }								 from 'app/core/services/ws-client.service';
 
+import { ApellidoValidator } 							 from 'app/core/validators/apellido.validator';
 import { NombreValidator }								 from 'app/core/validators/nombre.validator';
 import { PorcentajeValidator }							 from 'app/core/validators/porcentaje.validator';
 
@@ -74,6 +75,16 @@ export class PolicyHolderTableComponent implements OnInit {
 				Validators.maxLength(50),
 				NombreValidator()
 			])],
+			'apaterno': ['', Validators.compose([
+				Validators.required,
+				Validators.maxLength(50),
+				ApellidoValidator()
+			])],
+			'amaterno': ['', Validators.compose([
+				Validators.required,
+				Validators.maxLength(50),
+				ApellidoValidator()
+			])],
 			'fechanac': ['', Validators.compose([
 				Validators.required
 			])],
@@ -131,6 +142,8 @@ export class PolicyHolderTableComponent implements OnInit {
 		let grupoEdicion = gruposEdicion.at( idBeneficiario ) as FormGroup;
 
 		grupoEdicion.controls[ 'nombre' ].setValue( this.beneficiarios[ idBeneficiario ].nombre );
+		grupoEdicion.controls[ 'apaterno' ].setValue( this.beneficiarios[ idBeneficiario ].apaterno );
+		grupoEdicion.controls[ 'amaterno' ].setValue( this.beneficiarios[ idBeneficiario ].amaterno );
 		grupoEdicion.controls[ 'fechanac' ].patchValue( this.beneficiarios[ idBeneficiario ].fechaNacimiento );
 		grupoEdicion.controls[ 'parentesco' ].setValue( this.beneficiarios[ idBeneficiario ].parentesco );
 		grupoEdicion.controls[ 'porcentajeSuma' ].setValue( this.beneficiarios[ idBeneficiario ].porcentajeSuma );
@@ -139,6 +152,8 @@ export class PolicyHolderTableComponent implements OnInit {
 
 	private modificarBeneficiario( idBeneficiario: number, grupoEdicion: FormGroup ): void {
 		this.beneficiarios[ idBeneficiario ].nombre = grupoEdicion.get( 'nombre' ).value;
+		this.beneficiarios[ idBeneficiario ].apaterno = grupoEdicion.get( 'apaterno' ).value;
+		this.beneficiarios[ idBeneficiario ].amaterno = grupoEdicion.get( 'amaterno' ).value;
 		this.beneficiarios[ idBeneficiario ].fechaNacimiento = grupoEdicion.get( 'fechanac' ).value;
 		this.beneficiarios[ idBeneficiario ].parentesco = grupoEdicion.get( 'parentesco' ).value;
 		this.beneficiarios[ idBeneficiario ].porcentajeSuma = grupoEdicion.get( 'porcentajeSuma' ).value;
@@ -150,6 +165,8 @@ export class PolicyHolderTableComponent implements OnInit {
 		let beneficiario: Beneficiario = new Beneficiario();
 
 		beneficiario.nombre = this.frmBeneficiario.get( 'grupoAlta.nombre' ).value;
+		beneficiario.apaterno = this.frmBeneficiario.get( 'grupoAlta.apaterno' ).value;
+		beneficiario.amaterno = this.frmBeneficiario.get( 'grupoAlta.amaterno' ).value;
 		beneficiario.fechaNacimiento = this.frmBeneficiario.get( 'grupoAlta.fechanac' ).value;
 		beneficiario.parentesco = this.frmBeneficiario.get( 'grupoAlta.parentesco' ).value;
 		beneficiario.porcentajeSuma = this.frmBeneficiario.get( 'grupoAlta.porcentajeSuma' ).value;
@@ -189,11 +206,15 @@ export class PolicyHolderTableComponent implements OnInit {
 
 		if( !this.isValidSum ) {
 			this.frmBeneficiario.get( 'grupoAlta.nombre' ).enable();
+			this.frmBeneficiario.get( 'grupoAlta.apaterno' ).enable();
+			this.frmBeneficiario.get( 'grupoAlta.amaterno' ).enable();
 			this.frmBeneficiario.get( 'grupoAlta.fechanac' ).enable();
 			this.frmBeneficiario.get( 'grupoAlta.parentesco' ).enable();
 			this.frmBeneficiario.get( 'grupoAlta.porcentajeSuma' ).enable();
 		} else {
 			this.frmBeneficiario.get( 'grupoAlta.nombre' ).disable();
+			this.frmBeneficiario.get( 'grupoAlta.apaterno' ).disable();
+			this.frmBeneficiario.get( 'grupoAlta.amaterno' ).disable();
 			this.frmBeneficiario.get( 'grupoAlta.fechanac' ).disable();
 			this.frmBeneficiario.get( 'grupoAlta.parentesco' ).disable();
 			this.frmBeneficiario.get( 'grupoAlta.porcentajeSuma' ).disable();

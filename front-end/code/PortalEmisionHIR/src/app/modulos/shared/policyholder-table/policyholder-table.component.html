@@ -2,7 +2,9 @@
 	<table id="tblBeneficiario">
 		<thead>
 			<tr>
-				<th class="nombre">Nombre completo</th>
+				<th class="nombre">Nombre(s)</th>
+				<th class="apaterno">Apellido paterno</th>
+				<th class="amaterno">Apellido materno</th>
 				<th class="fecha">Fecha de nacimiento</th>
 				<th class="parentesco">Parentesco</th>
 				<th class="porcentaje">% de la suma asegurada</th>
@@ -21,6 +23,30 @@
 							[inputDirty]="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['nombre'].dirty"
 							[inputErrors]="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['nombre'].errors">
 								<input id="txtNombre" type="text" class="form-control" formControlName="nombre">
+						</pehir-extend-form-control>
+					</div>
+				</td>
+				<td class="center">
+					<label class="data" *ngIf="!frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						{{beneficiarios[i].apaterno}}
+					</label>
+					<div *ngIf="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						<pehir-extend-form-control
+							[inputDirty]="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['apaterno'].dirty"
+							[inputErrors]="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['apaterno'].errors">
+								<input id="txtApaterno" type="text" class="form-control" formControlName="apaterno">
+						</pehir-extend-form-control>
+					</div>
+				</td>
+				<td class="center">
+					<label class="data" *ngIf="!frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						{{beneficiarios[i].amaterno}}
+					</label>
+					<div *ngIf="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['edicion'].value">
+						<pehir-extend-form-control
+							[inputDirty]="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['amaterno'].dirty"
+							[inputErrors]="frmBeneficiario.controls['gruposEdicion'].controls[i].controls['amaterno'].errors">
+								<input id="txtAmaterno" type="text" class="form-control" formControlName="amaterno">
 						</pehir-extend-form-control>
 					</div>
 				</td>
@@ -93,6 +119,20 @@
 						[inputDirty]="frmBeneficiario.get('grupoAlta.nombre').dirty"
 						[inputErrors]="frmBeneficiario.get('grupoAlta.nombre').errors">
 							<input id="txtNombre" type="text" class="form-control" formControlName="nombre">
+					</pehir-extend-form-control>
+				</td>
+				<td>
+					<pehir-extend-form-control
+						[inputDirty]="frmBeneficiario.get('grupoAlta.apaterno').dirty"
+						[inputErrors]="frmBeneficiario.get('grupoAlta.apaterno').errors">
+							<input id="txtApaterno" type="text" class="form-control" formControlName="apaterno">
+					</pehir-extend-form-control>
+				</td>
+				<td>
+					<pehir-extend-form-control
+						[inputDirty]="frmBeneficiario.get('grupoAlta.amaterno').dirty"
+						[inputErrors]="frmBeneficiario.get('grupoAlta.amaterno').errors">
+							<input id="txtAmaterno" type="text" class="form-control" formControlName="amaterno">
 					</pehir-extend-form-control>
 				</td>
 				<td>

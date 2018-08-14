@@ -4,6 +4,8 @@ import { Parentesco }	from './parentesco';
 
 export class Beneficiario {
 	nombre: string;
+	apaterno: string;
+	amaterno: string;
 	fechaNacimiento: IMyDateModel;
 	parentesco: Parentesco;
 	porcentajeSumaDec: number;
