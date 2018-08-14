@@ -32,9 +32,11 @@ import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.vali
 })
 
 export class ProcuraVidaP1Component implements OnInit {
-	consultaCP: boolean = false;
+	selMunicipioCP: boolean = false;
+	selColoniaCP: boolean = false;
 
 	idMunicipioCP: string = '';
+	idColoniaCP: string = '';
 
 	frmProcuraVidaP1: FormGroup;
 
@@ -159,12 +161,10 @@ export class ProcuraVidaP1Component implements OnInit {
 								if( this.procuraVidaP1Service.hasModelP1() ) {
 									let fMunicipio = this.municipios.filter( ( municipio: any ) => municipio.claveEntidad === this.procuraVidaP1Service.getModelP1().delegacionMunicipio.claveEntidad );
 									this.frmProcuraVidaP1.get( 'delegacionMunicipio' ).setValue( fMunicipio[ 0 ] );
-								}
-
-								if( this.consultaCP ) {
+								} else if( this.selMunicipioCP ) {
 									let fMunicipio = this.municipios.filter( ( municipio: any ) => municipio.claveEntidad === this.idMunicipioCP );
 									this.frmProcuraVidaP1.get( 'delegacionMunicipio' ).setValue( fMunicipio[ 0 ] );
-									this.consultaCP = false;
+									this.selMunicipioCP = false;
 								}
 							}
 						});
@@ -188,6 +188,10 @@ export class ProcuraVidaP1Component implements OnInit {
 								if( this.procuraVidaP1Service.hasModelP1() ) {
 									let fColonia = this.colonias.filter( ( colonia: any ) => colonia.claveEntidad === this.procuraVidaP1Service.getModelP1().coloniaPoblacion.claveEntidad );
 									this.frmProcuraVidaP1.get( 'coloniaPoblacion' ).setValue( fColonia[ 0 ] );
+								} else if ( this.selColoniaCP ) {
+									let fColonia = this.colonias.filter( ( colonia: any ) => colonia.claveEntidad === this.idColoniaCP );
+									this.frmProcuraVidaP1.get( 'coloniaPoblacion' ).setValue( fColonia[ 0 ] );
+									this.selColoniaCP = false;
 								}
 							}
 						});
@@ -205,10 +209,13 @@ export class ProcuraVidaP1Component implements OnInit {
 						.postObject( '/catalogoPostal', { 'clave': cp } )
 						.subscribe( response => {
 							if( response.code === 200 ) {
-								this.consultaCP = true;
-								this.idMunicipioCP = response.data.claveMunicipio;
+								this.selMunicipioCP = true;
+								this.idMunicipioCP = response.data[ 0 ].claveMunicipio;
 
-								let fEstados = this.estados.filter( ( estado: any ) => estado.claveEntidad == response.data.claveEstado );
+								this.selColoniaCP = ( response.data.length === 1 );
+								this.idColoniaCP = ( response.data.length === 1 ) ? response.data[ 0 ].claveColonia : '';
+
+								let fEstados = this.estados.filter( ( estado: any ) => estado.claveEntidad == response.data[ 0 ].claveEstado );
 								this.frmProcuraVidaP1.get( 'estado' ).setValue( fEstados[ 0 ] );
 							}
 						});
