@@ -109,21 +109,21 @@ export class ApindividualP1Component implements OnInit {
 			'fumador': ['', Validators.compose([
 				Validators.required
 			])],
-			'calleNumero': ['', Validators.compose([
-				Validators.required
+			'cp': ['', Validators.compose([
+				Validators.required,
+				CodigoPostalValidator()
 			])],
-			'coloniaPoblacion': ['', Validators.compose([
+			'estado': ['', Validators.compose([
 				Validators.required
 			])],
 			'delegacionMunicipio': ['', Validators.compose([
 				Validators.required
 			])],
-			'estado': ['', Validators.compose([
+			'coloniaPoblacion': ['', Validators.compose([
 				Validators.required
 			])],
-			'cp': ['', Validators.compose([
-				Validators.required,
-				CodigoPostalValidator()
+			'calleNumero': ['', Validators.compose([
+				Validators.required
 			])],
 			'gobierno': ['', Validators.compose([
 				Validators.required

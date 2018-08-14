@@ -198,18 +198,6 @@
 			<div class="col col-50">
 				<div class="row">
 					<div class="col col-40">
-						<label id="lblCalleNumero" class="form-label">Calle y número:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmProcuraVidaP1.get('calleNumero').dirty"
-							[inputErrors]="frmProcuraVidaP1.get('calleNumero').errors">
-								<input id="txtCalleNumero" type="text" class="form-control" formControlName="calleNumero">
-						</pehir-extend-form-control>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col col-40">
 						<label id="lblCP" class="form-label">Código postal:</label>
 					</div>
 					<div class="col col-50">
@@ -237,8 +225,6 @@
 						</pehir-extend-form-control>
 					</div>
 				</div>
-			</div>
-			<div class="col col-50">
 				<div class="row">
 					<div class="col col-40">
 						<label id="lblDelegacionMunicipio" class="form-label">Delegación o municipio:</label>
@@ -256,6 +242,8 @@
 						</pehir-extend-form-control>
 					</div>
 				</div>
+			</div>
+			<div class="col col-50">
 				<div class="row">
 					<div class="col col-40">
 						<label id="lblColoniaPoblacion" class="form-label">Colonia o población:</label>
@@ -270,6 +258,18 @@
 										{{colonia.descripcionEntidad}}
 									</option>
 								</select>
+						</pehir-extend-form-control>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-40">
+						<label id="lblCalleNumero" class="form-label">Calle y número:</label>
+					</div>
+					<div class="col col-50">
+						<pehir-extend-form-control
+							[inputDirty]="frmProcuraVidaP1.get('calleNumero').dirty"
+							[inputErrors]="frmProcuraVidaP1.get('calleNumero').errors">
+								<input id="txtCalleNumero" type="text" class="form-control" formControlName="calleNumero">
 						</pehir-extend-form-control>
 					</div>
 				</div>

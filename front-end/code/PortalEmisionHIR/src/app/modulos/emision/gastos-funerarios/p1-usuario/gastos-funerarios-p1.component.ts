@@ -129,9 +129,6 @@ export class GastosFunerariosP1Component implements OnInit {
 			'genero': ['', Validators.compose([
 				Validators.required
 			])],
-			'calleNumero': ['', Validators.compose([
-				Validators.required
-			])],
 			'cp': ['', Validators.compose([
 				Validators.required,
 				CodigoPostalValidator()
@@ -143,6 +140,9 @@ export class GastosFunerariosP1Component implements OnInit {
 				Validators.required
 			])],
 			'coloniaPoblacion': ['', Validators.compose([
+				Validators.required
+			])],
+			'calleNumero': ['', Validators.compose([
 				Validators.required
 			])]
 		});
