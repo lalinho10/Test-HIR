@@ -145,7 +145,7 @@
 	<legend>Beneficiarios</legend>
 	<div *ngFor="let beneficiario of procuraVidaP2.beneficiarios" class="row">
 		<div class="col col-25">
-			<label class="res-label text-center">{{ beneficiario.nombre }}</label>
+			<label class="res-label text-center">{{ beneficiario.nombre + ' ' + beneficiario.apaterno + ' ' + beneficiario.amaterno }}</label>
 		</div>
 		<div class="col col-25">
 			<label class="res-label text-center">{{ beneficiario.fechaNacimiento.jsdate | date: 'dd/MM/yyyy' }}</label>
