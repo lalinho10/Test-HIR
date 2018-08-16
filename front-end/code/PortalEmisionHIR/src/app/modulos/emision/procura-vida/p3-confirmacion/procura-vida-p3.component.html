@@ -24,11 +24,11 @@
 			</label>
 		</div>
 		<div class="col col-16">
-			<label class="form-label">Nacionalidad:</label>
+			<label class="form-label">Edad:</label>
 		</div>
 		<div class="col col-16">
 			<label class="res-label">
-				{{ procuraVidaP1.nacionalidad }}
+				{{ procuraVidaP2.resultado.edad }} años
 			</label>
 		</div>
 	</div>
@@ -59,11 +59,11 @@
 	</div>
 	<div class="row">
 		<div class="col col-16">
-			<label class="form-label">RFC:</label>
+			<label class="form-label">Nacionalidad:</label>
 		</div>
 		<div class="col col-16">
 			<label class="res-label">
-				{{ procuraVidaP1.rfc }}
+				{{ procuraVidaP1.nacionalidad }}
 			</label>
 		</div>
 		<div class="col col-16">
@@ -75,6 +75,16 @@
 			</label>
 		</div>
 		<div class="col col-16">
+			<label class="form-label">RFC:</label>
+		</div>
+		<div class="col col-16">
+			<label class="res-label">
+				{{ procuraVidaP1.rfc }}
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-16">
 			<label class="form-label">Estado civil:</label>
 		</div>
 		<div class="col col-16">
@@ -82,8 +92,6 @@
 				{{ procuraVidaP1.estadoCivil.descEstadoCivil }}
 			</label>
 		</div>
-	</div>
-	<div class="row">
 		<div class="col col-16">
 			<label class="form-label">Género:</label>
 		</div>
@@ -161,33 +169,65 @@
 <fieldset>
 	<legend>Datos del seguro</legend>
 	<div class="row">
-		<div class="col col-16">
-			<label class="form-label">Plan:</label>
-		</div>
-		<div class="col col-16">
-			<label class="res-label">
-				{{ procuraVidaP2.plan.desc }}
-			</label>
-		</div>
-		<div class="col col-16">
+		<div class="col col-25">
 			<label class="form-label">Forma de pago:</label>
 		</div>
-		<div class="col col-16">
+		<div class="col col-25">
 			<label class="res-label">
 				{{ procuraVidaP2.formaPago.desc }}
 			</label>
 		</div>
-		<div class="col col-16">
+		<div class="col col-25">
+			<label class="form-label">Pago:</label>
+		</div>
+		<div class="col col-25">
+			<label class="res-label">
+				{{ procuraVidaP2.resultado.pago | currency: 'MXN': 'symbol-narrow' }}
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-25">
+			<label class="form-label">Plan:</label>
+		</div>
+		<div class="col col-25">
+			<label class="res-label">
+				{{ procuraVidaP2.plan.desc }}
+			</label>
+		</div>
+		<div class="col col-25">
 			<label class="form-label">Módulos:</label>
 		</div>
-		<div class="col col-16">
+		<div class="col col-25">
 			<label class="res-label">
 				{{ procuraVidaP2.modulo.descModulo }}
 			</label>
 		</div>
 	</div>
 	<div class="row">
-		
+		<div *ngFor="let tarifaCobertura of procuraVidaP2.resultado.tarifas" class="col col-50">
+			<div class="row">
+				<div class="col col-100">
+					<label class="res-label text-center">{{tarifaCobertura.descripcion}}</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-50">
+					<label class="form-label">Suma asegurada</label>
+				</div>
+				<div class="col col-50">
+					<label class="res-label">{{tarifaCobertura.suma | currency: 'MXN': 'symbol-narrow'}}</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-50">
+					<label class="form-label">Deducible:</label>
+				</div>
+				<div class="col col-50">
+					<label class="res-label">{{tarifaCobertura.deducible | currency: 'MXN': 'symbol-narrow'}}</label>
+				</div>
+			</div>
+		</div>
 	</div>
 </fieldset>
 <fieldset *ngIf="editaAgente">

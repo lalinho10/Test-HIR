@@ -4,6 +4,7 @@ import { Router }							  from '@angular/router';
 import { Observable }						  from 'rxjs/Observable';
 import											   'rxjs/add/observable/forkJoin';
 
+import { ApindividualP1Service }			  from '../p1-usuario/apindividual-p1.service';
 import { ApindividualP2Service }			  from './apindividual-p2.service';
 
 import { Cobertura }						  from 'app/core/models/cobertura';
@@ -16,6 +17,10 @@ import { AuthenticationService }			  from 'app/core/services/authentication/auth
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.validator';
+
+import { CotizacionService }				  from 'app/modulos/cotizacion/cotizacion.service';
+import { TarifaRequest }					  from 'app/modulos/cotizacion/tarifa.request';
+import { TarifaService }					  from 'app/modulos/cotizacion/tarifa.service';
 
 @Component({
 	selector: 'pehir-apindividual-p2',
@@ -36,10 +41,13 @@ export class ApindividualP2Component implements OnInit {
 	planes: Plan[];
 
 	constructor(
+		private apindividualP1Service: ApindividualP1Service,
 		private apindividualP2Service: ApindividualP2Service,
 		private authenticationService: AuthenticationService,
+		private cotizacionService: CotizacionService,
 		private fb: FormBuilder,
 		private router: Router,
+		private tarifaService: TarifaService,
 		private wsClientService: WSClientService
 	){}
 
@@ -150,7 +158,16 @@ export class ApindividualP2Component implements OnInit {
 	}
 
 	fnAvanzarP3(): void {
-		this.apindividualP2Service.setModelP2( this.coberturas, this.frmApindividualP2.value );
-		this.router.navigateByUrl( '/emision/apindividual/confirmacion' );
+		let tarifaRequest: TarifaRequest = this.tarifaService.getRequestEmision( this.idProducto, this.apindividualP1Service.getModelP1().fechanac, this.frmApindividualP2.value );
+
+		this.wsClientService
+			.postObject( '/obtTarifa', tarifaRequest )
+			.subscribe( ( response ) => {
+				if( response.codigoRespuesta ) {
+					this.cotizacionService.definirResultadoCotizacion( response );
+					this.apindividualP2Service.setModelP2( this.frmApindividualP2.value, this.cotizacionService.obtenerResultadoCotizacion() );
+					this.router.navigateByUrl( '/emision/apindividual/confirmacion' );
+				}
+			});
 	}
 }

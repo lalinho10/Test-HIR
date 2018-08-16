@@ -4,6 +4,7 @@ import { Router }							  from '@angular/router';
 import { Observable }						  from 'rxjs/Observable';
 import											   'rxjs/add/observable/forkJoin';
 
+import { ProcuraVidaP1Service }				  from '../p1-usuario/procura-vida-p1.service';
 import { ProcuraVidaP2Service }				  from './procura-vida-p2.service';
 
 import { Cobertura }						  from 'app/core/models/cobertura';
@@ -16,6 +17,9 @@ import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.validator';
 
+import { CotizacionService }				  from 'app/modulos/cotizacion/cotizacion.service';
+import { TarifaRequest }					  from 'app/modulos/cotizacion/tarifa.request';
+import { TarifaService }					  from 'app/modulos/cotizacion/tarifa.service';
 import { PolicyHolderTableComponent }		  from 'app/modulos/shared/policyholder-table/policyholder-table.component';
 
 @Component({
@@ -40,9 +44,12 @@ export class ProcuraVidaP2Component implements OnInit {
 
 	constructor(
 		private authenticationService: AuthenticationService,
+		private cotizacionService: CotizacionService,
 		private fb: FormBuilder,
+		private procuraVidaP1Service: ProcuraVidaP1Service,
 		private procuraVidaP2Service: ProcuraVidaP2Service,
 		private router: Router,
+		private tarifaService: TarifaService,
 		private wsClientService: WSClientService
 	){}
 
@@ -145,7 +152,16 @@ export class ProcuraVidaP2Component implements OnInit {
 	}
 
 	fnAvanzarP3(): void {
-		this.procuraVidaP2Service.setModelP2( this.tablaBeneficiarios.beneficiarios, this.coberturas, this.frmProcuraVidaP2.value );
-		this.router.navigateByUrl( '/emision/procuravida/confirmacion' );
+		let tarifaRequest: TarifaRequest = this.tarifaService.getRequestEmision( this.idProducto, this.procuraVidaP1Service.getModelP1().fechanac, this.frmProcuraVidaP2.value );
+
+		this.wsClientService
+			.postObject( '/obtTarifa', tarifaRequest )
+			.subscribe( ( response ) => {
+				if( response.codigoRespuesta ) {
+					this.cotizacionService.definirResultadoCotizacion( response );
+					this.procuraVidaP2Service.setModelP2( this.tablaBeneficiarios.beneficiarios, this.frmProcuraVidaP2.value, this.cotizacionService.obtenerResultadoCotizacion() );
+					this.router.navigateByUrl( '/emision/procuravida/confirmacion' );
+				}
+			});
 	}
 }

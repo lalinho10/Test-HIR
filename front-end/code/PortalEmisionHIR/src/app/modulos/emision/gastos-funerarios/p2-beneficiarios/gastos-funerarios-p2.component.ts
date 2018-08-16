@@ -4,6 +4,7 @@ import { Router }							  from '@angular/router';
 import { Observable }						  from 'rxjs/Observable';
 import											   'rxjs/add/observable/forkJoin';
 
+import { GastosFunerariosP1Service }		  from '../p1-usuario/gastos-funerarios-p1.service';
 import { GastosFunerariosP2Service }		  from './gastos-funerarios-p2.service';
 
 import { Cobertura }						  from 'app/core/models/cobertura';
@@ -16,6 +17,9 @@ import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.validator';
 
+import { CotizacionService }				  from 'app/modulos/cotizacion/cotizacion.service';
+import { TarifaRequest }					  from 'app/modulos/cotizacion/tarifa.request';
+import { TarifaService }					  from 'app/modulos/cotizacion/tarifa.service';
 import { PolicyHolderTableComponent }		  from 'app/modulos/shared/policyholder-table/policyholder-table.component';
 
 @Component({
@@ -40,9 +44,12 @@ export class GastosFunerariosP2Component implements OnInit {
 
 	constructor(
 		private authenticationService: AuthenticationService,
+		private cotizacionService: CotizacionService,
 		private fb: FormBuilder,
-		private gastosFunerariosP1Service: GastosFunerariosP2Service,
+		private gastosFunerariosP1Service: GastosFunerariosP1Service,
+		private gastosFunerariosP2Service: GastosFunerariosP2Service,
 		private router: Router,
+		private tarifaService: TarifaService,
 		private wsClientService: WSClientService
 	){}
 
@@ -92,7 +99,7 @@ export class GastosFunerariosP2Component implements OnInit {
 				this.planes = response[ 3 ].data;
 			}
 
-			if( this.gastosFunerariosP1Service.hasModelP2() ) {
+			if( this.gastosFunerariosP2Service.hasModelP2() ) {
 				this.mostrarDatosCapturados();
 			}
 		});
@@ -120,19 +127,19 @@ export class GastosFunerariosP2Component implements OnInit {
 	}
 
 	private mostrarDatosCapturados(): void {
-		this.frmGastosFunerariosP2.get( 'agente' ).setValue( this.gastosFunerariosP1Service.getModelP2().agente );
-		this.frmGastosFunerariosP2.get( 'clave' ).setValue( this.gastosFunerariosP1Service.getModelP2().clave );
+		this.frmGastosFunerariosP2.get( 'agente' ).setValue( this.gastosFunerariosP2Service.getModelP2().agente );
+		this.frmGastosFunerariosP2.get( 'clave' ).setValue( this.gastosFunerariosP2Service.getModelP2().clave );
 
-		let fModulo = this.modulos.filter( ( modulo: any ) => modulo.idModulo === this.gastosFunerariosP1Service.getModelP2().modulo.idModulo );
+		let fModulo = this.modulos.filter( ( modulo: any ) => modulo.idModulo === this.gastosFunerariosP2Service.getModelP2().modulo.idModulo );
 		this.frmGastosFunerariosP2.get( 'modulo' ).setValue( fModulo[ 0 ] );
 
-		let fFormaPago = this.formasPago.filter( ( formaPago: any ) => formaPago.id === this.gastosFunerariosP1Service.getModelP2().formaPago.id );
+		let fFormaPago = this.formasPago.filter( ( formaPago: any ) => formaPago.id === this.gastosFunerariosP2Service.getModelP2().formaPago.id );
 		this.frmGastosFunerariosP2.get( 'formaPago' ).setValue( fFormaPago[ 0 ] );
 
-		let fPlan = this.planes.filter( ( plan: any ) => plan.id === this.gastosFunerariosP1Service.getModelP2().plan.id );
+		let fPlan = this.planes.filter( ( plan: any ) => plan.id === this.gastosFunerariosP2Service.getModelP2().plan.id );
 		this.frmGastosFunerariosP2.get( 'plan' ).setValue( fPlan[ 0 ] );
 
-		this.tablaBeneficiarios.beneficiarios = this.gastosFunerariosP1Service.getModelP2().beneficiarios;
+		this.tablaBeneficiarios.beneficiarios = this.gastosFunerariosP2Service.getModelP2().beneficiarios;
 		this.tablaBeneficiarios.cargarDatosCapturados();
 	}
 
@@ -145,7 +152,16 @@ export class GastosFunerariosP2Component implements OnInit {
 	}
 
 	fnAvanzarP3(): void {
-		this.gastosFunerariosP1Service.setModelP2( this.tablaBeneficiarios.beneficiarios, this.coberturas, this.frmGastosFunerariosP2.value );
-		this.router.navigateByUrl( '/emision/gastosfunerarios/confirmacion' );
+		let tarifaRequest: TarifaRequest = this.tarifaService.getRequestEmision( this.idProducto, this.gastosFunerariosP1Service.getModelP1().fechanac, this.frmGastosFunerariosP2.value );
+
+		this.wsClientService
+			.postObject( '/obtTarifa', tarifaRequest )
+			.subscribe( ( response ) => {
+				if( response.codigoRespuesta ) {
+					this.cotizacionService.definirResultadoCotizacion( response );
+					this.gastosFunerariosP2Service.setModelP2( this.tablaBeneficiarios.beneficiarios, this.frmGastosFunerariosP2.value, this.cotizacionService.obtenerResultadoCotizacion() );
+					this.router.navigateByUrl( '/emision/gastosfunerarios/confirmacion' );
+				}
+			});
 	}
 }

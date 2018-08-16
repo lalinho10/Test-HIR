@@ -4,6 +4,7 @@ import { Router }							  from '@angular/router';
 import { Observable }						  from 'rxjs/Observable';
 import											   'rxjs/add/observable/forkJoin';
 
+import { SegubiciP1Service }				  from '../p1-usuario/segubici-p1.service';
 import { SegubiciP2Service }				  from './segubici-p2.service';
 
 import { Cobertura }						  from 'app/core/models/cobertura';
@@ -16,6 +17,10 @@ import { AuthenticationService }			  from 'app/core/services/authentication/auth
 import { WSClientService }					  from 'app/core/services/ws-client.service';
 
 import { ClaveAgenteValidator }				  from 'app/core/validators/clave-agente.validator';
+
+import { CotizacionService }				  from 'app/modulos/cotizacion/cotizacion.service';
+import { TarifaRequest }					  from 'app/modulos/cotizacion/tarifa.request';
+import { TarifaService }					  from 'app/modulos/cotizacion/tarifa.service';
 
 @Component({
 	selector: 'pehir-segubici-p2',
@@ -37,9 +42,12 @@ export class SegubiciP2Component implements OnInit {
 
 	constructor(
 		private authenticationService: AuthenticationService,
+		private cotizacionService: CotizacionService,
 		private fb: FormBuilder,
 		private router: Router,
+		private segubiciP1Service: SegubiciP1Service,
 		private segubiciP2Service: SegubiciP2Service,
+		private tarifaService: TarifaService,
 		private wsClientService: WSClientService
 	){}
 
@@ -150,7 +158,16 @@ export class SegubiciP2Component implements OnInit {
 	}
 
 	fnAvanzarP3(): void {
-		this.segubiciP2Service.setModelP2( this.coberturas, this.frmSegubiciP2.value );
-		this.router.navigateByUrl( '/emision/segubici/confirmacion' );
+		let tarifaRequest: TarifaRequest = this.tarifaService.getRequestEmision( this.idProducto, this.segubiciP1Service.getModelP1().fechanac, this.frmSegubiciP2.value );
+
+		this.wsClientService
+			.postObject( '/obtTarifa', tarifaRequest )
+			.subscribe( ( response ) => {
+				if( response.codigoRespuesta ) {
+					this.cotizacionService.definirResultadoCotizacion( response );
+					this.segubiciP2Service.setModelP2( this.frmSegubiciP2.value, this.cotizacionService.obtenerResultadoCotizacion() );
+					this.router.navigateByUrl( '/emision/segubici/confirmacion' );
+				}
+			});
 	}
 }
