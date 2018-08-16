@@ -17,4 +17,16 @@ export class TarifaService {
 
 		return this.tarifaRequest;
 	}
+
+	getRequestEmision( idProd: number, fechaNacimiento: any, frmEmision: any ): TarifaRequest {
+		this.tarifaRequest = new TarifaRequest();
+
+		this.tarifaRequest.idProd = idProd;
+		this.tarifaRequest.idPlan = frmEmision.idPlan;
+		this.tarifaRequest.fechaNacimiento = fechaNacimiento.epoc * 1000;
+		this.tarifaRequest.idFormaPago = frmEmision.idFormaPago;
+		this.tarifaRequest.modulos = frmEmision.modulos;
+
+		return this.tarifaRequest;
+	}
 }
