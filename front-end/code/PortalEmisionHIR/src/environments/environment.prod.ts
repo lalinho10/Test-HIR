@@ -8,5 +8,8 @@ export const environment = {
 	environmentName: 'Production',
 	development: false,
 	production: true,
-	recaptchaSiteKey: ''
+	recaptchaSiteKey: '',
+	openpayMerchantId: '',
+	openpayPublicApiKey: '',
+	openpaySandboxMode: false
 };

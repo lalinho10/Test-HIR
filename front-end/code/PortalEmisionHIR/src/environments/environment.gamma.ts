@@ -8,5 +8,8 @@ export const environment = {
 	environmentName: 'Gamma',
 	development: false,
 	production: false,
-	recaptchaSiteKey: '6LfG6V0UAAAAAAnADp0QFhJzKeG2CIYzRQ0jzKqj'
+	recaptchaSiteKey: '6LfG6V0UAAAAAAnADp0QFhJzKeG2CIYzRQ0jzKqj',
+	openpayMerchantId: 'mp2lfbdg2vryzcqnqmfm',
+	openpayPublicApiKey: 'pk_c1c7ea14443945e4b361164b4e43cc85',
+	openpaySandboxMode: true
 };
