@@ -1,0 +1,95 @@
+<div class="openpay">
+	<div class="row">
+		<div class="col col-100 titulo">{{titulo}}</div>
+	</div>
+	<div class="opheader">
+		<div class="row">
+			<div class="col col-100">
+				<h2>Tarjeta de crédito o débito</h2>
+			</div>
+		</div>
+	</div>
+	<div class="opbody">
+		<form [formGroup]="frmOpenpay">
+			<div class="row mb15">
+				<div class="col col-33 separator">
+					<p>Tarjetas de crédito</p>
+					<img src="./assets/img/openpay/cards1.png" alt="TDC aceptadas">
+				</div>
+				<div class="col col-66">
+					<p>Tarjetas de débito</p>
+					<img src="./assets/img/openpay/cards2.png" alt="TDD aceptadas">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-50">
+					<label class="form-label">Nombre del titular</label>
+					<pehir-extend-form-control
+						[inputDirty]="frmOpenpay.get('titular').dirty"
+						[inputErrors]="frmOpenpay.get('titular').errors">
+							<input id="txtTitular" type="text" class="form-control" placeholder="Como aparece en la tarjeta" autocomplete="off" data-openpay-card="holder_name" formControlName="titular">
+					</pehir-extend-form-control>
+				</div>
+				<div class="col col-50">
+					<label class="form-label">Número de tarjeta</label>
+					<pehir-extend-form-control
+						[inputDirty]="frmOpenpay.get('tarjeta').dirty"
+						[inputErrors]="frmOpenpay.get('tarjeta').errors">
+							<input id="txtTarjeta" type="text" class="form-control" autocomplete="off" data-openpay-card="card_number" formControlName="tarjeta">
+					</pehir-extend-form-control>
+				</div>
+			</div>
+			<div class="row mb15">
+				<div class="col col-50">
+					<label class="form-label">Fecha de expiración</label>
+					<div class="row">
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmOpenpay.get('mesExp').dirty"
+								[inputErrors]="frmOpenpay.get('mesExp').errors">
+									<input id="txtMesExp" type="text" class="form-control" placeholder="Mes" autocomplete="off" data-openpay-card="expiration_month" formControlName="mesExp">
+							</pehir-extend-form-control>
+						</div>
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmOpenpay.get('anioExp').dirty"
+								[inputErrors]="frmOpenpay.get('anioExp').errors">
+									<input id="txtAnioExp" type="text" class="form-control" placeholder="Año" autocomplete="off" data-openpay-card="expiration_year" formControlName="anioExp">
+							</pehir-extend-form-control>
+						</div>
+					</div>
+				</div>
+				<div class="col col-50">
+					<label class="form-label">Código de seguridad</label>
+					<div class="row">
+						<div class="col col-50">
+							<pehir-extend-form-control
+								[inputDirty]="frmOpenpay.get('cvv').dirty"
+								[inputErrors]="frmOpenpay.get('cvv').errors">
+									<input id="txtCvv" type="text" class="form-control" placeholder="3 dígitos" autocomplete="off" data-openpay-card="cvv2" formControlName="cvv">
+							</pehir-extend-form-control>
+						</div>
+						<div class="col col-50">
+							<img src="./assets/img/openpay/cvv.png" alt="cvv2">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row mb15">
+				<div class="col col-33 col-off-33 separator">
+					<label class="opinfo">Transacciones realizadas vía:</label>
+					<img src="./assets/img/openpay/openpay.png" alt="OpenPay">
+				</div>
+				<div class="col col-33">
+					<img src="./assets/img/openpay/security.png" class="security" alt="Seguridad">
+					<label class="secinfo">Tus pagos se realizan de forma segura con encriptación de 256 bits</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-33 col-off-66">
+					<button id="btnPagar" type="submit" class="next opbutton">Pagar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

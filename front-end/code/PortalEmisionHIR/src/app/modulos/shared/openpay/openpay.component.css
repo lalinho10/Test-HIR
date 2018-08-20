@@ -1,0 +1,10 @@
+.openpay h2 {color:#fafafa;font-size:18px;font-weight:normal;margin:0;}
+.openpay .opheader {background-color:#1e3154;padding:15px 20px;}
+.openpay .opbody {background-color:#f0f0f0;padding:15px 20px;}
+.openpay .opbody .mb15 {margin-bottom:15px;}
+.openpay .separator {border-right:1px solid #b8b8b8;}
+.openpay label.opinfo {font-size:12px;margin:0;}
+.openpay label.secinfo {font-size:12px;margin:0;padding-top:10px;}
+.openpay label.form-label {text-align:left;}
+.openpay .security {display:block;float:left;padding:5px 10px 0 0;}
+.openpay .opbutton {width:80%;}
