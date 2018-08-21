@@ -25,6 +25,7 @@ import { CotizacionModule }				from './modulos/cotizacion/cotizacion.module';
 import { EmisionModule }				from './modulos/emision/emision.module';
 import { ExtendFormControlModule }		from './modulos/shared/extend-form-control/extend-form-control.module';
 import { ImageLinkModule }				from './modulos/shared/image-link/image-link.module';
+import { OpenpayModule }				from './modulos/shared/openpay/openpay.module';
 import { PolicyHolderTableModule }		from './modulos/shared/policyholder-table/policyholder-table.module';
 import { MedicalQuestionaryModule }		from './modulos/shared/medical-questionary/medical-questionary.module';
 
@@ -94,6 +95,7 @@ registerLocaleData( localeESMX );
 		EmisionModule,
 		ExtendFormControlModule,
 		ImageLinkModule,
+		OpenpayModule,
 		PolicyHolderTableModule,
 		MedicalQuestionaryModule
 	],
