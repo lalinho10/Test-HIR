@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { environment }						  from '../../../../environments/environment';
 
+import { AppModalService }					  from 'app/core/components/app-modal/app-modal.service';
+
 @Component({
 	selector: 'pehir-openpay',
 	templateUrl: 'openpay.component.html',
@@ -10,6 +12,8 @@ import { environment }						  from '../../../../environments/environment';
 })
 
 export class OpenpayComponent implements OnInit {
+	private tokenId: string;
+	private deviceSessionId: string;
 	private openpayMerchantId: string = environment.openpayMerchantId;
 	private openpayPublicApiKey: string = environment.openpayPublicApiKey;
 	private openpaySandboxMode: boolean = environment.openpaySandboxMode;
@@ -18,6 +22,7 @@ export class OpenpayComponent implements OnInit {
 	frmOpenpay: FormGroup;
 
 	constructor(
+		private appModalService: AppModalService,
 		private fb: FormBuilder
 	){}
 
@@ -30,6 +35,8 @@ export class OpenpayComponent implements OnInit {
 		OpenPay.setId( this.openpayMerchantId );
 		OpenPay.setApiKey( this.openpayPublicApiKey );
 		OpenPay.setSandboxMode( this.openpaySandboxMode );
+
+		this.deviceSessionId = OpenPay.deviceData.setup();
 	}
 
 	private crearFormulario(): void {
@@ -50,5 +57,22 @@ export class OpenpayComponent implements OnInit {
 				Validators.required
 			])]
 		});
+	}
+
+	fnPagar(): void {
+		OpenPay.token.extractFormAndCreate(
+			'payment-form',
+			( response: any ) => this.sucess_callbak( response ),
+			( response: any ) => this.error_callbak( response ) );
+	}
+
+	private sucess_callbak( response: any ): void {
+		this.tokenId = response.data.id;
+		//POST cargo a tarjeta
+	}
+
+	private error_callbak( response: any ): void {
+		let errorMessage: string = response.data.description != undefined ? response.data.description : response.message;
+		this.appModalService.openModal( 'error', errorMessage );
 	}
 }

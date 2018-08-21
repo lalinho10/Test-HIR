@@ -10,7 +10,9 @@
 		</div>
 	</div>
 	<div class="opbody">
-		<form [formGroup]="frmOpenpay">
+		<form id="payment-form" [formGroup]="frmOpenpay">
+			<input type="hidden" id="device_session_id" name="device_session_id">
+			<input type="hidden" id="token_id" name="token_id">
 			<div class="row mb15">
 				<div class="col col-33 separator">
 					<p>Tarjetas de crédito</p>
@@ -87,7 +89,7 @@
 			</div>
 			<div class="row">
 				<div class="col col-33 col-off-66">
-					<button id="btnPagar" type="submit" class="next opbutton">Pagar</button>
+					<button id="btnPagar" type="button" class="next opbutton" (click)="fnPagar()">Pagar</button>
 				</div>
 			</div>
 		</form>
