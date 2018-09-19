@@ -163,7 +163,7 @@ export class ApindividualP2Component implements OnInit {
 		this.wsClientService
 			.postObject( '/obtTarifa', tarifaRequest )
 			.subscribe( ( response ) => {
-				if( response.codigoRespuesta ) {
+				if( response.codigoRespuesta === 200 ) {
 					this.cotizacionService.definirResultadoCotizacion( response );
 					this.apindividualP2Service.setModelP2( this.frmApindividualP2.value, this.cotizacionService.obtenerResultadoCotizacion() );
 					this.router.navigateByUrl( '/emision/apindividual/confirmacion' );

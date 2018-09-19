@@ -157,7 +157,7 @@ export class ProcuraVidaP2Component implements OnInit {
 		this.wsClientService
 			.postObject( '/obtTarifa', tarifaRequest )
 			.subscribe( ( response ) => {
-				if( response.codigoRespuesta ) {
+				if( response.codigoRespuesta === 200 ) {
 					this.cotizacionService.definirResultadoCotizacion( response );
 					this.procuraVidaP2Service.setModelP2( this.tablaBeneficiarios.beneficiarios, this.frmProcuraVidaP2.value, this.cotizacionService.obtenerResultadoCotizacion() );
 					this.router.navigateByUrl( '/emision/procuravida/confirmacion' );

@@ -163,7 +163,7 @@ export class SegubiciP2Component implements OnInit {
 		this.wsClientService
 			.postObject( '/obtTarifa', tarifaRequest )
 			.subscribe( ( response ) => {
-				if( response.codigoRespuesta ) {
+				if( response.codigoRespuesta === 200 ) {
 					this.cotizacionService.definirResultadoCotizacion( response );
 					this.segubiciP2Service.setModelP2( this.frmSegubiciP2.value, this.cotizacionService.obtenerResultadoCotizacion() );
 					this.router.navigateByUrl( '/emision/segubici/confirmacion' );

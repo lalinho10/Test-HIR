@@ -191,7 +191,7 @@ export class ProcuraVidaComponent implements OnInit {
 		this.wsClientService
 			.postObject( '/obtTarifa', tarifaRequest )
 			.subscribe( ( response ) => {
-				if( response.codigoRespuesta ) {
+				if( response.codigoRespuesta === 200 ) {
 					this.cotizacionService.definirProducto( this.idProducto );
 					this.cotizacionService.definirCotizacion( this.crearModeloCotizacion() );
 					this.cotizacionService.definirResultadoCotizacion( response );
