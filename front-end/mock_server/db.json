@@ -3942,6 +3942,24 @@
 			]
 		}
 	],
+	"catalogoCuestionarioConocimiento":
+	{
+		"code": 200,
+		"status": null,
+		"mensaje": "Se ha mostrado el cuestionario",
+		"dateTime": 1531739352794,
+		"data":
+		[
+			{
+				"id": 1,
+				"desc": "¿Usted desempeña o ha desempeñado en el año inmediato anterior alguna de las siguientes funciones o cargos: Jefe de Estado o de gobierno, líder político, funcionario gubernamental, judicial o militar de alta jerarquía, alto ejecutivo de empresas estatales o funcionario o miembro importante de partidos políticos?"
+			},
+			{
+				"id": 2,
+				"desc": "¿Es usted cónyuge, concubina, concubino o tiene parentesco por consanguinidad o afinidad hasta el segundo grado con alguna persona de los mencionados en el párrafo anterior?"
+			}
+		]
+	},
 	"catalogoFrecuenciaBebida":
 	{
 		"code": 200,
