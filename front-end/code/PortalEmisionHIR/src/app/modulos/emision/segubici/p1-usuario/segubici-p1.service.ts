@@ -23,10 +23,10 @@ export class SegubiciP1Service {
 		this.segubiciP1.estado = frmSegubiciP1.estado;
 		this.segubiciP1.delegacionMunicipio = frmSegubiciP1.delegacionMunicipio;
 		this.segubiciP1.coloniaPoblacion = frmSegubiciP1.coloniaPoblacion;
-		this.segubiciP1.gobierno = frmSegubiciP1.gobierno;
-		this.segubiciP1.especifiqueGob = ( frmSegubiciP1.gobierno ) ? frmSegubiciP1.especifiqueGob : undefined;
-		this.segubiciP1.parienteGob = frmSegubiciP1.parienteGob;
-		this.segubiciP1.especifiqueParGob = ( frmSegubiciP1.parienteGob ) ? frmSegubiciP1.especifiqueParGob : undefined;
+		this.segubiciP1.gobierno = frmSegubiciP1.preguntas[ 0 ].confirmacion;
+		this.segubiciP1.especifiqueGob = ( frmSegubiciP1.preguntas[ 0 ].confirmacion === 1 ) ? frmSegubiciP1.preguntas[ 0 ].especifique : undefined;
+		this.segubiciP1.parienteGob = frmSegubiciP1.preguntas[ 1 ].confirmacion;
+		this.segubiciP1.especifiqueParGob = ( frmSegubiciP1.preguntas[ 1 ].confirmacion === 1 ) ? frmSegubiciP1.preguntas[ 1 ].especifique : undefined;
 	}
 
 	getModelP1(): SegubiciP1 {

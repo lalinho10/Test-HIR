@@ -218,72 +218,39 @@
 	</fieldset>
 	<fieldset>
 		<legend>Identificación y conocimiento del cliente</legend>
-		<div class="row">
-			<div class="col col-100">
-				<label id="lblGobierno" class="pregunta">
-					¿Usted desempeña o ha desempeñado en el año inmediato anterior alguna de las siguientes funciones o cargos: Jefe de Estado o de Gobierno, líder político, funcionario gubernamental, judicial o militar de alta jerarquía, alto ejecutivo de empresas estatales o funcionario o miembro importante de partidos políticos?
-				</label>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col col-50">
-				<pehir-extend-form-control
-					[inputDirty]="frmSegubiciP1.get('gobierno').dirty"
-					[inputErrors]="frmSegubiciP1.get('gobierno').errors">
-						<div class="rdoContainer two">
-							<input type="radio" [value]="false" formControlName="gobierno">No
-						</div>
-						<div class="rdoContainer two">
-							<input type="radio" [value]="true" formControlName="gobierno">Sí
-						</div>
-				</pehir-extend-form-control>
-			</div>
-			<div class="col col-50">
+		<div formArrayName="preguntas">
+			<div *ngFor="let pregunta of preguntas.controls; let i=index;" [formGroupName]="i">
 				<div class="row">
-					<div class="col col-40">
-						<label id="lblEspecifiqueGob" class="form-label">Especifique:</label>
-					</div>
-					<div class="col col-50">
-						<pehir-extend-form-control
-							[inputDirty]="frmSegubiciP1.get('especifiqueGob').dirty"
-							[inputErrors]="frmSegubiciP1.get('especifiqueGob').errors">
-								<input id="txtEspecifiqueGob" type="text" class="form-control" formControlName="especifiqueGob">
-						</pehir-extend-form-control>
+					<div class="col col-100">
+						<label id="lblPregunta" class="pregunta">{{ preguntasConocimiento[ i ].desc }}</label>
 					</div>
 				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col col-100">
-				<label id="lblParienteGob" class="pregunta">
-					¿Es usted cónyugue, concubina, concubinario o tiene paretesco por consanguinidad o afinidad hasta el segundo grado con alguna persona de las mencionadas en el párrafo anterior?
-				</label>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col col-50">
-				<pehir-extend-form-control
-					[inputDirty]="frmSegubiciP1.get('parienteGob').dirty"
-					[inputErrors]="frmSegubiciP1.get('parienteGob').errors">
-						<div class="rdoContainer two">
-							<input type="radio" [value]="false" formControlName="parienteGob">No
-						</div>
-						<div class="rdoContainer two">
-							<input type="radio" [value]="true" formControlName="parienteGob">Sí
-						</div>
-				</pehir-extend-form-control>
-			</div>
-			<div class="col col-50">
 				<div class="row">
-					<div class="col col-40">
-						<label id="lblEspecifiqueParGob" class="form-label">Especifique:</label>
-					</div>
 					<div class="col col-50">
 						<pehir-extend-form-control
-							[inputDirty]="frmSegubiciP1.get('especifiqueParGob').dirty"
-							[inputErrors]="frmSegubiciP1.get('especifiqueParGob').errors">
-								<input id="txtEspecifiqueParGob" type="text" class="form-control" formControlName="especifiqueParGob">
+							[inputDirty]="frmSegubiciP1.controls['preguntas'].controls[i].controls['confirmacion'].dirty"
+							[inputErrors]="frmSegubiciP1.controls['preguntas'].controls[i].controls['confirmacion'].errors">
+								<div class="rdoContainer two">
+									<input type="radio" [value]="0" (change)="fnCambioConfirmacion(i)" formControlName="confirmacion">No
+								</div>
+								<div class="rdoContainer two">
+									<input type="radio" [value]="1" (change)="fnCambioConfirmacion(i)" formControlName="confirmacion">Sí
+								</div>
 						</pehir-extend-form-control>
+					</div>
+					<div class="col col-50">
+						<div class="row">
+							<div class="col col-40">
+								<label id="lblEspecifique" class="form-label">Especifique:</label>
+							</div>
+							<div class="col col-50">
+								<pehir-extend-form-control
+									[inputDirty]="frmSegubiciP1.controls['preguntas'].controls[i].controls['especifique'].dirty"
+									[inputErrors]="frmSegubiciP1.controls['preguntas'].controls[i].controls['especifique'].errors">
+										<input id="txtEspecifique" type="text" class="form-control" formControlName="especifique">
+								</pehir-extend-form-control>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

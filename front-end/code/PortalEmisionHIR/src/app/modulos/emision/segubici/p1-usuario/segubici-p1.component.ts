@@ -1,27 +1,28 @@
-import { Component, OnInit }				  from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router }							  from '@angular/router';
-import { Observable }						  from 'rxjs/Observable';
-import											   'rxjs/add/observable/forkJoin';
+import { Component, OnInit }							 from '@angular/core';
+import { FormArray, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router }										 from '@angular/router';
+import { Observable }									 from 'rxjs/Observable';
+import														  'rxjs/add/observable/forkJoin';
 
-import { SegubiciP1Service }				  from './segubici-p1.service';
+import { SegubiciP1Service }							 from './segubici-p1.service';
 
-import { ESTADOSCIVILES }					  from 'app/core/data/estadosCiviles';
-import { GENEROS }							  from 'app/core/data/generos';
-import { FECNACOPTIONS }					  from 'app/core/data/calendarios/fecNacOptions';
+import { ESTADOSCIVILES }								 from 'app/core/data/estadosCiviles';
+import { GENEROS }										 from 'app/core/data/generos';
+import { FECNACOPTIONS }								 from 'app/core/data/calendarios/fecNacOptions';
 
-import { Colonia }							  from 'app/core/models/colonia';
-import { Estado }							  from 'app/core/models/estado';
-import { Municipio }						  from 'app/core/models/municipio';
+import { Colonia }										 from 'app/core/models/colonia';
+import { Estado }										 from 'app/core/models/estado';
+import { Municipio }									 from 'app/core/models/municipio';
+import { PreguntaConocimiento }							 from 'app/core/models/pregunta-conocimiento';
 
-import { WSClientService }					  from 'app/core/services/ws-client.service';
+import { WSClientService }								 from 'app/core/services/ws-client.service';
 
-import { ApellidoValidator } 				  from 'app/core/validators/apellido.validator';
-import { CelularValidator }					  from 'app/core/validators/celular.validator';
-import { CodigoPostalValidator }			  from 'app/core/validators/codigo-postal.validator';
-import { NombreValidator }					  from 'app/core/validators/nombre.validator';
-import { RfcValidator }						  from 'app/core/validators/rfc.validator';
-import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.validator';
+import { ApellidoValidator } 							 from 'app/core/validators/apellido.validator';
+import { CelularValidator }								 from 'app/core/validators/celular.validator';
+import { CodigoPostalValidator }						 from 'app/core/validators/codigo-postal.validator';
+import { NombreValidator }								 from 'app/core/validators/nombre.validator';
+import { RfcValidator }									 from 'app/core/validators/rfc.validator';
+import { EntreEdadesValidator }							 from 'app/core/validators/entre-edades.validator';
 
 @Component({
 	selector: 'pehir-segubici-p1',
@@ -40,6 +41,7 @@ export class SegubiciP1Component implements OnInit {
 	colonias: Colonia[];
 	estados: Estado[];
 	municipios: Municipio[];
+	preguntasConocimiento: PreguntaConocimiento[];
 
 	generos = GENEROS;
 	fecNacOptions = FECNACOPTIONS;
@@ -52,6 +54,10 @@ export class SegubiciP1Component implements OnInit {
 		private wsClientService: WSClientService
 	){}
 
+	get preguntas(): FormArray {
+		return this.frmSegubiciP1.controls[ 'preguntas' ] as FormArray;
+	}
+
 	ngOnInit() {
 		this.crearFormulario();
 		this.registrarEventos();
@@ -60,10 +66,17 @@ export class SegubiciP1Component implements OnInit {
 
 	private leerCatalogos(): void {
 		Observable.forkJoin(
-			this.wsClientService.postObject( '/catalogoEstado', {} )
+			this.wsClientService.postObject( '/catalogoEstado', {} ),
+			this.wsClientService.postObject( '/catalogoCuestionarioConocimiento', {} )
 		).subscribe( response => {
 			if( response[ 0 ].code === 200 ) {
 				this.estados = response[ 0 ].data;
+			}
+			if( response[ 1 ].code === 200 ) {
+				this.preguntasConocimiento = response[ 1 ].data;
+				for( let i: number = 0; i < this.preguntasConocimiento.length; i++ ) {
+					this.agregarGrupoPregunta();
+				}
 			}
 
 			if( this.segubiciP1Service.hasModelP1() ) {
@@ -125,16 +138,22 @@ export class SegubiciP1Component implements OnInit {
 			'calleNumero': ['', Validators.compose([
 				Validators.required
 			])],
-			'gobierno': ['', Validators.compose([
+			'preguntas': this.fb.array( [] )
+		});
+	}
+
+	private agregarGrupoPregunta(): void {
+		let gruposPreguntas: FormArray = this.frmSegubiciP1.controls[ 'preguntas' ] as FormArray;
+		let grupoPregunta: FormGroup = this.crearGrupoPregunta();
+		gruposPreguntas.push( grupoPregunta );
+	}
+
+	private crearGrupoPregunta(): FormGroup {
+		return this.fb.group({
+			'confirmacion': ['', Validators.compose([
 				Validators.required
 			])],
-			'especifiqueGob': ['', Validators.compose([
-				Validators.required
-			])],
-			'parienteGob': ['', Validators.compose([
-				Validators.required
-			])],
-			'especifiqueParGob': ['', Validators.compose([
+			'especifique': ['', Validators.compose([
 				Validators.required
 			])]
 		});
@@ -214,29 +233,26 @@ export class SegubiciP1Component implements OnInit {
 				}
 			}
 		});
+	}
 
-		this.frmSegubiciP1.get( 'gobierno' ).valueChanges.subscribe( gobierno => {
-			this.frmSegubiciP1.get( 'especifiqueGob' ).setValue( '' );
+	private fnCambioConfirmacion( i: number ) {
+		let gruposPreguntas: FormArray = this.frmSegubiciP1.controls[ 'preguntas' ] as FormArray;
+		let grupoPregunta: FormGroup = gruposPreguntas.at( i ) as FormGroup;
 
-			if( gobierno ) {
-				this.frmSegubiciP1.get( 'especifiqueGob' ).enable();
-			} else {
-				this.frmSegubiciP1.get( 'especifiqueGob' ).disable();
-			}
-		});
+		grupoPregunta.controls[ 'especifique' ].setValue( '' );
 
-		this.frmSegubiciP1.get( 'parienteGob' ).valueChanges.subscribe( parienteGob => {
-			this.frmSegubiciP1.get( 'especifiqueParGob' ).setValue( '' );
-
-			if( parienteGob ) {
-				this.frmSegubiciP1.get( 'especifiqueParGob' ).enable();
-			} else {
-				this.frmSegubiciP1.get( 'especifiqueParGob' ).disable();
-			}
-		});
+		if( grupoPregunta.controls[ 'confirmacion' ].value === 0 ) {
+			grupoPregunta.controls[ 'especifique' ].disable();
+		} else {
+			grupoPregunta.controls[ 'especifique' ].enable();
+		}
 	}
 
 	private mostrarDatosCapturados(): void {
+		let gruposPreguntas: FormArray = this.frmSegubiciP1.controls[ 'preguntas' ] as FormArray;
+		let grupoGobierno: FormGroup = gruposPreguntas.at( 0 ) as FormGroup;
+		let grupoParienteGobierno: FormGroup = gruposPreguntas.at( 1 ) as FormGroup;
+
 		this.frmSegubiciP1.get( 'nombre' ).setValue( this.segubiciP1Service.getModelP1().nombre );
 		this.frmSegubiciP1.get( 'apaterno' ).setValue( this.segubiciP1Service.getModelP1().apaterno );
 		this.frmSegubiciP1.get( 'amaterno' ).setValue( this.segubiciP1Service.getModelP1().amaterno );
@@ -248,10 +264,16 @@ export class SegubiciP1Component implements OnInit {
 		this.frmSegubiciP1.get( 'fumador' ).setValue( this.segubiciP1Service.getModelP1().fumador );
 		this.frmSegubiciP1.get( 'calleNumero' ).setValue( this.segubiciP1Service.getModelP1().calleNumero );
 		this.frmSegubiciP1.get( 'cp' ).setValue( this.segubiciP1Service.getModelP1().cp );
-		this.frmSegubiciP1.get( 'gobierno' ).setValue( this.segubiciP1Service.getModelP1().gobierno );
-		this.frmSegubiciP1.get( 'especifiqueGob' ).setValue( this.segubiciP1Service.getModelP1().especifiqueGob );
-		this.frmSegubiciP1.get( 'parienteGob' ).setValue( this.segubiciP1Service.getModelP1().parienteGob );
-		this.frmSegubiciP1.get( 'especifiqueParGob' ).setValue( this.segubiciP1Service.getModelP1().especifiqueParGob );
+
+		grupoGobierno.get( 'confirmacion' ).setValue( this.segubiciP1Service.getModelP1().gobierno );
+		grupoParienteGobierno.get( 'confirmacion' ).setValue( this.segubiciP1Service.getModelP1().parienteGob );
+
+		for( let i: number = 0; i < this.preguntasConocimiento.length; i++ ) {
+			this.fnCambioConfirmacion( i );
+		}
+
+		grupoGobierno.get( 'especifique' ).setValue( this.segubiciP1Service.getModelP1().especifiqueGob );
+		grupoParienteGobierno.get( 'especifique' ).setValue( this.segubiciP1Service.getModelP1().especifiqueParGob );
 
 		let fEstado = this.estados.filter( ( estado: any ) => estado.claveEntidad === this.segubiciP1Service.getModelP1().estado.claveEntidad );
 		this.frmSegubiciP1.get( 'estado' ).setValue( fEstado[ 0 ] );
