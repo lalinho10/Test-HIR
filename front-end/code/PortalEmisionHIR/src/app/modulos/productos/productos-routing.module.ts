@@ -31,8 +31,8 @@ const productosRoutes: Routes = [
 	},
 	{
 		path: 'seguhirvida',
-		redirectTo: '/inprogress',
-		pathMatch: 'full'
+		component: SeguhirVidaComponent,
+		canActivate: [ AuthenticationGuardService ]
 	},
 	{
 		path: 'procuravida',
