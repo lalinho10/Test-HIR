@@ -55,12 +55,26 @@
 	"catPlan":
 	[
 		{
-			"id": 1,
+			"id": 1302,
 			"code": 200,
 			"status": null,
 			"message": "Catalogo recuperado con éxito",
 			"dateTime": 1528300849479,
-			"data": []
+			"data":
+			[
+				{
+					"id": 16331,
+					"desc": "A ) SEGUHIR CANCER"
+				},
+				{
+					"id": 16332,
+					"desc": "B ) SEGUHIR CANCER"
+				},
+				{
+					"id": 16333,
+					"desc": "C ) SEGUHIR CANCER"
+				}
+			]
 		},
 		{
 			"id": 5,
