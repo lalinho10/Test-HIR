@@ -297,12 +297,30 @@
 	"catCobertura":
 	[
 		{
-			"id": 1,
+			"id": 1302,
 			"code": 200,
 			"status": null,
 			"message": "Catalogo recuperado con éxito",
 			"dateTime": 1528282907826,
-			"data": []
+			"data":
+			[
+				{
+					"id": 364,
+					"desc": "FALLECIMIENTO"
+				},
+				{
+					"id": 3277,
+					"desc": "FALLECIMIENTO POR CANCER"
+				},
+				{
+					"id": 6233,
+					"desc": "FALLECIMIENTO POR CANCER DE MAYOR INCIDENCIA"
+				},
+				{
+					"id": 6234,
+					"desc": "PRIMER DIAGNOSTICO DE CANCER DE MAYOR INCIDENCIA"
+				}
+			]
 		},
 		{
 			"id": 5,
@@ -406,12 +424,12 @@
 	"catalogoModulo":
 	[
 		{
-			"id": 1,
+			"id": 1302,
 			"fechaOperacion": 1529341481555,
 			"mensaje": "Se ha mostrado el total de los modulos",
 			"codigoRespuesta": 200,
 			"min": 1,
-			"max": 10
+			"max": 1
 		},
 		{
 			"id": 5,
