@@ -53,6 +53,8 @@
 					</pehir-extend-form-control>
 				</div>
 			</div>
+		</div>
+		<div class="col col-50">
 			<div class="row">
 				<div class="col col-40">
 					<label id="lblSexo" class="form-label">Sexo:</label>
@@ -69,16 +71,16 @@
 			</div>
 			<div class="row">
 				<div class="col col-40">
-					<label id="lblPlan" class="form-label">Plan:</label>
+					<label id="lblModulos" class="form-label">Módulos:</label>
 				</div>
 				<div class="col col-50">
 					<pehir-extend-form-control
-						[inputDirty]="frmSeguhirVida.get('plan').dirty"
-						[inputErrors]="frmSeguhirVida.get('plan').errors">
-							<select id="cboPlan" class="form-control" formControlName="plan">
+						[inputDirty]="frmSeguhirVida.get('modulo').dirty"
+						[inputErrors]="frmSeguhirVida.get('modulo').errors">
+							<select id="cboModulo" class="form-control" formControlName="modulo">
 								<option value="">Selecciona</option>
-								<option *ngFor="let plan of planes" [value]="plan.id">
-									{{plan.desc}}
+								<option *ngFor="let modulo of modulos" [value]="modulo.idModulo">
+									{{modulo.descModulo}}
 								</option>
 							</select>
 					</pehir-extend-form-control>
@@ -101,53 +103,35 @@
 					</pehir-extend-form-control>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col col-40">
+					<label id="lblPlan" class="form-label">Plan:</label>
+				</div>
+				<div class="col col-50">
+					<pehir-extend-form-control
+						[inputDirty]="frmSeguhirVida.get('plan').dirty"
+						[inputErrors]="frmSeguhirVida.get('plan').errors">
+							<select id="cboPlan" class="form-control" formControlName="plan">
+								<option value="">Selecciona</option>
+								<option *ngFor="let plan of planes" [value]="plan.id">
+									{{plan.desc}}
+								</option>
+							</select>
+					</pehir-extend-form-control>
+				</div>
+			</div>
 		</div>
-		<div class="col col-50">
-			<div class="row">
-				<div class="col col-40">
-					<label id="lblModulos" class="form-label">Número de módulos a contratar:</label>
+	</div>
+	<div class="row">
+		<div class="col col-80 col-off-10">
+			<fieldset>
+				<legend>Coberturas</legend>
+				<div class="row">
+					<div *ngFor="let cobertura of coberturas" class="col col-50 text-center">
+						<span>{{cobertura.desc}}</span>
+					</div>
 				</div>
-				<div class="col col-50">
-					<pehir-extend-form-control
-						[inputDirty]="frmSeguhirVida.get('modulo').dirty"
-						[inputErrors]="frmSeguhirVida.get('modulo').errors">
-							<select id="cboModulo" class="form-control" formControlName="modulo">
-								<option value="">Selecciona</option>
-								<option *ngFor="let modulo of modulos" [value]="modulo.idModulo">
-									{{modulo.descModulo}}
-								</option>
-							</select>
-					</pehir-extend-form-control>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col col-40">
-					<label id="lblPcobertura" class="form-label">Paquete de cobertura:</label>
-				</div>
-				<div class="col col-50">
-					<pehir-extend-form-control
-						[inputDirty]="frmSeguhirVida.get('pcobertura').dirty"
-						[inputErrors]="frmSeguhirVida.get('pcobertura').errors">
-							<select id="cboPcobertura" class="form-control" formControlName="pcobertura">
-								<option value="">Selecciona</option>
-								<option *ngFor="let paquete of paquetes" [value]="paquete.idPaquete">
-									{{paquete.descPaquete}}
-								</option>
-							</select>
-					</pehir-extend-form-control>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col col-50 col-off-40">
-					<fieldset>
-						<legend>Descripción de coberturas</legend>
-						<label class="msg info">F (Fallecimiento)</label>
-						<label class="msg info">IITP (Indemnización por Invalidez Total y Permanente)</label>
-						<label class="msg info">MA (Muerte Accidental)</label>
-						<label class="msg info">C (Cáncer)</label>
-					</fieldset>
-				</div>
-			</div>
+			</fieldset>
 		</div>
 	</div>
 	<div class="row">

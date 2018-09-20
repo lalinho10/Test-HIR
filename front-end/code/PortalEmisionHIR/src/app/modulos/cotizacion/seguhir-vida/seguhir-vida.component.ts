@@ -3,17 +3,17 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router }							  from '@angular/router';
 
 import { Cotizacion }						  from '../cotizacion';
-import { SeguhirVidaRequest }				  from './seguhir-vida.request';
+import { TarifaRequest }					  from '../tarifa.request';
 
 import { CotizacionService }				  from '../cotizacion.service';
-import { SeguhirVidaService }				  from './seguhir-vida.service';
+import { TarifaService }					  from '../tarifa.service';
 
 import { GENEROS }							  from 'app/core/data/generos';
 import { FECNACOPTIONS }					  from 'app/core/data/calendarios/fecNacOptions';
 
+import { Cobertura }						  from 'app/core/models/cobertura';
 import { FormaPago }						  from 'app/core/models/forma-pago';
 import { Modulo }							  from 'app/core/models/modulo';
-import { Paquete }							  from 'app/core/models/paquete';
 import { Plan }								  from 'app/core/models/plan';
 
 import { WSClientService }					  from 'app/core/services/ws-client.service';
@@ -28,14 +28,14 @@ import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.vali
 })
 
 export class SeguhirVidaComponent implements OnInit {
-	private idProducto: number = 1;
+	private idProducto: number = 1302;
 
 	titulo: string = 'Cotización - SeguHIR Vida';
 	frmSeguhirVida: FormGroup;
 
+	coberturas: Cobertura[];
 	formasPago: FormaPago[];
 	modulos: Modulo[];
-	paquetes: Paquete[];
 	planes: Plan[];
 
 	generos = GENEROS;
@@ -45,7 +45,7 @@ export class SeguhirVidaComponent implements OnInit {
 		private cotizacionService: CotizacionService,
 		private fb: FormBuilder,
 		private router: Router,
-		private seguhirVidaService: SeguhirVidaService,
+		private tarifaService: TarifaService,
 		private wsClientService: WSClientService
 	) {}
 
@@ -59,6 +59,14 @@ export class SeguhirVidaComponent implements OnInit {
 	}
 
 	private leerCatalogos(): void {
+		this.wsClientService
+			.postObject( '/catCobertura', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.coberturas = response.data;
+				}
+			});
+
 		this.wsClientService
 			.postObject( '/catFormaPago', { 'id': this.idProducto } )
 			.subscribe( response => {
@@ -80,12 +88,6 @@ export class SeguhirVidaComponent implements OnInit {
 						this.modulos.push( modulo );
 					}
 				}
-			});
-
-		this.wsClientService
-			.postObject( '/consultaPaquetes', {} )
-			.subscribe( data => {
-				this.paquetes = data;
 			});
 
 		this.wsClientService
@@ -121,16 +123,13 @@ export class SeguhirVidaComponent implements OnInit {
 			'genero': ['', Validators.compose([
 				Validators.required
 			])],
-			'plan': ['', Validators.compose([
-				Validators.required
-			])],
-			'pcobertura': ['', Validators.compose([
-				Validators.required
-			])],
 			'modulo': ['', Validators.compose([
 				Validators.required
 			])],
 			'fpago': ['', Validators.compose([
+				Validators.required
+			])],
+			'plan': ['', Validators.compose([
 				Validators.required
 			])]
 		});
@@ -159,21 +158,18 @@ export class SeguhirVidaComponent implements OnInit {
 		this.frmSeguhirVida.get( 'plan' ).setValue( cotizacion.plan.id );
 		this.frmSeguhirVida.get( 'fpago' ).setValue( cotizacion.formaPago.id );
 		this.frmSeguhirVida.get( 'modulo' ).setValue( cotizacion.modulo.idModulo );
-		this.frmSeguhirVida.get( 'pcobertura' ).setValue( cotizacion.paqueteCobertura.idPaquete );
 	}
 
 	private crearModeloCotizacion(): Cotizacion {
 		let idGenero = this.frmSeguhirVida.get( 'genero' ).value;
-		let idPlan = this.frmSeguhirVida.get( 'plan' ).value;
 		let idFormaPago = this.frmSeguhirVida.get( 'fpago' ).value;
 		let idModulo = this.frmSeguhirVida.get( 'modulo' ).value;
-		let idPaquete = this.frmSeguhirVida.get( 'pcobertura' ).value;
+		let idPlan = this.frmSeguhirVida.get( 'plan' ).value;
 
 		let fGeneros = this.generos.filter( ( genero: any ) => genero.idGenero == idGenero );
-		let fPlanes = this.planes.filter( ( plan: any ) => plan.id == idPlan );
 		let fFormasPago = this.formasPago.filter( ( formaPago: any ) => formaPago.id == idFormaPago );
 		let fModulos = this.modulos.filter( ( modulo: any ) => modulo.idModulo == idModulo );
-		let fPaquetes = this.paquetes.filter( ( paquete: any ) => paquete.idPaquete == idPaquete );
+		let fPlanes = this.planes.filter( ( plan: any ) => plan.id == idPlan );
 
 		let cotizacion: Cotizacion = {
 			nombre: this.frmSeguhirVida.get( 'nombre' ).value,
@@ -181,25 +177,26 @@ export class SeguhirVidaComponent implements OnInit {
 			amaterno: this.frmSeguhirVida.get( 'amaterno' ).value,
 			fechanac: this.frmSeguhirVida.get( 'fechanac' ).value.jsdate,
 			genero: fGeneros[ 0 ],
-			plan: fPlanes[ 0 ],
 			formaPago: fFormasPago[ 0 ],
 			modulo: fModulos[ 0 ],
-			paqueteCobertura: fPaquetes[ 0 ]
+			plan: fPlanes[ 0 ]
 		}
 
 		return cotizacion;
 	}
 
 	fnCotizar(): void {
-		let seguhirVidaRequest: SeguhirVidaRequest = this.seguhirVidaService.getRequest( this.frmSeguhirVida.value );
+		let tarifaRequest: TarifaRequest = this.tarifaService.getRequest( this.idProducto, this.frmSeguhirVida.value );
 
 		this.wsClientService
-			.postObject( '/cotizacionSeguHIRVida', seguhirVidaRequest )
+			.postObject( '/obtTarifa', tarifaRequest )
 			.subscribe( ( response ) => {
-				this.cotizacionService.definirProducto( this.idProducto );
-				this.cotizacionService.definirCotizacion( this.crearModeloCotizacion() );
-				this.cotizacionService.definirResultadoCotizacion( response.data );
-				this.router.navigateByUrl( '/cotizacion/resultado' );
+				if( response.codigoRespuesta === 200 ) {
+					this.cotizacionService.definirProducto( this.idProducto );
+					this.cotizacionService.definirCotizacion( this.crearModeloCotizacion() );
+					this.cotizacionService.definirResultadoCotizacion( response );
+					this.router.navigateByUrl( '/cotizacion/resultado' );
+				}
 			});
 	}
 }
