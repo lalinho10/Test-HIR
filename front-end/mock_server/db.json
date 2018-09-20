@@ -198,12 +198,22 @@
 	"catFormaPago":
 	[
 		{
-			"id": 1,
+			"id": 1302,
 			"code": 200,
 			"status": null,
 			"message": "Catalogo recuperado con éxito",
 			"dateTime": 1528301270279,
-			"data": []
+			"data":
+			[
+				{
+					"id": 72,
+					"desc": "ANUAL"
+				},
+				{
+					"id": 75,
+					"desc": "MENSUAL"
+				}
+			]
 		},
 		{
 			"id": 5,
