@@ -4028,6 +4028,29 @@
 			{ "id": 4, "desc": "Cedula Profesional" }
 		]
 	},
+	"openPay":
+	{
+		"code": 200,
+		"status": null,
+		"mensaje": "Pago realizado con éxito",
+		"dateTime": 1537377120942,
+		"data": {
+			"id": "trfysfvec5sfubfnddmr",
+			"amount": 1,
+			"authorization": "801585",
+			"conciliated": false,
+			"creationDate": null,
+			"customerId": null,
+			"description": null,
+			"dueDate": null,
+			"errorMessage": null,
+			"method": "card",
+			"operationType": "in",
+			"orderId": null,
+			"status": "completed",
+			"transactionType": "charge"
+		}
+	},
 	"loginNormal":
 	{
 		"codigoRespuesta": 200,
