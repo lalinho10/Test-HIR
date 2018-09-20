@@ -9,7 +9,7 @@ let detalleSeguhirVida: DetalleProducto = new DetalleProducto();
 		<ol>
 			<li>1er. Diagnóstico de cáncer: Se paga al asegurado una indemnización una vez que sea comprobado el diagnóstico de cáncer de mayor incidencia.</li>
 			<li>Cáncer de mayor incidencia: Se paga a los beneficiarios de la póliza la suma asegurada contratada por el fallecimiento del asegurado a causa de un cáncer de mayor incidencia.</li>
-			<li>3.	Fallecimiento por cáncer: Se paga a los beneficiarios de la póliza la suma asegurada contratada por el fallecimiento del asegurado a causa de cualquier cáncer.</li>
+			<li>Fallecimiento por cáncer: Se paga a los beneficiarios de la póliza la suma asegurada contratada por el fallecimiento del asegurado a causa de cualquier cáncer.</li>
 		</ol>
 		Adicional e independiente de estas coberturas mencionadas se otorga una suma asegurada que va desde los $248,000.00 pesos por el fallecimiento de cualquier causa del asegurado a los beneficiarios de la póliza.
 		`;
