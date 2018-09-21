@@ -41,6 +41,22 @@
 					</pehir-extend-form-control>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col col-50">
+					<label class="form-label">Monto</label>
+					<label class="form-label">
+						{{ frmOpenpay.get('monto').value | currency: 'MXN': 'symbol-narrow' }}
+					</label>
+				</div>
+				<div class="col col-50">
+					<label class="form-label">Descripción</label>
+					<pehir-extend-form-control
+						[inputDirty]="frmOpenpay.get('descripcion').dirty"
+						[inputErrors]="frmOpenpay.get('descripcion').errors">
+							<input id="txtTarjeta" type="text" class="form-control" autocomplete="off" formControlName="descripcion">
+					</pehir-extend-form-control>
+				</div>
+			</div>
 			<div class="row mb15">
 				<div class="col col-50">
 					<label class="form-label">Fecha de expiración</label>
