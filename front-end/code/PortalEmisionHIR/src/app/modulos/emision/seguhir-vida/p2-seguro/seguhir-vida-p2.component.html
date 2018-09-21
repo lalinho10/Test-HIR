@@ -123,12 +123,12 @@
 			</div>
 			<div class="col col-33">
 				<fieldset>
-					<legend>Paquete de cobertura</legend>
+					<legend>Cobertura</legend>
 					<pehir-extend-form-control
-						[inputDirty]="frmSeguhirVidaP2.get('paqueteCobertura').dirty"
-						[inputErrors]="frmSeguhirVidaP2.get('paqueteCobertura').errors">
+						[inputDirty]="frmSeguhirVidaP2.get('cobertura').dirty"
+						[inputErrors]="frmSeguhirVidaP2.get('cobertura').errors">
 							<div *ngFor="let paquete of paquetes" class="rdoContainer two">
-								<input type="radio" formControlName="paqueteCobertura" [value]="paquete">{{paquete.descPaquete}}
+								<input type="radio" formControlName="cobertura" [value]="cobertura">{{cobertura.desc}}
 							</div>
 					</pehir-extend-form-control>
 				</fieldset>
@@ -212,10 +212,10 @@
 						</div>
 						<div class="col col-50">
 							<pehir-extend-form-control
-								[inputDirty]="frmSeguhirVidaP2.get('cobertura').dirty"
-								[inputErrors]="frmSeguhirVidaP2.get('cobertura').errors">
+								[inputDirty]="frmSeguhirVidaP2.get('primaCobertura').dirty"
+								[inputErrors]="frmSeguhirVidaP2.get('primaCobertura').errors">
 									<div class="form-group">
-										<input id="txtCobertura" type="text" class="form-control right" formControlName="cobertura">
+										<input id="txtCobertura" type="text" class="form-control right" formControlName="primaCobertura">
 										<span class="control-text left">$</span>
 									</div>
 							</pehir-extend-form-control>

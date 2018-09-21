@@ -4,9 +4,9 @@ import { Router }							  from '@angular/router';
 
 import { SeguhirVidaP2Service }				  from './seguhir-vida-p2.service';
 
+import { Cobertura }						  from 'app/core/models/cobertura';
 import { FormaPago }						  from 'app/core/models/forma-pago';
 import { Modulo }							  from 'app/core/models/modulo';
-import { Paquete }							  from 'app/core/models/paquete';
 import { Plan }								  from 'app/core/models/plan';
 
 import { WSClientService }					  from 'app/core/services/ws-client.service';
@@ -17,13 +17,13 @@ import { WSClientService }					  from 'app/core/services/ws-client.service';
 })
 
 export class SeguhirVidaP2Component implements OnInit {
-	private idProducto: number = 1;
+	private idProducto: number = 1302;
 
 	frmSeguhirVidaP2: FormGroup;
 
+	coberturas: Cobertura[];
 	formasPago: FormaPago[];
 	modulos: Modulo[];
-	paquetes: Paquete[];
 	planes: Plan[];
 
 	constructor(
@@ -39,6 +39,14 @@ export class SeguhirVidaP2Component implements OnInit {
 	}
 
 	private leerCatalogos(): void {
+		this.wsClientService
+			.postObject( '/catCobertura', { 'id': this.idProducto } )
+			.subscribe( response => {
+				if( response.code === 200 ) {
+					this.coberturas = response.data;
+				}
+			});
+
 		this.wsClientService
 			.postObject( '/catFormaPago', { 'id': this.idProducto } )
 			.subscribe( response => {
@@ -61,10 +69,6 @@ export class SeguhirVidaP2Component implements OnInit {
 					}
 				}
 			});
-
-		this.wsClientService
-			.postObject( '/consultaPaquetes', {} )
-			.subscribe( data => this.paquetes = data );
 
 		this.wsClientService
 			.postObject( '/catPlan', { 'id': this.idProducto } )
@@ -92,7 +96,7 @@ export class SeguhirVidaP2Component implements OnInit {
 			'plan': ['', Validators.compose([
 				Validators.required
 			])],
-			'paqueteCobertura': ['', Validators.compose([
+			'cobertura': ['', Validators.compose([
 				Validators.required
 			])],
 			'modulo': ['', Validators.compose([
@@ -107,7 +111,7 @@ export class SeguhirVidaP2Component implements OnInit {
 			'formaPago': ['', Validators.compose([
 				Validators.required
 			])],
-			'cobertura': ['', Validators.compose([
+			'primaCobertura': ['', Validators.compose([
 				Validators.required
 			])],
 			'aportacion': ['', Validators.compose([

@@ -16,7 +16,6 @@ export class SeguhirVidaP2Service {
 		this.seguhirVidaP2.parienteGob = frmSeguhirVidaP2.parienteGob;
 		this.seguhirVidaP2.especifiqueParGob = ( frmSeguhirVidaP2.parienteGob ) ? frmSeguhirVidaP2.especifiqueParGob : undefined;
 		this.seguhirVidaP2.plan = frmSeguhirVidaP2.plan;
-		this.seguhirVidaP2.paqueteCobertura = frmSeguhirVidaP2.paqueteCobertura;
 		this.seguhirVidaP2.modulo = frmSeguhirVidaP2.modulo;
 		this.seguhirVidaP2.ugastos = frmSeguhirVidaP2.ugastos;
 		this.seguhirVidaP2.apfondoasegurado = frmSeguhirVidaP2.apfondoasegurado;
