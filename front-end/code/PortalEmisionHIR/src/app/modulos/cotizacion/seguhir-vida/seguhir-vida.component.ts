@@ -30,7 +30,7 @@ import { EntreEdadesValidator }				  from 'app/core/validators/entre-edades.vali
 export class SeguhirVidaComponent implements OnInit {
 	private idProducto: number = 1302;
 
-	titulo: string = 'Cotización - SeguHIR Vida';
+	titulo: string = 'Cotización - SeguHIR Cáncer';
 	frmSeguhirVida: FormGroup;
 
 	coberturas: Cobertura[];

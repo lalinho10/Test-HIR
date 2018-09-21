@@ -19,7 +19,7 @@ export class SeguhirVidaGuardService implements CanActivate {
 
 	canActivate( route: ActivatedRouteSnapshot, state: RouterStateSnapshot ): boolean {
 		if ( !this.seguhirVidaService.isValidPath( route.routeConfig.path ) ) {
-			this.appModalService.openModal( 'error', 'Sin datos para el flujo de Emisión - SeguHIR Vida' );
+			this.appModalService.openModal( 'error', 'Sin datos para el flujo de Emisión - SeguHIR Cáncer' );
 			this.router.navigateByUrl( '/emision/seguhirvida' );
 			return false;
 		}

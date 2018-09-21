@@ -9,7 +9,7 @@ import { DET_PROD_SV }	   from 'app/core/data/productos/seguhir-vida';
 })
 
 export class SeguhirVidaComponent {
-	titulo: string = 'Productos - SeguHIR Vida';
+	titulo: string = 'Productos - SeguHIR Cáncer';
 
 	detalleSeguhirVida: DetalleProducto = DET_PROD_SV;
 }

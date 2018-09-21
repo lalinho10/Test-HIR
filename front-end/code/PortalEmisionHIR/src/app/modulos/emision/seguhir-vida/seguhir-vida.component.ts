@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
 })
 
 export class SeguhirVidaComponent {
-	titulo: string = 'Emisión - SeguHIR Vida';
+	titulo: string = 'Emisión - SeguHIR Cáncer';
 }
