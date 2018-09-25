@@ -18,8 +18,8 @@ export class OpenpayService {
 		this.openPayRequest.tokenId = tokenId;
 		this.openPayRequest.deviceSessionId = deviceSessionId;
 
-		this.openPayRequest.name = 'Juan';
-		this.openPayRequest.lastName = 'Pérez';
+		this.openPayRequest.name = form.titular;
+		this.openPayRequest.lastName = '';
 		this.openPayRequest.amount = form.monto;
 		this.openPayRequest.description = form.descripcion;
 
