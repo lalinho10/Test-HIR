@@ -6,6 +6,7 @@ import { EmisionVidaComponent }		  from './vida/emision-vida.component';
 import { EmisionAccidentesComponent } from './accidentes/emision-accidentes.component';
 import { OpenpayComponent }			  from 'app/modulos/shared/openpay/openpay.component';
 
+import { PagoGuardService }			  from './pago-guard.service';
 import { AuthenticationGuardService } from 'app/core/services/authentication/authentication-guard.service';
 
 const emisionRoutes: Routes = [
@@ -52,14 +53,14 @@ const emisionRoutes: Routes = [
 	{
 		path: 'openpay',
 		component: OpenpayComponent,
-		canActivate: [ AuthenticationGuardService ]
+		canActivate: [ AuthenticationGuardService, PagoGuardService ]
 	}
 ];
 
 @NgModule({
 	imports:   [ RouterModule.forChild( emisionRoutes ) ],
 	exports:   [ RouterModule ],
-	providers: [ AuthenticationGuardService ]
+	providers: [ AuthenticationGuardService, PagoGuardService ]
 })
 
 export class EmisionRoutingModule {}

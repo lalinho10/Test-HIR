@@ -31,4 +31,8 @@ export class PagoService {
 	cleanModel(): void {
 		this.pago = undefined;
 	}
+
+	hayDatosPago(): boolean {
+		return ( this.pago !== null && typeof this.pago !== 'undefined' );
+	}
 }
