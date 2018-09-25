@@ -1,6 +1,8 @@
 import { Component, OnInit }	 from '@angular/core';
 import { Router }				 from '@angular/router';
 
+import { PagoService }			 from '../../pago.service';
+
 import { ProcuraVidaP1Service }	 from '../p1-usuario/procura-vida-p1.service';
 import { ProcuraVidaP2Service }	 from '../p2-beneficiarios/procura-vida-p2.service';
 
@@ -22,6 +24,7 @@ export class ProcuraVidaP3Component implements OnInit {
 
 	constructor(
 		private authenticationService: AuthenticationService,
+		private pagoService: PagoService,
 		private procuraVidaP1Service: ProcuraVidaP1Service,
 		private procuraVidaP2Service: ProcuraVidaP2Service,
 		private router: Router
@@ -39,6 +42,7 @@ export class ProcuraVidaP3Component implements OnInit {
 	}
 
 	fnContinuar(): void {
+		this.pagoService.definirPago( 1484, this.procuraVidaP2.resultado.pago );
 		this.router.navigateByUrl( '/openpay' );
 	}
 }

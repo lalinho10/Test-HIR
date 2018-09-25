@@ -1,6 +1,8 @@
 import { Component, OnInit }		  from '@angular/core';
 import { Router }					  from '@angular/router';
 
+import { PagoService }				  from '../../pago.service';
+
 import { SeguhirEmpresarioP1Service } from '../p1-usuario/seguhir-empresario-p1.service';
 import { SeguhirEmpresarioP2Service } from '../p2-beneficiarios/seguhir-empresario-p2.service';
 
@@ -22,6 +24,7 @@ export class SeguhirEmpresarioP3Component implements OnInit {
 
 	constructor(
 		private authenticationService: AuthenticationService,
+		private pagoService: PagoService,
 		private seguhirEmpresarioP1Service: SeguhirEmpresarioP1Service,
 		private seguhirEmpresarioP2Service: SeguhirEmpresarioP2Service,
 		private router: Router
@@ -39,6 +42,7 @@ export class SeguhirEmpresarioP3Component implements OnInit {
 	}
 
 	fnContinuar(): void {
+		this.pagoService.definirPago( 1565, this.seguhirEmpresarioP2.resultado.pago );
 		this.router.navigateByUrl( '/openpay' );
 	}
 }

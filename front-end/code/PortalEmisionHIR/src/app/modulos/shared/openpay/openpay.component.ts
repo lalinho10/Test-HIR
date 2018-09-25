@@ -5,7 +5,9 @@ import { environment }						  from '../../../../environments/environment';
 
 import { OpenpayRequest }					  from './openpay.request';
 
-import { OpenpayService }					  from './openpay.service'
+import { OpenpayService }					  from './openpay.service';
+
+import { PagoService }						  from 'app/modulos/emision/pago.service';
 
 import { AppModalService }					  from 'app/core/components/app-modal/app-modal.service';
 
@@ -27,20 +29,23 @@ export class OpenpayComponent implements OnInit {
 	private openpayPublicApiKey: string = environment.openpayPublicApiKey;
 	private openpaySandboxMode: boolean = environment.openpaySandboxMode;
 
-	titulo: string = 'Emisión - Pago';
+	titulo: string;
 	msjPagoExitoso: string = 'Su pago fue realizado exitosamente. Gracias por confiar tu protección con HIR Seguros.';
+
 	frmOpenpay: FormGroup;
 
 	constructor(
 		private appModalService: AppModalService,
 		private fb: FormBuilder,
 		private openPayService: OpenpayService,
+		private pagoService: PagoService,
 		private wsClientService: WSClientService
 	){}
 
 	ngOnInit() {
 		this.inicializarOpenpay();
 		this.crearFormulario();
+		this.mostrarDatosPago();
 	}
 
 	private inicializarOpenpay() : void {
@@ -60,7 +65,7 @@ export class OpenpayComponent implements OnInit {
 			'tarjeta': ['', Validators.compose([
 				Validators.required
 			])],
-			'monto': 5000,
+			'monto': 0,
 			'descripcion': ['', Validators.compose([
 				Validators.required
 			])],
@@ -77,6 +82,11 @@ export class OpenpayComponent implements OnInit {
 				NumericoValidator()
 			])]
 		});
+	}
+
+	private mostrarDatosPago(): void {
+		this.titulo = 'Pago Emisión - ' + this.pagoService.productoPago;
+		this.frmOpenpay.get( 'monto' ).setValue( this.pagoService.montoPago );
 	}
 
 	fnPagar(): void {

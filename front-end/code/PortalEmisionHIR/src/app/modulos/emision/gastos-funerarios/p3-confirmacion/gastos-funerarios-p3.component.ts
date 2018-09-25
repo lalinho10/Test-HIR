@@ -1,6 +1,8 @@
 import { Component, OnInit }		 from '@angular/core';
 import { Router }					 from '@angular/router';
 
+import { PagoService }				 from '../../pago.service';
+
 import { GastosFunerariosP1Service } from '../p1-usuario/gastos-funerarios-p1.service';
 import { GastosFunerariosP2Service } from '../p2-beneficiarios/gastos-funerarios-p2.service';
 
@@ -24,6 +26,7 @@ export class GastosFunerariosP3Component implements OnInit {
 		private authenticationService: AuthenticationService,
 		private gastosFunerariosP1Service: GastosFunerariosP1Service,
 		private gastosFunerariosP2Service: GastosFunerariosP2Service,
+		private pagoService: PagoService,
 		private router: Router
 	) {}
 
@@ -39,6 +42,7 @@ export class GastosFunerariosP3Component implements OnInit {
 	}
 
 	fnContinuar(): void {
+		this.pagoService.definirPago( 721, this.gastosFunerariosP2.resultado.pago );
 		this.router.navigateByUrl( '/openpay' );
 	}
 }

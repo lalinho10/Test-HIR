@@ -1,6 +1,8 @@
 import { Component, OnInit }	 from '@angular/core';
 import { Router }				 from '@angular/router';
 
+import { PagoService }			 from '../../pago.service';
+
 import { ApindividualP1Service } from '../p1-usuario/apindividual-p1.service';
 import { ApindividualP2Service } from '../p2-seguro/apindividual-p2.service';
 
@@ -24,6 +26,7 @@ export class ApindividualP3Component implements OnInit {
 		private apindividualP1Service: ApindividualP1Service,
 		private apindividualP2Service: ApindividualP2Service,
 		private authenticationService: AuthenticationService,
+		private pagoService: PagoService,
 		private router: Router
 	){}
 
@@ -39,6 +42,7 @@ export class ApindividualP3Component implements OnInit {
 	}
 
 	fnContinuar(): void {
+		this.pagoService.definirPago( 1588, this.apindividualP2.resultado.pago );
 		this.router.navigateByUrl( '/openpay' );
 	}
 }
