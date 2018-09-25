@@ -61,8 +61,9 @@ export class AuthenticationService {
 		this._authenticatedUser.idUsuario = this._idUsuario;
 		this._authenticatedUser.claveRol = response.claveRol;
 		this._authenticatedUser.fechaOperacion = new Date( response.fechaOperacion );
-		this._authenticatedUser.nombreUsuario = response.nombreUsuario;
 		this._authenticatedUser.ultimoLogin = new Date( response.ultimoLogin );
+		this._authenticatedUser.nombreUsuario = response.nombreUsuario;
+		this._authenticatedUser.telefonoCelular = response.telefonoCelular;
 	}
 
 	public isAuthenticated(): boolean {
