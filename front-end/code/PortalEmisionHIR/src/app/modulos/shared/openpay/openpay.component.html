@@ -105,7 +105,7 @@
 			</div>
 			<div class="row">
 				<div class="col col-33 col-off-66">
-					<button id="btnPagar" type="button" class="next opbutton" (click)="fnPagar()">Pagar</button>
+					<button id="btnPagar" type="button" class="next opbutton" (click)="fnPagar()" [disabled]="!frmOpenpay.valid">Pagar</button>
 				</div>
 			</div>
 		</form>
