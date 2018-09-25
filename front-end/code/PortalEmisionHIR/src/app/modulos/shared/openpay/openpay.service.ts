@@ -12,7 +12,7 @@ export class OpenpayService {
 
 	getRequest( tokenId: string, deviceSessionId: string, model: any, form: any ): OpenpayRequest {
 		this.openPayRequest = new OpenpayRequest();
-debugger;
+
 		this.openPayRequest.useCardPoints = false;
 
 		this.openPayRequest.tokenId = tokenId;
@@ -23,7 +23,7 @@ debugger;
 		this.openPayRequest.amount = form.monto;
 		this.openPayRequest.description = form.descripcion;
 
-		this.openPayRequest.phoneNumber = ''; //this.authenticationService.authenticatedUser.telefono;
+		this.openPayRequest.phoneNumber = this.authenticationService.authenticatedUser.telefonoCelular;
 		this.openPayRequest.email = this.authenticationService.authenticatedUser.idUsuario;
 
 		return this.openPayRequest;
