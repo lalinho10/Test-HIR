@@ -4,6 +4,7 @@ import { RouterModule, Routes }		  from '@angular/router';
 import { EmisionComponent }			  from './emision.component';
 import { EmisionVidaComponent }		  from './vida/emision-vida.component';
 import { EmisionAccidentesComponent } from './accidentes/emision-accidentes.component';
+import { OpenpayComponent }			  from 'app/modulos/shared/openpay/openpay.component';
 
 import { AuthenticationGuardService } from 'app/core/services/authentication/authentication-guard.service';
 
@@ -47,6 +48,11 @@ const emisionRoutes: Routes = [
 	{
 		path: 'apindividual',
 		loadChildren: 'app/modulos/emision/apindividual/apindividual.module#ApindividualModule'
+	},
+	{
+		path: 'openpay',
+		component: OpenpayComponent,
+		canActivate: [ AuthenticationGuardService ]
 	}
 ];
 

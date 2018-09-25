@@ -29,7 +29,7 @@ import { ExtendFormControlModule }	  from 'app/modulos/shared/extend-form-contro
 import { ImageLinkModule }			  from 'app/modulos/shared/image-link/image-link.module';
 import { PolicyHolderTableModule }	  from 'app/modulos/shared/policyholder-table/policyholder-table.module';
 import { ProgressControlModule }	  from 'app/modulos/shared/progress-control/progress-control.module';
-
+import { OpenpayModule }			  from 'app/modulos/shared/openpay/openpay.module';
 
 @NgModule({
 	declarations: [
@@ -45,7 +45,8 @@ import { ProgressControlModule }	  from 'app/modulos/shared/progress-control/pro
 		ExtendFormControlModule,
 		ImageLinkModule,
 		PolicyHolderTableModule,
-		ProgressControlModule
+		ProgressControlModule,
+		OpenpayModule
 	],
 	providers: [
 		ApindividualService,
