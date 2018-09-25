@@ -43,6 +43,6 @@ export class SegubiciP3Component implements OnInit {
 
 	fnContinuar(): void {
 		this.pagoService.definirPago( 1560, this.segubiciP2.resultado.pago );
-		this.router.navigateByUrl( '/openpay' );
+		this.router.navigateByUrl( '/emision/openpay' );
 	}
 }

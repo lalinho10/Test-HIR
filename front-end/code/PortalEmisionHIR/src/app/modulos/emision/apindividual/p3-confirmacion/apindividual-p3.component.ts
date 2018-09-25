@@ -43,6 +43,6 @@ export class ApindividualP3Component implements OnInit {
 
 	fnContinuar(): void {
 		this.pagoService.definirPago( 1588, this.apindividualP2.resultado.pago );
-		this.router.navigateByUrl( '/openpay' );
+		this.router.navigateByUrl( '/emision/openpay' );
 	}
 }

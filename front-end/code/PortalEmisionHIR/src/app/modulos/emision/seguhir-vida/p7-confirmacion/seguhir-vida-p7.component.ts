@@ -53,6 +53,6 @@ export class SeguhirVidaP7Component implements OnInit {
 	}
 
 	fnContinuar(): void {
-		this.router.navigateByUrl( '/openpay' );
+		this.router.navigateByUrl( '/emision/openpay' );
 	}
 }

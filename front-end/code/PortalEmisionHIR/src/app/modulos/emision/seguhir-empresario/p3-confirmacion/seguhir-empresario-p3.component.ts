@@ -43,6 +43,6 @@ export class SeguhirEmpresarioP3Component implements OnInit {
 
 	fnContinuar(): void {
 		this.pagoService.definirPago( 1565, this.seguhirEmpresarioP2.resultado.pago );
-		this.router.navigateByUrl( '/openpay' );
+		this.router.navigateByUrl( '/emision/openpay' );
 	}
 }
