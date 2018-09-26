@@ -4042,6 +4042,15 @@
 		"idProdContrata": null,
 		"idHirVida": null
 	},
+	"emision":
+	{
+		"codigoRespuesta": 200,
+		"mensaje": "Se han guardado los datos correctamente",
+		"fechaOperacion": 1537296344408,
+		"idContratante": 0,
+		"idProdContrata": null,
+		"idHirVida": null
+	},
 	"openPay":
 	{
 		"code": 200,
