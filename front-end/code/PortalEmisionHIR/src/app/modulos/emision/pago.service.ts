@@ -21,12 +21,16 @@ export class PagoService {
 		this.pago.monto = monto;
 	}
 
-	get montoPago(): number {
-		return this.pago.monto;
+	get idContratantePago(): number {
+		return this.pago.idContratante;
 	}
 
 	get productoPago(): string {
 		return this.pago.producto.descProducto;
+	}
+
+	get montoPago(): number {
+		return this.pago.monto;
 	}
 
 	cleanModel(): void {
