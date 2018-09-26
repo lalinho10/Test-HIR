@@ -42,7 +42,7 @@ export class ProcuraVidaP3Component implements OnInit {
 	}
 
 	fnContinuar(): void {
-		this.pagoService.definirPago( 1484, this.procuraVidaP2.resultado.pago );
+		this.pagoService.definirPago( 0, 1484, this.procuraVidaP2.resultado.pago );
 		this.router.navigateByUrl( '/emision/openpay' );
 	}
 }

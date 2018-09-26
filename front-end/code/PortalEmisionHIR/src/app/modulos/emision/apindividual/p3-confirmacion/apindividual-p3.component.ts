@@ -56,7 +56,7 @@ export class ApindividualP3Component implements OnInit {
 			.postObject( '/emisionAccidente', accidenteRequest )
 			.subscribe( ( response ) => {
 				if( response.codigoRespuesta === 200 ) {
-					this.pagoService.definirPago( this.idProducto, this.apindividualP2.resultado.pago );
+					this.pagoService.definirPago( response.idContratante, this.idProducto, this.apindividualP2.resultado.pago );
 					this.router.navigateByUrl( '/emision/openpay' );
 				}
 			});

@@ -42,7 +42,7 @@ export class GastosFunerariosP3Component implements OnInit {
 	}
 
 	fnContinuar(): void {
-		this.pagoService.definirPago( 721, this.gastosFunerariosP2.resultado.pago );
+		this.pagoService.definirPago( 0, 721, this.gastosFunerariosP2.resultado.pago );
 		this.router.navigateByUrl( '/emision/openpay' );
 	}
 }
