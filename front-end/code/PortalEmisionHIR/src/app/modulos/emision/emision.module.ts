@@ -6,6 +6,7 @@ import { EmisionComponent }			  from './emision.component';
 import { EmisionVidaComponent }		  from './vida/emision-vida.component';
 import { EmisionAccidentesComponent } from './accidentes/emision-accidentes.component';
 
+import { AccidenteService }			  from './accidente.service';
 import { ApindividualService }		  from './apindividual/apindividual.service';
 import { ApindividualP1Service }	  from './apindividual/p1-usuario/apindividual-p1.service';
 import { ApindividualP2Service }	  from './apindividual/p2-seguro/apindividual-p2.service';
@@ -49,6 +50,7 @@ import { OpenpayModule }			  from 'app/modulos/shared/openpay/openpay.module';
 		OpenpayModule
 	],
 	providers: [
+		AccidenteService,
 		ApindividualService,
 		ApindividualP1Service,
 		ApindividualP2Service,

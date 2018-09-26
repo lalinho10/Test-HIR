@@ -1,0 +1,32 @@
+export class AccidenteRequest {
+	correo: string;
+	nombre: string;
+	paterno: string;
+	materno: string;
+	rfc: string;
+	estadoCivil: string;
+	sexo: string;
+	fechaNacimiento: number;
+	nacionalidad: string;
+	calleNumero: string;
+	colonia: string;
+	municipio: string;
+	estado: string;
+	codigoPostal: string;
+	telefono: string;
+	telefonoMovil: string;
+	idOcupacion: number;
+	descOcupacion: string;
+	idPregunta1: number;
+	respuesta1: number;
+	especifique1: string;
+	idPregunta2: number;
+	respuesta2: number;
+	especifique2: string;
+	idProducto: number;
+	idPlan: number;
+	idFormaPago: number;
+	modulos: number;
+	prima: number;
+	fumador: number;
+}
