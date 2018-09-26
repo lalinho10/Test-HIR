@@ -12,10 +12,11 @@ export class PagoService {
 
 	private productos = PRODUCTOS;
 
-	definirPago( idProducto: number, monto: number ): void {
+	definirPago( idContratante: number, idProducto: number, monto: number ): void {
 		let filtroProductos = this.productos.filter( ( producto: Producto ) => producto.idProducto === idProducto );
 
 		this.pago = new Pago();
+		this.pago.idContratante = idContratante;
 		this.pago.producto = filtroProductos[ 0 ];
 		this.pago.monto = monto;
 	}
