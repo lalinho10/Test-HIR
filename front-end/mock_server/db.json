@@ -1,44 +1,7 @@
 {
-	"consultaPlanes":
-	[
-		{ "idPlan": 1, "descPlan": "Individual" },
-		{ "idPlan": 2, "descPlan": "Conyugal" },
-		{ "idPlan": 3, "descPlan": "Hijos" },
-		{ "idPlan": 4, "descPlan": "Familiar" }
-	],
-	"consultaPaquetes":
-	[
-		{ "idPaquete": 1, "descPaquete": "F" },
-		{ "idPaquete": 2, "descPaquete": "F e IITP" },
-		{ "idPaquete": 3, "descPaquete": "F y MA" },
-		{ "idPaquete": 4, "descPaquete": "F y C" },
-		{ "idPaquete": 5, "descPaquete": "F, IITP y MA" },
-		{ "idPaquete": 6, "descPaquete": "F, IITP y C" },
-		{ "idPaquete": 7, "descPaquete": "F, MA y C" },
-		{ "idPaquete": 8, "descPaquete": "F, IITP, MA y C" }
-	],
-	"consultaFormasPago":
-	[
-		{ "idFormaPago": 1, "descFormaPago": "Anual" },
-		{ "idFormaPago": 2, "descFormaPago": "Semestral" },
-		{ "idFormaPago": 3, "descFormaPago": "Cuatrimestral" },
-		{ "idFormaPago": 4, "descFormaPago": "Trimestral" },
-		{ "idFormaPago": 5, "descFormaPago": "Bimestral" },
-		{ "idFormaPago": 6, "descFormaPago": "Mensual" }
-	],
-	"consultaCoberturas":
-	[
-		{ "idCobertura": 1, "descCobertura": "Fallecimiento" },
-		{ "idCobertura": 2, "descCobertura": "Muerte accidental" },
-		{ "idCobertura": 3, "descCobertura": "Doble indemnización por muerte accidental" },
-		{ "idCobertura": 4, "descCobertura": "Control de la salud" },
-		{ "idCobertura": 5, "descCobertura": "Asistencia funeraria" },
-		{ "idCobertura": 6, "descCobertura": "Rembolso de gastos médicos" },
-		{ "idCobertura": 7, "descCobertura": "Rembolso de gastos médicos por accidente" }
-	],
 	"catalogoProducto":
 	[
-		{ "id": 1,    "desc": "SeguHIR Vida" },
+		{ "id": 1302, "desc": "SeguHIR Vida" },
 		{ "id": 5,    "desc": "Vida con Ahorro línea 2018" },
 		{ "id": 721,  "desc": "GASTOS FUNERARIOS" },
 		{ "id": 1484, "desc": "PROCURA VIDA" },
@@ -4070,6 +4033,15 @@
 			{ "id": 4, "desc": "Cedula Profesional" }
 		]
 	},
+	"emisionAccidente":
+	{
+		"codigoRespuesta": 200,
+		"mensaje": "Se han guardado los datos correctamente",
+		"fechaOperacion": 1537296344408,
+		"idContratante": 86,
+		"idProdContrata": null,
+		"idHirVida": null
+	},
 	"openPay":
 	{
 		"code": 200,
@@ -4180,22 +4152,5 @@
 				"descripcion": "REEMBOLSO DE GASTOS MEDICOS POR ACCIDENTE"
 			}
 		]
-	},
-	"cotizacionSeguHIRVida":
-	{
-		"codigoRespuesta": 200,
-		"mensaje": "Consulta de cotización exitosa",
-		"fechaOperacion": 1520957070339,
-		"data":
-		{
-			"sumaAsegurada": 36000,
-			"nombreUsuario": "Pancho Pantera Brown",
-			"correoUsuario": "ppantera@hir.com",
-			"telefono": "5501010101",
-			"edad": 35,
-			"sexo": "Masculino",
-			"tipoPago": "Anual",
-			"montoPago": 36000
-		}
 	}
 }
