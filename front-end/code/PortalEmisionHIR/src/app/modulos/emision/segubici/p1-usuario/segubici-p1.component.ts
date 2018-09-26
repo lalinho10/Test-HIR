@@ -75,7 +75,7 @@ export class SegubiciP1Component implements OnInit {
 			if( response[ 1 ].code === 200 ) {
 				this.preguntasConocimiento = response[ 1 ].data;
 				for( let i: number = 0; i < this.preguntasConocimiento.length; i++ ) {
-					this.agregarGrupoPregunta();
+					this.agregarGrupoPregunta( this.preguntasConocimiento[ i ].id );
 				}
 			}
 
@@ -142,14 +142,16 @@ export class SegubiciP1Component implements OnInit {
 		});
 	}
 
-	private agregarGrupoPregunta(): void {
+	private agregarGrupoPregunta( idPregunta: number ): void {
 		let gruposPreguntas: FormArray = this.frmSegubiciP1.controls[ 'preguntas' ] as FormArray;
 		let grupoPregunta: FormGroup = this.crearGrupoPregunta();
+		grupoPregunta.get( 'idPregunta' ).setValue( idPregunta );
 		gruposPreguntas.push( grupoPregunta );
 	}
 
 	private crearGrupoPregunta(): FormGroup {
 		return this.fb.group({
+			'idPregunta': 0,
 			'confirmacion': ['', Validators.compose([
 				Validators.required
 			])],

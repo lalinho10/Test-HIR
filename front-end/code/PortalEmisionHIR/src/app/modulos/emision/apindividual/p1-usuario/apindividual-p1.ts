@@ -21,8 +21,10 @@ export class ApindividualP1 {
 	estado: Estado;
 	delegacionMunicipio: Municipio;
 	coloniaPoblacion: Colonia;
+	idGobierno: number;
 	gobierno: boolean;
 	especifiqueGob?: string;
+	idParienteGob: number;
 	parienteGob: boolean;
 	especifiqueParGob?: string;
 }

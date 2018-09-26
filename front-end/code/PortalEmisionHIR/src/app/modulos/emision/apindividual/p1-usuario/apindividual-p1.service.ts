@@ -23,8 +23,10 @@ export class ApindividualP1Service {
 		this.apindividualP1.estado = frmApindividualP1.estado;
 		this.apindividualP1.delegacionMunicipio = frmApindividualP1.delegacionMunicipio;
 		this.apindividualP1.coloniaPoblacion = frmApindividualP1.coloniaPoblacion;
+		this.apindividualP1.idGobierno = frmApindividualP1.preguntas[ 0 ].idPregunta;
 		this.apindividualP1.gobierno = frmApindividualP1.preguntas[ 0 ].confirmacion;
 		this.apindividualP1.especifiqueGob = ( frmApindividualP1.preguntas[ 0 ].confirmacion === 1 ) ? frmApindividualP1.preguntas[ 0 ].especifique : undefined;
+		this.apindividualP1.idParienteGob = frmApindividualP1.preguntas[ 1 ].idPregunta;
 		this.apindividualP1.parienteGob = frmApindividualP1.preguntas[ 1 ].confirmacion;
 		this.apindividualP1.especifiqueParGob = ( frmApindividualP1.preguntas[ 1 ].confirmacion === 1 ) ? frmApindividualP1.preguntas[ 1 ].especifique : undefined;
 	}
