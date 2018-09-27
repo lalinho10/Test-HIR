@@ -7,6 +7,9 @@ import { OpenpayRequest }					  from './openpay.request';
 
 import { OpenpayService }					  from './openpay.service';
 
+import { EmisionRequest }					  from 'app/modulos/emision/emision.request';
+
+import { EmisionService }					  from 'app/modulos/emision/emision.service';
 import { PagoService }						  from 'app/modulos/emision/pago.service';
 
 import { AppModalService }					  from 'app/core/components/app-modal/app-modal.service';
@@ -30,12 +33,15 @@ export class OpenpayComponent implements OnInit {
 	private openpaySandboxMode: boolean = environment.openpaySandboxMode;
 
 	titulo: string;
+
 	msjPagoExitoso: string = 'Su pago fue realizado exitosamente. Gracias por confiar tu protección con HIR Seguros.';
+	msjSolicitudExitosa: string = 'Su número de solicitud es: NNNNNN, en breve le estará llegando su póliza al correo electrónico registrado.'
 
 	frmOpenpay: FormGroup;
 
 	constructor(
 		private appModalService: AppModalService,
+		private emisionService: EmisionService,
 		private fb: FormBuilder,
 		private openPayService: OpenpayService,
 		private pagoService: PagoService,
@@ -112,8 +118,21 @@ export class OpenpayComponent implements OnInit {
 		this.wsClientService
 			.postObject( '/openPay', openPayRequest )
 			.subscribe( ( response ) => {
-				if( response.code ) {
+				if( response.code === 200 ) {
 					this.appModalService.openModal( 'success', this.msjPagoExitoso );
+					this.confirmarSolicitud( response.data.authorization );
+				}
+			});
+	}
+
+	private confirmarSolicitud( numeroConfirmacionPago: string ): void {
+		let emisionRequest: EmisionRequest = this.emisionService.getRequest( this.pagoService.idContratantePago, numeroConfirmacionPago );
+
+		this.wsClientService
+			.postObject( '/emision', emisionRequest )
+			.subscribe( ( response ) => {
+				if( response.code === 200 ) {
+					this.appModalService.openModal( 'success', this.msjSolicitudExitosa );
 				}
 			});
 	}
