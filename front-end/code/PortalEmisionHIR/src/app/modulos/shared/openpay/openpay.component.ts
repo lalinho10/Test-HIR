@@ -131,7 +131,7 @@ export class OpenpayComponent implements OnInit {
 		this.wsClientService
 			.postObject( '/emision', emisionRequest )
 			.subscribe( ( response ) => {
-				if( response.code === 200 ) {
+				if( response.codigoRespuesta === 200 ) {
 					this.appModalService.openModal( 'success', this.msjSolicitudExitosa );
 				}
 			});
