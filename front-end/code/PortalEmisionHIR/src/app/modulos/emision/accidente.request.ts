@@ -13,7 +13,6 @@ export class AccidenteRequest {
 	municipio: string;
 	estado: string;
 	codigoPostal: string;
-	telefono: string;
 	telefonoMovil: string;
 	idOcupacion: number;
 	descOcupacion: string;

@@ -16,7 +16,6 @@ export class AccidenteService {
 		this.accidenteRequest.idProducto = idProducto;
 
 		this.accidenteRequest.correo = this.authenticationService.authenticatedUser.idUsuario;
-		this.accidenteRequest.telefono = '';
 		this.accidenteRequest.telefonoMovil = this.authenticationService.authenticatedUser.telefonoCelular;
 
 		this.accidenteRequest.nombre = modelP1.nombre;
