@@ -4045,11 +4045,12 @@
 	"emision":
 	{
 		"codigoRespuesta": 200,
-		"mensaje": "Se han guardado los datos correctamente",
+		"mensaje": "Se ha Generado los XML",
 		"fechaOperacion": 1537296344408,
 		"idContratante": 0,
 		"idProdContrata": null,
-		"idHirVida": null
+		"idHirVida": null,
+		"numeroSolicitud": "EW-1811659"
 	},
 	"openPay":
 	{
