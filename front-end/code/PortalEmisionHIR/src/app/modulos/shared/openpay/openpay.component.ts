@@ -33,9 +33,11 @@ export class OpenpayComponent implements OnInit {
 	private openpaySandboxMode: boolean = environment.openpaySandboxMode;
 
 	titulo: string;
+	numAutorizacion: string;
+	numSolicitud: string;
 
-	msjPagoExitoso: string = 'Su pago fue realizado exitosamente. Gracias por confiar tu protección con HIR Seguros.';
-	msjSolicitudExitosa: string = 'Su número de solicitud es: NNNNNN, en breve le estará llegando su póliza al correo electrónico registrado.'
+	paymentApplied: boolean = false;
+	emisionApplied: boolean = false;
 
 	frmOpenpay: FormGroup;
 
@@ -119,8 +121,9 @@ export class OpenpayComponent implements OnInit {
 			.postObject( '/openPay', openPayRequest )
 			.subscribe( ( response ) => {
 				if( response.code === 200 ) {
-					this.appModalService.openModal( 'success', this.msjPagoExitoso );
+					this.numAutorizacion = response.data.authorization;
 					this.confirmarSolicitud( response.data.authorization );
+					this.paymentApplied = true;
 				}
 			});
 	}
@@ -132,7 +135,8 @@ export class OpenpayComponent implements OnInit {
 			.postObject( '/emision', emisionRequest )
 			.subscribe( ( response ) => {
 				if( response.codigoRespuesta === 200 ) {
-					this.appModalService.openModal( 'success', this.msjSolicitudExitosa );
+					this.numSolicitud = response.numeroSolicitud;
+					this.emisionApplied = true;
 				}
 			});
 	}
