@@ -158,9 +158,21 @@ div.rdoContainer.two > input[type="radio"] {margin-right:7px;}
 .main label.msg.info {color:#b4b4b4;}
 .main label.msg.warning {color:#8a6d3b;}
 .main label.msg.error {color:#a94442;}
+.main div.alert {border:1px solid;border-radius:5px;margin-bottom:15px;padding:15px;}
+.main div.alert.success {color:#3c763d;background-color:#d4edda;border-color:#c3e6cb;}
+.main div.alert.info {color:#b4b4b4;background-color:#fefefe;border-color:#fdfdfe;}
+.main div.alert.warning {color:#8a6d3b;background-color:#fff3cd;border-color:#ffeeba;}
+.main div.alert.error {color:#a94442;background-color:#f8d7da;border-color:#f5c6cb;}
 .main .accesocontainer {background-color:#f0f0f0;border-radius:5px;padding:40px 15px;}
 .main .accesolinks {margin:20px 0 0 0;}
 .main .accesolinks a.first {display:block;margin:0 0 10px 0;}
 .footer {background-color:#282a2b !important;border-top:1px solid #e9eaee !important;color:#8C8989 !important;font-size:12px;padding:0px 10px;}
 .footer .leftcontainer {padding:15px;}
 .footer .rightcontainer {padding:0 15px 0 0;}
+.animated {-webkit-animation-duration:1s;animation-duration:1s;-webkit-animation-fill-mode:both;animation-fill-mode:both;}
+.fast {-webkit-animation-duration:0.3s;animation-duration:0.3s;-webkit-animation-fill-mode:both;animation-fill-mode:both;}
+@keyframes fadeIn {
+    from {opacity:0;}
+    to {opacity:1;}
+}
+.fadeIn {animation-name:fadeIn;}
