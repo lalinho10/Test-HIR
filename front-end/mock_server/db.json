@@ -4042,6 +4042,16 @@
 		"idProdContrata": null,
 		"idHirVida": null
 	},
+	"emisionVida":
+	{
+	   "codigoRespuesta": 200,
+	   "mensaje": "Se han guardado los datos correctamente",
+	   "fechaOperacion": 1543316345757,
+	   "idContratante": 86,
+	   "idProdContrata": 0,
+	   "idHirVida": null,
+	   "numeroSolicitud": null
+	},
 	"emision":
 	{
 		"codigoRespuesta": 200,
