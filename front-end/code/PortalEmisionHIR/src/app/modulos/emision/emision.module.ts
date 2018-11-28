@@ -22,6 +22,7 @@ import { SegubiciP2Service }		  from './segubici/p2-seguro/segubici-p2.service';
 import { SeguhirEmpresarioService }	  from './seguhir-empresario/seguhir-empresario.service';
 import { SeguhirEmpresarioP1Service } from './seguhir-empresario/p1-usuario/seguhir-empresario-p1.service';
 import { SeguhirEmpresarioP2Service } from './seguhir-empresario/p2-beneficiarios/seguhir-empresario-p2.service';
+import { VidaService }				  from './vida.service';
 
 import { MyDatePickerModule }		  from 'mydatepicker';
 
@@ -65,7 +66,8 @@ import { OpenpayModule }			  from 'app/modulos/shared/openpay/openpay.module';
 		SegubiciP2Service,
 		SeguhirEmpresarioService,
 		SeguhirEmpresarioP1Service,
-		SeguhirEmpresarioP2Service
+		SeguhirEmpresarioP2Service,
+		VidaService
 	]
 })
 
