@@ -5,4 +5,13 @@ import { Component } from '@angular/core';
 	templateUrl: 'inicio.component.html'
 })
 
-export class InicioComponent {}
+export class InicioComponent {
+	carouselImages: string[] = [
+		'./assets/img/Banner_SeguHIRVida.jpg',
+		'./assets/img/Banner_ProcuraVida.jpg',
+		'./assets/img/Banner_GastosFunerarios.jpg',
+		'./assets/img/Banner_SeguHIREmpresario.jpg',
+		'./assets/img/Banner_APIndividual.jpg',
+		'./assets/img/Banner_SeguBici.jpg'
+	];
+}
