@@ -28,6 +28,7 @@ import { ImageLinkModule }				from './modulos/shared/image-link/image-link.modul
 import { OpenpayModule }				from './modulos/shared/openpay/openpay.module';
 import { PolicyHolderTableModule }		from './modulos/shared/policyholder-table/policyholder-table.module';
 import { MedicalQuestionaryModule }		from './modulos/shared/medical-questionary/medical-questionary.module';
+import { CarouselModule }				from './modulos/shared/carousel/carousel.module';
 
 import { AppComponent }					from './app.component';
 import { AppHeaderComponent }			from './layout/app-header.component';
@@ -98,7 +99,8 @@ registerLocaleData( localeESMX );
 		ImageLinkModule,
 		OpenpayModule,
 		PolicyHolderTableModule,
-		MedicalQuestionaryModule
+		MedicalQuestionaryModule,
+		CarouselModule
 	],
 	providers: [
 		AuthenticationService,
