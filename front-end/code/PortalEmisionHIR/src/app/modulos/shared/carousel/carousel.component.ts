@@ -12,7 +12,7 @@ export class CarouselComponent implements OnInit {
 	selImage: number = 1;
 
 	ngOnInit() {
-		setInterval( () => this.fnMove( 1 ), 2000 );
+		setInterval( () => this.fnMove( 1 ), 3000 );
 	}
 
 	fnMove( i: number ): void {
