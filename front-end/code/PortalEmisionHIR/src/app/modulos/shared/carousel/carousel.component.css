@@ -1,14 +1,20 @@
 .carousel {margin:40px 0;}
 .carousel a > .fa {color:#aaaaaa;}
-.carousel a:hover > .fa {color:#f68c2c;}
+.carousel a:hover > .fa {color:#f68c2c;cursor:pointer;}
 .carousel .items-container{position:relative;width:100%;}
 .carousel .items-container .action {position:absolute;top:40%;width:30px;}
-.carousel .items-container .action.previous {left:18%;}
-.carousel .items-container .action.next {right:18%;}
-.carousel .carousel-item {width:100%}
-.carousel .carousel-item {display:none;}
+.carousel .items-container .action.previous {left:18%;text-align:left;}
+.carousel .items-container .action.next {right:18%;text-align:right;}
+.carousel .carousel-item {display:none;width:100%;}
 .carousel .carousel-item.visible {display:block;}
-.carousel .carousel-item img {display:block;margin:0 auto;}
+.carousel .carousel-item img {display:block;margin:0 auto;width:48%;}
 .carousel .marker-container {margin-top:20px;text-align:center;}
-.carousel span.marker {background-color:#aaaaaa;border-radius:50%;display:inline-block;height:13px;margin:0 5px;width:13px;}
+.carousel span.marker {background-color:#aaaaaa;border-radius:50%;display:inline-block;height:12px;margin:0 5px;width:12px;}
 .carousel span.marker.visible {background-color:#f68c2c;}
+
+@media only screen and ( max-width: 425px ) {
+	.carousel {margin:20px 0;}
+	.carousel .carousel-item img {width:100%;}
+	.carousel .items-container .action.previous {left:0;}
+	.carousel .items-container .action.next {right:0;}
+}
