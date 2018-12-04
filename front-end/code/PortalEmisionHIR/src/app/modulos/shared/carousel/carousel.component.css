@@ -1,10 +1,14 @@
 .carousel {margin:40px 0;}
-.carousel a > .fa {color:#333333;}
+.carousel a > .fa {color:#aaaaaa;}
 .carousel a:hover > .fa {color:#f68c2c;}
-.carousel .carousel-item {margin:0 auto;width:100%}
+.carousel .items-container{position:relative;width:100%;}
+.carousel .items-container .action {position:absolute;top:40%;width:30px;}
+.carousel .items-container .action.previous {left:18%;}
+.carousel .items-container .action.next {right:18%;}
+.carousel .carousel-item {width:100%}
 .carousel .carousel-item {display:none;}
 .carousel .carousel-item.visible {display:block;}
-.carousel .carousel-item img {display:block;}
-.carousel .marker-container {margin-top:15px;text-align:center;}
+.carousel .carousel-item img {display:block;margin:0 auto;}
+.carousel .marker-container {margin-top:20px;text-align:center;}
 .carousel span.marker {background-color:#aaaaaa;border-radius:50%;display:inline-block;height:10px;margin:0 3px;width:10px;}
 .carousel span.marker.visible {background-color:#f68c2c;}

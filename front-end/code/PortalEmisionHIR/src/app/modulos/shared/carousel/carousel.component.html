@@ -1,19 +1,21 @@
 <div class="carousel">
 	<div class="row">
-		<div class="col col-10 previus">
-			<a id="lnkPrevius" (click)="fnMove(-1)">
-				<i  class="fa fa-angle-left fa-2x"></i>
-			</a>
-		</div>
-		<div class="col col-80">
-			<div *ngFor="let image of carouselImages; let i = index;" class="carousel-item animated fadeIn" [ngClass]="{ 'visible': i === selImage - 1 }">
-				<img [src]="image"  width="480">
+		<div class="col col-100">
+			<div class="items-container">
+				<div *ngFor="let image of carouselImages; let i = index;" class="carousel-item animated fadeIn" [ngClass]="{ 'visible': i === selImage - 1 }">
+					<img [src]="image"  width="480">
+				</div>
+				<div class="action previous">
+					<a id="lnkPrevius" (click)="fnMove(-1)">
+						<i  class="fa fa-angle-left fa-5x"></i>
+					</a>
+				</div>
+				<div class="action next">
+					<a id="lnkNext" (click)="fnMove(1)">
+						<i class="fa fa-angle-right fa-5x"></i>
+					</a>
+				</div>
 			</div>
-		</div>
-		<div class="col col-10 next">
-			<a id="lnkNext" (click)="fnMove(1)">
-				<i class="fa fa-angle-right fa-2x"></i>
-			</a>
 		</div>
 	</div>
 	<div class="row">
