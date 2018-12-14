@@ -1,0 +1,45 @@
+-----------------------------------------------------------------------------------------------------------------------------
+													LOCALHOST
+-----------------------------------------------------------------------------------------------------------------------------
+
+	Clave del sitio (HTML):
+
+		6LfJhU8UAAAAANQjlRZ0Byk4M5iG7vCaCtxzLuof
+
+	Clave secreta (Sitio y google):
+
+		6LfJhU8UAAAAAG19prq4rj1HdogkkDaQIA_LCaEj
+
+-----------------------------------------------------------------------------------------------------------------------------
+										Portal HIR Integración(177.241.244.250)
+-----------------------------------------------------------------------------------------------------------------------------
+
+	Clave del sitio (HTML):
+
+		6LfG6V0UAAAAAAnADp0QFhJzKeG2CIYzRQ0jzKqj
+
+	Clave secreta (Sitio y google):
+
+		6LfG6V0UAAAAAEkimUMnktcxNTac_3X205KE84QA
+
+-----------------------------------------------------------------------------------------------------------------------------
+					Portal HIR Integración con dominio http://emision.hirseguros.mx (177.241.244.250)
+-----------------------------------------------------------------------------------------------------------------------------
+
+	Clave del sitio (HTML):
+
+		6Lc40GsUAAAAAJrpSbQgYACCsXNq2i7k-ajkcIzc
+
+	Clave secreta (Sitio y google):
+
+		6Lc40GsUAAAAAGJFUJ2JUYlBhdwgdzli4M_9Gl3_
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+	Script:
+
+		<script src='https://www.google.com/recaptcha/api.js'></script>
+
+	Etiqueta HTML:
+
+		<div class="g-recaptcha" data-sitekey="6LfJhU8UAAAAANQjlRZ0Byk4M5iG7vCaCtxzLuof"></div>
